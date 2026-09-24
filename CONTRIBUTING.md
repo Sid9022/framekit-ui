@@ -1,6 +1,6 @@
-# Contributing to Forge UI
+# Contributing to Framekit UI
 
-Thanks for helping forge better components.
+Thanks for helping Framekit grow.
 
 ## Development
 

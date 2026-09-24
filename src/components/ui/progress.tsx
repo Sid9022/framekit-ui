@@ -17,7 +17,7 @@ export function Progress({
       className={cn('h-2 w-full overflow-hidden rounded-full bg-zinc-200 dark:bg-zinc-800', className)}
     >
       <div
-        className="h-full rounded-full bg-gradient-to-r from-forge-500 to-amber-400 transition-[width] duration-300"
+        className="h-full rounded-full bg-gradient-to-r from-framekit-500 to-amber-400 transition-[width] duration-300"
         style={{ width: `${clamped}%` }}
       />
     </div>

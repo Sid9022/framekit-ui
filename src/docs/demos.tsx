@@ -145,7 +145,7 @@ function ToastDemoInner() {
   return (
     <Button
       onClick={() =>
-        toast({ title: 'Forged successfully', description: 'Your component was copied.', variant: 'success' })
+        toast({ title: 'Saved successfully', description: 'Your component was copied.', variant: 'success' })
       }
     >
       Show toast
@@ -160,7 +160,7 @@ export const demos: Record<string, React.ReactNode> = {
       <Button variant="secondary">Secondary</Button>
       <Button variant="outline">Outline</Button>
       <Button variant="ghost">Ghost</Button>
-      <Button variant="forge">Forge</Button>
+      <Button variant="framekit">Framekit</Button>
       <Button variant="destructive" size="sm">Delete</Button>
     </div>
   ),
@@ -169,7 +169,7 @@ export const demos: Record<string, React.ReactNode> = {
       <Badge>Default</Badge>
       <Badge variant="secondary">Secondary</Badge>
       <Badge variant="outline">Outline</Badge>
-      <Badge variant="forge">Forge</Badge>
+      <Badge variant="framekit">Framekit</Badge>
       <Badge variant="success">Success</Badge>
       <Badge variant="warning">Warning</Badge>
     </div>
@@ -177,7 +177,7 @@ export const demos: Record<string, React.ReactNode> = {
   card: (
     <Card className="max-w-sm">
       <CardHeader>
-        <CardTitle>Forge Card</CardTitle>
+        <CardTitle>Framekit Card</CardTitle>
         <CardDescription>Composable surfaces for any layout.</CardDescription>
       </CardHeader>
       <CardContent>
@@ -205,7 +205,7 @@ export const demos: Record<string, React.ReactNode> = {
     <Accordion
       className="max-w-md"
       items={[
-        { value: 'a', title: 'Is Forge UI free?', content: 'Yes — MIT licensed. Copy what you need.' },
+        { value: 'a', title: 'Is Framekit UI free?', content: 'Yes — MIT licensed. Copy what you need.' },
         { value: 'b', title: 'Do I install a package?', content: 'No. Copy components into your project and own them.' },
         { value: 'c', title: 'Dark mode?', content: 'Yes. Components use Tailwind dark: variants.' },
       ]}
@@ -214,18 +214,18 @@ export const demos: Record<string, React.ReactNode> = {
   dialog: (
     <Dialog
       title="Create project"
-      description="Spin up a new Forge-powered app."
-      trigger={<Button variant="forge">Open dialog</Button>}
+      description="Spin up a new Framekit-powered app."
+      trigger={<Button variant="framekit">Open dialog</Button>}
     >
       <Input placeholder="Project name" />
       <div className="mt-4 flex justify-end gap-2">
         <Button variant="outline" size="sm">Cancel</Button>
-        <Button size="sm" variant="forge">Create</Button>
+        <Button size="sm" variant="framekit">Create</Button>
       </div>
     </Dialog>
   ),
   tooltip: (
-    <Tooltip content="Forged with care">
+    <Tooltip content="Crafted with care">
       <Button variant="outline">Hover me</Button>
     </Tooltip>
   ),
@@ -317,7 +317,7 @@ export const demos: Record<string, React.ReactNode> = {
   'orbiting-icons': (
     <OrbitingIcons
       icons={[
-        <Sparkles key="1" className="h-4 w-4 text-forge-500" />,
+        <Sparkles key="1" className="h-4 w-4 text-framekit-500" />,
         <Zap key="2" className="h-4 w-4 text-amber-500" />,
         <Heart key="3" className="h-4 w-4 text-rose-500" />,
         <Star key="4" className="h-4 w-4 text-violet-500" />,
@@ -336,13 +336,13 @@ export const demos: Record<string, React.ReactNode> = {
   'morphing-text': (
     <div className="text-3xl font-semibold">
       Build{' '}
-      <MorphingText className="text-forge-500" phrases={['faster', 'bolder', 'yours', 'animated']} />
+      <MorphingText className="text-framekit-500" phrases={['faster', 'bolder', 'yours', 'animated']} />
     </div>
   ),
   'spark-button': <SparkButton>Click for sparks</SparkButton>,
   'cursor-trail': <CursorTrail className="w-full max-w-lg" />,
   'glass-card': (
-    <div className="rounded-3xl bg-gradient-to-br from-forge-500 via-fuchsia-500 to-indigo-600 p-10">
+    <div className="rounded-3xl bg-gradient-to-br from-framekit-500 via-fuchsia-500 to-indigo-600 p-10">
       <GlassCard className="max-w-xs">
         <h3 className="text-lg font-semibold text-white">Liquid glass</h3>
         <p className="mt-2 text-sm text-white/80">Frosted surface over vivid color.</p>
@@ -352,7 +352,7 @@ export const demos: Record<string, React.ReactNode> = {
   'swipe-cards': (
     <SwipeCards
       cards={[
-        { id: '1', title: 'Ember', subtitle: 'Warm forge tones', color: '#ea580c' },
+        { id: '1', title: 'Ember', subtitle: 'Warm accent tones', color: '#ea580c' },
         { id: '2', title: 'Volt', subtitle: 'Electric accents', color: '#7c3aed' },
         { id: '3', title: 'Ion', subtitle: 'Cool contrast', color: '#2563eb' },
       ]}
@@ -361,7 +361,7 @@ export const demos: Record<string, React.ReactNode> = {
   typewriter: (
     <Typewriter
       className="text-xl font-medium"
-      phrases={['Forge UI', 'Own your components', 'Ship with motion']}
+      phrases={['Framekit UI', 'Own your components', 'Ship with motion']}
     />
   ),
   'pixel-reveal': <PixelReveal className="w-full max-w-md" />,

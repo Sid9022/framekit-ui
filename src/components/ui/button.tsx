@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { cn } from '@/lib/cn'
 
-export type ButtonVariant = 'default' | 'secondary' | 'outline' | 'ghost' | 'destructive' | 'forge'
+export type ButtonVariant = 'default' | 'secondary' | 'outline' | 'ghost' | 'destructive' | 'framekit'
 export type ButtonSize = 'sm' | 'md' | 'lg' | 'icon'
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -18,7 +18,7 @@ const variants: Record<ButtonVariant, string> = {
     'border border-zinc-200 bg-transparent hover:bg-zinc-100 dark:border-zinc-700 dark:hover:bg-zinc-800',
   ghost: 'bg-transparent hover:bg-zinc-100 dark:hover:bg-zinc-800',
   destructive: 'bg-red-600 text-white hover:bg-red-500',
-  forge:
+  framekit:
     'bg-zinc-950 text-white shadow-md shadow-zinc-900/20 hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white',
 }
 

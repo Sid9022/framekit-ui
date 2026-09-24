@@ -1,6 +1,6 @@
-# Forge UI
+# Framekit UI
 
-**Forge UI** is an open-source, copy-paste React component library with polished core primitives and original animated components. Built with Vite, React, TypeScript, Tailwind CSS, and Motion.
+**Framekit UI** is an open-source, copy-paste React component library with polished core primitives and original animated components. Built with Vite, React, TypeScript, Tailwind CSS, and Motion.
 
 > Rename the product in one place: `src/config/site.ts` (`SITE.name`, links, tagline).
 
@@ -27,7 +27,7 @@ npm run preview  # preview production build
 2. Copy `src/lib/cn.ts` into your project
 3. Open a component page → **Code** tab → copy the file into `components/ui/`
 
-CLI (`npx forge-ui add …`) is planned — marked coming soon in the Installation docs.
+CLI (`npx framekit-ui add …`) is planned — marked coming soon in the Installation docs.
 
 ## Component list
 
@@ -37,4 +37,4 @@ CLI (`npx forge-ui add …`) is planned — marked coming soon in the Installati
 
 ## License
 
-MIT © Forge UI contributors
+MIT © Framekit UI contributors

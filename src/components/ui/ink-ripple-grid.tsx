@@ -46,7 +46,7 @@ export function InkRippleGrid({
         <span
           key={r.id}
           className={cn(
-            'pointer-events-none absolute rounded-full bg-forge-500/30 ring-2 ring-forge-400/40',
+            'pointer-events-none absolute rounded-full bg-framekit-500/30 ring-2 ring-framekit-400/40',
             !reduced && 'animate-[ink_0.85s_ease-out_forwards]',
           )}
           style={{

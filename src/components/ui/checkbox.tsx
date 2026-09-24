@@ -31,9 +31,9 @@ export function Checkbox({
         disabled={disabled}
         onClick={() => onCheckedChange?.(!checked)}
         className={cn(
-          'flex h-5 w-5 items-center justify-center rounded-md border transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forge-500',
+          'flex h-5 w-5 items-center justify-center rounded-md border transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-framekit-500',
           checked
-            ? 'border-forge-500 bg-forge-500 text-white'
+            ? 'border-framekit-500 bg-framekit-500 text-white'
             : 'border-zinc-300 bg-white dark:border-zinc-600 dark:bg-zinc-900',
         )}
       >

@@ -105,7 +105,7 @@ export function CommandPalette({
                 className={cn(
                   'flex w-full flex-col rounded-xl px-3 py-2.5 text-left',
                   i === active
-                    ? 'bg-forge-50 text-forge-900 dark:bg-forge-950/50 dark:text-forge-100'
+                    ? 'bg-framekit-50 text-framekit-900 dark:bg-framekit-950/50 dark:text-framekit-100'
                     : 'hover:bg-zinc-50 dark:hover:bg-zinc-900',
                 )}
               >

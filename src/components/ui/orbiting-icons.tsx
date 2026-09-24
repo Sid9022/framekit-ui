@@ -16,7 +16,7 @@ export function OrbitingIcons({
   const reduced = usePrefersReducedMotion()
   return (
     <div className={cn('relative mx-auto h-56 w-56', className)}>
-      <div className="absolute left-1/2 top-1/2 z-10 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl bg-gradient-to-br from-forge-500 to-orange-600 text-sm font-bold text-white shadow-lg">
+      <div className="absolute left-1/2 top-1/2 z-10 flex h-14 w-14 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-2xl bg-gradient-to-br from-framekit-500 to-orange-600 text-sm font-bold text-white shadow-lg">
         UI
       </div>
       {icons.map((icon, i) => {

@@ -30,8 +30,8 @@ const toggleProps: DocEntry['props'] = [
 ]
 
 export const DOCS: DocEntry[] = [
-  { slug: 'introduction', title: 'Introduction', description: 'What Forge UI is and how to use it.', category: 'Getting Started' },
-  { slug: 'installation', title: 'Installation', description: 'Copy-paste setup for Forge UI components.', category: 'Getting Started' },
+  { slug: 'introduction', title: 'Introduction', description: 'What Framekit UI is and how to use it.', category: 'Getting Started' },
+  { slug: 'installation', title: 'Installation', description: 'Copy-paste setup for Framekit UI components.', category: 'Getting Started' },
   { slug: 'theming', title: 'Theming', description: 'Colors, dark mode, and Tailwind tokens.', category: 'Getting Started' },
 
   // Animated Backgrounds

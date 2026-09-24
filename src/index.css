@@ -3,6 +3,18 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
+  /* Framekit accent scale (signal orange for logo / legacy accent accents) */
+  --color-framekit-50: #fff7ed;
+  --color-framekit-100: #ffedd5;
+  --color-framekit-200: #fed7aa;
+  --color-framekit-300: #fdba74;
+  --color-framekit-400: #fb923c;
+  --color-framekit-500: #f97316;
+  --color-framekit-600: #ea580c;
+  --color-framekit-700: #c2410c;
+  --color-framekit-800: #9a3412;
+  --color-framekit-900: #7c2d12;
+  --color-framekit-950: #431407;
   --font-sans: "Geist", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "Geist Mono", ui-monospace, monospace;
   --font-display: "Instrument Serif", Georgia, serif;
@@ -19,9 +31,7 @@
   --color-signal-800: #4d3f5e;
   --color-signal-900: #352b42;
 
-  /* Keep forge orange only for logo mark if needed */
-  --color-forge-500: #f97316;
-  --color-forge-600: #ea580c;
+  /* Keep framekit accent only for logo mark if needed */
 }
 
 html { scroll-behavior: smooth; }
@@ -55,7 +65,7 @@ html.dark {
   color: #efeaf6;
 }
 
-.forge-stage {
+.framekit-stage {
   background-color: #f3f2ef;
   background-image:
     linear-gradient(to right, rgb(0 0 0 / 0.03) 1px, transparent 1px),
@@ -63,19 +73,19 @@ html.dark {
   background-size: 24px 24px;
 }
 
-.dark .forge-stage {
+.dark .framekit-stage {
   background-color: #121212;
   background-image:
     linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgb(255 255 255 / 0.04) 1px, transparent 1px);
 }
 
-.forge-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
-.forge-scroll::-webkit-scrollbar-thumb {
+.framekit-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
+.framekit-scroll::-webkit-scrollbar-thumb {
   background: #a1a1aa;
   border-radius: 999px;
 }
-.dark .forge-scroll::-webkit-scrollbar-thumb { background: #3f3f46; }
+.dark .framekit-scroll::-webkit-scrollbar-thumb { background: #3f3f46; }
 
 .hairline { border-color: rgb(0 0 0 / 0.08); }
 .dark .hairline { border-color: rgb(255 255 255 / 0.1); }

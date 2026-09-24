@@ -39,7 +39,7 @@ export function CodeBlock({
       >
         {({ className: cls, style, tokens, getLineProps, getTokenProps }) => (
           <pre
-            className={cn(cls, 'forge-scroll max-h-[480px] overflow-auto p-4 text-[13px] leading-relaxed')}
+            className={cn(cls, 'framekit-scroll max-h-[480px] overflow-auto p-4 text-[13px] leading-relaxed')}
             style={style}
           >
             {tokens.map((line, i) => (

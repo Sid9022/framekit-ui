@@ -24,10 +24,10 @@ export function ShimmerChromeButton({
         <span
           aria-hidden
           className="pointer-events-none absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/70 to-transparent dark:via-white/20"
-          style={{ animation: 'forge-shimmer 2.4s ease-in-out infinite' }}
+          style={{ animation: 'framekit-shimmer 2.4s ease-in-out infinite' }}
         />
       )}
-      <style>{`@keyframes forge-shimmer{0%{transform:translateX(-120%)}100%{transform:translateX(120%)}}`}</style>
+      <style>{`@keyframes framekit-shimmer{0%{transform:translateX(-120%)}100%{transform:translateX(120%)}}`}</style>
     </button>
   )
 }

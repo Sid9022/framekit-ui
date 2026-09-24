@@ -72,7 +72,7 @@ export function LandingPage() {
           .
         </h1>
         <p className="mt-6 max-w-xl text-base text-zinc-600 sm:text-lg dark:text-zinc-400">
-          Editorial surfaces, lilac signal accents, and physically motivated motion — forged as original source you own.
+          Editorial surfaces, lilac signal accents, and physically motivated motion — ship as original source you own.
         </p>
         <div className="mt-8 flex flex-wrap items-center gap-3">
           <MagneticButton onClick={() => navigate('/docs/watchful-eye-toggle')}>Explore toggles</MagneticButton>

@@ -1,5 +1,5 @@
 {
-  "name": "forge-ui",
+  "name": "framekit-ui",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -31,6 +31,6 @@
     "typescript": "~6.0.2",
     "vite": "^8.3.0"
   },
-  "description": "Forge UI \u2014 open-source animated React + Tailwind component library (copy-paste)",
+  "description": "Framekit UI \u2014 open-source animated React + Tailwind component library (copy-paste)",
   "license": "MIT"
 }

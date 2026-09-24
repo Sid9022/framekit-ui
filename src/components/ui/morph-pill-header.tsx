@@ -22,7 +22,7 @@ export function MorphPillHeader({ className }: { className?: string }) {
           )}
           style={{ transition: reduced ? undefined : 'all 380ms cubic-bezier(.2,.8,.2,1)' }}
         >
-          <span className="text-sm font-semibold">Forge</span>
+          <span className="text-sm font-semibold">Framekit</span>
           {!compact && (
             <div className="flex gap-3 text-xs text-zinc-500">
               <span>Work</span>

@@ -32,7 +32,7 @@ export function CursorTrail({
       {dots.map((d, i) => (
         <span
           key={d.id}
-          className="pointer-events-none absolute h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-forge-400 blur-[1px]"
+          className="pointer-events-none absolute h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-framekit-400 blur-[1px]"
           style={{
             left: d.x,
             top: d.y,

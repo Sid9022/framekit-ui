@@ -2,7 +2,7 @@ import * as React from 'react'
 import { cn } from '@/lib/cn'
 import { usePrefersReducedMotion } from '@/lib/use-reduced-motion'
 
-const WORDS = ['forge', 'alive', 'signal', 'motion', 'craft']
+const WORDS = ['framekit', 'alive', 'signal', 'motion', 'craft']
 
 /** Pointer leaves a springing trail of word pills. */
 export function PillTrailCursor({ className }: { className?: string }) {

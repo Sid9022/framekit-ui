@@ -61,7 +61,7 @@ export function Dialog({
                 <motion.div
                   role="dialog"
                   aria-modal="true"
-                  aria-labelledby="forge-dialog-title"
+                  aria-labelledby="framekit-dialog-title"
                   initial={reduced ? false : { opacity: 0, scale: 0.96, y: 8 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={reduced ? undefined : { opacity: 0, scale: 0.96, y: 8 }}
@@ -71,7 +71,7 @@ export function Dialog({
                 >
                   <div className="flex items-start justify-between gap-4">
                     <div>
-                      <h2 id="forge-dialog-title" className="text-lg font-semibold">
+                      <h2 id="framekit-dialog-title" className="text-lg font-semibold">
                         {title}
                       </h2>
                       {description && (

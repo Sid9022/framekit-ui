@@ -37,7 +37,7 @@ export function PixelReveal({
       {src ? (
         <img src={src} alt={alt} className="absolute inset-0 h-full w-full object-cover" />
       ) : (
-        <div className="absolute inset-0 bg-gradient-to-br from-forge-500 via-fuchsia-500 to-indigo-600" />
+        <div className="absolute inset-0 bg-gradient-to-br from-framekit-500 via-fuchsia-500 to-indigo-600" />
       )}
       <div
         className="absolute inset-0 grid"

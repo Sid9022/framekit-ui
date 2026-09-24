@@ -24,11 +24,11 @@ function Guide({ slug }: { slug: string }) {
         </p>
         <ul className="list-disc space-y-1 pl-5">
           <li>Core primitives for everyday UI</li>
-          <li>Animated “forge” components for landing pages and delight</li>
+          <li>Animated signature components for landing pages and delight</li>
           <li>Dark mode via Tailwind <code className="rounded bg-zinc-100 px-1 dark:bg-zinc-800">dark:</code> variants</li>
           <li>Respect for <code className="rounded bg-zinc-100 px-1 dark:bg-zinc-800">prefers-reduced-motion</code></li>
         </ul>
-        <Link to="/docs/installation"><Button variant="forge">Install guide</Button></Link>
+        <Link to="/docs/installation"><Button variant="framekit">Install guide</Button></Link>
       </div>
     )
   }
@@ -51,7 +51,7 @@ function Guide({ slug }: { slug: string }) {
         </ol>
         <div className="rounded-2xl border border-dashed border-zinc-300 p-4 dark:border-zinc-700">
           <p className="font-medium text-zinc-900 dark:text-zinc-100">CLI · coming soon</p>
-          <p className="mt-1">A future <code>npx forge-ui add magnetic-button</code> flow is planned. For now, copy-paste wins.</p>
+          <p className="mt-1">A future <code>npx framekit-ui add magnetic-button</code> flow is planned. For now, copy-paste wins.</p>
         </div>
       </div>
     )
@@ -130,7 +130,7 @@ export function DocPage() {
               ))}
             </div>
             {tab === 'preview' ? (
-              <div className="forge-stage flex min-h-[340px] flex-col items-center justify-center gap-4 p-10">
+              <div className="framekit-stage flex min-h-[340px] flex-col items-center justify-center gap-4 p-10">
                 <div className="flex w-full flex-1 items-center justify-center">{demo}</div>
                 {doc.gesture && (
                   <p className="text-center font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-400">

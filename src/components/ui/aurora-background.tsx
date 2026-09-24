@@ -15,7 +15,7 @@ export function AuroraBackground({
       <div
         className={cn(
           'absolute inset-0 bg-zinc-950',
-          !reduced && 'animate-[forge-shimmer_8s_linear_infinite]',
+          !reduced && 'animate-[framekit-shimmer_8s_linear_infinite]',
         )}
         style={{
           backgroundImage:

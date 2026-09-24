@@ -18,7 +18,7 @@ export function DocsLayout() {
   React.useEffect(() => setMobileNav(false), [location.pathname])
 
   const sidebar = (
-    <nav className="forge-scroll h-full space-y-6 overflow-y-auto px-3 py-4">
+    <nav className="framekit-scroll h-full space-y-6 overflow-y-auto px-3 py-4">
       {groups.map((group) => (
         <div key={group.title}>
           <p className={cn(

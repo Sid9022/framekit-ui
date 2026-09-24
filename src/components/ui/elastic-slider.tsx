@@ -59,11 +59,11 @@ export function ElasticSlider({
         onPointerCancel={() => setDragging(false)}
       >
         <div
-          className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-forge-500 to-amber-400"
+          className="absolute inset-y-0 left-0 rounded-full bg-gradient-to-r from-framekit-500 to-amber-400"
           style={{ width: `${value}%` }}
         />
         <motion.div
-          className="absolute top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-md ring-2 ring-forge-500"
+          className="absolute top-1/2 h-5 w-5 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white shadow-md ring-2 ring-framekit-500"
           style={{ left: `${value}%`, scaleX, scaleY }}
         />
       </div>
