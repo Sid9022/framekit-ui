@@ -60,13 +60,13 @@ function Guide({ slug }: { slug: string }) {
     return (
       <div className="max-w-2xl space-y-4 text-sm text-zinc-600 dark:text-zinc-400">
         <p>
-          {SITE.name} uses Tailwind CSS v4 theme tokens. Forge brand colors live under{' '}
-          <code className="rounded bg-zinc-100 px-1 dark:bg-zinc-800">forge-*</code>. Toggle dark mode by adding{' '}
+          {SITE.name} uses Tailwind CSS v4 theme tokens. Signal lilac tokens live under{' '}
+          <code className="rounded bg-zinc-100 px-1 dark:bg-zinc-800">signal-*</code>. Toggle dark mode by adding{' '}
           <code className="rounded bg-zinc-100 px-1 dark:bg-zinc-800">class="dark"</code> on <code>&lt;html&gt;</code>.
         </p>
         <CodeBlock
           language="css"
-          code={`@theme {\n  --color-forge-500: #f97316;\n  --color-forge-600: #ea580c;\n}`}
+          code={`@theme {\n  --color-signal-300: #d4cbe5;\n  --color-signal-600: #7d6899;\n}`}
         />
       </div>
     )
@@ -86,7 +86,7 @@ export function DocPage() {
       <div>
         <h1 className="text-2xl font-semibold">Not found</h1>
         <p className="mt-2 text-zinc-500">No doc for “{slug}”.</p>
-        <Link to="/docs/introduction" className="mt-4 inline-block text-forge-600 hover:underline">
+        <Link to="/docs/introduction" className="mt-4 inline-block text-signal-700 dark:text-signal-300 hover:underline">
           Back to docs
         </Link>
       </div>
@@ -101,7 +101,8 @@ export function DocPage() {
     <article className="mx-auto max-w-3xl">
       <div className="mb-2 flex flex-wrap items-center gap-2">
         <Badge variant="secondary">{doc.category}</Badge>
-        {doc.unique && <Badge variant="forge">Unique</Badge>}
+        {doc.isNew && <Badge className="bg-signal-200 text-signal-800 dark:bg-signal-800 dark:text-signal-100">NEW</Badge>}
+        {doc.unique && !doc.isNew && <Badge variant="secondary">Unique</Badge>}
       </div>
       <h1 className="text-3xl font-semibold tracking-tight">{doc.title}</h1>
       <p className="mt-2 text-zinc-600 dark:text-zinc-400">{doc.description}</p>
@@ -129,7 +130,14 @@ export function DocPage() {
               ))}
             </div>
             {tab === 'preview' ? (
-              <div className="forge-grid flex min-h-[280px] items-center justify-center p-8">{demo}</div>
+              <div className="forge-stage flex min-h-[340px] flex-col items-center justify-center gap-4 p-10">
+                <div className="flex w-full flex-1 items-center justify-center">{demo}</div>
+                {doc.gesture && (
+                  <p className="text-center font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-400">
+                    {doc.gesture}
+                  </p>
+                )}
+              </div>
             ) : (
               <CodeBlock code={code || '// Source unavailable'} />
             )}
@@ -162,7 +170,7 @@ export function DocPage() {
                   <tbody>
                     {doc.props.map((p) => (
                       <tr key={p.name} className="border-t border-zinc-200 dark:border-zinc-800">
-                        <td className="px-4 py-3 font-mono text-xs text-forge-600">{p.name}</td>
+                        <td className="px-4 py-3 font-mono text-xs text-signal-700 dark:text-signal-300">{p.name}</td>
                         <td className="px-4 py-3 font-mono text-xs text-zinc-500">{p.type}</td>
                         <td className="px-4 py-3 font-mono text-xs">{p.default ?? '—'}</td>
                         <td className="px-4 py-3 text-zinc-600 dark:text-zinc-400">{p.description}</td>

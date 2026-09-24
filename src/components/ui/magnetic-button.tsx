@@ -39,7 +39,7 @@ export function MagneticButton({
       onMouseMove={onMove}
       onMouseLeave={onLeave}
       className={cn(
-        'relative inline-flex items-center justify-center rounded-2xl bg-gradient-to-br from-forge-500 to-orange-600 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-forge-500/30 transition-shadow hover:shadow-forge-500/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forge-400',
+        'relative inline-flex items-center justify-center rounded-2xl bg-zinc-950 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-zinc-900/25 ring-1 ring-white/10 transition-shadow hover:bg-zinc-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal-300 dark:bg-zinc-100 dark:text-zinc-900 dark:shadow-black/40 dark:hover:bg-white',
         className,
       )}
       {...props}

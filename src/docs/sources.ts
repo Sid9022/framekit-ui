@@ -34,7 +34,61 @@ import pixelSrc from '../components/ui/pixel-reveal.tsx?raw'
 import elasticSrc from '../components/ui/elastic-slider.tsx?raw'
 import breathSrc from '../components/ui/breathing-dot.tsx?raw'
 import inkSrc from '../components/ui/ink-ripple-grid.tsx?raw'
+
+import prismTidalSrc from '../components/ui/prism-tidal-field.tsx?raw'
+import constellationSrc from '../components/ui/constellation-breathing-grid.tsx?raw'
+import paperfoldSrc from '../components/ui/paperfold-gradient-plane.tsx?raw'
+import orbitCommitSrc from '../components/ui/orbit-commit.tsx?raw'
+import inklineSrc from '../components/ui/inkline-action.tsx?raw'
+import focusBloomSrc from '../components/ui/focus-bloom-button.tsx?raw'
+import tideDeckSrc from '../components/ui/tide-deck.tsx?raw'
+import windowpaneSrc from '../components/ui/windowpane-story-card.tsx?raw'
+import topoSrc from '../components/ui/topographic-stack.tsx?raw'
+import glyphWeatherSrc from '../components/ui/glyph-weather.tsx?raw'
+import wordloomSrc from '../components/ui/wordloom.tsx?raw'
+import momentumSrc from '../components/ui/momentum-caption.tsx?raw'
+import compassSrc from '../components/ui/compass-rail.tsx?raw'
+import haloSrc from '../components/ui/halo-menu.tsx?raw'
+import pebbleSrc from '../components/ui/signal-pebble.tsx?raw'
 import cnSrc from '../lib/cn.ts?raw'
+
+import watchfulEyeSrc from '../components/ui/watchful-eye-toggle.tsx?raw'
+import dayNightSrc from '../components/ui/day-night-capsule.tsx?raw'
+import glassOrbSrc from '../components/ui/glass-orb-switch.tsx?raw'
+import cosmicSrc from '../components/ui/cosmic-sparkle-toggle.tsx?raw'
+import blinkerSrc from '../components/ui/blinker-switch.tsx?raw'
+import moodDialSrc from '../components/ui/mood-dial-toggle.tsx?raw'
+import inkBloomSrc from '../components/ui/ink-bloom-toggle.tsx?raw'
+import pulsebeatSrc from '../components/ui/pulsebeat-switch.tsx?raw'
+import frameflipSrc from '../components/ui/frameflip-toggle.tsx?raw'
+import googlySrc from '../components/ui/googly-gaze-button.tsx?raw'
+import slideConfirmSrc from '../components/ui/slide-confirm-button.tsx?raw'
+import shimmerSrc from '../components/ui/shimmer-chrome-button.tsx?raw'
+import pillTrailSrc from '../components/ui/pill-trail-cursor.tsx?raw'
+import halftoneSrc from '../components/ui/halftone-bloom-cursor.tsx?raw'
+import morphSearchSrc from '../components/ui/morph-search-capsule.tsx?raw'
+
+import silkShearSrc from '../components/ui/silk-shear-field.tsx?raw'
+import voidLatticeSrc from '../components/ui/void-lattice-drift.tsx?raw'
+import emberDriftSrc from '../components/ui/ember-drift.tsx?raw'
+import chromaticMistSrc from '../components/ui/chromatic-mist.tsx?raw'
+import pulseRingsSrc from '../components/ui/pulse-rings.tsx?raw'
+import curtainNavSrc from '../components/ui/curtain-drop-nav.tsx?raw'
+import morphPillSrc from '../components/ui/morph-pill-header.tsx?raw'
+import radialBurstSrc from '../components/ui/radial-toolburst.tsx?raw'
+import magneticDockSrc from '../components/ui/magnetic-dock-nav.tsx?raw'
+import ribbonTrailSrc from '../components/ui/ribbon-trail-cursor.tsx?raw'
+import lensFlareSrc from '../components/ui/lens-flare-cursor.tsx?raw'
+import inkStampSrc from '../components/ui/ink-stamp-cursor.tsx?raw'
+import orbitRingSrc from '../components/ui/orbit-ring-cursor.tsx?raw'
+import liquidFillSrc from '../components/ui/liquid-fill-button.tsx?raw'
+import splitRevealSrc from '../components/ui/split-reveal-button.tsx?raw'
+import gravityDropSrc from '../components/ui/gravity-drop-button.tsx?raw'
+import neonStrokeSrc from '../components/ui/neon-stroke-button.tsx?raw'
+import mothLanternSrc from '../components/ui/moth-lantern-toggle.tsx?raw'
+import petalCircuitSrc from '../components/ui/petal-circuit-toggle.tsx?raw'
+import tideglassSrc from '../components/ui/tideglass-toggle.tsx?raw'
+import weatherVaneSrc from '../components/ui/weather-vane-toggle.tsx?raw'
 
 export const sources: Record<string, string> = {
   button: buttonSrc,
@@ -74,4 +128,57 @@ export const sources: Record<string, string> = {
   'breathing-dot': breathSrc,
   'ink-ripple-grid': inkSrc,
   cn: cnSrc,
+  'prism-tidal-field': prismTidalSrc,
+  'constellation-breathing-grid': constellationSrc,
+  'paperfold-gradient-plane': paperfoldSrc,
+  'orbit-commit': orbitCommitSrc,
+  'inkline-action': inklineSrc,
+  'focus-bloom-button': focusBloomSrc,
+  'tide-deck': tideDeckSrc,
+  'windowpane-story-card': windowpaneSrc,
+  'topographic-stack': topoSrc,
+  'glyph-weather': glyphWeatherSrc,
+  wordloom: wordloomSrc,
+  'momentum-caption': momentumSrc,
+  'compass-rail': compassSrc,
+  'halo-menu': haloSrc,
+  'signal-pebble': pebbleSrc,
+
+  'watchful-eye-toggle': watchfulEyeSrc,
+  'day-night-capsule': dayNightSrc,
+  'glass-orb-switch': glassOrbSrc,
+  'cosmic-sparkle-toggle': cosmicSrc,
+  'blinker-switch': blinkerSrc,
+  'mood-dial-toggle': moodDialSrc,
+  'ink-bloom-toggle': inkBloomSrc,
+  'pulsebeat-switch': pulsebeatSrc,
+  'frameflip-toggle': frameflipSrc,
+  'googly-gaze-button': googlySrc,
+  'slide-confirm-button': slideConfirmSrc,
+  'shimmer-chrome-button': shimmerSrc,
+  'pill-trail-cursor': pillTrailSrc,
+  'halftone-bloom-cursor': halftoneSrc,
+  'morph-search-capsule': morphSearchSrc,
+
+  'silk-shear-field': silkShearSrc,
+  'void-lattice-drift': voidLatticeSrc,
+  'ember-drift': emberDriftSrc,
+  'chromatic-mist': chromaticMistSrc,
+  'pulse-rings': pulseRingsSrc,
+  'curtain-drop-nav': curtainNavSrc,
+  'morph-pill-header': morphPillSrc,
+  'radial-toolburst': radialBurstSrc,
+  'magnetic-dock-nav': magneticDockSrc,
+  'ribbon-trail-cursor': ribbonTrailSrc,
+  'lens-flare-cursor': lensFlareSrc,
+  'ink-stamp-cursor': inkStampSrc,
+  'orbit-ring-cursor': orbitRingSrc,
+  'liquid-fill-button': liquidFillSrc,
+  'split-reveal-button': splitRevealSrc,
+  'gravity-drop-button': gravityDropSrc,
+  'neon-stroke-button': neonStrokeSrc,
+  'moth-lantern-toggle': mothLanternSrc,
+  'petal-circuit-toggle': petalCircuitSrc,
+  'tideglass-toggle': tideglassSrc,
+  'weather-vane-toggle': weatherVaneSrc,
 }

@@ -21,7 +21,10 @@ export function DocsLayout() {
     <nav className="forge-scroll h-full space-y-6 overflow-y-auto px-3 py-4">
       {groups.map((group) => (
         <div key={group.title}>
-          <p className="mb-2 px-2 text-[11px] font-semibold uppercase tracking-wider text-zinc-400">{group.title}</p>
+          <p className={cn(
+            'mb-2 px-2 text-[11px] font-semibold uppercase tracking-wider',
+            group.title === 'Toggles' ? 'text-signal-600 dark:text-signal-300' : 'text-zinc-400',
+          )}>{group.title}{group.title === 'Toggles' ? ' ★' : ''}</p>
           <ul className="space-y-0.5">
             {group.items.map((item) => (
               <li key={item.slug}>
@@ -31,14 +34,14 @@ export function DocsLayout() {
                     cn(
                       'flex items-center justify-between rounded-lg px-2.5 py-1.5 text-sm transition',
                       isActive
-                        ? 'bg-forge-50 font-medium text-forge-800 dark:bg-forge-950/40 dark:text-forge-200'
+                        ? 'bg-signal-100 font-medium text-zinc-900 dark:bg-signal-900/40 dark:text-signal-100'
                         : 'text-zinc-600 hover:bg-zinc-100 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-zinc-100',
                     )
                   }
                 >
                   <span>{item.title}</span>
-                  {item.unique && (
-                    <span className="rounded bg-fuchsia-100 px-1.5 py-0.5 text-[10px] font-semibold text-fuchsia-700 dark:bg-fuchsia-950 dark:text-fuchsia-300">
+                  {item.isNew && (
+                    <span className="rounded bg-signal-200 px-1.5 py-0.5 text-[10px] font-semibold text-signal-800 dark:bg-signal-800 dark:text-signal-100">
                       NEW
                     </span>
                   )}
@@ -59,7 +62,7 @@ export function DocsLayout() {
             <Menu className="h-5 w-5" />
           </button>
           <Link to="/" className="flex items-center gap-2 font-semibold tracking-tight">
-            <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-br from-forge-500 to-orange-600 text-white shadow-md shadow-forge-500/30">
+            <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-zinc-950 text-signal-300 shadow-md dark:bg-zinc-100 dark:text-signal-800">
               <Flame className="h-4 w-4" />
             </span>
             {SITE.name}

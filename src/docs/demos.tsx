@@ -39,6 +39,72 @@ import { ElasticSlider } from '@/components/ui/elastic-slider'
 import { BreathingDot } from '@/components/ui/breathing-dot'
 import { InkRippleGrid } from '@/components/ui/ink-ripple-grid'
 
+import { PrismTidalField } from '@/components/ui/prism-tidal-field'
+import { ConstellationBreathingGrid } from '@/components/ui/constellation-breathing-grid'
+import { PaperfoldGradientPlane } from '@/components/ui/paperfold-gradient-plane'
+import { OrbitCommit } from '@/components/ui/orbit-commit'
+import { InklineAction } from '@/components/ui/inkline-action'
+import { FocusBloomButton } from '@/components/ui/focus-bloom-button'
+import { TideDeck } from '@/components/ui/tide-deck'
+import { WindowpaneStoryCard } from '@/components/ui/windowpane-story-card'
+import { TopographicStack } from '@/components/ui/topographic-stack'
+import { GlyphWeather } from '@/components/ui/glyph-weather'
+import { Wordloom } from '@/components/ui/wordloom'
+import { MomentumCaption } from '@/components/ui/momentum-caption'
+import { CompassRail } from '@/components/ui/compass-rail'
+import { HaloMenu } from '@/components/ui/halo-menu'
+import { SignalPebble } from '@/components/ui/signal-pebble'
+
+import { WatchfulEyeToggle } from '@/components/ui/watchful-eye-toggle'
+import { DayNightCapsule } from '@/components/ui/day-night-capsule'
+import { GlassOrbSwitch } from '@/components/ui/glass-orb-switch'
+import { CosmicSparkleToggle } from '@/components/ui/cosmic-sparkle-toggle'
+import { BlinkerSwitch } from '@/components/ui/blinker-switch'
+import { MoodDialToggle } from '@/components/ui/mood-dial-toggle'
+import { InkBloomToggle } from '@/components/ui/ink-bloom-toggle'
+import { PulsebeatSwitch } from '@/components/ui/pulsebeat-switch'
+import { FrameflipToggle } from '@/components/ui/frameflip-toggle'
+import { GooglyGazeButton } from '@/components/ui/googly-gaze-button'
+import { SlideConfirmButton } from '@/components/ui/slide-confirm-button'
+import { ShimmerChromeButton } from '@/components/ui/shimmer-chrome-button'
+import { PillTrailCursor } from '@/components/ui/pill-trail-cursor'
+import { HalftoneBloomCursor } from '@/components/ui/halftone-bloom-cursor'
+import { MorphSearchCapsule } from '@/components/ui/morph-search-capsule'
+
+import { SilkShearField } from '@/components/ui/silk-shear-field'
+import { VoidLatticeDrift } from '@/components/ui/void-lattice-drift'
+import { EmberDrift } from '@/components/ui/ember-drift'
+import { ChromaticMist } from '@/components/ui/chromatic-mist'
+import { PulseRings } from '@/components/ui/pulse-rings'
+import { CurtainDropNav } from '@/components/ui/curtain-drop-nav'
+import { MorphPillHeader } from '@/components/ui/morph-pill-header'
+import { RadialToolburst } from '@/components/ui/radial-toolburst'
+import { MagneticDockNav } from '@/components/ui/magnetic-dock-nav'
+import { RibbonTrailCursor } from '@/components/ui/ribbon-trail-cursor'
+import { LensFlareCursor } from '@/components/ui/lens-flare-cursor'
+import { InkStampCursor } from '@/components/ui/ink-stamp-cursor'
+import { OrbitRingCursor } from '@/components/ui/orbit-ring-cursor'
+import { LiquidFillButton } from '@/components/ui/liquid-fill-button'
+import { SplitRevealButton } from '@/components/ui/split-reveal-button'
+import { GravityDropButton } from '@/components/ui/gravity-drop-button'
+import { NeonStrokeButton } from '@/components/ui/neon-stroke-button'
+import { MothLanternToggle } from '@/components/ui/moth-lantern-toggle'
+import { PetalCircuitToggle } from '@/components/ui/petal-circuit-toggle'
+import { TideglassToggle } from '@/components/ui/tideglass-toggle'
+import { WeatherVaneToggle } from '@/components/ui/weather-vane-toggle'
+
+
+
+function TogglePlay({ children }: { children: (on: boolean, set: (v: boolean) => void) => React.ReactNode }) {
+  const [on, setOn] = React.useState(false)
+  return (
+    <div className="flex flex-col items-center gap-3">
+      {children(on, setOn)}
+      <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-400">{on ? 'On' : 'Off'}</p>
+    </div>
+  )
+}
+
 function SwitchDemo() {
   const [on, setOn] = React.useState(true)
   return (
@@ -309,5 +375,171 @@ export const demos: Record<string, React.ReactNode> = {
     </div>
   ),
   'ink-ripple-grid': <InkRippleGrid className="w-full max-w-lg" />,
+
+  'prism-tidal-field': (
+    <PrismTidalField className="flex h-56 w-full max-w-xl items-center justify-center">
+      <p className="text-sm font-medium tracking-[0.2em] text-white/80">PRISM TIDAL</p>
+    </PrismTidalField>
+  ),
+  'constellation-breathing-grid': (
+    <ConstellationBreathingGrid className="flex h-56 w-full max-w-xl items-center justify-center">
+      <p className="rounded-full border border-white/10 bg-black/40 px-3 py-1 text-xs text-white/70 backdrop-blur">constellation</p>
+    </ConstellationBreathingGrid>
+  ),
+  'paperfold-gradient-plane': (
+    <PaperfoldGradientPlane className="flex h-56 w-full max-w-xl items-center justify-center">
+      <p className="rounded-xl bg-white/50 px-4 py-2 text-sm font-medium text-zinc-800 backdrop-blur">Paperfold</p>
+    </PaperfoldGradientPlane>
+  ),
+  'orbit-commit': <OrbitCommit />,
+  'inkline-action': <InklineAction>Continue journey</InklineAction>,
+  'focus-bloom-button': <FocusBloomButton>Bloom focus</FocusBloomButton>,
+  'tide-deck': (
+    <TideDeck
+      cards={[
+        { id: '1', title: 'North swell', body: 'Velocity softens the corners.', tone: '#f7f5fb' },
+        { id: '2', title: 'Cross current', body: 'Drag to feel the tide.', tone: '#eef3f8' },
+        { id: '3', title: 'Quiet cove', body: 'Snap mode for reduced motion.', tone: '#f6efe8' },
+      ]}
+    />
+  ),
+  'windowpane-story-card': (
+    <WindowpaneStoryCard
+      className="w-full max-w-sm"
+      title="Field notes"
+      summary="A frosted pane hides the evidence layer."
+      evidence={<p>Signal peak at 14:02 · lilac pulse · contour mapped.</p>}
+    />
+  ),
+  'topographic-stack': (
+    <TopographicStack
+      items={[
+        { id: 'a', title: 'Ridge', note: 'Highest contour' },
+        { id: 'b', title: 'Bench', note: 'Mid terrace' },
+        { id: 'c', title: 'Basin', note: 'Collecting pool' },
+      ]}
+    />
+  ),
+  'glyph-weather': <GlyphWeather text="ALIVE TYPE" />,
+  wordloom: <Wordloom words={['systems', 'rituals', 'signals', 'weather']} />,
+  'momentum-caption': (
+    <MomentumCaption>Sweep quickly — this line keeps a little inertia.</MomentumCaption>
+  ),
+  'compass-rail': (
+    <CompassRail
+      items={[
+        { id: 'home', label: 'Overview' },
+        { id: 'craft', label: 'Craft' },
+        { id: 'motion', label: 'Motion' },
+        { id: 'ship', label: 'Ship' },
+      ]}
+    />
+  ),
+  'halo-menu': (
+    <HaloMenu
+      items={[
+        { id: '1', label: 'New' },
+        { id: '2', label: 'Edit' },
+        { id: '3', label: 'Share' },
+        { id: '4', label: 'Dup' },
+        { id: '5', label: 'Move' },
+        { id: '6', label: 'Del' },
+      ]}
+    />
+  ),
+  'signal-pebble': (
+    <div className="flex flex-col gap-3">
+      <SignalPebble status="working" progress={62} />
+      <SignalPebble status="mapping" />
+      <SignalPebble status="done" progress={100} />
+    </div>
+  ),
+
+  'watchful-eye-toggle': (
+    <TogglePlay>{(on, set) => <WatchfulEyeToggle checked={on} onCheckedChange={set} aria-label="Watchful eye" />}</TogglePlay>
+  ),
+  'day-night-capsule': (
+    <TogglePlay>{(on, set) => <DayNightCapsule checked={on} onCheckedChange={set} />}</TogglePlay>
+  ),
+  'glass-orb-switch': (
+    <TogglePlay>{(on, set) => <GlassOrbSwitch checked={on} onCheckedChange={set} />}</TogglePlay>
+  ),
+  'cosmic-sparkle-toggle': (
+    <TogglePlay>{(on, set) => <CosmicSparkleToggle checked={on} onCheckedChange={set} />}</TogglePlay>
+  ),
+  'blinker-switch': (
+    <TogglePlay>{(on, set) => <BlinkerSwitch checked={on} onCheckedChange={set} />}</TogglePlay>
+  ),
+  'mood-dial-toggle': (
+    <TogglePlay>{(on, set) => <MoodDialToggle checked={on} onCheckedChange={set} />}</TogglePlay>
+  ),
+  'ink-bloom-toggle': (
+    <TogglePlay>{(on, set) => <InkBloomToggle checked={on} onCheckedChange={set} />}</TogglePlay>
+  ),
+  'pulsebeat-switch': (
+    <TogglePlay>{(on, set) => <PulsebeatSwitch checked={on} onCheckedChange={set} />}</TogglePlay>
+  ),
+  'frameflip-toggle': (
+    <TogglePlay>{(on, set) => <FrameflipToggle checked={on} onCheckedChange={set} />}</TogglePlay>
+  ),
+  'googly-gaze-button': <GooglyGazeButton />,
+  'slide-confirm-button': <SlideConfirmButton />,
+  'shimmer-chrome-button': <ShimmerChromeButton>Shimmer chrome</ShimmerChromeButton>,
+  'pill-trail-cursor': <PillTrailCursor />,
+  'halftone-bloom-cursor': <HalftoneBloomCursor />,
+  'morph-search-capsule': <MorphSearchCapsule />,
+
+  'silk-shear-field': (
+    <SilkShearField className="flex h-56 w-full max-w-xl items-end p-6">
+      <p className="text-xs tracking-[0.2em] text-signal-200">SILK SHEAR</p>
+    </SilkShearField>
+  ),
+  'void-lattice-drift': (
+    <VoidLatticeDrift className="flex h-56 w-full max-w-xl items-end p-6">
+      <p className="text-xs tracking-[0.2em] text-white/50">VOID LATTICE</p>
+    </VoidLatticeDrift>
+  ),
+  'ember-drift': (
+    <EmberDrift className="flex h-56 w-full max-w-xl items-end p-6">
+      <p className="text-xs tracking-[0.2em] text-amber-100/70">EMBER DRIFT</p>
+    </EmberDrift>
+  ),
+  'chromatic-mist': (
+    <ChromaticMist className="flex h-56 w-full max-w-xl items-end p-6">
+      <p className="text-xs tracking-[0.2em] text-zinc-600">CHROMATIC MIST</p>
+    </ChromaticMist>
+  ),
+  'pulse-rings': (
+    <PulseRings className="flex h-56 w-full max-w-xl items-end p-6">
+      <p className="text-xs tracking-[0.2em] text-signal-200">PULSE RINGS</p>
+    </PulseRings>
+  ),
+  'curtain-drop-nav': <CurtainDropNav />,
+  'morph-pill-header': <MorphPillHeader />,
+  'radial-toolburst': <RadialToolburst />,
+  'magnetic-dock-nav': <MagneticDockNav />,
+  'ribbon-trail-cursor': <RibbonTrailCursor />,
+  'lens-flare-cursor': <LensFlareCursor />,
+  'ink-stamp-cursor': <InkStampCursor />,
+  'orbit-ring-cursor': <OrbitRingCursor />,
+  'liquid-fill-button': <LiquidFillButton />,
+  'split-reveal-button': <SplitRevealButton />,
+  'gravity-drop-button': <GravityDropButton />,
+  'neon-stroke-button': <NeonStrokeButton />,
+  'moth-lantern-toggle': (
+    <TogglePlay>{(on, set) => <MothLanternToggle checked={on} onCheckedChange={set} />}</TogglePlay>
+  ),
+  'petal-circuit-toggle': (
+    <TogglePlay>{(on, set) => <PetalCircuitToggle checked={on} onCheckedChange={set} />}</TogglePlay>
+  ),
+  'tideglass-toggle': (
+    <TogglePlay>{(on, set) => <TideglassToggle checked={on} onCheckedChange={set} />}</TogglePlay>
+  ),
+  'weather-vane-toggle': (
+    <TogglePlay>{(on, set) => <WeatherVaneToggle checked={on} onCheckedChange={set} />}</TogglePlay>
+  ),
+
+
+
 }
 

@@ -7,72 +7,75 @@
   --font-mono: "Geist Mono", ui-monospace, monospace;
   --font-display: "Instrument Serif", Georgia, serif;
 
-  --color-forge-50: #fff7ed;
-  --color-forge-100: #ffedd5;
-  --color-forge-200: #fed7aa;
-  --color-forge-300: #fdba74;
-  --color-forge-400: #fb923c;
+  /* Signal lilac — use sparingly */
+  --color-signal-50: #f7f5fb;
+  --color-signal-100: #efeaf6;
+  --color-signal-200: #e4dcf0;
+  --color-signal-300: #d4cbe5;
+  --color-signal-400: #b9aad0;
+  --color-signal-500: #9a86b8;
+  --color-signal-600: #7d6899;
+  --color-signal-700: #64527a;
+  --color-signal-800: #4d3f5e;
+  --color-signal-900: #352b42;
+
+  /* Keep forge orange only for logo mark if needed */
   --color-forge-500: #f97316;
   --color-forge-600: #ea580c;
-  --color-forge-700: #c2410c;
-  --color-forge-800: #9a3412;
-  --color-forge-900: #7c2d12;
-  --color-forge-950: #431407;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
   font-family: var(--font-sans);
-  background: #fafafa;
-  color: #18181b;
+  background: #f7f7f5;
+  color: #141414;
   -webkit-font-smoothing: antialiased;
 }
 
 html.dark body,
 .dark body {
-  background: #09090b;
-  color: #fafafa;
+  background: #0c0c0c;
+  color: #f5f5f4;
 }
 
 html.dark {
   color-scheme: dark;
-  background: #09090b;
+  background: #0c0c0c;
 }
 
 ::selection {
-  background: #fdba74;
-  color: #431407;
+  background: #d4cbe5;
+  color: #1a1224;
 }
 
 .dark ::selection {
-  background: #c2410c;
-  color: #ffedd5;
-}
-
-@keyframes forge-shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  background: #64527a;
+  color: #efeaf6;
 }
 
 .forge-stage {
+  background-color: #f3f2ef;
   background-image:
-    radial-gradient(circle at 1px 1px, rgb(0 0 0 / 0.06) 1px, transparent 0);
-  background-size: 16px 16px;
+    linear-gradient(to right, rgb(0 0 0 / 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(0 0 0 / 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
 .dark .forge-stage {
+  background-color: #121212;
   background-image:
-    radial-gradient(circle at 1px 1px, rgb(255 255 255 / 0.06) 1px, transparent 0);
+    linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.04) 1px, transparent 1px);
 }
 
-/* scrollbar */
 .forge-scroll::-webkit-scrollbar { width: 8px; height: 8px; }
 .forge-scroll::-webkit-scrollbar-thumb {
   background: #a1a1aa;
   border-radius: 999px;
 }
 .dark .forge-scroll::-webkit-scrollbar-thumb { background: #3f3f46; }
+
+.hairline { border-color: rgb(0 0 0 / 0.08); }
+.dark .hairline { border-color: rgb(255 255 255 / 0.1); }

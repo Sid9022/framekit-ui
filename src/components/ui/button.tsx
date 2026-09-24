@@ -19,7 +19,7 @@ const variants: Record<ButtonVariant, string> = {
   ghost: 'bg-transparent hover:bg-zinc-100 dark:hover:bg-zinc-800',
   destructive: 'bg-red-600 text-white hover:bg-red-500',
   forge:
-    'bg-gradient-to-br from-forge-500 to-forge-600 text-white shadow-lg shadow-forge-500/25 hover:from-forge-400 hover:to-forge-500',
+    'bg-zinc-950 text-white shadow-md shadow-zinc-900/20 hover:bg-zinc-800 dark:bg-zinc-100 dark:text-zinc-900 dark:hover:bg-white',
 }
 
 const sizes: Record<ButtonSize, string> = {
@@ -35,7 +35,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       ref={ref}
       type={type}
       className={cn(
-        'inline-flex items-center justify-center gap-2 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-forge-500 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:focus-visible:ring-offset-zinc-950',
+        'inline-flex items-center justify-center gap-2 font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal-400 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 dark:focus-visible:ring-offset-zinc-950',
         variants[variant],
         sizes[size],
         className,
