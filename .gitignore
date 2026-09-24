@@ -25,3 +25,4 @@ dist-ssr
 
 # Internal inspiration notes (not for publish)
 research/
+.vercel

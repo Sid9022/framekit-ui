@@ -4,6 +4,11 @@ export type DocCategory =
   | 'Buttons'
   | 'Toggles'
   | 'Text Animations'
+  | 'Shimmer'
+  | 'Loading'
+  | '404 Animation'
+  | 'Toast'
+  | 'Vertical Scroll'
   | 'Cards'
   | 'Navigation'
   | 'Cursors'
@@ -91,6 +96,34 @@ export const DOCS: DocEntry[] = [
   { slug: 'number-ticker', title: 'Number Ticker', description: 'Animates numbers when scrolled into view.', category: 'Text Animations', unique: true },
   { slug: 'infinite-marquee', title: 'Infinite Marquee', description: 'Seamless looping marquee strip.', category: 'Text Animations', unique: true },
 
+
+  // Shimmer
+  { slug: 'prism-sweep-shimmer', title: 'Prism Sweep Shimmer', description: 'Diagonal prismatic light band; intensity follows pointer X.', category: 'Shimmer', unique: true, isNew: true, gesture: 'Move horizontally — the prism band tracks X.' },
+  { slug: 'mercury-vein-shimmer', title: 'Mercury Vein Shimmer', description: 'Liquid-metal highlight veins crawl a rounded surface.', category: 'Shimmer', unique: true, isNew: true, gesture: 'Watch mercury veins crawl the surface.' },
+  { slug: 'glyph-aurora-shimmer', title: 'Glyph Aurora Shimmer', description: 'Aurora shimmer travels letter-by-letter on text.', category: 'Shimmer', unique: true, isNew: true, gesture: 'Watch the aurora sweep glyph by glyph.' },
+  { slug: 'edge-flare-shimmer', title: 'Edge Flare Shimmer', description: 'Soft flare travels the border edge (not a full beam).', category: 'Shimmer', unique: true, isNew: true, gesture: 'Watch the localized flare travel the rim.' },
+
+  // Loading
+  { slug: 'orbital-bead-loader', title: 'Orbital Bead Loader', description: 'Beads orbit a core; hover speeds up.', category: 'Loading', unique: true, isNew: true, gesture: 'Hover — orbit accelerates.' },
+  { slug: 'ink-drip-loader', title: 'Ink Drip Loader', description: 'Ink drops merge into a looping puddle.', category: 'Loading', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Watch drops merge into the puddle.' },
+  { slug: 'morph-glyph-loader', title: 'Morph Glyph Loader', description: 'Glyph morphs through abstract SVG shapes.', category: 'Loading', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Watch the glyph morph between shapes.' },
+  { slug: 'lattice-pulse-loader', title: 'Lattice Pulse Loader', description: '3×3 nodes pulse in a traveling wave.', category: 'Loading', unique: true, isNew: true, gesture: 'Watch the wave travel the lattice.' },
+
+  // 404 Animation
+  { slug: 'constellation-lost-404', title: 'Constellation Lost 404', description: '“404” as nodes/links that drift apart then reconnect.', category: '404 Animation', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Watch the constellation drift and reconnect.' },
+  { slug: 'paper-tear-404', title: 'Paper Tear 404', description: 'Torn paper reveal + floating scraps + 404 type.', category: '404 Animation', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Watch scraps float around the torn page.' },
+  { slug: 'glitch-portal-404', title: 'Glitch Portal 404', description: 'Chromatic glitch + portal ripple + scanlines.', category: '404 Animation', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Watch the portal glitch and ripple.' },
+
+  // Toast (signature — distinct from Core toast)
+  { slug: 'gravity-stack-toast', title: 'Gravity Stack Toast', description: 'Gravity-bounce stack with provider/hook.', category: 'Toast', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Trigger toasts — they fall into a bouncing stack.' },
+  { slug: 'ribbon-unfurl-toast', title: 'Ribbon Unfurl Toast', description: 'Ribbon unfurl enter animation.', category: 'Toast', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Trigger — ribbon unfurls from the side.' },
+  { slug: 'sonar-ping-toast', title: 'Sonar Ping Toast', description: 'Expanding sonar rings on appear.', category: 'Toast', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Trigger — sonar rings expand on appear.' },
+
+  // Vertical Scroll
+  { slug: 'parallax-reel-scroll', title: 'Parallax Reel Scroll', description: 'Stacked panels with different parallax rates in a fixed scroller.', category: 'Vertical Scroll', unique: true, isNew: true, gesture: 'Scroll the reel — layers move at different rates.' },
+  { slug: 'snap-magnet-scroll', title: 'Snap Magnet Scroll', description: 'Snap sections + magnetic settle + active indicator.', category: 'Vertical Scroll', unique: true, isNew: true, gesture: 'Scroll — sections magnetically snap; dots track active.' },
+  { slug: 'velocity-fade-stack', title: 'Velocity Fade Stack', description: 'Fade/scale from scroll velocity & distance to center.', category: 'Vertical Scroll', unique: true, isNew: true, gesture: 'Scroll fast or slow — cards fade by velocity and distance.' },
+
   // Cards
   { slug: 'tide-deck', title: 'Tide Deck', description: 'Drag a deck whose depth reacts to velocity.', category: 'Cards', unique: true, isNew: true, gesture: 'Drag sideways or use arrows to advance the deck.', dependencies: ['motion'] },
   { slug: 'windowpane-story-card', title: 'Windowpane Story Card', description: 'Frosted pane slides to reveal evidence.', category: 'Cards', unique: true, isNew: true, gesture: 'Click Reveal — the frosted pane slides down.' },
@@ -101,6 +134,10 @@ export const DOCS: DocEntry[] = [
   { slug: 'swipe-cards', title: 'Swipe Cards', description: 'Stacked deck with drag-to-dismiss.', category: 'Cards', unique: true, dependencies: ['motion'] },
   { slug: 'border-beam', title: 'Border Beam', description: 'Light travelling around a border.', category: 'Cards', unique: true },
   { slug: 'pixel-reveal', title: 'Pixel Reveal', description: 'Cascading pixel-grid image reveal.', category: 'Cards', unique: true },
+
+  { slug: 'hologram-flip-card', title: 'Hologram Flip Card', description: 'Flip to holographic rear with iridescent sheen.', category: 'Cards', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Click to flip; move for iridescent sheen.' },
+  { slug: 'liquid-morph-card', title: 'Liquid Morph Card', description: 'Border/blob morphs toward pointer.', category: 'Cards', unique: true, isNew: true, gesture: 'Move over the card — the blob leans toward you.' },
+  { slug: 'gravity-expand-card', title: 'Gravity Expand Card', description: 'Click expands with spring; collapse on second click/outside.', category: 'Cards', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Click to expand; click again or outside to collapse.' },
 
   // Navigation
   { slug: 'compass-rail', title: 'Compass Rail', description: 'Vertical rail with a shortest-path compass marker.', category: 'Navigation', unique: true, isNew: true, gesture: 'Click items — the compass marker takes the short path.' },
@@ -163,6 +200,11 @@ const NAV_ORDER: DocCategory[] = [
   'Buttons',
   'Toggles',
   'Text Animations',
+  'Shimmer',
+  'Loading',
+  '404 Animation',
+  'Toast',
+  'Vertical Scroll',
   'Cards',
   'Navigation',
   'Cursors',

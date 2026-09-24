@@ -90,6 +90,28 @@ import petalCircuitSrc from '../components/ui/petal-circuit-toggle.tsx?raw'
 import tideglassSrc from '../components/ui/tideglass-toggle.tsx?raw'
 import weatherVaneSrc from '../components/ui/weather-vane-toggle.tsx?raw'
 
+
+import prismSweepSrc from '../components/ui/prism-sweep-shimmer.tsx?raw'
+import mercuryVeinSrc from '../components/ui/mercury-vein-shimmer.tsx?raw'
+import glyphAuroraSrc from '../components/ui/glyph-aurora-shimmer.tsx?raw'
+import edgeFlareSrc from '../components/ui/edge-flare-shimmer.tsx?raw'
+import orbitalBeadSrc from '../components/ui/orbital-bead-loader.tsx?raw'
+import inkDripSrc from '../components/ui/ink-drip-loader.tsx?raw'
+import morphGlyphSrc from '../components/ui/morph-glyph-loader.tsx?raw'
+import latticePulseSrc from '../components/ui/lattice-pulse-loader.tsx?raw'
+import constellationLostSrc from '../components/ui/constellation-lost-404.tsx?raw'
+import paperTearSrc from '../components/ui/paper-tear-404.tsx?raw'
+import glitchPortalSrc from '../components/ui/glitch-portal-404.tsx?raw'
+import gravityStackSrc from '../components/ui/gravity-stack-toast.tsx?raw'
+import ribbonUnfurlSrc from '../components/ui/ribbon-unfurl-toast.tsx?raw'
+import sonarPingSrc from '../components/ui/sonar-ping-toast.tsx?raw'
+import parallaxReelSrc from '../components/ui/parallax-reel-scroll.tsx?raw'
+import snapMagnetSrc from '../components/ui/snap-magnet-scroll.tsx?raw'
+import velocityFadeSrc from '../components/ui/velocity-fade-stack.tsx?raw'
+import hologramFlipSrc from '../components/ui/hologram-flip-card.tsx?raw'
+import liquidMorphSrc from '../components/ui/liquid-morph-card.tsx?raw'
+import gravityExpandSrc from '../components/ui/gravity-expand-card.tsx?raw'
+
 export const sources: Record<string, string> = {
   button: buttonSrc,
   badge: badgeSrc,
@@ -181,4 +203,25 @@ export const sources: Record<string, string> = {
   'petal-circuit-toggle': petalCircuitSrc,
   'tideglass-toggle': tideglassSrc,
   'weather-vane-toggle': weatherVaneSrc,
+
+  'prism-sweep-shimmer': prismSweepSrc,
+  'mercury-vein-shimmer': mercuryVeinSrc,
+  'glyph-aurora-shimmer': glyphAuroraSrc,
+  'edge-flare-shimmer': edgeFlareSrc,
+  'orbital-bead-loader': orbitalBeadSrc,
+  'ink-drip-loader': inkDripSrc,
+  'morph-glyph-loader': morphGlyphSrc,
+  'lattice-pulse-loader': latticePulseSrc,
+  'constellation-lost-404': constellationLostSrc,
+  'paper-tear-404': paperTearSrc,
+  'glitch-portal-404': glitchPortalSrc,
+  'gravity-stack-toast': gravityStackSrc,
+  'ribbon-unfurl-toast': ribbonUnfurlSrc,
+  'sonar-ping-toast': sonarPingSrc,
+  'parallax-reel-scroll': parallaxReelSrc,
+  'snap-magnet-scroll': snapMagnetSrc,
+  'velocity-fade-stack': velocityFadeSrc,
+  'hologram-flip-card': hologramFlipSrc,
+  'liquid-morph-card': liquidMorphSrc,
+  'gravity-expand-card': gravityExpandSrc,
 }

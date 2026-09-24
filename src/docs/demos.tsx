@@ -93,6 +93,27 @@ import { PetalCircuitToggle } from '@/components/ui/petal-circuit-toggle'
 import { TideglassToggle } from '@/components/ui/tideglass-toggle'
 import { WeatherVaneToggle } from '@/components/ui/weather-vane-toggle'
 
+import { PrismSweepShimmer } from '@/components/ui/prism-sweep-shimmer'
+import { MercuryVeinShimmer } from '@/components/ui/mercury-vein-shimmer'
+import { GlyphAuroraShimmer } from '@/components/ui/glyph-aurora-shimmer'
+import { EdgeFlareShimmer } from '@/components/ui/edge-flare-shimmer'
+import { OrbitalBeadLoader } from '@/components/ui/orbital-bead-loader'
+import { InkDripLoader } from '@/components/ui/ink-drip-loader'
+import { MorphGlyphLoader } from '@/components/ui/morph-glyph-loader'
+import { LatticePulseLoader } from '@/components/ui/lattice-pulse-loader'
+import { ConstellationLost404 } from '@/components/ui/constellation-lost-404'
+import { PaperTear404 } from '@/components/ui/paper-tear-404'
+import { GlitchPortal404 } from '@/components/ui/glitch-portal-404'
+import { GravityStackToast } from '@/components/ui/gravity-stack-toast'
+import { RibbonUnfurlToast } from '@/components/ui/ribbon-unfurl-toast'
+import { SonarPingToast } from '@/components/ui/sonar-ping-toast'
+import { ParallaxReelScroll } from '@/components/ui/parallax-reel-scroll'
+import { SnapMagnetScroll } from '@/components/ui/snap-magnet-scroll'
+import { VelocityFadeStack } from '@/components/ui/velocity-fade-stack'
+import { HologramFlipCard } from '@/components/ui/hologram-flip-card'
+import { LiquidMorphCard } from '@/components/ui/liquid-morph-card'
+import { GravityExpandCard } from '@/components/ui/gravity-expand-card'
+
 
 
 function TogglePlay({ children }: { children: (on: boolean, set: (v: boolean) => void) => React.ReactNode }) {
@@ -539,6 +560,82 @@ export const demos: Record<string, React.ReactNode> = {
     <TogglePlay>{(on, set) => <WeatherVaneToggle checked={on} onCheckedChange={set} />}</TogglePlay>
   ),
 
+
+
+
+  'prism-sweep-shimmer': (
+    <PrismSweepShimmer className="w-full max-w-lg" />
+  ),
+  'mercury-vein-shimmer': (
+    <MercuryVeinShimmer className="w-full max-w-lg" />
+  ),
+  'glyph-aurora-shimmer': <GlyphAuroraShimmer />,
+  'edge-flare-shimmer': (
+    <EdgeFlareShimmer className="w-full max-w-sm" />
+  ),
+  'orbital-bead-loader': <OrbitalBeadLoader />,
+  'ink-drip-loader': <InkDripLoader />,
+  'morph-glyph-loader': <MorphGlyphLoader />,
+  'lattice-pulse-loader': <LatticePulseLoader />,
+  'constellation-lost-404': (
+    <ConstellationLost404 className="w-full max-w-lg" />
+  ),
+  'paper-tear-404': (
+    <PaperTear404 className="w-full max-w-lg" />
+  ),
+  'glitch-portal-404': (
+    <GlitchPortal404 className="w-full max-w-lg" />
+  ),
+  'gravity-stack-toast': (
+    <GravityStackToast>
+      {({ push }) => (
+        <div className="flex flex-wrap justify-center gap-2">
+          <Button
+            variant="framekit"
+            onClick={() => push({ title: 'Dropped in', description: 'Gravity stack bounce.', tone: 'ember' })}
+          >
+            Ember drop
+          </Button>
+          <Button
+            variant="outline"
+            onClick={() => push({ title: 'Lilac stack', description: 'Soft gravity settle.', tone: 'lilac' })}
+          >
+            Lilac drop
+          </Button>
+        </div>
+      )}
+    </GravityStackToast>
+  ),
+  'ribbon-unfurl-toast': (
+    <RibbonUnfurlToast>
+      {({ push }) => (
+        <Button
+          variant="framekit"
+          onClick={() => push({ title: 'Ribbon unfurled', description: 'A soft banner from the edge.' })}
+        >
+          Unfurl ribbon
+        </Button>
+      )}
+    </RibbonUnfurlToast>
+  ),
+  'sonar-ping-toast': (
+    <SonarPingToast>
+      {({ push }) => (
+        <Button
+          variant="framekit"
+          onClick={() => push({ title: 'Signal acquired', description: 'Sonar rings expanding.' })}
+        >
+          Ping sonar
+        </Button>
+      )}
+    </SonarPingToast>
+  ),
+  'parallax-reel-scroll': <ParallaxReelScroll />,
+  'snap-magnet-scroll': <SnapMagnetScroll />,
+  'velocity-fade-stack': <VelocityFadeStack />,
+  'hologram-flip-card': <HologramFlipCard />,
+  'liquid-morph-card': <LiquidMorphCard />,
+  'gravity-expand-card': <GravityExpandCard />,
 
 
 }
