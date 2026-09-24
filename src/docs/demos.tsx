@@ -144,6 +144,29 @@ import { VoiceWaveformLane } from '@/components/ui/voice-waveform-lane'
 import { SoftphoneDialPad } from '@/components/ui/softphone-dial-pad'
 import { QueueTicketCard } from '@/components/ui/queue-ticket-card'
 
+import { PaperOrbit404 } from '@/components/ui/paper-orbit-404'
+import { MarsTether404 } from '@/components/ui/mars-tether-404'
+import { MeshOrb404 } from '@/components/ui/mesh-orb-404'
+import { PrismMeshOrb } from '@/components/ui/prism-mesh-orb'
+import { LiquidMetalOrb } from '@/components/ui/liquid-metal-orb'
+import { AuroraCoreOrb } from '@/components/ui/aurora-core-orb'
+import { ParticleHaloOrb } from '@/components/ui/particle-halo-orb'
+import { RibbonHelixWave } from '@/components/ui/ribbon-helix-wave'
+import { RadialSonarWave } from '@/components/ui/radial-sonar-wave'
+import { MediaCarouselBubble } from '@/components/ui/media-carousel-bubble'
+import { ReactionChipBar } from '@/components/ui/reaction-chip-bar'
+import { WhatsappFlowForm } from '@/components/ui/whatsapp-flow-form'
+import { CatalogProductCard } from '@/components/ui/catalog-product-card'
+import { SessionWindowTimer } from '@/components/ui/session-window-timer'
+import { AgentHandoffCard } from '@/components/ui/agent-handoff-card'
+import { BroadcastStatusBoard } from '@/components/ui/broadcast-status-board'
+import { QuickReplyChipCloud } from '@/components/ui/quick-reply-chip-cloud'
+import { GlassWorkspaceSidebar } from '@/components/ui/glass-workspace-sidebar'
+import { TimelineRailSidebar } from '@/components/ui/timeline-rail-sidebar'
+import { MegaFlyoutSidebar } from '@/components/ui/mega-flyout-sidebar'
+import { PriorityInboxSidebar } from '@/components/ui/priority-inbox-sidebar'
+import { OrbitSwitcherSidebar } from '@/components/ui/orbit-switcher-sidebar'
+
 
 
 function TogglePlay({ children }: { children: (on: boolean, set: (v: boolean) => void) => React.ReactNode }) {
@@ -849,5 +872,109 @@ export const demos: Record<string, React.ReactNode> = {
 
 
 
-}
+  'paper-orbit-404': (
+    <PaperOrbit404 className="w-full max-w-lg" />
+  ),
+  'mars-tether-404': (
+    <MarsTether404 className="w-full max-w-lg" />
+  ),
+  'mesh-orb-404': (
+    <MeshOrb404 className="w-full max-w-lg" />
+  ),
+  'prism-mesh-orb': (
+    <div className="flex w-full max-w-sm justify-center rounded-2xl bg-[#0c0a12] p-8">
+      <PrismMeshOrb />
+    </div>
+  ),
+  'liquid-metal-orb': (
+    <div className="flex w-full max-w-sm justify-center rounded-2xl bg-[#0c0a12] p-8">
+      <LiquidMetalOrb />
+    </div>
+  ),
+  'aurora-core-orb': (
+    <div className="flex w-full max-w-sm justify-center rounded-2xl bg-[#0c0a12] p-8">
+      <AuroraCoreOrb />
+    </div>
+  ),
+  'particle-halo-orb': (
+    <div className="flex w-full max-w-sm justify-center rounded-2xl bg-[#0c0a12] p-8">
+      <ParticleHaloOrb />
+    </div>
+  ),
+  'ribbon-helix-wave': (
+    <div className="w-full max-w-lg p-2">
+      <RibbonHelixWave />
+    </div>
+  ),
+  'radial-sonar-wave': (
+    <div className="flex w-full max-w-sm justify-center rounded-2xl bg-[#0c0a12] p-6">
+      <RadialSonarWave />
+    </div>
+  ),
+  'media-carousel-bubble': (
+    <div className="flex w-full max-w-lg justify-center rounded-2xl bg-[#121018] p-6">
+      <MediaCarouselBubble />
+    </div>
+  ),
+  'reaction-chip-bar': (
+    <div className="w-full max-w-lg p-2">
+      <ReactionChipBar />
+    </div>
+  ),
+  'whatsapp-flow-form': (
+    <div className="flex w-full max-w-lg justify-center p-2">
+      <WhatsappFlowForm />
+    </div>
+  ),
+  'catalog-product-card': (
+    <div className="flex w-full max-w-lg justify-center p-2">
+      <CatalogProductCard />
+    </div>
+  ),
+  'session-window-timer': (
+    <div className="flex w-full max-w-lg justify-center p-2">
+      <SessionWindowTimer />
+    </div>
+  ),
+  'agent-handoff-card': (
+    <div className="flex w-full max-w-lg justify-center p-2">
+      <AgentHandoffCard />
+    </div>
+  ),
+  'broadcast-status-board': (
+    <div className="flex w-full max-w-lg justify-center p-2">
+      <BroadcastStatusBoard />
+    </div>
+  ),
+  'quick-reply-chip-cloud': (
+    <div className="w-full max-w-lg p-2">
+      <QuickReplyChipCloud />
+    </div>
+  ),
+  'glass-workspace-sidebar': (
+    <div className="flex w-full max-w-lg justify-center rounded-2xl bg-[#121018] p-6">
+      <GlassWorkspaceSidebar />
+    </div>
+  ),
+  'timeline-rail-sidebar': (
+    <div className="flex w-full max-w-lg justify-center rounded-2xl bg-[#121018] p-4">
+      <TimelineRailSidebar />
+    </div>
+  ),
+  'mega-flyout-sidebar': (
+    <div className="w-full max-w-lg p-2">
+      <MegaFlyoutSidebar />
+    </div>
+  ),
+  'priority-inbox-sidebar': (
+    <div className="flex w-full max-w-lg justify-center rounded-2xl bg-zinc-100/80 p-4 dark:bg-[#121018]">
+      <PriorityInboxSidebar />
+    </div>
+  ),
+  'orbit-switcher-sidebar': (
+    <div className="flex w-full max-w-lg justify-center rounded-2xl bg-[#121018] p-4">
+      <OrbitSwitcherSidebar />
+    </div>
+  ),
 
+}

@@ -142,6 +142,30 @@ import voiceWaveformSrc from '../components/ui/voice-waveform-lane.tsx?raw'
 import softphoneDialSrc from '../components/ui/softphone-dial-pad.tsx?raw'
 import queueTicketSrc from '../components/ui/queue-ticket-card.tsx?raw'
 
+
+import paperOrbitSrc from '../components/ui/paper-orbit-404.tsx?raw'
+import marsTetherSrc from '../components/ui/mars-tether-404.tsx?raw'
+import meshOrb404Src from '../components/ui/mesh-orb-404.tsx?raw'
+import prismMeshOrbSrc from '../components/ui/prism-mesh-orb.tsx?raw'
+import liquidMetalOrbSrc from '../components/ui/liquid-metal-orb.tsx?raw'
+import auroraCoreOrbSrc from '../components/ui/aurora-core-orb.tsx?raw'
+import particleHaloOrbSrc from '../components/ui/particle-halo-orb.tsx?raw'
+import ribbonHelixWaveSrc from '../components/ui/ribbon-helix-wave.tsx?raw'
+import radialSonarWaveSrc from '../components/ui/radial-sonar-wave.tsx?raw'
+import mediaCarouselBubbleSrc from '../components/ui/media-carousel-bubble.tsx?raw'
+import reactionChipBarSrc from '../components/ui/reaction-chip-bar.tsx?raw'
+import whatsappFlowFormSrc from '../components/ui/whatsapp-flow-form.tsx?raw'
+import catalogProductCardSrc from '../components/ui/catalog-product-card.tsx?raw'
+import sessionWindowTimerSrc from '../components/ui/session-window-timer.tsx?raw'
+import agentHandoffCardSrc from '../components/ui/agent-handoff-card.tsx?raw'
+import broadcastStatusBoardSrc from '../components/ui/broadcast-status-board.tsx?raw'
+import quickReplyChipCloudSrc from '../components/ui/quick-reply-chip-cloud.tsx?raw'
+import glassWorkspaceSidebarSrc from '../components/ui/glass-workspace-sidebar.tsx?raw'
+import timelineRailSidebarSrc from '../components/ui/timeline-rail-sidebar.tsx?raw'
+import megaFlyoutSidebarSrc from '../components/ui/mega-flyout-sidebar.tsx?raw'
+import priorityInboxSidebarSrc from '../components/ui/priority-inbox-sidebar.tsx?raw'
+import orbitSwitcherSidebarSrc from '../components/ui/orbit-switcher-sidebar.tsx?raw'
+
 export const sources: Record<string, string> = {
   button: buttonSrc,
   badge: badgeSrc,
@@ -283,5 +307,28 @@ export const sources: Record<string, string> = {
   'voice-waveform-lane': voiceWaveformSrc,
   'softphone-dial-pad': softphoneDialSrc,
   'queue-ticket-card': queueTicketSrc,
+
+  'paper-orbit-404': paperOrbitSrc,
+  'mars-tether-404': marsTetherSrc,
+  'mesh-orb-404': meshOrb404Src,
+  'prism-mesh-orb': prismMeshOrbSrc,
+  'liquid-metal-orb': liquidMetalOrbSrc,
+  'aurora-core-orb': auroraCoreOrbSrc,
+  'particle-halo-orb': particleHaloOrbSrc,
+  'ribbon-helix-wave': ribbonHelixWaveSrc,
+  'radial-sonar-wave': radialSonarWaveSrc,
+  'media-carousel-bubble': mediaCarouselBubbleSrc,
+  'reaction-chip-bar': reactionChipBarSrc,
+  'whatsapp-flow-form': whatsappFlowFormSrc,
+  'catalog-product-card': catalogProductCardSrc,
+  'session-window-timer': sessionWindowTimerSrc,
+  'agent-handoff-card': agentHandoffCardSrc,
+  'broadcast-status-board': broadcastStatusBoardSrc,
+  'quick-reply-chip-cloud': quickReplyChipCloudSrc,
+  'glass-workspace-sidebar': glassWorkspaceSidebarSrc,
+  'timeline-rail-sidebar': timelineRailSidebarSrc,
+  'mega-flyout-sidebar': megaFlyoutSidebarSrc,
+  'priority-inbox-sidebar': priorityInboxSidebarSrc,
+  'orbit-switcher-sidebar': orbitSwitcherSidebarSrc,
 
 }
