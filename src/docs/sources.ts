@@ -115,6 +115,33 @@ import hologramFlipSrc from '../components/ui/hologram-flip-card.tsx?raw'
 import liquidMorphSrc from '../components/ui/liquid-morph-card.tsx?raw'
 import gravityExpandSrc from '../components/ui/gravity-expand-card.tsx?raw'
 
+import railBloomSrc from '../components/ui/rail-bloom-sidebar.tsx?raw'
+import sectionAccordionSrc from '../components/ui/section-accordion-sidebar.tsx?raw'
+import contextDrawerSrc from '../components/ui/context-drawer-sidebar.tsx?raw'
+import commandTreeSrc from '../components/ui/command-tree-sidebar.tsx?raw'
+import threadBubbleSrc from '../components/ui/thread-bubble-stack.tsx?raw'
+import inboxPulseSrc from '../components/ui/inbox-pulse-list.tsx?raw'
+import templateMessageSrc from '../components/ui/template-message-card.tsx?raw'
+import campaignComposerSrc from '../components/ui/campaign-composer-strip.tsx?raw'
+import typingWaveSrc from '../components/ui/typing-wave-indicator.tsx?raw'
+import optInConsentSrc from '../components/ui/opt-in-consent-banner.tsx?raw'
+import notificationOrbitSrc from '../components/ui/notification-orbit-center.tsx?raw'
+import priorityBannerSrc from '../components/ui/priority-banner-alert.tsx?raw'
+import inboxRowNotifierSrc from '../components/ui/inbox-row-notifier.tsx?raw'
+import badgeBloomSrc from '../components/ui/badge-bloom-counter.tsx?raw'
+import pushPreviewSrc from '../components/ui/push-preview-card.tsx?raw'
+import kpiSparkSrc from '../components/ui/kpi-spark-widget.tsx?raw'
+import liveMeterSrc from '../components/ui/live-meter-dial.tsx?raw'
+import activityStreamSrc from '../components/ui/activity-stream-widget.tsx?raw'
+import statusHeatmapSrc from '../components/ui/status-heatmap-grid.tsx?raw'
+import ringProgressSrc from '../components/ui/ring-progress-cluster.tsx?raw'
+import callControlSrc from '../components/ui/call-control-bar.tsx?raw'
+import liveTranscriptSrc from '../components/ui/live-transcript-panel.tsx?raw'
+import agentStateOrbSrc from '../components/ui/agent-state-orb.tsx?raw'
+import voiceWaveformSrc from '../components/ui/voice-waveform-lane.tsx?raw'
+import softphoneDialSrc from '../components/ui/softphone-dial-pad.tsx?raw'
+import queueTicketSrc from '../components/ui/queue-ticket-card.tsx?raw'
+
 export const sources: Record<string, string> = {
   button: buttonSrc,
   badge: badgeSrc,
@@ -230,4 +257,31 @@ export const sources: Record<string, string> = {
   'hologram-flip-card': hologramFlipSrc,
   'liquid-morph-card': liquidMorphSrc,
   'gravity-expand-card': gravityExpandSrc,
+  'rail-bloom-sidebar': railBloomSrc,
+  'section-accordion-sidebar': sectionAccordionSrc,
+  'context-drawer-sidebar': contextDrawerSrc,
+  'command-tree-sidebar': commandTreeSrc,
+  'thread-bubble-stack': threadBubbleSrc,
+  'inbox-pulse-list': inboxPulseSrc,
+  'template-message-card': templateMessageSrc,
+  'campaign-composer-strip': campaignComposerSrc,
+  'typing-wave-indicator': typingWaveSrc,
+  'opt-in-consent-banner': optInConsentSrc,
+  'notification-orbit-center': notificationOrbitSrc,
+  'priority-banner-alert': priorityBannerSrc,
+  'inbox-row-notifier': inboxRowNotifierSrc,
+  'badge-bloom-counter': badgeBloomSrc,
+  'push-preview-card': pushPreviewSrc,
+  'kpi-spark-widget': kpiSparkSrc,
+  'live-meter-dial': liveMeterSrc,
+  'activity-stream-widget': activityStreamSrc,
+  'status-heatmap-grid': statusHeatmapSrc,
+  'ring-progress-cluster': ringProgressSrc,
+  'call-control-bar': callControlSrc,
+  'live-transcript-panel': liveTranscriptSrc,
+  'agent-state-orb': agentStateOrbSrc,
+  'voice-waveform-lane': voiceWaveformSrc,
+  'softphone-dial-pad': softphoneDialSrc,
+  'queue-ticket-card': queueTicketSrc,
+
 }

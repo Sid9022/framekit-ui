@@ -11,6 +11,11 @@ export type DocCategory =
   | 'Vertical Scroll'
   | 'Cards'
   | 'Navigation'
+  | 'Sidebars'
+  | 'WhatsApp / Messaging'
+  | 'Notifications'
+  | 'Widgets'
+  | 'Voice Agent'
   | 'Cursors'
   | 'Search / Inputs'
   | 'Core'
@@ -154,6 +159,43 @@ export const DOCS: DocEntry[] = [
   { slug: 'magnetic-dock-nav', title: 'Magnetic Dock Nav', description: 'Dock with magnetic magnification on hover.', category: 'Navigation', unique: true, isNew: true, gesture: 'Slide across icons — neighbors magnify.' },
 
 
+
+  // Sidebars
+  { slug: 'rail-bloom-sidebar', title: 'Rail Bloom Sidebar', description: 'Collapsible icon rail that blooms labels and soft glow; liquid active indicator.', category: 'Sidebars', unique: true, isNew: true, gesture: 'Hover to expand — labels bloom; click for liquid active.', dependencies: ['motion'] },
+  { slug: 'section-accordion-sidebar', title: 'Section Accordion Sidebar', description: 'Nested sections accordion-open with spring height; sticky workspace header + search.', category: 'Sidebars', unique: true, isNew: true, gesture: 'Toggle sections; search filters leaves.', dependencies: ['motion'] },
+  { slug: 'context-drawer-sidebar', title: 'Context Drawer Sidebar', description: 'Slim rail ↔ wide frosted context drawer with animated width and pin toggle.', category: 'Sidebars', unique: true, isNew: true, gesture: 'Hover rail to widen; pin to keep context open.', dependencies: ['motion'] },
+  { slug: 'command-tree-sidebar', title: 'Command Tree Sidebar', description: 'Hierarchical tree with ↑↓/Enter, typeahead highlight, morphing path breadcrumb.', category: 'Sidebars', unique: true, isNew: true, gesture: 'Focus the tree — arrows, Enter, or type to filter.', dependencies: ['motion'] },
+
+  // WhatsApp / Messaging
+  { slug: 'thread-bubble-stack', title: 'Thread Bubble Stack', description: 'Inbound/outbound chat bubbles with status ticks, timestamps, soft enter animation.', category: 'WhatsApp / Messaging', unique: true, isNew: true, gesture: 'Send a message — ticks advance sent→delivered→read.', dependencies: ['motion'] },
+  { slug: 'inbox-pulse-list', title: 'Inbox Pulse List', description: 'Conversation rows with unread bloom badge, preview, channel chip, hover actions.', category: 'WhatsApp / Messaging', unique: true, isNew: true, gesture: 'Hover rows to reveal pin/archive actions.', dependencies: ['motion'] },
+  { slug: 'template-message-card', title: 'Template Message Card', description: 'Approved template preview with header media, body vars, footer, CTAs + shimmer approve.', category: 'WhatsApp / Messaging', unique: true, isNew: true, gesture: 'Click Submit review — shimmer settles to Approved.', dependencies: ['motion'] },
+  { slug: 'campaign-composer-strip', title: 'Campaign Composer Strip', description: 'Mini broadcast composer: audience chip, channel toggle, schedule pill, send progress.', category: 'WhatsApp / Messaging', unique: true, isNew: true, gesture: 'Toggle channel and hit Send now — watch the ribbon.', dependencies: ['motion'] },
+  { slug: 'typing-wave-indicator', title: 'Typing Wave Indicator', description: 'Multi-dot typing indicator with wave and optional agent handoff label.', category: 'WhatsApp / Messaging', unique: true, isNew: true, gesture: 'Watch the wave — Agent is typing.', dependencies: ['motion'] },
+  { slug: 'opt-in-consent-banner', title: 'Opt-In Consent Banner', description: 'Soft messaging opt-in compliance banner with animated check and decline.', category: 'WhatsApp / Messaging', unique: true, isNew: true, gesture: 'Accept or decline — animated confirmation states.', dependencies: ['motion'] },
+
+  // Notifications
+  { slug: 'notification-orbit-center', title: 'Notification Orbit Center', description: 'Bell opens a panel; items stack with unread glow; mark-all-read clears glow.', category: 'Notifications', unique: true, isNew: true, gesture: 'Toggle the bell; Mark all read clears the glow.', dependencies: ['motion'] },
+  { slug: 'priority-banner-alert', title: 'Priority Banner Alert', description: 'Full-width priority banner (info/warn/critical) with slide-in and auto-dismiss.', category: 'Notifications', unique: true, isNew: true, gesture: 'Pick a tone — banner slides in with progress dismiss.', dependencies: ['motion'] },
+  { slug: 'inbox-row-notifier', title: 'Inbox Row Notifier', description: 'Dense notification feed row with glyph, title, meta, relative time, hover actions.', category: 'Notifications', unique: true, isNew: true, gesture: 'Hover rows to reveal mark-read / archive.', dependencies: ['motion'] },
+  { slug: 'badge-bloom-counter', title: 'Badge Bloom Counter', description: 'Numeric badge that blooms and scales when the count changes.', category: 'Notifications', unique: true, isNew: true, gesture: 'Tap +/− — badge blooms on each change.', dependencies: ['motion'] },
+  { slug: 'push-preview-card', title: 'Push Preview Card', description: 'Mobile-style push notification preview with app icon, title, body, time.', category: 'Notifications', unique: true, isNew: true, gesture: 'Watch the push card settle into the phone frame.', dependencies: ['motion'] },
+
+  // Widgets
+  { slug: 'kpi-spark-widget', title: 'KPI Spark Widget', description: 'KPI number ticker with mini sparkline that draws on mount and a trend delta pill.', category: 'Widgets', unique: true, isNew: true, gesture: 'Watch the ticker and sparkline draw on mount.', dependencies: ['motion'] },
+  { slug: 'live-meter-dial', title: 'Live Meter Dial', description: 'Animated semicircle gauge for delivery rate / ASR / concurrent calls.', category: 'Widgets', unique: true, isNew: true, gesture: 'Watch the needle breathe with live values.', dependencies: ['motion'] },
+  { slug: 'activity-stream-widget', title: 'Activity Stream Widget', description: 'Live-feeling activity feed with staggered row inserts.', category: 'Widgets', unique: true, isNew: true, gesture: 'Watch new events insert at the top.', dependencies: ['motion'] },
+  { slug: 'status-heatmap-grid', title: 'Status Heatmap Grid', description: 'Compact hour×day heatmap for message volume with hover tooltip.', category: 'Widgets', unique: true, isNew: true, gesture: 'Hover cells for volume tooltips.' },
+  { slug: 'ring-progress-cluster', title: 'Ring Progress Cluster', description: 'Cluster of animated progress rings for queue depth, SLA, and capacity.', category: 'Widgets', unique: true, isNew: true, gesture: 'Watch rings ease as metrics drift.', dependencies: ['motion'] },
+
+  // Voice Agent
+  { slug: 'call-control-bar', title: 'Call Control Bar', description: 'Mute / hold / end / keypad with glowing active states and hold pulse.', category: 'Voice Agent', unique: true, isNew: true, gesture: 'Toggle mute, hold, keypad — end to hang up.', dependencies: ['motion'] },
+  { slug: 'live-transcript-panel', title: 'Live Transcript Panel', description: 'Scrolling dual-speaker transcript with speaker pills and auto-scroll.', category: 'Voice Agent', unique: true, isNew: true, gesture: 'Watch lines append for caller and agent.', dependencies: ['motion'] },
+  { slug: 'agent-state-orb', title: 'Agent State Orb', description: 'Listening / thinking / speaking orb with distinct motion modes.', category: 'Voice Agent', unique: true, isNew: true, gesture: 'Click the orb to cycle listening → thinking → speaking.', dependencies: ['motion'] },
+  { slug: 'voice-waveform-lane', title: 'Voice Waveform Lane', description: 'Animated audio waveform bars reacting to simulated level; latency chip.', category: 'Voice Agent', unique: true, isNew: true, gesture: 'Move across the lane to drive the waveform.', dependencies: ['motion'] },
+  { slug: 'softphone-dial-pad', title: 'Softphone Dial Pad', description: 'Stylish dial pad with ripple keys, number display, ringing call button.', category: 'Voice Agent', unique: true, isNew: true, gesture: 'Tap keys — ripples; Call rings until hang up.', dependencies: ['motion'] },
+  { slug: 'queue-ticket-card', title: 'Queue Ticket Card', description: 'Call queue card with wait ticker, priority, skill tags, claim/transfer actions.', category: 'Voice Agent', unique: true, isNew: true, gesture: 'Watch wait tick; claim or transfer with micro-press.', dependencies: ['motion'] },
+
   // Cursors
   { slug: 'pill-trail-cursor', title: 'Pill Trail Cursor', description: 'Pointer leaves a springing trail of word pills.', category: 'Cursors', unique: true, isNew: true, gesture: 'Move inside the stage to leave pill trails.' },
   { slug: 'halftone-bloom-cursor', title: 'Halftone Bloom Cursor', description: 'Pointer blooms a lilac halftone matrix.', category: 'Cursors', unique: true, isNew: true, gesture: 'Move to bloom the halftone field.' },
@@ -210,6 +252,11 @@ const NAV_ORDER: DocCategory[] = [
   'Vertical Scroll',
   'Cards',
   'Navigation',
+  'Sidebars',
+  'WhatsApp / Messaging',
+  'Notifications',
+  'Widgets',
+  'Voice Agent',
   'Cursors',
   'Search / Inputs',
   'Core',

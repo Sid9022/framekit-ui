@@ -117,6 +117,33 @@ import { HologramFlipCard } from '@/components/ui/hologram-flip-card'
 import { LiquidMorphCard } from '@/components/ui/liquid-morph-card'
 import { GravityExpandCard } from '@/components/ui/gravity-expand-card'
 
+import { RailBloomSidebar } from '@/components/ui/rail-bloom-sidebar'
+import { SectionAccordionSidebar } from '@/components/ui/section-accordion-sidebar'
+import { ContextDrawerSidebar } from '@/components/ui/context-drawer-sidebar'
+import { CommandTreeSidebar } from '@/components/ui/command-tree-sidebar'
+import { ThreadBubbleStack } from '@/components/ui/thread-bubble-stack'
+import { InboxPulseList } from '@/components/ui/inbox-pulse-list'
+import { TemplateMessageCard } from '@/components/ui/template-message-card'
+import { CampaignComposerStrip } from '@/components/ui/campaign-composer-strip'
+import { TypingWaveIndicator } from '@/components/ui/typing-wave-indicator'
+import { OptInConsentBanner } from '@/components/ui/opt-in-consent-banner'
+import { NotificationOrbitCenter } from '@/components/ui/notification-orbit-center'
+import { PriorityBannerAlert } from '@/components/ui/priority-banner-alert'
+import { InboxRowNotifier } from '@/components/ui/inbox-row-notifier'
+import { BadgeBloomCounter } from '@/components/ui/badge-bloom-counter'
+import { PushPreviewCard } from '@/components/ui/push-preview-card'
+import { KpiSparkWidget } from '@/components/ui/kpi-spark-widget'
+import { LiveMeterDial } from '@/components/ui/live-meter-dial'
+import { ActivityStreamWidget } from '@/components/ui/activity-stream-widget'
+import { StatusHeatmapGrid } from '@/components/ui/status-heatmap-grid'
+import { RingProgressCluster } from '@/components/ui/ring-progress-cluster'
+import { CallControlBar } from '@/components/ui/call-control-bar'
+import { LiveTranscriptPanel } from '@/components/ui/live-transcript-panel'
+import { AgentStateOrb } from '@/components/ui/agent-state-orb'
+import { VoiceWaveformLane } from '@/components/ui/voice-waveform-lane'
+import { SoftphoneDialPad } from '@/components/ui/softphone-dial-pad'
+import { QueueTicketCard } from '@/components/ui/queue-ticket-card'
+
 
 
 function TogglePlay({ children }: { children: (on: boolean, set: (v: boolean) => void) => React.ReactNode }) {
@@ -683,6 +710,143 @@ export const demos: Record<string, React.ReactNode> = {
   'hologram-flip-card': <HologramFlipCard />,
   'liquid-morph-card': <LiquidMorphCard />,
   'gravity-expand-card': <GravityExpandCard />,
+
+  'rail-bloom-sidebar': (
+    <div className="flex w-full max-w-lg justify-center rounded-2xl bg-[#121018] p-6">
+      <RailBloomSidebar />
+    </div>
+  ),
+  'section-accordion-sidebar': (
+    <div className="flex w-full max-w-lg justify-center rounded-2xl bg-zinc-100/80 p-4 dark:bg-[#121018]">
+      <SectionAccordionSidebar />
+    </div>
+  ),
+  'context-drawer-sidebar': (
+    <div className="w-full max-w-lg">
+      <ContextDrawerSidebar />
+    </div>
+  ),
+  'command-tree-sidebar': (
+    <div className="flex w-full max-w-lg justify-center rounded-2xl bg-zinc-100/80 p-4 dark:bg-[#121018]">
+      <CommandTreeSidebar />
+    </div>
+  ),
+
+  'thread-bubble-stack': (
+    <div className="flex w-full max-w-lg justify-center p-2">
+      <ThreadBubbleStack />
+    </div>
+  ),
+  'inbox-pulse-list': (
+    <div className="w-full max-w-lg p-2">
+      <InboxPulseList />
+    </div>
+  ),
+  'template-message-card': (
+    <div className="flex w-full max-w-lg justify-center p-2">
+      <TemplateMessageCard />
+    </div>
+  ),
+  'campaign-composer-strip': (
+    <div className="w-full max-w-lg p-2">
+      <CampaignComposerStrip />
+    </div>
+  ),
+  'typing-wave-indicator': (
+    <div className="flex w-full max-w-md flex-col items-start gap-2 rounded-2xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-950">
+      <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Agent handoff</p>
+      <TypingWaveIndicator />
+    </div>
+  ),
+  'opt-in-consent-banner': (
+    <div className="w-full max-w-lg p-2">
+      <OptInConsentBanner />
+    </div>
+  ),
+
+  'notification-orbit-center': (
+    <div className="w-full max-w-sm">
+      <NotificationOrbitCenter />
+    </div>
+  ),
+  'priority-banner-alert': (
+    <div className="w-full max-w-lg p-2">
+      <PriorityBannerAlert />
+    </div>
+  ),
+  'inbox-row-notifier': (
+    <div className="w-full max-w-lg p-2">
+      <InboxRowNotifier />
+    </div>
+  ),
+  'badge-bloom-counter': (
+    <div className="flex w-full max-w-sm justify-center rounded-2xl bg-zinc-100/80 p-8 dark:bg-[#121018]">
+      <BadgeBloomCounter />
+    </div>
+  ),
+  'push-preview-card': (
+    <div className="flex w-full max-w-sm justify-center p-2">
+      <PushPreviewCard />
+    </div>
+  ),
+
+  'kpi-spark-widget': (
+    <div className="flex w-full max-w-sm justify-center p-2">
+      <KpiSparkWidget />
+    </div>
+  ),
+  'live-meter-dial': (
+    <div className="flex w-full max-w-sm justify-center p-2">
+      <LiveMeterDial />
+    </div>
+  ),
+  'activity-stream-widget': (
+    <div className="w-full max-w-lg p-2">
+      <ActivityStreamWidget />
+    </div>
+  ),
+  'status-heatmap-grid': (
+    <div className="w-full max-w-lg p-2">
+      <StatusHeatmapGrid />
+    </div>
+  ),
+  'ring-progress-cluster': (
+    <div className="w-full max-w-lg p-2">
+      <RingProgressCluster />
+    </div>
+  ),
+
+  'call-control-bar': (
+    <div className="flex w-full max-w-lg justify-center p-2">
+      <CallControlBar />
+    </div>
+  ),
+  'live-transcript-panel': (
+    <div className="w-full max-w-lg p-2">
+      <LiveTranscriptPanel />
+    </div>
+  ),
+  'agent-state-orb': (
+    <div className="flex w-full max-w-sm justify-center rounded-2xl bg-[#0c0a12] p-10">
+      <AgentStateOrb />
+    </div>
+  ),
+  'voice-waveform-lane': (
+    <div className="w-full max-w-lg p-2">
+      <VoiceWaveformLane />
+    </div>
+  ),
+  'softphone-dial-pad': (
+    <div className="flex w-full max-w-sm justify-center p-2">
+      <SoftphoneDialPad />
+    </div>
+  ),
+  'queue-ticket-card': (
+    <div className="flex w-full max-w-sm justify-center p-2">
+      <QueueTicketCard />
+    </div>
+  ),
+
 
 
 }
