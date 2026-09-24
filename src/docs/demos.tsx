@@ -97,6 +97,9 @@ import { PrismSweepShimmer } from '@/components/ui/prism-sweep-shimmer'
 import { MercuryVeinShimmer } from '@/components/ui/mercury-vein-shimmer'
 import { GlyphAuroraShimmer } from '@/components/ui/glyph-aurora-shimmer'
 import { EdgeFlareShimmer } from '@/components/ui/edge-flare-shimmer'
+import { SkeletonWaveShimmer } from '@/components/ui/skeleton-wave-shimmer'
+import { CardSheenLoader } from '@/components/ui/card-sheen-loader'
+import { ListBloomShimmer } from '@/components/ui/list-bloom-shimmer'
 import { OrbitalBeadLoader } from '@/components/ui/orbital-bead-loader'
 import { InkDripLoader } from '@/components/ui/ink-drip-loader'
 import { MorphGlyphLoader } from '@/components/ui/morph-glyph-loader'
@@ -564,14 +567,46 @@ export const demos: Record<string, React.ReactNode> = {
 
 
   'prism-sweep-shimmer': (
-    <PrismSweepShimmer className="w-full max-w-lg" />
+    <div className="flex w-full max-w-lg flex-col items-center gap-2 rounded-2xl bg-zinc-950/80 p-6">
+      <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Stage · Prism</p>
+      <PrismSweepShimmer className="w-full" />
+    </div>
   ),
   'mercury-vein-shimmer': (
-    <MercuryVeinShimmer className="w-full max-w-lg" />
+    <div className="flex w-full max-w-lg flex-col items-center gap-2 rounded-2xl bg-zinc-100/80 p-6 dark:bg-zinc-950/80">
+      <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Stage · Mercury</p>
+      <MercuryVeinShimmer className="w-full" />
+    </div>
   ),
-  'glyph-aurora-shimmer': <GlyphAuroraShimmer />,
+  'glyph-aurora-shimmer': (
+    <div className="flex w-full max-w-lg flex-col items-center gap-2 rounded-2xl bg-zinc-950/80 p-6">
+      <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Stage · Aurora</p>
+      <GlyphAuroraShimmer />
+    </div>
+  ),
   'edge-flare-shimmer': (
-    <EdgeFlareShimmer className="w-full max-w-sm" />
+    <div className="flex w-full max-w-sm flex-col items-center gap-2 rounded-2xl bg-zinc-950/80 p-6">
+      <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Stage · Edge flare</p>
+      <EdgeFlareShimmer className="w-full" />
+    </div>
+  ),
+  'skeleton-wave-shimmer': (
+    <div className="flex w-full max-w-md flex-col items-center gap-2 rounded-2xl bg-[#121018] p-6">
+      <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Loading · Skeleton wave</p>
+      <SkeletonWaveShimmer className="w-full" />
+    </div>
+  ),
+  'card-sheen-loader': (
+    <div className="flex w-full max-w-sm flex-col items-center gap-3 rounded-2xl bg-gradient-to-b from-zinc-100 to-zinc-200 p-8 dark:from-[#121018] dark:to-zinc-950">
+      <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Loading · Card sheen</p>
+      <CardSheenLoader />
+    </div>
+  ),
+  'list-bloom-shimmer': (
+    <div className="flex w-full max-w-md flex-col items-center gap-2 rounded-2xl bg-[#121018] p-6">
+      <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Loading · List bloom</p>
+      <ListBloomShimmer className="w-full" />
+    </div>
   ),
   'orbital-bead-loader': <OrbitalBeadLoader />,
   'ink-drip-loader': <InkDripLoader />,
@@ -630,9 +665,21 @@ export const demos: Record<string, React.ReactNode> = {
       )}
     </SonarPingToast>
   ),
-  'parallax-reel-scroll': <ParallaxReelScroll />,
-  'snap-magnet-scroll': <SnapMagnetScroll />,
-  'velocity-fade-stack': <VelocityFadeStack />,
+  'parallax-reel-scroll': (
+    <div className="w-full max-w-md rounded-2xl bg-[#07060c] p-3">
+      <ParallaxReelScroll className="w-full" />
+    </div>
+  ),
+  'snap-magnet-scroll': (
+    <div className="w-full max-w-md rounded-2xl bg-[#07060c] p-3">
+      <SnapMagnetScroll className="w-full" />
+    </div>
+  ),
+  'velocity-fade-stack': (
+    <div className="w-full max-w-md rounded-2xl bg-[#07060c] p-3">
+      <VelocityFadeStack className="w-full" />
+    </div>
+  ),
   'hologram-flip-card': <HologramFlipCard />,
   'liquid-morph-card': <LiquidMorphCard />,
   'gravity-expand-card': <GravityExpandCard />,

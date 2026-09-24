@@ -102,6 +102,9 @@ export const DOCS: DocEntry[] = [
   { slug: 'mercury-vein-shimmer', title: 'Mercury Vein Shimmer', description: 'Liquid-metal highlight veins crawl a rounded surface.', category: 'Shimmer', unique: true, isNew: true, gesture: 'Watch mercury veins crawl the surface.' },
   { slug: 'glyph-aurora-shimmer', title: 'Glyph Aurora Shimmer', description: 'Aurora shimmer travels letter-by-letter on text.', category: 'Shimmer', unique: true, isNew: true, gesture: 'Watch the aurora sweep glyph by glyph.' },
   { slug: 'edge-flare-shimmer', title: 'Edge Flare Shimmer', description: 'Soft flare travels the border edge (not a full beam).', category: 'Shimmer', unique: true, isNew: true, gesture: 'Watch the localized flare travel the rim.' },
+  { slug: 'skeleton-wave-shimmer', title: 'Skeleton Wave Shimmer', description: 'Premium content-block skeleton with a diagonal liquid wave — avatar, lines, media.', category: 'Shimmer', unique: true, isNew: true, gesture: 'Watch the liquid wave sweep bones and media.' },
+  { slug: 'card-sheen-loader', title: 'Card Sheen Loader', description: 'Product-card placeholder with traveling chrome sheen and soft breathing.', category: 'Shimmer', unique: true, isNew: true, gesture: 'Watch the chrome sheen travel; card breathes gently.' },
+  { slug: 'list-bloom-shimmer', title: 'List Bloom Shimmer', description: 'Stacked list rows bloom in with staggered shimmer and soft shadows.', category: 'Shimmer', unique: true, isNew: true, gesture: 'Watch rows bloom in stagger, then shimmer.' },
 
   // Loading
   { slug: 'orbital-bead-loader', title: 'Orbital Bead Loader', description: 'Beads orbit a core; hover speeds up.', category: 'Loading', unique: true, isNew: true, gesture: 'Hover — orbit accelerates.' },
@@ -110,9 +113,9 @@ export const DOCS: DocEntry[] = [
   { slug: 'lattice-pulse-loader', title: 'Lattice Pulse Loader', description: '3×3 nodes pulse in a traveling wave.', category: 'Loading', unique: true, isNew: true, gesture: 'Watch the wave travel the lattice.' },
 
   // 404 Animation
-  { slug: 'constellation-lost-404', title: 'Constellation Lost 404', description: '“404” as nodes/links that drift apart then reconnect.', category: '404 Animation', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Watch the constellation drift and reconnect.' },
-  { slug: 'paper-tear-404', title: 'Paper Tear 404', description: 'Torn paper reveal + floating scraps + 404 type.', category: '404 Animation', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Watch scraps float around the torn page.' },
-  { slug: 'glitch-portal-404', title: 'Glitch Portal 404', description: 'Chromatic glitch + portal ripple + scanlines.', category: '404 Animation', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Watch the portal glitch and ripple.' },
+  { slug: 'constellation-lost-404', title: 'Constellation Lost 404', description: 'Tiny 3D astronaut among reconnecting star “404” with pointer parallax.', category: '404 Animation', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Move to parallax layers; watch stars reconnect.' },
+  { slug: 'paper-tear-404', title: 'Paper Tear 404', description: '3D folded paper character peeking through a torn hole; perspective scraps.', category: '404 Animation', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Watch the paper buddy peek and scraps float.' },
+  { slug: 'glitch-portal-404', title: 'Glitch Portal 404', description: 'Faceted buddy stuck in a chromatic portal — RGB split, scanlines, rim glow.', category: '404 Animation', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Watch the glitch buddy struggle in the portal.' },
 
   // Toast (signature — distinct from Core toast)
   { slug: 'gravity-stack-toast', title: 'Gravity Stack Toast', description: 'Gravity-bounce stack with provider/hook.', category: 'Toast', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Trigger toasts — they fall into a bouncing stack.' },
@@ -120,9 +123,9 @@ export const DOCS: DocEntry[] = [
   { slug: 'sonar-ping-toast', title: 'Sonar Ping Toast', description: 'Expanding sonar rings on appear.', category: 'Toast', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Trigger — sonar rings expand on appear.' },
 
   // Vertical Scroll
-  { slug: 'parallax-reel-scroll', title: 'Parallax Reel Scroll', description: 'Stacked panels with different parallax rates in a fixed scroller.', category: 'Vertical Scroll', unique: true, isNew: true, gesture: 'Scroll the reel — layers move at different rates.' },
-  { slug: 'snap-magnet-scroll', title: 'Snap Magnet Scroll', description: 'Snap sections + magnetic settle + active indicator.', category: 'Vertical Scroll', unique: true, isNew: true, gesture: 'Scroll — sections magnetically snap; dots track active.' },
-  { slug: 'velocity-fade-stack', title: 'Velocity Fade Stack', description: 'Fade/scale from scroll velocity & distance to center.', category: 'Vertical Scroll', unique: true, isNew: true, gesture: 'Scroll fast or slow — cards fade by velocity and distance.' },
+  { slug: 'parallax-reel-scroll', title: 'Parallax Reel Scroll', description: 'Multi-layer stars/grid + mid art + foreground cards with scrub progress.', category: 'Vertical Scroll', unique: true, isNew: true, gesture: 'Scroll — depth layers lag; scrub bar tracks progress.' },
+  { slug: 'snap-magnet-scroll', title: 'Snap Magnet Scroll', description: 'Cinematic full-bleed sections with magnetic overshoot settle and glowing rail.', category: 'Vertical Scroll', unique: true, isNew: true, gesture: 'Scroll, swipe, or ↑↓ — magnets overshoot then settle.' },
+  { slug: 'velocity-fade-stack', title: 'Velocity Fade Stack', description: 'Rich cards scale/blur/opacity from distance + inertia velocity; center focus.', category: 'Vertical Scroll', unique: true, isNew: true, gesture: 'Scroll fast then coast — focus blooms as velocity drops.' },
 
   // Cards
   { slug: 'tide-deck', title: 'Tide Deck', description: 'Drag a deck whose depth reacts to velocity.', category: 'Cards', unique: true, isNew: true, gesture: 'Drag sideways or use arrows to advance the deck.', dependencies: ['motion'] },

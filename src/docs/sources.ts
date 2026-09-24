@@ -95,6 +95,9 @@ import prismSweepSrc from '../components/ui/prism-sweep-shimmer.tsx?raw'
 import mercuryVeinSrc from '../components/ui/mercury-vein-shimmer.tsx?raw'
 import glyphAuroraSrc from '../components/ui/glyph-aurora-shimmer.tsx?raw'
 import edgeFlareSrc from '../components/ui/edge-flare-shimmer.tsx?raw'
+import skeletonWaveSrc from '../components/ui/skeleton-wave-shimmer.tsx?raw'
+import cardSheenSrc from '../components/ui/card-sheen-loader.tsx?raw'
+import listBloomSrc from '../components/ui/list-bloom-shimmer.tsx?raw'
 import orbitalBeadSrc from '../components/ui/orbital-bead-loader.tsx?raw'
 import inkDripSrc from '../components/ui/ink-drip-loader.tsx?raw'
 import morphGlyphSrc from '../components/ui/morph-glyph-loader.tsx?raw'
@@ -208,6 +211,9 @@ export const sources: Record<string, string> = {
   'mercury-vein-shimmer': mercuryVeinSrc,
   'glyph-aurora-shimmer': glyphAuroraSrc,
   'edge-flare-shimmer': edgeFlareSrc,
+  'skeleton-wave-shimmer': skeletonWaveSrc,
+  'card-sheen-loader': cardSheenSrc,
+  'list-bloom-shimmer': listBloomSrc,
   'orbital-bead-loader': orbitalBeadSrc,
   'ink-drip-loader': inkDripSrc,
   'morph-glyph-loader': morphGlyphSrc,
