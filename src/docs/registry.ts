@@ -72,6 +72,32 @@ export const DOCS: DocEntry[] = [
   { slug: 'split-reveal-button', title: 'Split Reveal Button', description: 'Face splits open to reveal the label.', category: 'Buttons', unique: true, isNew: true, gesture: 'Hover — panels split to reveal.' },
   { slug: 'gravity-drop-button', title: 'Gravity Drop Button', description: 'Icon falls in with a bounce on hover.', category: 'Buttons', unique: true, isNew: true, gesture: 'Hover — icon drops with bounce.' },
   { slug: 'neon-stroke-button', title: 'Neon Stroke Button', description: 'SVG stroke draws around on hover.', category: 'Buttons', unique: true, isNew: true, gesture: 'Hover — neon stroke draws the rim.' },
+  { slug: 'dispatch-truck-button', title: 'Dispatch Truck Button', description: 'Order pill stretches into a road; a parcel thumps onto a courier flatbed that drives off before a green confirmation pops in.', category: 'Buttons', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Click — parcel drops, courier drives off, order confirms.', props: [
+    { name: 'label', type: 'string', default: "'Place order'", description: 'Resting label.' },
+    { name: 'successLabel', type: 'string', default: "'On its way'", description: 'Label once the courier leaves.' },
+    { name: 'onOrder', type: '() => void | Promise<unknown>', description: 'Async work; the van idles until it settles. Rejecting shows a retry state.' },
+    { name: 'resetAfter', type: 'number', default: '2600', description: 'Auto-reset delay in ms (0 keeps success).' },
+  ] },
+  { slug: 'drop-in-cart-button', title: 'Drop-In Cart Button', description: 'Pill tucks into a cart, a box springs into the basket, the cart rolls away and back while the badge and counter pop.', category: 'Buttons', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Click — box drops in, cart rolls, count pops.', props: [
+    { name: 'label', type: 'string', default: "'Add to bag'", description: 'Button label.' },
+    { name: 'count / defaultCount', type: 'number', default: '0', description: 'Controlled or uncontrolled item count.' },
+    { name: 'onCountChange', type: '(n: number) => void', description: 'Fires after each add or clear.' },
+    { name: 'max', type: 'number', default: '99', description: 'Disables the button when reached.' },
+    { name: 'showCounter', type: 'boolean', default: 'true', description: 'Show the “N in your bag” line with Clear.' },
+  ] },
+  { slug: 'fill-progress-download-button', title: 'Fill Progress Download Button', description: 'Arrow sinks away, a deeper blue floods the pill with a live percentage, then it condenses into a calm done chip.', category: 'Buttons', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Click — watch the fill and percentage climb to done.', props: [
+    { name: 'label', type: 'string', default: "'Download'", description: 'Resting label.' },
+    { name: 'doneLabel', type: 'string', default: "'Saved'", description: 'Completion label.' },
+    { name: 'onDownload', type: '(report: (p: number) => void) => Promise<unknown>', description: 'Real work; call report(0..1). Omit for organic simulated progress.' },
+    { name: 'fileName', type: 'string', description: 'Optional file hint under the button.' },
+    { name: 'resetAfter', type: 'number', default: '2800', description: 'Auto-reset delay in ms (0 keeps done).' },
+  ] },
+  { slug: 'swallow-delete-button', title: 'Swallow Delete Button', description: 'Bin lid swings open on its hinge, the label’s letters arc inside, the lid snaps shut and a ring traces the receipt.', category: 'Buttons', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Click — letters leap into the bin, ring draws, label returns.', props: [
+    { name: 'variant', type: "'violet' | 'neutral' | 'danger'", default: "'violet'", description: 'Color treatment.' },
+    { name: 'label', type: 'string', default: "'Delete'", description: 'Letters that get swallowed.' },
+    { name: 'confirm', type: 'boolean', default: 'false', description: 'Require a second press (Esc or blur cancels).' },
+    { name: 'onDelete', type: '() => void | Promise<unknown>', description: 'Rejecting spits the letters back with a shake.' },
+  ] },
 
 
   // Toggles (hero category)
@@ -124,6 +150,13 @@ export const DOCS: DocEntry[] = [
   { slug: 'paper-orbit-404', title: 'Paper Orbit 404', description: 'Layered paper-cut space scene with orbital rings, cratered moons, astronaut, and terracotta home CTA.', category: '404 Animation', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Move for parallax — astronaut bobs, rockets drift, rings rotate.' },
   { slug: 'mars-tether-404', title: 'Mars Tether 404', description: 'Mars-textured sphere as the 0, orange astronaut perched on top, tethered rocket with waving path.', category: '404 Animation', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Watch planet rotate, tether wave, rocket thrust flicker.' },
   { slug: 'mesh-orb-404', title: 'Mesh Orb 404', description: 'Glowing mesh-grid sphere with bloom, pulse synced to fake audio, equatorial waveform ring.', category: '404 Animation', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Move to tilt the sphere; watch mesh rotate and bloom breathe.' },
+  { slug: 'lens-reveal-404', title: 'Lens Reveal 404', description: 'A caretaker sweeps beneath a giant amber 404 while a brass loupe follows the pointer and magnifies a hidden message layer.', category: '404 Animation', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Move the loupe (or arrow keys) — find the secret under the lens.', props: [
+    { name: 'title / subtitle', type: 'string', description: 'Visible copy outside the lens.' },
+    { name: 'secretTitle / secretSubtitle', type: 'string', description: 'Copy that only appears under the lens.' },
+    { name: 'radius', type: 'number', default: '76', description: 'Lens radius in px.' },
+    { name: 'zoom', type: 'number', default: '1.5', description: 'Magnification inside the lens.' },
+    { name: 'homeHref / onHome', type: 'string / () => void', default: "'/'", description: 'Home button target or handler.' },
+  ] },
 
 
   // Toast (signature — distinct from Core toast)
@@ -150,6 +183,13 @@ export const DOCS: DocEntry[] = [
   { slug: 'hologram-flip-card', title: 'Hologram Flip Card', description: 'Flip to holographic rear with iridescent sheen.', category: 'Cards', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Click to flip; move for iridescent sheen.' },
   { slug: 'liquid-morph-card', title: 'Liquid Morph Card', description: 'Border/blob morphs toward pointer.', category: 'Cards', unique: true, isNew: true, gesture: 'Move over the card — the blob leans toward you.' },
   { slug: 'gravity-expand-card', title: 'Gravity Expand Card', description: 'Click expands with spring; collapse on second click/outside.', category: 'Cards', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Click to expand; click again or outside to collapse.' },
+  { slug: 'flip-checkout-card', title: 'Flip Checkout Card', description: 'Frosted payment card mirrors every keystroke, flips for the security code, and the checkout condenses into a receipt once paid.', category: 'Cards', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Type card details — focus the security code to flip; Pay to finish.', props: [
+    { name: 'amount', type: 'number', default: '129', description: 'Charge amount.' },
+    { name: 'currency', type: 'string', default: "'USD'", description: 'ISO currency for formatting.' },
+    { name: 'merchant', type: 'string', default: "'Atelier Nine'", description: 'Payee shown in form and receipt.' },
+    { name: 'issuer', type: 'string', default: "'Lumen'", description: 'Name printed on the card face.' },
+    { name: 'onPay', type: '(details) => Promise<unknown> | void', description: 'Async payment; rejecting shows a decline message.' },
+  ] },
 
   // Navigation
   { slug: 'compass-rail', title: 'Compass Rail', description: 'Vertical rail with a shortest-path compass marker.', category: 'Navigation', unique: true, isNew: true, gesture: 'Click items — the compass marker takes the short path.' },

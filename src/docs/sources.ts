@@ -165,6 +165,12 @@ import timelineRailSidebarSrc from '../components/ui/timeline-rail-sidebar.tsx?r
 import megaFlyoutSidebarSrc from '../components/ui/mega-flyout-sidebar.tsx?raw'
 import priorityInboxSidebarSrc from '../components/ui/priority-inbox-sidebar.tsx?raw'
 import orbitSwitcherSidebarSrc from '../components/ui/orbit-switcher-sidebar.tsx?raw'
+import dispatchTruckButtonSrc from '../components/ui/dispatch-truck-button.tsx?raw'
+import dropInCartButtonSrc from '../components/ui/drop-in-cart-button.tsx?raw'
+import fillProgressDownloadButtonSrc from '../components/ui/fill-progress-download-button.tsx?raw'
+import swallowDeleteButtonSrc from '../components/ui/swallow-delete-button.tsx?raw'
+import lensReveal404Src from '../components/ui/lens-reveal-404.tsx?raw'
+import flipCheckoutCardSrc from '../components/ui/flip-checkout-card.tsx?raw'
 
 export const sources: Record<string, string> = {
   button: buttonSrc,
@@ -331,4 +337,10 @@ export const sources: Record<string, string> = {
   'priority-inbox-sidebar': priorityInboxSidebarSrc,
   'orbit-switcher-sidebar': orbitSwitcherSidebarSrc,
 
+  'dispatch-truck-button': dispatchTruckButtonSrc,
+  'drop-in-cart-button': dropInCartButtonSrc,
+  'fill-progress-download-button': fillProgressDownloadButtonSrc,
+  'swallow-delete-button': swallowDeleteButtonSrc,
+  'lens-reveal-404': lensReveal404Src,
+  'flip-checkout-card': flipCheckoutCardSrc,
 }

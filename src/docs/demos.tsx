@@ -166,6 +166,12 @@ import { TimelineRailSidebar } from '@/components/ui/timeline-rail-sidebar'
 import { MegaFlyoutSidebar } from '@/components/ui/mega-flyout-sidebar'
 import { PriorityInboxSidebar } from '@/components/ui/priority-inbox-sidebar'
 import { OrbitSwitcherSidebar } from '@/components/ui/orbit-switcher-sidebar'
+import { DispatchTruckButton } from '@/components/ui/dispatch-truck-button'
+import { DropInCartButton } from '@/components/ui/drop-in-cart-button'
+import { FillProgressDownloadButton } from '@/components/ui/fill-progress-download-button'
+import { SwallowDeleteButton } from '@/components/ui/swallow-delete-button'
+import { LensReveal404 } from '@/components/ui/lens-reveal-404'
+import { FlipCheckoutCard } from '@/components/ui/flip-checkout-card'
 
 
 
@@ -977,4 +983,34 @@ export const demos: Record<string, React.ReactNode> = {
     </div>
   ),
 
+  'dispatch-truck-button': (
+    <div className="flex w-full max-w-lg flex-col items-center justify-center gap-6 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#1b1924,#0c0b10)] px-6 py-12 ring-1 ring-white/5">
+      <DispatchTruckButton />
+    </div>
+  ),
+  'drop-in-cart-button': (
+    <div className="flex w-full max-w-lg flex-col items-center justify-center gap-6 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#1b1924,#0c0b10)] px-6 py-12 ring-1 ring-white/5">
+      <DropInCartButton />
+    </div>
+  ),
+  'fill-progress-download-button': (
+    <div className="flex w-full max-w-lg flex-col items-center justify-center gap-6 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#1b1924,#0c0b10)] px-6 py-12 ring-1 ring-white/5">
+      <FillProgressDownloadButton fileName="framekit-brand-kit.zip · 24.6 MB" />
+    </div>
+  ),
+  'swallow-delete-button': (
+    <div className="flex w-full max-w-lg flex-col items-center justify-center gap-6 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#1b1924,#0c0b10)] px-6 py-12 ring-1 ring-white/5">
+      <div className="flex flex-wrap items-center justify-center gap-4">
+        <SwallowDeleteButton variant="violet" />
+        <SwallowDeleteButton variant="neutral" label="Remove" />
+        <SwallowDeleteButton variant="danger" label="Discard" confirm />
+      </div>
+    </div>
+  ),
+  'lens-reveal-404': <LensReveal404 className="w-full max-w-2xl" homeHref="/" />,
+  'flip-checkout-card': (
+    <div className="flex w-full max-w-lg justify-center rounded-2xl bg-[radial-gradient(120%_90%_at_50%_0%,#221d33,#0b0a10)] px-4 py-10 ring-1 ring-white/5">
+      <FlipCheckoutCard />
+    </div>
+  ),
 }
