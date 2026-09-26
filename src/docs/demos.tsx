@@ -172,6 +172,12 @@ import { FillProgressDownloadButton } from '@/components/ui/fill-progress-downlo
 import { SwallowDeleteButton } from '@/components/ui/swallow-delete-button'
 import { LensReveal404 } from '@/components/ui/lens-reveal-404'
 import { FlipCheckoutCard } from '@/components/ui/flip-checkout-card'
+import { ParticleMorphLoader, type ParticleShape, type ParticleMorphState } from '@/components/ui/particle-morph-loader'
+import { FaceScanPayButton } from '@/components/ui/face-scan-pay-button'
+import { OrbitDotExportButton } from '@/components/ui/orbit-dot-export-button'
+import { ShredderDeleteButton } from '@/components/ui/shredder-delete-button'
+import { CloudLaunchPublishButton } from '@/components/ui/cloud-launch-publish-button'
+import { RadialShareMenu } from '@/components/ui/radial-share-menu'
 
 
 
@@ -230,6 +236,198 @@ function ToastDemoInner() {
     >
       Show toast
     </Button>
+  )
+}
+
+/* ---------- batch 2 reel demos ---------- */
+
+const wait = (ms: number) => new Promise<void>((r) => window.setTimeout(r, ms))
+
+function FailSwitch({ on, onChange, label = 'Simulate failure', light = false }: { on: boolean; onChange: (v: boolean) => void; label?: string; light?: boolean }) {
+  return (
+    <button
+      type="button"
+      role="switch"
+      aria-checked={on}
+      onClick={() => onChange(!on)}
+      className={
+        'inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-[11px] font-medium outline-none transition-colors focus-visible:ring-2 focus-visible:ring-violet-300 ' +
+        (light ? 'text-[#5b4636] hover:bg-black/5' : 'text-zinc-400 hover:bg-white/5')
+      }
+    >
+      <span className={'relative inline-block h-4 w-7 shrink-0 rounded-full transition-colors ' + (on ? 'bg-rose-500' : light ? 'bg-black/15' : 'bg-white/15')}>
+        <span className={'absolute left-0 top-0.5 h-3 w-3 rounded-full bg-white shadow transition-transform ' + (on ? 'translate-x-3.5' : 'translate-x-0.5')} />
+      </span>
+      {label}
+    </button>
+  )
+}
+
+const PM_SHAPES: ParticleShape[] = ['sphere', 'ribbon', 'shell', 'tetra', 'ring', 'helix']
+const PM_TINTS = [
+  { name: 'Iris', hex: '#a78bfa' },
+  { name: 'Glacier', hex: '#7dd3fc' },
+  { name: 'Ember', hex: '#fdba74' },
+  { name: 'Bloom', hex: '#f9a8d4' },
+]
+
+function ParticleMorphLoaderDemo() {
+  const [shape, setShape] = React.useState<ParticleShape | 'all'>('all')
+  const [tint, setTint] = React.useState(PM_TINTS[0].hex)
+  const [state, setState] = React.useState<ParticleMorphState>('loading')
+  const run = React.useRef(0)
+  const finish = async (to: ParticleMorphState) => {
+    const id = ++run.current
+    setState(to)
+    if (to === 'done') {
+      await wait(2400)
+      if (id === run.current) setState('loading')
+    }
+  }
+  const chip = (active: boolean) =>
+    'rounded-full px-2.5 py-1 text-[11px] font-medium capitalize outline-none transition-colors focus-visible:ring-2 focus-visible:ring-violet-300 ' +
+    (active ? 'bg-white/12 text-white ring-1 ring-white/15' : 'text-zinc-400 hover:bg-white/5 hover:text-zinc-200')
+  return (
+    <div className="flex w-full max-w-2xl flex-col items-center gap-6 rounded-2xl bg-[radial-gradient(90%_70%_at_50%_30%,#15131d,#050507)] px-6 pb-8 pt-10 ring-1 ring-white/5">
+      <ParticleMorphLoader
+        size={220}
+        color={tint}
+        shapes={shape === 'all' ? PM_SHAPES : [shape]}
+        state={state}
+        onRetry={() => finish('loading')}
+      />
+      <div className="flex flex-wrap items-center justify-center gap-1" role="group" aria-label="Shape">
+        {(['all', ...PM_SHAPES] as const).map((s) => (
+          <button key={s} type="button" aria-pressed={shape === s} className={chip(shape === s)} onClick={() => setShape(s)}>
+            {s === 'all' ? 'Cycle all' : s}
+          </button>
+        ))}
+      </div>
+      <div className="flex flex-wrap items-center justify-center gap-4">
+        <div className="flex items-center gap-1.5" role="group" aria-label="Tint">
+          {PM_TINTS.map((t) => (
+            <button
+              key={t.hex}
+              type="button"
+              aria-label={t.name}
+              aria-pressed={tint === t.hex}
+              onClick={() => setTint(t.hex)}
+              className={'h-5 w-5 rounded-full outline-none ring-offset-2 ring-offset-[#0b0a10] transition-transform hover:scale-110 focus-visible:ring-2 focus-visible:ring-white ' + (tint === t.hex ? 'ring-2 ring-white/70' : '')}
+              style={{ background: t.hex }}
+            />
+          ))}
+        </div>
+        <span className="h-4 w-px bg-white/10" />
+        <button type="button" className={chip(state === 'done')} onClick={() => finish('done')}>Resolve</button>
+        <button type="button" className={chip(state === 'error')} onClick={() => finish('error')}>Fail</button>
+      </div>
+      <div className="flex items-end justify-center gap-8 border-t border-white/5 pt-6">
+        <ParticleMorphLoader size={72} points={160} color="#7dd3fc" showLabel={false} speed={1.3} shapes={['shell', 'ring', 'helix']} />
+        <ParticleMorphLoader size={96} points={220} color="#fdba74" showLabel={false} shapes={['tetra', 'sphere', 'ribbon']} />
+        <ParticleMorphLoader size={120} points={260} color="#f9a8d4" labels={['Indexing…', 'Linking…', 'Ranking…']} speed={0.8} shapes={['ribbon', 'shell']} />
+      </div>
+    </div>
+  )
+}
+
+function FaceScanPayDemo() {
+  const [fail, setFail] = React.useState(false)
+  return (
+    <div className="flex w-full max-w-lg flex-col items-center justify-center gap-5 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#141a2e,#07090f)] px-6 py-12 ring-1 ring-white/5">
+      <FaceScanPayButton
+        onPay={async () => {
+          await wait(1900)
+          if (fail) throw new Error('declined')
+        }}
+      />
+      <FailSwitch on={fail} onChange={setFail} label="Simulate decline" />
+    </div>
+  )
+}
+
+function OrbitDotExportDemo() {
+  const [fail, setFail] = React.useState(false)
+  const failing = (report: (p: number) => void) =>
+    new Promise<void>((resolve, reject) => {
+      let p = 0
+      const t = window.setInterval(() => {
+        p += 0.06
+        report(p)
+        if (fail && p > 0.55) {
+          window.clearInterval(t)
+          reject(new Error('export failed'))
+        } else if (p >= 1) {
+          window.clearInterval(t)
+          resolve()
+        }
+      }, 120)
+    })
+  return (
+    <div className="flex w-full max-w-lg flex-col items-center justify-center gap-6 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#1b1924,#0c0b10)] px-6 py-12 ring-1 ring-white/5">
+      <OrbitDotExportButton onExport={fail ? failing : undefined} />
+      <div className="flex flex-wrap items-start justify-center gap-4">
+        <OrbitDotExportButton dot="diamond" accent="#7dd3fc" label="Export CSV" doneLabel="Open CSV" />
+        <OrbitDotExportButton dot="spark" accent="#c4b5fd" label="Render" doneLabel="Preview" />
+      </div>
+      <FailSwitch on={fail} onChange={setFail} />
+    </div>
+  )
+}
+
+function ShredderDeleteDemo() {
+  const [fail, setFail] = React.useState(false)
+  return (
+    <div className="flex w-full max-w-xl flex-col items-center justify-center gap-6 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#1b1924,#0c0b10)] px-6 pb-10 pt-12 ring-1 ring-white/5">
+      <div className="flex flex-wrap items-center justify-center gap-5">
+        <ShredderDeleteButton variant="violet" onDelete={fail ? async () => { await wait(300); throw new Error('jam') } : undefined} />
+        <ShredderDeleteButton variant="light" label="Discard draft" />
+        <ShredderDeleteButton variant="danger" label="Purge logs" strips={9} />
+      </div>
+      <FailSwitch on={fail} onChange={setFail} label="Jam the first one" />
+    </div>
+  )
+}
+
+function CloudLaunchDemo() {
+  const [fail, setFail] = React.useState(false)
+  const failing = (report: (p: number) => void) =>
+    new Promise<void>((_, reject) => {
+      let p = 0
+      const t = window.setInterval(() => {
+        p += 0.05
+        report(p)
+        if (p > 0.62) {
+          window.clearInterval(t)
+          reject(new Error('publish failed'))
+        }
+      }, 110)
+    })
+  return (
+    <div className="grid w-full max-w-2xl gap-3 sm:grid-cols-2">
+      <div className="flex flex-col items-center justify-center gap-5 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#1a1d29,#0b0c12)] px-6 py-14 ring-1 ring-white/5">
+        <CloudLaunchPublishButton onPublish={fail ? failing : undefined} />
+        <FailSwitch on={fail} onChange={setFail} />
+      </div>
+      <div className="flex flex-col items-center justify-center gap-5 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#ffffff,#e9e8ef)] px-6 py-14 ring-1 ring-black/5">
+        <CloudLaunchPublishButton variant="light" label="Publish site" doneLabel="Deployed" />
+        <span className="text-[11px] font-medium text-slate-500">framekit.dev · production</span>
+      </div>
+    </div>
+  )
+}
+
+function RadialShareDemo() {
+  const [fail, setFail] = React.useState(false)
+  return (
+    <div className="flex w-full max-w-md flex-col items-center gap-2 rounded-[28px] bg-[radial-gradient(120%_90%_at_50%_0%,#f6eee2,#e6d8c3)] px-6 pb-6 pt-8 shadow-[inset_0_1px_0_rgb(255_255_255/0.7)] ring-1 ring-[#d6c4a8]">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#9a7b5f]">Field notes · Issue 14</p>
+      <h3 className="text-center text-lg font-semibold tracking-tight text-[#2b211a]">Quiet interfaces, loud details</h3>
+      <RadialShareMenu
+        url="https://framekit-ui.vercel.app/#/docs/radial-share-menu"
+        onShare={fail ? async () => { await wait(200); throw new Error('nope') } : undefined}
+      />
+      <FailSwitch on={fail} onChange={setFail} light />
+    </div>
   )
 }
 
@@ -1013,4 +1211,10 @@ export const demos: Record<string, React.ReactNode> = {
       <FlipCheckoutCard />
     </div>
   ),
+  'particle-morph-loader': <ParticleMorphLoaderDemo />,
+  'face-scan-pay-button': <FaceScanPayDemo />,
+  'orbit-dot-export-button': <OrbitDotExportDemo />,
+  'shredder-delete-button': <ShredderDeleteDemo />,
+  'cloud-launch-publish-button': <CloudLaunchDemo />,
+  'radial-share-menu': <RadialShareDemo />,
 }

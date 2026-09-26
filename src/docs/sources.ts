@@ -171,6 +171,12 @@ import fillProgressDownloadButtonSrc from '../components/ui/fill-progress-downlo
 import swallowDeleteButtonSrc from '../components/ui/swallow-delete-button.tsx?raw'
 import lensReveal404Src from '../components/ui/lens-reveal-404.tsx?raw'
 import flipCheckoutCardSrc from '../components/ui/flip-checkout-card.tsx?raw'
+import particleMorphLoaderSrc from '../components/ui/particle-morph-loader.tsx?raw'
+import faceScanPayButtonSrc from '../components/ui/face-scan-pay-button.tsx?raw'
+import orbitDotExportButtonSrc from '../components/ui/orbit-dot-export-button.tsx?raw'
+import shredderDeleteButtonSrc from '../components/ui/shredder-delete-button.tsx?raw'
+import cloudLaunchPublishButtonSrc from '../components/ui/cloud-launch-publish-button.tsx?raw'
+import radialShareMenuSrc from '../components/ui/radial-share-menu.tsx?raw'
 
 export const sources: Record<string, string> = {
   button: buttonSrc,
@@ -343,4 +349,10 @@ export const sources: Record<string, string> = {
   'swallow-delete-button': swallowDeleteButtonSrc,
   'lens-reveal-404': lensReveal404Src,
   'flip-checkout-card': flipCheckoutCardSrc,
+  'particle-morph-loader': particleMorphLoaderSrc,
+  'face-scan-pay-button': faceScanPayButtonSrc,
+  'orbit-dot-export-button': orbitDotExportButtonSrc,
+  'shredder-delete-button': shredderDeleteButtonSrc,
+  'cloud-launch-publish-button': cloudLaunchPublishButtonSrc,
+  'radial-share-menu': radialShareMenuSrc,
 }

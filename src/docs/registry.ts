@@ -98,6 +98,41 @@ export const DOCS: DocEntry[] = [
     { name: 'confirm', type: 'boolean', default: 'false', description: 'Require a second press (Esc or blur cancels).' },
     { name: 'onDelete', type: '() => void | Promise<unknown>', description: 'Rejecting spits the letters back with a shake.' },
   ] },
+  { slug: 'face-scan-pay-button', title: 'Face Scan Pay Button', description: 'Navy pay pill folds into a lit square, a biometric reticle sweeps a face glyph while a comet laps the rim, then it unfolds with a check.', category: 'Buttons', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Click — watch the scan loop, then the paid check.', props: [
+    { name: 'label / amount', type: 'string', default: "'Pay' / '$48.00'", description: 'Resting copy; amount repeats in the success label.' },
+    { name: 'successLabel / errorLabel', type: 'string', default: "'Paid' / 'Try again'", description: 'Result copy.' },
+    { name: 'onPay', type: '() => void | Promise<unknown>', description: 'Payment work; the scan loops until it settles. Rejecting shakes into a retry state.' },
+    { name: 'minLoops / loopMs', type: 'number', default: '1 / 1500', description: 'Minimum rim laps and lap duration.' },
+    { name: 'resetAfter', type: 'number', default: '2600', description: 'Auto-reset delay in ms (0 keeps success).' },
+  ] },
+  { slug: 'orbit-dot-export-button', title: 'Orbit Dot Export Button', description: 'Pill tucks down to its ring, a shaped comet orbits with a trailing progress arc, the ring floods solid, the arrow bends into a check and the pill reopens as the next action.', category: 'Buttons', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Click — orbit, fill, arrow morphs to check, then press “Open”.', props: [
+    { name: 'dot', type: "'teardrop' | 'diamond' | 'spark' | 'bead'", default: "'teardrop'", description: 'Orbiting marker shape.' },
+    { name: 'accent', type: 'string', default: "'#f5b14c'", description: 'Marker, arc and fill colour.' },
+    { name: 'label / doneLabel', type: 'string', default: "'Export report' / 'Open file'", description: 'Before/after labels.' },
+    { name: 'onExport', type: '(report: (p: number) => void) => Promise<unknown>', description: 'Real work with progress; rejecting shows a retry label.' },
+    { name: 'onOpen', type: '() => void', description: 'Pressed in the done state; the button resets afterwards.' },
+  ] },
+  { slug: 'shredder-delete-button', title: 'Shredder Delete Button', description: 'Pill holds still while its icon works: the lid flips, a sheet feeds in, paper ribbons tumble out below and a tally counts each shred.', category: 'Buttons', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Click — sheet feeds in, strips fall, tally ticks up.', props: [
+    { name: 'variant', type: "'violet' | 'light' | 'danger'", default: "'violet'", description: 'Colour treatment.' },
+    { name: 'label / busyLabel / doneLabel', type: 'string', default: "'Delete file' / 'Shredding…' / 'Shredded'", description: 'Label per stage.' },
+    { name: 'strips', type: 'number', default: '7', description: 'Paper strips per shred (4–9).' },
+    { name: 'width', type: 'number', default: '208', description: 'Fixed pill width; the pill never resizes.' },
+    { name: 'showCount', type: 'boolean', default: 'true', description: 'Show the running × N tally.' },
+    { name: 'onDelete', type: '() => void | Promise<unknown>', description: 'Rejecting jams the shredder and spits the sheet back.' },
+  ] },
+  { slug: 'cloud-launch-publish-button', title: 'Cloud Launch Publish Button', description: 'The arrow launches out of the cloud on a puff of vapour, a progress seam draws along the bottom edge, and a check drops back into the cloud.', category: 'Buttons', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Click — arrow launches, seam fills, check lands.', props: [
+    { name: 'variant', type: "'dark' | 'light'", default: "'dark'", description: 'Surface theme.' },
+    { name: 'label / busyLabel / doneLabel', type: 'string', default: "'Publish' / 'Publishing' / 'Live now'", description: 'Label per stage.' },
+    { name: 'onPublish', type: '(report: (p: number) => void) => Promise<unknown>', description: 'Real progress; rejecting turns the seam rose with a retry label.' },
+    { name: 'resetAfter', type: 'number', default: '2800', description: 'Auto-reset delay in ms (0 keeps done).' },
+  ] },
+  { slug: 'radial-share-menu', title: 'Radial Share Menu', description: 'Share pill folds into a close button while channel bubbles spring out on an arc; the pick glides to centre, becomes a check and really copies the link.', category: 'Buttons', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Click Share — arrow keys around the arc, Enter to pick, Esc to close.', props: [
+    { name: 'url', type: 'string', default: 'location.href', description: 'Link written to the clipboard by copy channels.' },
+    { name: 'channels', type: 'ShareChannel[]', default: 'DEFAULT_SHARE_CHANNELS', description: '{ id, label, icon, color, ink?, feedback?, kind?, href? }' },
+    { name: 'radius', type: 'number', default: '104', description: 'Arc radius in px.' },
+    { name: 'onShare', type: '(channel) => void | Promise<unknown>', description: 'Async hook; rejecting shows a retry bubble.' },
+    { name: 'resetAfter', type: 'number', default: '1700', description: 'Confirmation hold before reset (ms).' },
+  ] },
 
 
   // Toggles (hero category)
@@ -141,6 +176,15 @@ export const DOCS: DocEntry[] = [
   { slug: 'orbital-bead-loader', title: 'Orbital Bead Loader', description: 'Beads orbit a core; hover speeds up.', category: 'Loading', unique: true, isNew: true, gesture: 'Hover — orbit accelerates.' },
   { slug: 'ink-drip-loader', title: 'Ink Drip Loader', description: 'Ink drops merge into a looping puddle.', category: 'Loading', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Watch drops merge into the puddle.' },
   { slug: 'morph-glyph-loader', title: 'Morph Glyph Loader', description: 'Glyph morphs through abstract SVG shapes.', category: 'Loading', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Watch the glyph morph between shapes.' },
+  { slug: 'particle-morph-loader', title: 'Particle Morph Loader', description: 'A depth-lit swarm of motes spins in 3D and melts between sphere, ribbon, shell, tetra, ring and helix while a status word rolls underneath.', category: 'Loading', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Watch the swarm morph; pick a shape or tint, or simulate done/error.', props: [
+    { name: 'shapes', type: "ParticleShape[]", default: "['sphere','ribbon','shell','tetra','ring','helix']", description: 'Forms to cycle; pass one to lock it.' },
+    { name: 'size', type: 'number', default: '180', description: 'Canvas edge in px.' },
+    { name: 'color', type: 'string', default: "'#a78bfa'", description: 'Particle tint (#rrggbb).' },
+    { name: 'labels', type: 'string[]', description: 'Status words, one per morph.' },
+    { name: 'speed / points', type: 'number', default: '1 / 320', description: 'Cadence multiplier and particle count.' },
+    { name: 'state', type: "'loading' | 'done' | 'error'", default: "'loading'", description: 'Done condenses to mint; error scatters in rose.' },
+    { name: 'onRetry', type: '() => void', description: 'Renders a retry pill in the error state.' },
+  ] },
   { slug: 'lattice-pulse-loader', title: 'Lattice Pulse Loader', description: '3×3 nodes pulse in a traveling wave.', category: 'Loading', unique: true, isNew: true, gesture: 'Watch the wave travel the lattice.' },
 
   // 404 Animation
