@@ -27,7 +27,7 @@ export function CursorTrail({
     <div
       onMouseMove={onMove}
       onMouseLeave={() => setDots([])}
-      className={cn('relative h-56 overflow-hidden rounded-2xl bg-zinc-950', className)}
+      className={cn('relative h-56 overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-50 dark:border-transparent dark:bg-zinc-950', className)}
     >
       {dots.map((d, i) => (
         <span
@@ -41,7 +41,7 @@ export function CursorTrail({
           }}
         />
       ))}
-      <div className="relative z-10 flex h-full items-center justify-center text-sm text-zinc-400">
+      <div className="relative z-10 flex h-full items-center justify-center text-sm text-zinc-500 dark:text-zinc-400">
         {children ?? 'Move your cursor'}
       </div>
     </div>

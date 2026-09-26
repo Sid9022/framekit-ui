@@ -51,6 +51,8 @@ import compassSrc from '../components/ui/compass-rail.tsx?raw'
 import haloSrc from '../components/ui/halo-menu.tsx?raw'
 import pebbleSrc from '../components/ui/signal-pebble.tsx?raw'
 import cnSrc from '../lib/cn.ts?raw'
+import reducedMotionSrc from '../lib/use-reduced-motion.ts?raw'
+import resolvedThemeSrc from '../lib/use-resolved-theme.ts?raw'
 
 import watchfulEyeSrc from '../components/ui/watchful-eye-toggle.tsx?raw'
 import dayNightSrc from '../components/ui/day-night-capsule.tsx?raw'
@@ -216,6 +218,8 @@ export const sources: Record<string, string> = {
   'breathing-dot': breathSrc,
   'ink-ripple-grid': inkSrc,
   cn: cnSrc,
+  'use-reduced-motion': reducedMotionSrc,
+  'use-resolved-theme': resolvedThemeSrc,
   'prism-tidal-field': prismTidalSrc,
   'constellation-breathing-grid': constellationSrc,
   'paperfold-gradient-plane': paperfoldSrc,

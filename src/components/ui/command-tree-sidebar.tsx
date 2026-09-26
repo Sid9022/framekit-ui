@@ -163,7 +163,7 @@ export function CommandTreeSidebar({ className }: { className?: string }) {
                 {node.hasKids ? (
                   <Folder className="h-3.5 w-3.5 shrink-0 text-signal-500" />
                 ) : (
-                  <FileText className="h-3.5 w-3.5 shrink-0 text-zinc-400" />
+                  <FileText className="h-3.5 w-3.5 shrink-0 text-zinc-500 dark:text-zinc-400" />
                 )}
                 <span>
                   {idx >= 0 ? (
@@ -183,7 +183,7 @@ export function CommandTreeSidebar({ className }: { className?: string }) {
           )
         })}
       </ul>
-      <p className="border-t border-zinc-100 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.16em] text-zinc-400 dark:border-zinc-800">
+      <p className="border-t border-zinc-100 px-3 py-2 font-mono text-[9px] uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400 dark:border-zinc-800">
         ↑↓ navigate · Enter expand · type to filter
       </p>
     </div>

@@ -66,7 +66,7 @@ export function RadialSonarWave({ className }: { className?: string }) {
           )
         })}
       </svg>
-      <div className="absolute flex h-14 w-14 items-center justify-center rounded-full bg-signal-500/25 text-signal-100 shadow-[0_0_28px_rgba(154,134,184,0.45)]">
+      <div className="absolute flex h-14 w-14 items-center justify-center rounded-full bg-signal-500/25 text-signal-800 dark:text-signal-100 shadow-[0_0_28px_rgba(154,134,184,0.45)]">
         <Mic className="h-5 w-5" />
       </div>
     </div>

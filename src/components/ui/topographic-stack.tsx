@@ -29,7 +29,7 @@ export function TopographicStack({
             fill="none"
             stroke="currentColor"
             strokeWidth="1"
-            className="text-zinc-400"
+            className="text-zinc-500 dark:text-zinc-400"
           />
         ))}
       </svg>

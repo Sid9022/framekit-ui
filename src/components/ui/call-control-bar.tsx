@@ -30,13 +30,13 @@ export function CallControlBar({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'flex w-full max-w-md flex-col items-center gap-4 rounded-2xl border border-zinc-200 bg-gradient-to-b from-zinc-950 to-zinc-900 p-5 text-zinc-50 shadow-[0_28px_60px_-28px_rgba(0,0,0,0.6)]',
+        'flex w-full max-w-md flex-col items-center gap-4 rounded-2xl border border-zinc-200 bg-gradient-to-b from-white to-zinc-50 p-5 text-zinc-900 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_24px_50px_-28px_rgba(24,24,27,0.3)] dark:border-zinc-800 dark:from-zinc-950 dark:to-zinc-900 dark:text-zinc-50 dark:shadow-[0_28px_60px_-28px_rgba(0,0,0,0.6)]',
         className,
       )}
     >
       <div className="text-center">
         <p className="text-sm font-semibold">Maya Chen</p>
-        <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-signal-300">
+        <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-signal-600 dark:text-signal-300">
           {hold ? 'On hold' : muted ? 'Muted' : 'Connected · 04:12'}
         </p>
       </div>
@@ -47,8 +47,8 @@ export function CallControlBar({ className }: { className?: string }) {
           className={cn(
             'flex h-12 w-12 items-center justify-center rounded-full border transition',
             muted
-              ? 'border-amber-400/50 bg-amber-500/20 text-amber-200'
-              : 'border-zinc-700 bg-zinc-800 text-zinc-200',
+              ? 'border-amber-400/50 bg-amber-500/20 text-amber-700 dark:text-amber-200'
+              : 'border-zinc-200 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200',
           )}
           style={muted && !reduced ? { boxShadow: '0 0 20px rgba(251,191,36,0.45)' } : undefined}
           aria-pressed={muted}
@@ -62,8 +62,8 @@ export function CallControlBar({ className }: { className?: string }) {
           className={cn(
             'flex h-12 w-12 items-center justify-center rounded-full border transition',
             hold
-              ? 'border-signal-400/60 bg-signal-500/25 text-signal-100'
-              : 'border-zinc-700 bg-zinc-800 text-zinc-200',
+              ? 'border-signal-400/60 bg-signal-500/25 text-signal-800 dark:text-signal-100'
+              : 'border-zinc-200 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200',
           )}
           animate={hold && !reduced ? { scale: [1, 1.06, 1] } : { scale: 1 }}
           transition={hold ? { repeat: Infinity, duration: 1.4 } : undefined}
@@ -79,8 +79,8 @@ export function CallControlBar({ className }: { className?: string }) {
           className={cn(
             'flex h-12 w-12 items-center justify-center rounded-full border transition',
             keypad
-              ? 'border-sky-400/50 bg-sky-500/20 text-sky-100'
-              : 'border-zinc-700 bg-zinc-800 text-zinc-200',
+              ? 'border-sky-400/50 bg-sky-500/20 text-sky-800 dark:text-sky-100'
+              : 'border-zinc-200 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800 text-zinc-700 dark:text-zinc-200',
           )}
           aria-pressed={keypad}
           aria-label="Keypad"
@@ -102,7 +102,7 @@ export function CallControlBar({ className }: { className?: string }) {
             <button
               key={k}
               type="button"
-              className="rounded-xl bg-zinc-800 py-2 text-sm font-medium hover:bg-zinc-700"
+              className="rounded-xl bg-zinc-100 dark:bg-zinc-800 py-2 text-sm font-medium hover:bg-zinc-200 dark:hover:bg-zinc-700"
             >
               {k}
             </button>

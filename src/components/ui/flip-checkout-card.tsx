@@ -207,7 +207,7 @@ export function FlipCheckoutCard({
               >
                 <div className="mb-4 flex items-baseline justify-between">
                   <p className="text-[15px] font-semibold tracking-tight text-zinc-900">Payment details</p>
-                  <p className="text-[12px] text-zinc-400">{merchant}</p>
+                  <p className="text-[12px] text-zinc-500 dark:text-zinc-400">{merchant}</p>
                 </div>
                 <fieldset disabled={phase === 'paying'} className="space-y-3.5">
                   <div>
@@ -369,7 +369,7 @@ export function FlipCheckoutCard({
                     )}
                   </AnimatePresence>
                 </motion.button>
-                <p className="mt-3 text-center text-[11px] text-zinc-400">Demo only — nothing is charged or stored.</p>
+                <p className="mt-3 text-center text-[11px] text-zinc-500 dark:text-zinc-400">Demo only — nothing is charged or stored.</p>
               </motion.form>
             ) : (
               <motion.div

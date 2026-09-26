@@ -69,9 +69,12 @@ const PAD = 140
 export function VelocityFadeStack({
   className,
   items = DEFAULTS,
+  viewportClassName,
 }: {
   className?: string
   items?: Item[]
+  /** Classes merged onto the scrolling viewport (surface, border, radius, height). The reel brings its own dark backdrop. */
+  viewportClassName?: string
 }) {
   const reduced = usePrefersReducedMotion()
   const ref = React.useRef<HTMLDivElement>(null)
@@ -116,7 +119,10 @@ export function VelocityFadeStack({
       <div
         ref={ref}
         onScroll={onScroll}
-        className="framekit-scroll relative h-[380px] overflow-y-auto rounded-2xl border border-zinc-800 bg-gradient-to-b from-[#0c0b12] via-[#101014] to-[#0a0a0c]"
+        className={cn(
+          'framekit-scroll relative h-[380px] overflow-y-auto rounded-2xl border border-zinc-800 bg-gradient-to-b from-[#0c0b12] via-[#101014] to-[#0a0a0c]',
+          viewportClassName,
+        )}
       >
         {/* center focus band */}
         <div

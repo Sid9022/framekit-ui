@@ -32,7 +32,7 @@ export function PillTrailCursor({ className }: { className?: string }) {
         setPills((prev) => [...prev.slice(-10), next])
       }}
     >
-      <p className="pointer-events-none absolute left-4 top-4 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-400">
+      <p className="pointer-events-none absolute left-4 top-4 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
         Move inside
       </p>
       {pills.map((p, i) => (

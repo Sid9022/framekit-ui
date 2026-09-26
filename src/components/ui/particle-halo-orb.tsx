@@ -50,7 +50,7 @@ export function ParticleHaloOrb({ className }: { className?: string }) {
           return (
             <span
               key={p.id}
-              className="absolute rounded-full bg-signal-200"
+              className="absolute rounded-full bg-signal-500 dark:bg-signal-200"
               style={{
                 left: x,
                 top: y,
@@ -70,7 +70,7 @@ export function ParticleHaloOrb({ className }: { className?: string }) {
           <button
             type="button"
             onClick={() => setAuto((a) => !a)}
-            className="rounded-full bg-white/5 px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-zinc-400 hover:bg-white/10"
+            className="rounded-full bg-zinc-900/[0.04] dark:bg-white/5 px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-zinc-500 dark:text-zinc-400 hover:bg-zinc-900/[0.06] dark:hover:bg-white/10"
           >
             {auto ? 'Auto' : 'Manual'}
           </button>
@@ -85,7 +85,7 @@ export function ParticleHaloOrb({ className }: { className?: string }) {
             setAuto(false)
             setEnergy(Number(e.target.value))
           }}
-          className="w-full accent-signal-400"
+          className="w-full accent-signal-600 dark:accent-signal-400"
         />
       </div>
     </div>

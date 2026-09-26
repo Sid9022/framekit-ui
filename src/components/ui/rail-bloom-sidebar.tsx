@@ -123,7 +123,7 @@ export function RailBloomSidebar({
       </nav>
 
       <div className="border-t border-zinc-100 px-3 py-3 dark:border-zinc-800">
-        <p className="truncate font-mono text-[9px] uppercase tracking-[0.18em] text-zinc-400">
+        <p className="truncate font-mono text-[9px] uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
           {expanded ? 'Hover bloom · liquid active' : 'Rail'}
         </p>
       </div>

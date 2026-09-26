@@ -52,9 +52,12 @@ const STAGE = 380
 export function SnapMagnetScroll({
   className,
   sections = DEFAULTS,
+  viewportClassName,
 }: {
   className?: string
   sections?: Section[]
+  /** Classes merged onto the scrolling viewport (surface, border, radius, height). The reel brings its own dark backdrop. */
+  viewportClassName?: string
 }) {
   const reduced = usePrefersReducedMotion()
   const ref = React.useRef<HTMLDivElement>(null)
@@ -159,7 +162,10 @@ export function SnapMagnetScroll({
         ref={ref}
         tabIndex={0}
         onScroll={onScroll}
-        className="framekit-scroll h-[380px] snap-y snap-mandatory overflow-y-auto rounded-2xl border border-zinc-800 outline-none focus-visible:ring-2 focus-visible:ring-signal-400"
+        className={cn(
+          'framekit-scroll h-[380px] snap-y snap-mandatory overflow-y-auto rounded-2xl border border-zinc-800 outline-none focus-visible:ring-2 focus-visible:ring-signal-400',
+          viewportClassName,
+        )}
         aria-label="Magnetic snap sections"
       >
         {sections.map((s, i) => (

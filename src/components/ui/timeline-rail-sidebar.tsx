@@ -24,13 +24,13 @@ export function TimelineRailSidebar({ className }: { className?: string }) {
   }, [active, reduced])
 
   return (
-    <aside className={cn('flex h-[400px] w-[260px] flex-col overflow-hidden rounded-2xl border border-zinc-800 bg-[#0d0b14] text-zinc-100', className)}>
-      <div className="border-b border-zinc-800 px-4 py-3">
+    <aside className={cn('flex h-[400px] w-[260px] flex-col overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#0d0b14] text-zinc-900 dark:text-zinc-100', className)}>
+      <div className="border-b border-zinc-200 dark:border-zinc-800 px-4 py-3">
         <p className="text-sm font-semibold">Ops timeline</p>
         <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-zinc-500">Live event rail</p>
       </div>
       <div ref={listRef} className="framekit-scroll relative flex-1 overflow-y-auto px-4 py-4">
-        <div className="absolute bottom-4 left-[27px] top-4 w-px bg-gradient-to-b from-signal-500/50 via-zinc-700 to-transparent" />
+        <div className="absolute bottom-4 left-[27px] top-4 w-px bg-gradient-to-b from-signal-500/50 via-zinc-200 dark:via-zinc-700 to-transparent" />
         <ul className="relative space-y-4">
           {EVENTS.map((ev) => {
             const on = active === ev.id
@@ -38,7 +38,7 @@ export function TimelineRailSidebar({ className }: { className?: string }) {
               <li key={ev.id} data-id={ev.id}>
                 <button type="button" onClick={() => setActive(ev.id)} className="flex w-full gap-3 text-left">
                   <span className="relative mt-1 flex h-3.5 w-3.5 shrink-0 items-center justify-center">
-                    <span className={cn('h-2.5 w-2.5 rounded-full', on ? 'bg-framekit-500' : 'bg-zinc-600')} />
+                    <span className={cn('h-2.5 w-2.5 rounded-full', on ? 'bg-framekit-500' : 'bg-zinc-300 dark:bg-zinc-600')} />
                     {on && !reduced && (
                       <motion.span
                         className="absolute inset-0 rounded-full bg-framekit-500/40"
@@ -58,13 +58,13 @@ export function TimelineRailSidebar({ className }: { className?: string }) {
           })}
         </ul>
       </div>
-      <div className="flex gap-1 border-t border-zinc-800 p-2">
+      <div className="flex gap-1 border-t border-zinc-200 dark:border-zinc-800 p-2">
         {EVENTS.map((ev) => (
           <button
             key={ev.id}
             type="button"
             onClick={() => setActive(ev.id)}
-            className={cn('h-1.5 flex-1 rounded-full transition', active === ev.id ? 'bg-framekit-500' : 'bg-zinc-700')}
+            className={cn('h-1.5 flex-1 rounded-full transition', active === ev.id ? 'bg-framekit-500' : 'bg-zinc-200 dark:bg-zinc-700')}
             aria-label={ev.title}
           />
         ))}

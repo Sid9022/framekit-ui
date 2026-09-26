@@ -104,7 +104,7 @@ export function DropInCartButton({
         className={cn(
           'group relative flex h-14 items-center overflow-visible rounded-full text-[15px] font-semibold tracking-tight text-white',
           'bg-[linear-gradient(180deg,#26232f,#15131b)] shadow-[inset_0_1px_0_rgb(255_255_255/0.14),0_1px_2px_rgb(0_0_0/0.4),0_18px_40px_-18px_rgb(0_0_0/0.8)]',
-          'outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0c0b10]',
+          'outline-none focus-visible:ring-2 focus-visible:ring-amber-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0c0b10]',
           'disabled:cursor-not-allowed disabled:opacity-50',
         )}
       >
@@ -161,7 +161,7 @@ export function DropInCartButton({
             <motion.span
               key={value}
               aria-hidden
-              className="absolute -right-1 -top-1 grid h-6 min-w-6 place-items-center rounded-full bg-amber-400 px-1.5 text-[11px] font-bold tabular-nums text-zinc-950 shadow-[0_0_0_3px_#0f0e14,0_6px_14px_-4px_rgb(251_191_36/0.6)]"
+              className="absolute -right-1 -top-1 grid h-6 min-w-6 place-items-center rounded-full bg-amber-400 px-1.5 text-[11px] font-bold tabular-nums text-zinc-950 shadow-[0_0_0_3px_#ffffff,0_6px_14px_-4px_rgb(251_191_36/0.6)] dark:shadow-[0_0_0_3px_#0f0e14,0_6px_14px_-4px_rgb(251_191_36/0.6)]"
               initial={reduced ? false : { scale: 0.3, y: 6 }}
               animate={{ scale: 1, y: 0 }}
               exit={{ scale: 0.3, opacity: 0, transition: { duration: 0.12 } }}
@@ -174,12 +174,12 @@ export function DropInCartButton({
       </motion.button>
 
       {showCounter && (
-        <div className="flex h-5 items-center gap-2 text-[13px] text-zinc-400">
+        <div className="flex h-5 items-center gap-2 text-[13px] text-zinc-500 dark:text-zinc-400">
           <span className="relative inline-flex overflow-hidden">
             <AnimatePresence mode="popLayout" initial={false}>
               <motion.span
                 key={value}
-                className="inline-block font-semibold tabular-nums text-zinc-100"
+                className="inline-block font-semibold tabular-nums text-zinc-900 dark:text-zinc-100"
                 initial={reduced ? false : { y: 14, scale: 0.6, opacity: 0 }}
                 animate={{ y: 0, scale: 1, opacity: 1 }}
                 exit={{ y: -14, opacity: 0 }}
@@ -197,7 +197,7 @@ export function DropInCartButton({
               type="button"
               onClick={() => setValue(0)}
               disabled={busy}
-              className="rounded-md px-1.5 py-0.5 text-[12px] text-zinc-500 underline-offset-2 outline-none transition-colors hover:text-zinc-200 hover:underline focus-visible:ring-2 focus-visible:ring-amber-300 disabled:opacity-40"
+              className="rounded-md px-1.5 py-0.5 text-[12px] text-zinc-500 underline-offset-2 outline-none transition-colors hover:text-zinc-900 dark:hover:text-zinc-200 hover:underline focus-visible:ring-2 focus-visible:ring-amber-300 disabled:opacity-40"
             >
               Clear
             </button>

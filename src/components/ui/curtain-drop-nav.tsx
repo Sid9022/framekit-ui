@@ -52,7 +52,7 @@ export function CurtainDropNav({ className }: { className?: string }) {
           </div>
         ))}
         {!open && (
-          <p className="flex h-full items-center justify-center font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-400">
+          <p className="flex h-full items-center justify-center font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
             Hover a tab — curtain drops
           </p>
         )}

@@ -36,7 +36,7 @@ export function RibbonHelixWave({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'flex w-full max-w-md flex-col gap-3 rounded-2xl border border-zinc-800 bg-[#0a0910] p-4',
+        'flex w-full max-w-md flex-col gap-3 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#0a0910] p-4',
         className,
       )}
       onPointerMove={(e) => {
@@ -46,8 +46,8 @@ export function RibbonHelixWave({ className }: { className?: string }) {
       }}
     >
       <div className="flex items-center justify-between">
-        <p className="text-sm font-semibold text-zinc-100">Ribbon helix</p>
-        <span className="rounded-full bg-signal-500/20 px-2.5 py-0.5 font-mono text-[10px] text-signal-200">
+        <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100">Ribbon helix</p>
+        <span className="rounded-full bg-signal-500/20 px-2.5 py-0.5 font-mono text-[10px] text-signal-700 dark:text-signal-200">
           {(level * 100).toFixed(0)}% amp
         </span>
       </div>

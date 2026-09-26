@@ -1,15 +1,25 @@
 import * as React from 'react'
 import { cn } from '@/lib/cn'
 import { usePrefersReducedMotion } from '@/lib/use-reduced-motion'
+import { useResolvedTheme, type ThemeMode } from '@/lib/use-resolved-theme'
 
 /** Dual-tone mist; pointer motion adds chromatic split. Canvas 2D. */
 export function ChromaticMist({
   className,
   children,
+  theme = 'auto',
 }: {
   className?: string
   children?: React.ReactNode
+  /** `auto` follows the nearest `.dark` / `.light` ancestor. */
+  theme?: ThemeMode
 }) {
+  const rootRef = React.useRef<HTMLDivElement>(null)
+  const resolved = useResolvedTheme(rootRef, theme)
+  const darkRef = React.useRef(resolved === 'dark')
+  React.useLayoutEffect(() => {
+    darkRef.current = resolved === 'dark'
+  }, [resolved])
   const ref = React.useRef<HTMLCanvasElement>(null)
   const reduced = usePrefersReducedMotion()
   const ptr = React.useRef({ x: 0.5, y: 0.5, vx: 0, vy: 0 })
@@ -35,7 +45,7 @@ export function ChromaticMist({
     const blob = (x: number, y: number, r: number, color: string) => {
       const g = ctx.createRadialGradient(x, y, 0, x, y, r)
       g.addColorStop(0, color)
-      g.addColorStop(1, 'transparent')
+      g.addColorStop(1, color.replace(/[\d.]+\)$/, '0)'))
       ctx.fillStyle = g
       ctx.beginPath()
       ctx.arc(x, y, r, 0, Math.PI * 2)
@@ -45,7 +55,8 @@ export function ChromaticMist({
     const draw = () => {
       const { width, height } = canvas.getBoundingClientRect()
       if (!reduced) t += 0.01
-      ctx.fillStyle = '#f4f2ef'
+      const dark = darkRef.current
+      ctx.fillStyle = dark ? '#0e0d12' : '#f4f2ef'
       ctx.fillRect(0, 0, width, height)
       const speed = Math.min(1, Math.hypot(ptr.current.vx, ptr.current.vy) * 8)
       const split = reduced ? 0 : 6 + speed * 14
@@ -53,7 +64,7 @@ export function ChromaticMist({
       const ay = height * (0.4 + Math.cos(t * 0.8) * 0.1)
       const bx = width * (0.65 + Math.cos(t * 0.7) * 0.08)
       const by = height * (0.55 + Math.sin(t * 0.9) * 0.1)
-      ctx.globalCompositeOperation = 'multiply'
+      ctx.globalCompositeOperation = dark ? 'screen' : 'multiply'
       blob(ax - split, ay, width * 0.35, 'rgba(180,160,210,0.55)')
       blob(ax + split, ay, width * 0.35, 'rgba(140,190,210,0.5)')
       blob(bx + split * 0.5, by, width * 0.3, 'rgba(210,170,190,0.45)')
@@ -72,7 +83,9 @@ export function ChromaticMist({
 
   return (
     <div
-      className={cn('relative overflow-hidden rounded-2xl bg-[#f4f2ef]', className)}
+      ref={rootRef}
+      data-theme={resolved}
+      className={cn('relative overflow-hidden rounded-2xl', resolved === 'dark' ? 'bg-[#0e0d12]' : 'bg-[#f4f2ef]', className)}
       onPointerMove={(e) => {
         const r = e.currentTarget.getBoundingClientRect()
         const x = (e.clientX - r.left) / r.width

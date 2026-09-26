@@ -18,10 +18,7 @@ export function EdgeFlareShimmer({
     <div className={cn('relative rounded-2xl p-[1.5px]', className)}>
       <div
         aria-hidden
-        className="absolute inset-0 overflow-hidden rounded-2xl"
-        style={{
-          background: 'linear-gradient(135deg,#27272a,#18181b)',
-        }}
+        className="absolute inset-0 overflow-hidden rounded-2xl bg-[linear-gradient(135deg,#e4e4e7,#d4d4d8)] dark:bg-[linear-gradient(135deg,#27272a,#18181b)]"
       >
         {!reduced && (
           <div
@@ -40,7 +37,7 @@ export function EdgeFlareShimmer({
       <div className="relative z-10 rounded-[14.5px] bg-white p-6 dark:bg-zinc-950">
         {children ?? (
           <>
-            <p className="text-xs uppercase tracking-[0.18em] text-zinc-400">Edge Flare</p>
+            <p className="text-xs uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">Edge Flare</p>
             <p className="mt-1 text-base font-semibold">Soft border traveler</p>
             <p className="mt-1 text-sm text-zinc-500">A localized flare, not a full beam sweep.</p>
           </>

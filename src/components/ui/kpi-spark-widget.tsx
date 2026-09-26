@@ -70,7 +70,7 @@ export function KpiSparkWidget({
         className,
       )}
     >
-      <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-400">{label}</p>
+      <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">{label}</p>
       <div className="mt-1 flex items-end justify-between gap-3">
         <p className="text-3xl font-semibold tracking-tight tabular-nums">{display.toLocaleString()}</p>
         <span

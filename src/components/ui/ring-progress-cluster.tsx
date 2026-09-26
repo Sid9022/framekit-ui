@@ -54,7 +54,7 @@ export function RingProgressCluster({ className }: { className?: string }) {
                 {Math.round(vals[i])}%
               </text>
             </svg>
-            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-400">{m.label}</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400">{m.label}</p>
           </div>
         )
       })}

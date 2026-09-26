@@ -14,7 +14,7 @@ export function AuroraBackground({
     <div className={cn('relative overflow-hidden rounded-2xl', className)}>
       <div
         className={cn(
-          'absolute inset-0 bg-zinc-950',
+          'absolute inset-0 bg-[#fbfaf8] dark:bg-zinc-950',
           !reduced && 'animate-[framekit-shimmer_8s_linear_infinite]',
         )}
         style={{

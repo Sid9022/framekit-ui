@@ -38,7 +38,7 @@ export function PushPreviewCard({
             <div className="min-w-0 flex-1">
               <div className="flex items-center justify-between gap-2">
                 <p className="text-[11px] font-semibold uppercase tracking-wide text-zinc-500">{app}</p>
-                <span className="text-[10px] text-zinc-400">{time}</span>
+                <span className="text-[10px] text-zinc-500 dark:text-zinc-400">{time}</span>
               </div>
               <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">{title}</p>
               <p className="mt-0.5 text-xs leading-relaxed text-zinc-600 dark:text-zinc-400">{body}</p>
@@ -47,7 +47,7 @@ export function PushPreviewCard({
         </motion.div>
         <div className="mt-8 h-24 rounded-2xl bg-zinc-300/40 dark:bg-zinc-800/60" />
       </div>
-      <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-zinc-400">Push preview · CPaaS</p>
+      <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">Push preview · CPaaS</p>
     </div>
   )
 }

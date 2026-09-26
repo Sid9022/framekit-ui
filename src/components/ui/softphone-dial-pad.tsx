@@ -43,7 +43,7 @@ export function SoftphoneDialPad({ className }: { className?: string }) {
       )}
     >
       <div className="mb-3 min-h-[2.5rem] rounded-xl bg-zinc-50 px-3 py-2 text-center font-mono text-lg tracking-widest dark:bg-zinc-900">
-        {number || <span className="text-zinc-400">Enter number</span>}
+        {number || <span className="text-zinc-500 dark:text-zinc-400">Enter number</span>}
       </div>
       <div className="grid grid-cols-3 gap-2">
         {KEYS.map((k) => (

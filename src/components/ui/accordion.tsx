@@ -38,7 +38,7 @@ export function Accordion({
             >
               {item.title}
               <ChevronDown
-                className={cn('h-4 w-4 shrink-0 text-zinc-400 transition-transform', isOpen && 'rotate-180')}
+                className={cn('h-4 w-4 shrink-0 text-zinc-500 dark:text-zinc-400 transition-transform', isOpen && 'rotate-180')}
               />
             </button>
             <AnimatePresence initial={false}>

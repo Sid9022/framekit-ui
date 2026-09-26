@@ -91,7 +91,7 @@ export function InboxPulseList({
             <div className="min-w-0 flex-1">
               <div className="flex items-center justify-between gap-2">
                 <p className={cn('truncate text-sm', row.unread ? 'font-semibold' : 'font-medium')}>{row.name}</p>
-                <span className="shrink-0 text-[10px] text-zinc-400">{row.time}</span>
+                <span className="shrink-0 text-[10px] text-zinc-500 dark:text-zinc-400">{row.time}</span>
               </div>
               <div className="mt-0.5 flex items-center gap-2">
                 <p className="truncate text-xs text-zinc-500">{row.preview}</p>

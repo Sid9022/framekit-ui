@@ -33,7 +33,7 @@ export function OrbitRingCursor({ className }: { className?: string }) {
         setPos({ x: e.clientX - r.left, y: e.clientY - r.top })
       }}
     >
-      <p className="pointer-events-none absolute left-4 top-4 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-400">
+      <p className="pointer-events-none absolute left-4 top-4 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
         Move — ring orbits
       </p>
       <span

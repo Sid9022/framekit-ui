@@ -33,7 +33,7 @@ export function RibbonUnfurlToastProvider({ children }: { children: React.ReactN
                     transition: { type: 'spring', stiffness: 260, damping: 22 },
                   }}
                   exit={{ opacity: 0, x: 40, transition: { duration: 0.2 } }}
-                  className="pointer-events-auto relative overflow-hidden rounded-xl border border-signal-300/30 bg-gradient-to-r from-signal-800 via-zinc-900 to-zinc-950 p-4 text-signal-50 shadow-xl"
+                  className="pointer-events-auto relative overflow-hidden rounded-xl border border-signal-200 bg-gradient-to-r from-signal-100 via-white to-white p-4 text-signal-900 shadow-[0_1px_2px_rgba(0,0,0,0.04),0_18px_40px_-20px_rgba(53,43,66,0.35)] dark:border-signal-300/30 dark:from-signal-800 dark:via-zinc-900 dark:to-zinc-950 dark:text-signal-50 dark:shadow-xl"
                 >
                   <div
                     aria-hidden
@@ -48,12 +48,12 @@ export function RibbonUnfurlToastProvider({ children }: { children: React.ReactN
                     <div>
                       <p className="text-sm font-semibold">{item.title}</p>
                       {item.description && (
-                        <p className="mt-0.5 text-xs text-signal-200/80">{item.description}</p>
+                        <p className="mt-0.5 text-xs text-signal-700/80 dark:text-signal-200/80">{item.description}</p>
                       )}
                     </div>
                     <button
                       type="button"
-                      className="rounded-md p-1 text-signal-200/60 hover:text-white"
+                      className="rounded-md p-1 text-signal-600/60 hover:text-signal-900 dark:text-signal-200/60 dark:hover:text-white"
                       onClick={() => setItems((prev) => prev.filter((x) => x.id !== item.id))}
                     >
                       <X className="h-3.5 w-3.5" />

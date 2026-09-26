@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { RotateCcw } from 'lucide-react'
 import { cn } from '@/lib/cn'
 import { usePrefersReducedMotion } from '@/lib/use-reduced-motion'
+import { useResolvedTheme } from '@/lib/use-resolved-theme'
 
 export type ParticleShape = 'sphere' | 'shell' | 'ring' | 'ribbon' | 'tetra' | 'helix'
 export type ParticleMorphState = 'loading' | 'done' | 'error'
@@ -132,12 +133,23 @@ function hexToRgb(hex: string): [number, number, number] {
   return [parseInt(m[1], 16), parseInt(m[2], 16), parseInt(m[3], 16)]
 }
 
-function makeSprite(rgb: [number, number, number]) {
+function makeSprite(rgb: [number, number, number], light = false) {
   const c = document.createElement('canvas')
   c.width = c.height = 32
   const g = c.getContext('2d')!
   const grd = g.createRadialGradient(16, 16, 0, 16, 16, 16)
   const [r, gg, b] = rgb
+  if (light) {
+    // on light surfaces additive glow washes out: use a deeper, ink-like mote instead
+    const d = (v: number, k: number) => Math.round(v * k)
+    grd.addColorStop(0, `rgba(${d(r, 0.42)},${d(gg, 0.42)},${d(b, 0.5)},1)`)
+    grd.addColorStop(0.3, `rgba(${d(r, 0.7)},${d(gg, 0.7)},${d(b, 0.78)},0.8)`)
+    grd.addColorStop(0.6, `rgba(${r},${gg},${b},0.22)`)
+    grd.addColorStop(1, `rgba(${r},${gg},${b},0)`)
+    g.fillStyle = grd
+    g.fillRect(0, 0, 32, 32)
+    return c
+  }
   grd.addColorStop(0, 'rgba(255,255,255,1)')
   grd.addColorStop(0.18, `rgba(${Math.min(255, r + 70)},${Math.min(255, gg + 70)},${Math.min(255, b + 70)},0.95)`)
   grd.addColorStop(0.42, `rgba(${r},${gg},${b},0.45)`)
@@ -181,8 +193,10 @@ export function ParticleMorphLoader({
   )
 
   // live values the loop reads without restarting
-  const live = React.useRef({ state, color, speed, reduced, size })
-  live.current = { state, color, speed, reduced, size }
+  const theme = useResolvedTheme(wrapRef)
+  const light = theme === 'light'
+  const live = React.useRef({ state, color, speed, reduced, size, light })
+  live.current = { state, color, speed, reduced, size, light }
   const stepRef = React.useRef(setStep)
   stepRef.current = setStep
 
@@ -229,10 +243,10 @@ export function ParticleMorphLoader({
       // color lerp toward state tint
       const target = hexToRgb(L.state === 'done' ? DONE_TINT : L.state === 'error' ? ERROR_TINT : L.color)
       rgb = rgb.map((c, i) => c + (target[i] - c) * Math.min(1, dt * 5)) as [number, number, number]
-      const key = rgb.map((c) => Math.round(c / 4)).join(',')
+      const key = rgb.map((c) => Math.round(c / 4)).join(',') + (L.light ? 'l' : 'd')
       if (key !== spriteKey) {
         spriteKey = key
-        sprite = makeSprite(rgb.map(Math.round) as [number, number, number])
+        sprite = makeSprite(rgb.map(Math.round) as [number, number, number], L.light)
       }
       condense += ((L.state === 'done' ? 1 : 0) - condense) * Math.min(1, dt * 3)
       scatter += ((L.state === 'error' ? 1 : 0) - scatter) * Math.min(1, dt * 4)
@@ -282,7 +296,7 @@ export function ParticleMorphLoader({
       const base = Math.max(1.4, W / 90)
 
       ctx.clearRect(0, 0, W, W)
-      ctx.globalCompositeOperation = 'lighter'
+      ctx.globalCompositeOperation = L.light ? 'source-over' : 'lighter'
       for (let i = 0; i < n; i++) {
         const k = i * 3
         let x = cur[k]
@@ -305,7 +319,7 @@ export function ParticleMorphLoader({
         const p = cam / (cam - z2)
         const depth = Math.min(1, Math.max(0, (z2 + 1.1) / 2.2))
         const s = base * (0.5 + depth * 1.05) * p
-        ctx.globalAlpha = 0.12 + depth * 0.78
+        ctx.globalAlpha = L.light ? 0.22 + depth * 0.75 : 0.12 + depth * 0.78
         ctx.drawImage(sprite, cx + x1 * R * p - s, cy + y2 * R * p - s, s * 2, s * 2)
       }
       ctx.globalAlpha = 1
@@ -358,7 +372,17 @@ export function ParticleMorphLoader({
             <motion.span
               key={text}
               className="whitespace-nowrap font-medium tracking-tight"
-              style={{ fontSize, color: state === 'loading' ? 'rgb(228 228 231 / 0.78)' : tint }}
+              style={{
+                fontSize,
+                color:
+                  state === 'loading'
+                    ? light
+                      ? 'rgb(63 63 70 / 0.85)'
+                      : 'rgb(228 228 231 / 0.78)'
+                    : light
+                      ? `color-mix(in oklab, ${tint} 62%, black)`
+                      : tint,
+              }}
               initial={reduced ? { opacity: 0 } : { opacity: 0, y: 12, filter: 'blur(6px)' }}
               animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
               exit={reduced ? { opacity: 0 } : { opacity: 0, y: -12, filter: 'blur(6px)' }}
@@ -376,7 +400,7 @@ export function ParticleMorphLoader({
           <motion.button
             type="button"
             onClick={onRetry}
-            className="inline-flex h-8 items-center gap-1.5 rounded-full bg-rose-500/12 px-3 text-xs font-semibold text-rose-200 ring-1 ring-rose-400/30 outline-none transition-colors hover:bg-rose-500/20 focus-visible:ring-2 focus-visible:ring-rose-300"
+            className="inline-flex h-8 items-center gap-1.5 rounded-full bg-rose-500/12 px-3 text-xs font-semibold text-rose-700 dark:text-rose-200 ring-1 ring-rose-400/30 outline-none transition-colors hover:bg-rose-500/20 focus-visible:ring-2 focus-visible:ring-rose-300"
             initial={{ opacity: 0, y: -6 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}

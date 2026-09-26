@@ -8,6 +8,9 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { SITE } from '@/config/site'
 import { cn } from '@/lib/cn'
+import { PreviewThemeToggle, usePreviewTheme } from '@/components/docs/preview-theme-toggle'
+
+const DARK_VARIANT_CSS = `@import "tailwindcss";\n\n/* dark: follows the nearest .dark / .light ancestor */\n@custom-variant dark (&:where(.dark, .dark *):not(:where(.light, .light *):not(:where(.light .dark, .light .dark *))));`
 
 function Guide({ slug }: { slug: string }) {
   if (slug === 'introduction') {
@@ -25,7 +28,7 @@ function Guide({ slug }: { slug: string }) {
         <ul className="list-disc space-y-1 pl-5">
           <li>Core primitives for everyday UI</li>
           <li>Animated signature components for landing pages and delight</li>
-          <li>Dark mode via Tailwind <code className="rounded bg-zinc-100 px-1 dark:bg-zinc-800">dark:</code> variants</li>
+          <li>Works on light and dark pages: <code className="rounded bg-zinc-100 px-1 dark:bg-zinc-800">dark:</code> variants scoped to the nearest <code className="rounded bg-zinc-100 px-1 dark:bg-zinc-800">.dark</code> / <code className="rounded bg-zinc-100 px-1 dark:bg-zinc-800">.light</code> wrapper</li>
           <li>Respect for <code className="rounded bg-zinc-100 px-1 dark:bg-zinc-800">prefers-reduced-motion</code></li>
         </ul>
         <Link to="/docs/installation"><Button variant="framekit">Install guide</Button></Link>
@@ -45,6 +48,17 @@ function Guide({ slug }: { slug: string }) {
             <CodeBlock language="tsx" code={sources.cn} />
           </li>
           <li>
+            <p className="font-medium text-zinc-900 dark:text-zinc-100">Add the shared hooks (only if a component imports them)</p>
+            <p className="mb-2">Animated components import <code>@/lib/use-reduced-motion</code>; canvas scenes that switch palettes also import <code>@/lib/use-resolved-theme</code>.</p>
+            <CodeBlock language="tsx" code={sources['use-reduced-motion']} />
+            <div className="mt-3"><CodeBlock language="tsx" code={sources['use-resolved-theme']} /></div>
+          </li>
+          <li>
+            <p className="font-medium text-zinc-900 dark:text-zinc-100">Enable class-based dark mode</p>
+            <p className="mb-2">Add this once to your global CSS (Tailwind v4). See <Link className="text-signal-700 underline-offset-2 hover:underline dark:text-signal-300" to="/docs/theming">Theming</Link>.</p>
+            <CodeBlock language="css" code={DARK_VARIANT_CSS} />
+          </li>
+          <li>
             <p className="font-medium text-zinc-900 dark:text-zinc-100">Copy a component</p>
             <p>Open any component page, switch to the Code tab, and paste into <code>components/ui/</code>.</p>
           </li>
@@ -57,12 +71,30 @@ function Guide({ slug }: { slug: string }) {
     )
   }
   if (slug === 'theming') {
+    const c = 'rounded bg-zinc-100 px-1 dark:bg-zinc-800'
     return (
-      <div className="max-w-2xl space-y-4 text-sm text-zinc-600 dark:text-zinc-400">
+      <div className="max-w-2xl space-y-4 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
         <p>
-          {SITE.name} uses Tailwind CSS v4 theme tokens. Signal lilac tokens live under{' '}
-          <code className="rounded bg-zinc-100 px-1 dark:bg-zinc-800">signal-*</code>. Toggle dark mode by adding{' '}
-          <code className="rounded bg-zinc-100 px-1 dark:bg-zinc-800">class="dark"</code> on <code>&lt;html&gt;</code>.
+          Every component is drop-in on both light and dark pages. Colors come from Tailwind{' '}
+          <code className={c}>dark:</code> variants, and the variant is <strong className="text-zinc-900 dark:text-zinc-100">class-based</strong>:
+          a <code className={c}>dark</code> class on any ancestor (usually <code>&lt;html&gt;</code>) switches components inside it to
+          their dark look, and no class means light. To force light inside a dark page, wrap a section in{' '}
+          <code className={c}>class="light"</code>; a nested <code className={c}>dark</code> flips it back.
+        </p>
+        <CodeBlock language="css" code={DARK_VARIANT_CSS} />
+        <CodeBlock
+          language="tsx"
+          code={`<html className="dark">          {/* whole app dark */}\n  <section className="light">   {/* this area light again */}\n    <FaceScanPayButton />\n  </section>\n</html>`}
+        />
+        <p>
+          Canvas-drawn scenes (Prism Tidal Field, Silk Shear, Ember Drift…) read the same rule through{' '}
+          <code className={c}>useResolvedTheme</code> and accept <code className={c}>theme="auto" | "light" | "dark"</code>.
+          Components marked <em>Brings its own background</em> are full scenes (404 pages, reels) that intentionally paint their
+          own backdrop; override it with <code className={c}>className</code> (or <code className={c}>viewportClassName</code> on the reels).
+          A few solid controls, like the Face Scan Pay or Dispatch Truck pills, are dark-branded by design and read well on white.
+        </p>
+        <p>
+          Brand tokens: signal lilac lives under <code className={c}>signal-*</code>.
         </p>
         <CodeBlock
           language="css"
@@ -78,6 +110,7 @@ export function DocPage() {
   const { slug = 'introduction' } = useParams()
   const doc = getDoc(slug)
   const [tab, setTab] = React.useState<'preview' | 'code'>('preview')
+  const [previewTheme, setPreviewTheme] = usePreviewTheme()
 
   React.useEffect(() => setTab('preview'), [slug])
 
@@ -103,6 +136,14 @@ export function DocPage() {
         <Badge variant="secondary">{doc.category}</Badge>
         {doc.isNew && <Badge className="bg-signal-200 text-signal-800 dark:bg-signal-800 dark:text-signal-100">NEW</Badge>}
         {doc.unique && !doc.isNew && <Badge variant="secondary">Unique</Badge>}
+        {doc.ownBackground && (
+          <Badge
+            variant="outline"
+            title="This component paints its own backdrop. Override it with className / props, or pick a light variant where available."
+          >
+            Brings its own background
+          </Badge>
+        )}
       </div>
       <h1 className="text-3xl font-semibold tracking-tight">{doc.title}</h1>
       <p className="mt-2 text-zinc-600 dark:text-zinc-400">{doc.description}</p>
@@ -128,12 +169,22 @@ export function DocPage() {
                   {t}
                 </button>
               ))}
+              {tab === 'preview' && (
+                <PreviewThemeToggle value={previewTheme} onChange={setPreviewTheme} className="ml-auto" />
+              )}
             </div>
             {tab === 'preview' ? (
-              <div className="framekit-stage flex min-h-[340px] flex-col items-center justify-center gap-4 p-10">
+              <div
+                data-preview-stage
+                data-theme={previewTheme}
+                className={cn(
+                  'framekit-stage flex min-h-[340px] flex-col items-center justify-center gap-4 p-10 transition-colors duration-300',
+                  previewTheme,
+                )}
+              >
                 <div className="flex w-full flex-1 items-center justify-center">{demo}</div>
                 {doc.gesture && (
-                  <p className="text-center font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-400">
+                  <p className="text-center font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
                     {doc.gesture}
                   </p>
                 )}
@@ -142,6 +193,16 @@ export function DocPage() {
               <CodeBlock code={code || '// Source unavailable'} />
             )}
           </div>
+
+          {doc.ownBackground && (
+            <p className="mt-3 flex items-start gap-2 rounded-xl border border-dashed border-zinc-300 px-3 py-2 text-xs leading-relaxed text-zinc-600 dark:border-zinc-700 dark:text-zinc-400">
+              <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-signal-500" aria-hidden />
+              <span>
+                <strong className="font-medium text-zinc-900 dark:text-zinc-100">Brings its own background.</strong>{' '}
+                {doc.backgroundNote ?? 'This is a full-scene component that paints its own backdrop, so it looks the same on light and dark pages. Override the backdrop with className.'}
+              </span>
+            </p>
+          )}
 
           {doc.dependencies && doc.dependencies.length > 0 && (
             <section className="mt-10">

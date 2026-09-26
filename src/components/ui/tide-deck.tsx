@@ -57,13 +57,13 @@ export function TideDeck({
               aria-label={isFront ? card.title : undefined}
             >
               <div>
-                <p className="text-xs uppercase tracking-[0.18em] text-zinc-400">Deck</p>
+                <p className="text-xs uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">Deck</p>
                 <h3 className="mt-2 text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">
                   {card.title}
                 </h3>
                 <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">{card.body}</p>
               </div>
-              <p className="text-xs text-zinc-400">
+              <p className="text-xs text-zinc-500 dark:text-zinc-400">
                 {index + 1} / {cards.length}
               </p>
             </motion.div>

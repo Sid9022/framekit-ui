@@ -40,7 +40,7 @@ export function TemplateMessageCard({
     >
       <div className="flex items-center justify-between border-b border-zinc-100 px-4 py-2.5 dark:border-zinc-800">
         <div>
-          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-400">Template</p>
+          <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">Template</p>
           <p className="text-sm font-semibold">{name}</p>
         </div>
         <button
@@ -75,7 +75,7 @@ export function TemplateMessageCard({
           <div className="space-y-2 p-3">
             <p className="text-sm font-semibold">{header}</p>
             <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-300">{rendered}</p>
-            <p className="text-[11px] text-zinc-400">{footer}</p>
+            <p className="text-[11px] text-zinc-500 dark:text-zinc-400">{footer}</p>
             <div className="flex gap-2 pt-1">
               <button
                 type="button"
@@ -103,7 +103,7 @@ export function TemplateMessageCard({
             </div>
           </div>
         </div>
-        <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-zinc-400">
+        <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400">
           Vars · {vars.map((v, i) => `{{${i + 1}}}=${v}`).join(' · ')}
         </p>
       </div>

@@ -142,7 +142,7 @@ export function DispatchTruckButton({
         className={cn(
           'group relative h-14 overflow-hidden rounded-full text-[15px] font-semibold tracking-tight text-white',
           'shadow-[inset_0_1px_0_rgb(255_255_255/0.14),0_1px_2px_rgb(0_0_0/0.4),0_18px_40px_-18px_rgb(0_0_0/0.8)]',
-          'outline-none focus-visible:ring-2 focus-visible:ring-violet-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0c0b10]',
+          'outline-none focus-visible:ring-2 focus-visible:ring-violet-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0c0b10]',
           'disabled:cursor-not-allowed disabled:opacity-50',
           busy && 'cursor-progress',
         )}

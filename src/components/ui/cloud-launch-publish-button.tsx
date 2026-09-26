@@ -2,9 +2,11 @@ import * as React from 'react'
 import { AnimatePresence, motion, useAnimate } from 'motion/react'
 import { cn } from '@/lib/cn'
 import { usePrefersReducedMotion } from '@/lib/use-reduced-motion'
+import { useResolvedTheme } from '@/lib/use-resolved-theme'
 
 type Phase = 'idle' | 'launch' | 'publishing' | 'landing' | 'done' | 'error'
-export type CloudLaunchVariant = 'dark' | 'light'
+/** `auto` (default) follows the nearest `.dark` / `.light` ancestor. */
+export type CloudLaunchVariant = 'auto' | 'dark' | 'light'
 
 export type CloudLaunchPublishButtonProps = {
   label?: string
@@ -21,7 +23,7 @@ export type CloudLaunchPublishButtonProps = {
 }
 
 const THEMES: Record<
-  CloudLaunchVariant,
+  'dark' | 'light',
   { base: string; ink: string; sub: string; track: string; line: string; glow: string; done: string; puff: string; focus: string }
 > = {
   dark: {
@@ -33,7 +35,7 @@ const THEMES: Record<
     glow: '#a78bfa',
     done: '#6ee7b7',
     puff: '#cbd5e1',
-    focus: 'focus-visible:ring-violet-300 focus-visible:ring-offset-[#0c0b10]',
+    focus: 'focus-visible:ring-violet-300 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0c0b10]',
   },
   light: {
     base: 'bg-[linear-gradient(180deg,#ffffff,#f3f3f7)] text-slate-800 shadow-[inset_0_1px_0_#fff,0_0_0_1px_rgb(15_23_42/0.08),0_1px_2px_rgb(15_23_42/0.1),0_22px_44px_-24px_rgb(15_23_42/0.45)]',
@@ -88,7 +90,7 @@ export function CloudLaunchPublishButton({
   busyLabel = 'Publishing',
   doneLabel = 'Live now',
   errorLabel = 'Retry publish',
-  variant = 'dark',
+  variant = 'auto',
   onPublish,
   resetAfter = 2800,
   disabled,
@@ -100,7 +102,9 @@ export function CloudLaunchPublishButton({
   const [launchId, setLaunchId] = React.useState(0)
   const [scope, animateEl] = useAnimate<HTMLButtonElement>()
   const run = React.useRef(0)
-  const t = THEMES[variant]
+  const rootRef = React.useRef<HTMLDivElement>(null)
+  const resolved = useResolvedTheme(rootRef, variant)
+  const t = THEMES[resolved]
   React.useEffect(() => () => void (run.current += 1), [])
 
   const busy = phase === 'launch' || phase === 'publishing' || phase === 'landing'
@@ -153,7 +157,7 @@ export function CloudLaunchPublishButton({
           : ''
 
   return (
-    <div className={cn('relative inline-flex', className)}>
+    <div ref={rootRef} className={cn('relative inline-flex', className)}>
       <motion.button
         ref={scope}
         type="button"

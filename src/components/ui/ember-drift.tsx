@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { cn } from '@/lib/cn'
 import { usePrefersReducedMotion } from '@/lib/use-reduced-motion'
+import { useResolvedTheme, type ThemeMode } from '@/lib/use-resolved-theme'
 
 type Ember = { x: number; y: number; r: number; vy: number; vx: number; life: number; hue: number }
 
@@ -8,10 +9,19 @@ type Ember = { x: number; y: number; r: number; vy: number; vx: number; life: nu
 export function EmberDrift({
   className,
   children,
+  theme = 'auto',
 }: {
   className?: string
   children?: React.ReactNode
+  /** `auto` follows the nearest `.dark` / `.light` ancestor. */
+  theme?: ThemeMode
 }) {
+  const rootRef = React.useRef<HTMLDivElement>(null)
+  const resolved = useResolvedTheme(rootRef, theme)
+  const darkRef = React.useRef(resolved === 'dark')
+  React.useLayoutEffect(() => {
+    darkRef.current = resolved === 'dark'
+  }, [resolved])
   const ref = React.useRef<HTMLCanvasElement>(null)
   const reduced = usePrefersReducedMotion()
 
@@ -47,7 +57,7 @@ export function EmberDrift({
 
     const draw = () => {
       const { width, height } = canvas.getBoundingClientRect()
-      ctx.fillStyle = 'rgba(12,8,6,0.28)'
+      ctx.fillStyle = darkRef.current ? 'rgba(12,8,6,0.28)' : 'rgba(253,246,238,0.3)'
       ctx.fillRect(0, 0, width, height)
       if (!reduced && embers.length < 60) spawn(width, height)
       for (let i = embers.length - 1; i >= 0; i--) {
@@ -62,9 +72,9 @@ export function EmberDrift({
           continue
         }
         const g = ctx.createRadialGradient(e.x, e.y, 0, e.x, e.y, e.r * 6)
-        g.addColorStop(0, `hsla(${e.hue},90%,70%,${e.life})`)
-        g.addColorStop(0.4, `hsla(${e.hue},80%,50%,${e.life * 0.45})`)
-        g.addColorStop(1, 'transparent')
+        g.addColorStop(0, darkRef.current ? `hsla(${e.hue},90%,70%,${e.life})` : `hsla(${e.hue},95%,55%,${e.life * 0.85})`)
+        g.addColorStop(0.4, darkRef.current ? `hsla(${e.hue},80%,50%,${e.life * 0.45})` : `hsla(${e.hue},90%,60%,${e.life * 0.3})`)
+        g.addColorStop(1, `hsla(${e.hue},90%,60%,0)`)
         ctx.fillStyle = g
         ctx.beginPath()
         ctx.arc(e.x, e.y, e.r * 6, 0, Math.PI * 2)
@@ -83,7 +93,7 @@ export function EmberDrift({
         }
       }
     }
-    ctx.fillStyle = '#0c0806'
+    ctx.fillStyle = darkRef.current ? '#0c0806' : '#fdf6ee'
     ctx.fillRect(0, 0, canvas.width, canvas.height)
     draw()
     return () => {
@@ -93,7 +103,11 @@ export function EmberDrift({
   }, [reduced])
 
   return (
-    <div className={cn('relative overflow-hidden rounded-2xl bg-[#0c0806]', className)}>
+    <div
+      ref={rootRef}
+      data-theme={resolved}
+      className={cn('relative overflow-hidden rounded-2xl', resolved === 'dark' ? 'bg-[#0c0806]' : 'bg-[#fdf6ee]', className)}
+    >
       <canvas ref={ref} className="absolute inset-0 h-full w-full" aria-hidden />
       <div className="relative z-10">{children}</div>
     </div>

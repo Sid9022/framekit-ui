@@ -38,7 +38,7 @@ const VARIANTS: Record<
     strip: '#efeaff',
     badge: 'bg-white/18 text-white',
     focus: 'focus-visible:ring-violet-300',
-    offset: 'focus-visible:ring-offset-[#0c0b10]',
+    offset: 'focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0c0b10]',
   },
   light: {
     base: 'bg-[linear-gradient(180deg,#ffffff,#eeedf2)] text-zinc-800 shadow-[inset_0_1px_0_#fff,0_0_0_1px_rgb(24_24_27/0.08),0_1px_2px_rgb(0_0_0/0.12),0_18px_36px_-20px_rgb(24_24_27/0.55)]',
@@ -48,7 +48,7 @@ const VARIANTS: Record<
     strip: '#d4d4d8',
     badge: 'bg-zinc-900/8 text-zinc-600',
     focus: 'focus-visible:ring-zinc-400',
-    offset: 'focus-visible:ring-offset-[#0c0b10]',
+    offset: 'focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0c0b10]',
   },
   danger: {
     base: 'bg-[linear-gradient(180deg,#f0445f,#c81e45)] text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.28),0_1px_2px_rgb(0_0_0/0.35),0_18px_36px_-18px_rgb(200_30_69/0.95)]',
@@ -58,7 +58,7 @@ const VARIANTS: Record<
     strip: '#ffe1e6',
     badge: 'bg-white/18 text-white',
     focus: 'focus-visible:ring-rose-300',
-    offset: 'focus-visible:ring-offset-[#0c0b10]',
+    offset: 'focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0c0b10]',
   },
 }
 

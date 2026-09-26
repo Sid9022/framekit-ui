@@ -42,7 +42,7 @@ export function CampaignComposerStrip({ className }: { className?: string }) {
       <div className="flex items-center justify-between border-b border-zinc-100 px-4 py-3 dark:border-zinc-800">
         <div>
           <p className="text-sm font-semibold">Broadcast composer</p>
-          <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-zinc-400">Campaign strip</p>
+          <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400">Campaign strip</p>
         </div>
         <Radio className="h-4 w-4 text-signal-500" />
       </div>
@@ -70,7 +70,7 @@ export function CampaignComposerStrip({ className }: { className?: string }) {
           ))}
         </div>
         <span className="inline-flex items-center gap-1.5 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1.5 text-xs dark:border-zinc-700 dark:bg-zinc-900">
-          <Calendar className="h-3.5 w-3.5 text-zinc-400" />
+          <Calendar className="h-3.5 w-3.5 text-zinc-500 dark:text-zinc-400" />
           Schedule · Today 4:00 PM
         </span>
       </div>
@@ -92,7 +92,7 @@ export function CampaignComposerStrip({ className }: { className?: string }) {
       </div>
 
       <div className="flex items-center justify-between px-4 pb-4">
-        <p className="font-mono text-[10px] text-zinc-400">
+        <p className="font-mono text-[10px] text-zinc-500 dark:text-zinc-400">
           {sending ? `Sending… ${progress}%` : `Ready · ${channel} channel`}
         </p>
         <button

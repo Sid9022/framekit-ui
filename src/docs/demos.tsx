@@ -252,10 +252,10 @@ function FailSwitch({ on, onChange, label = 'Simulate failure', light = false }:
       onClick={() => onChange(!on)}
       className={
         'inline-flex items-center gap-2 rounded-full px-2.5 py-1 text-[11px] font-medium outline-none transition-colors focus-visible:ring-2 focus-visible:ring-violet-300 ' +
-        (light ? 'text-[#5b4636] hover:bg-black/5' : 'text-zinc-400 hover:bg-white/5')
+        (light ? 'text-[#5b4636] hover:bg-black/5' : 'text-zinc-500 hover:bg-black/5 dark:text-zinc-400 dark:hover:bg-white/5')
       }
     >
-      <span className={'relative inline-block h-4 w-7 shrink-0 rounded-full transition-colors ' + (on ? 'bg-rose-500' : light ? 'bg-black/15' : 'bg-white/15')}>
+      <span className={'relative inline-block h-4 w-7 shrink-0 rounded-full transition-colors ' + (on ? 'bg-rose-500' : light ? 'bg-black/15' : 'bg-black/15 dark:bg-white/15')}>
         <span className={'absolute left-0 top-0.5 h-3 w-3 rounded-full bg-white shadow transition-transform ' + (on ? 'translate-x-3.5' : 'translate-x-0.5')} />
       </span>
       {label}
@@ -286,9 +286,9 @@ function ParticleMorphLoaderDemo() {
   }
   const chip = (active: boolean) =>
     'rounded-full px-2.5 py-1 text-[11px] font-medium capitalize outline-none transition-colors focus-visible:ring-2 focus-visible:ring-violet-300 ' +
-    (active ? 'bg-white/12 text-white ring-1 ring-white/15' : 'text-zinc-400 hover:bg-white/5 hover:text-zinc-200')
+    (active ? 'bg-zinc-900/[0.06] text-zinc-900 ring-1 ring-black/10 dark:bg-white/12 dark:text-white dark:ring-white/15' : 'text-zinc-500 hover:bg-black/5 hover:text-zinc-800 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-zinc-200')
   return (
-    <div className="flex w-full max-w-2xl flex-col items-center gap-6 rounded-2xl bg-[radial-gradient(90%_70%_at_50%_30%,#15131d,#050507)] px-6 pb-8 pt-10 ring-1 ring-white/5">
+    <div className="flex w-full max-w-2xl flex-col items-center gap-6 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#ffffff,#f0eff4)] shadow-[0_1px_2px_rgb(0_0_0/0.04),0_16px_40px_-24px_rgb(24_24_27/0.25)] dark:shadow-none dark:bg-[radial-gradient(90%_70%_at_50%_30%,#15131d,#050507)] px-6 pb-8 pt-10 ring-1 ring-black/[0.06] dark:ring-white/5">
       <ParticleMorphLoader
         size={220}
         color={tint}
@@ -312,16 +312,16 @@ function ParticleMorphLoaderDemo() {
               aria-label={t.name}
               aria-pressed={tint === t.hex}
               onClick={() => setTint(t.hex)}
-              className={'h-5 w-5 rounded-full outline-none ring-offset-2 ring-offset-[#0b0a10] transition-transform hover:scale-110 focus-visible:ring-2 focus-visible:ring-white ' + (tint === t.hex ? 'ring-2 ring-white/70' : '')}
+              className={'h-5 w-5 rounded-full outline-none ring-offset-2 ring-offset-white transition-transform hover:scale-110 focus-visible:ring-2 focus-visible:ring-zinc-900 dark:ring-offset-[#0b0a10] dark:focus-visible:ring-white ' + (tint === t.hex ? 'ring-2 ring-zinc-900/60 dark:ring-white/70' : '')}
               style={{ background: t.hex }}
             />
           ))}
         </div>
-        <span className="h-4 w-px bg-white/10" />
+        <span className="h-4 w-px bg-black/10 dark:bg-white/10" />
         <button type="button" className={chip(state === 'done')} onClick={() => finish('done')}>Resolve</button>
         <button type="button" className={chip(state === 'error')} onClick={() => finish('error')}>Fail</button>
       </div>
-      <div className="flex items-end justify-center gap-8 border-t border-white/5 pt-6">
+      <div className="flex items-end justify-center gap-8 border-t border-black/5 pt-6 dark:border-white/5">
         <ParticleMorphLoader size={72} points={160} color="#7dd3fc" showLabel={false} speed={1.3} shapes={['shell', 'ring', 'helix']} />
         <ParticleMorphLoader size={96} points={220} color="#fdba74" showLabel={false} shapes={['tetra', 'sphere', 'ribbon']} />
         <ParticleMorphLoader size={120} points={260} color="#f9a8d4" labels={['Indexing…', 'Linking…', 'Ranking…']} speed={0.8} shapes={['ribbon', 'shell']} />
@@ -333,7 +333,7 @@ function ParticleMorphLoaderDemo() {
 function FaceScanPayDemo() {
   const [fail, setFail] = React.useState(false)
   return (
-    <div className="flex w-full max-w-lg flex-col items-center justify-center gap-5 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#141a2e,#07090f)] px-6 py-12 ring-1 ring-white/5">
+    <div className="flex w-full max-w-lg flex-col items-center justify-center gap-5 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#ffffff,#f0eff4)] shadow-[0_1px_2px_rgb(0_0_0/0.04),0_16px_40px_-24px_rgb(24_24_27/0.25)] dark:shadow-none dark:bg-[radial-gradient(120%_100%_at_50%_0%,#141a2e,#07090f)] px-6 py-12 ring-1 ring-black/[0.06] dark:ring-white/5">
       <FaceScanPayButton
         onPay={async () => {
           await wait(1900)
@@ -363,7 +363,7 @@ function OrbitDotExportDemo() {
       }, 120)
     })
   return (
-    <div className="flex w-full max-w-lg flex-col items-center justify-center gap-6 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#1b1924,#0c0b10)] px-6 py-12 ring-1 ring-white/5">
+    <div className="flex w-full max-w-lg flex-col items-center justify-center gap-6 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#ffffff,#f0eff4)] shadow-[0_1px_2px_rgb(0_0_0/0.04),0_16px_40px_-24px_rgb(24_24_27/0.25)] dark:shadow-none dark:bg-[radial-gradient(120%_100%_at_50%_0%,#1b1924,#0c0b10)] px-6 py-12 ring-1 ring-black/[0.06] dark:ring-white/5">
       <OrbitDotExportButton onExport={fail ? failing : undefined} />
       <div className="flex flex-wrap items-start justify-center gap-4">
         <OrbitDotExportButton dot="diamond" accent="#7dd3fc" label="Export CSV" doneLabel="Open CSV" />
@@ -377,7 +377,7 @@ function OrbitDotExportDemo() {
 function ShredderDeleteDemo() {
   const [fail, setFail] = React.useState(false)
   return (
-    <div className="flex w-full max-w-xl flex-col items-center justify-center gap-6 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#1b1924,#0c0b10)] px-6 pb-10 pt-12 ring-1 ring-white/5">
+    <div className="flex w-full max-w-xl flex-col items-center justify-center gap-6 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#ffffff,#f0eff4)] shadow-[0_1px_2px_rgb(0_0_0/0.04),0_16px_40px_-24px_rgb(24_24_27/0.25)] dark:shadow-none dark:bg-[radial-gradient(120%_100%_at_50%_0%,#1b1924,#0c0b10)] px-6 pb-10 pt-12 ring-1 ring-black/[0.06] dark:ring-white/5">
       <div className="flex flex-wrap items-center justify-center gap-5">
         <ShredderDeleteButton variant="violet" onDelete={fail ? async () => { await wait(300); throw new Error('jam') } : undefined} />
         <ShredderDeleteButton variant="light" label="Discard draft" />
@@ -404,13 +404,13 @@ function CloudLaunchDemo() {
     })
   return (
     <div className="grid w-full max-w-2xl gap-3 sm:grid-cols-2">
-      <div className="flex flex-col items-center justify-center gap-5 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#1a1d29,#0b0c12)] px-6 py-14 ring-1 ring-white/5">
+      <div className="flex flex-col items-center justify-center gap-5 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#ffffff,#f0eff4)] shadow-[0_1px_2px_rgb(0_0_0/0.04),0_16px_40px_-24px_rgb(24_24_27/0.25)] dark:shadow-none dark:bg-[radial-gradient(120%_100%_at_50%_0%,#1a1d29,#0b0c12)] px-6 py-14 ring-1 ring-black/[0.06] dark:ring-white/5">
         <CloudLaunchPublishButton onPublish={fail ? failing : undefined} />
         <FailSwitch on={fail} onChange={setFail} />
       </div>
-      <div className="flex flex-col items-center justify-center gap-5 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#ffffff,#e9e8ef)] px-6 py-14 ring-1 ring-black/5">
-        <CloudLaunchPublishButton variant="light" label="Publish site" doneLabel="Deployed" />
-        <span className="text-[11px] font-medium text-slate-500">framekit.dev · production</span>
+      <div className="dark flex flex-col items-center justify-center gap-5 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#1a1d29,#0b0c12)] px-6 py-14 ring-1 ring-white/5">
+        <CloudLaunchPublishButton variant="dark" label="Publish site" doneLabel="Deployed" />
+        <span className="text-[11px] font-medium text-slate-400">variant=&quot;dark&quot; · always dark</span>
       </div>
     </div>
   )
@@ -571,7 +571,7 @@ export const demos: Record<string, React.ReactNode> = {
   ),
   'aurora-background': (
     <AuroraBackground className="flex h-40 w-full max-w-lg items-center justify-center">
-      <p className="text-lg font-semibold text-white">Aurora skies</p>
+      <p className="text-lg font-semibold text-zinc-900 dark:text-white">Aurora skies</p>
     </AuroraBackground>
   ),
   'infinite-marquee': (
@@ -656,17 +656,17 @@ export const demos: Record<string, React.ReactNode> = {
 
   'prism-tidal-field': (
     <PrismTidalField className="flex h-56 w-full max-w-xl items-center justify-center">
-      <p className="text-sm font-medium tracking-[0.2em] text-white/80">PRISM TIDAL</p>
+      <p className="text-sm font-medium tracking-[0.2em] text-signal-800/80 dark:text-white/80">PRISM TIDAL</p>
     </PrismTidalField>
   ),
   'constellation-breathing-grid': (
     <ConstellationBreathingGrid className="flex h-56 w-full max-w-xl items-center justify-center">
-      <p className="rounded-full border border-white/10 bg-black/40 px-3 py-1 text-xs text-white/70 backdrop-blur">constellation</p>
+      <p className="rounded-full border border-black/5 bg-white/70 px-3 py-1 text-xs text-zinc-600 backdrop-blur dark:border-white/10 dark:bg-black/40 dark:text-white/70">constellation</p>
     </ConstellationBreathingGrid>
   ),
   'paperfold-gradient-plane': (
     <PaperfoldGradientPlane className="flex h-56 w-full max-w-xl items-center justify-center">
-      <p className="rounded-xl bg-white/50 px-4 py-2 text-sm font-medium text-zinc-800 backdrop-blur">Paperfold</p>
+      <p className="rounded-xl bg-white/50 px-4 py-2 text-sm font-medium text-zinc-800 backdrop-blur dark:bg-black/40 dark:text-zinc-100">Paperfold</p>
     </PaperfoldGradientPlane>
   ),
   'orbit-commit': <OrbitCommit />,
@@ -769,27 +769,27 @@ export const demos: Record<string, React.ReactNode> = {
 
   'silk-shear-field': (
     <SilkShearField className="flex h-56 w-full max-w-xl items-end p-6">
-      <p className="text-xs tracking-[0.2em] text-signal-200">SILK SHEAR</p>
+      <p className="text-xs tracking-[0.2em] text-signal-700 dark:text-signal-200">SILK SHEAR</p>
     </SilkShearField>
   ),
   'void-lattice-drift': (
     <VoidLatticeDrift className="flex h-56 w-full max-w-xl items-end p-6">
-      <p className="text-xs tracking-[0.2em] text-white/50">VOID LATTICE</p>
+      <p className="text-xs tracking-[0.2em] text-zinc-500 dark:text-white/50">VOID LATTICE</p>
     </VoidLatticeDrift>
   ),
   'ember-drift': (
     <EmberDrift className="flex h-56 w-full max-w-xl items-end p-6">
-      <p className="text-xs tracking-[0.2em] text-amber-100/70">EMBER DRIFT</p>
+      <p className="text-xs tracking-[0.2em] text-amber-800/70 dark:text-amber-100/70">EMBER DRIFT</p>
     </EmberDrift>
   ),
   'chromatic-mist': (
     <ChromaticMist className="flex h-56 w-full max-w-xl items-end p-6">
-      <p className="text-xs tracking-[0.2em] text-zinc-600">CHROMATIC MIST</p>
+      <p className="text-xs tracking-[0.2em] text-zinc-600 dark:text-zinc-300">CHROMATIC MIST</p>
     </ChromaticMist>
   ),
   'pulse-rings': (
     <PulseRings className="flex h-56 w-full max-w-xl items-end p-6">
-      <p className="text-xs tracking-[0.2em] text-signal-200">PULSE RINGS</p>
+      <p className="text-xs tracking-[0.2em] text-signal-700 dark:text-signal-200">PULSE RINGS</p>
     </PulseRings>
   ),
   'curtain-drop-nav': <CurtainDropNav />,
@@ -821,7 +821,7 @@ export const demos: Record<string, React.ReactNode> = {
 
 
   'prism-sweep-shimmer': (
-    <div className="flex w-full max-w-lg flex-col items-center gap-2 rounded-2xl bg-zinc-950/80 p-6">
+    <div className="flex w-full max-w-lg flex-col items-center gap-2 rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-zinc-950/80 dark:ring-0 p-6">
       <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Stage · Prism</p>
       <PrismSweepShimmer className="w-full" />
     </div>
@@ -833,19 +833,19 @@ export const demos: Record<string, React.ReactNode> = {
     </div>
   ),
   'glyph-aurora-shimmer': (
-    <div className="flex w-full max-w-lg flex-col items-center gap-2 rounded-2xl bg-zinc-950/80 p-6">
+    <div className="flex w-full max-w-lg flex-col items-center gap-2 rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-zinc-950/80 dark:ring-0 p-6">
       <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Stage · Aurora</p>
       <GlyphAuroraShimmer />
     </div>
   ),
   'edge-flare-shimmer': (
-    <div className="flex w-full max-w-sm flex-col items-center gap-2 rounded-2xl bg-zinc-950/80 p-6">
+    <div className="flex w-full max-w-sm flex-col items-center gap-2 rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-zinc-950/80 dark:ring-0 p-6">
       <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Stage · Edge flare</p>
       <EdgeFlareShimmer className="w-full" />
     </div>
   ),
   'skeleton-wave-shimmer': (
-    <div className="flex w-full max-w-md flex-col items-center gap-2 rounded-2xl bg-[#121018] p-6">
+    <div className="flex w-full max-w-md flex-col items-center gap-2 rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-[#121018] dark:ring-0 p-6">
       <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Loading · Skeleton wave</p>
       <SkeletonWaveShimmer className="w-full" />
     </div>
@@ -857,7 +857,7 @@ export const demos: Record<string, React.ReactNode> = {
     </div>
   ),
   'list-bloom-shimmer': (
-    <div className="flex w-full max-w-md flex-col items-center gap-2 rounded-2xl bg-[#121018] p-6">
+    <div className="flex w-full max-w-md flex-col items-center gap-2 rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-[#121018] dark:ring-0 p-6">
       <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Loading · List bloom</p>
       <ListBloomShimmer className="w-full" />
     </div>
@@ -920,17 +920,17 @@ export const demos: Record<string, React.ReactNode> = {
     </SonarPingToast>
   ),
   'parallax-reel-scroll': (
-    <div className="w-full max-w-md rounded-2xl bg-[#07060c] p-3">
+    <div className="w-full max-w-md rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-[#07060c] dark:ring-0 p-3">
       <ParallaxReelScroll className="w-full" />
     </div>
   ),
   'snap-magnet-scroll': (
-    <div className="w-full max-w-md rounded-2xl bg-[#07060c] p-3">
+    <div className="w-full max-w-md rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-[#07060c] dark:ring-0 p-3">
       <SnapMagnetScroll className="w-full" />
     </div>
   ),
   'velocity-fade-stack': (
-    <div className="w-full max-w-md rounded-2xl bg-[#07060c] p-3">
+    <div className="w-full max-w-md rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-[#07060c] dark:ring-0 p-3">
       <VelocityFadeStack className="w-full" />
     </div>
   ),
@@ -939,7 +939,7 @@ export const demos: Record<string, React.ReactNode> = {
   'gravity-expand-card': <GravityExpandCard />,
 
   'rail-bloom-sidebar': (
-    <div className="flex w-full max-w-lg justify-center rounded-2xl bg-[#121018] p-6">
+    <div className="flex w-full max-w-lg justify-center rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-[#121018] dark:ring-0 p-6">
       <RailBloomSidebar />
     </div>
   ),
@@ -1054,7 +1054,7 @@ export const demos: Record<string, React.ReactNode> = {
     </div>
   ),
   'agent-state-orb': (
-    <div className="flex w-full max-w-sm justify-center rounded-2xl bg-[#0c0a12] p-10">
+    <div className="flex w-full max-w-sm justify-center rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-[#0c0a12] dark:ring-0 p-10">
       <AgentStateOrb />
     </div>
   ),
@@ -1086,22 +1086,22 @@ export const demos: Record<string, React.ReactNode> = {
     <MeshOrb404 className="w-full max-w-lg" />
   ),
   'prism-mesh-orb': (
-    <div className="flex w-full max-w-sm justify-center rounded-2xl bg-[#0c0a12] p-8">
+    <div className="flex w-full max-w-sm justify-center rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-[#0c0a12] dark:ring-0 p-8">
       <PrismMeshOrb />
     </div>
   ),
   'liquid-metal-orb': (
-    <div className="flex w-full max-w-sm justify-center rounded-2xl bg-[#0c0a12] p-8">
+    <div className="flex w-full max-w-sm justify-center rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-[#0c0a12] dark:ring-0 p-8">
       <LiquidMetalOrb />
     </div>
   ),
   'aurora-core-orb': (
-    <div className="flex w-full max-w-sm justify-center rounded-2xl bg-[#0c0a12] p-8">
+    <div className="flex w-full max-w-sm justify-center rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-[#0c0a12] dark:ring-0 p-8">
       <AuroraCoreOrb />
     </div>
   ),
   'particle-halo-orb': (
-    <div className="flex w-full max-w-sm justify-center rounded-2xl bg-[#0c0a12] p-8">
+    <div className="flex w-full max-w-sm justify-center rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-[#0c0a12] dark:ring-0 p-8">
       <ParticleHaloOrb />
     </div>
   ),
@@ -1111,12 +1111,12 @@ export const demos: Record<string, React.ReactNode> = {
     </div>
   ),
   'radial-sonar-wave': (
-    <div className="flex w-full max-w-sm justify-center rounded-2xl bg-[#0c0a12] p-6">
+    <div className="flex w-full max-w-sm justify-center rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-[#0c0a12] dark:ring-0 p-6">
       <RadialSonarWave />
     </div>
   ),
   'media-carousel-bubble': (
-    <div className="flex w-full max-w-lg justify-center rounded-2xl bg-[#121018] p-6">
+    <div className="flex w-full max-w-lg justify-center rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-[#121018] dark:ring-0 p-6">
       <MediaCarouselBubble />
     </div>
   ),
@@ -1156,12 +1156,12 @@ export const demos: Record<string, React.ReactNode> = {
     </div>
   ),
   'glass-workspace-sidebar': (
-    <div className="flex w-full max-w-lg justify-center rounded-2xl bg-[#121018] p-6">
+    <div className="flex w-full max-w-lg justify-center rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-[#121018] dark:ring-0 p-6">
       <GlassWorkspaceSidebar />
     </div>
   ),
   'timeline-rail-sidebar': (
-    <div className="flex w-full max-w-lg justify-center rounded-2xl bg-[#121018] p-4">
+    <div className="flex w-full max-w-lg justify-center rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-[#121018] dark:ring-0 p-4">
       <TimelineRailSidebar />
     </div>
   ),
@@ -1176,28 +1176,28 @@ export const demos: Record<string, React.ReactNode> = {
     </div>
   ),
   'orbit-switcher-sidebar': (
-    <div className="flex w-full max-w-lg justify-center rounded-2xl bg-[#121018] p-4">
+    <div className="flex w-full max-w-lg justify-center rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-[#121018] dark:ring-0 p-4">
       <OrbitSwitcherSidebar />
     </div>
   ),
 
   'dispatch-truck-button': (
-    <div className="flex w-full max-w-lg flex-col items-center justify-center gap-6 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#1b1924,#0c0b10)] px-6 py-12 ring-1 ring-white/5">
+    <div className="flex w-full max-w-lg flex-col items-center justify-center gap-6 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#ffffff,#f0eff4)] shadow-[0_1px_2px_rgb(0_0_0/0.04),0_16px_40px_-24px_rgb(24_24_27/0.25)] dark:shadow-none dark:bg-[radial-gradient(120%_100%_at_50%_0%,#1b1924,#0c0b10)] px-6 py-12 ring-1 ring-black/[0.06] dark:ring-white/5">
       <DispatchTruckButton />
     </div>
   ),
   'drop-in-cart-button': (
-    <div className="flex w-full max-w-lg flex-col items-center justify-center gap-6 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#1b1924,#0c0b10)] px-6 py-12 ring-1 ring-white/5">
+    <div className="flex w-full max-w-lg flex-col items-center justify-center gap-6 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#ffffff,#f0eff4)] shadow-[0_1px_2px_rgb(0_0_0/0.04),0_16px_40px_-24px_rgb(24_24_27/0.25)] dark:shadow-none dark:bg-[radial-gradient(120%_100%_at_50%_0%,#1b1924,#0c0b10)] px-6 py-12 ring-1 ring-black/[0.06] dark:ring-white/5">
       <DropInCartButton />
     </div>
   ),
   'fill-progress-download-button': (
-    <div className="flex w-full max-w-lg flex-col items-center justify-center gap-6 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#1b1924,#0c0b10)] px-6 py-12 ring-1 ring-white/5">
+    <div className="flex w-full max-w-lg flex-col items-center justify-center gap-6 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#ffffff,#f0eff4)] shadow-[0_1px_2px_rgb(0_0_0/0.04),0_16px_40px_-24px_rgb(24_24_27/0.25)] dark:shadow-none dark:bg-[radial-gradient(120%_100%_at_50%_0%,#1b1924,#0c0b10)] px-6 py-12 ring-1 ring-black/[0.06] dark:ring-white/5">
       <FillProgressDownloadButton fileName="framekit-brand-kit.zip · 24.6 MB" />
     </div>
   ),
   'swallow-delete-button': (
-    <div className="flex w-full max-w-lg flex-col items-center justify-center gap-6 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#1b1924,#0c0b10)] px-6 py-12 ring-1 ring-white/5">
+    <div className="flex w-full max-w-lg flex-col items-center justify-center gap-6 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#ffffff,#f0eff4)] shadow-[0_1px_2px_rgb(0_0_0/0.04),0_16px_40px_-24px_rgb(24_24_27/0.25)] dark:shadow-none dark:bg-[radial-gradient(120%_100%_at_50%_0%,#1b1924,#0c0b10)] px-6 py-12 ring-1 ring-black/[0.06] dark:ring-white/5">
       <div className="flex flex-wrap items-center justify-center gap-4">
         <SwallowDeleteButton variant="violet" />
         <SwallowDeleteButton variant="neutral" label="Remove" />
@@ -1207,7 +1207,7 @@ export const demos: Record<string, React.ReactNode> = {
   ),
   'lens-reveal-404': <LensReveal404 className="w-full max-w-2xl" homeHref="/" />,
   'flip-checkout-card': (
-    <div className="flex w-full max-w-lg justify-center rounded-2xl bg-[radial-gradient(120%_90%_at_50%_0%,#221d33,#0b0a10)] px-4 py-10 ring-1 ring-white/5">
+    <div className="flex w-full max-w-lg justify-center rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#ffffff,#f0eff4)] shadow-[0_1px_2px_rgb(0_0_0/0.04),0_16px_40px_-24px_rgb(24_24_27/0.25)] dark:shadow-none dark:bg-[radial-gradient(120%_90%_at_50%_0%,#221d33,#0b0a10)] px-4 py-10 ring-1 ring-black/[0.06] dark:ring-white/5">
       <FlipCheckoutCard />
     </div>
   ),

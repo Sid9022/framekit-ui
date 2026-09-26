@@ -25,13 +25,13 @@ export function StatusHeatmapGrid({ className }: { className?: string }) {
       <div className="grid grid-cols-[36px_repeat(6,1fr)] gap-1">
         <div />
         {HOURS.map((h) => (
-          <div key={h} className="text-center font-mono text-[9px] text-zinc-400">
+          <div key={h} className="text-center font-mono text-[9px] text-zinc-500 dark:text-zinc-400">
             {h}:00
           </div>
         ))}
         {DAYS.map((day, di) => (
           <React.Fragment key={day}>
-            <div className="flex items-center font-mono text-[9px] text-zinc-400">{day}</div>
+            <div className="flex items-center font-mono text-[9px] text-zinc-500 dark:text-zinc-400">{day}</div>
             {HOURS.map((h, hi) => {
               const v = cell(di, hi)
               return (
@@ -68,7 +68,7 @@ export function StatusHeatmapGrid({ className }: { className?: string }) {
           {tip.d} {tip.h}:00 · <strong>{tip.v}</strong> idx
         </div>
       )}
-      <div className="mt-3 flex items-center gap-2 font-mono text-[9px] text-zinc-400">
+      <div className="mt-3 flex items-center gap-2 font-mono text-[9px] text-zinc-500 dark:text-zinc-400">
         Low
         <span className="h-2 flex-1 rounded-full bg-gradient-to-r from-signal-200/30 to-signal-700" />
         High

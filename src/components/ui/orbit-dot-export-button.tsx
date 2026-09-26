@@ -152,7 +152,7 @@ export function OrbitDotExportButton({
         className={cn(
           'group relative flex h-14 items-center overflow-hidden rounded-full p-1.5 text-[15px] font-semibold tracking-tight text-zinc-50 outline-none',
           'bg-[linear-gradient(180deg,#26242c,#17161b)] shadow-[inset_0_1px_0_rgb(255_255_255/0.09),0_0_0_1px_rgb(255_255_255/0.06),0_1px_2px_rgb(0_0_0/0.5),0_20px_40px_-20px_rgb(0_0_0/0.9)]',
-          'focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0c0b10] disabled:cursor-not-allowed disabled:opacity-50',
+          'focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0c0b10] disabled:cursor-not-allowed disabled:opacity-50',
           collapsed && 'cursor-progress',
         )}
         style={{ ['--tw-ring-color' as string]: accent }}

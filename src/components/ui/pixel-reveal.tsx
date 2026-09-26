@@ -46,7 +46,7 @@ export function PixelReveal({
         {cells.map((c) => (
           <span
             key={c.i}
-            className="bg-zinc-950 transition-opacity duration-500"
+            className="bg-zinc-200 transition-opacity duration-500 dark:bg-zinc-950"
             style={{
               opacity: revealed ? 0 : 1,
               transitionDelay: `${c.delay}s`,

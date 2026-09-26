@@ -17,7 +17,11 @@ export function PaperfoldGradientPlane({
   return (
     <div
       ref={ref}
-      className={cn('relative overflow-hidden rounded-2xl bg-[#f3f1ec]', className)}
+      className={cn(
+        'relative overflow-hidden rounded-2xl bg-[#f3f1ec] dark:bg-[#121016]',
+        '[--pf-0:#d4cbe5] [--pf-1:#f0d5e8] [--pf-2:#c9dff2] [--pf-3:#ffe3c9] dark:[--pf-0:#6d5a8f] dark:[--pf-1:#8a3f74] dark:[--pf-2:#2f5f8f] dark:[--pf-3:#9a5a2e]',
+        className,
+      )}
       onPointerMove={(e) => {
         if (reduced) return
         const r = e.currentTarget.getBoundingClientRect()
@@ -30,13 +34,13 @@ export function PaperfoldGradientPlane({
       {[0, 1, 2, 3].map((i) => (
         <div
           key={i}
-          className="pointer-events-none absolute inset-[-20%] opacity-80"
+          className="pointer-events-none absolute inset-[-20%] opacity-80 dark:opacity-75"
           style={{
             background: [
-              'linear-gradient(115deg, #d4cbe5 0%, transparent 55%)',
-              'linear-gradient(200deg, #f0d5e8 0%, transparent 50%)',
-              'linear-gradient(25deg, #c9dff2 0%, transparent 45%)',
-              'linear-gradient(160deg, #ffe3c9 0%, transparent 40%)',
+              'linear-gradient(115deg, var(--pf-0) 0%, transparent 55%)',
+              'linear-gradient(200deg, var(--pf-1) 0%, transparent 50%)',
+              'linear-gradient(25deg, var(--pf-2) 0%, transparent 45%)',
+              'linear-gradient(160deg, var(--pf-3) 0%, transparent 40%)',
             ][i],
             transform: reduced
               ? `rotate(${i * 4}deg)`
@@ -48,7 +52,7 @@ export function PaperfoldGradientPlane({
         />
       ))}
       <div
-        className="pointer-events-none absolute inset-0 opacity-40 mix-blend-multiply"
+        className="pointer-events-none absolute inset-0 opacity-40 mix-blend-multiply dark:opacity-20"
         style={{
           backgroundImage:
             'repeating-linear-gradient(90deg, transparent, transparent 11px, rgba(0,0,0,0.03) 12px)',

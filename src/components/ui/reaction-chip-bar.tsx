@@ -51,7 +51,7 @@ export function ReactionChipBar({ className }: { className?: string }) {
         <button
           type="button"
           onClick={() => setOpen((o) => !o)}
-          className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-dashed border-zinc-300 text-zinc-400 hover:border-signal-400 hover:text-signal-500 dark:border-zinc-600"
+          className="inline-flex h-7 w-7 items-center justify-center rounded-full border border-dashed border-zinc-300 text-zinc-500 dark:text-zinc-400 hover:border-signal-400 hover:text-signal-500 dark:border-zinc-600"
           aria-label="Add reaction"
         >
           <SmilePlus className="h-3.5 w-3.5" />

@@ -51,7 +51,7 @@ export function LiveTranscriptPanel({ className }: { className?: string }) {
     >
       <div className="border-b border-zinc-100 px-4 py-2.5 dark:border-zinc-800">
         <p className="text-sm font-semibold">Live transcript</p>
-        <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-zinc-400">Dual speaker · auto-scroll</p>
+        <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400">Dual speaker · auto-scroll</p>
       </div>
       <div className="framekit-scroll flex-1 space-y-2 overflow-y-auto p-3">
         <AnimatePresence initial={false}>

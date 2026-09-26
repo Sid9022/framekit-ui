@@ -61,9 +61,12 @@ const STARS = Array.from({ length: 28 }, (_, i) => ({
 export function ParallaxReelScroll({
   className,
   panels = DEFAULTS,
+  viewportClassName,
 }: {
   className?: string
   panels?: Panel[]
+  /** Classes merged onto the scrolling viewport (surface, border, radius, height). The reel brings its own dark backdrop. */
+  viewportClassName?: string
 }) {
   const reduced = usePrefersReducedMotion()
   const ref = React.useRef<HTMLDivElement>(null)
@@ -93,7 +96,10 @@ export function ParallaxReelScroll({
       <div
         ref={ref}
         onScroll={onScroll}
-        className="framekit-scroll relative h-[380px] overflow-y-auto rounded-2xl border border-zinc-800 bg-[#07060c] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]"
+        className={cn(
+          'framekit-scroll relative h-[380px] overflow-y-auto rounded-2xl border border-zinc-800 bg-[#07060c] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]',
+          viewportClassName,
+        )}
       >
         {/* far star/grid layer */}
         <div

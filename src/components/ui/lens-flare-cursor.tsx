@@ -28,7 +28,8 @@ export function LensFlareCursor({ className }: { className?: string }) {
   return (
     <div
       className={cn(
-        'relative h-56 w-full max-w-lg overflow-hidden rounded-2xl border border-zinc-200 bg-zinc-950 dark:border-zinc-800',
+        'relative h-56 w-full max-w-lg overflow-hidden rounded-2xl border border-zinc-200 bg-[radial-gradient(120%_100%_at_50%_0%,#ffffff,#f1eff5)] dark:border-zinc-800 dark:bg-none dark:bg-zinc-950',
+        '[--flare-core:rgba(125,104,153,0.32)] [--flare-mid:rgba(185,170,208,0.28)] dark:[--flare-core:rgba(255,255,255,0.55)] dark:[--flare-mid:rgba(212,203,229,0.25)]',
         className,
       )}
       onPointerMove={(e) => {
@@ -45,12 +46,12 @@ export function LensFlareCursor({ className }: { className?: string }) {
           left: fx,
           top: fy,
           background:
-            'radial-gradient(circle, rgba(255,255,255,0.55) 0%, rgba(212,203,229,0.25) 28%, transparent 60%)',
+            'radial-gradient(circle, var(--flare-core) 0%, var(--flare-mid) 28%, transparent 60%)',
           mixBlendMode: 'screen',
         }}
       />
       <div
-        className="pointer-events-none absolute h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white"
+        className="pointer-events-none absolute h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-signal-600 dark:bg-white"
         style={{ left: pos.x, top: pos.y, boxShadow: '0 0 12px white' }}
       />
     </div>

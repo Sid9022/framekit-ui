@@ -1,15 +1,25 @@
 import * as React from 'react'
 import { cn } from '@/lib/cn'
 import { usePrefersReducedMotion } from '@/lib/use-reduced-motion'
+import { useResolvedTheme, type ThemeMode } from '@/lib/use-resolved-theme'
 
 /** Faint perspective lattice drifting in a void. Canvas 2D. */
 export function VoidLatticeDrift({
   className,
   children,
+  theme = 'auto',
 }: {
   className?: string
   children?: React.ReactNode
+  /** `auto` follows the nearest `.dark` / `.light` ancestor. */
+  theme?: ThemeMode
 }) {
+  const rootRef = React.useRef<HTMLDivElement>(null)
+  const resolved = useResolvedTheme(rootRef, theme)
+  const darkRef = React.useRef(resolved === 'dark')
+  React.useLayoutEffect(() => {
+    darkRef.current = resolved === 'dark'
+  }, [resolved])
   const ref = React.useRef<HTMLCanvasElement>(null)
   const reduced = usePrefersReducedMotion()
   const ptr = React.useRef({ x: 0.5, y: 0.5 })
@@ -35,11 +45,12 @@ export function VoidLatticeDrift({
     const draw = () => {
       const { width, height } = canvas.getBoundingClientRect()
       if (!reduced) z += 0.35
-      ctx.fillStyle = '#09090b'
+      const dark = darkRef.current
+      ctx.fillStyle = dark ? '#09090b' : '#fafafa'
       ctx.fillRect(0, 0, width, height)
       const cx = width * (0.5 + (ptr.current.x - 0.5) * 0.08)
       const cy = height * (0.55 + (ptr.current.y - 0.5) * 0.06)
-      ctx.strokeStyle = 'rgba(212,203,229,0.22)'
+      ctx.strokeStyle = dark ? 'rgba(212,203,229,0.22)' : 'rgba(77,63,94,0.3)'
       ctx.lineWidth = 1
       for (let depth = 0; depth < 18; depth++) {
         const d = ((depth * 40 + z) % 720) / 720
@@ -69,7 +80,9 @@ export function VoidLatticeDrift({
 
   return (
     <div
-      className={cn('relative overflow-hidden rounded-2xl bg-black', className)}
+      ref={rootRef}
+      data-theme={resolved}
+      className={cn('relative overflow-hidden rounded-2xl', resolved === 'dark' ? 'bg-black' : 'bg-zinc-50', className)}
       onPointerMove={(e) => {
         const r = e.currentTarget.getBoundingClientRect()
         ptr.current = {

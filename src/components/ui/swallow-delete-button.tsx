@@ -174,7 +174,7 @@ export function SwallowDeleteButton({
         whileTap={busy || reduced ? undefined : { scale: 0.96 }}
         className={cn(
           'group relative inline-flex h-12 items-center rounded-full pl-3 text-[15px] font-semibold tracking-tight outline-none transition-[padding,background-color] duration-300',
-          'focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0c0b10] disabled:cursor-not-allowed disabled:opacity-50',
+          'focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0c0b10] disabled:cursor-not-allowed disabled:opacity-50',
           v.base,
           v.focus,
           collapsed ? 'pr-3' : 'pr-5',

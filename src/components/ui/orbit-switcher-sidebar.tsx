@@ -43,8 +43,8 @@ export function OrbitSwitcherSidebar({ className }: { className?: string }) {
   }, [product])
 
   return (
-    <aside className={cn('flex h-[400px] w-[240px] flex-col overflow-hidden rounded-2xl border border-zinc-800 bg-[#0b0a12] text-zinc-100', className)}>
-      <div className="flex flex-col items-center gap-3 border-b border-zinc-800 px-4 py-4">
+    <aside className={cn('flex h-[400px] w-[240px] flex-col overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#0b0a12] text-zinc-900 dark:text-zinc-100', className)}>
+      <div className="flex flex-col items-center gap-3 border-b border-zinc-200 dark:border-zinc-800 px-4 py-4">
         <div className="relative flex h-20 w-20 items-center justify-center">
           {PRODUCTS.map((p, i) => {
             const a = (i / PRODUCTS.length) * Math.PI * 2 - Math.PI / 2
@@ -59,7 +59,7 @@ export function OrbitSwitcherSidebar({ className }: { className?: string }) {
                 onClick={() => setProduct(p.id)}
                 className={cn(
                   'absolute flex h-8 w-8 items-center justify-center rounded-full border transition',
-                  on ? 'border-white/40 bg-white/15 text-white' : 'border-zinc-700 bg-zinc-900 text-zinc-500 hover:text-zinc-200',
+                  on ? 'border-zinc-900/25 dark:border-white/40 bg-zinc-900/[0.07] dark:bg-white/15 text-zinc-900 dark:text-white' : 'border-zinc-200 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-900 text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200',
                 )}
                 style={{ left: `calc(50% + ${x}px - 16px)`, top: `calc(50% + ${y}px - 16px)` }}
                 animate={on && !reduced ? { scale: [1, 1.1, 1] } : { scale: 1 }}
@@ -108,7 +108,7 @@ export function OrbitSwitcherSidebar({ className }: { className?: string }) {
                   onClick={() => setActive(item)}
                   className={cn(
                     'w-full rounded-xl px-3 py-2 text-left text-sm transition',
-                    active === item ? 'bg-signal-500/25 text-white' : 'text-zinc-400 hover:bg-white/5 hover:text-zinc-200',
+                    active === item ? 'bg-signal-500/25 text-zinc-900 dark:text-white' : 'text-zinc-500 dark:text-zinc-400 hover:bg-zinc-900/[0.04] dark:hover:bg-white/5 hover:text-zinc-900 dark:hover:text-zinc-200',
                   )}
                 >
                   {item}

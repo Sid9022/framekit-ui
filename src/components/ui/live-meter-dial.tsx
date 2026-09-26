@@ -41,7 +41,7 @@ export function LiveMeterDial({
         className,
       )}
     >
-      <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-400">{label}</p>
+      <p className="font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">{label}</p>
       <svg viewBox="0 0 140 90" className="mt-2 w-full">
         <path
           d="M 16 78 A 54 54 0 0 1 124 78"

@@ -45,9 +45,9 @@ export function GravityStackToastProvider({ children }: { children: React.ReactN
                   }}
                   exit={{ opacity: 0, y: 24, transition: { duration: 0.2 } }}
                   className={cn(
-                    'pointer-events-auto rounded-2xl border px-4 py-3 shadow-2xl backdrop-blur',
-                    item.tone === 'lilac' && 'border-signal-300/40 bg-signal-900/90 text-signal-50',
-                    item.tone === 'ember' && 'border-framekit-400/40 bg-zinc-950 text-framekit-100',
+                    'pointer-events-auto rounded-2xl border px-4 py-3 shadow-[0_1px_2px_rgba(0,0,0,0.05),0_20px_44px_-20px_rgba(24,24,27,0.35)] backdrop-blur dark:shadow-2xl',
+                    item.tone === 'lilac' && 'border-signal-200 bg-signal-50/95 text-signal-900 dark:border-signal-300/40 dark:bg-signal-900/90 dark:text-signal-50',
+                    item.tone === 'ember' && 'border-framekit-200 bg-framekit-50/95 text-framekit-900 dark:border-framekit-400/40 dark:bg-zinc-950 dark:text-framekit-100',
                     (!item.tone || item.tone === 'default') &&
                       'border-zinc-200 bg-white/95 text-zinc-900 dark:border-zinc-700 dark:bg-zinc-950/95 dark:text-zinc-50',
                   )}

@@ -1,15 +1,25 @@
 import * as React from 'react'
 import { cn } from '@/lib/cn'
 import { usePrefersReducedMotion } from '@/lib/use-reduced-motion'
+import { useResolvedTheme, type ThemeMode } from '@/lib/use-resolved-theme'
 
 /** Slow shearing silk ribbons that bend toward the pointer. Canvas 2D. */
 export function SilkShearField({
   className,
   children,
+  theme = 'auto',
 }: {
   className?: string
   children?: React.ReactNode
+  /** `auto` follows the nearest `.dark` / `.light` ancestor. */
+  theme?: ThemeMode
 }) {
+  const rootRef = React.useRef<HTMLDivElement>(null)
+  const resolved = useResolvedTheme(rootRef, theme)
+  const darkRef = React.useRef(resolved === 'dark')
+  React.useLayoutEffect(() => {
+    darkRef.current = resolved === 'dark'
+  }, [resolved])
   const ref = React.useRef<HTMLCanvasElement>(null)
   const reduced = usePrefersReducedMotion()
   const ptr = React.useRef({ x: 0.5, y: 0.5 })
@@ -36,9 +46,11 @@ export function SilkShearField({
       const { width, height } = canvas.getBoundingClientRect()
       if (!reduced) t += 0.008
       ctx.clearRect(0, 0, width, height)
+      const dark = darkRef.current
+      const tone = dark ? '212,203,229' : '100,82,122'
       const g = ctx.createLinearGradient(0, 0, width, height)
-      g.addColorStop(0, '#0f0e12')
-      g.addColorStop(1, '#1a1622')
+      g.addColorStop(0, dark ? '#0f0e12' : '#faf9fc')
+      g.addColorStop(1, dark ? '#1a1622' : '#ece8f3')
       ctx.fillStyle = g
       ctx.fillRect(0, 0, width, height)
 
@@ -62,9 +74,9 @@ export function SilkShearField({
         ctx.lineTo(width, height)
         ctx.lineTo(0, height)
         ctx.closePath()
-        ctx.fillStyle = `rgba(212,203,229,${0.04 + i * 0.03})`
+        ctx.fillStyle = `rgba(${tone},${dark ? 0.04 + i * 0.03 : 0.025 + i * 0.018})`
         ctx.fill()
-        ctx.strokeStyle = `rgba(212,203,229,${0.12 + i * 0.04})`
+        ctx.strokeStyle = `rgba(${tone},${dark ? 0.12 + i * 0.04 : 0.14 + i * 0.03})`
         ctx.lineWidth = 1.2
         ctx.stroke()
       }
@@ -79,7 +91,9 @@ export function SilkShearField({
 
   return (
     <div
-      className={cn('relative overflow-hidden rounded-2xl bg-zinc-950', className)}
+      ref={rootRef}
+      data-theme={resolved}
+      className={cn('relative overflow-hidden rounded-2xl', resolved === 'dark' ? 'bg-zinc-950' : 'bg-[#f3f1f7]', className)}
       onPointerMove={(e) => {
         const r = e.currentTarget.getBoundingClientRect()
         ptr.current = {

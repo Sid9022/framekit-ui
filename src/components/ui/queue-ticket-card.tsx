@@ -44,7 +44,7 @@ export function QueueTicketCard({
           </span>
           <div>
             <p className="text-sm font-semibold">{caller}</p>
-            <p className="font-mono text-[10px] text-zinc-400">Ticket · Q-{1800 + (wait % 90)}</p>
+            <p className="font-mono text-[10px] text-zinc-500 dark:text-zinc-400">Ticket · Q-{1800 + (wait % 90)}</p>
           </div>
         </div>
         <span className="rounded-full bg-rose-500/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-rose-700 dark:text-rose-300">
@@ -54,7 +54,7 @@ export function QueueTicketCard({
 
       <div className="flex items-center justify-between px-4 py-3">
         <div>
-          <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-zinc-400">Wait time</p>
+          <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">Wait time</p>
           <p className="font-mono text-2xl font-semibold tabular-nums">
             {mm}:{ss}
           </p>

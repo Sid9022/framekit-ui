@@ -4,9 +4,9 @@ import { cn } from '@/lib/cn'
 import { usePrefersReducedMotion } from '@/lib/use-reduced-motion'
 
 const ROWS = [
-  { key: 'queued', label: 'Queued', color: 'text-zinc-400', target: 1280 },
+  { key: 'queued', label: 'Queued', color: 'text-zinc-500 dark:text-zinc-400', target: 1280 },
   { key: 'sent', label: 'Sent', color: 'text-sky-400', target: 1104 },
-  { key: 'delivered', label: 'Delivered', color: 'text-signal-300', target: 986 },
+  { key: 'delivered', label: 'Delivered', color: 'text-signal-600 dark:text-signal-300', target: 986 },
   { key: 'read', label: 'Read', color: 'text-emerald-400', target: 742 },
   { key: 'failed', label: 'Failed', color: 'text-rose-400', target: 18 },
 ] as const
@@ -34,7 +34,7 @@ export function BroadcastStatusBoard({ className }: { className?: string }) {
   }, [reduced])
 
   return (
-    <div className={cn('w-full max-w-sm rounded-2xl border border-zinc-800 bg-[#0c0a12] p-4 text-zinc-50', className)}>
+    <div className={cn('w-full max-w-sm rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#0c0a12] p-4 text-zinc-900 dark:text-zinc-50', className)}>
       <div className="mb-3 flex items-center justify-between">
         <div>
           <p className="text-sm font-semibold">Spring launch</p>
@@ -47,7 +47,7 @@ export function BroadcastStatusBoard({ className }: { className?: string }) {
       </div>
       <ul className="space-y-2">
         {ROWS.map((r) => (
-          <li key={r.key} className="flex items-center justify-between rounded-xl bg-white/5 px-3 py-2">
+          <li key={r.key} className="flex items-center justify-between rounded-xl bg-zinc-900/[0.04] dark:bg-white/5 px-3 py-2">
             <span className={cn('text-xs font-medium', r.color)}>{r.label}</span>
             <motion.span className="font-mono text-sm tabular-nums" layout>
               {counts[r.key].toLocaleString()}

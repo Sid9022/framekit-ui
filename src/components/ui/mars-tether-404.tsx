@@ -209,16 +209,13 @@ export function MarsTether404({
               <motion.path
                 d="M18 -2 L26 0 L18 2"
                 fill="#f97316"
+                style={{ transformBox: 'fill-box', transformOrigin: '0% 50%' }}
                 animate={
                   reduced
                     ? undefined
                     : {
-                        d: [
-                          'M18 -2 L26 0 L18 2',
-                          'M18 -2.5 L30 0 L18 2.5',
-                          'M18 -1.5 L24 0 L18 1.5',
-                          'M18 -2 L26 0 L18 2',
-                        ],
+                        scaleX: [1, 1.5, 0.75, 1],
+                        scaleY: [1, 1.25, 0.75, 1],
                         opacity: [0.85, 1, 0.7, 0.9],
                       }
                 }

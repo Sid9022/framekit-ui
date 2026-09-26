@@ -17,6 +17,7 @@ export function GlyphAuroraShimmer({
     <p
       className={cn(
         'flex flex-wrap justify-center gap-[0.05em] font-semibold tracking-tight text-3xl md:text-4xl',
+        '[--glyph-base:#52525b] [--glyph-hi:#7d6899] dark:[--glyph-base:#71717a] dark:[--glyph-hi:#efeaf6]',
         className,
       )}
       aria-label={text}
@@ -28,7 +29,7 @@ export function GlyphAuroraShimmer({
           style={{
             backgroundImage: reduced
               ? 'linear-gradient(90deg,#9a86b8,#f97316,#d4cbe5)'
-              : 'linear-gradient(100deg,#71717a 0%,#71717a 35%,#f97316 45%,#efeaf6 50%,#9a86b8 55%,#71717a 65%,#71717a 100%)',
+              : 'linear-gradient(100deg,var(--glyph-base,#71717a) 0%,var(--glyph-base,#71717a) 35%,#f97316 45%,var(--glyph-hi,#efeaf6) 50%,#9a86b8 55%,var(--glyph-base,#71717a) 65%,var(--glyph-base,#71717a) 100%)',
             backgroundSize: reduced ? '100% 100%' : '220% 100%',
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',

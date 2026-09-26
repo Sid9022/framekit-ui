@@ -61,7 +61,7 @@ export function ActivityStreamWidget({ className }: { className?: string }) {
                 <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-signal-500" />
                 <div className="min-w-0 flex-1">
                   <p className="text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">{row.text}</p>
-                  <p className="mt-0.5 font-mono text-[9px] text-zinc-400">{row.t}</p>
+                  <p className="mt-0.5 font-mono text-[9px] text-zinc-500 dark:text-zinc-400">{row.t}</p>
                 </div>
               </div>
             </motion.li>

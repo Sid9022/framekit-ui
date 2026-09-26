@@ -1,6 +1,12 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
+/*
+ * Class-based dark mode, scoped to the nearest theme wrapper:
+ *  - `.dark` on any ancestor (usually <html>) turns dark: variants on
+ *  - `.light` on a descendant forces light again inside a dark page
+ *  - `.dark` inside that `.light` flips back to dark
+ */
+@custom-variant dark (&:where(.dark, .dark *):not(:where(.light, .light *):not(:where(.light .dark, .light .dark *))));
 
 @theme {
   /* Framekit accent scale (signal orange for logo / legacy accent accents) */
@@ -65,17 +71,24 @@ html.dark {
   color: #efeaf6;
 }
 
-.framekit-stage {
-  background-color: #f3f2ef;
+.framekit-stage,
+.framekit-stage.light {
+  color-scheme: light;
+  color: #18181b;
+  background-color: #fafaf9;
   background-image:
-    linear-gradient(to right, rgb(0 0 0 / 0.03) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(0 0 0 / 0.03) 1px, transparent 1px);
-  background-size: 24px 24px;
+    radial-gradient(120% 80% at 50% 0%, rgb(255 255 255 / 0.9), transparent 70%),
+    linear-gradient(to right, rgb(0 0 0 / 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(0 0 0 / 0.035) 1px, transparent 1px);
+  background-size: 100% 100%, 24px 24px, 24px 24px;
 }
 
-.dark .framekit-stage {
-  background-color: #121212;
+.framekit-stage.dark {
+  color-scheme: dark;
+  color: #f4f4f5;
+  background-color: #0b0b0c;
   background-image:
+    radial-gradient(120% 80% at 50% 0%, rgb(255 255 255 / 0.035), transparent 70%),
     linear-gradient(to right, rgb(255 255 255 / 0.04) 1px, transparent 1px),
     linear-gradient(to bottom, rgb(255 255 255 / 0.04) 1px, transparent 1px);
 }

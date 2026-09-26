@@ -33,12 +33,12 @@ export function GlassOrbSwitch({
         }
       }}
       className={cn(
-        'relative inline-flex h-14 w-40 items-center rounded-full border border-zinc-700/90 bg-[#2a2a2e] px-1.5 shadow-[0_12px_28px_rgba(0,0,0,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal-400 disabled:opacity-50',
+        'relative inline-flex h-14 w-40 items-center rounded-full border border-zinc-300 bg-[linear-gradient(180deg,#cfcfd6,#e2e2e7)] px-1.5 shadow-[inset_0_2px_6px_rgba(0,0,0,0.14),0_1px_0_rgba(255,255,255,0.9),0_10px_24px_-8px_rgba(24,24,27,0.18)] dark:border-zinc-700/90 dark:bg-none dark:bg-[#2a2a2e] dark:shadow-[0_12px_28px_rgba(0,0,0,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal-400 disabled:opacity-50',
         className,
       )}
       {...rest}
     >
-      <span className="pointer-events-none absolute left-5 text-[11px] font-medium tracking-wide text-zinc-300">
+      <span className="pointer-events-none absolute left-5 text-[11px] font-medium tracking-wide text-zinc-700 dark:text-zinc-300">
         Dark
       </span>
       <span className="pointer-events-none absolute right-5 text-[11px] font-medium tracking-wide text-zinc-500">

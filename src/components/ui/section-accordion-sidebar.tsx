@@ -89,11 +89,11 @@ export function SectionAccordionSidebar({
           </span>
           <div className="min-w-0">
             <p className="truncate text-sm font-semibold">{workspace}</p>
-            <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-zinc-400">Workspace</p>
+            <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">Workspace</p>
           </div>
         </div>
         <label className="flex items-center gap-2 rounded-full border border-zinc-200 bg-zinc-50 px-3 py-1.5 dark:border-zinc-700 dark:bg-zinc-900">
-          <Search className="h-3.5 w-3.5 text-zinc-400" />
+          <Search className="h-3.5 w-3.5 text-zinc-500 dark:text-zinc-400" />
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}

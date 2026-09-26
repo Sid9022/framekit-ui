@@ -162,7 +162,7 @@ export function FaceScanPayButton({
         whileTap={busy || reduced ? undefined : { scale: 0.97 }}
         className={cn(
           'group relative isolate overflow-visible text-[15px] font-semibold tracking-tight text-white outline-none',
-          'focus-visible:ring-2 focus-visible:ring-cyan-300/80 focus-visible:ring-offset-2 focus-visible:ring-offset-[#090d18]',
+          'focus-visible:ring-2 focus-visible:ring-cyan-300/80 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#090d18]',
           'disabled:cursor-not-allowed disabled:opacity-50',
           busy && 'cursor-progress',
         )}

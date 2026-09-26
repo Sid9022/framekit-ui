@@ -21,8 +21,8 @@ const SEED: ChatBubble[] = [
 
 function Ticks({ status }: { status?: BubbleStatus }) {
   if (!status) return null
-  if (status === 'sent') return <Check className="h-3 w-3 text-zinc-400" />
-  if (status === 'delivered') return <CheckCheck className="h-3 w-3 text-zinc-400" />
+  if (status === 'sent') return <Check className="h-3 w-3 text-zinc-500 dark:text-zinc-400" />
+  if (status === 'delivered') return <CheckCheck className="h-3 w-3 text-zinc-500 dark:text-zinc-400" />
   return <CheckCheck className="h-3 w-3 text-sky-400" />
 }
 

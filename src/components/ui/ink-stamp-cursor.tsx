@@ -46,7 +46,7 @@ export function InkStampCursor({ className }: { className?: string }) {
         ])
       }}
     >
-      <p className="pointer-events-none absolute left-4 top-4 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-400">
+      <p className="pointer-events-none absolute left-4 top-4 font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">
         Move — ink stamps
       </p>
       <svg className="absolute inset-0 h-full w-full" aria-hidden>

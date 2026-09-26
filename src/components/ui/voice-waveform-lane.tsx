@@ -35,7 +35,7 @@ export function VoiceWaveformLane({
   return (
     <div
       className={cn(
-        'flex w-full max-w-md flex-col gap-3 rounded-2xl border border-zinc-200 bg-zinc-950 p-4 text-zinc-50 dark:border-zinc-800',
+        'flex w-full max-w-md flex-col gap-3 rounded-2xl border border-zinc-200 bg-white dark:bg-zinc-950 p-4 text-zinc-900 dark:text-zinc-50 dark:border-zinc-800',
         className,
       )}
       onPointerMove={(e) => {
@@ -46,7 +46,7 @@ export function VoiceWaveformLane({
     >
       <div className="flex items-center justify-between">
         <p className="text-sm font-semibold">Voice lane</p>
-        <span className="rounded-full bg-signal-500/25 px-2.5 py-0.5 font-mono text-[10px] text-signal-200">
+        <span className="rounded-full bg-signal-500/25 px-2.5 py-0.5 font-mono text-[10px] text-signal-700 dark:text-signal-200">
           {latencyMs} ms RTT
         </span>
       </div>

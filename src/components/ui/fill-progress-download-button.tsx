@@ -128,7 +128,7 @@ export function FillProgressDownloadButton({
         className={cn(
           'group relative h-14 overflow-hidden rounded-full text-[15px] font-semibold tracking-tight text-white',
           'shadow-[inset_0_1px_0_rgb(255_255_255/0.22),0_1px_2px_rgb(0_0_0/0.35),0_18px_40px_-18px_rgb(37_99_235/0.75)]',
-          'outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-[#0c0b10]',
+          'outline-none focus-visible:ring-2 focus-visible:ring-sky-300 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-offset-[#0c0b10]',
           'disabled:cursor-not-allowed disabled:opacity-50',
           phase === 'loading' && 'cursor-progress',
           done && 'shadow-[inset_0_1px_0_rgb(255_255_255/0.1),0_18px_40px_-20px_rgb(0_0_0/0.8)]',

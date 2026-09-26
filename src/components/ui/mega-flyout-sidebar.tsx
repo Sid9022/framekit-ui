@@ -92,9 +92,9 @@ export function MegaFlyoutSidebar({ className }: { className?: string }) {
   const current = ITEMS.find((i) => i.id === active) ?? null
 
   return (
-    <div className={cn('relative flex h-[400px] w-full max-w-lg overflow-hidden rounded-2xl border border-zinc-800 bg-[#0a0910]', className)}>
-      <aside className="flex w-16 flex-col items-center gap-1 border-r border-zinc-800 py-3">
-        <span className="mb-2 flex h-9 w-9 items-center justify-center rounded-xl bg-signal-500/25 text-signal-200">
+    <div className={cn('relative flex h-[400px] w-full max-w-lg overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#0a0910]', className)}>
+      <aside className="flex w-16 flex-col items-center gap-1 border-r border-zinc-200 dark:border-zinc-800 py-3">
+        <span className="mb-2 flex h-9 w-9 items-center justify-center rounded-xl bg-signal-500/25 text-signal-700 dark:text-signal-200">
           <Sparkles className="h-4 w-4" />
         </span>
         {ITEMS.map((item) => {
@@ -109,7 +109,7 @@ export function MegaFlyoutSidebar({ className }: { className?: string }) {
               onClick={() => setActive(item.id)}
               className={cn(
                 'flex h-10 w-10 items-center justify-center rounded-xl transition',
-                on ? 'bg-signal-500/30 text-white shadow-[0_0_20px_rgba(154,134,184,0.35)]' : 'text-zinc-500 hover:bg-white/5 hover:text-zinc-200',
+                on ? 'bg-signal-500/30 text-zinc-900 dark:text-white shadow-[0_0_20px_rgba(154,134,184,0.35)]' : 'text-zinc-500 hover:bg-zinc-900/[0.04] dark:hover:bg-white/5 hover:text-zinc-900 dark:hover:text-zinc-200',
               )}
               aria-label={item.label}
             >
@@ -132,8 +132,8 @@ export function MegaFlyoutSidebar({ className }: { className?: string }) {
             >
               <div className="mb-4 flex items-start justify-between gap-3">
                 <div>
-                  <p className="text-lg font-semibold text-white">{current.panel.title}</p>
-                  <p className="mt-1 max-w-xs text-xs leading-relaxed text-zinc-400">{current.panel.blurb}</p>
+                  <p className="text-lg font-semibold text-zinc-900 dark:text-white">{current.panel.title}</p>
+                  <p className="mt-1 max-w-xs text-xs leading-relaxed text-zinc-500 dark:text-zinc-400">{current.panel.blurb}</p>
                 </div>
                 <div className="h-16 w-20 shrink-0 rounded-xl bg-gradient-to-br from-signal-500/40 via-violet-500/30 to-framekit-500/40 shadow-inner" />
               </div>
@@ -144,7 +144,7 @@ export function MegaFlyoutSidebar({ className }: { className?: string }) {
                       <li key={link.label}>
                         <button
                           type="button"
-                          className="w-full rounded-lg px-2 py-1.5 text-left text-sm text-zinc-300 transition hover:bg-white/5 hover:text-white"
+                          className="w-full rounded-lg px-2 py-1.5 text-left text-sm text-zinc-700 dark:text-zinc-300 transition hover:bg-zinc-900/[0.04] dark:hover:bg-white/5 hover:text-zinc-900 dark:hover:text-white"
                         >
                           {link.label}
                         </button>

@@ -51,7 +51,7 @@ export function SonarPingToastProvider({ children }: { children: React.ReactNode
                     </div>
                     <button
                       type="button"
-                      className={cn('rounded-md p-1 text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800')}
+                      className={cn('rounded-md p-1 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800')}
                       onClick={() => setItems((prev) => prev.filter((x) => x.id !== item.id))}
                     >
                       <X className="h-3.5 w-3.5" />

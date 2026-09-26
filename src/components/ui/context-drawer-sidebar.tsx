@@ -46,7 +46,7 @@ export function ContextDrawerSidebar({ className }: { className?: string }) {
                 'rounded-lg p-1.5 transition',
                 pinned
                   ? 'bg-signal-400/30 text-signal-800 dark:text-signal-100'
-                  : 'text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800',
+                  : 'text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800',
               )}
               aria-label={pinned ? 'Unpin drawer' : 'Pin drawer'}
             >

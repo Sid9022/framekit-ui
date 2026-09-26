@@ -45,7 +45,7 @@ export function HologramFlipCard({
           className="absolute inset-0 rounded-2xl border border-zinc-200 bg-white p-5 shadow-xl dark:border-zinc-800 dark:bg-zinc-950"
           style={{ backfaceVisibility: 'hidden' }}
         >
-          <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-400">Front</p>
+          <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">Front</p>
           <h3 className="mt-2 text-lg font-semibold">{frontTitle}</h3>
           <p className="mt-2 text-sm text-zinc-500">{frontBody}</p>
         </div>

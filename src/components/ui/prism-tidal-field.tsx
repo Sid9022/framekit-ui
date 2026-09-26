@@ -1,15 +1,25 @@
 import * as React from 'react'
 import { cn } from '@/lib/cn'
 import { usePrefersReducedMotion } from '@/lib/use-reduced-motion'
+import { useResolvedTheme, type ThemeMode } from '@/lib/use-resolved-theme'
 
 /** Soft lilac tidal bands that bend toward pointer velocity. Canvas 2D (not WebGL). */
 export function PrismTidalField({
   className,
   children,
+  theme = 'auto',
 }: {
   className?: string
   children?: React.ReactNode
+  /** `auto` follows the nearest `.dark` / `.light` ancestor. */
+  theme?: ThemeMode
 }) {
+  const rootRef = React.useRef<HTMLDivElement>(null)
+  const resolved = useResolvedTheme(rootRef, theme)
+  const darkRef = React.useRef(resolved === 'dark')
+  React.useLayoutEffect(() => {
+    darkRef.current = resolved === 'dark'
+  }, [resolved])
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const reduced = usePrefersReducedMotion()
   const pointer = React.useRef({ x: 0.5, y: 0.5, vx: 0, vy: 0 })
@@ -40,9 +50,11 @@ export function PrismTidalField({
       const py = pointer.current.y * height
       const bend = Math.min(1, Math.hypot(pointer.current.vx, pointer.current.vy) * 8)
 
+      const dark = darkRef.current
+      const tone = dark ? '212, 203, 229' : '125, 104, 153'
       const g = ctx.createLinearGradient(0, 0, width, height)
-      g.addColorStop(0, '#0b0b0f')
-      g.addColorStop(1, '#16141c')
+      g.addColorStop(0, dark ? '#0b0b0f' : '#f8f7fb')
+      g.addColorStop(1, dark ? '#16141c' : '#ebe7f2')
       ctx.fillStyle = g
       ctx.fillRect(0, 0, width, height)
 
@@ -64,14 +76,14 @@ export function PrismTidalField({
         ctx.lineTo(0, height)
         ctx.closePath()
         const alpha = 0.08 + i * 0.04
-        ctx.fillStyle = `rgba(212, 203, 229, ${Math.min(0.55, alpha * 1.35)})`
+        ctx.fillStyle = `rgba(${tone}, ${Math.min(dark ? 0.55 : 0.4, alpha * (dark ? 1.35 : 0.9))})`
         ctx.fill()
       }
 
       // soft bloom near pointer
       const bloom = ctx.createRadialGradient(px, py, 0, px, py, 180)
-      bloom.addColorStop(0, 'rgba(212,203,229,0.35)')
-      bloom.addColorStop(1, 'rgba(212,203,229,0)')
+      bloom.addColorStop(0, dark ? 'rgba(212,203,229,0.35)' : 'rgba(255,255,255,0.7)')
+      bloom.addColorStop(1, dark ? 'rgba(212,203,229,0)' : 'rgba(255,255,255,0)')
       ctx.fillStyle = bloom
       ctx.fillRect(0, 0, width, height)
 
@@ -88,7 +100,9 @@ export function PrismTidalField({
 
   return (
     <div
-      className={cn('relative overflow-hidden rounded-2xl bg-zinc-950', className)}
+      ref={rootRef}
+      data-theme={resolved}
+      className={cn('relative overflow-hidden rounded-2xl', resolved === 'dark' ? 'bg-zinc-950' : 'bg-[#f3f1f7]', className)}
       onPointerMove={(e) => {
         const r = e.currentTarget.getBoundingClientRect()
         const x = (e.clientX - r.left) / r.width

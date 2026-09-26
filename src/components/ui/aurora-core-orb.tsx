@@ -67,7 +67,7 @@ export function AuroraCoreOrb({ className }: { className?: string }) {
             onClick={() => setMode(m)}
             className={cn(
               'rounded-full px-3.5 py-1.5 text-[11px] font-semibold uppercase tracking-[0.14em] transition',
-              mode === m ? 'bg-signal-500/30 text-signal-100 ring-1 ring-signal-400/50' : 'bg-white/5 text-zinc-400 hover:bg-white/10',
+              mode === m ? 'bg-signal-500/30 text-signal-800 dark:text-signal-100 ring-1 ring-signal-400/50' : 'bg-zinc-900/[0.04] dark:bg-white/5 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-900/[0.06] dark:hover:bg-white/10',
             )}
           >
             {m}
