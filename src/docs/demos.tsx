@@ -188,6 +188,18 @@ import { MeshPillOrb, MESH_PILL_ORB_PALETTES, type MeshPillOrbState } from '@/co
 import { StarMorphBuddy } from '@/components/ui/star-morph-buddy'
 import { LoopFlightSendButton } from '@/components/ui/loop-flight-send-button'
 import { LiquidChargeCapsule } from '@/components/ui/liquid-charge-capsule'
+import { SplitFlapHero } from '@/components/ui/split-flap-hero'
+import { RidgelineHorizonHero } from '@/components/ui/ridgeline-horizon-hero'
+import { TumblerLockOtp } from '@/components/ui/tumbler-lock-otp'
+import { CrystalStrengthPassword } from '@/components/ui/crystal-strength-password'
+import { OrigamiUnfoldCard } from '@/components/ui/origami-unfold-card'
+import { LenticularShiftCard } from '@/components/ui/lenticular-shift-card'
+import { TumbleLetters } from '@/components/ui/tumble-letters'
+import { PluckedStringTabs } from '@/components/ui/plucked-string-tabs'
+import { IronFilingsField } from '@/components/ui/iron-filings-field'
+import { PullCordLampToggle } from '@/components/ui/pull-cord-lamp-toggle'
+import { SeatScalePricing } from '@/components/ui/seat-scale-pricing'
+import { PolarBloomChart, DEFAULT_POLAR_SERIES } from '@/components/ui/polar-bloom-chart'
 
 
 
@@ -756,6 +768,79 @@ function LiquidChargeDemo() {
         <button type="button" className={demoChip(false)} onClick={() => manual(() => { setLevel(0); window.setTimeout(() => { setCharging(true); setLevel(100) }, 350) })}>
           Replay fill
         </button>
+      </div>
+    </div>
+  )
+}
+
+/* ───────────── Batch 5 demos ───────────── */
+function TumblerLockDemo() {
+  return (
+    <TumblerLockOtp
+      hint="Demo: 246810 unlocks — any other code fails."
+      onVerify={(code) => code === '246810'}
+    />
+  )
+}
+
+function OrigamiUnfoldDemo() {
+  const [fail, setFail] = React.useState(false)
+  return (
+    <div className="flex flex-col items-center gap-4 pb-6">
+      <OrigamiUnfoldCard
+        onAction={async () => {
+          await wait(1100)
+          return !fail
+        }}
+      />
+      <div className="mt-6"><FailSwitch on={fail} onChange={setFail} /></div>
+    </div>
+  )
+}
+
+function IronFilingsDemo() {
+  return (
+    <IronFilingsField className="max-w-3xl">
+      <div className="pointer-events-none absolute inset-x-0 top-10 flex flex-col items-center text-center">
+        <span className="rounded-full bg-white/70 px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-600 ring-1 ring-black/[0.06] backdrop-blur dark:bg-black/40 dark:text-zinc-300 dark:ring-white/10">Field study</span>
+        <h3 className="mt-3 font-display text-4xl tracking-tight text-zinc-900 dark:text-white">Opposites attract.</h3>
+      </div>
+    </IronFilingsField>
+  )
+}
+
+function SeatScaleDemo() {
+  const [fail, setFail] = React.useState(false)
+  return (
+    <div className="flex flex-col items-center gap-4">
+      <SeatScalePricing
+        onCheckout={async () => {
+          await wait(1200)
+          return !fail
+        }}
+      />
+      <FailSwitch on={fail} onChange={setFail} />
+    </div>
+  )
+}
+
+function PolarBloomDemo() {
+  const [fail, setFail] = React.useState(false)
+  const [nonce, setNonce] = React.useState(0)
+  const failRef = React.useRef(fail)
+  failRef.current = fail
+  const load = React.useCallback(async () => {
+    await wait(900)
+    if (failRef.current) throw new Error('Network')
+    return DEFAULT_POLAR_SERIES
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [nonce])
+  return (
+    <div className="flex flex-col items-center gap-4">
+      <PolarBloomChart load={load} />
+      <div className="flex items-center gap-2">
+        <FailSwitch on={fail} onChange={setFail} label="Fail next load" />
+        <button type="button" className={demoChip(false)} onClick={() => setNonce((n) => n + 1)}>Reload data</button>
       </div>
     </div>
   )
@@ -1557,4 +1642,16 @@ export const demos: Record<string, React.ReactNode> = {
   'star-morph-buddy': <StarMorphBuddyDemo />,
   'loop-flight-send-button': <LoopFlightSendDemo />,
   'liquid-charge-capsule': <LiquidChargeDemo />,
+  'split-flap-hero': <SplitFlapHero className="max-w-3xl" />,
+  'ridgeline-horizon-hero': <RidgelineHorizonHero className="max-w-3xl" />,
+  'tumbler-lock-otp': <TumblerLockDemo />,
+  'crystal-strength-password': <CrystalStrengthPassword />,
+  'origami-unfold-card': <OrigamiUnfoldDemo />,
+  'lenticular-shift-card': <LenticularShiftCard />,
+  'tumble-letters': <TumbleLetters autoDrop={1600} />,
+  'plucked-string-tabs': <PluckedStringTabs />,
+  'iron-filings-field': <IronFilingsDemo />,
+  'pull-cord-lamp-toggle': <PullCordLampToggle />,
+  'seat-scale-pricing': <SeatScaleDemo />,
+  'polar-bloom-chart': <PolarBloomDemo />,
 }

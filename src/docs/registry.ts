@@ -1,5 +1,6 @@
 export type DocCategory =
   | 'Getting Started'
+  | 'Hero'
   | 'Animated Backgrounds'
   | 'Buttons'
   | 'Toggles'
@@ -18,6 +19,7 @@ export type DocCategory =
   | 'Voice Agent'
   | 'Cursors'
   | 'Search / Inputs'
+  | 'Inputs / Forms'
   | 'Core'
 
 export type DocEntry = {
@@ -48,7 +50,36 @@ export const DOCS: DocEntry[] = [
   { slug: 'installation', title: 'Installation', description: 'Copy-paste setup for Framekit UI components.', category: 'Getting Started' },
   { slug: 'theming', title: 'Theming', description: 'Colors, dark mode, and Tailwind tokens.', category: 'Getting Started' },
 
+  // Hero
+  { slug: 'split-flap-hero', ownBackground: true, backgroundNote: 'Paints its own warm-paper (light) / ink (dark) backdrop via dark: variants; the flap board itself stays charcoal in both. Override the surface with className (bg-*, rounded-*, py-*).', title: 'Split-Flap Hero', description: 'A landing hero whose key phrase lives on a mechanical departure board — every character clacks through the alphabet on hinged 3D leaves before landing, with flap counters underneath.', category: 'Hero', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Watch the board flip; use the arrows or pause button bottom-right.', props: [
+    { name: 'words', type: 'string[]', default: 'DEFAULT_SPLIT_FLAP_WORDS', description: 'Phrases cycled on the board (upper-cased, up to 12 characters).' },
+    { name: 'prefix', type: 'string', default: '\'Interfaces that\'', description: 'Static headline line above the board.' },
+    { name: 'description / eyebrow', type: 'string', description: 'Supporting copy and the pill above the headline.' },
+    { name: 'ctaLabel / onCta', type: 'string / () => void', default: '\'Get your ticket\'', description: 'Primary button.' },
+    { name: 'secondaryLabel / onSecondary', type: 'string / () => void', description: 'Ghost button; omit label to hide.' },
+    { name: 'stats', type: '{ value, label }[]', description: 'Small amber flap counters under the CTAs.' },
+    { name: 'interval', type: 'number', default: '3400', description: 'ms each phrase rests on the board.' },
+    { name: 'autoPlay', type: 'boolean', default: 'true', description: 'Cycle automatically; pause/next/prev controls are always rendered.' },
+    { name: 'onWordChange', type: '(word, index) => void', description: 'Fires when the board lands on a new phrase.' },
+  ] },
+  { slug: 'ridgeline-horizon-hero', ownBackground: true, backgroundNote: 'Paints its own canvas sky and terrain and adapts on its own: theme=\'auto\' follows the nearest .dark / .light ancestor (dusk violet on dark, apricot dawn on light). Force a look with theme and restyle the frame with className.', title: 'Ridgeline Horizon Hero', description: 'Headline words rise out of masks above a canvas terrain of stacked ridgelines receding to a sunrise; the pointer raises a swell that rolls back to the horizon and clicks send a ripple.', category: 'Hero', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Move across the hero to raise a swell; click to send a ripple.', props: [
+    { name: 'title / highlight', type: 'string', description: 'Headline and the phrase that gets the dawn gradient.' },
+    { name: 'description / eyebrow', type: 'string', description: 'Supporting copy and pill.' },
+    { name: 'ctaLabel / onCta', type: 'string / () => void', default: '\'Start the climb\'', description: 'Primary button.' },
+    { name: 'secondaryLabel / onSecondary', type: 'string / () => void', description: 'Ghost button; omit label to hide.' },
+    { name: 'lines', type: 'number', default: '30', description: 'Ridgeline count (12–48).' },
+    { name: 'interactive', type: 'boolean', default: 'true', description: 'Pointer swell and click ripple.' },
+    { name: 'theme', type: "'auto' | 'light' | 'dark'", default: "'auto'", description: 'auto follows the nearest .dark / .light ancestor; light / dark force a palette.' },
+  ] },
+
   // Animated Backgrounds
+  { slug: 'iron-filings-field', ownBackground: true, backgroundNote: 'Paints its own paper (light) / graphite (dark) canvas and adapts on its own: theme=\'auto\' follows the nearest .dark / .light ancestor. Force a look with theme and restyle the frame with className.', title: 'Iron Filings Field', description: 'Thousands of steel needles on paper swing with a little inertia to align with the magnetic field of a few poles; the pointer carries a north pole and clicks drop new poles.', category: 'Animated Backgrounds', unique: true, isNew: true, dependencies: [], gesture: 'Move to carry a pole; click to pin it (you get the opposite one). Double-click clears.', props: [
+    { name: 'spacing', type: 'number', default: '16', description: 'Grid spacing of filings (10–40px).' },
+    { name: 'interactive', type: 'boolean', default: 'true', description: 'Pointer pole, click-to-drop and the pole buttons.' },
+    { name: 'drift', type: 'boolean', default: 'true', description: 'Idle poles orbit slowly.' },
+    { name: 'children', type: 'ReactNode', description: 'Content layered over the field.' },
+    { name: 'theme', type: "'auto' | 'light' | 'dark'", default: "'auto'", description: 'auto follows the nearest .dark / .light ancestor; light / dark force a palette.' },
+  ] },
   { slug: 'glow-arc-hero', ownBackground: true, backgroundNote: 'Paints its own backdrop with light and dark: variants — off-white with soft coloured shadows on light pages, deep ink with neon glow on dark. Override the surface with className (e.g. bg-*, rounded-*, h-*).', title: 'Glow Arc Hero', description: 'A rainbow of glossy tiles fans in around a centred headline; each tile breathes its own coloured halo while the arc sways and tilts toward the pointer.', category: 'Animated Backgrounds', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Move across the hero to tilt the arc; hover a tile to lift it.', props: [
     { name: 'items', type: 'GlowArcItem[]', default: 'DEFAULT_GLOW_ARC_ITEMS', description: '{ id, label, src?, hue?, icon? } — pass src to drop real artwork into the tiles.' },
     { name: 'title / highlight', type: 'string', description: 'Headline and the words that get gradient ink.' },
@@ -158,6 +189,11 @@ export const DOCS: DocEntry[] = [
 
 
   // Toggles (hero category)
+  { slug: 'pull-cord-lamp-toggle', title: 'Pull-Cord Lamp Toggle', description: 'A pendant lamp switched by its pull cord: drag the bead down until it clicks, the cord snaps back elastically and sways, the shade rocks on its wire and the bulb warms into a cone of light with drifting dust.', category: 'Toggles', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Drag the cord bead down and let go — or focus it and press Space.', props: [
+    ...(toggleProps ?? []),
+    { name: 'label', type: 'string', default: "'Reading lamp'", description: 'Accessible name and caption.' },
+    { name: 'height', type: 'number', default: '300', description: 'Scene height in px.' },
+  ] },
   { slug: 'watchful-eye-toggle', title: 'Watchful Eye Toggle', description: 'A soft eye opens and closes; the pupil tracks when open.', category: 'Toggles', unique: true, isNew: true, gesture: 'Click or press Space — lids open/close; move to track.', props: toggleProps },
   { slug: 'day-night-capsule', title: 'Day Night Capsule', description: 'Illustrated mini sky that morphs day↔night.', category: 'Toggles', unique: true, isNew: true, gesture: 'Click the capsule to switch day and night.', props: toggleProps },
   { slug: 'glass-orb-switch', title: 'Glass Orb Switch', description: 'Translucent glass sphere slides on a dark track.', category: 'Toggles', unique: true, isNew: true, gesture: 'Click track or orb to toggle light/dark.', props: toggleProps },
@@ -175,6 +211,13 @@ export const DOCS: DocEntry[] = [
 
 
   // Text Animations
+  { slug: 'tumble-letters', title: 'Tumble Letters', description: 'A headline of physical letters: drop them and they fall, spin, bounce and pile against each other on the floor; hover lifts letters in a wave, any letter can be grabbed and flung, and Reassemble springs them home.', category: 'Text Animations', unique: true, isNew: true, dependencies: ['lucide-react'], gesture: 'Drop the letters, then drag and fling any of them.', props: [
+    { name: 'text / highlight', type: 'string', description: 'Headline and the words in accent ink.' },
+    { name: 'autoDrop', type: 'number', default: '0', description: 'ms after mount to drop automatically (0 = never).' },
+    { name: 'gravity', type: 'number', default: '2400', description: 'px/s².' },
+    { name: 'bounce', type: 'number', default: '0.38', description: 'Floor restitution.' },
+    { name: 'onDrop / onAssemble', type: '() => void', description: 'Lifecycle callbacks.' },
+  ] },
   { slug: 'glyph-weather', title: 'Glyph Weather', description: 'Glyphs drift with scroll direction.', category: 'Text Animations', unique: true, isNew: true, gesture: 'Scroll the page — characters lean with the wind.' },
   { slug: 'wordloom', title: 'Wordloom', description: 'Words weave out as threads and resolve the next.', category: 'Text Animations', unique: true, isNew: true, gesture: 'Click (or Enter) to weave the next word.', dependencies: ['motion'] },
   { slug: 'momentum-caption', title: 'Momentum Caption', description: 'Caption briefly follows pointer velocity.', category: 'Text Animations', unique: true, isNew: true, gesture: 'Sweep the pointer quickly — caption trails, then settles.' },
@@ -246,6 +289,20 @@ export const DOCS: DocEntry[] = [
   { slug: 'velocity-fade-stack', props: [{ name: 'viewportClassName', type: 'string', description: 'Classes merged onto the scrolling viewport (surface, border, radius, height).' }],  ownBackground: true, backgroundNote: 'A cinematic dark reel that keeps its backdrop on any page. Restyle the scrolling surface with viewportClassName (e.g. a lighter bg-* and border), and the outer box with className.', title: 'Velocity Fade Stack', description: 'Rich cards scale/blur/opacity from distance + inertia velocity; center focus.', category: 'Vertical Scroll', unique: true, isNew: true, gesture: 'Scroll fast then coast — focus blooms as velocity drops.' },
 
   // Cards
+  { slug: 'origami-unfold-card', title: 'Origami Unfold Card', description: 'A trail ticket that unfolds like a paper map: press the cover and two creased panels swing down in sequence on real CSS-3D hinges, catching light as they flatten, while the route draws itself and the last panel runs an async save.', category: 'Cards', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Press the cover (or Enter) to unfold / fold.', props: [
+    { name: 'title / subtitle / tag', type: 'string', description: 'Cover copy.' },
+    { name: 'src', type: 'string', description: 'Optional cover image; a generated dawn-ridge illustration otherwise.' },
+    { name: 'stops', type: '{ name, time }[]', description: 'Route stops listed on the last panel.' },
+    { name: 'stats', type: '{ label, value }[]', description: 'Three small stats.' },
+    { name: 'actionLabel / onAction', type: 'string / () => Promise<void | boolean>', default: '\'Save to trail log\'', description: 'Async action; false / reject shows retry.' },
+    { name: 'open / defaultOpen / onOpenChange', type: 'boolean', default: 'false', description: 'Controlled or uncontrolled fold state.' },
+  ] },
+  { slug: 'lenticular-shift-card', title: 'Lenticular Shift Card', description: 'A postcard printed on a ridged lenticular sheet: tilting interlaces the scenes in fine vertical blinds that sweep across the print while a specular band rides the ridges.', category: 'Cards', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Move across the card to tilt it; ←/→ or the chips switch frames.', props: [
+    { name: 'items', type: '{ id, label, caption?, src?, hue? }[]', default: 'DEFAULT_LENTICULAR_FRAMES', description: '2–4 frames; pass src for real artwork.' },
+    { name: 'title', type: 'string', default: '\'Harbour Light\'', description: 'Caption title.' },
+    { name: 'autoRock', type: 'boolean', default: 'true', description: 'Gently rocks the print while idle.' },
+    { name: 'index / defaultIndex / onIndexChange', type: 'number', default: '0', description: 'Controlled or uncontrolled frame.' },
+  ] },
   { slug: 'curved-tile-wall', ownBackground: true, backgroundNote: 'Paints its own stage with light and dark: variants — warm paper with soft drop shadows on light pages, near-black with cyan hover glow on dark. Override the surface with className (e.g. bg-*, rounded-*).', title: 'Curved Tile Wall', description: 'A gallery bent onto a sphere section in real CSS 3D: mixed-height frames drift, swing with drag, pop toward you on hover and open in a focused lightbox.', category: 'Cards', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Drag or move to swing the wall; hover to pop a frame; click to open.', props: [
     { name: 'items', type: 'CurvedWallItem[]', default: 'DEFAULT_CURVED_WALL_ITEMS', description: '{ id, title, caption?, src?, hue? } — src swaps the generated landscape for your image.' },
     { name: 'eyebrow / title / subtitle', type: 'string', description: 'Heading copy above the wall.' },
@@ -282,6 +339,11 @@ export const DOCS: DocEntry[] = [
   ] },
 
   // Navigation
+  { slug: 'plucked-string-tabs', title: 'Plucked String Tabs', description: 'Tabs hang from a taut string. Choosing one plucks the string there and the vibration travels as a real damped wave; every tab bobs with the string above it and a glowing bead slides to the active tab. Sweep across the string to strum it.', category: 'Navigation', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Click or ←/→ between tabs; sweep the pointer across the string to strum.', props: [
+    { name: 'items', type: '{ id, label, content? }[]', default: 'DEFAULT_STRING_TABS', description: 'Tabs and their panels.' },
+    { name: 'value / defaultValue / onValueChange', type: 'string', description: 'Controlled or uncontrolled active tab.' },
+    { name: 'strum', type: 'boolean', default: 'true', description: 'Pointer crossings pluck the string.' },
+  ] },
   { slug: 'compass-rail', title: 'Compass Rail', description: 'Vertical rail with a shortest-path compass marker.', category: 'Navigation', unique: true, isNew: true, gesture: 'Click items — the compass marker takes the short path.' },
   { slug: 'halo-menu', title: 'Halo Menu', description: 'Center action opens a 6-item halo.', category: 'Navigation', unique: true, isNew: true, gesture: 'Open the menu; use arrow keys to roam the halo.' },
   { slug: 'magnify-dock', title: 'Magnify Dock', description: 'Dock with proximity scaling.', category: 'Navigation', unique: true, dependencies: ['motion'], gesture: 'Slide across icons — neighbors magnify.' },
@@ -331,6 +393,23 @@ export const DOCS: DocEntry[] = [
   { slug: 'push-preview-card', title: 'Push Preview Card', description: 'Mobile-style push notification preview with app icon, title, body, time.', category: 'Notifications', unique: true, isNew: true, gesture: 'Watch the push card settle into the phone frame.', dependencies: ['motion'] },
 
   // Widgets
+  { slug: 'seat-scale-pricing', title: 'Seat Scale Pricing', description: 'One pricing card that morphs through every plan as you drag the team size: avatars pop in seat by seat, the price rolls on odometer reels, the tier badge and accent cross-fade, unlocked features slide in with a glow, and yearly billing bursts a savings chip.', category: 'Widgets', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Drag the team-size slider or pick a plan name; toggle billing.', props: [
+    { name: 'tiers', type: '{ id, name, minSeats, perSeat, hue, features }[]', default: 'DEFAULT_PRICING_TIERS', description: 'Plans ordered by minimum seats.' },
+    { name: 'seats / defaultSeats / onSeatsChange', type: 'number', default: '8', description: 'Controlled or uncontrolled team size.' },
+    { name: 'billing / defaultBilling / onBillingChange', type: '\'monthly\' | \'yearly\'', default: '\'yearly\'', description: 'Billing period.' },
+    { name: 'maxSeats', type: 'number', default: '150', description: 'Slider maximum.' },
+    { name: 'yearlyDiscount', type: 'number', default: '0.2', description: 'Discount applied to yearly billing.' },
+    { name: 'currency', type: 'string', default: '\'$\'', description: 'Currency symbol.' },
+    { name: 'onCheckout', type: '(sel) => Promise<void | boolean>', description: 'Async CTA; false / reject shows retry.' },
+  ] },
+  { slug: 'polar-bloom-chart', title: 'Polar Bloom Chart', description: 'A Nightingale rose that blooms: petals unfurl from the bud one after another, re-grow on springs when you switch datasets, and the hovered or arrow-key focused petal lifts out with a coloured glow while the centre counts up.', category: 'Widgets', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Hover petals or focus the chart and use arrow keys; switch datasets below.', props: [
+    { name: 'series', type: '{ id, label, values, unit? }[]', default: 'DEFAULT_POLAR_SERIES', description: 'Datasets (one value per label).' },
+    { name: 'labels', type: 'string[]', default: 'months', description: 'Petal labels.' },
+    { name: 'title', type: 'string', default: '\'Seasonality\'', description: 'Card title.' },
+    { name: 'hue / size', type: 'number', default: '190 / 300', description: 'Petal gradient start hue and chart size.' },
+    { name: 'load', type: '() => Promise<PolarSeries[]>', description: 'Async loader with loading bud and retry on failure.' },
+    { name: 'onPetalSelect', type: '(label, value) => void', description: 'Click / Enter on a petal.' },
+  ] },
   { slug: 'glow-leaderboard-list', title: 'Glow Leaderboard List', description: 'Glass pill rows that genuinely compete: scores tick up live, rows re-rank with layout springs, amounts roll and the glowing leader highlight glides to the new #1.', category: 'Widgets', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Watch rows re-rank live; toggle Live to pause; hover a row.', props: [
     { name: 'items', type: 'LeaderboardItem[]', default: 'DEFAULT_LEADERBOARD_ITEMS', description: '{ id, name, score, level?, src?, hue? } — src for real avatars.' },
     { name: 'live / defaultLive / onLiveChange', type: 'boolean / boolean / (v) => void', default: 'true', description: 'Controlled or uncontrolled live ticking.' },
@@ -417,6 +496,23 @@ export const DOCS: DocEntry[] = [
   { slug: 'signal-pebble', title: 'Signal Pebble', description: 'Procedural noise pebble with a status verb.', category: 'Search / Inputs', unique: true, isNew: true, gesture: 'Watch the pebble breathe — status text is the fallback.' },
 
   // Core
+  // Inputs / Forms
+  { slug: 'tumbler-lock-otp', title: 'Tumbler Lock OTP', description: 'A one-time-code field built from combination-lock drums on real CSS-3D cylinders; each digit whirrs a full turn before landing, a padlock checks the code and springs open — or shakes and spins every drum back on failure.', category: 'Inputs / Forms', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Type or paste 246810 to unlock; anything else fails. Esc clears.', props: [
+    { name: 'length', type: 'number', default: '6', description: 'Number of drums.' },
+    { name: 'value / defaultValue / onValueChange', type: 'string', description: 'Controlled or uncontrolled digits.' },
+    { name: 'onVerify', type: '(code) => boolean | Promise<boolean>', description: 'Runs when all drums are set; false / reject shows the error state and resets.' },
+    { name: 'onSuccess', type: '(code) => void', description: 'Fires after a successful verify.' },
+    { name: 'label / hint', type: 'string', description: 'Field label and helper text.' },
+    { name: 'resendAfter / onResend', type: 'number / () => void', default: '30', description: 'Countdown before “Resend code” unlocks (0 hides it).' },
+    { name: 'disabled / autoFocus', type: 'boolean', default: 'false', description: 'Standard field flags.' },
+  ] },
+  { slug: 'crystal-strength-password', title: 'Crystal Strength Password', description: 'A password field that grows an SVG crystal: each satisfied rule springs a faceted shard out of the rock, the cluster shifts from ember to glacier, and a perfect score turns it iridescent with glints. Includes show/hide and a forged suggestion that scrambles in.', category: 'Inputs / Forms', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Type a password or press “Suggest one”.', props: [
+    { name: 'value / defaultValue / onValueChange', type: 'string', description: 'Controlled or uncontrolled value.' },
+    { name: 'rules', type: '{ id, label, test }[]', default: 'DEFAULT_PASSWORD_RULES', description: 'Up to five rules; each grows one shard.' },
+    { name: 'onStrengthChange', type: '(score, label) => void', description: 'Fires when the score changes.' },
+    { name: 'label / placeholder / name', type: 'string', description: 'Field copy and form name.' },
+    { name: 'showSuggest', type: 'boolean', default: 'true', description: 'Show the password forge button.' },
+  ] },
   { slug: 'button', title: 'Button', description: 'Versatile button with variants and sizes.', category: 'Core', dependencies: ['clsx', 'tailwind-merge'] },
   { slug: 'badge', title: 'Badge', description: 'Compact status and label chips.', category: 'Core' },
   { slug: 'card', title: 'Card', description: 'Composable surface for content blocks.', category: 'Core' },
@@ -445,6 +541,7 @@ export function getDoc(slug: string) {
 
 const NAV_ORDER: DocCategory[] = [
   'Getting Started',
+  'Hero',
   'Animated Backgrounds',
   'Buttons',
   'Toggles',
@@ -463,6 +560,7 @@ const NAV_ORDER: DocCategory[] = [
   'Voice Agent',
   'Cursors',
   'Search / Inputs',
+  'Inputs / Forms',
   'Core',
 ]
 

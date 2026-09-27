@@ -190,6 +190,18 @@ import meshPillOrbSrc from '../components/ui/mesh-pill-orb.tsx?raw'
 import starMorphBuddySrc from '../components/ui/star-morph-buddy.tsx?raw'
 import loopFlightSendButtonSrc from '../components/ui/loop-flight-send-button.tsx?raw'
 import liquidChargeCapsuleSrc from '../components/ui/liquid-charge-capsule.tsx?raw'
+import splitFlapHeroSrc from '../components/ui/split-flap-hero.tsx?raw'
+import ridgelineHorizonHeroSrc from '../components/ui/ridgeline-horizon-hero.tsx?raw'
+import tumblerLockOtpSrc from '../components/ui/tumbler-lock-otp.tsx?raw'
+import crystalStrengthPasswordSrc from '../components/ui/crystal-strength-password.tsx?raw'
+import origamiUnfoldCardSrc from '../components/ui/origami-unfold-card.tsx?raw'
+import lenticularShiftCardSrc from '../components/ui/lenticular-shift-card.tsx?raw'
+import tumbleLettersSrc from '../components/ui/tumble-letters.tsx?raw'
+import pluckedStringTabsSrc from '../components/ui/plucked-string-tabs.tsx?raw'
+import ironFilingsFieldSrc from '../components/ui/iron-filings-field.tsx?raw'
+import pullCordLampToggleSrc from '../components/ui/pull-cord-lamp-toggle.tsx?raw'
+import seatScalePricingSrc from '../components/ui/seat-scale-pricing.tsx?raw'
+import polarBloomChartSrc from '../components/ui/polar-bloom-chart.tsx?raw'
 
 export const sources: Record<string, string> = {
   button: buttonSrc,
@@ -380,4 +392,16 @@ export const sources: Record<string, string> = {
   'star-morph-buddy': starMorphBuddySrc,
   'loop-flight-send-button': loopFlightSendButtonSrc,
   'liquid-charge-capsule': liquidChargeCapsuleSrc,
+  'split-flap-hero': splitFlapHeroSrc,
+  'ridgeline-horizon-hero': ridgelineHorizonHeroSrc,
+  'tumbler-lock-otp': tumblerLockOtpSrc,
+  'crystal-strength-password': crystalStrengthPasswordSrc,
+  'origami-unfold-card': origamiUnfoldCardSrc,
+  'lenticular-shift-card': lenticularShiftCardSrc,
+  'tumble-letters': tumbleLettersSrc,
+  'plucked-string-tabs': pluckedStringTabsSrc,
+  'iron-filings-field': ironFilingsFieldSrc,
+  'pull-cord-lamp-toggle': pullCordLampToggleSrc,
+  'seat-scale-pricing': seatScalePricingSrc,
+  'polar-bloom-chart': polarBloomChartSrc,
 }
