@@ -49,6 +49,16 @@ export const DOCS: DocEntry[] = [
   { slug: 'theming', title: 'Theming', description: 'Colors, dark mode, and Tailwind tokens.', category: 'Getting Started' },
 
   // Animated Backgrounds
+  { slug: 'glow-arc-hero', ownBackground: true, backgroundNote: 'Paints its own backdrop with light and dark: variants — off-white with soft coloured shadows on light pages, deep ink with neon glow on dark. Override the surface with className (e.g. bg-*, rounded-*, h-*).', title: 'Glow Arc Hero', description: 'A rainbow of glossy tiles fans in around a centred headline; each tile breathes its own coloured halo while the arc sways and tilts toward the pointer.', category: 'Animated Backgrounds', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Move across the hero to tilt the arc; hover a tile to lift it.', props: [
+    { name: 'items', type: 'GlowArcItem[]', default: 'DEFAULT_GLOW_ARC_ITEMS', description: '{ id, label, src?, hue?, icon? } — pass src to drop real artwork into the tiles.' },
+    { name: 'title / highlight', type: 'string', description: 'Headline and the words that get gradient ink.' },
+    { name: 'description / eyebrow', type: 'string', description: 'Supporting copy and the pill above the headline.' },
+    { name: 'ctaLabel / onCta', type: 'string / () => void', default: "'Start building'", description: 'Primary pill button.' },
+    { name: 'secondaryLabel / onSecondary', type: 'string / () => void', description: 'Ghost button; omit label to hide.' },
+    { name: 'onItemSelect', type: '(item) => void', description: 'Makes tiles focusable buttons.' },
+    { name: 'parallax', type: 'boolean', default: 'true', description: 'Pointer tilt of the arc.' },
+    { name: 'drift', type: 'boolean', default: 'true', description: 'Slow pendulum sway of the arc.' },
+  ] },
   { slug: 'prism-tidal-field', props: [{ name: 'theme', type: "'auto' | 'light' | 'dark'", default: "'auto'", description: 'auto follows the nearest .dark / .light ancestor; light / dark force a palette.' }],  ownBackground: true, backgroundNote: "Paints its own canvas backdrop and adapts on its own: theme='auto' (default) follows the nearest .dark / .light ancestor. Force a look with theme='light' or theme='dark', and restyle the frame (radius, size, border) with className.", title: 'Prism Tidal Field', description: 'Soft lilac tidal bands that bend toward pointer velocity.', category: 'Animated Backgrounds', unique: true, isNew: true, gesture: 'Move your cursor — tides lean toward velocity.' },
   { slug: 'constellation-breathing-grid', props: [{ name: 'theme', type: "'auto' | 'light' | 'dark'", default: "'auto'", description: 'auto follows the nearest .dark / .light ancestor; light / dark force a palette.' }],  ownBackground: true, backgroundNote: "Paints its own canvas backdrop and adapts on its own: theme='auto' (default) follows the nearest .dark / .light ancestor. Force a look with theme='light' or theme='dark', and restyle the frame (radius, size, border) with className.", title: 'Constellation Breathing Grid', description: 'Sparse nodes breathe and link when close.', category: 'Animated Backgrounds', unique: true, isNew: true, gesture: 'Move near nodes — links brighten on proximity.' },
   { slug: 'paperfold-gradient-plane', ownBackground: true, backgroundNote: 'Paints its own backdrop with light and dark: variants, so it matches the host page. Override the surface with className (e.g. bg-*, rounded-*).', title: 'Paperfold Gradient Plane', description: 'Folded translucent ribbons shift with the pointer.', category: 'Animated Backgrounds', unique: true, isNew: true, gesture: 'Move across the plane — folds follow your hand.' },
@@ -218,6 +228,20 @@ export const DOCS: DocEntry[] = [
   { slug: 'velocity-fade-stack', props: [{ name: 'viewportClassName', type: 'string', description: 'Classes merged onto the scrolling viewport (surface, border, radius, height).' }],  ownBackground: true, backgroundNote: 'A cinematic dark reel that keeps its backdrop on any page. Restyle the scrolling surface with viewportClassName (e.g. a lighter bg-* and border), and the outer box with className.', title: 'Velocity Fade Stack', description: 'Rich cards scale/blur/opacity from distance + inertia velocity; center focus.', category: 'Vertical Scroll', unique: true, isNew: true, gesture: 'Scroll fast then coast — focus blooms as velocity drops.' },
 
   // Cards
+  { slug: 'curved-tile-wall', ownBackground: true, backgroundNote: 'Paints its own stage with light and dark: variants — warm paper with soft drop shadows on light pages, near-black with cyan hover glow on dark. Override the surface with className (e.g. bg-*, rounded-*).', title: 'Curved Tile Wall', description: 'A gallery bent onto a sphere section in real CSS 3D: mixed-height frames drift, swing with drag, pop toward you on hover and open in a focused lightbox.', category: 'Cards', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Drag or move to swing the wall; hover to pop a frame; click to open.', props: [
+    { name: 'items', type: 'CurvedWallItem[]', default: 'DEFAULT_CURVED_WALL_ITEMS', description: '{ id, title, caption?, src?, hue? } — src swaps the generated landscape for your image.' },
+    { name: 'eyebrow / title / subtitle', type: 'string', description: 'Heading copy above the wall.' },
+    { name: 'drift', type: 'number', default: '10', description: 'Auto-drift amplitude in degrees (0 disables).' },
+    { name: 'onItemOpen', type: '(item) => void', description: 'Fires when a frame opens in the lightbox.' },
+  ] },
+  { slug: 'fan-deck-carousel', ownBackground: true, backgroundNote: 'Paints its own backdrop: a blurred copy of the active card art over off-white (light) or ink (dark), via dark: variants. Override the surface with className (e.g. bg-*, rounded-*).', title: 'Fan Deck Carousel', description: 'Poster cards fanned around an upright hero card; swipe, arrow keys or buttons re-fan the hand on springs while a blurred copy of the active art crossfades behind.', category: 'Cards', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Swipe, use ←/→ or click a side card; hover pauses autoplay.', props: [
+    { name: 'items', type: 'FanDeckItem[]', default: 'DEFAULT_FAN_DECK_ITEMS', description: '{ id, title, subtitle?, src?, hue? } — src swaps the generated poster for your image.' },
+    { name: 'headline / description', type: 'string', description: 'Copy above the deck.' },
+    { name: 'ctaLabel / onCta', type: 'string / (item) => void', default: "'Explore'", description: 'Pill CTA; receives the active item.' },
+    { name: 'autoplay', type: 'boolean', default: 'true', description: 'Advances on an interval; pauses on hover, focus, offscreen and reduced motion.' },
+    { name: 'interval', type: 'number', default: '4000', description: 'Milliseconds per slide.' },
+    { name: 'index / defaultIndex / onIndexChange', type: 'number / number / (i) => void', default: '0', description: 'Controlled or uncontrolled active slide.' },
+  ] },
   { slug: 'tide-deck', title: 'Tide Deck', description: 'Drag a deck whose depth reacts to velocity.', category: 'Cards', unique: true, isNew: true, gesture: 'Drag sideways or use arrows to advance the deck.', dependencies: ['motion'] },
   { slug: 'windowpane-story-card', title: 'Windowpane Story Card', description: 'Frosted pane slides to reveal evidence.', category: 'Cards', unique: true, isNew: true, gesture: 'Click Reveal — the frosted pane slides down.' },
   { slug: 'topographic-stack', title: 'Topographic Stack', description: 'Contour-offset layers separate on hover.', category: 'Cards', unique: true, isNew: true, gesture: 'Hover to separate layers; click to select.' },
@@ -289,6 +313,21 @@ export const DOCS: DocEntry[] = [
   { slug: 'push-preview-card', title: 'Push Preview Card', description: 'Mobile-style push notification preview with app icon, title, body, time.', category: 'Notifications', unique: true, isNew: true, gesture: 'Watch the push card settle into the phone frame.', dependencies: ['motion'] },
 
   // Widgets
+  { slug: 'glow-leaderboard-list', title: 'Glow Leaderboard List', description: 'Glass pill rows that genuinely compete: scores tick up live, rows re-rank with layout springs, amounts roll and the glowing leader highlight glides to the new #1.', category: 'Widgets', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Watch rows re-rank live; toggle Live to pause; hover a row.', props: [
+    { name: 'items', type: 'LeaderboardItem[]', default: 'DEFAULT_LEADERBOARD_ITEMS', description: '{ id, name, score, level?, src?, hue? } — src for real avatars.' },
+    { name: 'live / defaultLive / onLiveChange', type: 'boolean / boolean / (v) => void', default: 'true', description: 'Controlled or uncontrolled live ticking.' },
+    { name: 'interval', type: 'number', default: '2200', description: 'Milliseconds between score ticks.' },
+    { name: 'currency', type: 'string', default: "'$'", description: 'Amount prefix.' },
+    { name: 'visibleRows', type: 'number', default: '6', description: 'Rows rendered; the list fades out toward the bottom.' },
+    { name: 'title / subtitle / showHeader', type: 'string / string / boolean', description: 'Header copy and the live switch.' },
+  ] },
+  { slug: 'podium-stack-leaderboard', title: 'Podium Stack Leaderboard', description: 'Gold, silver and bronze cards stacked like a hand of trophies; promoting someone lifts their card past its rival, re-stacks the pile and morphs the medal finishes.', category: 'Widgets', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Click a card to promote it, or Shuffle; hover pauses the auto shuffle.', props: [
+    { name: 'items', type: 'PodiumItem[]', default: 'DEFAULT_PODIUM_ITEMS', description: '{ id, name, points, note?, src?, hue? } — src for real avatars.' },
+    { name: 'visible', type: 'number', default: '4', description: 'Cards shown; the last one is faded.' },
+    { name: 'autoShuffle', type: 'boolean', default: 'true', description: 'Promotes a random rank on an interval.' },
+    { name: 'interval', type: 'number', default: '3800', description: 'Milliseconds between automatic promotions.' },
+    { name: 'onRankChange', type: '(items) => void', description: 'Fires with the new order after a promotion.' },
+  ] },
   { slug: 'kpi-spark-widget', title: 'KPI Spark Widget', description: 'KPI number ticker with mini sparkline that draws on mount and a trend delta pill.', category: 'Widgets', unique: true, isNew: true, gesture: 'Watch the ticker and sparkline draw on mount.', dependencies: ['motion'] },
   { slug: 'live-meter-dial', title: 'Live Meter Dial', description: 'Animated semicircle gauge for delivery rate / ASR / concurrent calls.', category: 'Widgets', unique: true, isNew: true, gesture: 'Watch the needle breathe with live values.', dependencies: ['motion'] },
   { slug: 'activity-stream-widget', title: 'Activity Stream Widget', description: 'Live-feeling activity feed with staggered row inserts.', category: 'Widgets', unique: true, isNew: true, gesture: 'Watch new events insert at the top.', dependencies: ['motion'] },
@@ -296,6 +335,14 @@ export const DOCS: DocEntry[] = [
   { slug: 'ring-progress-cluster', title: 'Ring Progress Cluster', description: 'Cluster of animated progress rings for queue depth, SLA, and capacity.', category: 'Widgets', unique: true, isNew: true, gesture: 'Watch rings ease as metrics drift.', dependencies: ['motion'] },
 
   // Voice Agent
+  { slug: 'glass-bubble-buddy', title: 'Glass Bubble Buddy', description: 'A soft blob mascot floating inside a glossy glass sphere with a tilted inner ring — it blinks and watches the pointer, leans in to listen, glances around while thinking and pulses when speaking.', category: 'Voice Agent', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Switch states; move your cursor — the eyes follow.', props: [
+    { name: 'state', type: "'idle' | 'listening' | 'thinking' | 'speaking'", default: "'idle'", description: 'Each state has its own motion language.' },
+    { name: 'size', type: 'number', default: '220', description: 'Sphere diameter in px.' },
+    { name: 'hue', type: 'number', default: '212', description: 'Body / glass tint hue.' },
+    { name: 'level', type: 'number', description: 'External 0–1 voice level while speaking; simulated when omitted.' },
+    { name: 'onClick', type: '() => void', description: 'Renders the orb as a button (e.g. push-to-talk).' },
+    { name: 'label', type: 'string', default: "'Assistant'", description: 'Accessible name prefix.' },
+  ] },
   { slug: 'call-control-bar', title: 'Call Control Bar', description: 'Mute / hold / end / keypad with glowing active states and hold pulse.', category: 'Voice Agent', unique: true, isNew: true, gesture: 'Toggle mute, hold, keypad — end to hang up.', dependencies: ['motion'] },
   { slug: 'live-transcript-panel', title: 'Live Transcript Panel', description: 'Scrolling dual-speaker transcript with speaker pills and auto-scroll.', category: 'Voice Agent', unique: true, isNew: true, gesture: 'Watch lines append for caller and agent.', dependencies: ['motion'] },
   { slug: 'agent-state-orb', title: 'Agent State Orb', description: 'Listening / thinking / speaking orb with distinct motion modes.', category: 'Voice Agent', unique: true, isNew: true, gesture: 'Click the orb to cycle listening → thinking → speaking.', dependencies: ['motion'] },

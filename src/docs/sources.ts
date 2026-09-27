@@ -180,6 +180,13 @@ import shredderDeleteButtonSrc from '../components/ui/shredder-delete-button.tsx
 import cloudLaunchPublishButtonSrc from '../components/ui/cloud-launch-publish-button.tsx?raw'
 import radialShareMenuSrc from '../components/ui/radial-share-menu.tsx?raw'
 
+import glowArcHeroSrc from '../components/ui/glow-arc-hero.tsx?raw'
+import glowLeaderboardListSrc from '../components/ui/glow-leaderboard-list.tsx?raw'
+import podiumStackLeaderboardSrc from '../components/ui/podium-stack-leaderboard.tsx?raw'
+import curvedTileWallSrc from '../components/ui/curved-tile-wall.tsx?raw'
+import fanDeckCarouselSrc from '../components/ui/fan-deck-carousel.tsx?raw'
+import glassBubbleBuddySrc from '../components/ui/glass-bubble-buddy.tsx?raw'
+
 export const sources: Record<string, string> = {
   button: buttonSrc,
   badge: badgeSrc,
@@ -359,4 +366,10 @@ export const sources: Record<string, string> = {
   'shredder-delete-button': shredderDeleteButtonSrc,
   'cloud-launch-publish-button': cloudLaunchPublishButtonSrc,
   'radial-share-menu': radialShareMenuSrc,
+  'glow-arc-hero': glowArcHeroSrc,
+  'glow-leaderboard-list': glowLeaderboardListSrc,
+  'podium-stack-leaderboard': podiumStackLeaderboardSrc,
+  'curved-tile-wall': curvedTileWallSrc,
+  'fan-deck-carousel': fanDeckCarouselSrc,
+  'glass-bubble-buddy': glassBubbleBuddySrc,
 }

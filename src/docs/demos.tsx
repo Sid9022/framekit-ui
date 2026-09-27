@@ -178,6 +178,12 @@ import { OrbitDotExportButton } from '@/components/ui/orbit-dot-export-button'
 import { ShredderDeleteButton } from '@/components/ui/shredder-delete-button'
 import { CloudLaunchPublishButton } from '@/components/ui/cloud-launch-publish-button'
 import { RadialShareMenu } from '@/components/ui/radial-share-menu'
+import { GlowArcHero } from '@/components/ui/glow-arc-hero'
+import { GlowLeaderboardList } from '@/components/ui/glow-leaderboard-list'
+import { PodiumStackLeaderboard } from '@/components/ui/podium-stack-leaderboard'
+import { CurvedTileWall } from '@/components/ui/curved-tile-wall'
+import { FanDeckCarousel } from '@/components/ui/fan-deck-carousel'
+import { GlassBubbleBuddy, type BubbleBuddyState } from '@/components/ui/glass-bubble-buddy'
 
 
 
@@ -427,6 +433,60 @@ function RadialShareDemo() {
         onShare={fail ? async () => { await wait(200); throw new Error('nope') } : undefined}
       />
       <FailSwitch on={fail} onChange={setFail} light />
+    </div>
+  )
+}
+
+/* ---------- batch 3: image-inspired originals ---------- */
+
+const BUDDY_STATES: BubbleBuddyState[] = ['idle', 'listening', 'thinking', 'speaking']
+const BUDDY_HUES = [
+  { name: 'Sky', hue: 212 },
+  { name: 'Lilac', hue: 262 },
+  { name: 'Mint', hue: 160 },
+  { name: 'Peach', hue: 18 },
+]
+
+function GlassBubbleBuddyDemo() {
+  const [state, setState] = React.useState<BubbleBuddyState>('idle')
+  const [hue, setHue] = React.useState(212)
+  const chip = (active: boolean) =>
+    'rounded-full px-3 py-1.5 text-[11px] font-medium capitalize outline-none transition-colors focus-visible:ring-2 focus-visible:ring-sky-400 ' +
+    (active
+      ? 'bg-zinc-900/[0.06] text-zinc-900 ring-1 ring-black/10 dark:bg-white/12 dark:text-white dark:ring-white/15'
+      : 'text-zinc-500 hover:bg-black/5 hover:text-zinc-800 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-zinc-200')
+  return (
+    <div className="flex w-full max-w-xl flex-col items-center gap-6 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#ffffff,#eef1f6)] px-6 pb-8 pt-10 shadow-[0_1px_2px_rgb(0_0_0/0.04),0_16px_40px_-24px_rgb(24_24_27/0.25)] ring-1 ring-black/[0.06] dark:bg-[radial-gradient(90%_70%_at_50%_30%,#0f1626,#040508)] dark:shadow-none dark:ring-white/5">
+      <GlassBubbleBuddy
+        state={state}
+        hue={hue}
+        size={210}
+        onClick={() => setState(BUDDY_STATES[(BUDDY_STATES.indexOf(state) + 1) % BUDDY_STATES.length])}
+      />
+      <div className="flex flex-wrap items-center justify-center gap-1" role="radiogroup" aria-label="Assistant state">
+        {BUDDY_STATES.map((s) => (
+          <button key={s} type="button" role="radio" aria-checked={state === s} className={chip(state === s)} onClick={() => setState(s)}>
+            {s}
+          </button>
+        ))}
+        <span className="mx-2 h-4 w-px bg-black/10 dark:bg-white/10" />
+        {BUDDY_HUES.map((h) => (
+          <button
+            key={h.hue}
+            type="button"
+            aria-label={h.name}
+            aria-pressed={hue === h.hue}
+            onClick={() => setHue(h.hue)}
+            className={'mx-0.5 h-5 w-5 rounded-full outline-none ring-offset-2 ring-offset-white transition-transform hover:scale-110 focus-visible:ring-2 focus-visible:ring-zinc-900 dark:ring-offset-[#0b0d14] dark:focus-visible:ring-white ' + (hue === h.hue ? 'ring-2 ring-zinc-900/60 dark:ring-white/70' : '')}
+            style={{ background: `hsl(${h.hue} 90% 68%)` }}
+          />
+        ))}
+      </div>
+      <div className="flex items-end justify-center gap-6 border-t border-black/5 pt-6 dark:border-white/5">
+        <GlassBubbleBuddy size={64} hue={262} state="listening" label="Mini assistant" />
+        <GlassBubbleBuddy size={84} hue={160} state="thinking" label="Mini assistant" />
+        <GlassBubbleBuddy size={64} hue={18} state="speaking" label="Mini assistant" />
+      </div>
     </div>
   )
 }
@@ -1217,4 +1277,10 @@ export const demos: Record<string, React.ReactNode> = {
   'shredder-delete-button': <ShredderDeleteDemo />,
   'cloud-launch-publish-button': <CloudLaunchDemo />,
   'radial-share-menu': <RadialShareDemo />,
+  'glow-arc-hero': <GlowArcHero className="max-w-3xl" />,
+  'glow-leaderboard-list': <GlowLeaderboardList />,
+  'podium-stack-leaderboard': <PodiumStackLeaderboard />,
+  'curved-tile-wall': <CurvedTileWall className="max-w-3xl" />,
+  'fan-deck-carousel': <FanDeckCarousel className="max-w-3xl" />,
+  'glass-bubble-buddy': <GlassBubbleBuddyDemo />,
 }
