@@ -190,6 +190,7 @@ import meshPillOrbSrc from '../components/ui/mesh-pill-orb.tsx?raw'
 import starMorphBuddySrc from '../components/ui/star-morph-buddy.tsx?raw'
 import loopFlightSendButtonSrc from '../components/ui/loop-flight-send-button.tsx?raw'
 import liquidChargeCapsuleSrc from '../components/ui/liquid-charge-capsule.tsx?raw'
+import ghostGobblerSkullSrc from '../components/ui/ghost-gobbler-skull.tsx?raw'
 import splitFlapHeroSrc from '../components/ui/split-flap-hero.tsx?raw'
 import ridgelineHorizonHeroSrc from '../components/ui/ridgeline-horizon-hero.tsx?raw'
 import tumblerLockOtpSrc from '../components/ui/tumbler-lock-otp.tsx?raw'
@@ -392,6 +393,7 @@ export const sources: Record<string, string> = {
   'star-morph-buddy': starMorphBuddySrc,
   'loop-flight-send-button': loopFlightSendButtonSrc,
   'liquid-charge-capsule': liquidChargeCapsuleSrc,
+  'ghost-gobbler-skull': ghostGobblerSkullSrc,
   'split-flap-hero': splitFlapHeroSrc,
   'ridgeline-horizon-hero': ridgelineHorizonHeroSrc,
   'tumbler-lock-otp': tumblerLockOtpSrc,
