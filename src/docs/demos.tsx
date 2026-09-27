@@ -184,6 +184,10 @@ import { PodiumStackLeaderboard } from '@/components/ui/podium-stack-leaderboard
 import { CurvedTileWall } from '@/components/ui/curved-tile-wall'
 import { FanDeckCarousel } from '@/components/ui/fan-deck-carousel'
 import { GlassBubbleBuddy, type BubbleBuddyState } from '@/components/ui/glass-bubble-buddy'
+import { MeshPillOrb, MESH_PILL_ORB_PALETTES, type MeshPillOrbState } from '@/components/ui/mesh-pill-orb'
+import { StarMorphBuddy } from '@/components/ui/star-morph-buddy'
+import { LoopFlightSendButton } from '@/components/ui/loop-flight-send-button'
+import { LiquidChargeCapsule } from '@/components/ui/liquid-charge-capsule'
 
 
 
@@ -525,6 +529,233 @@ function GlassBubbleBuddyDemo() {
         <GlassBubbleBuddy size={84} hue={160} state="thinking" label="Mini assistant" />
         <GlassBubbleBuddy size={64} hue={18} state="speaking" label="Mini assistant" />
         <GlassBubbleBuddy size={64} hue={212} mood="sleepy" label="Sleepy assistant" />
+      </div>
+    </div>
+  )
+}
+
+
+/* ---------- batch 4: reel-inspired originals ---------- */
+
+const demoChip = (active: boolean) =>
+  'rounded-full px-3 py-1.5 text-[11px] font-medium capitalize outline-none transition-colors focus-visible:ring-2 focus-visible:ring-fuchsia-400 ' +
+  (active
+    ? 'bg-zinc-900/[0.06] text-zinc-900 ring-1 ring-black/10 dark:bg-white/12 dark:text-white dark:ring-white/15'
+    : 'text-zinc-500 hover:bg-black/5 hover:text-zinc-800 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-zinc-200')
+
+const MESH_STATES: MeshPillOrbState[] = ['idle', 'listening', 'thinking', 'speaking']
+const MESH_SCRIPT: { state: MeshPillOrbState; ms: number; who?: 'You' | 'Agent'; line: string }[] = [
+  { state: 'idle', ms: 4200, line: 'Standing by — say the word.' },
+  { state: 'listening', ms: 3800, who: 'You', line: 'What’s left on the launch checklist for Friday?' },
+  { state: 'thinking', ms: 2600, line: 'Scanning the project board…' },
+  { state: 'speaking', ms: 5000, who: 'Agent', line: 'Two items: final QA pass and the pricing page copy. Both owned by Mira.' },
+]
+
+function MeshPillOrbDemo() {
+  const [auto, setAuto] = React.useState(true)
+  const [step, setStep] = React.useState(0)
+  const [state, setState] = React.useState<MeshPillOrbState>('idle')
+  const [palette, setPalette] = React.useState<keyof typeof MESH_PILL_ORB_PALETTES>('lava')
+  React.useEffect(() => {
+    if (!auto) return
+    const cur = MESH_SCRIPT[step]
+    setState(cur.state)
+    const id = window.setTimeout(() => setStep((i) => (i + 1) % MESH_SCRIPT.length), cur.ms)
+    return () => window.clearTimeout(id)
+  }, [auto, step])
+  const pick = (s: MeshPillOrbState) => {
+    setAuto(false)
+    setState(s)
+  }
+  const caption = auto ? MESH_SCRIPT[step] : null
+  return (
+    <div className="flex w-full max-w-xl flex-col items-center gap-7 overflow-hidden rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#ffffff,#f1eef8)] px-6 pb-8 pt-20 shadow-[0_1px_2px_rgb(0_0_0/0.04),0_16px_40px_-24px_rgb(24_24_27/0.25)] ring-1 ring-black/[0.06] dark:bg-[radial-gradient(90%_70%_at_50%_35%,#120a1f,#030204)] dark:shadow-none dark:ring-white/5">
+      <MeshPillOrb
+        state={state}
+        size={200}
+        colors={MESH_PILL_ORB_PALETTES[palette]}
+        onClick={() => pick(MESH_STATES[(MESH_STATES.indexOf(state) + 1) % MESH_STATES.length])}
+        label="Launch assistant"
+      />
+      <p className="flex min-h-5 items-center gap-2 text-center text-[12px] text-zinc-500 dark:text-zinc-400">
+        {caption ? (
+          <>
+            {caption.who && (
+              <span className="rounded-full bg-zinc-900/[0.06] px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-zinc-700 dark:bg-white/10 dark:text-zinc-200">
+                {caption.who}
+              </span>
+            )}
+            <span key={step}>{caption.line}</span>
+          </>
+        ) : (
+          <span>Click the orb to cycle states — it glances toward your cursor.</span>
+        )}
+      </p>
+      <div className="flex flex-wrap items-center justify-center gap-1" role="radiogroup" aria-label="Orb state">
+        <button type="button" role="radio" aria-checked={auto} className={demoChip(auto)} onClick={() => { setAuto(true); setStep(0) }}>
+          Auto
+        </button>
+        {MESH_STATES.map((s) => (
+          <button key={s} type="button" role="radio" aria-checked={!auto && state === s} className={demoChip(!auto && state === s)} onClick={() => pick(s)}>
+            {s}
+          </button>
+        ))}
+        <span className="mx-2 h-4 w-px bg-black/10 dark:bg-white/10" />
+        {(Object.keys(MESH_PILL_ORB_PALETTES) as (keyof typeof MESH_PILL_ORB_PALETTES)[]).map((k) => {
+          const c = MESH_PILL_ORB_PALETTES[k]
+          return (
+            <button
+              key={k}
+              type="button"
+              aria-label={`${k} palette`}
+              aria-pressed={palette === k}
+              onClick={() => setPalette(k)}
+              className={'mx-0.5 h-5 w-5 rounded-full outline-none ring-offset-2 ring-offset-white transition-transform hover:scale-110 focus-visible:ring-2 focus-visible:ring-zinc-900 dark:ring-offset-[#07050b] dark:focus-visible:ring-white ' + (palette === k ? 'ring-2 ring-zinc-900/60 dark:ring-white/70' : '')}
+              style={{ background: `conic-gradient(${c[0]}, ${c[1]}, ${c[3]}, ${c[2]}, ${c[0]})` }}
+            />
+          )
+        })}
+      </div>
+      <div className="flex items-end justify-center gap-8 border-t border-black/5 pt-6 dark:border-white/5">
+        <MeshPillOrb size={56} state="listening" colors={MESH_PILL_ORB_PALETTES.lagoon} rings={false} label="Mini orb" />
+        <MeshPillOrb size={72} state="speaking" colors={MESH_PILL_ORB_PALETTES.lava} rings={false} label="Mini orb" />
+        <MeshPillOrb size={56} state="thinking" colors={MESH_PILL_ORB_PALETTES.dusk} rings={false} label="Mini orb" />
+      </div>
+    </div>
+  )
+}
+
+function StarMorphBuddyDemo() {
+  const [fail, setFail] = React.useState(false)
+  return (
+    <div className="flex w-full max-w-xl flex-col items-center gap-3 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#ffffff,#eef0fb)] px-6 pb-6 pt-8 shadow-[0_1px_2px_rgb(0_0_0/0.04),0_16px_40px_-24px_rgb(24_24_27/0.25)] ring-1 ring-black/[0.06] dark:bg-[radial-gradient(90%_80%_at_50%_20%,#1a1740,#07060f)] dark:shadow-none dark:ring-white/5">
+      <StarMorphBuddy
+        onActivate={async () => {
+          await wait(1400)
+          if (fail) throw new Error('offline')
+        }}
+      />
+      <FailSwitch on={fail} onChange={setFail} />
+      <div className="mt-2 flex w-full items-center justify-center gap-5 border-t border-black/5 pt-5 dark:border-white/5">
+        <StarMorphBuddy size={92} name="Juno" idleText="Need a recipe idea?" hoverText="Juno here — tell me what’s in your fridge." highlight="what’s in your fridge" className="[&_button]:px-2 [&_span]:text-[13px]" />
+        <StarMorphBuddy size={92} name="Orbit" idleText="Plan a trip?" hoverText="Orbit here — I’ll sketch a weekend itinerary." highlight="weekend itinerary" className="[&_button]:px-2 [&_span]:text-[13px]" />
+      </div>
+    </div>
+  )
+}
+
+function LoopFlightSendDemo() {
+  const [fail, setFail] = React.useState(false)
+  const [slow, setSlow] = React.useState(false)
+  const ref = React.useRef<HTMLDivElement>(null)
+  React.useEffect(() => {
+    const t = window.setTimeout(() => ref.current?.querySelector<HTMLButtonElement>('button[aria-label]')?.click(), 1100)
+    return () => window.clearTimeout(t)
+  }, [])
+  const send = async () => {
+    await wait(slow ? 3600 : 500)
+    if (fail) throw new Error('network')
+  }
+  return (
+    <div className="flex w-full max-w-xl flex-col gap-3">
+      <div ref={ref} className="flex flex-col gap-2 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#ffffff,#eef0f7)] px-6 pb-5 pt-6 shadow-[0_1px_2px_rgb(0_0_0/0.04),0_16px_40px_-24px_rgb(24_24_27/0.25)] ring-1 ring-black/[0.06] dark:bg-[radial-gradient(120%_100%_at_50%_0%,#191a2b,#0a0a12)] dark:shadow-none dark:ring-white/5">
+        <div className="flex items-center gap-2.5">
+          <span className="grid h-8 w-8 place-items-center rounded-full bg-[linear-gradient(135deg,#fbbf24,#f472b6)] text-[11px] font-bold text-white">AK</span>
+          <div className="leading-tight">
+            <p className="text-[13px] font-semibold text-zinc-900 dark:text-white">To: Amara Kent</p>
+            <p className="text-[11px] text-zinc-500 dark:text-zinc-400">Re: Q3 roadmap draft · “Tightened the milestones, beta moves to week 6.”</p>
+          </div>
+        </div>
+        <div className="grid h-52 place-items-center">
+          <LoopFlightSendButton onSend={send} />
+        </div>
+        <div className="flex flex-wrap items-center justify-center gap-2 border-t border-black/5 pt-3 dark:border-white/5">
+          <FailSwitch on={fail} onChange={setFail} />
+          <FailSwitch on={slow} onChange={setSlow} label="Slow network (holds in orbit)" />
+        </div>
+      </div>
+      <div className="dark grid h-56 place-items-center rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#23204a,#09080f)] ring-1 ring-white/5">
+        <div className="flex flex-col items-center gap-3">
+          <LoopFlightSendButton label="Send invite" sentLabel="Invited!" />
+          <span className="text-[11px] font-medium text-zinc-400">inside a .dark wrapper</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function LiquidChargeDemo() {
+  const [auto, setAuto] = React.useState(true)
+  const [level, setLevel] = React.useState(8)
+  const [charging, setCharging] = React.useState(true)
+  const [cycle, setCycle] = React.useState(0)
+  React.useEffect(() => {
+    if (!auto) return
+    let alive = true
+    let lvl = 8
+    setLevel(8)
+    setCharging(true)
+    const run = async () => {
+      await wait(500)
+      while (alive && lvl < 100) {
+        lvl = Math.min(100, lvl + 2)
+        setLevel(lvl)
+        await wait(lvl > 90 ? 150 : 95)
+      }
+      if (!alive) return
+      await wait(2800)
+      if (!alive) return
+      setCharging(false)
+      await wait(600)
+      while (alive && lvl > 9) {
+        lvl = Math.max(9, lvl - 3)
+        setLevel(lvl)
+        await wait(60)
+      }
+      await wait(1600)
+      if (alive) setCycle((c) => c + 1)
+    }
+    void run()
+    return () => {
+      alive = false
+    }
+  }, [auto, cycle])
+  const manual = (fn: () => void) => {
+    setAuto(false)
+    fn()
+  }
+  return (
+    <div className="flex w-full max-w-xl flex-col items-center gap-6 rounded-2xl bg-[radial-gradient(120%_100%_at_50%_0%,#ffffff,#eef1f4)] px-6 pb-6 pt-10 shadow-[0_1px_2px_rgb(0_0_0/0.04),0_16px_40px_-24px_rgb(24_24_27/0.25)] ring-1 ring-black/[0.06] dark:bg-[radial-gradient(90%_70%_at_50%_30%,#0f1a17,#040605)] dark:shadow-none dark:ring-white/5">
+      <div className="flex items-end justify-center gap-10">
+        <LiquidChargeCapsule level={level} charging={charging} onLevelChange={(v) => manual(() => setLevel(v))} label="Phone battery" />
+        <div className="hidden flex-col gap-5 pb-16 sm:flex">
+          <LiquidChargeCapsule height={96} level={14} showReadout={false} label="Earbuds battery" />
+          <LiquidChargeCapsule height={96} level={52} charging showReadout={false} label="Watch battery" />
+        </div>
+        <div className="hidden pb-16 sm:block">
+          <LiquidChargeCapsule height={96} level={100} showReadout={false} label="Tablet battery" />
+        </div>
+      </div>
+      <div className="flex flex-wrap items-center justify-center gap-1" role="group" aria-label="Battery controls">
+        <button type="button" aria-pressed={auto} className={demoChip(auto)} onClick={() => { setAuto(true); setCycle((c) => c + 1) }}>
+          Auto
+        </button>
+        <button type="button" role="switch" aria-checked={charging} className={demoChip(charging)} onClick={() => manual(() => setCharging((c) => !c))}>
+          {charging ? 'Plugged in' : 'Unplugged'}
+        </button>
+        <span className="mx-2 h-4 w-px bg-black/10 dark:bg-white/10" />
+        {[
+          { name: 'Low', v: 11 },
+          { name: 'Half', v: 52 },
+          { name: 'Full', v: 100 },
+        ].map((p) => (
+          <button key={p.name} type="button" className={demoChip(!auto && level === p.v)} onClick={() => manual(() => setLevel(p.v))}>
+            {p.name}
+          </button>
+        ))}
+        <button type="button" className={demoChip(false)} onClick={() => manual(() => { setLevel(0); window.setTimeout(() => { setCharging(true); setLevel(100) }, 350) })}>
+          Replay fill
+        </button>
       </div>
     </div>
   )
@@ -1322,4 +1553,8 @@ export const demos: Record<string, React.ReactNode> = {
   'curved-tile-wall': <CurvedTileWall className="max-w-3xl" />,
   'fan-deck-carousel': <FanDeckCarousel className="max-w-3xl" />,
   'glass-bubble-buddy': <GlassBubbleBuddyDemo />,
+  'mesh-pill-orb': <MeshPillOrbDemo />,
+  'star-morph-buddy': <StarMorphBuddyDemo />,
+  'loop-flight-send-button': <LoopFlightSendDemo />,
+  'liquid-charge-capsule': <LiquidChargeDemo />,
 }

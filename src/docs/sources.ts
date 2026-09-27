@@ -186,6 +186,10 @@ import podiumStackLeaderboardSrc from '../components/ui/podium-stack-leaderboard
 import curvedTileWallSrc from '../components/ui/curved-tile-wall.tsx?raw'
 import fanDeckCarouselSrc from '../components/ui/fan-deck-carousel.tsx?raw'
 import glassBubbleBuddySrc from '../components/ui/glass-bubble-buddy.tsx?raw'
+import meshPillOrbSrc from '../components/ui/mesh-pill-orb.tsx?raw'
+import starMorphBuddySrc from '../components/ui/star-morph-buddy.tsx?raw'
+import loopFlightSendButtonSrc from '../components/ui/loop-flight-send-button.tsx?raw'
+import liquidChargeCapsuleSrc from '../components/ui/liquid-charge-capsule.tsx?raw'
 
 export const sources: Record<string, string> = {
   button: buttonSrc,
@@ -372,4 +376,8 @@ export const sources: Record<string, string> = {
   'curved-tile-wall': curvedTileWallSrc,
   'fan-deck-carousel': fanDeckCarouselSrc,
   'glass-bubble-buddy': glassBubbleBuddySrc,
+  'mesh-pill-orb': meshPillOrbSrc,
+  'star-morph-buddy': starMorphBuddySrc,
+  'loop-flight-send-button': loopFlightSendButtonSrc,
+  'liquid-charge-capsule': liquidChargeCapsuleSrc,
 }
