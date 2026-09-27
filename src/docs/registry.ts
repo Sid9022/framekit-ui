@@ -335,12 +335,15 @@ export const DOCS: DocEntry[] = [
   { slug: 'ring-progress-cluster', title: 'Ring Progress Cluster', description: 'Cluster of animated progress rings for queue depth, SLA, and capacity.', category: 'Widgets', unique: true, isNew: true, gesture: 'Watch rings ease as metrics drift.', dependencies: ['motion'] },
 
   // Voice Agent
-  { slug: 'glass-bubble-buddy', title: 'Glass Bubble Buddy', description: 'A soft blob mascot floating inside a glossy glass sphere with a tilted inner ring — it blinks and watches the pointer, leans in to listen, glances around while thinking and pulses when speaking.', category: 'Voice Agent', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Switch states; move your cursor — the eyes follow.', props: [
-    { name: 'state', type: "'idle' | 'listening' | 'thinking' | 'speaking'", default: "'idle'", description: 'Each state has its own motion language.' },
+  { slug: 'glass-bubble-buddy', title: 'Glass Bubble Buddy', description: 'A living blob mascot inside a glossy glass sphere with a tiny expression system (lids, catchlights, brows, blush, mouth) and a springy body. Idle it wanders and notices your cursor, listening it leans in and nods, thinking it ponders with orbiting sparkles, speaking it talks and jiggles — and it gets drowsy when ignored.', category: 'Voice Agent', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Watch Auto, move your cursor near it, hover for a shy smile, click for a boing.', props: [
+    { name: 'state', type: "'idle' | 'listening' | 'thinking' | 'speaking'", default: "'idle'", description: 'Each state has its own expression and body language.' },
     { name: 'size', type: 'number', default: '220', description: 'Sphere diameter in px.' },
     { name: 'hue', type: 'number', default: '212', description: 'Body / glass tint hue.' },
-    { name: 'level', type: 'number', description: 'External 0–1 voice level while speaking; simulated when omitted.' },
-    { name: 'onClick', type: '() => void', description: 'Renders the orb as a button (e.g. push-to-talk).' },
+    { name: 'level', type: 'number', description: 'External 0–1 voice level (speaking mouth, listening input); simulated speech envelope when omitted.' },
+    { name: 'mood', type: "'auto' | 'happy' | 'sleepy'", default: "'auto'", description: 'Baseline temperament; auto gets drowsy when ignored.' },
+    { name: 'sleepAfter', type: 'number', default: '20', description: 'Idle seconds without interaction before drowsy eyes and yawns (0 disables).' },
+    { name: 'interactive', type: 'boolean', default: 'true', description: 'Watch and react to the pointer.' },
+    { name: 'onClick', type: '() => void', description: 'Renders the orb as a button (e.g. push-to-talk). Clicks always boing.' },
     { name: 'label', type: 'string', default: "'Assistant'", description: 'Accessible name prefix.' },
   ] },
   { slug: 'call-control-bar', title: 'Call Control Bar', description: 'Mute / hold / end / keypad with glowing active states and hold pulse.', category: 'Voice Agent', unique: true, isNew: true, gesture: 'Toggle mute, hold, keypad — end to hang up.', dependencies: ['motion'] },
