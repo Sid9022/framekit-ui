@@ -1,6 +1,7 @@
 import * as React from 'react'
 import { Highlight, themes } from 'prism-react-renderer'
 import { Check, Copy } from 'lucide-react'
+import { track } from '@vercel/analytics'
 import { cn } from '@/lib/cn'
 import { useThemeToggle } from '@/components/theme-provider'
 
@@ -8,10 +9,13 @@ export function CodeBlock({
   code,
   language = 'tsx',
   className,
+  trackMeta,
 }: {
   code: string
   language?: string
   className?: string
+  /** When set, a `copy` analytics event is sent with these props. */
+  trackMeta?: { slug?: string; kind: string }
 }) {
   const [copied, setCopied] = React.useState(false)
   const { theme } = useThemeToggle()
@@ -19,6 +23,7 @@ export function CodeBlock({
   const copy = async () => {
     await navigator.clipboard.writeText(code)
     setCopied(true)
+    if (trackMeta) track('copy', { slug: trackMeta.slug ?? 'site', kind: trackMeta.kind })
     window.setTimeout(() => setCopied(false), 1600)
   }
 

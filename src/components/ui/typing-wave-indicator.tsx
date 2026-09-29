@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { motion } from 'motion/react'
 import { cn } from '@/lib/cn'
 import { usePrefersReducedMotion } from '@/lib/use-reduced-motion'

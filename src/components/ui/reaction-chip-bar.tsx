@@ -2,7 +2,7 @@ import * as React from 'react'
 import { motion, AnimatePresence } from 'motion/react'
 import { cn } from '@/lib/cn'
 import { usePrefersReducedMotion } from '@/lib/use-reduced-motion'
-import { Plus, SmilePlus } from 'lucide-react'
+import { SmilePlus } from 'lucide-react'
 
 const EMOJIS = ['👍', '❤️', '😂', '😮', '🔥', '👏']
 

@@ -9,8 +9,39 @@ import { Button } from '@/components/ui/button'
 import { SITE } from '@/config/site'
 import { cn } from '@/lib/cn'
 import { PreviewThemeToggle, usePreviewTheme } from '@/components/docs/preview-theme-toggle'
+import { CommandTabs, InstallBlock, REGISTRY_URL, detectDeps, dlx, pmInstall, registryItemUrl } from '@/components/docs/install-block'
 
-const DARK_VARIANT_CSS = `@import "tailwindcss";\n\n/* dark: follows the nearest .dark / .light ancestor */\n@custom-variant dark (&:where(.dark, .dark *):not(:where(.light, .light *):not(:where(.light .dark, .light .dark *))));`
+const DARK_VARIANT_LINE = `/* dark: follows the nearest .dark / .light ancestor */\n@custom-variant dark (&:where(.dark, .dark *):not(:where(.light, .light *):not(:where(.light .dark, .light .dark *))));`
+const DARK_VARIANT_CSS = `@import "tailwindcss";\n\n${DARK_VARIANT_LINE}`
+
+const REGISTRIES_JSON = `{\n  "registries": {\n    "@framekit": "${REGISTRY_URL}/{name}.json"\n  }\n}`
+
+const THEME_TOKENS_CSS = `@theme {
+  /* Framekit signal lilac */
+  --color-signal-50: #f7f5fb;
+  --color-signal-100: #efeaf6;
+  --color-signal-200: #e4dcf0;
+  --color-signal-300: #d4cbe5;
+  --color-signal-400: #b9aad0;
+  --color-signal-500: #9a86b8;
+  --color-signal-600: #7d6899;
+  --color-signal-700: #64527a;
+  --color-signal-800: #4d3f5e;
+  --color-signal-900: #352b42;
+  /* Framekit signal orange */
+  --color-framekit-50: #fff7ed;
+  --color-framekit-100: #ffedd5;
+  --color-framekit-200: #fed7aa;
+  --color-framekit-300: #fdba74;
+  --color-framekit-400: #fb923c;
+  --color-framekit-500: #f97316;
+  --color-framekit-600: #ea580c;
+  --color-framekit-700: #c2410c;
+  --color-framekit-800: #9a3412;
+  --color-framekit-900: #7c2d12;
+  --color-framekit-950: #431407;
+  --font-display: "Instrument Serif", Georgia, serif;
+}`
 
 function Guide({ slug }: { slug: string }) {
   if (slug === 'introduction') {
@@ -22,8 +53,9 @@ function Guide({ slug }: { slug: string }) {
           copy-paste kits — but every component here is original code you own.
         </p>
         <p>
-          There is no npm package to lock you in. Copy a file into your project, install its tiny dependencies,
-          and customize freely.
+          There is no npm package to lock you in. Add a component with the shadcn CLI (
+          <code className="rounded bg-zinc-100 px-1 dark:bg-zinc-800">npx shadcn@latest add @framekit/&lt;name&gt;</code>) or copy the
+          file by hand — either way the source lives in your repo and you customize freely.
         </p>
         <ul className="list-disc space-y-1 pl-5">
           <li>Core primitives for everyday UI</li>
@@ -36,37 +68,119 @@ function Guide({ slug }: { slug: string }) {
     )
   }
   if (slug === 'installation') {
+    const c = 'rounded bg-zinc-100 px-1 py-px font-mono text-[12.5px] text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200'
+    const step = 'font-medium text-zinc-900 dark:text-zinc-100'
     return (
-      <div className="max-w-2xl space-y-6 text-sm text-zinc-600 dark:text-zinc-400">
-        <ol className="list-decimal space-y-4 pl-5">
-          <li>
-            <p className="font-medium text-zinc-900 dark:text-zinc-100">Install peer dependencies</p>
-            <CodeBlock language="bash" code={`npm install motion clsx tailwind-merge lucide-react`} />
-          </li>
-          <li>
-            <p className="font-medium text-zinc-900 dark:text-zinc-100">Add the <code>cn</code> helper</p>
-            <CodeBlock language="tsx" code={sources.cn} />
-          </li>
-          <li>
-            <p className="font-medium text-zinc-900 dark:text-zinc-100">Add the shared hooks (only if a component imports them)</p>
-            <p className="mb-2">Animated components import <code>@/lib/use-reduced-motion</code>; canvas scenes that switch palettes also import <code>@/lib/use-resolved-theme</code>.</p>
-            <CodeBlock language="tsx" code={sources['use-reduced-motion']} />
-            <div className="mt-3"><CodeBlock language="tsx" code={sources['use-resolved-theme']} /></div>
-          </li>
-          <li>
-            <p className="font-medium text-zinc-900 dark:text-zinc-100">Enable class-based dark mode</p>
-            <p className="mb-2">Add this once to your global CSS (Tailwind v4). See <Link className="text-signal-700 underline-offset-2 hover:underline dark:text-signal-300" to="/docs/theming">Theming</Link>.</p>
-            <CodeBlock language="css" code={DARK_VARIANT_CSS} />
-          </li>
-          <li>
-            <p className="font-medium text-zinc-900 dark:text-zinc-100">Copy a component</p>
-            <p>Open any component page, switch to the Code tab, and paste into <code>components/ui/</code>.</p>
-          </li>
-        </ol>
-        <div className="rounded-2xl border border-dashed border-zinc-300 p-4 dark:border-zinc-700">
-          <p className="font-medium text-zinc-900 dark:text-zinc-100">CLI · coming soon</p>
-          <p className="mt-1">A future <code>npx framekit-ui add magnetic-button</code> flow is planned. For now, copy-paste wins.</p>
-        </div>
+      <div className="max-w-2xl space-y-10 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+        <p>
+          Framekit UI ships as a <strong className="text-zinc-900 dark:text-zinc-100">shadcn registry</strong>: the
+          shadcn CLI copies a component&apos;s source (plus the tiny shared helpers, theme tokens and npm deps it needs)
+          straight into your project. Prefer to do it by hand? Every file is also available to copy-paste.
+        </p>
+
+        <section className="space-y-5">
+          <div className="flex items-center gap-2">
+            <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Option A — shadcn CLI</h2>
+            <Badge className="bg-signal-200 text-signal-800 dark:bg-signal-800 dark:text-signal-100">Recommended</Badge>
+          </div>
+          <ol className="list-decimal space-y-6 pl-5">
+            <li className="space-y-2">
+              <p className={step}>Prerequisites</p>
+              <p>
+                A React project on <strong className="text-zinc-900 dark:text-zinc-100">Tailwind CSS v4</strong> (Vite,
+                Next.js, React Router…) with a <code className={c}>components.json</code> and an <code className={c}>@/*</code>{' '}
+                path alias. If you don&apos;t have one yet, run <code className={c}>shadcn init</code> once:
+              </p>
+              <CommandTabs id="guide-init" build={(pm) => dlx(pm, 'init')} meta={{ kind: 'guide-init' }} />
+            </li>
+            <li className="space-y-2">
+              <p className={step}>Dark mode (one-time, optional)</p>
+              <p>
+                <code className={c}>shadcn init</code> already adds <code className={c}>@custom-variant dark (&amp;:is(.dark *));</code>, which
+                works out of the box. To also get Framekit&apos;s scoped behaviour (a <code className={c}>.light</code> wrapper forces light inside a
+                dark page), replace that line in your global CSS with:
+              </p>
+              <CodeBlock language="css" code={DARK_VARIANT_LINE} trackMeta={{ kind: 'guide-dark-variant' }} />
+            </li>
+            <li className="space-y-2">
+              <p className={step}>Add a component</p>
+              <p>Every component page has an Install block with its exact command. For example:</p>
+              <CommandTabs
+                id="guide-add"
+                build={(pm) => dlx(pm, `add ${registryItemUrl('loop-flight-send-button')}`)}
+                meta={{ kind: 'guide-add-url' }}
+              />
+              <p>
+                The CLI writes <code className={c}>components/ui/loop-flight-send-button.tsx</code>, adds the helpers it imports
+                (<code className={c}>lib/cn.ts</code>, <code className={c}>lib/use-reduced-motion.ts</code>…) to your <code className={c}>lib</code>{' '}
+                alias, installs npm deps such as <code className={c}>motion</code> / <code className={c}>lucide-react</code>, and merges the
+                Framekit color tokens (<code className={c}>signal-*</code>, <code className={c}>framekit-*</code>) into your CSS when a component uses them.
+              </p>
+            </li>
+            <li className="space-y-2">
+              <p className={step}>Register the <code className={c}>@framekit</code> namespace (optional)</p>
+              <p>
+                Add the registry to <code className={c}>components.json</code> once, then install by name — several at a time if you like:
+              </p>
+              <CodeBlock language="json" code={REGISTRIES_JSON} trackMeta={{ kind: 'guide-registries-json' }} />
+              <CommandTabs
+                id="guide-ns"
+                build={(pm) => dlx(pm, 'add @framekit/ghost-gobbler-skull @framekit/magnetic-button')}
+                meta={{ kind: 'guide-add-namespace' }}
+              />
+              <p>
+                The full index lives at{' '}
+                <a className="text-signal-700 underline-offset-2 hover:underline dark:text-signal-300" href={`${REGISTRY_URL}/registry.json`} target="_blank" rel="noreferrer">
+                  /r/registry.json
+                </a>
+                .
+              </p>
+            </li>
+          </ol>
+          <p className="rounded-xl border border-dashed border-zinc-300 px-3 py-2 text-xs dark:border-zinc-700">
+            <strong className="font-medium text-zinc-900 dark:text-zinc-100">Heads-up:</strong> the Core items (
+            <code className={c}>button</code>, <code className={c}>badge</code>, <code className={c}>card</code>, <code className={c}>input</code>,{' '}
+            <code className={c}>dialog</code>…) share file names with shadcn/ui primitives. If a file already exists the CLI asks before
+            overwriting it.
+          </p>
+        </section>
+
+        <section className="space-y-5">
+          <h2 className="text-lg font-semibold text-zinc-900 dark:text-zinc-50">Option B — Manual copy-paste</h2>
+          <ol className="list-decimal space-y-4 pl-5">
+            <li className="space-y-2">
+              <p className={step}>Install peer dependencies</p>
+              <CommandTabs
+                id="guide-deps"
+                build={(pm) => pmInstall(pm, ['motion', 'clsx', 'tailwind-merge', 'lucide-react'])}
+                meta={{ kind: 'guide-manual-deps' }}
+              />
+            </li>
+            <li>
+              <p className={step}>Add the <code className={c}>cn</code> helper → <code className={c}>lib/cn.ts</code></p>
+              <CodeBlock language="tsx" code={sources.cn} trackMeta={{ slug: 'cn', kind: 'lib' }} />
+            </li>
+            <li>
+              <p className={step}>Add the shared hooks (only if a component imports them)</p>
+              <p className="mb-2">
+                Animated components import <code className={c}>@/lib/use-reduced-motion</code>; canvas scenes that switch palettes also import{' '}
+                <code className={c}>@/lib/use-resolved-theme</code>; the Toggles use <code className={c}>@/lib/toggle</code>.
+              </p>
+              <CodeBlock language="tsx" code={sources['use-reduced-motion']} trackMeta={{ slug: 'use-reduced-motion', kind: 'lib' }} />
+              <div className="mt-3"><CodeBlock language="tsx" code={sources['use-resolved-theme']} trackMeta={{ slug: 'use-resolved-theme', kind: 'lib' }} /></div>
+              <div className="mt-3"><CodeBlock language="tsx" code={sources.toggle} trackMeta={{ slug: 'toggle', kind: 'lib' }} /></div>
+            </li>
+            <li>
+              <p className={step}>Enable class-based dark mode and the Framekit tokens</p>
+              <p className="mb-2">Add this once to your global CSS (Tailwind v4). See <Link className="text-signal-700 underline-offset-2 hover:underline dark:text-signal-300" to="/docs/theming">Theming</Link>.</p>
+              <CodeBlock language="css" code={DARK_VARIANT_CSS + '\n\n' + THEME_TOKENS_CSS} trackMeta={{ kind: 'guide-manual-css' }} />
+            </li>
+            <li>
+              <p className={step}>Copy a component</p>
+              <p>Open any component page, switch to the Code tab, and paste into <code className={c}>components/ui/</code>.</p>
+            </li>
+          </ol>
+        </section>
       </div>
     )
   }
@@ -81,7 +195,7 @@ function Guide({ slug }: { slug: string }) {
           their dark look, and no class means light. To force light inside a dark page, wrap a section in{' '}
           <code className={c}>class="light"</code>; a nested <code className={c}>dark</code> flips it back.
         </p>
-        <CodeBlock language="css" code={DARK_VARIANT_CSS} />
+        <CodeBlock language="css" code={DARK_VARIANT_CSS} trackMeta={{ kind: 'theming-dark-variant' }} />
         <CodeBlock
           language="tsx"
           code={`<html className="dark">          {/* whole app dark */}\n  <section className="light">   {/* this area light again */}\n    <FaceScanPayButton />\n  </section>\n</html>`}
@@ -94,16 +208,21 @@ function Guide({ slug }: { slug: string }) {
           A few solid controls, like the Face Scan Pay or Dispatch Truck pills, are dark-branded by design and read well on white.
         </p>
         <p>
-          Brand tokens: signal lilac lives under <code className={c}>signal-*</code>.
+          Brand tokens: signal lilac lives under <code className={c}>signal-*</code>, the orange accent under{' '}
+          <code className={c}>framekit-*</code>, plus a <code className={c}>font-display</code> serif. The shadcn CLI adds them for you
+          (via the <code className={c}>framekit-theme</code> registry item); for manual installs paste this block into your global CSS:
         </p>
-        <CodeBlock
-          language="css"
-          code={`@theme {\n  --color-signal-300: #d4cbe5;\n  --color-signal-600: #7d6899;\n}`}
-        />
+        <CodeBlock language="css" code={THEME_TOKENS_CSS} trackMeta={{ kind: 'theme-tokens' }} />
       </div>
     )
   }
   return null
+}
+
+/** First exported PascalCase component in the source (fallback: title → PascalCase). */
+function exportName(code: string | undefined, title: string) {
+  const m = code?.match(/export\s+(?:function|const)\s+([A-Z]\w*)/)
+  return m?.[1] ?? title.replace(/[^a-zA-Z0-9]+(.)?/g, (_, ch: string | undefined) => (ch ? ch.toUpperCase() : '')).replace(/^./, (x) => x.toUpperCase())
 }
 
 export function DocPage() {
@@ -129,6 +248,7 @@ export function DocPage() {
   const isGuide = doc.category === 'Getting Started'
   const demo = demos[slug]
   const code = sources[slug]
+  const deps = React.useMemo(() => detectDeps(code ?? ''), [code])
 
   return (
     <article className="mx-auto max-w-3xl">
@@ -190,9 +310,11 @@ export function DocPage() {
                 )}
               </div>
             ) : (
-              <CodeBlock code={code || '// Source unavailable'} />
+              <CodeBlock code={code || '// Source unavailable'} trackMeta={{ slug, kind: 'source' }} />
             )}
           </div>
+
+          <InstallBlock slug={slug} deps={deps} onShowCode={() => setTab('code')} />
 
           {doc.ownBackground && (
             <p className="mt-3 flex items-start gap-2 rounded-xl border border-dashed border-zinc-300 px-3 py-2 text-xs leading-relaxed text-zinc-600 dark:border-zinc-700 dark:text-zinc-400">
@@ -246,8 +368,15 @@ export function DocPage() {
           <section className="mt-10">
             <h2 className="text-lg font-semibold">Usage</h2>
             <p className="mt-2 text-sm text-zinc-500">
-              Copy the component source from the Code tab into <code className="rounded bg-zinc-100 px-1 dark:bg-zinc-800">src/components/ui/{slug}.tsx</code>, then import it in your app.
+              Install with the CLI above (or copy the source from the Code tab into{' '}
+              <code className="rounded bg-zinc-100 px-1 dark:bg-zinc-800">components/ui/{slug}.tsx</code>), then import it:
             </p>
+            <CodeBlock
+              className="mt-3"
+              language="tsx"
+              code={`import { ${exportName(code, doc.title)} } from '@/components/ui/${slug}'`}
+              trackMeta={{ slug, kind: 'import' }}
+            />
           </section>
         </>
       )}

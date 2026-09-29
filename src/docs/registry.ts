@@ -47,7 +47,7 @@ const toggleProps: DocEntry['props'] = [
 
 export const DOCS: DocEntry[] = [
   { slug: 'introduction', title: 'Introduction', description: 'What Framekit UI is and how to use it.', category: 'Getting Started' },
-  { slug: 'installation', title: 'Installation', description: 'Copy-paste setup for Framekit UI components.', category: 'Getting Started' },
+  { slug: 'installation', title: 'Installation', description: 'Install components with the shadcn CLI registry — or copy-paste them by hand.', category: 'Getting Started' },
   { slug: 'theming', title: 'Theming', description: 'Colors, dark mode, and Tailwind tokens.', category: 'Getting Started' },
 
   // Hero
@@ -488,8 +488,8 @@ export const DOCS: DocEntry[] = [
   { slug: 'prism-mesh-orb', title: 'Prism Mesh Orb', description: 'Iridescent mesh sphere — idle/listen/speak modes, pointer tilt, equatorial voice wave when speaking.', category: 'Voice Agent', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Switch Idle/Listen/Speak; move to tilt the sphere.' },
   { slug: 'liquid-metal-orb', title: 'Liquid Metal Orb', description: 'Mercury / liquid-metal ball with traveling highlight; morphs slightly when speaking.', category: 'Voice Agent', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Click the orb or mode chips to cycle idle → listen → speak.' },
   { slug: 'aurora-core-orb', title: 'Aurora Core Orb', description: 'Inner aurora ribbons through a translucent shell; outer soft glow rings expand on listen.', category: 'Voice Agent', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Switch modes — listen expands rings; speak speeds aurora.' },
-  { slug: 'particle-halo-orb', title: 'Particle Halo Orb', description: 'Core ball + orbiting particle halo that densifies with energy; demo slider or auto level.', category: 'Voice Agent', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Drag energy slider or leave on Auto — halo densifies.' },
-  { slug: 'ribbon-helix-wave', title: 'Ribbon Helix Wave', description: 'Premium dual ribbon helix / sine ribbons reacting to amplitude — best-in-class voice visualizer.', category: 'Voice Agent', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Move across the stage to drive amplitude.' },
+  { slug: 'particle-halo-orb', title: 'Particle Halo Orb', description: 'Core ball + orbiting particle halo that densifies with energy; demo slider or auto level.', category: 'Voice Agent', unique: true, isNew: true, gesture: 'Drag energy slider or leave on Auto — halo densifies.' },
+  { slug: 'ribbon-helix-wave', title: 'Ribbon Helix Wave', description: 'Premium dual ribbon helix / sine ribbons reacting to amplitude — best-in-class voice visualizer.', category: 'Voice Agent', unique: true, isNew: true, gesture: 'Move across the stage to drive amplitude.' },
   { slug: 'radial-sonar-wave', title: 'Radial Sonar Wave', description: 'Circular sonar / polar waveform around a center mic glyph; pulse rings on peaks.', category: 'Voice Agent', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Watch polar bars react; peaks fire sonar rings.' },
 
 

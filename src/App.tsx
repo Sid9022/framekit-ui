@@ -4,6 +4,7 @@ import { ToastProvider } from '@/components/ui/toast'
 import { DocsLayout } from '@/layouts/DocsLayout'
 import { LandingPage } from '@/pages/LandingPage'
 import { DocPage } from '@/pages/DocPage'
+import { RouteAnalytics } from '@/components/route-analytics'
 
 export default function App() {
   return (
@@ -17,6 +18,7 @@ export default function App() {
           </Route>
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
+        <RouteAnalytics />
       </ToastProvider>
     </ThemeProvider>
   )

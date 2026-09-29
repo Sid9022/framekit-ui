@@ -2,7 +2,6 @@ import * as React from 'react'
 import { createPortal } from 'react-dom'
 import { AnimatePresence, motion } from 'motion/react'
 import { X } from 'lucide-react'
-import { cn } from '@/lib/cn'
 
 type RibbonToast = { id: string; title: string; description?: string }
 

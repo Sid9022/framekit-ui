@@ -6,7 +6,7 @@
 
 ## Features
 
-- Copy-paste ownership — components live in *your* repo
+- Copy-paste ownership — components live in *your* repo (install via the shadcn CLI or by hand)
 - Core UI: Button, Badge, Card, Input, Dialog, Tabs, Toast, and more
 - Animated originals: Magnetic Button, Spotlight Card, Scramble Text, Magnify Dock, Pixel Reveal, Ink Ripple Grid, …
 - Live docs with Preview / Code tabs (source loaded via Vite `?raw`)
@@ -23,11 +23,39 @@ npm run preview  # preview production build
 
 ## Using a component
 
+### With the shadcn CLI (recommended)
+
+Framekit UI is a [shadcn registry](https://ui.shadcn.com/docs/registry). In a React + Tailwind v4 project with a `components.json` (`npx shadcn@latest init`):
+
+```bash
+npx shadcn@latest add https://framekit-ui.vercel.app/r/loop-flight-send-button.json
+```
+
+Or register the namespace once in `components.json`:
+
+```json
+{
+  "registries": {
+    "@framekit": "https://framekit-ui.vercel.app/r/{name}.json"
+  }
+}
+```
+
+```bash
+npx shadcn@latest add @framekit/ghost-gobbler-skull
+```
+
+The CLI copies the component, its shared helpers (`lib/cn.ts`, `lib/use-reduced-motion.ts`, …), npm deps and theme tokens. Index: https://framekit-ui.vercel.app/r/registry.json
+
+### Manually
+
 1. Install peers: `npm install motion clsx tailwind-merge lucide-react`
-2. Copy `src/lib/cn.ts` into your project
+2. Copy `src/lib/cn.ts` (and any other `src/lib/*` helper the component imports) into your project
 3. Open a component page → **Code** tab → copy the file into `components/ui/`
 
-CLI (`npx framekit-ui add …`) is planned — marked coming soon in the Installation docs.
+### Registry build
+
+`registry.json` is generated from `src/docs/registry.ts` + the sources by `scripts/build-registry.mjs`; `npm run registry:build` (run automatically as `prebuild`) emits `public/r/*.json` via `shadcn build`.
 
 ## Component list
 

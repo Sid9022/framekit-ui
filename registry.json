@@ -1,0 +1,4471 @@
+{
+  "$schema": "https://ui.shadcn.com/schema/registry.json",
+  "name": "framekit",
+  "homepage": "https://framekit-ui.vercel.app",
+  "items": [
+    {
+      "name": "cn",
+      "type": "registry:lib",
+      "title": "cn()",
+      "description": "Merge Tailwind class names safely (clsx + tailwind-merge).",
+      "dependencies": [
+        "clsx",
+        "tailwind-merge"
+      ],
+      "files": [
+        {
+          "path": "src/lib/cn.ts",
+          "type": "registry:lib",
+          "target": "@lib/cn.ts"
+        }
+      ],
+      "categories": [
+        "lib"
+      ]
+    },
+    {
+      "name": "toggle",
+      "type": "registry:lib",
+      "title": "useToggleState",
+      "description": "Controlled/uncontrolled boolean state shared by the Framekit toggles.",
+      "files": [
+        {
+          "path": "src/lib/toggle.ts",
+          "type": "registry:lib",
+          "target": "@lib/toggle.ts"
+        }
+      ],
+      "categories": [
+        "lib"
+      ]
+    },
+    {
+      "name": "use-reduced-motion",
+      "type": "registry:lib",
+      "title": "usePrefersReducedMotion",
+      "description": "Hook that tracks the prefers-reduced-motion media query.",
+      "files": [
+        {
+          "path": "src/lib/use-reduced-motion.ts",
+          "type": "registry:lib",
+          "target": "@lib/use-reduced-motion.ts"
+        }
+      ],
+      "categories": [
+        "lib"
+      ]
+    },
+    {
+      "name": "use-resolved-theme",
+      "type": "registry:lib",
+      "title": "useResolvedTheme",
+      "description": "Resolves light/dark for canvas components from the nearest .dark / .light ancestor.",
+      "files": [
+        {
+          "path": "src/lib/use-resolved-theme.ts",
+          "type": "registry:lib",
+          "target": "@lib/use-resolved-theme.ts"
+        }
+      ],
+      "categories": [
+        "lib"
+      ]
+    },
+    {
+      "name": "framekit-theme",
+      "type": "registry:theme",
+      "title": "Framekit theme tokens",
+      "description": "Framekit brand tokens used by the components: signal-* (lilac) and framekit-* (orange) color scales, the display font token and the framekit-scroll scrollbar style.",
+      "cssVars": {
+        "theme": {
+          "font-display": "\"Instrument Serif\", Georgia, serif"
+        },
+        "light": {
+          "framekit-50": "#fff7ed",
+          "framekit-100": "#ffedd5",
+          "framekit-200": "#fed7aa",
+          "framekit-300": "#fdba74",
+          "framekit-400": "#fb923c",
+          "framekit-500": "#f97316",
+          "framekit-600": "#ea580c",
+          "framekit-700": "#c2410c",
+          "framekit-800": "#9a3412",
+          "framekit-900": "#7c2d12",
+          "framekit-950": "#431407",
+          "signal-50": "#f7f5fb",
+          "signal-100": "#efeaf6",
+          "signal-200": "#e4dcf0",
+          "signal-300": "#d4cbe5",
+          "signal-400": "#b9aad0",
+          "signal-500": "#9a86b8",
+          "signal-600": "#7d6899",
+          "signal-700": "#64527a",
+          "signal-800": "#4d3f5e",
+          "signal-900": "#352b42"
+        }
+      },
+      "css": {
+        "@layer components": {
+          ".framekit-scroll::-webkit-scrollbar": {
+            "width": "8px",
+            "height": "8px"
+          },
+          ".framekit-scroll::-webkit-scrollbar-thumb": {
+            "background": "#a1a1aa",
+            "border-radius": "999px"
+          },
+          ".dark .framekit-scroll::-webkit-scrollbar-thumb": {
+            "background": "#3f3f46"
+          }
+        }
+      },
+      "categories": [
+        "theme"
+      ]
+    },
+    {
+      "name": "split-flap-hero",
+      "type": "registry:ui",
+      "title": "Split-Flap Hero",
+      "description": "A landing hero whose key phrase lives on a mechanical departure board — every character clacks through the alphabet on hinged 3D leaves before landing, with flap counters underneath.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/split-flap-hero.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "hero"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/split-flap-hero"
+    },
+    {
+      "name": "ridgeline-horizon-hero",
+      "type": "registry:ui",
+      "title": "Ridgeline Horizon Hero",
+      "description": "Headline words rise out of masks above a canvas terrain of stacked ridgelines receding to a sunrise; the pointer raises a swell that rolls back to the horizon and clicks send a ripple.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/use-resolved-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/ridgeline-horizon-hero.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "hero"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ridgeline-horizon-hero"
+    },
+    {
+      "name": "iron-filings-field",
+      "type": "registry:ui",
+      "title": "Iron Filings Field",
+      "description": "Thousands of steel needles on paper swing with a little inertia to align with the magnetic field of a few poles; the pointer carries a north pole and clicks drop new poles.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/use-resolved-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/iron-filings-field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "animated-backgrounds"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/iron-filings-field"
+    },
+    {
+      "name": "glow-arc-hero",
+      "type": "registry:ui",
+      "title": "Glow Arc Hero",
+      "description": "A rainbow of glossy tiles fans in around a centred headline; each tile breathes its own coloured halo while the arc sways and tilts toward the pointer.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/glow-arc-hero.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "animated-backgrounds"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glow-arc-hero"
+    },
+    {
+      "name": "prism-tidal-field",
+      "type": "registry:ui",
+      "title": "Prism Tidal Field",
+      "description": "Soft lilac tidal bands that bend toward pointer velocity.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/use-resolved-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/prism-tidal-field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "animated-backgrounds"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/prism-tidal-field"
+    },
+    {
+      "name": "constellation-breathing-grid",
+      "type": "registry:ui",
+      "title": "Constellation Breathing Grid",
+      "description": "Sparse nodes breathe and link when close.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/use-resolved-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/constellation-breathing-grid.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "animated-backgrounds"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/constellation-breathing-grid"
+    },
+    {
+      "name": "paperfold-gradient-plane",
+      "type": "registry:ui",
+      "title": "Paperfold Gradient Plane",
+      "description": "Folded translucent ribbons shift with the pointer.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/paperfold-gradient-plane.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "animated-backgrounds"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/paperfold-gradient-plane"
+    },
+    {
+      "name": "aurora-background",
+      "type": "registry:ui",
+      "title": "Aurora Background",
+      "description": "Drifting mesh aurora backdrop.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/aurora-background.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "animated-backgrounds"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/aurora-background"
+    },
+    {
+      "name": "ink-ripple-grid",
+      "type": "registry:ui",
+      "title": "Ink Ripple Grid",
+      "description": "Click blooms ink ripples on a grid.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/ink-ripple-grid.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "animated-backgrounds"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ink-ripple-grid"
+    },
+    {
+      "name": "silk-shear-field",
+      "type": "registry:ui",
+      "title": "Silk Shear Field",
+      "description": "Shearing silk ribbons that bend toward the pointer.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/use-resolved-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/silk-shear-field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "animated-backgrounds"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/silk-shear-field"
+    },
+    {
+      "name": "void-lattice-drift",
+      "type": "registry:ui",
+      "title": "Void Lattice Drift",
+      "description": "Faint perspective lattice drifting in a void.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/use-resolved-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/void-lattice-drift.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "animated-backgrounds"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/void-lattice-drift"
+    },
+    {
+      "name": "ember-drift",
+      "type": "registry:ui",
+      "title": "Ember Drift",
+      "description": "Warm particles rising with soft bloom.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/use-resolved-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/ember-drift.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "animated-backgrounds"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ember-drift"
+    },
+    {
+      "name": "chromatic-mist",
+      "type": "registry:ui",
+      "title": "Chromatic Mist",
+      "description": "Dual-tone mist with chromatic split on motion.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/use-resolved-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/chromatic-mist.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "animated-backgrounds"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/chromatic-mist"
+    },
+    {
+      "name": "pulse-rings",
+      "type": "registry:ui",
+      "title": "Pulse Rings",
+      "description": "Concentric soft rings expand from pointer/click.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/use-resolved-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/pulse-rings.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "animated-backgrounds"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/pulse-rings"
+    },
+    {
+      "name": "googly-gaze-button",
+      "type": "registry:ui",
+      "title": "Googly Gaze Button",
+      "description": "Eyes track the cursor and smirk on click.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/googly-gaze-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/googly-gaze-button"
+    },
+    {
+      "name": "slide-confirm-button",
+      "type": "registry:ui",
+      "title": "Slide Confirm Button",
+      "description": "Drag the knob (or press Enter) to confirm.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/slide-confirm-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/slide-confirm-button"
+    },
+    {
+      "name": "shimmer-chrome-button",
+      "type": "registry:ui",
+      "title": "Shimmer Chrome Button",
+      "description": "Quiet chrome pill with a traveling shimmer.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/shimmer-chrome-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/shimmer-chrome-button"
+    },
+    {
+      "name": "orbit-commit",
+      "type": "registry:ui",
+      "title": "Orbit Commit",
+      "description": "Hold to confirm while an icon orbits the rim.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/orbit-commit.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/orbit-commit"
+    },
+    {
+      "name": "inkline-action",
+      "type": "registry:ui",
+      "title": "Inkline Action",
+      "description": "Text action with a seeded ink underline.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/inkline-action.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/inkline-action"
+    },
+    {
+      "name": "focus-bloom-button",
+      "type": "registry:ui",
+      "title": "Focus Bloom Button",
+      "description": "Focus/hover bloom steered by pointer.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/focus-bloom-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/focus-bloom-button"
+    },
+    {
+      "name": "magnetic-button",
+      "type": "registry:ui",
+      "title": "Magnetic Button",
+      "description": "Button that magnetically follows the cursor.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/magnetic-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/magnetic-button"
+    },
+    {
+      "name": "spark-button",
+      "type": "registry:ui",
+      "title": "Spark Button",
+      "description": "Click bursts into particle sparks.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/spark-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/spark-button"
+    },
+    {
+      "name": "liquid-fill-button",
+      "type": "registry:ui",
+      "title": "Liquid Fill Button",
+      "description": "Liquid rises to fill on hover or press.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/liquid-fill-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/liquid-fill-button"
+    },
+    {
+      "name": "split-reveal-button",
+      "type": "registry:ui",
+      "title": "Split Reveal Button",
+      "description": "Face splits open to reveal the label.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/split-reveal-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/split-reveal-button"
+    },
+    {
+      "name": "gravity-drop-button",
+      "type": "registry:ui",
+      "title": "Gravity Drop Button",
+      "description": "Icon falls in with a bounce on hover.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/gravity-drop-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/gravity-drop-button"
+    },
+    {
+      "name": "neon-stroke-button",
+      "type": "registry:ui",
+      "title": "Neon Stroke Button",
+      "description": "SVG stroke draws around on hover.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/neon-stroke-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/neon-stroke-button"
+    },
+    {
+      "name": "loop-flight-send-button",
+      "type": "registry:ui",
+      "title": "Loop Flight Send Button",
+      "description": "The pill folds into a circle, the paper plane launches right and writes a looping cursive trail around the button — holding in orbit while the request is pending — then glides back in from the left, folds into a check and the pill springs open to “Sent!”.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/loop-flight-send-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/loop-flight-send-button"
+    },
+    {
+      "name": "dispatch-truck-button",
+      "type": "registry:ui",
+      "title": "Dispatch Truck Button",
+      "description": "Order pill stretches into a road; a parcel thumps onto a courier flatbed that drives off before a green confirmation pops in.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/dispatch-truck-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/dispatch-truck-button"
+    },
+    {
+      "name": "drop-in-cart-button",
+      "type": "registry:ui",
+      "title": "Drop-In Cart Button",
+      "description": "Pill tucks into a cart, a box springs into the basket, the cart rolls away and back while the badge and counter pop.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/drop-in-cart-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/drop-in-cart-button"
+    },
+    {
+      "name": "fill-progress-download-button",
+      "type": "registry:ui",
+      "title": "Fill Progress Download Button",
+      "description": "Arrow sinks away, a deeper blue floods the pill with a live percentage, then it condenses into a calm done chip.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/fill-progress-download-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/fill-progress-download-button"
+    },
+    {
+      "name": "swallow-delete-button",
+      "type": "registry:ui",
+      "title": "Swallow Delete Button",
+      "description": "Bin lid swings open on its hinge, the label’s letters arc inside, the lid snaps shut and a ring traces the receipt.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/swallow-delete-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/swallow-delete-button"
+    },
+    {
+      "name": "face-scan-pay-button",
+      "type": "registry:ui",
+      "title": "Face Scan Pay Button",
+      "description": "Navy pay pill folds into a lit square, a biometric reticle sweeps a face glyph while a comet laps the rim, then it unfolds with a check.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/face-scan-pay-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/face-scan-pay-button"
+    },
+    {
+      "name": "orbit-dot-export-button",
+      "type": "registry:ui",
+      "title": "Orbit Dot Export Button",
+      "description": "Pill tucks down to its ring, a shaped comet orbits with a trailing progress arc, the ring floods solid, the arrow bends into a check and the pill reopens as the next action.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/orbit-dot-export-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/orbit-dot-export-button"
+    },
+    {
+      "name": "shredder-delete-button",
+      "type": "registry:ui",
+      "title": "Shredder Delete Button",
+      "description": "Pill holds still while its icon works: the lid flips, a sheet feeds in, paper ribbons tumble out below and a tally counts each shred.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/shredder-delete-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/shredder-delete-button"
+    },
+    {
+      "name": "cloud-launch-publish-button",
+      "type": "registry:ui",
+      "title": "Cloud Launch Publish Button",
+      "description": "The arrow launches out of the cloud on a puff of vapour, a progress seam draws along the bottom edge, and a check drops back into the cloud.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/use-resolved-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/cloud-launch-publish-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/cloud-launch-publish-button"
+    },
+    {
+      "name": "radial-share-menu",
+      "type": "registry:ui",
+      "title": "Radial Share Menu",
+      "description": "Share pill folds into a close button while channel bubbles spring out on an arc; the pick glides to centre, becomes a check and really copies the link.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/radial-share-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/radial-share-menu"
+    },
+    {
+      "name": "pull-cord-lamp-toggle",
+      "type": "registry:ui",
+      "title": "Pull-Cord Lamp Toggle",
+      "description": "A pendant lamp switched by its pull cord: drag the bead down until it clicks, the cord snaps back elastically and sways, the shade rocks on its wire and the bulb warms into a cone of light with drifting dust.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/pull-cord-lamp-toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "toggles"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/pull-cord-lamp-toggle"
+    },
+    {
+      "name": "watchful-eye-toggle",
+      "type": "registry:ui",
+      "title": "Watchful Eye Toggle",
+      "description": "A soft eye opens and closes; the pupil tracks when open.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/toggle.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/watchful-eye-toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "toggles"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/watchful-eye-toggle"
+    },
+    {
+      "name": "day-night-capsule",
+      "type": "registry:ui",
+      "title": "Day Night Capsule",
+      "description": "Illustrated mini sky that morphs day↔night.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/toggle.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/day-night-capsule.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "toggles"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/day-night-capsule"
+    },
+    {
+      "name": "glass-orb-switch",
+      "type": "registry:ui",
+      "title": "Glass Orb Switch",
+      "description": "Translucent glass sphere slides on a dark track.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/toggle.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/glass-orb-switch.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "toggles"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glass-orb-switch"
+    },
+    {
+      "name": "cosmic-sparkle-toggle",
+      "type": "registry:ui",
+      "title": "Cosmic Sparkle Toggle",
+      "description": "OFF/ON pill with a glowing star badge and halo.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/toggle.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/cosmic-sparkle-toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "toggles"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/cosmic-sparkle-toggle"
+    },
+    {
+      "name": "blinker-switch",
+      "type": "registry:ui",
+      "title": "Blinker Switch",
+      "description": "Classic switch whose knob blinks like an eyelid.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/toggle.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/blinker-switch.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "toggles"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/blinker-switch"
+    },
+    {
+      "name": "mood-dial-toggle",
+      "type": "registry:ui",
+      "title": "Mood Dial Toggle",
+      "description": "Tiny face dial springs between two moods.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/toggle.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/mood-dial-toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "toggles"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/mood-dial-toggle"
+    },
+    {
+      "name": "ink-bloom-toggle",
+      "type": "registry:ui",
+      "title": "Ink Bloom Toggle",
+      "description": "Track fills with a blooming ink blot when on.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/toggle.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/ink-bloom-toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "toggles"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ink-bloom-toggle"
+    },
+    {
+      "name": "pulsebeat-switch",
+      "type": "registry:ui",
+      "title": "Pulsebeat Switch",
+      "description": "Soft heartbeat pulse when on; flat when off.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/toggle.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/pulsebeat-switch.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "toggles"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/pulsebeat-switch"
+    },
+    {
+      "name": "frameflip-toggle",
+      "type": "registry:ui",
+      "title": "Frameflip Toggle",
+      "description": "Tiny illustrated card flips between two states.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/toggle.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/frameflip-toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "toggles"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/frameflip-toggle"
+    },
+    {
+      "name": "moth-lantern-toggle",
+      "type": "registry:ui",
+      "title": "Moth Lantern Toggle",
+      "description": "A moth settles into lantern glow when on.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/toggle.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/moth-lantern-toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "toggles"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/moth-lantern-toggle"
+    },
+    {
+      "name": "petal-circuit-toggle",
+      "type": "registry:ui",
+      "title": "Petal Circuit Toggle",
+      "description": "Petals fold inward to complete a circuit.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/toggle.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/petal-circuit-toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "toggles"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/petal-circuit-toggle"
+    },
+    {
+      "name": "tideglass-toggle",
+      "type": "registry:ui",
+      "title": "Tideglass Toggle",
+      "description": "Waterline rises and falls in a glass pane.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/toggle.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/tideglass-toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "toggles"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/tideglass-toggle"
+    },
+    {
+      "name": "weather-vane-toggle",
+      "type": "registry:ui",
+      "title": "Weather Vane Toggle",
+      "description": "Vane pivots; grain shifts with wind.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/toggle.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/weather-vane-toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "toggles"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/weather-vane-toggle"
+    },
+    {
+      "name": "tumble-letters",
+      "type": "registry:ui",
+      "title": "Tumble Letters",
+      "description": "A headline of physical letters: drop them and they fall, spin, bounce and pile against each other on the floor; hover lifts letters in a wave, any letter can be grabbed and flung, and Reassemble springs them home.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/tumble-letters.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "text-animations"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/tumble-letters"
+    },
+    {
+      "name": "glyph-weather",
+      "type": "registry:ui",
+      "title": "Glyph Weather",
+      "description": "Glyphs drift with scroll direction.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/glyph-weather.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "text-animations"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glyph-weather"
+    },
+    {
+      "name": "wordloom",
+      "type": "registry:ui",
+      "title": "Wordloom",
+      "description": "Words weave out as threads and resolve the next.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/wordloom.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "text-animations"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/wordloom"
+    },
+    {
+      "name": "momentum-caption",
+      "type": "registry:ui",
+      "title": "Momentum Caption",
+      "description": "Caption briefly follows pointer velocity.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/momentum-caption.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "text-animations"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/momentum-caption"
+    },
+    {
+      "name": "scramble-text",
+      "type": "registry:ui",
+      "title": "Scramble Text",
+      "description": "Characters decode from noise into place.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/scramble-text.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "text-animations"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/scramble-text"
+    },
+    {
+      "name": "morphing-text",
+      "type": "registry:ui",
+      "title": "Morphing Text",
+      "description": "Crossfading phrase morph.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/morphing-text.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "text-animations"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/morphing-text"
+    },
+    {
+      "name": "typewriter",
+      "type": "registry:ui",
+      "title": "Typewriter",
+      "description": "Types and deletes through phrases.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/typewriter.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "text-animations"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/typewriter"
+    },
+    {
+      "name": "number-ticker",
+      "type": "registry:ui",
+      "title": "Number Ticker",
+      "description": "Animates numbers when scrolled into view.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/number-ticker.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "text-animations"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/number-ticker"
+    },
+    {
+      "name": "infinite-marquee",
+      "type": "registry:ui",
+      "title": "Infinite Marquee",
+      "description": "Seamless looping marquee strip.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/infinite-marquee.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "text-animations"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/infinite-marquee"
+    },
+    {
+      "name": "prism-sweep-shimmer",
+      "type": "registry:ui",
+      "title": "Prism Sweep Shimmer",
+      "description": "Diagonal prismatic light band; intensity follows pointer X.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/prism-sweep-shimmer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "shimmer"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/prism-sweep-shimmer"
+    },
+    {
+      "name": "mercury-vein-shimmer",
+      "type": "registry:ui",
+      "title": "Mercury Vein Shimmer",
+      "description": "Liquid-metal highlight veins crawl a rounded surface.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/mercury-vein-shimmer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "shimmer"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/mercury-vein-shimmer"
+    },
+    {
+      "name": "glyph-aurora-shimmer",
+      "type": "registry:ui",
+      "title": "Glyph Aurora Shimmer",
+      "description": "Aurora shimmer travels letter-by-letter on text.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/glyph-aurora-shimmer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "shimmer"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glyph-aurora-shimmer"
+    },
+    {
+      "name": "edge-flare-shimmer",
+      "type": "registry:ui",
+      "title": "Edge Flare Shimmer",
+      "description": "Soft flare travels the border edge (not a full beam).",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/edge-flare-shimmer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "shimmer"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/edge-flare-shimmer"
+    },
+    {
+      "name": "skeleton-wave-shimmer",
+      "type": "registry:ui",
+      "title": "Skeleton Wave Shimmer",
+      "description": "Premium content-block skeleton with a diagonal liquid wave — avatar, lines, media.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/skeleton-wave-shimmer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "shimmer"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/skeleton-wave-shimmer"
+    },
+    {
+      "name": "card-sheen-loader",
+      "type": "registry:ui",
+      "title": "Card Sheen Loader",
+      "description": "Product-card placeholder with traveling chrome sheen and soft breathing.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/card-sheen-loader.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "shimmer"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/card-sheen-loader"
+    },
+    {
+      "name": "list-bloom-shimmer",
+      "type": "registry:ui",
+      "title": "List Bloom Shimmer",
+      "description": "Stacked list rows bloom in with staggered shimmer and soft shadows.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/list-bloom-shimmer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "shimmer"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/list-bloom-shimmer"
+    },
+    {
+      "name": "orbital-bead-loader",
+      "type": "registry:ui",
+      "title": "Orbital Bead Loader",
+      "description": "Beads orbit a core; hover speeds up.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/orbital-bead-loader.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "loading"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/orbital-bead-loader"
+    },
+    {
+      "name": "ink-drip-loader",
+      "type": "registry:ui",
+      "title": "Ink Drip Loader",
+      "description": "Ink drops merge into a looping puddle.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/ink-drip-loader.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "loading"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ink-drip-loader"
+    },
+    {
+      "name": "morph-glyph-loader",
+      "type": "registry:ui",
+      "title": "Morph Glyph Loader",
+      "description": "Glyph morphs through abstract SVG shapes.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/morph-glyph-loader.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "loading"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/morph-glyph-loader"
+    },
+    {
+      "name": "liquid-charge-capsule",
+      "type": "registry:ui",
+      "title": "Liquid Charge Capsule",
+      "description": "A glass capsule with a two-layer sloshing liquid that rises to the charge level. Colour warms from ember red to calm emerald as it fills, bubbles rise and pop while charging, a brushed-metal bolt floats in the glass and a soft pulse celebrates a full charge.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/liquid-charge-capsule.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "loading"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/liquid-charge-capsule"
+    },
+    {
+      "name": "ghost-gobbler-skull",
+      "type": "registry:ui",
+      "title": "Ghost Gobbler Skull",
+      "description": "A glossy vinyl-toy skull that tracks little black-smoke ghosts drifting in from every direction, drops its jaw, slurps each one in like spaghetti and CHOMPS — then levels up: glowing eyes, blush, cracks of light, star catchlights, orbiting embers, flames and finally a crown with a smoke-ring burp. Works as a determinate or endless loader, an async task wrapper with a sad dizzy failure, or an idle mascot.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/use-resolved-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/ghost-gobbler-skull.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "loading"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ghost-gobbler-skull"
+    },
+    {
+      "name": "particle-morph-loader",
+      "type": "registry:ui",
+      "title": "Particle Morph Loader",
+      "description": "A depth-lit swarm of motes spins in 3D and melts between sphere, ribbon, shell, tetra, ring and helix while a status word rolls underneath.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/use-resolved-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/particle-morph-loader.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "loading"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/particle-morph-loader"
+    },
+    {
+      "name": "lattice-pulse-loader",
+      "type": "registry:ui",
+      "title": "Lattice Pulse Loader",
+      "description": "3×3 nodes pulse in a traveling wave.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/lattice-pulse-loader.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "loading"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/lattice-pulse-loader"
+    },
+    {
+      "name": "constellation-lost-404",
+      "type": "registry:ui",
+      "title": "Constellation Lost 404",
+      "description": "Tiny 3D astronaut among reconnecting star “404” with pointer parallax.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/constellation-lost-404.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "404-animation"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/constellation-lost-404"
+    },
+    {
+      "name": "paper-tear-404",
+      "type": "registry:ui",
+      "title": "Paper Tear 404",
+      "description": "3D folded paper character peeking through a torn hole; perspective scraps.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/paper-tear-404.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "404-animation"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/paper-tear-404"
+    },
+    {
+      "name": "glitch-portal-404",
+      "type": "registry:ui",
+      "title": "Glitch Portal 404",
+      "description": "Faceted buddy stuck in a chromatic portal — RGB split, scanlines, rim glow.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/glitch-portal-404.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "404-animation"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glitch-portal-404"
+    },
+    {
+      "name": "paper-orbit-404",
+      "type": "registry:ui",
+      "title": "Paper Orbit 404",
+      "description": "Layered paper-cut space scene with orbital rings, cratered moons, astronaut, and terracotta home CTA.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/paper-orbit-404.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "404-animation"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/paper-orbit-404"
+    },
+    {
+      "name": "mars-tether-404",
+      "type": "registry:ui",
+      "title": "Mars Tether 404",
+      "description": "Mars-textured sphere as the 0, orange astronaut perched on top, tethered rocket with waving path.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/mars-tether-404.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "404-animation"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/mars-tether-404"
+    },
+    {
+      "name": "mesh-orb-404",
+      "type": "registry:ui",
+      "title": "Mesh Orb 404",
+      "description": "Glowing mesh-grid sphere with bloom, pulse synced to fake audio, equatorial waveform ring.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/mesh-orb-404.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "404-animation"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/mesh-orb-404"
+    },
+    {
+      "name": "lens-reveal-404",
+      "type": "registry:ui",
+      "title": "Lens Reveal 404",
+      "description": "A caretaker sweeps beneath a giant amber 404 while a brass loupe follows the pointer and magnifies a hidden message layer.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/lens-reveal-404.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "404-animation"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/lens-reveal-404"
+    },
+    {
+      "name": "gravity-stack-toast",
+      "type": "registry:ui",
+      "title": "Gravity Stack Toast",
+      "description": "Gravity-bounce stack with provider/hook.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/gravity-stack-toast.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "toast"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/gravity-stack-toast"
+    },
+    {
+      "name": "ribbon-unfurl-toast",
+      "type": "registry:ui",
+      "title": "Ribbon Unfurl Toast",
+      "description": "Ribbon unfurl enter animation.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/framekit-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/ribbon-unfurl-toast.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "toast"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ribbon-unfurl-toast"
+    },
+    {
+      "name": "sonar-ping-toast",
+      "type": "registry:ui",
+      "title": "Sonar Ping Toast",
+      "description": "Expanding sonar rings on appear.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/sonar-ping-toast.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "toast"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/sonar-ping-toast"
+    },
+    {
+      "name": "parallax-reel-scroll",
+      "type": "registry:ui",
+      "title": "Parallax Reel Scroll",
+      "description": "Multi-layer stars/grid + mid art + foreground cards with scrub progress.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/parallax-reel-scroll.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "vertical-scroll"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/parallax-reel-scroll"
+    },
+    {
+      "name": "snap-magnet-scroll",
+      "type": "registry:ui",
+      "title": "Snap Magnet Scroll",
+      "description": "Cinematic full-bleed sections with magnetic overshoot settle and glowing rail.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/snap-magnet-scroll.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "vertical-scroll"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/snap-magnet-scroll"
+    },
+    {
+      "name": "velocity-fade-stack",
+      "type": "registry:ui",
+      "title": "Velocity Fade Stack",
+      "description": "Rich cards scale/blur/opacity from distance + inertia velocity; center focus.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/velocity-fade-stack.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "vertical-scroll"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/velocity-fade-stack"
+    },
+    {
+      "name": "origami-unfold-card",
+      "type": "registry:ui",
+      "title": "Origami Unfold Card",
+      "description": "A trail ticket that unfolds like a paper map: press the cover and two creased panels swing down in sequence on real CSS-3D hinges, catching light as they flatten, while the route draws itself and the last panel runs an async save.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/origami-unfold-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/origami-unfold-card"
+    },
+    {
+      "name": "lenticular-shift-card",
+      "type": "registry:ui",
+      "title": "Lenticular Shift Card",
+      "description": "A postcard printed on a ridged lenticular sheet: tilting interlaces the scenes in fine vertical blinds that sweep across the print while a specular band rides the ridges.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/lenticular-shift-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/lenticular-shift-card"
+    },
+    {
+      "name": "curved-tile-wall",
+      "type": "registry:ui",
+      "title": "Curved Tile Wall",
+      "description": "A gallery bent onto a sphere section in real CSS 3D: mixed-height frames drift, swing with drag, pop toward you on hover and open in a focused lightbox.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/curved-tile-wall.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/curved-tile-wall"
+    },
+    {
+      "name": "fan-deck-carousel",
+      "type": "registry:ui",
+      "title": "Fan Deck Carousel",
+      "description": "Poster cards fanned around an upright hero card; swipe, arrow keys or buttons re-fan the hand on springs while a blurred copy of the active art crossfades behind.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/fan-deck-carousel.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/fan-deck-carousel"
+    },
+    {
+      "name": "tide-deck",
+      "type": "registry:ui",
+      "title": "Tide Deck",
+      "description": "Drag a deck whose depth reacts to velocity.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/tide-deck.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/tide-deck"
+    },
+    {
+      "name": "windowpane-story-card",
+      "type": "registry:ui",
+      "title": "Windowpane Story Card",
+      "description": "Frosted pane slides to reveal evidence.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/windowpane-story-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/windowpane-story-card"
+    },
+    {
+      "name": "topographic-stack",
+      "type": "registry:ui",
+      "title": "Topographic Stack",
+      "description": "Contour-offset layers separate on hover.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/topographic-stack.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/topographic-stack"
+    },
+    {
+      "name": "spotlight-card",
+      "type": "registry:ui",
+      "title": "Spotlight Card",
+      "description": "Radial glow that tracks your pointer.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/spotlight-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/spotlight-card"
+    },
+    {
+      "name": "tilt-card",
+      "type": "registry:ui",
+      "title": "Tilt Card",
+      "description": "3D perspective tilt on hover.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/tilt-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/tilt-card"
+    },
+    {
+      "name": "glass-card",
+      "type": "registry:ui",
+      "title": "Glass Card",
+      "description": "Frosted liquid-glass surface.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/glass-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glass-card"
+    },
+    {
+      "name": "swipe-cards",
+      "type": "registry:ui",
+      "title": "Swipe Cards",
+      "description": "Stacked deck with drag-to-dismiss.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/swipe-cards.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/swipe-cards"
+    },
+    {
+      "name": "border-beam",
+      "type": "registry:ui",
+      "title": "Border Beam",
+      "description": "Light travelling around a border.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/border-beam.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/border-beam"
+    },
+    {
+      "name": "pixel-reveal",
+      "type": "registry:ui",
+      "title": "Pixel Reveal",
+      "description": "Cascading pixel-grid image reveal.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/pixel-reveal.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/pixel-reveal"
+    },
+    {
+      "name": "hologram-flip-card",
+      "type": "registry:ui",
+      "title": "Hologram Flip Card",
+      "description": "Flip to holographic rear with iridescent sheen.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/hologram-flip-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/hologram-flip-card"
+    },
+    {
+      "name": "liquid-morph-card",
+      "type": "registry:ui",
+      "title": "Liquid Morph Card",
+      "description": "Border/blob morphs toward pointer.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/liquid-morph-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/liquid-morph-card"
+    },
+    {
+      "name": "gravity-expand-card",
+      "type": "registry:ui",
+      "title": "Gravity Expand Card",
+      "description": "Click expands with spring; collapse on second click/outside.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/gravity-expand-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/gravity-expand-card"
+    },
+    {
+      "name": "flip-checkout-card",
+      "type": "registry:ui",
+      "title": "Flip Checkout Card",
+      "description": "Frosted payment card mirrors every keystroke, flips for the security code, and the checkout condenses into a receipt once paid.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/flip-checkout-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/flip-checkout-card"
+    },
+    {
+      "name": "plucked-string-tabs",
+      "type": "registry:ui",
+      "title": "Plucked String Tabs",
+      "description": "Tabs hang from a taut string. Choosing one plucks the string there and the vibration travels as a real damped wave; every tab bobs with the string above it and a glowing bead slides to the active tab. Sweep across the string to strum it.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/plucked-string-tabs.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/plucked-string-tabs"
+    },
+    {
+      "name": "compass-rail",
+      "type": "registry:ui",
+      "title": "Compass Rail",
+      "description": "Vertical rail with a shortest-path compass marker.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/compass-rail.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/compass-rail"
+    },
+    {
+      "name": "halo-menu",
+      "type": "registry:ui",
+      "title": "Halo Menu",
+      "description": "Center action opens a 6-item halo.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/halo-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/halo-menu"
+    },
+    {
+      "name": "magnify-dock",
+      "type": "registry:ui",
+      "title": "Magnify Dock",
+      "description": "Dock with proximity scaling.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/magnify-dock.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/magnify-dock"
+    },
+    {
+      "name": "orbiting-icons",
+      "type": "registry:ui",
+      "title": "Orbiting Icons",
+      "description": "Icons circle a central hub.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/orbiting-icons.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/orbiting-icons"
+    },
+    {
+      "name": "curtain-drop-nav",
+      "type": "registry:ui",
+      "title": "Curtain Drop Nav",
+      "description": "Top bar with curtain-reveal dropdown panels.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/curtain-drop-nav.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/curtain-drop-nav"
+    },
+    {
+      "name": "morph-pill-header",
+      "type": "registry:ui",
+      "title": "Morph Pill Header",
+      "description": "Full header collapses to a floating pill on scroll.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/morph-pill-header.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/morph-pill-header"
+    },
+    {
+      "name": "radial-toolburst",
+      "type": "registry:ui",
+      "title": "Radial Toolburst",
+      "description": "Center control bursts into orbiting tool nodes.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/radial-toolburst.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/radial-toolburst"
+    },
+    {
+      "name": "magnetic-dock-nav",
+      "type": "registry:ui",
+      "title": "Magnetic Dock Nav",
+      "description": "Dock with magnetic magnification on hover.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/magnetic-dock-nav.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/magnetic-dock-nav"
+    },
+    {
+      "name": "rail-bloom-sidebar",
+      "type": "registry:ui",
+      "title": "Rail Bloom Sidebar",
+      "description": "Collapsible icon rail that blooms labels and soft glow; liquid active indicator.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/rail-bloom-sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "sidebars"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/rail-bloom-sidebar"
+    },
+    {
+      "name": "section-accordion-sidebar",
+      "type": "registry:ui",
+      "title": "Section Accordion Sidebar",
+      "description": "Nested sections accordion-open with spring height; sticky workspace header + search.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/section-accordion-sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "sidebars"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/section-accordion-sidebar"
+    },
+    {
+      "name": "context-drawer-sidebar",
+      "type": "registry:ui",
+      "title": "Context Drawer Sidebar",
+      "description": "Slim rail ↔ wide frosted context drawer with animated width and pin toggle.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/context-drawer-sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "sidebars"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/context-drawer-sidebar"
+    },
+    {
+      "name": "command-tree-sidebar",
+      "type": "registry:ui",
+      "title": "Command Tree Sidebar",
+      "description": "Hierarchical tree with ↑↓/Enter, typeahead highlight, morphing path breadcrumb.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/command-tree-sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "sidebars"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/command-tree-sidebar"
+    },
+    {
+      "name": "glass-workspace-sidebar",
+      "type": "registry:ui",
+      "title": "Glass Workspace Sidebar",
+      "description": "Frosted glass pro sidebar with workspace switcher, collapsible groups, notification pip, user footer.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/glass-workspace-sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "sidebars"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glass-workspace-sidebar"
+    },
+    {
+      "name": "timeline-rail-sidebar",
+      "type": "registry:ui",
+      "title": "Timeline Rail Sidebar",
+      "description": "Vertical ops/CPaaS timeline rail — events as nodes, active glow, scroll-sync scrubber.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/timeline-rail-sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "sidebars"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/timeline-rail-sidebar"
+    },
+    {
+      "name": "mega-flyout-sidebar",
+      "type": "registry:ui",
+      "title": "Mega Flyout Sidebar",
+      "description": "Icon rail that opens rich 2-col flyout panels with curtain/slide motion — enterprise marketing feel.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/mega-flyout-sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "sidebars"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/mega-flyout-sidebar"
+    },
+    {
+      "name": "priority-inbox-sidebar",
+      "type": "registry:ui",
+      "title": "Priority Inbox Sidebar",
+      "description": "Messaging ops sidebar: Open/Pending/Snoozed filters, channel tabs, search, unread bloom snippets.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/priority-inbox-sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "sidebars"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/priority-inbox-sidebar"
+    },
+    {
+      "name": "orbit-switcher-sidebar",
+      "type": "registry:ui",
+      "title": "Orbit Switcher Sidebar",
+      "description": "Multi-product switcher orb that morphs between Messaging / Voice / SMS with animated icon swap.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/orbit-switcher-sidebar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "sidebars"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/orbit-switcher-sidebar"
+    },
+    {
+      "name": "thread-bubble-stack",
+      "type": "registry:ui",
+      "title": "Thread Bubble Stack",
+      "description": "Inbound/outbound chat bubbles with status ticks, timestamps, soft enter animation.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/thread-bubble-stack.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "whatsapp-messaging"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/thread-bubble-stack"
+    },
+    {
+      "name": "inbox-pulse-list",
+      "type": "registry:ui",
+      "title": "Inbox Pulse List",
+      "description": "Conversation rows with unread bloom badge, preview, channel chip, hover actions.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/inbox-pulse-list.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "whatsapp-messaging"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/inbox-pulse-list"
+    },
+    {
+      "name": "template-message-card",
+      "type": "registry:ui",
+      "title": "Template Message Card",
+      "description": "Approved template preview with header media, body vars, footer, CTAs + shimmer approve.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/template-message-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "whatsapp-messaging"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/template-message-card"
+    },
+    {
+      "name": "campaign-composer-strip",
+      "type": "registry:ui",
+      "title": "Campaign Composer Strip",
+      "description": "Mini broadcast composer: audience chip, channel toggle, schedule pill, send progress.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/campaign-composer-strip.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "whatsapp-messaging"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/campaign-composer-strip"
+    },
+    {
+      "name": "typing-wave-indicator",
+      "type": "registry:ui",
+      "title": "Typing Wave Indicator",
+      "description": "Multi-dot typing indicator with wave and optional agent handoff label.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/typing-wave-indicator.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "whatsapp-messaging"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/typing-wave-indicator"
+    },
+    {
+      "name": "opt-in-consent-banner",
+      "type": "registry:ui",
+      "title": "Opt-In Consent Banner",
+      "description": "Soft messaging opt-in compliance banner with animated check and decline.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/opt-in-consent-banner.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "whatsapp-messaging"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/opt-in-consent-banner"
+    },
+    {
+      "name": "media-carousel-bubble",
+      "type": "registry:ui",
+      "title": "Media Carousel Bubble",
+      "description": "Inbound/outbound bubble with image carousel, dots, and caption.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/media-carousel-bubble.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "whatsapp-messaging"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/media-carousel-bubble"
+    },
+    {
+      "name": "reaction-chip-bar",
+      "type": "registry:ui",
+      "title": "Reaction Chip Bar",
+      "description": "Message reaction emoji chips that pop in, with add-reaction affordance.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/reaction-chip-bar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "whatsapp-messaging"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/reaction-chip-bar"
+    },
+    {
+      "name": "whatsapp-flow-form",
+      "type": "registry:ui",
+      "title": "WhatsApp Flow Form",
+      "description": "Interactive Flow / survey card with rating fields and submit — in-chat business flow.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/whatsapp-flow-form.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "whatsapp-messaging"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/whatsapp-flow-form"
+    },
+    {
+      "name": "catalog-product-card",
+      "type": "registry:ui",
+      "title": "Catalog Product Card",
+      "description": "Product catalog card with price, image placeholder, and add-to-cart micro interaction.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/catalog-product-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "whatsapp-messaging"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/catalog-product-card"
+    },
+    {
+      "name": "session-window-timer",
+      "type": "registry:ui",
+      "title": "Session Window Timer",
+      "description": "24h messaging session window countdown ring with urgency color shift.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/session-window-timer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "whatsapp-messaging"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/session-window-timer"
+    },
+    {
+      "name": "agent-handoff-card",
+      "type": "registry:ui",
+      "title": "Agent Handoff Card",
+      "description": "Bot→human handoff card with agent avatar bloom and Connecting you… state.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/agent-handoff-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "whatsapp-messaging"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/agent-handoff-card"
+    },
+    {
+      "name": "broadcast-status-board",
+      "type": "registry:ui",
+      "title": "Broadcast Status Board",
+      "description": "Mini campaign status: queued/sent/delivered/read/failed with animated counters.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/broadcast-status-board.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "whatsapp-messaging"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/broadcast-status-board"
+    },
+    {
+      "name": "quick-reply-chip-cloud",
+      "type": "registry:ui",
+      "title": "Quick Reply Chip Cloud",
+      "description": "Cloud of quick-reply chips with magnetic hover and select.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/quick-reply-chip-cloud.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "whatsapp-messaging"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/quick-reply-chip-cloud"
+    },
+    {
+      "name": "notification-orbit-center",
+      "type": "registry:ui",
+      "title": "Notification Orbit Center",
+      "description": "Bell opens a panel; items stack with unread glow; mark-all-read clears glow.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/notification-orbit-center.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "notifications"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/notification-orbit-center"
+    },
+    {
+      "name": "priority-banner-alert",
+      "type": "registry:ui",
+      "title": "Priority Banner Alert",
+      "description": "Full-width priority banner (info/warn/critical) with slide-in and auto-dismiss.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/priority-banner-alert.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "notifications"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/priority-banner-alert"
+    },
+    {
+      "name": "inbox-row-notifier",
+      "type": "registry:ui",
+      "title": "Inbox Row Notifier",
+      "description": "Dense notification feed row with glyph, title, meta, relative time, hover actions.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/inbox-row-notifier.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "notifications"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/inbox-row-notifier"
+    },
+    {
+      "name": "badge-bloom-counter",
+      "type": "registry:ui",
+      "title": "Badge Bloom Counter",
+      "description": "Numeric badge that blooms and scales when the count changes.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/badge-bloom-counter.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "notifications"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/badge-bloom-counter"
+    },
+    {
+      "name": "push-preview-card",
+      "type": "registry:ui",
+      "title": "Push Preview Card",
+      "description": "Mobile-style push notification preview with app icon, title, body, time.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/push-preview-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "notifications"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/push-preview-card"
+    },
+    {
+      "name": "seat-scale-pricing",
+      "type": "registry:ui",
+      "title": "Seat Scale Pricing",
+      "description": "One pricing card that morphs through every plan as you drag the team size: avatars pop in seat by seat, the price rolls on odometer reels, the tier badge and accent cross-fade, unlocked features slide in with a glow, and yearly billing bursts a savings chip.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/seat-scale-pricing.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/seat-scale-pricing"
+    },
+    {
+      "name": "polar-bloom-chart",
+      "type": "registry:ui",
+      "title": "Polar Bloom Chart",
+      "description": "A Nightingale rose that blooms: petals unfurl from the bud one after another, re-grow on springs when you switch datasets, and the hovered or arrow-key focused petal lifts out with a coloured glow while the centre counts up.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/polar-bloom-chart.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/polar-bloom-chart"
+    },
+    {
+      "name": "glow-leaderboard-list",
+      "type": "registry:ui",
+      "title": "Glow Leaderboard List",
+      "description": "Glass pill rows that genuinely compete: scores tick up live, rows re-rank with layout springs, amounts roll and the glowing leader highlight glides to the new #1.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/glow-leaderboard-list.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glow-leaderboard-list"
+    },
+    {
+      "name": "podium-stack-leaderboard",
+      "type": "registry:ui",
+      "title": "Podium Stack Leaderboard",
+      "description": "Gold, silver and bronze cards stacked like a hand of trophies; promoting someone lifts their card past its rival, re-stacks the pile and morphs the medal finishes.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/use-resolved-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/podium-stack-leaderboard.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/podium-stack-leaderboard"
+    },
+    {
+      "name": "kpi-spark-widget",
+      "type": "registry:ui",
+      "title": "KPI Spark Widget",
+      "description": "KPI number ticker with mini sparkline that draws on mount and a trend delta pill.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/kpi-spark-widget.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/kpi-spark-widget"
+    },
+    {
+      "name": "live-meter-dial",
+      "type": "registry:ui",
+      "title": "Live Meter Dial",
+      "description": "Animated semicircle gauge for delivery rate / ASR / concurrent calls.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/live-meter-dial.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/live-meter-dial"
+    },
+    {
+      "name": "activity-stream-widget",
+      "type": "registry:ui",
+      "title": "Activity Stream Widget",
+      "description": "Live-feeling activity feed with staggered row inserts.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/activity-stream-widget.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/activity-stream-widget"
+    },
+    {
+      "name": "status-heatmap-grid",
+      "type": "registry:ui",
+      "title": "Status Heatmap Grid",
+      "description": "Compact hour×day heatmap for message volume with hover tooltip.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/status-heatmap-grid.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/status-heatmap-grid"
+    },
+    {
+      "name": "ring-progress-cluster",
+      "type": "registry:ui",
+      "title": "Ring Progress Cluster",
+      "description": "Cluster of animated progress rings for queue depth, SLA, and capacity.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/ring-progress-cluster.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ring-progress-cluster"
+    },
+    {
+      "name": "glass-bubble-buddy",
+      "type": "registry:ui",
+      "title": "Glass Bubble Buddy",
+      "description": "A living blob mascot inside a glossy glass sphere with a tiny expression system (lids, catchlights, brows, blush, mouth) and a springy body. Idle it wanders and notices your cursor, listening it leans in and nods, thinking it ponders with orbiting sparkles, speaking it talks and jiggles — and it gets drowsy when ignored.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/glass-bubble-buddy.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "voice-agent"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glass-bubble-buddy"
+    },
+    {
+      "name": "mesh-pill-orb",
+      "type": "registry:ui",
+      "title": "Mesh Pill Orb",
+      "description": "A lava-lamp gradient mesh swirls inside a softly wobbling blob with two pill eyes. Idle it drifts and blinks, listening it widens and leans in, thinking it narrows and glances around under spinning orbit arcs, speaking its eyes squash into bars that bounce with the voice — while sonar rings and tiny motes breathe out from the rim.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/use-resolved-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/mesh-pill-orb.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "voice-agent"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/mesh-pill-orb"
+    },
+    {
+      "name": "star-morph-buddy",
+      "type": "registry:ui",
+      "title": "Star Morph Buddy",
+      "description": "A floating indigo blob with a warm glowing core. Hover or focus and it springs into a soft five-point star — core flares, eyes tilt, cheeks blush, sparkles pop at the tips and the greeting crossfades into an intro with a gradient-inked phrase. Leave and it relaxes back on a softer spring.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/star-morph-buddy.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "voice-agent"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/star-morph-buddy"
+    },
+    {
+      "name": "call-control-bar",
+      "type": "registry:ui",
+      "title": "Call Control Bar",
+      "description": "Mute / hold / end / keypad with glowing active states and hold pulse.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/call-control-bar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "voice-agent"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/call-control-bar"
+    },
+    {
+      "name": "live-transcript-panel",
+      "type": "registry:ui",
+      "title": "Live Transcript Panel",
+      "description": "Scrolling dual-speaker transcript with speaker pills and auto-scroll.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/live-transcript-panel.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "voice-agent"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/live-transcript-panel"
+    },
+    {
+      "name": "agent-state-orb",
+      "type": "registry:ui",
+      "title": "Agent State Orb",
+      "description": "Listening / thinking / speaking orb with distinct motion modes.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/agent-state-orb.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "voice-agent"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/agent-state-orb"
+    },
+    {
+      "name": "voice-waveform-lane",
+      "type": "registry:ui",
+      "title": "Voice Waveform Lane",
+      "description": "Animated audio waveform bars reacting to simulated level; latency chip.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/voice-waveform-lane.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "voice-agent"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/voice-waveform-lane"
+    },
+    {
+      "name": "softphone-dial-pad",
+      "type": "registry:ui",
+      "title": "Softphone Dial Pad",
+      "description": "Stylish dial pad with ripple keys, number display, ringing call button.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/softphone-dial-pad.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "voice-agent"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/softphone-dial-pad"
+    },
+    {
+      "name": "queue-ticket-card",
+      "type": "registry:ui",
+      "title": "Queue Ticket Card",
+      "description": "Call queue card with wait ticker, priority, skill tags, claim/transfer actions.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/queue-ticket-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "voice-agent"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/queue-ticket-card"
+    },
+    {
+      "name": "prism-mesh-orb",
+      "type": "registry:ui",
+      "title": "Prism Mesh Orb",
+      "description": "Iridescent mesh sphere — idle/listen/speak modes, pointer tilt, equatorial voice wave when speaking.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/prism-mesh-orb.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "voice-agent"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/prism-mesh-orb"
+    },
+    {
+      "name": "liquid-metal-orb",
+      "type": "registry:ui",
+      "title": "Liquid Metal Orb",
+      "description": "Mercury / liquid-metal ball with traveling highlight; morphs slightly when speaking.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/liquid-metal-orb.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "voice-agent"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/liquid-metal-orb"
+    },
+    {
+      "name": "aurora-core-orb",
+      "type": "registry:ui",
+      "title": "Aurora Core Orb",
+      "description": "Inner aurora ribbons through a translucent shell; outer soft glow rings expand on listen.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/aurora-core-orb.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "voice-agent"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/aurora-core-orb"
+    },
+    {
+      "name": "particle-halo-orb",
+      "type": "registry:ui",
+      "title": "Particle Halo Orb",
+      "description": "Core ball + orbiting particle halo that densifies with energy; demo slider or auto level.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/particle-halo-orb.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "voice-agent"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/particle-halo-orb"
+    },
+    {
+      "name": "ribbon-helix-wave",
+      "type": "registry:ui",
+      "title": "Ribbon Helix Wave",
+      "description": "Premium dual ribbon helix / sine ribbons reacting to amplitude — best-in-class voice visualizer.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/ribbon-helix-wave.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "voice-agent"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ribbon-helix-wave"
+    },
+    {
+      "name": "radial-sonar-wave",
+      "type": "registry:ui",
+      "title": "Radial Sonar Wave",
+      "description": "Circular sonar / polar waveform around a center mic glyph; pulse rings on peaks.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/radial-sonar-wave.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "voice-agent"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/radial-sonar-wave"
+    },
+    {
+      "name": "pill-trail-cursor",
+      "type": "registry:ui",
+      "title": "Pill Trail Cursor",
+      "description": "Pointer leaves a springing trail of word pills.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/pill-trail-cursor.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cursors"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/pill-trail-cursor"
+    },
+    {
+      "name": "halftone-bloom-cursor",
+      "type": "registry:ui",
+      "title": "Halftone Bloom Cursor",
+      "description": "Pointer blooms a lilac halftone matrix.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/halftone-bloom-cursor.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cursors"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/halftone-bloom-cursor"
+    },
+    {
+      "name": "cursor-trail",
+      "type": "registry:ui",
+      "title": "Cursor Trail",
+      "description": "Glowing trail following the pointer.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/cursor-trail.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cursors"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/cursor-trail"
+    },
+    {
+      "name": "ribbon-trail-cursor",
+      "type": "registry:ui",
+      "title": "Ribbon Trail Cursor",
+      "description": "Soft ribbon trail with springy spacing.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/ribbon-trail-cursor.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cursors"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ribbon-trail-cursor"
+    },
+    {
+      "name": "lens-flare-cursor",
+      "type": "registry:ui",
+      "title": "Lens Flare Cursor",
+      "description": "Soft optical flare that lags behind the pointer.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/lens-flare-cursor.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cursors"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/lens-flare-cursor"
+    },
+    {
+      "name": "ink-stamp-cursor",
+      "type": "registry:ui",
+      "title": "Ink Stamp Cursor",
+      "description": "Small ink stamps that fade behind the pointer.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/ink-stamp-cursor.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cursors"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ink-stamp-cursor"
+    },
+    {
+      "name": "orbit-ring-cursor",
+      "type": "registry:ui",
+      "title": "Orbit Ring Cursor",
+      "description": "Thin ring orbits the pointer.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/orbit-ring-cursor.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cursors"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/orbit-ring-cursor"
+    },
+    {
+      "name": "morph-search-capsule",
+      "type": "registry:ui",
+      "title": "Morph Search Capsule",
+      "description": "Compact search pill expands into a typing capsule.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/morph-search-capsule.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "search-inputs"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/morph-search-capsule"
+    },
+    {
+      "name": "elastic-slider",
+      "type": "registry:ui",
+      "title": "Elastic Slider",
+      "description": "Thumb stretches elastically while dragging.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/elastic-slider.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "search-inputs"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/elastic-slider"
+    },
+    {
+      "name": "signal-pebble",
+      "type": "registry:ui",
+      "title": "Signal Pebble",
+      "description": "Procedural noise pebble with a status verb.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/signal-pebble.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "search-inputs"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/signal-pebble"
+    },
+    {
+      "name": "tumbler-lock-otp",
+      "type": "registry:ui",
+      "title": "Tumbler Lock OTP",
+      "description": "A one-time-code field built from combination-lock drums on real CSS-3D cylinders; each digit whirrs a full turn before landing, a padlock checks the code and springs open — or shakes and spins every drum back on failure.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/tumbler-lock-otp.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "inputs-forms"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/tumbler-lock-otp"
+    },
+    {
+      "name": "crystal-strength-password",
+      "type": "registry:ui",
+      "title": "Crystal Strength Password",
+      "description": "A password field that grows an SVG crystal: each satisfied rule springs a faceted shard out of the rock, the cluster shifts from ember to glacier, and a perfect score turns it iridescent with glints. Includes show/hide and a forged suggestion that scrambles in.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/crystal-strength-password.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "inputs-forms"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/crystal-strength-password"
+    },
+    {
+      "name": "button",
+      "type": "registry:ui",
+      "title": "Button",
+      "description": "Versatile button with variants and sizes.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "core"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/button"
+    },
+    {
+      "name": "badge",
+      "type": "registry:ui",
+      "title": "Badge",
+      "description": "Compact status and label chips.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/badge.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "core"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/badge"
+    },
+    {
+      "name": "card",
+      "type": "registry:ui",
+      "title": "Card",
+      "description": "Composable surface for content blocks.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "core"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/card"
+    },
+    {
+      "name": "input",
+      "type": "registry:ui",
+      "title": "Input",
+      "description": "Accessible text field with focus ring.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/input.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "core"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/input"
+    },
+    {
+      "name": "textarea",
+      "type": "registry:ui",
+      "title": "Textarea",
+      "description": "Multi-line text input.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/textarea.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "core"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/textarea"
+    },
+    {
+      "name": "switch",
+      "type": "registry:ui",
+      "title": "Switch",
+      "description": "Plain animated boolean switch.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/switch.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "core"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/switch"
+    },
+    {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "title": "Checkbox",
+      "description": "Checkbox with optional label.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/checkbox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "core"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/checkbox"
+    },
+    {
+      "name": "tabs",
+      "type": "registry:ui",
+      "title": "Tabs",
+      "description": "Keyboard-friendly tabbed panels.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/tabs.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "core"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/tabs"
+    },
+    {
+      "name": "accordion",
+      "type": "registry:ui",
+      "title": "Accordion",
+      "description": "Expandable sections with motion.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/accordion.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "core"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/accordion"
+    },
+    {
+      "name": "dialog",
+      "type": "registry:ui",
+      "title": "Dialog",
+      "description": "Accessible modal dialog.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "core"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/dialog"
+    },
+    {
+      "name": "tooltip",
+      "type": "registry:ui",
+      "title": "Tooltip",
+      "description": "Hover/focus hint bubbles.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/tooltip.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "core"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/tooltip"
+    },
+    {
+      "name": "dropdown-menu",
+      "type": "registry:ui",
+      "title": "Dropdown Menu",
+      "description": "Action menu anchored to a trigger.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/dropdown-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "core"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/dropdown-menu"
+    },
+    {
+      "name": "toast",
+      "type": "registry:ui",
+      "title": "Toast",
+      "description": "Transient notifications with a provider.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/toast.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "core"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/toast"
+    },
+    {
+      "name": "avatar",
+      "type": "registry:ui",
+      "title": "Avatar",
+      "description": "User image with initials fallback.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/avatar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "core"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/avatar"
+    },
+    {
+      "name": "skeleton",
+      "type": "registry:ui",
+      "title": "Skeleton",
+      "description": "Loading placeholders.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/skeleton.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "core"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/skeleton"
+    },
+    {
+      "name": "progress",
+      "type": "registry:ui",
+      "title": "Progress",
+      "description": "Determinate progress bar.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/progress.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "core"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/progress"
+    },
+    {
+      "name": "breathing-dot",
+      "type": "registry:ui",
+      "title": "Breathing Dot",
+      "description": "Soft pulsating status indicator.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/breathing-dot.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "core"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/breathing-dot"
+    }
+  ]
+}
