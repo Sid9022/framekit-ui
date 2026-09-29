@@ -172,6 +172,7 @@ async function main() {
       },
     },
     categories: ['theme'],
+    docs: 'Framekit tokens added to your CSS. Headline components use font-display ("Instrument Serif") — load it (e.g. Google Fonts or @fontsource/instrument-serif) or override --font-display.',
   }
 
   const registry = {

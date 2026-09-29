@@ -219,10 +219,13 @@ function Guide({ slug }: { slug: string }) {
   return null
 }
 
-/** First exported PascalCase component in the source (fallback: title → PascalCase). */
-function exportName(code: string | undefined, title: string) {
-  const m = code?.match(/export\s+(?:function|const)\s+([A-Z]\w*)/)
-  return m?.[1] ?? title.replace(/[^a-zA-Z0-9]+(.)?/g, (_, ch: string | undefined) => (ch ? ch.toUpperCase() : '')).replace(/^./, (x) => x.toUpperCase())
+/** Main component export: PascalCase(slug) when exported, else the first exported PascalCase function/const. */
+function exportName(code: string | undefined, slug: string) {
+  const pascal = slug.replace(/(^|-)([a-z0-9])/g, (_, __, ch: string) => ch.toUpperCase())
+  if (code && new RegExp(`export\\s+(?:function|const)\\s+${pascal}\\b`).test(code)) return pascal
+  const m =
+    code?.match(/export\s+function\s+([A-Z][a-z]\w*)/) ?? code?.match(/export\s+const\s+([A-Z][a-z]\w*)/)
+  return m?.[1] ?? pascal
 }
 
 export function DocPage() {
@@ -374,7 +377,7 @@ export function DocPage() {
             <CodeBlock
               className="mt-3"
               language="tsx"
-              code={`import { ${exportName(code, doc.title)} } from '@/components/ui/${slug}'`}
+              code={`import { ${exportName(code, slug)} } from '@/components/ui/${slug}'`}
               trackMeta={{ slug, kind: 'import' }}
             />
           </section>
