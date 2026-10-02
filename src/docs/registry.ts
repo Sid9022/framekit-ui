@@ -584,3 +584,25 @@ export function getNavGroups() {
     items: DOCS.filter((d) => d.category === title),
   })).filter((g) => g.items.length > 0)
 }
+
+/* ---------- Docs-shell helpers (category pages, prev/next, search) ---------- */
+
+export function categorySlug(title: string) {
+  return title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')
+}
+
+export function getCategoryBySlug(slug: string): DocCategory | undefined {
+  return NAV_ORDER.find((c) => categorySlug(c) === slug)
+}
+
+/** Flat reading order that matches the sidebar (used by prev / next links). */
+export function getDocsInNavOrder() {
+  return getNavGroups().flatMap((g) => g.items)
+}
+
+export function getPrevNext(slug: string) {
+  const all = getDocsInNavOrder()
+  const i = all.findIndex((d) => d.slug === slug)
+  if (i < 0) return { prev: undefined, next: undefined }
+  return { prev: all[i - 1], next: all[i + 1] }
+}

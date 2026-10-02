@@ -5,7 +5,10 @@ export type Theme = 'light' | 'dark'
 export function useTheme() {
   const [theme, setThemeState] = React.useState<Theme>(() => {
     if (typeof window === 'undefined') return 'dark'
-    return (localStorage.getItem('framekit-theme') as Theme) || 'dark'
+    const stored = localStorage.getItem('framekit-theme') as Theme | null
+    if (stored === 'light' || stored === 'dark') return stored
+    // First visit: honour the OS preference (dark remains the fallback).
+    return window.matchMedia?.('(prefers-color-scheme: light)').matches ? 'light' : 'dark'
   })
 
   React.useEffect(() => {

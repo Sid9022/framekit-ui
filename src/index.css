@@ -37,10 +37,43 @@
   --color-signal-800: #4d3f5e;
   --color-signal-900: #352b42;
 
-  /* Keep framekit accent only for logo mark if needed */
+  /* Motion tokens (docs shell) — micro 120-200ms, component 250-450ms, scene 600ms+ */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --duration-micro: 160ms;
+  --duration-component: 320ms;
+  --duration-scene: 720ms;
+}
+
+/* Shell semantic surface + text tokens (AA on both themes). Light: zinc-600 on #f7f7f5 = 7.0:1,
+   zinc-500 = 4.6:1. Dark: zinc-400 on #0c0c0c = 8.1:1. Never use zinc-400 for light-mode text. */
+:root {
+  --fk-text-muted: #52525b;
+  --fk-text-subtle: #5f5f68;
+  --fk-ring: #7d6899;
+}
+.dark {
+  --fk-text-muted: #a1a1aa;
+  --fk-text-subtle: #9a9aa4;
+  --fk-ring: #b9aad0;
+}
+
+@layer base {
+  /* Keyboard focus: one consistent, visible ring everywhere unless a component supplies its own. */
+  :focus-visible {
+    outline: 2px solid var(--fk-ring);
+    outline-offset: 2px;
+  }
+  /* Comfortable targets on touch devices without changing the desktop density. */
+  @media (pointer: coarse) {
+    .fk-touch { min-height: 44px; min-width: 44px; }
+  }
 }
 
 html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
 
 body {
   margin: 0;
@@ -102,3 +135,64 @@ html.dark {
 
 .hairline { border-color: rgb(0 0 0 / 0.08); }
 .dark .hairline { border-color: rgb(255 255 255 / 0.1); }
+
+/* ---- Docs shell utilities ---- */
+.fk-skeleton {
+  position: relative;
+  overflow: hidden;
+  background: rgb(0 0 0 / 0.06);
+}
+.dark .fk-skeleton { background: rgb(255 255 255 / 0.06); }
+.fk-skeleton::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.5), transparent);
+  animation: fk-shimmer 1.4s var(--ease-standard) infinite;
+}
+.dark .fk-skeleton::after { background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.07), transparent); }
+@keyframes fk-shimmer { to { transform: translateX(100%); } }
+@media (prefers-reduced-motion: reduce) {
+  .fk-skeleton::after { animation: none; }
+}
+
+/* Soft grain + lilac aurora behind the landing hero (CSS only, slow drift). */
+.fk-hero-field {
+  position: absolute;
+  inset: -20% -10% auto -10%;
+  height: 120%;
+  pointer-events: none;
+  background:
+    radial-gradient(40% 50% at 22% 28%, rgb(185 170 208 / 0.38), transparent 70%),
+    radial-gradient(34% 44% at 78% 18%, rgb(251 146 60 / 0.12), transparent 70%),
+    radial-gradient(40% 40% at 60% 70%, rgb(154 134 184 / 0.2), transparent 70%);
+  filter: blur(8px);
+  animation: fk-drift 18s ease-in-out infinite alternate;
+  mask-image: linear-gradient(to bottom, #000 40%, transparent);
+}
+.dark .fk-hero-field {
+  background:
+    radial-gradient(40% 50% at 22% 28%, rgb(125 104 153 / 0.38), transparent 70%),
+    radial-gradient(34% 44% at 78% 18%, rgb(251 146 60 / 0.1), transparent 70%),
+    radial-gradient(40% 40% at 60% 70%, rgb(100 82 122 / 0.28), transparent 70%);
+}
+@keyframes fk-drift {
+  from { transform: translate3d(-2%, 0, 0) scale(1); }
+  to { transform: translate3d(2%, 3%, 0) scale(1.06); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fk-hero-field { animation: none; }
+}
+.fk-grid-mask {
+  background-image:
+    linear-gradient(to right, rgb(0 0 0 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(0 0 0 / 0.05) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(70% 70% at 50% 0%, #000, transparent 75%);
+}
+.dark .fk-grid-mask {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+}

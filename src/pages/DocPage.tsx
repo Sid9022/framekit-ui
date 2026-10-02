@@ -1,6 +1,10 @@
 import * as React from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { getDoc } from '@/docs/registry'
+import { motion, type Variants } from 'motion/react'
+import { ArrowLeft, ArrowRight, ChevronRight, Hand, RotateCcw } from 'lucide-react'
+import { categorySlug, getDoc, getPrevNext } from '@/docs/registry'
+import { NotFound, PreviewBoundary, PreviewSkeleton } from '@/components/docs/states'
+import { handleTablistKeys } from '@/lib/roving'
 import { demos } from '@/docs/demos'
 import { sources } from '@/docs/sources'
 import { CodeBlock } from '@/components/code-block'
@@ -54,14 +58,14 @@ function Guide({ slug }: { slug: string }) {
         </p>
         <p>
           There is no npm package to lock you in. Add a component with the shadcn CLI (
-          <code className="rounded bg-zinc-100 px-1 dark:bg-zinc-800">npx shadcn@latest add @framekit/&lt;name&gt;</code>) or copy the
+          <code className="rounded bg-zinc-100 px-1 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">npx shadcn@latest add @framekit/&lt;name&gt;</code>) or copy the
           file by hand — either way the source lives in your repo and you customize freely.
         </p>
         <ul className="list-disc space-y-1 pl-5">
           <li>Core primitives for everyday UI</li>
           <li>Animated signature components for landing pages and delight</li>
-          <li>Works on light and dark pages: <code className="rounded bg-zinc-100 px-1 dark:bg-zinc-800">dark:</code> variants scoped to the nearest <code className="rounded bg-zinc-100 px-1 dark:bg-zinc-800">.dark</code> / <code className="rounded bg-zinc-100 px-1 dark:bg-zinc-800">.light</code> wrapper</li>
-          <li>Respect for <code className="rounded bg-zinc-100 px-1 dark:bg-zinc-800">prefers-reduced-motion</code></li>
+          <li>Works on light and dark pages: <code className="rounded bg-zinc-100 px-1 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">dark:</code> variants scoped to the nearest <code className="rounded bg-zinc-100 px-1 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">.dark</code> / <code className="rounded bg-zinc-100 px-1 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">.light</code> wrapper</li>
+          <li>Respect for <code className="rounded bg-zinc-100 px-1 text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">prefers-reduced-motion</code></li>
         </ul>
         <Link to="/docs/installation"><Button variant="framekit">Install guide</Button></Link>
       </div>
@@ -130,7 +134,7 @@ function Guide({ slug }: { slug: string }) {
               />
               <p>
                 The full index lives at{' '}
-                <a className="text-signal-700 underline-offset-2 hover:underline dark:text-signal-300" href={`${REGISTRY_URL}/registry.json`} target="_blank" rel="noreferrer">
+                <a className="text-signal-700 underline underline-offset-2 hover:text-signal-900 dark:text-signal-300 dark:hover:text-signal-100" href={`${REGISTRY_URL}/registry.json`} target="_blank" rel="noreferrer">
                   /r/registry.json
                 </a>
                 .
@@ -172,7 +176,7 @@ function Guide({ slug }: { slug: string }) {
             </li>
             <li>
               <p className={step}>Enable class-based dark mode and the Framekit tokens</p>
-              <p className="mb-2">Add this once to your global CSS (Tailwind v4). See <Link className="text-signal-700 underline-offset-2 hover:underline dark:text-signal-300" to="/docs/theming">Theming</Link>.</p>
+              <p className="mb-2">Add this once to your global CSS (Tailwind v4). See <Link className="text-signal-700 underline underline-offset-2 hover:text-signal-900 dark:text-signal-300 dark:hover:text-signal-100" to="/docs/theming">Theming</Link>.</p>
               <CodeBlock language="css" code={DARK_VARIANT_CSS + '\n\n' + THEME_TOKENS_CSS} trackMeta={{ kind: 'guide-manual-css' }} />
             </li>
             <li>
@@ -228,161 +232,294 @@ function exportName(code: string | undefined, slug: string) {
   return m?.[1] ?? pascal
 }
 
+const reveal: Variants = {
+  hidden: { opacity: 0, y: 12 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } },
+}
+const stagger: Variants = { hidden: {}, show: { transition: { staggerChildren: 0.05, delayChildren: 0.02 } } }
+
+function Breadcrumb({ category, title }: { category: string; title: string }) {
+  const isGuide = category === 'Getting Started'
+  return (
+    <nav aria-label="Breadcrumb" className="mb-4">
+      <ol className="flex flex-wrap items-center gap-1 text-sm text-zinc-600 dark:text-zinc-400">
+        <li>
+          <Link to="/docs/introduction" className="rounded-md px-1 py-0.5 underline-offset-2 hover:text-zinc-950 hover:underline dark:hover:text-white">
+            Docs
+          </Link>
+        </li>
+        <li aria-hidden><ChevronRight className="h-3.5 w-3.5" /></li>
+        <li>
+          {isGuide ? (
+            <span>{category}</span>
+          ) : (
+            <Link to={`/docs/category/${categorySlug(category)}`} className="rounded-md px-1 py-0.5 underline-offset-2 hover:text-zinc-950 hover:underline dark:hover:text-white">
+              {category}
+            </Link>
+          )}
+        </li>
+        <li aria-hidden><ChevronRight className="h-3.5 w-3.5" /></li>
+        <li aria-current="page" className="font-medium text-zinc-950 dark:text-white">{title}</li>
+      </ol>
+    </nav>
+  )
+}
+
+function PropsTable({ props }: { props: NonNullable<ReturnType<typeof getDoc>>['props'] }) {
+  if (!props?.length) return null
+  return (
+    <section className="mt-12" aria-labelledby="props-h">
+      <h2 id="props-h" className="text-xl font-semibold tracking-tight">Props</h2>
+      {/* ≥ md: dense table */}
+      <div
+        role="region"
+        aria-label="Props table"
+        tabIndex={0}
+        className="framekit-scroll mt-4 hidden overflow-x-auto rounded-2xl border border-zinc-200 md:block dark:border-zinc-800"
+      >
+        <table className="w-full min-w-[560px] text-left text-sm">
+          <caption className="sr-only">Component props</caption>
+          <thead className="bg-zinc-50 text-xs uppercase tracking-wide text-zinc-600 dark:bg-zinc-900 dark:text-zinc-400">
+            <tr>
+              <th scope="col" className="px-4 py-3 font-medium">Prop</th>
+              <th scope="col" className="px-4 py-3 font-medium">Type</th>
+              <th scope="col" className="px-4 py-3 font-medium">Default</th>
+              <th scope="col" className="px-4 py-3 font-medium">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            {props.map((p) => (
+              <tr key={p.name} className="border-t border-zinc-200 align-top transition-colors hover:bg-zinc-50/70 dark:border-zinc-800 dark:hover:bg-zinc-900/40">
+                <th scope="row" className="px-4 py-3 text-left font-mono text-xs font-medium text-signal-700 dark:text-signal-300">{p.name}</th>
+                <td className="px-4 py-3 font-mono text-xs text-zinc-700 dark:text-zinc-300">{p.type}</td>
+                <td className="px-4 py-3 font-mono text-xs text-zinc-700 dark:text-zinc-300">{p.default ?? '—'}</td>
+                <td className="px-4 py-3 text-zinc-700 dark:text-zinc-400">{p.description}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      {/* < md: stacked cards — no sideways scrolling on phones */}
+      <ul className="mt-4 space-y-3 md:hidden">
+        {props.map((p) => (
+          <li key={p.name} className="rounded-2xl border border-zinc-200 p-4 dark:border-zinc-800">
+            <p className="break-words font-mono text-sm font-medium text-signal-700 dark:text-signal-300">{p.name}</p>
+            <p className="mt-1 break-words font-mono text-xs text-zinc-700 dark:text-zinc-300">{p.type}</p>
+            <p className="mt-2 text-sm text-zinc-700 dark:text-zinc-400">{p.description}</p>
+            {p.default && (
+              <p className="mt-2 text-xs text-zinc-600 dark:text-zinc-400">
+                Default <code className="rounded bg-zinc-100 px-1 py-px font-mono text-zinc-800 dark:bg-zinc-800 dark:text-zinc-200">{p.default}</code>
+              </p>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
+
+function PrevNext({ slug }: { slug: string }) {
+  const { prev, next } = getPrevNext(slug)
+  if (!prev && !next) return null
+  const card =
+    'group flex min-h-[72px] flex-1 flex-col justify-center rounded-2xl border border-zinc-200 p-4 transition-[border-color,background-color,transform] duration-200 hover:border-signal-400 hover:bg-white active:scale-[0.99] motion-reduce:transition-none dark:border-zinc-800 dark:hover:border-signal-500 dark:hover:bg-zinc-900/60'
+  return (
+    <nav aria-label="Previous and next" className="mt-16 flex flex-col gap-3 border-t border-zinc-200 pt-8 sm:flex-row dark:border-zinc-800">
+      {prev ? (
+        <Link to={`/docs/${prev.slug}`} rel="prev" className={card}>
+          <span className="flex items-center gap-1.5 text-xs text-zinc-600 dark:text-zinc-400">
+            <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-200 group-hover:-translate-x-0.5" aria-hidden /> Previous
+          </span>
+          <span className="mt-1 text-sm font-medium">{prev.title}</span>
+        </Link>
+      ) : <span className="hidden flex-1 sm:block" />}
+      {next ? (
+        <Link to={`/docs/${next.slug}`} rel="next" className={cn(card, 'sm:items-end sm:text-right')}>
+          <span className="flex items-center gap-1.5 text-xs text-zinc-600 dark:text-zinc-400">
+            Next <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" aria-hidden />
+          </span>
+          <span className="mt-1 text-sm font-medium">{next.title}</span>
+        </Link>
+      ) : <span className="hidden flex-1 sm:block" />}
+    </nav>
+  )
+}
+
 export function DocPage() {
   const { slug = 'introduction' } = useParams()
   const doc = getDoc(slug)
   const [tab, setTab] = React.useState<'preview' | 'code'>('preview')
   const [previewTheme, setPreviewTheme] = usePreviewTheme()
+  const [replay, setReplay] = React.useState(0)
+  const [spin, setSpin] = React.useState(0)
 
-  React.useEffect(() => setTab('preview'), [slug])
+  React.useEffect(() => {
+    setTab('preview')
+    setReplay(0)
+  }, [slug])
 
-  if (!doc) {
-    return (
-      <div>
-        <h1 className="text-2xl font-semibold">Not found</h1>
-        <p className="mt-2 text-zinc-500">No doc for “{slug}”.</p>
-        <Link to="/docs/introduction" className="mt-4 inline-block text-signal-700 dark:text-signal-300 hover:underline">
-          Back to docs
-        </Link>
-      </div>
-    )
-  }
+  React.useEffect(() => {
+    document.title = doc ? `${doc.title} — Framekit UI` : 'Not found — Framekit UI'
+  }, [doc])
 
-  const isGuide = doc.category === 'Getting Started'
-  const demo = demos[slug]
   const code = sources[slug]
   const deps = React.useMemo(() => detectDeps(code ?? ''), [code])
 
-  return (
-    <article className="mx-auto max-w-3xl">
-      <div className="mb-2 flex flex-wrap items-center gap-2">
-        <Badge variant="secondary">{doc.category}</Badge>
-        {doc.isNew && <Badge className="bg-signal-200 text-signal-800 dark:bg-signal-800 dark:text-signal-100">NEW</Badge>}
-        {doc.unique && !doc.isNew && <Badge variant="secondary">Unique</Badge>}
-        {doc.ownBackground && (
-          <Badge
-            variant="outline"
-            title="This component paints its own backdrop. Override it with className / props, or pick a light variant where available."
-          >
-            Brings its own background
-          </Badge>
-        )}
-      </div>
-      <h1 className="text-3xl font-semibold tracking-tight">{doc.title}</h1>
-      <p className="mt-2 text-zinc-600 dark:text-zinc-400">{doc.description}</p>
+  if (!doc) return <NotFound slug={slug} />
 
-      {isGuide ? (
-        <div className="mt-8"><Guide slug={slug} /></div>
-      ) : (
-        <>
-          <div className="mt-8 overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800">
-            <div className="flex items-center gap-1 border-b border-zinc-200 bg-zinc-50 p-1 dark:border-zinc-800 dark:bg-zinc-900/50">
-              {(['preview', 'code'] as const).map((t) => (
-                <button
-                  key={t}
-                  type="button"
-                  onClick={() => setTab(t)}
-                  className={cn(
-                    'rounded-xl px-3 py-1.5 text-sm font-medium capitalize',
-                    tab === t
-                      ? 'bg-white text-zinc-900 shadow-sm dark:bg-zinc-950 dark:text-zinc-50'
-                      : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200',
-                  )}
-                >
-                  {t}
-                </button>
-              ))}
-              {tab === 'preview' && (
-                <PreviewThemeToggle value={previewTheme} onChange={setPreviewTheme} className="ml-auto" />
-              )}
-            </div>
-            {tab === 'preview' ? (
-              <div
-                data-preview-stage
-                data-theme={previewTheme}
-                className={cn(
-                  'framekit-stage flex min-h-[340px] flex-col items-center justify-center gap-4 p-10 transition-colors duration-300',
-                  previewTheme,
-                )}
-              >
-                <div className="flex w-full flex-1 items-center justify-center">{demo}</div>
-                {doc.gesture && (
-                  <p className="text-center font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">
-                    {doc.gesture}
-                  </p>
-                )}
-              </div>
-            ) : (
-              <CodeBlock code={code || '// Source unavailable'} trackMeta={{ slug, kind: 'source' }} />
+  const isGuide = doc.category === 'Getting Started'
+  const demo = demos[slug]
+
+  return (
+    <motion.article key={slug} className="mx-auto max-w-4xl" variants={stagger} initial="hidden" animate="show">
+      <motion.header variants={reveal}>
+        <Breadcrumb category={doc.category} title={doc.title} />
+        <h1 className="text-3xl font-semibold tracking-tight sm:text-4xl">{doc.title}</h1>
+        <p className="mt-3 max-w-[65ch] text-base leading-relaxed text-zinc-700 dark:text-zinc-400">{doc.description}</p>
+        {(doc.isNew || doc.unique || doc.ownBackground) && (
+          <div className="mt-4 flex flex-wrap items-center gap-2">
+            {doc.isNew && <Badge className="bg-signal-200 text-signal-900 dark:bg-signal-800 dark:text-signal-100">NEW</Badge>}
+            {doc.unique && !doc.isNew && <Badge variant="secondary">Original</Badge>}
+            {doc.ownBackground && (
+              <Badge variant="outline" title="This component paints its own backdrop. Override it with className / props.">
+                Brings its own background
+              </Badge>
             )}
           </div>
+        )}
+      </motion.header>
 
-          <InstallBlock slug={slug} deps={deps} onShowCode={() => setTab('code')} />
-
-          {doc.ownBackground && (
-            <p className="mt-3 flex items-start gap-2 rounded-xl border border-dashed border-zinc-300 px-3 py-2 text-xs leading-relaxed text-zinc-600 dark:border-zinc-700 dark:text-zinc-400">
-              <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-signal-500" aria-hidden />
-              <span>
-                <strong className="font-medium text-zinc-900 dark:text-zinc-100">Brings its own background.</strong>{' '}
-                {doc.backgroundNote ?? 'This is a full-scene component that paints its own backdrop, so it looks the same on light and dark pages. Override the backdrop with className.'}
-              </span>
-            </p>
-          )}
-
-          {doc.dependencies && doc.dependencies.length > 0 && (
-            <section className="mt-10">
-              <h2 className="text-lg font-semibold">Dependencies</h2>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {doc.dependencies.map((d) => (
-                  <Badge key={d} variant="outline">{d}</Badge>
+      {isGuide ? (
+        <motion.div variants={reveal} className="mt-8"><Guide slug={slug} /></motion.div>
+      ) : (
+        <>
+          <motion.section variants={reveal} aria-label="Component preview" className="mt-8 overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-[0_1px_0_rgb(0_0_0/0.02),0_16px_40px_-24px_rgb(0_0_0/0.25)] dark:border-zinc-800 dark:bg-zinc-900/30 dark:shadow-none">
+            <div className="flex flex-wrap items-center gap-2 border-b border-zinc-200 bg-zinc-50 p-1.5 dark:border-zinc-800 dark:bg-zinc-900/50">
+              <div role="tablist" aria-label="Preview or code" onKeyDown={handleTablistKeys} className="relative flex items-center gap-0.5">
+                {(['preview', 'code'] as const).map((t) => (
+                  <button
+                    key={t}
+                    type="button"
+                    role="tab"
+                    id={`tab-${t}`}
+                    aria-selected={tab === t}
+                    aria-controls="doc-panel"
+                    tabIndex={tab === t ? 0 : -1}
+                    onClick={() => setTab(t)}
+                    className={cn(
+                      'fk-touch relative rounded-xl px-3.5 py-2 text-sm font-medium capitalize transition-colors duration-150',
+                      tab === t ? 'text-zinc-950 dark:text-zinc-50' : 'text-zinc-600 hover:text-zinc-950 dark:text-zinc-400 dark:hover:text-zinc-100',
+                    )}
+                  >
+                    {tab === t && (
+                      <motion.span
+                        layoutId="doc-tab-pill"
+                        className="absolute inset-0 rounded-xl bg-white shadow-sm ring-1 ring-zinc-200 dark:bg-zinc-950 dark:ring-zinc-800"
+                        transition={{ type: 'spring', stiffness: 460, damping: 36 }}
+                      />
+                    )}
+                    <span className="relative">{t}</span>
+                  </button>
                 ))}
               </div>
-            </section>
+              {tab === 'preview' && (
+                <div className="ml-auto flex items-center gap-1.5">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setReplay((r) => r + 1)
+                      setSpin((s) => s + 1)
+                    }}
+                    aria-label="Replay preview"
+                    title="Replay preview"
+                    className="fk-touch inline-flex h-9 items-center gap-1.5 rounded-full border border-zinc-300 bg-white/80 px-3 text-xs font-medium text-zinc-700 transition-[background-color,color,transform] duration-150 hover:bg-white hover:text-zinc-950 active:scale-95 motion-reduce:active:scale-100 dark:border-zinc-700 dark:bg-zinc-950/70 dark:text-zinc-300 dark:hover:text-white"
+                  >
+                    <motion.span key={spin} initial={{ rotate: 0 }} animate={{ rotate: spin ? -360 : 0 }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }} className="inline-flex">
+                      <RotateCcw className="h-3.5 w-3.5" aria-hidden />
+                    </motion.span>
+                    <span className="hidden sm:inline">Replay</span>
+                  </button>
+                  <PreviewThemeToggle value={previewTheme} onChange={setPreviewTheme} />
+                </div>
+              )}
+            </div>
+            <div id="doc-panel" role="tabpanel" aria-labelledby={`tab-${tab}`}>
+              {tab === 'preview' ? (
+                <div
+                  data-preview-stage
+                  data-theme={previewTheme}
+                  className={cn(
+                    'framekit-stage flex min-h-[340px] flex-col items-center justify-center gap-4 overflow-x-clip p-4 transition-colors duration-300 sm:min-h-[380px] sm:p-10',
+                    previewTheme,
+                  )}
+                >
+                  <div className="flex w-full min-w-0 flex-1 items-center justify-center">
+                    <PreviewBoundary resetKey={`${slug}-${replay}`}>
+                      <React.Suspense fallback={<PreviewSkeleton />}>
+                        <React.Fragment key={replay}>{demo ?? <p className="text-sm text-zinc-600">No live preview for this entry.</p>}</React.Fragment>
+                      </React.Suspense>
+                    </PreviewBoundary>
+                  </div>
+                  {doc.gesture && (
+                    <p className="flex max-w-prose items-start justify-center gap-2 text-center text-xs leading-relaxed text-zinc-700 dark:text-zinc-300">
+                      <Hand className="mt-px h-3.5 w-3.5 shrink-0" aria-hidden />
+                      <span>{doc.gesture}</span>
+                    </p>
+                  )}
+                </div>
+              ) : (
+                <CodeBlock code={code || '// Source unavailable'} label={`${doc.title} source`} trackMeta={{ slug, kind: 'source' }} className="rounded-none border-0" />
+              )}
+            </div>
+          </motion.section>
+
+          <motion.div variants={reveal}>
+            <InstallBlock slug={slug} deps={deps} onShowCode={() => setTab('code')} />
+          </motion.div>
+
+          {doc.ownBackground && (
+            <motion.p variants={reveal} className="mt-3 flex items-start gap-2 rounded-xl border border-dashed border-zinc-300 px-3 py-2.5 text-xs leading-relaxed text-zinc-700 dark:border-zinc-700 dark:text-zinc-400">
+              <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-signal-600" aria-hidden />
+              <span>
+                <strong className="font-medium text-zinc-950 dark:text-zinc-100">Brings its own background.</strong>{' '}
+                {doc.backgroundNote ?? 'This is a full-scene component that paints its own backdrop, so it looks the same on light and dark pages. Override the backdrop with className.'}
+              </span>
+            </motion.p>
           )}
 
-          {doc.props && doc.props.length > 0 && (
-            <section className="mt-10">
-              <h2 className="text-lg font-semibold">Props</h2>
-              <div className="mt-3 overflow-x-auto rounded-2xl border border-zinc-200 dark:border-zinc-800">
-                <table className="w-full min-w-[520px] text-left text-sm">
-                  <thead className="bg-zinc-50 text-xs uppercase tracking-wide text-zinc-500 dark:bg-zinc-900">
-                    <tr>
-                      <th className="px-4 py-3 font-medium">Prop</th>
-                      <th className="px-4 py-3 font-medium">Type</th>
-                      <th className="px-4 py-3 font-medium">Default</th>
-                      <th className="px-4 py-3 font-medium">Notes</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {doc.props.map((p) => (
-                      <tr key={p.name} className="border-t border-zinc-200 dark:border-zinc-800">
-                        <td className="px-4 py-3 font-mono text-xs text-signal-700 dark:text-signal-300">{p.name}</td>
-                        <td className="px-4 py-3 font-mono text-xs text-zinc-500">{p.type}</td>
-                        <td className="px-4 py-3 font-mono text-xs">{p.default ?? '—'}</td>
-                        <td className="px-4 py-3 text-zinc-600 dark:text-zinc-400">{p.description}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </section>
-          )}
-
-          <section className="mt-10">
-            <h2 className="text-lg font-semibold">Usage</h2>
-            <p className="mt-2 text-sm text-zinc-500">
+          <motion.section variants={reveal} className="mt-12" aria-labelledby="usage-h">
+            <h2 id="usage-h" className="text-xl font-semibold tracking-tight">Usage</h2>
+            <p className="mt-2 max-w-[65ch] text-sm text-zinc-700 dark:text-zinc-400">
               Install with the CLI above (or copy the source from the Code tab into{' '}
-              <code className="rounded bg-zinc-100 px-1 dark:bg-zinc-800">components/ui/{slug}.tsx</code>), then import it:
+              <code className="rounded bg-zinc-100 px-1 py-px font-mono text-[12.5px] dark:bg-zinc-800">components/ui/{slug}.tsx</code>), then import it:
             </p>
             <CodeBlock
               className="mt-3"
               language="tsx"
+              label="Import statement"
               code={`import { ${exportName(code, slug)} } from '@/components/ui/${slug}'`}
               trackMeta={{ slug, kind: 'import' }}
             />
-          </section>
+          </motion.section>
+
+          <motion.div variants={reveal}>
+            <PropsTable props={doc.props} />
+          </motion.div>
+
+          {doc.dependencies && doc.dependencies.length > 0 && (
+            <motion.section variants={reveal} className="mt-12" aria-labelledby="deps-h">
+              <h2 id="deps-h" className="text-xl font-semibold tracking-tight">Dependencies</h2>
+              <ul className="mt-3 flex flex-wrap gap-2">
+                {doc.dependencies.map((d) => (
+                  <li key={d}><Badge variant="outline">{d}</Badge></li>
+                ))}
+              </ul>
+            </motion.section>
+          )}
         </>
       )}
-    </article>
+
+      <PrevNext slug={slug} />
+    </motion.article>
   )
 }

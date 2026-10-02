@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from 'motion/react'
 import { Check, Copy, Terminal } from 'lucide-react'
 import { track } from '@vercel/analytics'
 import { cn } from '@/lib/cn'
+import { handleTablistKeys } from '@/lib/roving'
 import { usePrefersReducedMotion } from '@/lib/use-reduced-motion'
 
 export const REGISTRY_URL = 'https://framekit-ui.vercel.app/r'
@@ -105,7 +106,7 @@ export function CopyButton({
       onClick={copy}
       aria-label={copied ? 'Copied' : label}
       className={cn(
-        'relative inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border text-zinc-500 transition-colors',
+        'fk-touch relative inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border text-zinc-600 transition-colors',
         'border-zinc-200 bg-white dark:border-zinc-700/80 dark:bg-zinc-900 dark:text-zinc-400',
         copied
           ? 'border-emerald-300 bg-emerald-50 text-emerald-600 dark:border-emerald-500/50 dark:bg-emerald-500/10 dark:text-emerald-400'
@@ -175,20 +176,21 @@ export function CommandTabs({
       )}
     >
       <div className="flex items-center gap-1 border-b border-zinc-200 px-2 py-1.5 dark:border-zinc-800">
-        <Terminal className="ml-1 mr-1.5 h-3.5 w-3.5 text-zinc-400" aria-hidden />
-        <div role="tablist" aria-label="Package manager" className="flex items-center gap-0.5">
+        <Terminal className="ml-1 mr-1.5 h-3.5 w-3.5 text-zinc-500 dark:text-zinc-400" aria-hidden />
+        <div role="tablist" aria-label="Package manager" onKeyDown={handleTablistKeys} className="flex items-center gap-0.5">
           {PACKAGE_MANAGERS.map((p) => (
             <button
               key={p}
               type="button"
               role="tab"
               aria-selected={pm === p}
+              tabIndex={pm === p ? 0 : -1}
               onClick={() => setPm(p)}
               className={cn(
-                'relative rounded-md px-2.5 py-1 font-mono text-[12px] transition-colors',
+                'fk-touch relative rounded-md px-2.5 py-1 font-mono text-[12px] transition-colors',
                 pm === p
                   ? 'text-zinc-900 dark:text-zinc-50'
-                  : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200',
+                  : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100',
               )}
             >
               {pm === p && (
@@ -204,7 +206,7 @@ export function CommandTabs({
         </div>
       </div>
       <div className="flex items-center gap-3 py-2.5 pl-4 pr-2.5">
-        <code className="framekit-scroll min-w-0 flex-1 overflow-x-auto whitespace-nowrap font-mono text-[13px] leading-6 text-zinc-800 dark:text-zinc-200">
+        <code tabIndex={0} aria-label="Command" className="framekit-scroll min-w-0 flex-1 overflow-x-auto rounded-sm whitespace-nowrap font-mono text-[13px] leading-6 text-zinc-800 dark:text-zinc-200">
           <span className="select-none text-signal-600 dark:text-signal-400">$ </span>
           {command}
         </code>
@@ -271,11 +273,11 @@ export function InstallBlock({
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h2 className="text-base font-semibold tracking-tight text-zinc-900 dark:text-zinc-50">Install</h2>
-          <p className="mt-0.5 text-xs text-zinc-500 dark:text-zinc-400">
+          <p className="mt-0.5 text-xs text-zinc-600 dark:text-zinc-400">
             Adds the source, helpers and npm deps to your project — you own the code.
           </p>
         </div>
-        <div role="tablist" aria-label="Install method" className="flex rounded-lg bg-zinc-100 p-0.5 text-xs dark:bg-zinc-800/80">
+        <div role="tablist" aria-label="Install method" onKeyDown={handleTablistKeys} className="flex rounded-lg bg-zinc-100 p-0.5 text-xs dark:bg-zinc-800/80">
           {(
             [
               ['cli', 'CLI'],
@@ -287,10 +289,11 @@ export function InstallBlock({
               type="button"
               role="tab"
               aria-selected={mode === k}
+              tabIndex={mode === k ? 0 : -1}
               onClick={() => setMode(k)}
               className={cn(
-                'relative rounded-md px-3 py-1 font-medium transition-colors',
-                mode === k ? 'text-zinc-900 dark:text-zinc-50' : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200',
+                'fk-touch relative rounded-md px-3 py-1 font-medium transition-colors',
+                mode === k ? 'text-zinc-900 dark:text-zinc-50' : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100',
               )}
             >
               {mode === k && (
@@ -309,7 +312,7 @@ export function InstallBlock({
       {mode === 'cli' ? (
         <div className="mt-4 space-y-3">
           <CommandTabs id="install" build={(pm) => dlx(pm, `add ${target}`)} meta={{ slug, kind: `install-${form}` }} />
-          <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-zinc-500 dark:text-zinc-400">
+          <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-zinc-600 dark:text-zinc-400">
             <div className="flex items-center gap-1">
               <span>Address:</span>
               {(
@@ -323,7 +326,7 @@ export function InstallBlock({
                   type="button"
                   onClick={() => setForm(k)}
                   className={cn(
-                    'rounded-md px-2 py-0.5 font-mono transition-colors',
+                    'fk-touch rounded-md px-2 py-0.5 font-mono transition-colors',
                     form === k
                       ? 'bg-signal-100 text-signal-800 dark:bg-signal-900/50 dark:text-signal-200'
                       : 'hover:text-zinc-800 dark:hover:text-zinc-200',
@@ -333,7 +336,7 @@ export function InstallBlock({
                 </button>
               ))}
             </div>
-            <a href="#/docs/installation" className="underline-offset-2 hover:text-zinc-800 hover:underline dark:hover:text-zinc-200">
+            <a href="#/docs/installation" className="underline underline-offset-2 hover:text-zinc-900 dark:hover:text-zinc-100">
               {form === 'namespace' ? 'Register @framekit in components.json →' : 'Setup & prerequisites →'}
             </a>
           </div>
@@ -343,14 +346,14 @@ export function InstallBlock({
           {deps.packages.length > 0 && (
             <li className="space-y-2">
               <p>
-                <span className="mr-2 font-mono text-xs text-zinc-400">01</span>Install dependencies
+                <span className="mr-2 font-mono text-xs text-zinc-600 dark:text-zinc-400">01</span>Install dependencies
               </p>
               <CommandTabs id="manual-deps" build={(pm) => pmInstall(pm, deps.packages)} meta={{ slug, kind: 'manual-deps' }} />
             </li>
           )}
           {deps.helpers.length > 0 && (
             <li>
-              <span className="mr-2 font-mono text-xs text-zinc-400">{deps.packages.length ? '02' : '01'}</span>
+              <span className="mr-2 font-mono text-xs text-zinc-600 dark:text-zinc-400">{deps.packages.length ? '02' : '01'}</span>
               Add the shared helpers{' '}
               {deps.helpers.map((h, i) => (
                 <React.Fragment key={h}>
@@ -358,19 +361,19 @@ export function InstallBlock({
                   <code className={c}>lib/{h}.ts</code>
                 </React.Fragment>
               ))}{' '}
-              — sources on the <a className="text-signal-700 underline-offset-2 hover:underline dark:text-signal-300" href="#/docs/installation">Installation</a> page.
+              — sources on the <a className="text-signal-700 underline underline-offset-2 hover:text-signal-900 dark:text-signal-300 dark:hover:text-signal-100" href="#/docs/installation">Installation</a> page.
             </li>
           )}
           {deps.theme && (
             <li>
-              <span className="mr-2 font-mono text-xs text-zinc-400">··</span>
+              <span className="mr-2 font-mono text-xs text-zinc-600 dark:text-zinc-400">··</span>
               Uses Framekit tokens (<code className={c}>signal-*</code> / <code className={c}>framekit-*</code>); copy the{' '}
               <code className={c}>@theme</code> block from{' '}
-              <a className="text-signal-700 underline-offset-2 hover:underline dark:text-signal-300" href="#/docs/theming">Theming</a>.
+              <a className="text-signal-700 underline underline-offset-2 hover:text-signal-900 dark:text-signal-300 dark:hover:text-signal-100" href="#/docs/theming">Theming</a>.
             </li>
           )}
           <li>
-            <span className="mr-2 font-mono text-xs text-zinc-400">→</span>
+            <span className="mr-2 font-mono text-xs text-zinc-600 dark:text-zinc-400">→</span>
             Copy the source into <code className={c}>components/ui/{slug}.tsx</code>
             {onShowCode && (
               <>
@@ -378,7 +381,7 @@ export function InstallBlock({
                 <button
                   type="button"
                   onClick={onShowCode}
-                  className="text-signal-700 underline-offset-2 hover:underline dark:text-signal-300"
+                  className="text-signal-700 underline underline-offset-2 hover:text-signal-900 dark:text-signal-300 dark:hover:text-signal-100"
                 >
                   (open Code tab)
                 </button>

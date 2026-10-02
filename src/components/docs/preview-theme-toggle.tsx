@@ -82,9 +82,9 @@ export function PreviewThemeToggle({
             tabIndex={active ? 0 : -1}
             onClick={() => onChange(v)}
             className={cn(
-              'relative z-0 inline-flex h-7 items-center gap-1.5 rounded-full px-2.5 text-xs font-medium outline-none transition-colors duration-200',
+              'fk-touch relative z-0 inline-flex h-8 items-center gap-1.5 rounded-full px-2.5 text-xs font-medium outline-none transition-colors duration-200',
               'focus-visible:ring-2 focus-visible:ring-signal-400/70',
-              active ? 'text-zinc-900 dark:text-zinc-50' : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200',
+              active ? 'text-zinc-900 dark:text-zinc-50' : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200',
             )}
           >
             {active && (
