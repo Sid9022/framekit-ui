@@ -66,7 +66,7 @@ export function LiquidMetalOrb({ className }: { className?: string }) {
           </>
         )}
       </button>
-      <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500">{mode} · click to cycle</p>
+      <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">{mode} · click to cycle</p>
       <div className="flex gap-2">
         {modes.map((m) => (
           <button

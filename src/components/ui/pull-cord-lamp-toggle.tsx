@@ -173,7 +173,7 @@ export function PullCordLampToggle({
         <div aria-hidden className="absolute bottom-[52px] left-[28%] h-2 w-[90px] rounded-[2px] bg-[#e9e2d0] dark:bg-[#6f6a5e]" />
         <motion.div aria-hidden className="absolute bottom-[34px] left-[16%] h-6 w-[62%] rounded-[50%] bg-amber-200/60 blur-md dark:bg-amber-300/25" style={{ opacity: glow }} />
         <motion.div aria-hidden className="pointer-events-none absolute inset-0 bg-black/0 dark:bg-black/40" style={{ opacity: dim }} />
-        <span className="absolute right-4 top-4 font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">{clicked ? 'click' : on ? 'on' : 'off'}</span>
+        <span className="absolute right-4 top-4 font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">{clicked ? 'click' : on ? 'on' : 'off'}</span>
       </div>
       <p className="text-sm text-zinc-600 dark:text-zinc-400">
         {label} is <span className={cn('font-medium', on ? 'text-amber-600 dark:text-amber-400' : 'text-zinc-900 dark:text-zinc-100')}>{on ? 'on' : 'off'}</span>

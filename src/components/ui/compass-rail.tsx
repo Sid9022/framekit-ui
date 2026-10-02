@@ -35,7 +35,7 @@ export function CompassRail({
                 onClick={() => setActive(item.id)}
                 className={cn(
                   'flex w-full items-center gap-3 rounded-lg px-2 py-2 text-left text-sm transition',
-                  selected ? 'text-zinc-900 dark:text-zinc-50' : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200',
+                  selected ? 'text-zinc-900 dark:text-zinc-50' : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200',
                 )}
                 aria-current={selected ? 'page' : undefined}
               >

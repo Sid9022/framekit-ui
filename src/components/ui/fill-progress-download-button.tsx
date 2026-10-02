@@ -231,7 +231,7 @@ export function FillProgressDownloadButton({
       </motion.button>
 
       {fileName && (
-        <span className="font-mono text-[11px] tracking-wide text-zinc-500">
+        <span className="font-mono text-[11px] tracking-wide text-zinc-500 dark:text-zinc-400">
           {fileName}
         </span>
       )}

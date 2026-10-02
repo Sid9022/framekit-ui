@@ -30,8 +30,7 @@ export function OrbitalBeadLoader({
             key={i}
             className="absolute inset-0"
             style={{
-              animation: speed ? `orbital-spin ${speed}s linear infinite` : undefined,
-              animationDelay: `${(-speed * i) / beads}s`,
+              animation: speed ? `orbital-spin ${speed}s linear ${(-speed * i) / beads}s infinite` : 'none',
               transform: `rotate(${angle}deg)`,
             }}
           >

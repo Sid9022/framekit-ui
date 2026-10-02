@@ -215,14 +215,14 @@ export function SnapMagnetScroll({
 
       {/* glowing active rail */}
       <div className="pointer-events-none absolute right-3 top-1/2 z-20 flex -translate-y-1/2 flex-col items-center gap-0">
-        <div className="relative flex flex-col gap-2.5">
+        <div className="relative flex flex-col gap-0">
           {sections.map((s, i) => (
             <button
               key={s.id}
               type="button"
               aria-label={`Go to ${s.title}`}
               onClick={() => scrollToIndex(i)}
-              className="pointer-events-auto relative flex h-3 w-3 items-center justify-center"
+              className="pointer-events-auto relative flex h-6 w-6 items-center justify-center"
             >
               <span
                 className={cn(
@@ -244,7 +244,7 @@ export function SnapMagnetScroll({
       </div>
 
       {/* swipe hint */}
-      <div className="mt-2 flex items-center justify-center gap-2 text-[10px] uppercase tracking-[0.2em] text-zinc-500">
+      <div className="mt-2 flex items-center justify-center gap-2 text-[10px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">
         <span className={cn('transition', active === 0 && 'opacity-30')}>↑</span>
         <span>magnet rail</span>
         <span className={cn('transition', active === sections.length - 1 && 'opacity-30')}>↓</span>

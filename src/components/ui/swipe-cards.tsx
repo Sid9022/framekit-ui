@@ -19,7 +19,7 @@ export function SwipeCards({
   return (
     <div className={cn('relative mx-auto h-64 w-72', className)}>
       {cards.length === 0 && (
-        <div className="flex h-full items-center justify-center rounded-2xl border border-dashed border-zinc-300 text-sm text-zinc-500 dark:border-zinc-700">
+        <div className="flex h-full items-center justify-center rounded-2xl border border-dashed border-zinc-300 text-sm text-zinc-500 dark:text-zinc-400 dark:border-zinc-700">
           Deck cleared — refresh to reset
         </div>
       )}
@@ -73,8 +73,8 @@ function SwipeCard({
       onDragEnd={onDragEnd}
     >
       <p className="text-lg font-semibold text-white">{card.title}</p>
-      {card.subtitle && <p className="mt-1 text-sm text-white/80">{card.subtitle}</p>}
-      {isTop && <p className="absolute bottom-4 left-5 text-xs text-white/70">Drag to swipe</p>}
+      {card.subtitle && <p className="mt-1 text-sm text-white">{card.subtitle}</p>}
+      {isTop && <p className="absolute bottom-4 left-5 text-xs text-white">Drag to swipe</p>}
     </motion.div>
   )
 }

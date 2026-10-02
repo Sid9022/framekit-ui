@@ -38,7 +38,7 @@ export function SessionWindowTimer({
 
   return (
     <div className={cn('flex w-full max-w-xs flex-col items-center gap-3 rounded-2xl border border-zinc-200 bg-white p-5 dark:border-zinc-800 dark:bg-zinc-950', className)}>
-      <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500">Session window</p>
+      <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">Session window</p>
       <div className="relative h-28 w-28">
         <svg viewBox="0 0 100 100" className="-rotate-90 h-full w-full">
           <circle cx="50" cy="50" r={r} fill="none" stroke="rgba(154,134,184,0.15)" strokeWidth="8" />
@@ -60,10 +60,10 @@ export function SessionWindowTimer({
           <span className={cn('font-mono text-lg font-bold tabular-nums', urgent ? 'text-framekit-500' : 'text-zinc-800 dark:text-zinc-100')}>
             {pad(h)}:{pad(m)}:{pad(s)}
           </span>
-          <span className="font-mono text-[8px] uppercase tracking-wider text-zinc-500">remaining</span>
+          <span className="font-mono text-[8px] uppercase tracking-wider text-zinc-500 dark:text-zinc-400">remaining</span>
         </div>
       </div>
-      <p className="text-center text-xs text-zinc-500">
+      <p className="text-center text-xs text-zinc-500 dark:text-zinc-400">
         {urgent ? 'Window closing — reply soon' : warn ? 'Under 8 hours left' : 'Customer can still message freely'}
       </p>
     </div>

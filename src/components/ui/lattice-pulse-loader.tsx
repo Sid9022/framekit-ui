@@ -20,7 +20,7 @@ export function LatticePulseLoader({ className }: { className?: string }) {
             key={i}
             className="h-3 w-3 rounded-full bg-signal-400 shadow-[0_0_10px_rgba(154,134,184,0.5)]"
             style={{
-              animation: reduced ? undefined : `lattice-pulse 1.4s ease-in-out ${delay}s infinite`,
+              animation: reduced ? 'none' : `lattice-pulse 1.4s ease-in-out ${delay}s infinite`,
               opacity: reduced ? 0.5 + ((row + col) % 3) * 0.15 : undefined,
             }}
           />

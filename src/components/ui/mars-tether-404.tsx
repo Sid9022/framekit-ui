@@ -105,8 +105,7 @@ export function MarsTether404({
               width: s.s,
               height: s.s,
               opacity: s.o,
-              animation: reduced ? undefined : `fk-mt-twinkle ${2 + (s.id % 4) * 0.4}s ease-in-out infinite`,
-              animationDelay: `${(s.id % 6) * 0.2}s`,
+              animation: reduced ? 'none' : `fk-mt-twinkle ${2 + (s.id % 4) * 0.4}s ease-in-out ${(s.id % 6) * 0.2}s infinite`,
             }}
           />
         ))}

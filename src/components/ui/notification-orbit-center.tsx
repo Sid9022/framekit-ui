@@ -31,7 +31,7 @@ export function NotificationOrbitCenter({ className }: { className?: string }) {
         <Bell className="h-5 w-5 text-zinc-700 dark:text-zinc-200" />
         {unread > 0 && (
           <motion.span
-            className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-signal-500 px-1 text-[10px] font-bold text-white"
+            className="absolute -right-1 -top-1 flex h-5 min-w-5 items-center justify-center rounded-full bg-signal-700 px-1 text-[10px] font-bold text-white"
             animate={reduced ? undefined : { scale: [1, 1.12, 1] }}
             transition={{ repeat: Infinity, duration: 1.8 }}
             style={{ boxShadow: '0 0 14px rgba(154,134,184,0.85)' }}
@@ -79,7 +79,7 @@ export function NotificationOrbitCenter({ className }: { className?: string }) {
                       <p className="text-sm font-medium">{item.title}</p>
                       <span className="text-[10px] text-zinc-400">{item.time}</span>
                     </div>
-                    <p className="mt-0.5 text-xs text-zinc-500">{item.body}</p>
+                    <p className="mt-0.5 text-xs text-zinc-500 dark:text-zinc-400">{item.body}</p>
                   </motion.li>
                 ))}
               </AnimatePresence>

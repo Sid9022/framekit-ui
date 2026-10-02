@@ -38,6 +38,7 @@ export function StatusHeatmapGrid({ className }: { className?: string }) {
                 <button
                   key={`${day}-${h}`}
                   type="button"
+                  aria-label={`${day} ${h}:00`}
                   className="aspect-square rounded-md transition hover:ring-2 hover:ring-signal-400/50"
                   style={{
                     background: `rgba(125, 104, 153, ${0.12 + v * 0.85})`,

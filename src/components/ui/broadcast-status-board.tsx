@@ -38,7 +38,7 @@ export function BroadcastStatusBoard({ className }: { className?: string }) {
       <div className="mb-3 flex items-center justify-between">
         <div>
           <p className="text-sm font-semibold">Spring launch</p>
-          <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-zinc-500">Broadcast · live</p>
+          <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">Broadcast · live</p>
         </div>
         <span className="relative flex h-2 w-2">
           <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60" />

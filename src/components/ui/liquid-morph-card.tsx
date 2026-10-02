@@ -65,7 +65,7 @@ export function LiquidMorphCard({
             <>
               <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">Card</p>
               <h3 className="mt-1 text-lg font-semibold">{title}</h3>
-              <p className="mt-2 text-sm text-zinc-500">{body}</p>
+              <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{body}</p>
             </>
           )}
         </div>

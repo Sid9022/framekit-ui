@@ -24,7 +24,7 @@ export function QuickReplyChipCloud({ className }: { className?: string }) {
 
   return (
     <div className={cn('w-full max-w-md rounded-2xl border border-zinc-200 bg-gradient-to-b from-zinc-50 to-white p-5 dark:border-zinc-800 dark:from-zinc-950 dark:to-[#121018]', className)}>
-      <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500">Quick replies</p>
+      <p className="mb-3 font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">Quick replies</p>
       <div className="flex flex-wrap gap-2">
         {CHIPS.map((chip) => {
           const active = selected === chip
@@ -51,7 +51,7 @@ export function QuickReplyChipCloud({ className }: { className?: string }) {
         })}
       </div>
       {selected && (
-        <p className="mt-4 text-xs text-zinc-500">
+        <p className="mt-4 text-xs text-zinc-500 dark:text-zinc-400">
           Selected: <span className="font-semibold text-signal-600 dark:text-signal-300">{selected}</span>
         </p>
       )}

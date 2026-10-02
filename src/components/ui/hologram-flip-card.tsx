@@ -47,7 +47,7 @@ export function HologramFlipCard({
         >
           <p className="text-[10px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">Front</p>
           <h3 className="mt-2 text-lg font-semibold">{frontTitle}</h3>
-          <p className="mt-2 text-sm text-zinc-500">{frontBody}</p>
+          <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{frontBody}</p>
         </div>
         <div
           className="absolute inset-0 overflow-hidden rounded-2xl border border-white/20 p-5 shadow-xl"

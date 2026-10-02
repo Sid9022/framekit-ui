@@ -61,8 +61,8 @@ export function CampaignComposerStrip({ className }: { className?: string }) {
               className={cn(
                 'rounded-full px-2.5 py-1 font-mono text-[10px] font-semibold transition',
                 channel === c
-                  ? 'bg-signal-500 text-white'
-                  : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200',
+                  ? 'bg-signal-700 text-white'
+                  : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200',
               )}
             >
               {c}
@@ -77,6 +77,7 @@ export function CampaignComposerStrip({ className }: { className?: string }) {
 
       <div className="px-4 pb-2">
         <textarea
+          aria-label="Message text"
           defaultValue="Spring drop is live — tap Track to follow your parcel. Reply STOP to opt out."
           className="h-20 w-full resize-none rounded-xl border border-zinc-200 bg-zinc-50 p-3 text-sm outline-none focus:border-signal-400 dark:border-zinc-700 dark:bg-zinc-900"
         />
@@ -99,7 +100,7 @@ export function CampaignComposerStrip({ className }: { className?: string }) {
           type="button"
           onClick={start}
           disabled={sending}
-          className="inline-flex items-center gap-1.5 rounded-full bg-signal-500 px-4 py-2 text-xs font-semibold text-white shadow-lg shadow-signal-500/30 disabled:opacity-60"
+          className="inline-flex items-center gap-1.5 rounded-full bg-signal-700 px-4 py-2 text-xs font-semibold text-white shadow-lg shadow-signal-500/30 disabled:opacity-60"
         >
           <Send className="h-3.5 w-3.5" />
           {sending ? 'Broadcasting' : 'Send now'}

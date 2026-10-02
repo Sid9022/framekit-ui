@@ -70,7 +70,7 @@ export function AgentStateOrb({ className }: { className?: string }) {
           </>
         )}
       </button>
-      <p className="font-mono text-xs uppercase tracking-[0.18em] text-zinc-500">{LABELS[state]} · click to cycle</p>
+      <p className="font-mono text-xs uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">{LABELS[state]} · click to cycle</p>
     </div>
   )
 }

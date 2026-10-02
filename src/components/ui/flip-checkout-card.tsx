@@ -151,7 +151,7 @@ export function FlipCheckoutCard({
 
   const inputCls =
     'h-11 w-full rounded-xl border border-zinc-200 bg-zinc-50/80 px-3.5 text-[15px] text-zinc-900 outline-none transition-[border-color,box-shadow,background-color] duration-150 placeholder:text-zinc-400 hover:border-zinc-300 focus:border-violet-400 focus:bg-white focus:shadow-[0_0_0_4px_rgb(167_139_250/0.18)]'
-  const labelCls = 'mb-1.5 block text-[12px] font-medium tracking-wide text-zinc-500'
+  const labelCls = 'mb-1.5 block text-[12px] font-medium tracking-wide text-zinc-600'
 
   return (
     <motion.div
@@ -207,7 +207,7 @@ export function FlipCheckoutCard({
               >
                 <div className="mb-4 flex items-baseline justify-between">
                   <p className="text-[15px] font-semibold tracking-tight text-zinc-900">Payment details</p>
-                  <p className="text-[12px] text-zinc-500 dark:text-zinc-400">{merchant}</p>
+                  <p className="text-[12px] text-zinc-600">{merchant}</p>
                 </div>
                 <fieldset disabled={phase === 'paying'} className="space-y-3.5">
                   <div>
@@ -369,7 +369,7 @@ export function FlipCheckoutCard({
                     )}
                   </AnimatePresence>
                 </motion.button>
-                <p className="mt-3 text-center text-[11px] text-zinc-500 dark:text-zinc-400">Demo only — nothing is charged or stored.</p>
+                <p className="mt-3 text-center text-[11px] text-zinc-600">Demo only — nothing is charged or stored.</p>
               </motion.form>
             ) : (
               <motion.div
@@ -401,7 +401,7 @@ export function FlipCheckoutCard({
                 >
                   <p className="mt-4 text-[13px] font-medium text-emerald-600">Payment complete</p>
                   <p className="mt-1 text-[32px] font-semibold tabular-nums tracking-tight text-zinc-900">{price}</p>
-                  <p className="mt-1 text-[13px] text-zinc-500">
+                  <p className="mt-1 text-[13px] text-zinc-600">
                     Paid to {merchant} · {brand ? BRAND_LABEL[brand] : 'Card'} •••• {digits.slice(-4)}
                   </p>
                 </motion.div>

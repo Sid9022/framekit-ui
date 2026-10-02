@@ -397,8 +397,8 @@ export function GhostGobblerSkull({
   const spritesRef = React.useRef<{ puff: HTMLCanvasElement; halo: HTMLCanvasElement } | null>(null)
   React.useEffect(() => {
     spritesRef.current = {
-      puff: makeSprite(hexRgb(theme === 'dark' ? mix(ghostColor, '#000000', 0.55) : ghostColor), theme === 'dark' ? [[0, 0.95], [0.3, 0.8], [0.62, 0.34], [0.85, 0.08], [1, 0]] : [[0, 0.85], [0.3, 0.66], [0.62, 0.26], [0.85, 0.07], [1, 0]]),
-      halo: makeSprite(theme === 'dark' ? [206, 196, 255] : [120, 110, 150], [[0, 0.6], [0.55, 0.3], [0.8, 0.1], [1, 0]]),
+      puff: makeSprite(hexRgb(theme === 'dark' ? mix(ghostColor, '#000000', 0.25) : ghostColor), theme === 'dark' ? [[0, 0.95], [0.3, 0.8], [0.62, 0.34], [0.85, 0.08], [1, 0]] : [[0, 0.85], [0.3, 0.66], [0.62, 0.26], [0.85, 0.07], [1, 0]]),
+      halo: makeSprite(theme === 'dark' ? [200, 186, 255] : [120, 110, 150], theme === 'dark' ? [[0, 0.7], [0.5, 0.55], [0.78, 0.2], [1, 0]] : [[0, 0.6], [0.55, 0.3], [0.8, 0.1], [1, 0]]),
     }
   }, [ghostColor, theme])
 
@@ -925,7 +925,7 @@ export function GhostGobblerSkull({
       ctx.clearRect(0, 0, g.W, g.H)
       if (!sprites) return
       const dark = cb.theme === 'dark'
-      const haloA = 0.22
+      const haloA = 0.3
 
       // particles
       for (const p of S.parts) {
@@ -948,7 +948,7 @@ export function GhostGobblerSkull({
         const a = p.alpha * (1 - p.life / p.max)
         if (p.kind === 0) {
           if (dark) {
-            ctx.globalAlpha = a * 0.22
+            ctx.globalAlpha = a * 0.3
             ctx.drawImage(sprites.halo, p.x - p.size * 1.3, p.y - p.size * 1.3, p.size * 2.6, p.size * 2.6)
           }
           ctx.globalAlpha = a
@@ -992,27 +992,27 @@ export function GhostGobblerSkull({
         const ga = gh.alpha
         if (ga <= 0.01) continue
         const toM = Math.atan2(g.my - gh.y, g.mx - gh.x)
+        // Two passes on dark stages: every halo first, then every body on top. The aura then reads as a
+        // lavender rim around the whole silhouette instead of fogging the smoke from the inside.
+        let pass = 1
         const draw = (x: number, y: number, s: number, a: number) => {
-          if (e > 0.02) {
+          const squash = e > 0.02
+          if (squash) {
             ctx.save()
             ctx.translate(x, y)
             ctx.rotate(toM)
             ctx.scale(1 + e * 2.2, 1 - e * 0.5)
-            if (dark) {
-              ctx.globalAlpha = a * haloA
-              ctx.drawImage(sprites.halo, -s * 1.35, -s * 1.35, s * 2.7, s * 2.7)
-            }
-            ctx.globalAlpha = a
-            ctx.drawImage(sprites.puff, -s, -s, s * 2, s * 2)
-            ctx.restore()
-          } else {
-            if (dark) {
-              ctx.globalAlpha = a * haloA
-              ctx.drawImage(sprites.halo, x - s * 1.35, y - s * 1.35, s * 2.7, s * 2.7)
-            }
-            ctx.globalAlpha = a
-            ctx.drawImage(sprites.puff, x - s, y - s, s * 2, s * 2)
           }
+          const cx = squash ? 0 : x
+          const cy = squash ? 0 : y
+          if (dark && pass === 0) {
+            ctx.globalAlpha = Math.min(1, a * haloA * 3.4)
+            ctx.drawImage(sprites.halo, cx - s * 1.5, cy - s * 1.5, s * 3, s * 3)
+          } else if (pass === 1) {
+            ctx.globalAlpha = a
+            ctx.drawImage(sprites.puff, cx - s, cy - s, s * 2, s * 2)
+          }
+          if (squash) ctx.restore()
         }
         // tail strands follow the path history, sampled by arc length so the smoke stays continuous
         const hs = gh.hist
@@ -1050,30 +1050,34 @@ export function GhostGobblerSkull({
             pts.push({ x: cx0, y: cy0, d: dir })
           }
         }
-        for (let j = 0; j < 3; j++) {
-          for (let i = N; i >= 1; i--) {
-            const q = pts[i - 1]
-            const u = i / N
-            const off = (j - 1) * gh.r * 0.42 * Math.sin(Math.PI * Math.min(1, u * 1.3)) + Math.sin(T * 5.5 + i * 0.7 + j * 2.1) * gh.r * 0.28 * u
-            const nx = -Math.sin(q.d)
-            const ny = Math.cos(q.d)
-            const s = gh.r * (0.62 - u * 0.44) * scale
-            draw(q.x + nx * off, q.y + ny * off + (1 - e) * gh.r * 0.06 * i * 0.5, s, ga * 0.6 * (1 - u * 0.85))
+        for (pass = dark ? 0 : 1; pass <= 1; pass++) {
+          for (let j = 0; j < 3; j++) {
+            for (let i = N; i >= 1; i--) {
+              const q = pts[i - 1]
+              const u = i / N
+              const off = (j - 1) * gh.r * 0.42 * Math.sin(Math.PI * Math.min(1, u * 1.3)) + Math.sin(T * 5.5 + i * 0.7 + j * 2.1) * gh.r * 0.28 * u
+              const nx = -Math.sin(q.d)
+              const ny = Math.cos(q.d)
+              const s = gh.r * (0.62 - u * 0.44) * scale
+              draw(q.x + nx * off, q.y + ny * off + (1 - e) * gh.r * 0.06 * i * 0.5, s, ga * 0.6 * (1 - u * 0.85))
+            }
           }
+          // head
+          for (const p of gh.puffs) {
+            const jx = Math.sin(T * 2.3 + p.ph) * gh.r * 0.11
+            const jy = Math.cos(T * 1.9 + p.ph) * gh.r * 0.11
+            const sqz = 1 - e * 0.7
+            draw(gh.x + (p.ox + jx) * scale, gh.y + (p.oy + jy) * scale * sqz, p.s * scale * (1 + Math.sin(T * 3 + p.ph) * 0.05), ga)
+          }
+          // curling wisps around the head
+          for (let w = 0; w < 3; w++) {
+            const wa = T * (1.6 + w * 0.4) + w * 2.1 + gh.wob * 0.2
+            const wr = gh.r * (0.72 + Math.sin(T * 2 + w) * 0.12) * scale
+            draw(gh.x + Math.cos(wa) * wr, gh.y + Math.sin(wa) * wr * 0.8, gh.r * 0.32 * scale, ga * 0.45)
+          }
+
         }
-        // head
-        for (const p of gh.puffs) {
-          const jx = Math.sin(T * 2.3 + p.ph) * gh.r * 0.11
-          const jy = Math.cos(T * 1.9 + p.ph) * gh.r * 0.11
-          const sqz = 1 - e * 0.7
-          draw(gh.x + (p.ox + jx) * scale, gh.y + (p.oy + jy) * scale * sqz, p.s * scale * (1 + Math.sin(T * 3 + p.ph) * 0.05), ga)
-        }
-        // curling wisps around the head
-        for (let w = 0; w < 3; w++) {
-          const wa = T * (1.6 + w * 0.4) + w * 2.1 + gh.wob * 0.2
-          const wr = gh.r * (0.72 + Math.sin(T * 2 + w) * 0.12) * scale
-          draw(gh.x + Math.cos(wa) * wr, gh.y + Math.sin(wa) * wr * 0.8, gh.r * 0.32 * scale, ga * 0.45)
-        }
+        pass = 1
         // eyes
         const scared = gh.state === 'suck' || gh.state === 'flee'
         const eyeOff = gh.r * 0.14

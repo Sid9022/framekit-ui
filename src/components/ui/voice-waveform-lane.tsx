@@ -60,7 +60,7 @@ export function VoiceWaveformLane({
           />
         ))}
       </div>
-      <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-zinc-500">Move pointer to drive level</p>
+      <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400">Move pointer to drive level</p>
     </div>
   )
 }

@@ -20,6 +20,7 @@ export function MoodDialToggle({
       id={id}
       type="button"
       role="switch"
+      aria-label="Mood dial"
       aria-checked={on}
       disabled={disabled}
       onClick={() => !disabled && toggle()}

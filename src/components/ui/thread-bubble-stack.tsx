@@ -96,7 +96,7 @@ export function ThreadBubbleStack({
                 className={cn(
                   'max-w-[78%] rounded-2xl px-3 py-2 text-sm shadow-sm',
                   m.direction === 'out'
-                    ? 'rounded-br-md bg-signal-500 text-white'
+                    ? 'rounded-br-md bg-signal-700 text-white'
                     : 'rounded-bl-md border border-zinc-200 bg-white text-zinc-800 dark:border-zinc-700 dark:bg-zinc-900 dark:text-zinc-100',
                 )}
               >
@@ -104,7 +104,7 @@ export function ThreadBubbleStack({
                 <div
                   className={cn(
                     'mt-1 flex items-center justify-end gap-1 text-[10px]',
-                    m.direction === 'out' ? 'text-white/70' : 'text-zinc-400',
+                    m.direction === 'out' ? 'text-white/90' : 'text-zinc-400',
                   )}
                 >
                   <span>{m.time}</span>
@@ -128,7 +128,7 @@ export function ThreadBubbleStack({
         <button
           type="button"
           onClick={send}
-          className="flex h-9 w-9 items-center justify-center rounded-full bg-signal-500 text-white shadow-lg shadow-signal-500/30 transition hover:bg-signal-600"
+          className="flex h-9 w-9 items-center justify-center rounded-full bg-signal-700 text-white shadow-lg shadow-signal-500/30 transition hover:bg-signal-600"
           aria-label="Send"
         >
           <Send className="h-4 w-4" />

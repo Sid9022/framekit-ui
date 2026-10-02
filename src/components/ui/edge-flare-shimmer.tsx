@@ -39,7 +39,7 @@ export function EdgeFlareShimmer({
           <>
             <p className="text-xs uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">Edge Flare</p>
             <p className="mt-1 text-base font-semibold">Soft border traveler</p>
-            <p className="mt-1 text-sm text-zinc-500">A localized flare, not a full beam sweep.</p>
+            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">A localized flare, not a full beam sweep.</p>
           </>
         )}
       </div>

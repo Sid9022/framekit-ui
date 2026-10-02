@@ -219,7 +219,7 @@ function SwitchDemo() {
   return (
     <div className="flex items-center gap-3">
       <Switch checked={on} onCheckedChange={setOn} aria-label="Toggle demo" />
-      <span className="text-sm text-zinc-500">{on ? 'Enabled' : 'Disabled'}</span>
+      <span className="text-sm text-zinc-500 dark:text-zinc-400">{on ? 'Enabled' : 'Disabled'}</span>
     </div>
   )
 }
@@ -244,7 +244,7 @@ function ProgressDemo() {
   return (
     <div className="w-full max-w-sm space-y-2">
       <Progress value={v} />
-      <p className="text-xs text-zinc-500">{v}%</p>
+      <p className="text-xs text-zinc-500 dark:text-zinc-400">{v}%</p>
     </div>
   )
 }
@@ -773,17 +773,17 @@ function GhostGobblerDemo() {
             )}
             {busy ? 'Exporting…' : 'Export CSV'}
           </button>
-          <span className="text-[11px] text-zinc-500 dark:text-zinc-500">Inline button loader</span>
+          <span className="text-[11px] text-zinc-500 dark:text-zinc-400">Inline button loader</span>
         </div>
         <div className="flex flex-col items-center justify-center gap-1 rounded-xl bg-white/70 p-3 ring-1 ring-black/5 dark:bg-white/[0.03] dark:ring-white/5">
           <GhostGobblerSkull size={78} spread={1.5} mode="idle" label="Nothing haunted here" showLabel={false} />
           <span className="text-[12px] font-medium text-zinc-700 dark:text-zinc-300">Inbox exorcised</span>
-          <span className="text-[11px] text-zinc-500">Mascot / empty state — hover & click me</span>
+          <span className="text-[11px] text-zinc-500 dark:text-zinc-400">Mascot / empty state — hover & click me</span>
         </div>
         <div className="flex flex-col items-center justify-center gap-1 rounded-xl bg-white/70 p-3 ring-1 ring-black/5 dark:bg-white/[0.03] dark:ring-white/5">
           <GhostGobblerSkull size={78} spread={1.6} mode="indeterminate" speed={1.25} ghostColor="#2a1240" glowPalette={['#86efac', '#4ade80', '#22c55e', '#a3e635', '#bef264', '#d9f99d', '#6ee7b7', '#fef08a']} label="Syncing" showLabel={false} />
           <span className="text-[12px] font-medium text-zinc-700 dark:text-zinc-300">Syncing vault…</span>
-          <span className="text-[11px] text-zinc-500">Indeterminate · violet smoke</span>
+          <span className="text-[11px] text-zinc-500 dark:text-zinc-400">Indeterminate · violet smoke</span>
         </div>
       </div>
     </div>
@@ -1053,7 +1053,7 @@ export const demos: Record<string, React.ReactNode> = {
   'spotlight-card': (
     <SpotlightCard className="max-w-sm">
       <h3 className="text-lg font-semibold">Spotlight</h3>
-      <p className="mt-2 text-sm text-zinc-500">Move your cursor — the glow follows.</p>
+      <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">Move your cursor — the glow follows.</p>
     </SpotlightCard>
   ),
   'scramble-text': (
@@ -1073,9 +1073,9 @@ export const demos: Record<string, React.ReactNode> = {
   ),
   'tilt-card': (
     <TiltCard className="max-w-xs">
-      <p className="text-sm font-medium text-zinc-500">Perspective</p>
+      <p className="text-sm font-medium text-zinc-500 dark:text-zinc-400">Perspective</p>
       <h3 className="mt-1 text-xl font-semibold">Tilt Card</h3>
-      <p className="mt-2 text-sm text-zinc-500">Hover to feel the depth.</p>
+      <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">Hover to feel the depth.</p>
     </TiltCard>
   ),
   'aurora-background': (
@@ -1098,7 +1098,7 @@ export const demos: Record<string, React.ReactNode> = {
   'number-ticker': (
     <div className="text-center">
       <NumberTicker value={12840} className="text-5xl font-bold tracking-tight" />
-      <p className="mt-2 text-sm text-zinc-500">components shipped</p>
+      <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">components shipped</p>
     </div>
   ),
   'orbiting-icons': (
@@ -1116,7 +1116,7 @@ export const demos: Record<string, React.ReactNode> = {
     <BorderBeam className="max-w-sm">
       <div className="p-6">
         <h3 className="font-semibold">Border Beam</h3>
-        <p className="mt-1 text-sm text-zinc-500">Watch the light travel the edge.</p>
+        <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">Watch the light travel the edge.</p>
       </div>
     </BorderBeam>
   ),
@@ -1331,43 +1331,43 @@ export const demos: Record<string, React.ReactNode> = {
 
   'prism-sweep-shimmer': (
     <div className="flex w-full max-w-lg flex-col items-center gap-2 rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-zinc-950/80 dark:ring-0 p-6">
-      <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Stage · Prism</p>
+      <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">Stage · Prism</p>
       <PrismSweepShimmer className="w-full" />
     </div>
   ),
   'mercury-vein-shimmer': (
     <div className="flex w-full max-w-lg flex-col items-center gap-2 rounded-2xl bg-zinc-100/80 p-6 dark:bg-zinc-950/80">
-      <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Stage · Mercury</p>
+      <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">Stage · Mercury</p>
       <MercuryVeinShimmer className="w-full" />
     </div>
   ),
   'glyph-aurora-shimmer': (
     <div className="flex w-full max-w-lg flex-col items-center gap-2 rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-zinc-950/80 dark:ring-0 p-6">
-      <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Stage · Aurora</p>
+      <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">Stage · Aurora</p>
       <GlyphAuroraShimmer />
     </div>
   ),
   'edge-flare-shimmer': (
     <div className="flex w-full max-w-sm flex-col items-center gap-2 rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-zinc-950/80 dark:ring-0 p-6">
-      <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Stage · Edge flare</p>
+      <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">Stage · Edge flare</p>
       <EdgeFlareShimmer className="w-full" />
     </div>
   ),
   'skeleton-wave-shimmer': (
     <div className="flex w-full max-w-md flex-col items-center gap-2 rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-[#121018] dark:ring-0 p-6">
-      <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Loading · Skeleton wave</p>
+      <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">Loading · Skeleton wave</p>
       <SkeletonWaveShimmer className="w-full" />
     </div>
   ),
   'card-sheen-loader': (
     <div className="flex w-full max-w-sm flex-col items-center gap-3 rounded-2xl bg-gradient-to-b from-zinc-100 to-zinc-200 p-8 dark:from-[#121018] dark:to-zinc-950">
-      <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Loading · Card sheen</p>
+      <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">Loading · Card sheen</p>
       <CardSheenLoader />
     </div>
   ),
   'list-bloom-shimmer': (
     <div className="flex w-full max-w-md flex-col items-center gap-2 rounded-2xl bg-zinc-100/80 ring-1 ring-black/[0.04] dark:bg-[#121018] dark:ring-0 p-6">
-      <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Loading · List bloom</p>
+      <p className="self-start font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">Loading · List bloom</p>
       <ListBloomShimmer className="w-full" />
     </div>
   ),
@@ -1490,7 +1490,7 @@ export const demos: Record<string, React.ReactNode> = {
   ),
   'typing-wave-indicator': (
     <div className="flex w-full max-w-md flex-col items-start gap-2 rounded-2xl border border-zinc-200 bg-zinc-50 p-6 dark:border-zinc-800 dark:bg-zinc-950">
-      <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">Agent handoff</p>
+      <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">Agent handoff</p>
       <TypingWaveIndicator />
     </div>
   ),

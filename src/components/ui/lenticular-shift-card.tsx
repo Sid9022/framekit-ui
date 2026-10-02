@@ -304,7 +304,7 @@ export function LenticularShiftCard({
             onClick={() => choose(i)}
             className={cn(
               'relative rounded-full px-3 py-1.5 text-[11px] font-medium outline-none transition-colors focus-visible:ring-2 focus-visible:ring-sky-500',
-              vis === i ? 'text-zinc-900 dark:text-white' : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200',
+              vis === i ? 'text-zinc-900 dark:text-white' : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200',
             )}
           >
             {vis === i && <motion.span layoutId={uid + "chip"} className="absolute inset-0 rounded-full bg-white shadow-sm ring-1 ring-black/[0.06] dark:bg-white/10 dark:ring-white/10" transition={{ type: 'spring', stiffness: 400, damping: 32 }} />}

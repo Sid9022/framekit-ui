@@ -111,7 +111,7 @@ export function SectionAccordionSidebar({
               <button
                 type="button"
                 onClick={() => setOpen((o) => ({ ...o, [section.id]: !isOpen }))}
-                className="flex w-full items-center gap-2 rounded-lg px-2 py-2 text-left text-xs font-semibold uppercase tracking-[0.12em] text-zinc-500 hover:bg-zinc-50 dark:hover:bg-zinc-900"
+                className="flex w-full items-center gap-2 rounded-lg px-2 py-2 text-left text-xs font-semibold uppercase tracking-[0.12em] text-zinc-500 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-900"
               >
                 <motion.span
                   animate={{ rotate: isOpen ? 90 : 0 }}

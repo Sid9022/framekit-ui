@@ -26,7 +26,7 @@ export function GlyphWeather({
   }, [reduced])
 
   return (
-    <span className={cn('inline-flex flex-wrap justify-center gap-[0.02em] text-4xl font-semibold tracking-tight sm:text-5xl', className)} aria-label={text}>
+    <span className={cn('inline-flex flex-wrap justify-center gap-[0.02em] text-4xl font-semibold tracking-tight sm:text-5xl', className)} role="img" aria-label={text}>
       {text.split('').map((ch, i) => (
         <span
           key={`${ch}-${i}`}

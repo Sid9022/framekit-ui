@@ -24,7 +24,7 @@ export function MorphPillHeader({ className }: { className?: string }) {
         >
           <span className="text-sm font-semibold">Framekit</span>
           {!compact && (
-            <div className="flex gap-3 text-xs text-zinc-500">
+            <div className="flex gap-3 text-xs text-zinc-500 dark:text-zinc-400">
               <span>Work</span>
               <span>Studio</span>
               <span>Contact</span>

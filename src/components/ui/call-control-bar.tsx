@@ -15,11 +15,11 @@ export function CallControlBar({ className }: { className?: string }) {
   if (ended) {
     return (
       <div className={cn('flex flex-col items-center gap-3', className)}>
-        <p className="text-sm text-zinc-500">Call ended</p>
+        <p className="text-sm text-zinc-500 dark:text-zinc-400">Call ended</p>
         <button
           type="button"
           onClick={() => setEnded(false)}
-          className="rounded-full bg-signal-500 px-4 py-2 text-xs font-semibold text-white"
+          className="rounded-full bg-signal-700 px-4 py-2 text-xs font-semibold text-white"
         >
           Start new call
         </button>

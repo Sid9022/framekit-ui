@@ -218,10 +218,10 @@ export function PluckedStringTabs({
   const active = items[activeIndex]
   return (
     <div className={cn('w-full max-w-2xl', className)}>
-      <div className="-mx-2 overflow-x-auto px-2 pt-1 [scrollbar-width:none]">
+      <div className="-mx-2 max-w-[calc(100%+1rem)] overflow-x-auto px-2 pt-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       <div
         ref={wrapRef}
-        className="relative min-w-max pb-2 pt-0"
+        className="relative w-full min-w-0 pb-2 pt-0"
         onPointerMove={onStrum}
         onPointerLeave={() => (sim.current.lastPy = -1)}
       >
@@ -260,7 +260,7 @@ export function PluckedStringTabs({
                   onClick={() => select(i)}
                   onPointerEnter={() => !reduced && pluck(centers.current[i] ?? 0, 3.5)}
                   className={cn(
-                    'relative whitespace-nowrap rounded-[10px] px-2.5 py-2 text-[12px] font-medium sm:px-3.5 sm:text-[13px] outline-none transition-[color,background-color,box-shadow] duration-200 focus-visible:ring-2 focus-visible:ring-amber-500',
+                    'relative whitespace-nowrap rounded-[10px] px-2 py-2 text-[12px] font-medium min-[420px]:px-2.5 sm:px-3.5 sm:text-[13px] pointer-coarse:min-h-11 outline-none transition-[color,background-color,box-shadow] duration-200 focus-visible:ring-2 focus-visible:ring-amber-500',
                     on
                       ? 'bg-white text-zinc-900 shadow-[0_1px_2px_rgb(0_0_0/0.08),0_8px_18px_-8px_rgb(245_158_11/0.55)] ring-1 ring-amber-500/40 dark:bg-zinc-900 dark:text-white dark:ring-amber-400/40'
                       : 'bg-white/60 text-zinc-500 ring-1 ring-black/[0.06] hover:text-zinc-800 dark:bg-white/[0.03] dark:text-zinc-400 dark:ring-white/[0.07] dark:hover:text-zinc-100',

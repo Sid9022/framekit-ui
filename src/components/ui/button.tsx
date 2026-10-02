@@ -23,10 +23,10 @@ const variants: Record<ButtonVariant, string> = {
 }
 
 const sizes: Record<ButtonSize, string> = {
-  sm: 'h-8 rounded-lg px-3 text-xs',
+  sm: 'h-8 rounded-lg px-3 text-xs pointer-coarse:min-h-11',
   md: 'h-10 rounded-xl px-4 text-sm',
   lg: 'h-12 rounded-xl px-6 text-base',
-  icon: 'h-10 w-10 rounded-xl',
+  icon: 'h-10 w-10 rounded-xl pointer-coarse:size-11',
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(

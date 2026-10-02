@@ -220,7 +220,7 @@ export function CrystalStrengthPassword({
               />
             ))}
         </motion.svg>
-        <div className="absolute inset-x-0 top-3 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-500">
+        <div className="absolute inset-x-0 top-3 text-center font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-400 dark:text-zinc-400">
           {score}/{list.length}
         </div>
       </div>
@@ -249,7 +249,7 @@ export function CrystalStrengthPassword({
             onClick={() => setVisible((v) => !v)}
             aria-label={visible ? 'Hide password' : 'Show password'}
             aria-pressed={visible}
-            className="mr-1 grid h-9 w-9 place-items-center rounded-lg text-zinc-500 outline-none transition hover:bg-black/5 hover:text-zinc-800 focus-visible:ring-2 focus-visible:ring-indigo-500 dark:hover:bg-white/5 dark:hover:text-zinc-200"
+            className="mr-1 grid h-9 w-9 place-items-center rounded-lg text-zinc-500 dark:text-zinc-400 outline-none transition hover:bg-black/5 hover:text-zinc-800 focus-visible:ring-2 focus-visible:ring-indigo-500 dark:hover:bg-white/5 dark:hover:text-zinc-200"
           >
             <AnimatePresence mode="wait" initial={false}>
               <motion.span
@@ -280,15 +280,15 @@ export function CrystalStrengthPassword({
         </div>
         <div className="flex items-baseline justify-between gap-2 text-xs">
           <p id={id + '-strength'} aria-live="polite" className="font-medium" style={{ color: value ? `hsl(${hue} 65% 45%)` : undefined }}>
-            <span className={cn(!value && 'text-zinc-500', 'dark:brightness-150')}>{labelText}</span>
+            <span className={cn(!value && 'text-zinc-500 dark:text-zinc-400', 'dark:brightness-150')}>{labelText}</span>
           </p>
-          {value && <span className="text-zinc-500">Crack time: {crackTime(value)}</span>}
+          {value && <span className="text-zinc-500 dark:text-zinc-400">Crack time: {crackTime(value)}</span>}
         </div>
 
         <ul id={id + '-rules'} className="grid grid-cols-2 gap-x-3 gap-y-1.5">
           {list.map((r, i) => (
-            <li key={r.id} className={cn('flex items-center gap-1.5 text-xs transition-colors', passed[i] && value ? 'text-zinc-800 dark:text-zinc-200' : 'text-zinc-500')}>
-              <span className={cn('grid h-4 w-4 place-items-center rounded-full ring-1 transition-colors', passed[i] && value ? 'bg-emerald-500 text-white ring-emerald-500' : 'ring-zinc-300 dark:ring-zinc-700')}>
+            <li key={r.id} className={cn('flex items-center gap-1.5 text-xs transition-colors', passed[i] && value ? 'text-zinc-800 dark:text-zinc-200' : 'text-zinc-500 dark:text-zinc-400')}>
+              <span className={cn('grid h-4 w-4 place-items-center rounded-full ring-1 transition-colors', passed[i] && value ? 'bg-emerald-700 text-white ring-emerald-500' : 'ring-zinc-300 dark:ring-zinc-700')}>
                 <AnimatePresence>
                   {passed[i] && value && (
                     <motion.span initial={reduced ? false : { scale: 0, rotate: -45 }} animate={{ scale: 1, rotate: 0 }} exit={{ scale: 0 }} transition={{ type: 'spring', stiffness: 500, damping: 20 }}>
@@ -314,7 +314,7 @@ export function CrystalStrengthPassword({
               <Wand2 className="h-3.5 w-3.5" /> {forging ? 'Forging…' : 'Suggest one'}
             </button>
             {value && (
-              <button type="button" onClick={() => set('')} className="h-9 rounded-full px-3 text-xs text-zinc-500 outline-none hover:text-zinc-800 focus-visible:ring-2 focus-visible:ring-indigo-500 dark:hover:text-zinc-200">
+              <button type="button" onClick={() => set('')} className="h-9 rounded-full px-3 text-xs text-zinc-500 dark:text-zinc-400 outline-none hover:text-zinc-800 focus-visible:ring-2 focus-visible:ring-indigo-500 dark:hover:text-zinc-200">
                 Clear
               </button>
             )}

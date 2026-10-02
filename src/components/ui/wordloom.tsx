@@ -32,7 +32,7 @@ export function Wordloom({
       className={cn('text-left text-3xl font-semibold tracking-tight sm:text-4xl', className)}
       aria-label={`${prefix} ${word}. Activate to cycle.`}
     >
-      <span className="text-zinc-500">{prefix} </span>
+      <span className="text-zinc-500 dark:text-zinc-400">{prefix} </span>
       <span className="relative inline-grid overflow-hidden align-baseline text-zinc-900 dark:text-zinc-50">
         <AnimatePresence mode="wait">
           <motion.span

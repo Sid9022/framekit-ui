@@ -62,7 +62,7 @@ export function InboxRowNotifier({ className }: { className?: string }) {
               </motion.span>
               <div className="min-w-0 flex-1">
                 <p className="truncate text-sm font-medium">{r.title}</p>
-                <p className="text-[11px] text-zinc-500">
+                <p className="text-[11px] text-zinc-500 dark:text-zinc-400">
                   {r.meta} · {r.time}
                 </p>
               </div>

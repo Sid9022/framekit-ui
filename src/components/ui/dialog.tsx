@@ -82,7 +82,7 @@ export function Dialog({
                       type="button"
                       aria-label="Close"
                       onClick={() => setOpen(false)}
-                      className="rounded-lg p-1.5 text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                      className="rounded-lg p-1.5 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800"
                     >
                       <X className="h-4 w-4" />
                     </button>

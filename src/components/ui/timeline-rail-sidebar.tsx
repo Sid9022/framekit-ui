@@ -27,7 +27,7 @@ export function TimelineRailSidebar({ className }: { className?: string }) {
     <aside className={cn('flex h-[400px] w-[260px] flex-col overflow-hidden rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-white dark:bg-[#0d0b14] text-zinc-900 dark:text-zinc-100', className)}>
       <div className="border-b border-zinc-200 dark:border-zinc-800 px-4 py-3">
         <p className="text-sm font-semibold">Ops timeline</p>
-        <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-zinc-500">Live event rail</p>
+        <p className="font-mono text-[9px] uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">Live event rail</p>
       </div>
       <div ref={listRef} className="framekit-scroll relative flex-1 overflow-y-auto px-4 py-4">
         <div className="absolute bottom-4 left-[27px] top-4 w-px bg-gradient-to-b from-signal-500/50 via-zinc-200 dark:via-zinc-700 to-transparent" />
@@ -48,9 +48,9 @@ export function TimelineRailSidebar({ className }: { className?: string }) {
                     )}
                   </span>
                   <span className={cn('min-w-0 flex-1 rounded-xl px-2.5 py-2 transition', on ? 'bg-signal-500/15 ring-1 ring-signal-400/30' : 'hover:bg-white/5')}>
-                    <span className="font-mono text-[9px] text-zinc-500">{ev.time}</span>
+                    <span className="font-mono text-[9px] text-zinc-500 dark:text-zinc-400">{ev.time}</span>
                     <span className="block text-sm font-medium">{ev.title}</span>
-                    <span className="block text-xs text-zinc-500">{ev.detail}</span>
+                    <span className="block text-xs text-zinc-500 dark:text-zinc-400">{ev.detail}</span>
                   </span>
                 </button>
               </li>

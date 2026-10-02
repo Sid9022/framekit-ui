@@ -42,7 +42,7 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
                     <div>
                       <p className="text-sm font-semibold">{item.title}</p>
                       {item.description && (
-                        <p className="mt-0.5 text-xs text-zinc-500">{item.description}</p>
+                        <p className="mt-0.5 text-xs text-zinc-500 dark:text-zinc-400">{item.description}</p>
                       )}
                     </div>
                     <button

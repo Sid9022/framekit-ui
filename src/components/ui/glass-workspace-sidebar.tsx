@@ -95,7 +95,7 @@ export function GlassWorkspaceSidebar({ className }: { className?: string }) {
               <button
                 type="button"
                 onClick={() => setOpenGroups((o) => ({ ...o, [g.id]: !o[g.id] }))}
-                className="mb-1 flex w-full items-center justify-between px-2 font-mono text-[9px] uppercase tracking-[0.16em] text-zinc-500"
+                className="mb-1 flex w-full items-center justify-between px-2 font-mono text-[9px] uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400"
               >
                 {g.label}
                 <ChevronDown className={cn('h-3 w-3 transition', openGroups[g.id] && 'rotate-180')} />
@@ -141,7 +141,7 @@ export function GlassWorkspaceSidebar({ className }: { className?: string }) {
           {expanded && (
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="min-w-0">
               <p className="truncate text-xs font-semibold">Jordan Rhee</p>
-              <p className="truncate text-[10px] text-zinc-500">jordan@acme.io</p>
+              <p className="truncate text-[10px] text-zinc-500 dark:text-zinc-400">jordan@acme.io</p>
             </motion.div>
           )}
         </AnimatePresence>

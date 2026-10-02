@@ -474,7 +474,7 @@ export function LiquidChargeCapsule({
         <div className="flex flex-col items-center gap-1" aria-hidden>
           <span className="font-semibold tabular-nums tracking-tight text-zinc-900 dark:text-white" style={{ fontSize: Math.max(18, height * 0.13) }}>
             {shownNum}
-            <span className="text-[0.6em] font-medium text-zinc-400 dark:text-zinc-500">%</span>
+            <span className="text-[0.6em] font-medium text-zinc-400 dark:text-zinc-400">%</span>
           </span>
           <span className="inline-flex items-center gap-1.5 text-[12px] font-medium text-zinc-500 dark:text-zinc-400">
             <motion.span className="h-1.5 w-1.5 rounded-full" animate={{ backgroundColor: glow, scale: charging && !full && !reduced ? [1, 1.5, 1] : 1 }} transition={{ scale: { duration: 1.4, repeat: Infinity }, backgroundColor: { duration: 0.5 } }} />

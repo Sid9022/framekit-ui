@@ -96,6 +96,9 @@ export function ParallaxReelScroll({
       <div
         ref={ref}
         onScroll={onScroll}
+        tabIndex={0}
+        role="region"
+        aria-label="Scrollable reel"
         className={cn(
           'framekit-scroll relative h-[380px] overflow-y-auto rounded-2xl border border-zinc-800 bg-[#07060c] shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]',
           viewportClassName,
@@ -156,7 +159,7 @@ export function ParallaxReelScroll({
           <p className="text-[10px] font-medium uppercase tracking-[0.22em] text-signal-300">
             {panels[active]?.eyebrow ?? 'Reel'}
           </p>
-          <p className="font-mono text-[10px] text-zinc-500">
+          <p className="font-mono text-[10px] text-zinc-500 dark:text-zinc-400">
             {String(active + 1).padStart(2, '0')} / {String(panels.length).padStart(2, '0')}
           </p>
         </div>
@@ -213,7 +216,7 @@ export function ParallaxReelScroll({
             style={{ width: `${progress * 100}%`, transition: 'width 60ms linear' }}
           />
         </div>
-        <span className="font-mono text-[10px] tabular-nums text-zinc-500">
+        <span className="font-mono text-[10px] tabular-nums text-zinc-500 dark:text-zinc-400">
           {Math.round(progress * 100)}%
         </span>
       </div>

@@ -82,7 +82,7 @@ export function SoftphoneDialPad({ className }: { className?: string }) {
           onClick={() => setCalling((c) => !c)}
           className={cn(
             'flex h-12 flex-[1.4] items-center justify-center gap-2 rounded-2xl text-sm font-semibold text-white',
-            calling ? 'bg-rose-500' : 'bg-emerald-500',
+            calling ? 'bg-rose-700' : 'bg-emerald-700',
           )}
           animate={calling && !reduced ? { boxShadow: ['0 0 0 0 rgba(52,211,153,0.5)', '0 0 0 14px rgba(52,211,153,0)'] } : undefined}
           transition={calling ? { repeat: Infinity, duration: 1.2 } : undefined}

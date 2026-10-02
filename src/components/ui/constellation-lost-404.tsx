@@ -121,8 +121,7 @@ export function ConstellationLost404({
               height: s.s,
               opacity: s.o,
               boxShadow: s.s > 2 ? '0 0 6px rgba(255,255,255,0.7)' : undefined,
-              animation: reduced ? undefined : `fk-star-twinkle ${2.4 + (s.id % 5) * 0.4}s ease-in-out infinite`,
-              animationDelay: `${(s.id % 7) * 0.2}s`,
+              animation: reduced ? 'none' : `fk-star-twinkle ${2.4 + (s.id % 5) * 0.4}s ease-in-out ${(s.id % 7) * 0.2}s infinite`,
             }}
           />
         ))}
@@ -152,10 +151,7 @@ export function ConstellationLost404({
             return (
               <motion.line
                 key={i}
-                x1={na.ox}
-                y1={na.oy}
-                x2={nb.ox}
-                y2={nb.oy}
+                initial={{ x1: na.ox, y1: na.oy, x2: nb.ox, y2: nb.oy }}
                 stroke="rgba(212,203,229,0.45)"
                 strokeWidth={1.1}
                 animate={{ x1: na.ox, y1: na.oy, x2: nb.ox, y2: nb.oy, opacity: drift ? 0.18 : 0.65 }}
@@ -169,6 +165,7 @@ export function ConstellationLost404({
               r={2.6}
               fill="#f97316"
               filter="url(#fk-star-glow)"
+              initial={{ cx: n.ox, cy: n.oy }}
               animate={{ cx: n.ox, cy: n.oy }}
               transition={{ type: 'spring', stiffness: 65, damping: 12 }}
             />

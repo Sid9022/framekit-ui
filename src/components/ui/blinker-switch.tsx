@@ -31,6 +31,7 @@ export function BlinkerSwitch({
       id={id}
       type="button"
       role="switch"
+      aria-label="Blinker"
       aria-checked={on}
       disabled={disabled}
       onClick={fire}

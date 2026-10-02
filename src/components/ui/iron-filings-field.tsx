@@ -272,7 +272,7 @@ export function IronFilingsField({
       {children}
       {interactive && (
         <div className="absolute bottom-3 right-3 flex items-center gap-2">
-          <span className={cn('font-mono text-[10px] uppercase tracking-[0.16em]', resolved === 'dark' ? 'text-zinc-500' : 'text-zinc-500')}>
+          <span className={cn('font-mono text-[10px] uppercase tracking-[0.16em]', resolved === 'dark' ? 'text-zinc-500 dark:text-zinc-400' : 'text-zinc-500 dark:text-zinc-400')}>
             {count}/4 poles
           </span>
           <button

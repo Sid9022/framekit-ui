@@ -3,14 +3,17 @@ import { cn } from '@/lib/cn'
 export function Progress({
   value,
   className,
+  'aria-label': ariaLabel = 'Progress',
 }: {
   value: number
   className?: string
+  'aria-label'?: string
 }) {
   const clamped = Math.max(0, Math.min(100, value))
   return (
     <div
       role="progressbar"
+      aria-label={ariaLabel}
       aria-valuenow={clamped}
       aria-valuemin={0}
       aria-valuemax={100}

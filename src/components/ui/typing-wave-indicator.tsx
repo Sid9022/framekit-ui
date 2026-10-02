@@ -38,7 +38,7 @@ export function TypingWaveIndicator({
         <motion.p
           initial={reduced ? false : { opacity: 0, x: -6 }}
           animate={{ opacity: 1, x: 0 }}
-          className="text-xs text-zinc-500"
+          className="text-xs text-zinc-500 dark:text-zinc-400"
         >
           {label}
         </motion.p>

@@ -109,7 +109,7 @@ export function MegaFlyoutSidebar({ className }: { className?: string }) {
               onClick={() => setActive(item.id)}
               className={cn(
                 'flex h-10 w-10 items-center justify-center rounded-xl transition',
-                on ? 'bg-signal-500/30 text-zinc-900 dark:text-white shadow-[0_0_20px_rgba(154,134,184,0.35)]' : 'text-zinc-500 hover:bg-zinc-900/[0.04] dark:hover:bg-white/5 hover:text-zinc-900 dark:hover:text-zinc-200',
+                on ? 'bg-signal-500/30 text-zinc-900 dark:text-white shadow-[0_0_20px_rgba(154,134,184,0.35)]' : 'text-zinc-500 dark:text-zinc-400 hover:bg-zinc-900/[0.04] dark:hover:bg-white/5 hover:text-zinc-900 dark:hover:text-zinc-200',
               )}
               aria-label={item.label}
             >

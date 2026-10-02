@@ -50,7 +50,7 @@ export function TemplateMessageCard({
             'relative overflow-hidden rounded-full px-3 py-1.5 text-xs font-semibold transition',
             approved
               ? 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-300'
-              : 'bg-signal-500 text-white shadow-md shadow-signal-500/30',
+              : 'bg-signal-700 text-white shadow-md shadow-signal-500/30',
           )}
         >
           {!approved && !reduced && (

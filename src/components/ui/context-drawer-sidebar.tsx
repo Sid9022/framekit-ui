@@ -63,12 +63,13 @@ export function ContextDrawerSidebar({ className }: { className?: string }) {
               <button
                 key={item.id}
                 type="button"
+                aria-label={item.label}
                 onClick={() => setActive(item.id)}
                 className={cn(
                   'flex items-center gap-3 rounded-xl px-2.5 py-2.5 text-left text-sm transition',
                   selected
                     ? 'bg-signal-400/20 text-zinc-900 dark:text-zinc-50'
-                    : 'text-zinc-500 hover:bg-zinc-50 dark:hover:bg-zinc-900',
+                    : 'text-zinc-500 dark:text-zinc-400 hover:bg-zinc-50 dark:hover:bg-zinc-900',
                 )}
               >
                 <Icon className="h-4 w-4 shrink-0" />
@@ -95,7 +96,7 @@ export function ContextDrawerSidebar({ className }: { className?: string }) {
 
       <div className="flex flex-1 flex-col items-center justify-center gap-2 p-6 text-center">
         <p className="text-sm font-semibold text-zinc-700 dark:text-zinc-200">{current.label}</p>
-        <p className="max-w-[200px] text-xs text-zinc-500">Hover the rail to expand · pin to keep context open</p>
+        <p className="max-w-[200px] text-xs text-zinc-500 dark:text-zinc-400">Hover the rail to expand · pin to keep context open</p>
       </div>
     </div>
   )

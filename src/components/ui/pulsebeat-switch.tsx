@@ -20,6 +20,7 @@ export function PulsebeatSwitch({
       id={id}
       type="button"
       role="switch"
+      aria-label="Pulsebeat"
       aria-checked={on}
       disabled={disabled}
       onClick={() => !disabled && toggle()}

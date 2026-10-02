@@ -48,7 +48,7 @@ export function CurtainDropNav({ className }: { className?: string }) {
             aria-hidden={open !== item.id}
           >
             <p className="text-sm font-semibold">{item.label}</p>
-            <p className="mt-1 text-sm text-zinc-500">{item.body}</p>
+            <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">{item.body}</p>
           </div>
         ))}
         {!open && (

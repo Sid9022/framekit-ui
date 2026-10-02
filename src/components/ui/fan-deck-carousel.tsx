@@ -299,11 +299,14 @@ export function FanDeckCarousel({
                 aria-label={`Go to slide ${i + 1}`}
                 aria-current={i === active ? 'true' : undefined}
                 onClick={() => go(i)}
-                className={cn(
-                  'relative h-1.5 overflow-hidden rounded-full outline-none transition-[width,background-color] duration-300 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-zinc-900 dark:focus-visible:ring-white dark:focus-visible:ring-offset-black',
-                  i === active ? 'w-7 bg-zinc-900/15 dark:bg-white/20' : 'w-1.5 bg-zinc-900/20 hover:bg-zinc-900/40 dark:bg-white/25 dark:hover:bg-white/50',
-                )}
+                className="group flex h-6 min-w-6 items-center justify-center rounded-full outline-none focus-visible:ring-2 focus-visible:ring-zinc-900 dark:focus-visible:ring-white"
               >
+               <span
+                className={cn(
+                  'relative block h-1.5 overflow-hidden rounded-full transition-[width,background-color] duration-300',
+                  i === active ? 'w-7 bg-zinc-900/15 dark:bg-white/20' : 'w-1.5 bg-zinc-900/20 group-hover:bg-zinc-900/40 dark:bg-white/25 dark:group-hover:bg-white/50',
+                )}
+               >
                 {i === active && (
                   <motion.span
                     key={`${active}-${playing}`}
@@ -313,6 +316,7 @@ export function FanDeckCarousel({
                     transition={{ duration: playing ? interval / 1000 : 0, ease: 'linear' }}
                   />
                 )}
+               </span>
               </button>
             ))}
           </div>

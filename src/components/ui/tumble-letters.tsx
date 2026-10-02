@@ -418,7 +418,7 @@ export function TumbleLetters({
           {dropped ? <Undo2 className="h-4 w-4" /> : <ArrowDownToLine className="h-4 w-4" />}
           {dropped ? 'Reassemble' : 'Drop letters'}
         </button>
-        <span className="text-xs text-zinc-500">{reduced ? 'Reduced motion: letters jump to their resting pile.' : 'Hover to lift · drag to fling'}</span>
+        <span className="text-xs text-zinc-500 dark:text-zinc-400">{reduced ? 'Reduced motion: letters jump to their resting pile.' : 'Hover to lift · drag to fling'}</span>
       </div>
       <p className="sr-only" aria-live="polite">{status}</p>
     </div>

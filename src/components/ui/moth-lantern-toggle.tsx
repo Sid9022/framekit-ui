@@ -37,6 +37,7 @@ export function MothLanternToggle({
       type="button"
       role="switch"
       aria-checked={on}
+      aria-label="Moth lantern"
       disabled={disabled}
       onClick={() => !disabled && toggle()}
       onKeyDown={(e) => {

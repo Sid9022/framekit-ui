@@ -304,7 +304,7 @@ export function OrbitDotExportButton({
         </motion.span>
       </motion.button>
 
-      <div className="mt-2 h-4 font-mono text-[11px] tabular-nums tracking-wide text-zinc-500" aria-hidden>
+      <div className="mt-2 h-4 font-mono text-[11px] tabular-nums tracking-wide text-zinc-500 dark:text-zinc-400" aria-hidden>
         <AnimatePresence mode="wait">
           {collapsed && (
             <motion.span key="p" initial={{ opacity: 0, y: -3 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0 }}>

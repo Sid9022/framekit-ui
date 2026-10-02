@@ -54,7 +54,7 @@ export function TideglassToggle({
           transition: reduced ? undefined : 'bottom 520ms cubic-bezier(.2,.8,.2,1)',
         }}
       />
-      <span className="absolute inset-x-0 top-2 text-center font-mono text-[9px] uppercase tracking-wider text-zinc-500">
+      <span className="absolute inset-x-0 top-2 text-center font-mono text-[9px] uppercase tracking-wider text-zinc-500 dark:text-zinc-400">
         {on ? 'High' : 'Low'}
       </span>
     </button>

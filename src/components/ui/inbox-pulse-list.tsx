@@ -79,7 +79,7 @@ export function InboxPulseList({
               </span>
               {(row.unread ?? 0) > 0 && (
                 <motion.span
-                  className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-signal-500 px-1 text-[9px] font-bold text-white"
+                  className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-signal-700 px-1 text-[9px] font-bold text-white"
                   animate={reduced ? undefined : { scale: [1, 1.15, 1] }}
                   transition={{ repeat: Infinity, duration: 2.2, ease: 'easeInOut' }}
                   style={{ boxShadow: '0 0 12px rgba(154,134,184,0.8)' }}
@@ -94,7 +94,7 @@ export function InboxPulseList({
                 <span className="shrink-0 text-[10px] text-zinc-500 dark:text-zinc-400">{row.time}</span>
               </div>
               <div className="mt-0.5 flex items-center gap-2">
-                <p className="truncate text-xs text-zinc-500">{row.preview}</p>
+                <p className="truncate text-xs text-zinc-500 dark:text-zinc-400">{row.preview}</p>
                 <span className={cn('shrink-0 rounded-md px-1.5 py-0.5 font-mono text-[9px] font-semibold', CHIP[row.channel])}>
                   {row.channel}
                 </span>
@@ -102,13 +102,13 @@ export function InboxPulseList({
             </div>
             {hovered === row.id && (
               <div className="absolute right-2 top-1/2 flex -translate-y-1/2 gap-1 rounded-lg border border-zinc-200 bg-white/95 p-1 shadow-lg dark:border-zinc-700 dark:bg-zinc-900">
-                <button type="button" className="rounded p-1 text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800" aria-label="Pin">
+                <button type="button" className="rounded p-1 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800" aria-label="Pin">
                   <Pin className="h-3.5 w-3.5" />
                 </button>
-                <button type="button" className="rounded p-1 text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800" aria-label="Archive">
+                <button type="button" className="rounded p-1 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800" aria-label="Archive">
                   <Archive className="h-3.5 w-3.5" />
                 </button>
-                <button type="button" className="rounded p-1 text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800" aria-label="More">
+                <button type="button" className="rounded p-1 text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800" aria-label="More">
                   <MoreHorizontal className="h-3.5 w-3.5" />
                 </button>
               </div>

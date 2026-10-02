@@ -14,6 +14,8 @@ export function TopographicStack({
 
   return (
     <div
+      role="listbox"
+      aria-label="Layers"
       className={cn('relative mx-auto h-56 w-full max-w-sm', className)}
       onPointerEnter={() => setHover(true)}
       onPointerLeave={() => setHover(false)}
@@ -54,7 +56,7 @@ export function TopographicStack({
             }}
           >
             <p className="text-sm font-semibold">{item.title}</p>
-            <p className="mt-1 text-xs text-zinc-500">{item.note}</p>
+            <p className="mt-1 text-xs text-zinc-500 dark:text-zinc-400">{item.note}</p>
           </button>
         )
       })}

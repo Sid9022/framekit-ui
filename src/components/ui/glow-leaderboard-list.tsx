@@ -223,7 +223,7 @@ export function GlowLeaderboardList({
                       )}
                     </motion.span>
                   )}
-                  <span className={cn('relative w-5 text-center text-xs font-semibold tabular-nums', leader ? 'text-white/90' : 'text-zinc-400 dark:text-zinc-500')}>
+                  <span className={cn('relative w-5 text-center text-xs font-semibold tabular-nums', leader ? 'text-white/90' : 'text-zinc-400 dark:text-zinc-400')}>
                     {leader ? <Crown className="mx-auto h-4 w-4" /> : i + 1}
                   </span>
                   <span className="relative">
@@ -253,7 +253,7 @@ export function GlowLeaderboardList({
                           transition={{ duration: 1.5, times: [0, 0.2, 0.75, 1], ease: 'easeOut' }}
                           className={cn(
                             'pointer-events-none absolute -top-1 right-0 rounded-full px-1.5 py-0.5 text-[10px] font-bold',
-                            leader ? 'bg-white text-blue-600' : 'bg-emerald-500 text-white',
+                            leader ? 'bg-white text-blue-600' : 'bg-emerald-700 text-white',
                           )}
                         >
                           +{fmt(delta.amount)}

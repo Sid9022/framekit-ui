@@ -33,7 +33,7 @@ export function GlyphAuroraShimmer({
             WebkitBackgroundClip: 'text',
             backgroundClip: 'text',
             color: 'transparent',
-            animation: reduced ? undefined : `glyph-aurora 2.8s ease-in-out ${i * 0.08}s infinite`,
+            animation: reduced ? 'none' : `glyph-aurora 2.8s ease-in-out ${i * 0.08}s infinite`,
           }}
         >
           {ch === ' ' ? '\u00A0' : ch}

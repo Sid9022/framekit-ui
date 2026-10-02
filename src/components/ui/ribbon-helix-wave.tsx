@@ -98,7 +98,7 @@ export function RibbonHelixWave({ className }: { className?: string }) {
           strokeLinecap="round"
         />
       </svg>
-      <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-zinc-500">Move pointer to drive amplitude</p>
+      <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400">Move pointer to drive amplitude</p>
     </div>
   )
 }

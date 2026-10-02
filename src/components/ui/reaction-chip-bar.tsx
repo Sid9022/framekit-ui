@@ -44,7 +44,7 @@ export function ReactionChipBar({ className }: { className?: string }) {
               className="inline-flex items-center gap-1 rounded-full border border-signal-300/50 bg-signal-500/10 px-2 py-0.5 text-sm dark:border-signal-500/40"
             >
               <span>{r.emoji}</span>
-              <span className="font-mono text-[10px] text-zinc-500">{r.count}</span>
+              <span className="font-mono text-[10px] text-zinc-500 dark:text-zinc-400">{r.count}</span>
             </motion.button>
           ))}
         </AnimatePresence>

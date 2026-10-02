@@ -20,6 +20,7 @@ export function FrameflipToggle({
       id={id}
       type="button"
       role="switch"
+      aria-label="Frameflip"
       aria-checked={on}
       disabled={disabled}
       onClick={() => !disabled && toggle()}
@@ -50,7 +51,7 @@ export function FrameflipToggle({
           style={{ backfaceVisibility: 'hidden' }}
         >
           <span className="text-lg">☀️</span>
-          <span className="mt-1 font-mono text-[9px] uppercase tracking-wider text-zinc-500">Day</span>
+          <span className="mt-1 font-mono text-[9px] uppercase tracking-wider text-zinc-500 dark:text-zinc-400">Day</span>
         </span>
         <span
           className="absolute inset-0 flex flex-col items-center justify-center rounded-md border border-zinc-700 bg-zinc-900 shadow-md"

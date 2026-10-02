@@ -29,7 +29,7 @@ function DockIcon({
       style={{ width }}
       title={label}
       aria-label={label}
-      className="aspect-square rounded-2xl bg-white/80 shadow-md ring-1 ring-black/5 backdrop-blur dark:bg-zinc-800 dark:ring-white/10"
+      className="aspect-square min-w-0 shrink rounded-2xl bg-white/80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal-500 shadow-md ring-1 ring-black/5 backdrop-blur dark:bg-zinc-800 dark:ring-white/10"
     >
       <div className="flex h-full w-full items-center justify-center text-zinc-700 dark:text-zinc-200">
         {children}
@@ -54,7 +54,7 @@ export function MagnifyDock({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        'mx-auto flex h-20 items-end gap-3 rounded-3xl border border-white/40 bg-white/50 px-4 pb-3 pt-2 shadow-xl backdrop-blur-xl dark:border-white/10 dark:bg-zinc-900/60',
+        'mx-auto flex h-20 max-w-full items-end gap-2 rounded-3xl border border-white/40 bg-white/50 px-3 pb-3 pt-2 sm:gap-3 sm:px-4 shadow-xl backdrop-blur-xl dark:border-white/10 dark:bg-zinc-900/60',
         className,
       )}
     >

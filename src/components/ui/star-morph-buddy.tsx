@@ -437,7 +437,7 @@ export function StarMorphBuddy({
           </AnimatePresence>
         </svg>
 
-        <span id={`${uid}-line`} className="relative grid min-h-[3rem] max-w-[80vw] place-items-center text-center text-balance" style={{ width: Math.max(190, Math.min(340, size * 1.95)) }}>
+        <span id={`${uid}-line`} className="relative grid min-h-[3rem] max-w-full place-items-center text-center text-balance" style={{ width: Math.max(190, Math.min(340, size * 1.95)) }}>
           <AnimatePresence mode="popLayout" initial={false}>
             <motion.span
               key={textKey}

@@ -327,7 +327,7 @@ export function SplitFlapHero({
                 <dt className="sr-only">{s.label}</dt>
                 <dd className="sr-only">{s.value}</dd>
                 <FlapRow text={s.value.padStart(3, ' ')} size="sm" reduced={reduced} tone="stat" delay={500 + i * 180} active={inView} />
-                <span aria-hidden className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500">{s.label}</span>
+                <span aria-hidden className="font-mono text-[10px] uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">{s.label}</span>
               </div>
             ))}
           </dl>
@@ -336,7 +336,7 @@ export function SplitFlapHero({
 
       {/* board controls */}
       <div className="absolute bottom-4 right-4 flex items-center gap-1" role="group" aria-label="Board controls">
-        <button type="button" onClick={() => go(-1)} aria-label="Previous word" className="grid h-8 w-8 place-items-center rounded-full text-zinc-500 outline-none transition hover:bg-black/5 hover:text-zinc-800 focus-visible:ring-2 focus-visible:ring-amber-500 dark:hover:bg-white/5 dark:hover:text-zinc-200">
+        <button type="button" onClick={() => go(-1)} aria-label="Previous word" className="grid h-8 w-8 place-items-center rounded-full text-zinc-500 dark:text-zinc-400 outline-none transition hover:bg-black/5 hover:text-zinc-800 focus-visible:ring-2 focus-visible:ring-amber-500 dark:hover:bg-white/5 dark:hover:text-zinc-200">
           <ArrowRight className="h-3.5 w-3.5 rotate-180" />
         </button>
         <button
@@ -344,11 +344,11 @@ export function SplitFlapHero({
           onClick={() => setPlaying((p) => !p)}
           aria-label={playing ? 'Pause board' : 'Play board'}
           aria-pressed={!playing}
-          className="grid h-8 w-8 place-items-center rounded-full text-zinc-500 outline-none transition hover:bg-black/5 hover:text-zinc-800 focus-visible:ring-2 focus-visible:ring-amber-500 dark:hover:bg-white/5 dark:hover:text-zinc-200"
+          className="grid h-8 w-8 place-items-center rounded-full text-zinc-500 dark:text-zinc-400 outline-none transition hover:bg-black/5 hover:text-zinc-800 focus-visible:ring-2 focus-visible:ring-amber-500 dark:hover:bg-white/5 dark:hover:text-zinc-200"
         >
           {playing ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
         </button>
-        <button type="button" onClick={() => go(1)} aria-label="Next word" className="grid h-8 w-8 place-items-center rounded-full text-zinc-500 outline-none transition hover:bg-black/5 hover:text-zinc-800 focus-visible:ring-2 focus-visible:ring-amber-500 dark:hover:bg-white/5 dark:hover:text-zinc-200">
+        <button type="button" onClick={() => go(1)} aria-label="Next word" className="grid h-8 w-8 place-items-center rounded-full text-zinc-500 dark:text-zinc-400 outline-none transition hover:bg-black/5 hover:text-zinc-800 focus-visible:ring-2 focus-visible:ring-amber-500 dark:hover:bg-white/5 dark:hover:text-zinc-200">
           <ArrowRight className="h-3.5 w-3.5" />
         </button>
       </div>

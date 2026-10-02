@@ -20,6 +20,7 @@ export function InkBloomToggle({
       id={id}
       type="button"
       role="switch"
+      aria-label="Ink bloom"
       aria-checked={on}
       disabled={disabled}
       onClick={() => !disabled && toggle()}

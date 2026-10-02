@@ -41,7 +41,7 @@ export function PriorityInboxSidebar({ className }: { className?: string }) {
               onClick={() => setFilter(f)}
               className={cn(
                 'flex-1 rounded-lg py-1 text-[11px] font-semibold capitalize transition',
-                filter === f ? 'bg-white text-zinc-900 shadow-sm dark:bg-zinc-800 dark:text-white' : 'text-zinc-500',
+                filter === f ? 'bg-white text-zinc-900 shadow-sm dark:bg-zinc-800 dark:text-white' : 'text-zinc-500 dark:text-zinc-400',
               )}
             >
               {f}
@@ -70,7 +70,7 @@ export function PriorityInboxSidebar({ className }: { className?: string }) {
               onClick={() => setChannel(id)}
               className={cn(
                 'rounded-full px-2.5 py-0.5 text-[10px] font-medium',
-                channel === id ? 'bg-signal-500/20 text-signal-700 dark:text-signal-200' : 'text-zinc-500 hover:bg-zinc-100 dark:hover:bg-zinc-800',
+                channel === id ? 'bg-signal-500/20 text-signal-700 dark:text-signal-200' : 'text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800',
               )}
             >
               {label}
@@ -116,9 +116,9 @@ export function PriorityInboxSidebar({ className }: { className?: string }) {
                   <span className="min-w-0 flex-1">
                     <span className="flex items-center justify-between gap-2">
                       <span className="truncate text-xs font-semibold">{c.name}</span>
-                      <span className="shrink-0 font-mono text-[9px] text-zinc-500">{c.time}</span>
+                      <span className="shrink-0 font-mono text-[9px] text-zinc-500 dark:text-zinc-400">{c.time}</span>
                     </span>
-                    <span className="mt-0.5 flex items-center gap-1 text-[11px] text-zinc-500">
+                    <span className="mt-0.5 flex items-center gap-1 text-[11px] text-zinc-500 dark:text-zinc-400">
                       <Icon className="h-3 w-3 shrink-0" />
                       <span className="truncate">{c.preview}</span>
                     </span>
@@ -129,7 +129,7 @@ export function PriorityInboxSidebar({ className }: { className?: string }) {
           })}
         </AnimatePresence>
         {list.length === 0 && (
-          <li className="px-4 py-8 text-center text-xs text-zinc-500">No conversations</li>
+          <li className="px-4 py-8 text-center text-xs text-zinc-500 dark:text-zinc-400">No conversations</li>
         )}
       </ul>
     </aside>

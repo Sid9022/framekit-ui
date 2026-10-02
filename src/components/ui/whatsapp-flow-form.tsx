@@ -23,7 +23,7 @@ export function WhatsappFlowForm({ className }: { className?: string }) {
         <p className="text-sm font-semibold">Quick feedback</p>
       </div>
       <div className="space-y-3 p-4">
-        <label className="block text-xs font-medium text-zinc-500">How was your experience?</label>
+        <label className="block text-xs font-medium text-zinc-500 dark:text-zinc-400">How was your experience?</label>
         <div className="flex gap-1.5">
           {['1', '2', '3', '4', '5'].map((n) => (
             <button
@@ -32,14 +32,14 @@ export function WhatsappFlowForm({ className }: { className?: string }) {
               onClick={() => setRating(n)}
               className={cn(
                 'flex h-9 w-9 items-center justify-center rounded-xl text-sm font-semibold transition',
-                rating === n ? 'bg-signal-500 text-white shadow-md' : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300',
+                rating === n ? 'bg-signal-700 text-white shadow-md' : 'bg-zinc-100 text-zinc-600 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-300',
               )}
             >
               {n}
             </button>
           ))}
         </div>
-        <label className="block text-xs font-medium text-zinc-500">Anything else?</label>
+        <label className="block text-xs font-medium text-zinc-500 dark:text-zinc-400">Anything else?</label>
         <textarea
           value={note}
           onChange={(e) => setNote(e.target.value)}

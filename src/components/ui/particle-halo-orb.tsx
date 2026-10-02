@@ -65,7 +65,7 @@ export function ParticleHaloOrb({ className }: { className?: string }) {
       </div>
       <div className="flex w-full max-w-[220px] flex-col gap-2">
         <div className="flex items-center justify-between">
-          <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500">Energy</span>
+          <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-zinc-500 dark:text-zinc-400">Energy</span>
           <button
             type="button"
             onClick={() => setAuto((a) => !a)}
@@ -75,6 +75,7 @@ export function ParticleHaloOrb({ className }: { className?: string }) {
           </button>
         </div>
         <input
+          aria-label="Energy"
           type="range"
           min={0}
           max={1}

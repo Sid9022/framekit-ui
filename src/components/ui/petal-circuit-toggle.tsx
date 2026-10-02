@@ -20,6 +20,7 @@ export function PetalCircuitToggle({
       id={id}
       type="button"
       role="switch"
+      aria-label="Petal circuit"
       aria-checked={on}
       disabled={disabled}
       onClick={() => !disabled && toggle()}

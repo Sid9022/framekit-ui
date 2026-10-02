@@ -199,7 +199,7 @@ export function SeatScalePricing({
                 role="radio"
                 aria-checked={billing === b}
                 onClick={() => setBilling(b)}
-                className={cn('relative rounded-full px-3 py-1.5 capitalize outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]', billing === b ? 'text-zinc-900 dark:text-white' : 'text-zinc-500')}
+                className={cn('relative rounded-full px-3 py-1.5 capitalize outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--accent)]', billing === b ? 'text-zinc-900 dark:text-white' : 'text-zinc-500 dark:text-zinc-400')}
               >
                 {billing === b && <motion.span layoutId="billing-pill" className="absolute inset-0 rounded-full bg-white shadow-sm dark:bg-white/10" transition={{ type: 'spring', stiffness: 420, damping: 32 }} />}
                 <span className="relative">{b}</span>
@@ -216,9 +216,9 @@ export function SeatScalePricing({
           <Odometer value={monthly.toLocaleString('en-US')} reduced={reduced} />
           <span className="sr-only">{`${currency}${monthly.toLocaleString('en-US')} per month`}</span>
         </div>
-        <div className="pb-1.5 text-sm text-zinc-500">/ month</div>
+        <div className="pb-1.5 text-sm text-zinc-500 dark:text-zinc-400">/ month</div>
       </div>
-      <div className="relative mt-2 flex h-6 items-center gap-2 text-xs text-zinc-500">
+      <div className="relative mt-2 flex h-6 items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400">
         <span>
           {currency}
           {Math.round(tier.perSeat * mult)} per seat{billing === 'yearly' ? ', billed yearly' : ''}

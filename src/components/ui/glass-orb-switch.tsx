@@ -40,7 +40,7 @@ export function GlassOrbSwitch({
       <span className="pointer-events-none absolute left-5 text-[11px] font-medium tracking-wide text-zinc-700 dark:text-zinc-300">
         Dark
       </span>
-      <span className="pointer-events-none absolute right-5 text-[11px] font-medium tracking-wide text-zinc-500">
+      <span className="pointer-events-none absolute right-5 text-[11px] font-medium tracking-wide text-zinc-500 dark:text-zinc-400">
         Light
       </span>
       <span

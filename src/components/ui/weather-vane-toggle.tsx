@@ -53,7 +53,7 @@ export function WeatherVaneToggle({
       >
         ➤
       </span>
-      <span className="mt-6 font-mono text-[9px] uppercase tracking-[0.14em] text-zinc-500">
+      <span className="mt-6 font-mono text-[9px] uppercase tracking-[0.14em] text-zinc-500 dark:text-zinc-400">
         {on ? 'Breezy' : 'Still'}
       </span>
     </button>

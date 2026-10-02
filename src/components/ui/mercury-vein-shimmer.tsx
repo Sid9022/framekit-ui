@@ -74,7 +74,7 @@ export function MercuryVeinShimmer({
       <div className="relative z-10 text-center">
         {children ?? (
           <>
-            <p className="text-xs uppercase tracking-[0.2em] text-zinc-500">Mercury Vein</p>
+            <p className="text-xs uppercase tracking-[0.2em] text-zinc-500 dark:text-zinc-400">Mercury Vein</p>
             <p className="mt-2 text-lg font-semibold text-zinc-800 dark:text-zinc-100">Liquid metal crawl</p>
           </>
         )}

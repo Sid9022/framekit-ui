@@ -67,7 +67,7 @@ export function ElasticSlider({
           style={{ left: `${value}%`, scaleX, scaleY }}
         />
       </div>
-      <div className="mt-2 text-right text-xs tabular-nums text-zinc-500">{value}%</div>
+      <div className="mt-2 text-right text-xs tabular-nums text-zinc-500 dark:text-zinc-400">{value}%</div>
     </div>
   )
 }

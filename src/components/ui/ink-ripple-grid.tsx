@@ -58,7 +58,7 @@ export function InkRippleGrid({
           }}
         />
       ))}
-      <p className="relative z-10 flex h-full items-center justify-center text-xs text-zinc-500">
+      <p className="relative z-10 flex h-full items-center justify-center text-xs text-zinc-500 dark:text-zinc-400">
         Click to spill ink
       </p>
       <style>{`

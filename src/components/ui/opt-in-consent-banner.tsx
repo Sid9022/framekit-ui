@@ -35,7 +35,7 @@ export function OptInConsentBanner({
               <button
                 type="button"
                 onClick={() => setState('accepted')}
-                className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-signal-500 py-2.5 text-xs font-semibold text-white shadow-md shadow-signal-500/30"
+                className="inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl bg-signal-700 py-2.5 text-xs font-semibold text-white shadow-md shadow-signal-500/30"
               >
                 <Check className="h-3.5 w-3.5" />
                 Yes, opt in
@@ -62,7 +62,7 @@ export function OptInConsentBanner({
               initial={reduced ? false : { scale: 0 }}
               animate={{ scale: 1 }}
               transition={{ type: 'spring', stiffness: 500, damping: 18 }}
-              className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-500 text-white"
+              className="flex h-10 w-10 items-center justify-center rounded-full bg-emerald-700 text-white"
             >
               <Check className="h-5 w-5" />
             </motion.span>
@@ -87,9 +87,9 @@ export function OptInConsentBanner({
             </span>
             <div>
               <p className="text-sm font-semibold">No messages will be sent</p>
-              <p className="text-xs text-zinc-500">You can opt in later from account settings.</p>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400">You can opt in later from account settings.</p>
             </div>
-            <button type="button" onClick={() => setState('idle')} className="ml-auto text-[10px] font-medium text-zinc-500 underline">
+            <button type="button" onClick={() => setState('idle')} className="ml-auto text-[10px] font-medium text-zinc-500 dark:text-zinc-400 underline">
               Reset
             </button>
           </motion.div>

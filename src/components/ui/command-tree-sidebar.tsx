@@ -118,7 +118,7 @@ export function CommandTreeSidebar({ className }: { className?: string }) {
             initial={reduced ? false : { opacity: 0, y: 4 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -4 }}
-            className="flex flex-wrap items-center gap-1 text-[11px] text-zinc-500"
+            className="flex flex-wrap items-center gap-1 text-[11px] text-zinc-500 dark:text-zinc-400"
           >
             {(current?.path ?? ['—']).map((seg, i, arr) => (
               <React.Fragment key={`${seg}-${i}`}>

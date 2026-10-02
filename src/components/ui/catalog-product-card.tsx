@@ -24,7 +24,7 @@ export function CatalogProductCard({ className }: { className?: string }) {
       </div>
       <div className="space-y-2 p-3">
         <p className="text-sm font-semibold leading-snug">Signal Soft Hoodie</p>
-        <p className="text-xs text-zinc-500">Lilac mist · Unisex</p>
+        <p className="text-xs text-zinc-500 dark:text-zinc-400">Lilac mist · Unisex</p>
         <div className="flex items-center justify-between pt-1">
           <p className="text-base font-bold text-signal-700 dark:text-signal-300">$68</p>
           <motion.button
@@ -33,7 +33,7 @@ export function CatalogProductCard({ className }: { className?: string }) {
             whileTap={reduced ? undefined : { scale: 0.9 }}
             className={cn(
               'inline-flex items-center gap-1 rounded-full px-2.5 py-1.5 text-[11px] font-semibold transition',
-              added ? 'bg-emerald-500/20 text-emerald-600' : 'bg-signal-500 text-white',
+              added ? 'bg-emerald-500/20 text-emerald-600' : 'bg-signal-700 text-white',
             )}
           >
             {added ? <Check className="h-3.5 w-3.5" /> : <ShoppingCart className="h-3.5 w-3.5" />}

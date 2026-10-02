@@ -79,7 +79,7 @@ function Drum({ digit, active, status, index, reduced, onPick }: { digit: number
                 'absolute inset-0 flex items-center justify-center font-mono text-[28px] font-semibold tabular-nums [backface-visibility:hidden]',
                 tone,
                 'transition-colors duration-300',
-                f === '•' && 'text-[18px] text-zinc-400 dark:text-zinc-500',
+                f === '•' && 'text-[18px] text-zinc-400 dark:text-zinc-400',
               )}
               style={{ transform: `rotateX(${i * STEP}deg) translateZ(${RADIUS}px)` }}
             >
@@ -291,7 +291,7 @@ export function TumblerLockOtp({
       </motion.div>
 
       <div className="flex min-h-[40px] flex-col items-center gap-1 text-center">
-        <p id={id + '-msg'} aria-live="polite" className={cn('text-sm', status === 'error' ? 'text-rose-600 dark:text-rose-400' : status === 'success' ? 'text-emerald-600 dark:text-emerald-400' : 'text-zinc-500')}>
+        <p id={id + '-msg'} aria-live="polite" className={cn('text-sm', status === 'error' ? 'text-rose-600 dark:text-rose-400' : status === 'success' ? 'text-emerald-600 dark:text-emerald-400' : 'text-zinc-500 dark:text-zinc-400')}>
           {message || hint || 'Type or paste your code. Esc clears the drums.'}
         </p>
         <div className="flex items-center gap-3 text-xs">

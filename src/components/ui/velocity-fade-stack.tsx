@@ -119,6 +119,9 @@ export function VelocityFadeStack({
       <div
         ref={ref}
         onScroll={onScroll}
+        tabIndex={0}
+        role="region"
+        aria-label="Scrollable stack"
         className={cn(
           'framekit-scroll relative h-[380px] overflow-y-auto rounded-2xl border border-zinc-800 bg-gradient-to-b from-[#0c0b12] via-[#101014] to-[#0a0a0c]',
           viewportClassName,

@@ -78,7 +78,7 @@ export function QueueTicketCard({
             'inline-flex flex-1 items-center justify-center gap-1.5 rounded-xl py-2.5 text-xs font-semibold transition',
             status === 'claimed'
               ? 'bg-emerald-500/20 text-emerald-700 dark:text-emerald-300'
-              : 'bg-signal-500 text-white shadow-md shadow-signal-500/30 disabled:opacity-50',
+              : 'bg-signal-700 text-white shadow-md shadow-signal-500/30 disabled:opacity-50',
           )}
         >
           <Hand className="h-3.5 w-3.5" />

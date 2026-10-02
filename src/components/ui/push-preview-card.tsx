@@ -36,7 +36,7 @@ export function PushPreviewCard({
             </span>
             <div className="min-w-0 flex-1">
               <div className="flex items-center justify-between gap-2">
-                <p className="text-[11px] font-semibold uppercase tracking-wide text-zinc-500">{app}</p>
+                <p className="text-[11px] font-semibold uppercase tracking-wide text-zinc-500 dark:text-zinc-400">{app}</p>
                 <span className="text-[10px] text-zinc-500 dark:text-zinc-400">{time}</span>
               </div>
               <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-50">{title}</p>

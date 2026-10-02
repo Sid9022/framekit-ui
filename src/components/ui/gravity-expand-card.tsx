@@ -58,7 +58,7 @@ export function GravityExpandCard({
       <motion.div layout className="p-5">
         <p className="text-[10px] uppercase tracking-[0.2em] text-framekit-500">Gravity</p>
         <h3 className="mt-1 text-lg font-semibold">{title}</h3>
-        <p className="mt-2 text-sm text-zinc-500">{summary}</p>
+        <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">{summary}</p>
         <AnimatePresence initial={false}>
           {open && (
             <motion.div

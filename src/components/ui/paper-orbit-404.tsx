@@ -107,8 +107,7 @@ export function PaperOrbit404({
               width: s.s,
               height: s.s,
               opacity: s.o,
-              animation: reduced ? undefined : `fk-po-twinkle ${2.2 + (s.id % 5) * 0.35}s ease-in-out infinite`,
-              animationDelay: `${(s.id % 7) * 0.18}s`,
+              animation: reduced ? 'none' : `fk-po-twinkle ${2.2 + (s.id % 5) * 0.35}s ease-in-out ${(s.id % 7) * 0.18}s infinite`,
             }}
           />
         ))}

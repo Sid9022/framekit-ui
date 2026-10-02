@@ -197,7 +197,7 @@ export function DropInCartButton({
               type="button"
               onClick={() => setValue(0)}
               disabled={busy}
-              className="rounded-md px-1.5 py-0.5 text-[12px] text-zinc-500 underline-offset-2 outline-none transition-colors hover:text-zinc-900 dark:hover:text-zinc-200 hover:underline focus-visible:ring-2 focus-visible:ring-amber-300 disabled:opacity-40"
+              className="rounded-md px-1.5 py-0.5 text-[12px] text-zinc-500 dark:text-zinc-400 underline-offset-2 outline-none transition-colors hover:text-zinc-900 dark:hover:text-zinc-200 hover:underline focus-visible:ring-2 focus-visible:ring-amber-300 disabled:opacity-40"
             >
               Clear
             </button>

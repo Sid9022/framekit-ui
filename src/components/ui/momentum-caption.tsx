@@ -35,7 +35,7 @@ export function MomentumCaption({
   return (
     <p
       ref={ref}
-      className={cn('text-sm text-zinc-500 transition-transform duration-100 will-change-transform', className)}
+      className={cn('text-sm text-zinc-500 dark:text-zinc-400 transition-transform duration-100 will-change-transform', className)}
       onPointerMove={(e) => {
         if (reduced) return
         const now = performance.now()

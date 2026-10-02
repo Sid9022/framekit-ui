@@ -86,9 +86,10 @@ export function RailBloomSidebar({
                     'relative flex h-10 w-full items-center gap-3 rounded-xl px-3 text-left text-sm transition',
                     selected
                       ? 'text-zinc-900 dark:text-zinc-50'
-                      : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200',
+                      : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200',
                   )}
                   aria-current={selected ? 'page' : undefined}
+                  aria-label={item.label}
                 >
                   <span
                     className={cn(

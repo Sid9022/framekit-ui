@@ -240,8 +240,8 @@ export function OrigamiUnfoldCard({
                 </motion.g>
               ))}
             </svg>
-            <span className="absolute left-4 top-3 font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500">1 : 25 000</span>
-            <span className="absolute right-4 top-3 text-[11px] font-semibold text-zinc-500">N ↑</span>
+            <span className="absolute left-4 top-3 font-mono text-[10px] uppercase tracking-[0.18em] text-zinc-500 dark:text-zinc-400">1 : 25 000</span>
+            <span className="absolute right-4 top-3 text-[11px] font-semibold text-zinc-500 dark:text-zinc-400">N ↑</span>
             <motion.div className="pointer-events-none absolute inset-0 bg-white" style={{ opacity: light2 }} />
           </Face>
           <Face back className="bg-[#e9e2d4] dark:bg-[#222329]">
@@ -285,7 +285,7 @@ export function OrigamiUnfoldCard({
                   tabIndex={open ? 0 : -1}
                   className={cn(
                     'mt-auto inline-flex h-10 items-center justify-center gap-2 rounded-xl text-[13px] font-medium outline-none transition active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900',
-                    action === 'done' ? 'bg-emerald-500 text-white' : action === 'error' ? 'bg-rose-500 text-white' : 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900',
+                    action === 'done' ? 'bg-emerald-700 text-white' : action === 'error' ? 'bg-rose-500 text-white' : 'bg-zinc-900 text-white dark:bg-white dark:text-zinc-900',
                   )}
                 >
                   {action === 'busy' ? <Loader2 className="h-4 w-4 animate-spin" /> : action === 'done' ? <Check className="h-4 w-4" /> : action === 'error' ? <RotateCcw className="h-4 w-4" /> : <Bookmark className="h-4 w-4" />}

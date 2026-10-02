@@ -58,7 +58,7 @@ export function AgentHandoffCard({ className }: { className?: string }) {
             {phase === 'connecting' && 'Connecting you…'}
             {phase === 'connected' && 'Maya · Live agent'}
           </p>
-          <p className="text-xs text-zinc-500">
+          <p className="text-xs text-zinc-500 dark:text-zinc-400">
             {phase === 'bot' && 'I can hand you to a human anytime.'}
             {phase === 'connecting' && 'Finding the next available specialist.'}
             {phase === 'connected' && 'Typically replies in under a minute.'}

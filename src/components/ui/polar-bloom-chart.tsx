@@ -207,9 +207,9 @@ export function PolarBloomChart({
       <div className="flex w-full items-center justify-between">
         <div>
           <div className="text-sm font-semibold text-zinc-900 dark:text-white">{title}</div>
-          <div className="text-xs text-zinc-500">Last 12 months</div>
+          <div className="text-xs text-zinc-500 dark:text-zinc-400">Last 12 months</div>
         </div>
-        <button type="button" onClick={replay} className="rounded-full px-2.5 py-1 text-[11px] font-medium text-zinc-500 outline-none ring-1 ring-black/10 transition hover:text-zinc-800 focus-visible:ring-2 focus-visible:ring-sky-500 dark:ring-white/10 dark:hover:text-zinc-200">
+        <button type="button" onClick={replay} className="rounded-full px-2.5 py-1 text-[11px] font-medium text-zinc-500 dark:text-zinc-400 outline-none ring-1 ring-black/10 transition hover:text-zinc-800 focus-visible:ring-2 focus-visible:ring-sky-500 dark:ring-white/10 dark:hover:text-zinc-200">
           Replay bloom
         </button>
       </div>
@@ -223,7 +223,7 @@ export function PolarBloomChart({
         onKeyDown={onKey}
         onBlur={() => setActive(null)}
       >
-        <svg viewBox={`0 0 ${size} ${size}`} className="h-full w-full overflow-visible" role="list" aria-label={cur?.label}>
+        <svg viewBox={`0 0 ${size} ${size}`} className="h-full w-full overflow-visible">
           {/* rings */}
           {[0.25, 0.5, 0.75, 1].map((k) => (
             <circle key={k} cx={c} cy={c} r={size * 0.1 + (size * 0.34) * k} fill="none" className="stroke-black/[0.06] dark:stroke-white/[0.07]" strokeDasharray={k === 1 ? undefined : '2 4'} />
@@ -308,7 +308,7 @@ export function PolarBloomChart({
                 setSi(i)
                 setAnnounce(`${s.label} selected`)
               }}
-              className={cn('relative rounded-full px-3 py-1.5 text-[11px] font-medium outline-none focus-visible:ring-2 focus-visible:ring-sky-500', si === i ? 'text-zinc-900 dark:text-white' : 'text-zinc-500 hover:text-zinc-800 dark:hover:text-zinc-200')}
+              className={cn('relative rounded-full px-3 py-1.5 text-[11px] font-medium outline-none focus-visible:ring-2 focus-visible:ring-sky-500', si === i ? 'text-zinc-900 dark:text-white' : 'text-zinc-500 dark:text-zinc-400 hover:text-zinc-800 dark:hover:text-zinc-200')}
             >
               {si === i && <motion.span layoutId={id + 'ds'} className="absolute inset-0 rounded-full bg-white shadow-sm dark:bg-white/10" transition={{ type: 'spring', stiffness: 420, damping: 32 }} />}
               <span className="relative">{s.label}</span>

@@ -2484,6 +2484,7 @@
       ],
       "registryDependencies": [
         "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
         "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
       ],
       "files": [
@@ -4268,7 +4269,8 @@
       "title": "Tabs",
       "description": "Keyboard-friendly tabbed panels.",
       "registryDependencies": [
-        "https://framekit-ui.vercel.app/r/cn.json"
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json"
       ],
       "files": [
         {
