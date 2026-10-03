@@ -223,7 +223,7 @@ import { PortfolioStudioTemplate } from '@/components/ui/portfolio-studio-templa
 import { PortfolioDeveloperTemplate } from '@/components/ui/portfolio-developer-template'
 import { RotateCcw } from 'lucide-react'
 import { handleTablistKeys } from '@/lib/roving'
-import { PortfolioArt } from '@/lib/portfolio-art'
+import { PortfolioArt, SAMPLE_PROJECTS } from '@/lib/portfolio-art'
 import { TumblerLockOtp } from '@/components/ui/tumbler-lock-otp'
 import { CrystalStrengthPassword } from '@/components/ui/crystal-strength-password'
 import { OrigamiUnfoldCard } from '@/components/ui/origami-unfold-card'
@@ -252,6 +252,12 @@ import { ScrollTextFill } from '@/components/ui/scroll-text-fill'
 import { XrayLensCursor } from '@/components/ui/xray-lens-cursor'
 import { CharmText } from '@/components/ui/charm-text'
 import { BigTypeFooter } from '@/components/ui/big-type-footer'
+import { GrainGradientField } from '@/components/ui/grain-gradient-field'
+import { ThemeRevealToggle } from '@/components/ui/theme-reveal-toggle'
+import { MiniDesktopOS } from '@/components/ui/mini-desktop-os'
+import { LoginGateIntro } from '@/components/ui/login-gate-intro'
+import { RouteChooserHero } from '@/components/ui/route-chooser-hero'
+import { DiscoveryScene } from '@/components/ui/discovery-scene'
 // p2-imports:end
 
 
@@ -1290,6 +1296,75 @@ function CharmDemo() {
   )
 }
 
+function GrainGradientFieldDemo() {
+  const [pal, setPal] = React.useState<'aurora' | 'ember' | 'lagoon' | 'orchid'>('aurora')
+  const pals = ['aurora', 'ember', 'lagoon', 'orchid'] as const
+  return (
+    <div className="w-full max-w-4xl">
+      <GrainGradientField palette={pal} className="min-h-[380px]">
+        <div className="flex min-h-[380px] flex-col items-center justify-center px-5 py-10 text-center">
+          <div className="max-w-lg rounded-3xl border border-white/60 bg-white/70 p-6 shadow-sm backdrop-blur-md dark:border-white/10 dark:bg-zinc-950/60 sm:p-8">
+            <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-600 dark:text-zinc-400">Backgrounds / grain gradient</p>
+            <h3 className="mt-3 font-display text-4xl leading-[1.05] text-zinc-950 dark:text-zinc-50 sm:text-5xl">Colour with a little tooth.</h3>
+            <p className="mt-3 text-sm text-zinc-700 dark:text-zinc-300">Four slow blobs, real film grain and a light that follows you.</p>
+            <div role="radiogroup" aria-label="Palette" className="mt-5 flex flex-wrap justify-center gap-2">
+              {pals.map((p) => (
+                <button key={p} type="button" role="radio" aria-checked={pal === p} onClick={() => setPal(p)} className={'min-h-11 rounded-full border px-4 text-sm font-medium capitalize outline-none transition-colors focus-visible:ring-2 focus-visible:ring-signal-600 dark:focus-visible:ring-signal-300 ' + (pal === p ? 'border-zinc-950 bg-zinc-950 text-white dark:border-zinc-50 dark:bg-zinc-50 dark:text-zinc-950' : 'border-zinc-300 bg-white/70 text-zinc-900 hover:bg-white dark:border-zinc-700 dark:bg-zinc-900/70 dark:text-zinc-100')}>{p}</button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </GrainGradientField>
+    </div>
+  )
+}
+
+function ThemeRevealToggleDemo() {
+  const [dark, setDark] = React.useState(false)
+  return (
+    <div className={(dark ? 'dark' : 'light') + ' w-full max-w-xl overflow-hidden rounded-3xl border border-zinc-200 dark:border-zinc-800'}>
+      <div className="bg-stone-50 p-6 text-zinc-950 dark:bg-zinc-950 dark:text-zinc-50 sm:p-8">
+        <div className="flex items-center justify-between gap-4">
+          <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-zinc-600 dark:text-zinc-400">Preview / {dark ? 'night' : 'day'}</p>
+          <ThemeRevealToggle checked={dark} onCheckedChange={setDark} aria-label="Dark mode for this preview" />
+        </div>
+        <h3 className="mt-6 font-display text-4xl leading-[1.05] sm:text-5xl">{dark ? 'Lights down, work up.' : 'Morning, everyone.'}</h3>
+        <p className="mt-3 max-w-md text-sm text-zinc-700 dark:text-zinc-300">The change blooms out of the switch as a circle. With reduced motion it simply swaps.</p>
+        <div className="mt-6 flex gap-2">
+          <span className="rounded-full bg-zinc-950 px-4 py-2 text-sm font-medium text-white dark:bg-zinc-50 dark:text-zinc-950">Primary</span>
+          <span className="rounded-full border border-zinc-300 px-4 py-2 text-sm font-medium dark:border-zinc-700">Secondary</span>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function MiniDesktopDemo({ open = ['about'] }: { open?: string[] }) {
+  const apps = [
+    { id: 'about', title: 'About', icon: <P2User className="size-5" />, tone: 'sky' as const, size: { w: 360, h: 260 }, content: (
+      <div className="space-y-2"><p className="font-display text-2xl leading-tight">Hello — I build calm, quick interfaces.</p><p className="text-zinc-600 dark:text-zinc-400">Ten years across product design and front-end. Currently open to one or two new collaborations.</p></div>
+    ) },
+    { id: 'work', title: 'Work', icon: <P2Folder className="size-5" />, tone: 'amber' as const, size: { w: 420, h: 300 }, content: (
+      <ul className="grid grid-cols-2 gap-3">{SAMPLE_PROJECTS.slice(0, 4).map((p) => (<li key={p.id} className="overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800"><div className="aspect-[4/3]"><PortfolioArt seed={p.seed} /></div><p className="px-2 py-1.5 text-xs font-medium">{p.title}</p></li>))}</ul>
+    ) },
+    { id: 'notes', title: 'Notes', icon: <P2Pen className="size-5" />, tone: 'emerald' as const, size: { w: 340, h: 250 }, content: (
+      <ul className="list-disc space-y-1.5 pl-4 text-zinc-700 dark:text-zinc-300"><li>Ship the small thing today.</li><li>Easing is half the personality.</li><li>Write the empty state first.</li></ul>
+    ) },
+    { id: 'mail', title: 'Mail', icon: <P2Mail className="size-5" />, tone: 'rose' as const, size: { w: 340, h: 220 }, content: (
+      <div className="space-y-3"><p>Say hello — replies within a day.</p><a href="mailto:hello@example.com" className="inline-flex min-h-11 items-center rounded-full bg-zinc-950 px-4 text-sm font-medium text-white outline-none focus-visible:ring-2 focus-visible:ring-signal-600 dark:bg-zinc-50 dark:text-zinc-950">hello@example.com</a></div>
+    ) },
+  ]
+  return <MiniDesktopOS apps={apps} defaultOpen={open} />
+}
+
+function LoginGateDemo() {
+  return (
+    <LoginGateIntro name="Guest Studio" role="Design engineer" className="max-w-5xl" onEnter={() => undefined}>
+      <MiniDesktopDemo open={['about', 'work']} />
+    </LoginGateIntro>
+  )
+}
+
 const portfolio2Demos: Record<string, React.ReactNode> = {
   'year-activity-grid': <YearActivityGrid />,
   'now-playing-widget': <NowPlayingWidget />,
@@ -1307,6 +1382,12 @@ const portfolio2Demos: Record<string, React.ReactNode> = {
   'xray-lens-cursor': <XrayDemo />,
   'charm-text': <CharmDemo />,
   'big-type-footer': <BigTypeFooter timeZone="Europe/Lisbon" />,
+  'grain-gradient-field': <GrainGradientFieldDemo />,
+  'theme-reveal-toggle': <ThemeRevealToggleDemo />,
+  'mini-desktop-os': <MiniDesktopDemo />,
+  'login-gate-intro': <LoginGateDemo />,
+  'route-chooser-hero': <RouteChooserHero />,
+  'discovery-scene': <DiscoveryScene />,
 }
 // p2-demos:end
 

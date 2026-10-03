@@ -252,6 +252,12 @@ import scrollTextFillSrc from '../components/ui/scroll-text-fill.tsx?raw'
 import xrayLensCursorSrc from '../components/ui/xray-lens-cursor.tsx?raw'
 import charmTextSrc from '../components/ui/charm-text.tsx?raw'
 import bigTypeFooterSrc from '../components/ui/big-type-footer.tsx?raw'
+import grainGradientFieldSrc from '../components/ui/grain-gradient-field.tsx?raw'
+import themeRevealToggleSrc from '../components/ui/theme-reveal-toggle.tsx?raw'
+import miniDesktopOsSrc from '../components/ui/mini-desktop-os.tsx?raw'
+import loginGateIntroSrc from '../components/ui/login-gate-intro.tsx?raw'
+import routeChooserHeroSrc from '../components/ui/route-chooser-hero.tsx?raw'
+import discoverySceneSrc from '../components/ui/discovery-scene.tsx?raw'
 // p2-imports:end
 
 export const sources: Record<string, string> = {
@@ -505,5 +511,11 @@ export const sources: Record<string, string> = {
   'xray-lens-cursor': xrayLensCursorSrc,
   'charm-text': charmTextSrc,
   'big-type-footer': bigTypeFooterSrc,
+  'grain-gradient-field': grainGradientFieldSrc,
+  'theme-reveal-toggle': themeRevealToggleSrc,
+  'mini-desktop-os': miniDesktopOsSrc,
+  'login-gate-intro': loginGateIntroSrc,
+  'route-chooser-hero': routeChooserHeroSrc,
+  'discovery-scene': discoverySceneSrc,
   // p2-entries:end
 }
