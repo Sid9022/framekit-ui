@@ -10,6 +10,7 @@
 - Core UI: Button, Badge, Card, Input, Dialog, Tabs, Toast, and more
 - Animated originals: Magnetic Button, Spotlight Card, Scramble Text, Magnify Dock, Pixel Reveal, Ink Ripple Grid, …
 - **Portfolio kit** — 22 premium portfolio components (case-study scroll, project reveal list, filter gallery, lightbox, before/after slider, career timeline, impact stats, contact form, social dock, intro preloader, …), 2 full-page templates (Studio Folio, Dev Folio) and 6 new heroes (kinetic name, spotlight reveal, depth parallax, role morph, photo strip, terminal)
+- **Portfolio kit II** — 22 more originals inspired by premium personal sites: bento profile board with live widgets, command menu, island section nav, sticky card stack, pinned horizontal project reel, scroll text fill, x-ray lens cursor, charm text, big-type footer, grain gradient field, theme reveal toggle, mini desktop OS + login gate intro, route chooser hero, discovery scene, scatter desk collage, kudos wall, book-spine shelf, mesh project cards, year activity grid, now-playing widget, world-clock globe — 245 components in total
 - Live docs with Preview / Code tabs (source loaded via Vite `?raw`)
 - Dark mode, command palette (`⌘K`), HashRouter static hosting
 
