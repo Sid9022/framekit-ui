@@ -243,6 +243,15 @@ import { ScatterDeskCollage } from '@/components/ui/scatter-desk-collage'
 import { KudosWall } from '@/components/ui/kudos-wall'
 import { BookSpineShelf } from '@/components/ui/book-spine-shelf'
 import { MeshProjectCards } from '@/components/ui/mesh-project-cards'
+import { CommandMenu } from '@/components/ui/command-menu'
+import { Home as P2Home, Briefcase as P2Briefcase, User as P2User, PenLine as P2Pen, FolderOpen as P2Folder, Mail as P2Mail, Moon as P2Moon, FileDown as P2FileDown, ExternalLink as P2Ext, Layers as P2Layers, MessageCircle as P2Chat } from 'lucide-react'
+import { IslandSectionNav } from '@/components/ui/island-section-nav'
+import { StickyCardStack } from '@/components/ui/sticky-card-stack'
+import { PinnedProjectReel } from '@/components/ui/pinned-project-reel'
+import { ScrollTextFill } from '@/components/ui/scroll-text-fill'
+import { XrayLensCursor } from '@/components/ui/xray-lens-cursor'
+import { CharmText } from '@/components/ui/charm-text'
+import { BigTypeFooter } from '@/components/ui/big-type-footer'
 // p2-imports:end
 
 
@@ -987,7 +996,7 @@ function PolarBloomDemo() {
 function PfScrollFrame({ label, height = 520, children }: { label: string; height?: number; children: (ref: React.RefObject<HTMLDivElement | null>) => React.ReactNode }) {
   const ref = React.useRef<HTMLDivElement>(null)
   return (
-    <div ref={ref} role="region" aria-label={label} tabIndex={0} style={{ height }} className="w-full max-w-4xl overflow-y-auto overscroll-contain rounded-2xl border border-zinc-200 bg-stone-50 p-4 sm:p-8 dark:border-zinc-800 dark:bg-zinc-950">
+    <div ref={ref} role="region" aria-label={label} tabIndex={0} style={{ height }} className="relative w-full max-w-4xl overflow-y-auto overscroll-contain rounded-2xl border border-zinc-200 bg-stone-50 p-4 sm:p-8 dark:border-zinc-800 dark:bg-zinc-950">
       {children(ref)}
     </div>
   )
@@ -1153,7 +1162,133 @@ const portfolioDemos: Record<string, React.ReactNode> = {
 }
 
 // p2-demos:start
+function CommandMenuDemo() {
+  const [last, setLast] = React.useState('Open the palette (click, or press Ctrl/⌘ J — the docs shell owns ⌘ K) and pick something.')
+  const items = React.useMemo(() => [
+    { id: 'home', label: 'Go to Home', group: 'Navigate', keywords: ['start', 'top'], shortcut: ['G', 'H'], icon: <P2Home className="size-4" /> },
+    { id: 'work', label: 'Selected work', group: 'Navigate', keywords: ['projects', 'portfolio', 'case studies'], shortcut: ['G', 'W'], icon: <P2Briefcase className="size-4" /> },
+    { id: 'about', label: 'About me', group: 'Navigate', keywords: ['bio', 'story'], shortcut: ['G', 'A'], icon: <P2User className="size-4" /> },
+    { id: 'writing', label: 'Writing & notes', group: 'Navigate', keywords: ['blog', 'articles'], icon: <P2Pen className="size-4" /> },
+    { id: 'p1', label: 'Fieldnotes for Trails', group: 'Projects', hint: 'case study', keywords: ['pwa', 'offline'], icon: <P2Folder className="size-4" /> },
+    { id: 'p2', label: 'Quill Pricing Lab', group: 'Projects', hint: 'case study', keywords: ['saas', 'stripe'], icon: <P2Layers className="size-4" /> },
+    { id: 'copy', label: 'Copy email address', group: 'Actions', keywords: ['mail', 'contact'], shortcut: ['C'], icon: <P2Mail className="size-4" /> },
+    { id: 'theme', label: 'Toggle theme', group: 'Actions', keywords: ['dark', 'light', 'mode'], shortcut: ['T'], icon: <P2Moon className="size-4" /> },
+    { id: 'cv', label: 'Download résumé', group: 'Actions', hint: 'PDF', keywords: ['cv'], icon: <P2FileDown className="size-4" /> },
+    { id: 'chat', label: 'Start a conversation', group: 'Elsewhere', keywords: ['hire', 'call'], icon: <P2Chat className="size-4" /> },
+    { id: 'gh', label: 'Open GitHub', group: 'Elsewhere', hint: 'external', keywords: ['code', 'repo'], icon: <P2Ext className="size-4" /> },
+  ], [])
+  return (
+    <div className="flex w-full max-w-md flex-col items-center gap-4">
+      <CommandMenu hotkey="j" items={items} onSelect={(it) => setLast(`Ran “${it.label}”`)} />
+      <p role="status" aria-live="polite" className="text-center text-sm text-zinc-700 dark:text-zinc-300">{last}</p>
+    </div>
+  )
+}
 
+function IslandNavDemo() {
+  const secs = [
+    { id: 'isl-intro', label: 'Intro', icon: <P2Home />, seed: 3, t: 'Hello, I make interfaces feel inevitable.' },
+    { id: 'isl-work', label: 'Work', icon: <P2Briefcase />, seed: 11, t: 'Selected work from the last three years.' },
+    { id: 'isl-notes', label: 'Notes', icon: <P2Pen />, seed: 19, t: 'Short essays on motion, type and craft.' },
+    { id: 'isl-contact', label: 'Contact', icon: <P2Mail />, seed: 26, t: 'Say hello — I reply within a day.' },
+  ]
+  return (
+    <PfScrollFrame label="Island nav preview (scrollable)" height={500}>
+      {(ref) => (
+        <div className="mx-auto max-w-2xl">
+          {secs.map((s, i) => (
+            <section key={s.id} id={s.id} className="scroll-mt-2 pb-8">
+              <div className="overflow-hidden rounded-3xl border border-zinc-200 bg-white dark:border-zinc-800 dark:bg-zinc-900">
+                <div className="h-40 sm:h-48"><PortfolioArt seed={s.seed} /></div>
+                <div className="p-6"><p className="font-mono text-xs text-zinc-600 dark:text-zinc-400">0{i + 1} / {s.label}</p><h2 className="mt-2 font-display text-3xl leading-tight text-zinc-950 dark:text-zinc-50">{s.t}</h2></div>
+              </div>
+            </section>
+          ))}
+          <IslandSectionNav sections={secs.map(({ id, label, icon }) => ({ id, label, icon }))} scrollContainer={ref} />
+        </div>
+      )}
+    </PfScrollFrame>
+  )
+}
+
+function StickyStackDemo() {
+  return (
+    <PfScrollFrame label="Sticky card stack preview (scrollable)" height={560}>
+      {(ref) => (
+        <div className="mx-auto max-w-3xl">
+          <p className="pb-6 text-center text-sm text-zinc-700 dark:text-zinc-300">Scroll — each card pins and the one below slides over it ↓</p>
+          <StickyCardStack scrollContainer={ref} cardHeight={340} titleAs="h2" />
+          <p className="pb-8 pt-4 text-center text-sm text-zinc-700 dark:text-zinc-300">That&rsquo;s the stack.</p>
+        </div>
+      )}
+    </PfScrollFrame>
+  )
+}
+
+function PinnedReelDemo() {
+  return (
+    <PfScrollFrame label="Pinned project reel preview (scrollable)" height={520}>
+      {(ref) => (
+        <div className="-mx-4 -my-4 sm:-mx-8 sm:-my-8">
+          <p className="px-6 py-10 text-center text-sm text-zinc-700 dark:text-zinc-300">Scroll down — the reel pins and slides sideways ↓</p>
+          <PinnedProjectReel scrollContainer={ref} height={440} titleAs="h2" />
+          <p className="px-6 py-16 text-center text-sm text-zinc-700 dark:text-zinc-300">…and releases the page again.</p>
+        </div>
+      )}
+    </PfScrollFrame>
+  )
+}
+
+function ScrollTextFillDemo() {
+  return (
+    <PfScrollFrame label="Scroll text fill preview (scrollable)" height={480}>
+      {(ref) => (
+        <div className="mx-auto max-w-3xl">
+          <p className="pb-48 pt-24 text-center text-sm text-zinc-700 dark:text-zinc-300">Scroll ↓ — the words light up as you read.</p>
+          <ScrollTextFill scrollContainer={ref} />
+          <div className="h-72" aria-hidden />
+        </div>
+      )}
+    </PfScrollFrame>
+  )
+}
+
+function XrayPoster({ bp }: { bp: boolean }) {
+  const label = bp ? 'text-sky-300' : 'text-zinc-600 dark:text-zinc-400'
+  return (
+    <div className={`relative grid min-h-[400px] gap-6 p-6 sm:grid-cols-2 sm:p-10 ${bp ? 'bg-[#0a2540] text-sky-100 [background-image:linear-gradient(rgba(125,211,252,.2)_1px,transparent_1px),linear-gradient(90deg,rgba(125,211,252,.2)_1px,transparent_1px)] [background-size:24px_24px]' : 'bg-white text-zinc-950 dark:bg-zinc-900 dark:text-zinc-50'}`}>
+      <div className="flex flex-col justify-center gap-4">
+        <p className={`font-mono text-xs uppercase tracking-[0.2em] ${label}`}>{bp ? '[ label · 12px · +0.2em ]' : 'Studio notes — volume 04'}</p>
+        <h2 className={`font-display text-5xl leading-[0.95] tracking-tight sm:text-6xl ${bp ? 'text-transparent [-webkit-text-stroke:1px_#7dd3fc]' : ''}`}>Design is how it works.</h2>
+        <p className={`max-w-sm text-base leading-relaxed ${bp ? 'text-sky-200' : 'text-zinc-700 dark:text-zinc-300'}`}>Every surface here is drawn twice — once for people, once for the people who build it. Move the lens to see the bones.</p>
+        <div className="flex gap-3">
+          <span className={`inline-flex min-h-11 items-center rounded-full px-5 text-sm font-medium ${bp ? 'border border-dashed border-sky-300 text-sky-200' : 'bg-zinc-950 text-white dark:bg-zinc-50 dark:text-zinc-950'}`}>Read the notes</span>
+          <span className={`inline-flex min-h-11 items-center rounded-full border px-5 text-sm font-medium ${bp ? 'border-dashed border-sky-300 text-sky-200' : 'border-zinc-300 dark:border-zinc-600'}`}>Archive</span>
+        </div>
+      </div>
+      <div className={`relative min-h-48 overflow-hidden rounded-3xl ${bp ? 'border border-dashed border-sky-300' : ''}`}>
+        <div className={bp ? 'opacity-0' : ''}><PortfolioArt seed={14} /></div>
+        {bp && <><span className="absolute inset-0 [background:linear-gradient(to_top_right,transparent_calc(50%-1px),#7dd3fc_50%,transparent_calc(50%+1px)),linear-gradient(to_bottom_right,transparent_calc(50%-1px),#7dd3fc_50%,transparent_calc(50%+1px))] opacity-50" /><span className="absolute bottom-3 left-3 rounded bg-[#0a2540] px-2 py-1 font-mono text-[10px] text-sky-200">image · 4:3 · radius 24</span></>}
+      </div>
+    </div>
+  )
+}
+
+function XrayDemo() {
+  return <XrayLensCursor reveal={<XrayPoster bp />}><XrayPoster bp={false} /></XrayLensCursor>
+}
+
+function CharmDemo() {
+  return (
+    <div className="flex w-full max-w-2xl flex-col gap-10">
+      <CharmText as="h2" />
+      <CharmText variant="chip" className="text-[1.9rem] sm:text-[2.4rem]" segments={[
+        'Currently building with ', { text: 'Motion', glyph: 'bolt', tone: 'amber', hint: 'animation library' }, ' and ', { text: 'Tailwind', glyph: 'drop', tone: 'sky', hint: 'styling' },
+        ', shipping to ', { text: 'Postgres', glyph: 'leaf', tone: 'emerald', hint: 'database' }, ' by day and writing for the ', { text: 'night', glyph: 'moon', tone: 'violet', hint: 'side projects' }, ' crowd.',
+      ]} />
+    </div>
+  )
+}
 
 const portfolio2Demos: Record<string, React.ReactNode> = {
   'year-activity-grid': <YearActivityGrid />,
@@ -1164,6 +1299,14 @@ const portfolio2Demos: Record<string, React.ReactNode> = {
   'kudos-wall': <KudosWall />,
   'book-spine-shelf': <BookSpineShelf />,
   'mesh-project-cards': <MeshProjectCards titleAs="h2" />,
+  'command-menu': <CommandMenuDemo />,
+  'island-section-nav': <IslandNavDemo />,
+  'sticky-card-stack': <StickyStackDemo />,
+  'pinned-project-reel': <PinnedReelDemo />,
+  'scroll-text-fill': <ScrollTextFillDemo />,
+  'xray-lens-cursor': <XrayDemo />,
+  'charm-text': <CharmDemo />,
+  'big-type-footer': <BigTypeFooter timeZone="Europe/Lisbon" />,
 }
 // p2-demos:end
 

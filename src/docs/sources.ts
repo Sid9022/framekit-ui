@@ -244,6 +244,14 @@ import scatterDeskCollageSrc from '../components/ui/scatter-desk-collage.tsx?raw
 import kudosWallSrc from '../components/ui/kudos-wall.tsx?raw'
 import bookSpineShelfSrc from '../components/ui/book-spine-shelf.tsx?raw'
 import meshProjectCardsSrc from '../components/ui/mesh-project-cards.tsx?raw'
+import commandMenuSrc from '../components/ui/command-menu.tsx?raw'
+import islandSectionNavSrc from '../components/ui/island-section-nav.tsx?raw'
+import stickyCardStackSrc from '../components/ui/sticky-card-stack.tsx?raw'
+import pinnedProjectReelSrc from '../components/ui/pinned-project-reel.tsx?raw'
+import scrollTextFillSrc from '../components/ui/scroll-text-fill.tsx?raw'
+import xrayLensCursorSrc from '../components/ui/xray-lens-cursor.tsx?raw'
+import charmTextSrc from '../components/ui/charm-text.tsx?raw'
+import bigTypeFooterSrc from '../components/ui/big-type-footer.tsx?raw'
 // p2-imports:end
 
 export const sources: Record<string, string> = {
@@ -489,5 +497,13 @@ export const sources: Record<string, string> = {
   'kudos-wall': kudosWallSrc,
   'book-spine-shelf': bookSpineShelfSrc,
   'mesh-project-cards': meshProjectCardsSrc,
+  'command-menu': commandMenuSrc,
+  'island-section-nav': islandSectionNavSrc,
+  'sticky-card-stack': stickyCardStackSrc,
+  'pinned-project-reel': pinnedProjectReelSrc,
+  'scroll-text-fill': scrollTextFillSrc,
+  'xray-lens-cursor': xrayLensCursorSrc,
+  'charm-text': charmTextSrc,
+  'big-type-footer': bigTypeFooterSrc,
   // p2-entries:end
 }
