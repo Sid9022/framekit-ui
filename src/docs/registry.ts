@@ -776,6 +776,33 @@ export const DOCS: DocEntry[] = [
     { name: 'frameHeight', type: 'number', default: '680', description: 'Height of the scroll frame (0 = render as a normal page).' },
     { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
   ] },
+  // p2:start
+  { slug: 'year-activity-grid', title: 'Year Activity Grid', description: 'A contribution calendar that blooms in on a diagonal wave, lights a crosshair of the hovered weekday and week, floats a readout above the day and reports streaks. Fully arrow-key navigable.', category: 'Portfolio', unique: true, isNew: true, dependencies: [], gesture: 'Hover a day, or Tab in and use the arrow keys to walk the calendar.', props: [
+    { name: 'data', type: '{ date: string; count: number }[]', default: 'generated year', description: 'One entry per day (yyyy-mm-dd). Omit to render a deterministic generated year.' },
+    { name: 'endDate', type: 'string | Date', default: 'today', description: 'Last day shown.' },
+    { name: 'weeks', type: 'number', default: '53', description: 'Week columns (12–53).' },
+    { name: 'tone', type: "'signal' | 'mint' | 'ember' | 'ink'", default: "'signal'", description: 'Colour ramp; level 0 is always neutral.' },
+    { name: 'title / unit', type: 'string', default: "'Shipping rhythm' / 'contributions'", description: 'Heading label and the noun used in the summary.' },
+    { name: 'seed', type: 'number', default: '7', description: 'Seed for the generated demo data.' },
+    { name: 'onSelect', type: '(day) => void', description: 'Fires when a day is clicked or activated.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  { slug: 'now-playing-widget', title: 'Now Playing Widget', description: 'A vinyl slides out of a generated sleeve and spins as a tonearm settles on it, an EQ breathes beside the title and progress ticks live with a scrubbable seek bar. Visual only — wire it to your own player.', category: 'Widgets', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Press play/pause — the record slides and the tonearm lifts; drag the bar to seek.', props: [
+    { name: 'tracks', type: '{ title, artist, duration, seed?, src? }[]', default: '4 sample tracks', description: 'Playlist; duration in seconds. Without src, sleeve art is generated from seed.' },
+    { name: 'playing / defaultPlaying', type: 'boolean', default: 'true', description: 'Controlled / uncontrolled play state.' },
+    { name: 'onPlayingChange', type: '(playing: boolean) => void', description: 'Fires on play/pause.' },
+    { name: 'onTrackChange', type: '(track, index) => void', description: 'Fires when the track changes (including auto-advance).' },
+    { name: 'playingLabel / pausedLabel', type: 'string', default: "'Now playing' / 'Paused'", description: 'Eyebrow copy.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  { slug: 'world-clock-globe', title: 'World Clock Globe', description: 'A dotted planet you can spin, lit by the real sun — the night side dims along a live terminator, a 24-hour ring tracks the chosen city and every card ticks its own local time. Canvas 2D, no map tiles.', category: 'Widgets', unique: true, isNew: true, dependencies: [], gesture: 'Drag the globe, or pick a city — it rotates to face it.', props: [
+    { name: 'cities', type: '{ id, name, tz, lat, lon, note? }[]', default: '6 cities', description: 'Pins; tz is an IANA zone used for the live clock.' },
+    { name: 'value / defaultValue', type: 'string', default: 'first city', description: 'Controlled / uncontrolled selected city id.' },
+    { name: 'onValueChange', type: '(id: string) => void', description: 'Fires when a city is chosen.' },
+    { name: 'theme', type: "'auto' | 'light' | 'dark'", default: "'auto'", description: 'auto follows the nearest .dark / .light ancestor.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  // p2:end
 ]
 
 export const gettingStarted = DOCS.filter((d) => d.category === 'Getting Started')

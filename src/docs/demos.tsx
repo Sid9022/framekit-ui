@@ -234,6 +234,11 @@ import { IronFilingsField } from '@/components/ui/iron-filings-field'
 import { PullCordLampToggle } from '@/components/ui/pull-cord-lamp-toggle'
 import { SeatScalePricing } from '@/components/ui/seat-scale-pricing'
 import { PolarBloomChart, DEFAULT_POLAR_SERIES } from '@/components/ui/polar-bloom-chart'
+// p2-imports:start
+import { YearActivityGrid } from '@/components/ui/year-activity-grid'
+import { NowPlayingWidget } from '@/components/ui/now-playing-widget'
+import { WorldClockGlobe } from '@/components/ui/world-clock-globe'
+// p2-imports:end
 
 
 
@@ -1142,6 +1147,16 @@ const portfolioDemos: Record<string, React.ReactNode> = {
   'terminal-dev-hero': <TerminalDevHero className="max-w-3xl" />,
 }
 
+// p2-demos:start
+
+
+const portfolio2Demos: Record<string, React.ReactNode> = {
+  'year-activity-grid': <YearActivityGrid />,
+  'now-playing-widget': <NowPlayingWidget />,
+  'world-clock-globe': <WorldClockGlobe />,
+}
+// p2-demos:end
+
 export const demos: Record<string, React.ReactNode> = {
   button: (
     <div className="flex flex-wrap items-center justify-center gap-3">
@@ -1952,4 +1967,5 @@ export const demos: Record<string, React.ReactNode> = {
   'seat-scale-pricing': <SeatScaleDemo />,
   'polar-bloom-chart': <PolarBloomDemo />,
   ...portfolioDemos,
+  ...portfolio2Demos,
 }

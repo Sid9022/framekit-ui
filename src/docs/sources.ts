@@ -235,6 +235,11 @@ import scrollRevealSrc from '../components/ui/scroll-reveal.tsx?raw'
 import portfolioStudioTemplateSrc from '../components/ui/portfolio-studio-template.tsx?raw'
 import portfolioDeveloperTemplateSrc from '../components/ui/portfolio-developer-template.tsx?raw'
 import portfolioArtSrc from '../lib/portfolio-art.tsx?raw'
+// p2-imports:start
+import yearActivityGridSrc from '../components/ui/year-activity-grid.tsx?raw'
+import nowPlayingWidgetSrc from '../components/ui/now-playing-widget.tsx?raw'
+import worldClockGlobeSrc from '../components/ui/world-clock-globe.tsx?raw'
+// p2-imports:end
 
 export const sources: Record<string, string> = {
   button: buttonSrc,
@@ -470,4 +475,9 @@ export const sources: Record<string, string> = {
   'scroll-reveal': scrollRevealSrc,
   'portfolio-studio-template': portfolioStudioTemplateSrc,
   'portfolio-developer-template': portfolioDeveloperTemplateSrc,
+  // p2-entries:start
+  'year-activity-grid': yearActivityGridSrc,
+  'now-playing-widget': nowPlayingWidgetSrc,
+  'world-clock-globe': worldClockGlobeSrc,
+  // p2-entries:end
 }
