@@ -3,7 +3,7 @@ import { AnimatePresence, motion, useMotionValueEvent, useScroll, useSpring } fr
 import { cn } from '@/lib/cn'
 import { usePrefersReducedMotion } from '@/lib/use-reduced-motion'
 
-export type IslandSection = { id: string; label: string; icon: React.ReactNode }
+export type IslandSection = { id: string; label: string; icon?: React.ReactNode }
 
 export type IslandSectionNavProps = {
   sections: IslandSection[]

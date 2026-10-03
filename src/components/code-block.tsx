@@ -52,7 +52,7 @@ function accessible(theme: PrismTheme, dark: boolean): PrismTheme {
   const fix = (color?: string) => {
     if (!color || !parse(color)) return color
     let c = color
-    for (let i = 0; i < 20 && ratio(c, bg) < 4.5; i++) c = toward(c, dark ? 255 : 0, 0.08)
+    for (let i = 0; i < 20 && ratio(c, bg) < 4.8; i++) c = toward(c, dark ? 255 : 0, 0.08)
     return c
   }
   return {
