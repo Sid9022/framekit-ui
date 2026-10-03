@@ -61,6 +61,7 @@ function Letter({ ch, index, mx, my, radius, ready, reduced }: { ch: string; ind
  */
 export function KineticNameHero({ name = 'Nova Reyes', role = 'Design engineer & motion designer', intro = 'I build calm, tactile interfaces for teams that care how software feels — from first sketch to the last 1% of polish.', ctaLabel = 'See selected work', onCta, secondaryLabel = 'About me', onSecondary, badge = 'Available · Autumn 2026 · ', radius = RADIUS, className }: KineticNameHeroProps) {
   const reduced = usePrefersReducedMotion()
+  const circId = `kn-circ-${React.useId().replace(/:/g, '')}`
   const root = React.useRef<HTMLElement>(null)
   const mx = useMotionValue(-9999)
   const my = useMotionValue(-9999)
@@ -94,8 +95,8 @@ export function KineticNameHero({ name = 'Nova Reyes', role = 'Design engineer &
         </motion.p>
         <div className="relative hidden h-24 w-24 shrink-0 sm:block" aria-hidden>
           <motion.svg viewBox="0 0 100 100" className="h-full w-full" animate={reduced ? undefined : { rotate: 360 }} transition={{ duration: 22, repeat: Infinity, ease: 'linear' }}>
-            <defs><path id="kn-circ" d="M50 50m-38 0a38 38 0 1 1 76 0a38 38 0 1 1-76 0" /></defs>
-            <text className="fill-zinc-800 text-[10.5px] font-semibold uppercase tracking-[0.22em] dark:fill-zinc-200"><textPath href="#kn-circ">{badge.repeat(2)}</textPath></text>
+            <defs><path id={circId} d="M50 50m-38 0a38 38 0 1 1 76 0a38 38 0 1 1-76 0" /></defs>
+            <text className="fill-zinc-800 text-[10.5px] font-semibold uppercase dark:fill-zinc-200"><textPath href={`#${circId}`} textLength="236" lengthAdjust="spacing">{badge.replace(/[\s·]+$/, '')} · </textPath></text>
           </motion.svg>
           <ArrowDownRight className="absolute inset-0 m-auto h-6 w-6 text-framekit-600 dark:text-framekit-400" />
         </div>
