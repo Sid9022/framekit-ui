@@ -40,6 +40,22 @@
       ]
     },
     {
+      "name": "roving",
+      "type": "registry:lib",
+      "title": "roving",
+      "description": "Framekit shared helper (roving).",
+      "files": [
+        {
+          "path": "src/lib/roving.ts",
+          "type": "registry:lib",
+          "target": "@lib/roving.ts"
+        }
+      ],
+      "categories": [
+        "lib"
+      ]
+    },
+    {
       "name": "toggle",
       "type": "registry:lib",
       "title": "useToggleState",
@@ -5240,6 +5256,549 @@
         "portfolio"
       ],
       "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/portfolio-developer-template"
+    },
+    {
+      "name": "year-activity-grid",
+      "type": "registry:ui",
+      "title": "Year Activity Grid",
+      "description": "A contribution calendar that blooms in on a diagonal wave, lights a crosshair of the hovered weekday and week, floats a readout above the day and reports streaks. Fully arrow-key navigable.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/portfolio-art.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/year-activity-grid.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/year-activity-grid"
+    },
+    {
+      "name": "now-playing-widget",
+      "type": "registry:ui",
+      "title": "Now Playing Widget",
+      "description": "A vinyl slides out of a generated sleeve and spins as a tonearm settles on it, an EQ breathes beside the title and progress ticks live with a scrubbable seek bar. Visual only — wire it to your own player.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/portfolio-art.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/now-playing-widget.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/now-playing-widget"
+    },
+    {
+      "name": "world-clock-globe",
+      "type": "registry:ui",
+      "title": "World Clock Globe",
+      "description": "A dotted planet you can spin, lit by the real sun — the night side dims along a live terminator, a 24-hour ring tracks the chosen city and every card ticks its own local time. Canvas 2D, no map tiles.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/roving.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/use-resolved-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/world-clock-globe.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/world-clock-globe"
+    },
+    {
+      "name": "bento-profile-board",
+      "type": "registry:ui",
+      "title": "Bento Profile Board",
+      "description": "Your profile as a living dashboard: identity with a pulsing build status, an analogue clock that follows your time zone, weather glyph, now-playing equaliser, visitor odometer, activity strip, stack chips and a CTA — tiles rise in on a stagger and each lights its own border under the cursor.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/portfolio-art.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/bento-profile-board.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/bento-profile-board"
+    },
+    {
+      "name": "scatter-desk-collage",
+      "type": "registry:ui",
+      "title": "Scatter Desk Collage",
+      "description": "A desk of rotated polaroids, sticky notes, UI clips, quote cards and a sticker that you can really move — the picked card straightens and lifts, arrow keys nudge, and “Tidy up” snaps everything to a grid on springs.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/portfolio-art.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/scatter-desk-collage.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/scatter-desk-collage"
+    },
+    {
+      "name": "kudos-wall",
+      "type": "registry:ui",
+      "title": "Kudos Wall",
+      "description": "Praise cards drift past in three columns at different speeds and directions behind a soft fade mask, with underlined key phrases and a cheer toggle on every card. Hover or focus pauses; a Pause button covers touch.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/kudos-wall.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/kudos-wall"
+    },
+    {
+      "name": "book-spine-shelf",
+      "type": "registry:ui",
+      "title": "Book Spine Shelf",
+      "description": "A shelf of generated book spines: the hovered book slides out while neighbours lean away, and choosing one swings its cover open on a hinge into a reading card with an optional ribbon. Arrow keys walk the shelf.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/roving.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/book-spine-shelf.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/book-spine-shelf"
+    },
+    {
+      "name": "mesh-project-cards",
+      "type": "registry:ui",
+      "title": "Mesh Project Cards",
+      "description": "Project cards headed by a living mesh gradient — drifting blurred blobs with film grain — and a status pill that pulses for live and in-progress work. Cards tilt toward the pointer with a travelling glare and the whole card is one link.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/mesh-project-cards.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/mesh-project-cards"
+    },
+    {
+      "name": "command-menu",
+      "type": "registry:ui",
+      "title": "Command Menu",
+      "description": "A Ctrl/⌘ K palette for hopping around a portfolio: fuzzy search that underlines the letters it matched, grouped results, a highlight pill that springs between rows, key-cap hints and full combobox semantics.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/command-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/command-menu"
+    },
+    {
+      "name": "island-section-nav",
+      "type": "registry:ui",
+      "title": "Island Section Nav",
+      "description": "A floating pill that tells you where you are — current section with a scroll-progress ring — then swells into a full jump bar on hover, focus or tap with a sliding highlight, and settles back when you leave.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/island-section-nav.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/island-section-nav"
+    },
+    {
+      "name": "sticky-card-stack",
+      "type": "registry:ui",
+      "title": "Sticky Card Stack",
+      "description": "Project cards that pin one over the next like a deck being dealt — each card shrinks back and dims as the following one slides up over it, still peeking out by a few pixels. Scroll-driven with sticky positioning, no layout JS.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/portfolio-art.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/sticky-card-stack.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/sticky-card-stack"
+    },
+    {
+      "name": "pinned-project-reel",
+      "type": "registry:ui",
+      "title": "Pinned Project Reel",
+      "description": "The section pins to the viewport and your vertical scroll slides a film strip of project cards sideways, with a springy counter and progress line. Focusing a card scrolls the page to it; reduced motion becomes a plain snap scroller.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/portfolio-art.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/pinned-project-reel.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/pinned-project-reel"
+    },
+    {
+      "name": "scroll-text-fill",
+      "type": "registry:ui",
+      "title": "Scroll Text Fill",
+      "description": "A large editorial statement whose words light up one by one as you scroll, each rising a few pixels into place; accent words get a sweeping underline. The full sentence is exposed to screen readers from the start.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/scroll-text-fill.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "text-animations"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/scroll-text-fill"
+    },
+    {
+      "name": "xray-lens-cursor",
+      "type": "registry:ui",
+      "title": "X-ray Lens Cursor",
+      "description": "A round lens follows the pointer on a spring and shows a second, perfectly aligned layer of the same content — blueprint, wireframe or annotations — through a clip-path. Press to swell the lens. The reveal is decorative and hidden from assistive tech.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/xray-lens-cursor.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cursors"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/xray-lens-cursor"
+    },
+    {
+      "name": "charm-text",
+      "type": "registry:ui",
+      "title": "Charm Text",
+      "description": "A sentence with a few enchanted words. Hover, focus or tap one and it recolours, draws an underline and a tiny glyph pops out on a spring; click pins it on. A chip variant sets glyph pills inline that hop on hover.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/charm-text.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "text-animations"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/charm-text"
+    },
+    {
+      "name": "big-type-footer",
+      "type": "registry:ui",
+      "title": "Big-Type Footer",
+      "description": "A closing section built around one enormous word whose letters swell and lean toward the cursor, with a ticker, quiet link pills, a live local clock and back-to-top. Light paper / dark ink, never a fixed palette.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/big-type-footer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/big-type-footer"
+    },
+    {
+      "name": "grain-gradient-field",
+      "type": "registry:ui",
+      "title": "Grain Gradient Field",
+      "description": "A full-bleed background of four slowly drifting colour blobs under real SVG film grain, with a pointer-following glow. Four palettes, light and dark tuned, still when reduced motion is on.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/grain-gradient-field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "animated-backgrounds"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/grain-gradient-field"
+    },
+    {
+      "name": "theme-reveal-toggle",
+      "type": "registry:ui",
+      "title": "Theme Reveal Toggle",
+      "description": "A sky-to-night switch: the sun rolls behind a crescent, clouds give way to stars, and the theme change blooms out of the switch as a circular View Transition reveal. Instant swap under reduced motion.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/toggle.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/theme-reveal-toggle.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "toggles"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/theme-reveal-toggle"
+    },
+    {
+      "name": "mini-desktop-os",
+      "type": "registry:ui",
+      "title": "Mini Desktop OS",
+      "description": "A tiny windowed desktop for a portfolio: generated wallpaper, menu bar with a live clock, icon grid, draggable windows with close / minimise / maximise, and a dock. Keyboard-movable; sheets on phones.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/portfolio-art.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/mini-desktop-os.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/mini-desktop-os"
+    },
+    {
+      "name": "login-gate-intro",
+      "type": "registry:ui",
+      "title": "Login Gate Intro",
+      "description": "A lock-screen preloader: oversized clock, generated avatar card, a password field that types itself, a three-step sign-in sequence, then the site fades up. Skip link included; reduced motion opens instantly.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/portfolio-art.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/login-gate-intro.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "loading"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/login-gate-intro"
+    },
+    {
+      "name": "route-chooser-hero",
+      "type": "registry:ui",
+      "title": "Route Chooser Hero",
+      "description": "A fork in the road under a sky that follows your attention: hover or focus the left card and the sun climbs, the right one and the moon rises while a lantern walks that branch. Real buttons or links underneath.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/route-chooser-hero.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "hero"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/route-chooser-hero"
+    },
+    {
+      "name": "discovery-scene",
+      "type": "registry:ui",
+      "title": "Discovery Scene",
+      "description": "An illustrated desk (night in dark mode, daylight in light) with six hidden sparkles. Each find lights its object — lamp, steam, spinning record — reveals a fact, and counts toward “found 6 / 6”. Plain list and reset included.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/discovery-scene.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/discovery-scene"
     }
   ]
 }
