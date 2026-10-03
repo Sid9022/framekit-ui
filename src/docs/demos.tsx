@@ -238,6 +238,11 @@ import { PolarBloomChart, DEFAULT_POLAR_SERIES } from '@/components/ui/polar-blo
 import { YearActivityGrid } from '@/components/ui/year-activity-grid'
 import { NowPlayingWidget } from '@/components/ui/now-playing-widget'
 import { WorldClockGlobe } from '@/components/ui/world-clock-globe'
+import { BentoProfileBoard } from '@/components/ui/bento-profile-board'
+import { ScatterDeskCollage } from '@/components/ui/scatter-desk-collage'
+import { KudosWall } from '@/components/ui/kudos-wall'
+import { BookSpineShelf } from '@/components/ui/book-spine-shelf'
+import { MeshProjectCards } from '@/components/ui/mesh-project-cards'
 // p2-imports:end
 
 
@@ -1154,6 +1159,11 @@ const portfolio2Demos: Record<string, React.ReactNode> = {
   'year-activity-grid': <YearActivityGrid />,
   'now-playing-widget': <NowPlayingWidget />,
   'world-clock-globe': <WorldClockGlobe />,
+  'bento-profile-board': <BentoProfileBoard headingAs="h2" />,
+  'scatter-desk-collage': <ScatterDeskCollage />,
+  'kudos-wall': <KudosWall />,
+  'book-spine-shelf': <BookSpineShelf />,
+  'mesh-project-cards': <MeshProjectCards titleAs="h2" />,
 }
 // p2-demos:end
 

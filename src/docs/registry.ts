@@ -802,6 +802,43 @@ export const DOCS: DocEntry[] = [
     { name: 'theme', type: "'auto' | 'light' | 'dark'", default: "'auto'", description: 'auto follows the nearest .dark / .light ancestor.' },
     { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
   ] },
+  { slug: 'bento-profile-board', title: 'Bento Profile Board', description: 'Your profile as a living dashboard: identity with a pulsing build status, an analogue clock that follows your time zone, weather glyph, now-playing equaliser, visitor odometer, activity strip, stack chips and a CTA — tiles rise in on a stagger and each lights its own border under the cursor.', category: 'Portfolio', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Move over the tiles — each lights its border; hover the CTA arrow.', props: [
+    { name: 'name / role / location', type: 'string', default: 'sample persona', description: 'Identity copy.' },
+    { name: 'timeZone', type: 'string', default: "'Europe/Stockholm'", description: 'IANA zone for the analogue clock (day/night face).' },
+    { name: 'building', type: 'string', description: 'Completes “Building …” in the status chip.' },
+    { name: 'avatarSrc', type: 'string', description: 'Optional photo; otherwise a generated bust is drawn.' },
+    { name: 'stack', type: 'string[]', default: '7 tools', description: 'Chips in the tools tile.' },
+    { name: 'weather', type: '{ temp, label, kind }', description: 'kind: sun | cloud | rain | moon.' },
+    { name: 'nowPlaying', type: '{ title, artist }', description: 'Track in the equaliser tile.' },
+    { name: 'visitorNumber', type: 'number', default: '2701', description: 'Odometer target ("You’re the 2,701st").' },
+    { name: 'ctaLabel / ctaHref', type: 'string', default: "'Book a call' / '#'", description: 'Contact tile link.' },
+    { name: 'headingAs', type: "'h2' | 'h3' | 'h4'", default: "'h3'", description: 'Heading level for the name.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  { slug: 'scatter-desk-collage', title: 'Scatter Desk Collage', description: 'A desk of rotated polaroids, sticky notes, UI clips, quote cards and a sticker that you can really move — the picked card straightens and lifts, arrow keys nudge, and “Tidy up” snaps everything to a grid on springs.', category: 'Portfolio', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Drag a card around the desk; press Tidy up / Scatter.', props: [
+    { name: 'items', type: 'DeskItem[]', default: '8 sample cards', description: '{ id, kind: photo | note | clip | quote | sticker, title, caption?, x, y, w, rotate?, seed?, src? } — x / y / w are % of the desk.' },
+    { name: 'aspect', type: 'number', default: '1.55', description: 'Desk width / height ratio.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  { slug: 'kudos-wall', title: 'Kudos Wall', description: 'Praise cards drift past in three columns at different speeds and directions behind a soft fade mask, with underlined key phrases and a cheer toggle on every card. Hover or focus pauses; a Pause button covers touch.', category: 'Portfolio', unique: true, isNew: true, dependencies: ['lucide-react'], gesture: 'Hover to pause the drift; tap ♥ to cheer a card.', props: [
+    { name: 'items', type: 'Kudos[]', default: '9 sample quotes', description: '{ id, name, role, text, mark?, hue? } — mark is the phrase to underline.' },
+    { name: 'height', type: 'number', default: '460', description: 'Visible height in px.' },
+    { name: 'duration', type: 'number', default: '60', description: 'Seconds per loop of the base column.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  { slug: 'book-spine-shelf', title: 'Book Spine Shelf', description: 'A shelf of generated book spines: the hovered book slides out while neighbours lean away, and choosing one swings its cover open on a hinge into a reading card with an optional ribbon. Arrow keys walk the shelf.', category: 'Cards', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Hover the spines, click one to open its cover; use ←/→.', props: [
+    { name: 'books', type: 'ShelfBook[]', default: '7 sample books', description: '{ id, title, author, blurb, height?, width?, hue?, badge?, pattern? }.' },
+    { name: 'value / defaultValue', type: 'string', description: 'Controlled / uncontrolled open book id.' },
+    { name: 'onValueChange', type: '(id: string) => void', description: 'Fires when a book is opened.' },
+    { name: 'title', type: 'string', default: "'On my shelf'", description: 'Mono label above the shelf.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  { slug: 'mesh-project-cards', title: 'Mesh Project Cards', description: 'Project cards headed by a living mesh gradient — drifting blurred blobs with film grain — and a status pill that pulses for live and in-progress work. Cards tilt toward the pointer with a travelling glare and the whole card is one link.', category: 'Cards', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Move across a card to tilt it and drag the glare; hover reveals the arrow.', props: [
+    { name: 'items', type: 'MeshProject[]', default: '4 sample projects', description: '{ id, title, blurb, status: live | building | shipped | archived, tags, hue?, href? }.' },
+    { name: 'onSelect', type: '(project) => void', description: 'Fires when a card is activated (when no href is given it renders a button).' },
+    { name: 'titleAs', type: "'h2' | 'h3' | 'h4'", default: "'h3'", description: 'Heading element for titles.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
   // p2:end
 ]
 

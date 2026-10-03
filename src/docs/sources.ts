@@ -239,6 +239,11 @@ import portfolioArtSrc from '../lib/portfolio-art.tsx?raw'
 import yearActivityGridSrc from '../components/ui/year-activity-grid.tsx?raw'
 import nowPlayingWidgetSrc from '../components/ui/now-playing-widget.tsx?raw'
 import worldClockGlobeSrc from '../components/ui/world-clock-globe.tsx?raw'
+import bentoProfileBoardSrc from '../components/ui/bento-profile-board.tsx?raw'
+import scatterDeskCollageSrc from '../components/ui/scatter-desk-collage.tsx?raw'
+import kudosWallSrc from '../components/ui/kudos-wall.tsx?raw'
+import bookSpineShelfSrc from '../components/ui/book-spine-shelf.tsx?raw'
+import meshProjectCardsSrc from '../components/ui/mesh-project-cards.tsx?raw'
 // p2-imports:end
 
 export const sources: Record<string, string> = {
@@ -479,5 +484,10 @@ export const sources: Record<string, string> = {
   'year-activity-grid': yearActivityGridSrc,
   'now-playing-widget': nowPlayingWidgetSrc,
   'world-clock-globe': worldClockGlobeSrc,
+  'bento-profile-board': bentoProfileBoardSrc,
+  'scatter-desk-collage': scatterDeskCollageSrc,
+  'kudos-wall': kudosWallSrc,
+  'book-spine-shelf': bookSpineShelfSrc,
+  'mesh-project-cards': meshProjectCardsSrc,
   // p2-entries:end
 }
