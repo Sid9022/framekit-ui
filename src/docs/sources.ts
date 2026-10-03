@@ -204,6 +204,37 @@ import ironFilingsFieldSrc from '../components/ui/iron-filings-field.tsx?raw'
 import pullCordLampToggleSrc from '../components/ui/pull-cord-lamp-toggle.tsx?raw'
 import seatScalePricingSrc from '../components/ui/seat-scale-pricing.tsx?raw'
 import polarBloomChartSrc from '../components/ui/polar-bloom-chart.tsx?raw'
+import kineticNameHeroSrc from '../components/ui/kinetic-name-hero.tsx?raw'
+import spotlightRevealHeroSrc from '../components/ui/spotlight-reveal-hero.tsx?raw'
+import depthParallaxHeroSrc from '../components/ui/depth-parallax-hero.tsx?raw'
+import roleMorphHeroSrc from '../components/ui/role-morph-hero.tsx?raw'
+import photoStripHeroSrc from '../components/ui/photo-strip-hero.tsx?raw'
+import terminalDevHeroSrc from '../components/ui/terminal-dev-hero.tsx?raw'
+import projectRevealListSrc from '../components/ui/project-reveal-list.tsx?raw'
+import projectFilterGallerySrc from '../components/ui/project-filter-gallery.tsx?raw'
+import caseStudyScrollSrc from '../components/ui/case-study-scroll.tsx?raw'
+import beforeAfterSliderSrc from '../components/ui/before-after-slider.tsx?raw'
+import careerTimelineSrc from '../components/ui/career-timeline.tsx?raw'
+import skillsMarqueeSrc from '../components/ui/skills-marquee.tsx?raw'
+import skillMetersSrc from '../components/ui/skill-meters.tsx?raw'
+import impactStatsSrc from '../components/ui/impact-stats.tsx?raw'
+import testimonialCarouselSrc from '../components/ui/testimonial-carousel.tsx?raw'
+import clientLogoStripSrc from '../components/ui/client-logo-strip.tsx?raw'
+import contactFormCardSrc from '../components/ui/contact-form-card.tsx?raw'
+import socialDockSrc from '../components/ui/social-dock.tsx?raw'
+import copyEmailButtonSrc from '../components/ui/copy-email-button.tsx?raw'
+import availabilityBadgeSrc from '../components/ui/availability-badge.tsx?raw'
+import portfolioFooterSrc from '../components/ui/portfolio-footer.tsx?raw'
+import sectionSpyNavSrc from '../components/ui/section-spy-nav.tsx?raw'
+import projectLightboxSrc from '../components/ui/project-lightbox.tsx?raw'
+import introPreloaderSrc from '../components/ui/intro-preloader.tsx?raw'
+import readingProgressTocSrc from '../components/ui/reading-progress-toc.tsx?raw'
+import resumeDownloadButtonSrc from '../components/ui/resume-download-button.tsx?raw'
+import servicesCardsSrc from '../components/ui/services-cards.tsx?raw'
+import scrollRevealSrc from '../components/ui/scroll-reveal.tsx?raw'
+import portfolioStudioTemplateSrc from '../components/ui/portfolio-studio-template.tsx?raw'
+import portfolioDeveloperTemplateSrc from '../components/ui/portfolio-developer-template.tsx?raw'
+import portfolioArtSrc from '../lib/portfolio-art.tsx?raw'
 
 export const sources: Record<string, string> = {
   button: buttonSrc,
@@ -246,6 +277,7 @@ export const sources: Record<string, string> = {
   'use-reduced-motion': reducedMotionSrc,
   'use-resolved-theme': resolvedThemeSrc,
   toggle: toggleLibSrc,
+  'portfolio-art': portfolioArtSrc,
   'prism-tidal-field': prismTidalSrc,
   'constellation-breathing-grid': constellationSrc,
   'paperfold-gradient-plane': paperfoldSrc,
@@ -408,4 +440,34 @@ export const sources: Record<string, string> = {
   'pull-cord-lamp-toggle': pullCordLampToggleSrc,
   'seat-scale-pricing': seatScalePricingSrc,
   'polar-bloom-chart': polarBloomChartSrc,
+  'kinetic-name-hero': kineticNameHeroSrc,
+  'spotlight-reveal-hero': spotlightRevealHeroSrc,
+  'depth-parallax-hero': depthParallaxHeroSrc,
+  'role-morph-hero': roleMorphHeroSrc,
+  'photo-strip-hero': photoStripHeroSrc,
+  'terminal-dev-hero': terminalDevHeroSrc,
+  'project-reveal-list': projectRevealListSrc,
+  'project-filter-gallery': projectFilterGallerySrc,
+  'case-study-scroll': caseStudyScrollSrc,
+  'before-after-slider': beforeAfterSliderSrc,
+  'career-timeline': careerTimelineSrc,
+  'skills-marquee': skillsMarqueeSrc,
+  'skill-meters': skillMetersSrc,
+  'impact-stats': impactStatsSrc,
+  'testimonial-carousel': testimonialCarouselSrc,
+  'client-logo-strip': clientLogoStripSrc,
+  'contact-form-card': contactFormCardSrc,
+  'social-dock': socialDockSrc,
+  'copy-email-button': copyEmailButtonSrc,
+  'availability-badge': availabilityBadgeSrc,
+  'portfolio-footer': portfolioFooterSrc,
+  'section-spy-nav': sectionSpyNavSrc,
+  'project-lightbox': projectLightboxSrc,
+  'intro-preloader': introPreloaderSrc,
+  'reading-progress-toc': readingProgressTocSrc,
+  'resume-download-button': resumeDownloadButtonSrc,
+  'services-cards': servicesCardsSrc,
+  'scroll-reveal': scrollRevealSrc,
+  'portfolio-studio-template': portfolioStudioTemplateSrc,
+  'portfolio-developer-template': portfolioDeveloperTemplateSrc,
 }

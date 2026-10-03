@@ -9,6 +9,7 @@
 - Copy-paste ownership — components live in *your* repo (install via the shadcn CLI or by hand)
 - Core UI: Button, Badge, Card, Input, Dialog, Tabs, Toast, and more
 - Animated originals: Magnetic Button, Spotlight Card, Scramble Text, Magnify Dock, Pixel Reveal, Ink Ripple Grid, …
+- **Portfolio kit** — 22 premium portfolio components (case-study scroll, project reveal list, filter gallery, lightbox, before/after slider, career timeline, impact stats, contact form, social dock, intro preloader, …), 2 full-page templates (Studio Folio, Dev Folio) and 6 new heroes (kinetic name, spotlight reveal, depth parallax, role morph, photo strip, terminal)
 - Live docs with Preview / Code tabs (source loaded via Vite `?raw`)
 - Dark mode, command palette (`⌘K`), HashRouter static hosting
 

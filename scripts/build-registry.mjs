@@ -81,6 +81,7 @@ async function main() {
     'use-reduced-motion': { title: 'usePrefersReducedMotion', description: 'Hook that tracks the prefers-reduced-motion media query.' },
     'use-resolved-theme': { title: 'useResolvedTheme', description: 'Resolves light/dark for canvas components from the nearest .dark / .light ancestor.' },
     toggle: { title: 'useToggleState', description: 'Controlled/uncontrolled boolean state shared by the Framekit toggles.' },
+    'portfolio-art': { title: 'PortfolioArt', description: 'Deterministic generated SVG artwork + PortfolioProject type and sample data shared by the Framekit portfolio components.' },
   }
 
   const used = new Set()

@@ -24,6 +24,22 @@
       ]
     },
     {
+      "name": "portfolio-art",
+      "type": "registry:lib",
+      "title": "PortfolioArt",
+      "description": "Deterministic generated SVG artwork + PortfolioProject type and sample data shared by the Framekit portfolio components.",
+      "files": [
+        {
+          "path": "src/lib/portfolio-art.tsx",
+          "type": "registry:lib",
+          "target": "@lib/portfolio-art.tsx"
+        }
+      ],
+      "categories": [
+        "lib"
+      ]
+    },
+    {
       "name": "toggle",
       "type": "registry:lib",
       "title": "useToggleState",
@@ -4469,6 +4485,761 @@
         "core"
       ],
       "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/breathing-dot"
+    },
+    {
+      "name": "kinetic-name-hero",
+      "type": "registry:ui",
+      "title": "Kinetic Name Hero",
+      "description": "Your name set huge, every letter on its own spring — letters are pushed away, tilt and swell as the cursor passes, then ease home; a soft light trails the pointer and a badge circles the role.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/kinetic-name-hero.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "hero"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/kinetic-name-hero"
+    },
+    {
+      "name": "spotlight-reveal-hero",
+      "type": "registry:ui",
+      "title": "Spotlight Reveal Hero",
+      "description": "A quiet paper-and-ink hero with a cursor-lit lens that reveals a saturated, grid-drawn “lit” version of the same message; the beam wanders on its own when idle and locks onto the button on keyboard focus.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/spotlight-reveal-hero.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "hero"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/spotlight-reveal-hero"
+    },
+    {
+      "name": "depth-parallax-hero",
+      "type": "registry:ui",
+      "title": "Depth Parallax Hero",
+      "description": "A layered SVG landscape — sun/moon, three mountain planes and a tree line — shifting at depth-correct factors with the pointer or a slow idle sway; the giant name sits between the planes.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/depth-parallax-hero.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "hero"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/depth-parallax-hero"
+    },
+    {
+      "name": "role-morph-hero",
+      "type": "registry:ui",
+      "title": "Role Morph Hero",
+      "description": "“a ____.” where the blank cycles through your roles: letters of the old role drop away with a blur, the next role springs up in a stagger, the highlighter springs to the new width and a colour wash shifts.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/role-morph-hero.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "hero"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/role-morph-hero"
+    },
+    {
+      "name": "photo-strip-hero",
+      "type": "registry:ui",
+      "title": "Photo Strip Hero",
+      "description": "A big headline over two tilted rails of photo cards drifting in opposite directions — they slow under the pointer, surge with scroll velocity and lift on hover.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/portfolio-art.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/photo-strip-hero.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "hero"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/photo-strip-hero"
+    },
+    {
+      "name": "terminal-dev-hero",
+      "type": "registry:ui",
+      "title": "Terminal Dev Hero",
+      "description": "A developer intro with a live terminal: commands type with human rhythm, outputs stream in, a build bar fills and the window floats in 3D with the pointer. Pause and replay included.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/terminal-dev-hero.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "hero"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/terminal-dev-hero"
+    },
+    {
+      "name": "project-reveal-list",
+      "type": "registry:ui",
+      "title": "Project Reveal List",
+      "description": "An editorial project index: rows dim their siblings and nudge on hover while a tilting preview chases the cursor on a spring and unmasks with a clip-path. Touch gets inline thumbnails.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/portfolio-art.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/project-reveal-list.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/project-reveal-list"
+    },
+    {
+      "name": "project-filter-gallery",
+      "type": "registry:ui",
+      "title": "Project Filter Gallery",
+      "description": "Category chips share a sliding pill (layout animation) while the grid reflows: survivors glide to new cells, newcomers bloom in blur-to-sharp. Announces the result count.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/portfolio-art.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/project-filter-gallery.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/project-filter-gallery"
+    },
+    {
+      "name": "case-study-scroll",
+      "type": "registry:ui",
+      "title": "Case Study Scroll",
+      "description": "Problem → Process → Result as a scroll-driven story: a sticky rail fills as you read and lights the current chapter while chapters rise in with staggered key figures.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/portfolio-art.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/case-study-scroll.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/case-study-scroll"
+    },
+    {
+      "name": "before-after-slider",
+      "type": "registry:ui",
+      "title": "Before / After Slider",
+      "description": "Drag, tap or use the arrow keys to wipe between two states. The knob stretches while held, the reveal edge glows and the handle sweeps once on first view.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/before-after-slider.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/before-after-slider"
+    },
+    {
+      "name": "career-timeline",
+      "type": "registry:ui",
+      "title": "Career Timeline",
+      "description": "A vertical line that draws itself as you scroll with a glowing head; milestone nodes pop on springs and cards slide in from alternating sides.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/career-timeline.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/career-timeline"
+    },
+    {
+      "name": "skills-marquee",
+      "type": "registry:ui",
+      "title": "Skills Marquee",
+      "description": "Two counter-rotating rails of skill pills. Hover or keyboard focus pauses, a visible Pause button covers touch and WCAG 2.2.2, and reduced motion becomes a calm wrapped list.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/skills-marquee.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/skills-marquee"
+    },
+    {
+      "name": "skill-meters",
+      "type": "registry:ui",
+      "title": "Skill Meters",
+      "description": "Radial gauges that sweep to their value on scroll-in: glowing gradient arc, a comet dot on the tip and a live count-up. Staggered, replayable and exposed as ARIA meters.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/skill-meters.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/skill-meters"
+    },
+    {
+      "name": "impact-stats",
+      "type": "registry:ui",
+      "title": "Impact Stats",
+      "description": "Odometer counters: every digit is a reel spinning to its value on its own spring when the row scrolls in — right-most digits settle last, like a mechanical counter.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/impact-stats.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/impact-stats"
+    },
+    {
+      "name": "testimonial-carousel",
+      "type": "registry:ui",
+      "title": "Testimonial Carousel",
+      "description": "Large display-type quotes sliding on direction-aware springs with swipe/drag, arrow keys and a progress-filled dot for auto-advance. Pauses on hover, focus and drag.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/testimonial-carousel.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/testimonial-carousel"
+    },
+    {
+      "name": "client-logo-strip",
+      "type": "registry:ui",
+      "title": "Client Logo Strip",
+      "description": "A calm trust row of generated marks with a cursor-following spotlight that lights hairline borders; marks lift and spin a few degrees on hover/focus.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/client-logo-strip.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/client-logo-strip"
+    },
+    {
+      "name": "contact-form-card",
+      "type": "registry:ui",
+      "title": "Contact Form Card",
+      "description": "Validated on blur and submit with announced inline errors (shake + focus jump), optional async onSubmit with a sending morph, a drawn-check success scene with a particle burst, and a failure state with Retry that keeps everything typed.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/contact-form-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/contact-form-card"
+    },
+    {
+      "name": "social-dock",
+      "type": "registry:ui",
+      "title": "Social Dock",
+      "description": "A floating link dock whose icons swell with a spring as the pointer (or keyboard focus) nears them, with a coloured halo and a springy label chip. Generic glyphs — bring your own.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/social-dock.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/social-dock"
+    },
+    {
+      "name": "copy-email-button",
+      "type": "registry:ui",
+      "title": "Copy Email Button",
+      "description": "A pill showing your address: the glyph morphs to a check, the label rolls to “Copied”, a ring pulses out and a live region confirms. Falls back to a select hint if the clipboard is blocked.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/copy-email-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/copy-email-button"
+    },
+    {
+      "name": "availability-badge",
+      "type": "registry:ui",
+      "title": "Availability Badge",
+      "description": "A status pill with a motion language per state: “open” sends two staggered radar ripples, “limited” breathes slowly, “booked” holds still. Copy swaps on a vertical spring; optional live local clock.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/availability-badge.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/availability-badge"
+    },
+    {
+      "name": "portfolio-footer",
+      "type": "registry:ui",
+      "title": "Portfolio Footer",
+      "description": "A closing statement in giant display type — letters rise out of masks on scroll-in and a light follows the cursor across the glyphs — with a slow ribbon marquee, links and back-to-top.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/portfolio-footer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/portfolio-footer"
+    },
+    {
+      "name": "section-spy-nav",
+      "type": "registry:ui",
+      "title": "Section Spy Nav",
+      "description": "Sticky in-page navigation that follows your reading position: a shared pill springs between links as sections cross the reading line, a hairline fills with overall progress, and clicks glide and move focus into the section.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/section-spy-nav.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/section-spy-nav"
+    },
+    {
+      "name": "project-lightbox",
+      "type": "registry:ui",
+      "title": "Project Lightbox",
+      "description": "Thumbnails open into a detail modal through a shared-element morph — artwork flies from its tile to the hero slot while copy staggers in. Focus trapped and restored, Esc closes, ←/→ browse.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/portfolio-art.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/project-lightbox.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/project-lightbox"
+    },
+    {
+      "name": "intro-preloader",
+      "type": "registry:ui",
+      "title": "Intro Preloader",
+      "description": "Greeting words flick by while a big counter climbs 0→100, then the ink curtain lifts with a trailing curve that flattens as it leaves and the page settles from a slight zoom. Skippable.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/intro-preloader.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/intro-preloader"
+    },
+    {
+      "name": "reading-progress-toc",
+      "type": "registry:ui",
+      "title": "Reading Progress + TOC",
+      "description": "A spring-smoothed reading bar and a sticky table of contents that lights the section on screen, with a live “min left” estimate — made for long-form blog posts.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/reading-progress-toc.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/reading-progress-toc"
+    },
+    {
+      "name": "resume-download-button",
+      "type": "registry:ui",
+      "title": "Résumé Download Button",
+      "description": "The document glyph prints itself line by line, then drops into a tray as the file downloads and the label settles on “Saved”. Live status for screen readers.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/resume-download-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/resume-download-button"
+    },
+    {
+      "name": "services-cards",
+      "type": "registry:ui",
+      "title": "Services Cards",
+      "description": "Four offers in one row: hover or focus a card and it swells while the others yield; a cursor-lit border follows the pointer, the icon tile tilts and deliverables stagger in with ticking checks.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/services-cards.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/services-cards"
+    },
+    {
+      "name": "scroll-reveal",
+      "type": "registry:ui",
+      "title": "Scroll Reveal",
+      "description": "A wrapper that animates its content in on scroll: seven effects (rise, fade, blur, scale, clip, slide-left/right), optional child staggering, any scroll container, and a no-motion fallback.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/scroll-reveal.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/scroll-reveal"
+    },
+    {
+      "name": "portfolio-studio-template",
+      "type": "registry:ui",
+      "title": "Studio Folio Template",
+      "description": "A complete one-page designer portfolio composed from Framekit parts — intro preloader, kinetic name hero, spy-nav, impact stats, filterable work with lightbox, services, testimonials, contact form and footer. Installing it pulls in every part.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/availability-badge.json",
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/contact-form-card.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/impact-stats.json",
+        "https://framekit-ui.vercel.app/r/intro-preloader.json",
+        "https://framekit-ui.vercel.app/r/kinetic-name-hero.json",
+        "https://framekit-ui.vercel.app/r/portfolio-art.json",
+        "https://framekit-ui.vercel.app/r/portfolio-footer.json",
+        "https://framekit-ui.vercel.app/r/project-filter-gallery.json",
+        "https://framekit-ui.vercel.app/r/project-lightbox.json",
+        "https://framekit-ui.vercel.app/r/scroll-reveal.json",
+        "https://framekit-ui.vercel.app/r/section-spy-nav.json",
+        "https://framekit-ui.vercel.app/r/services-cards.json",
+        "https://framekit-ui.vercel.app/r/testimonial-carousel.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/portfolio-studio-template.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/portfolio-studio-template"
+    },
+    {
+      "name": "portfolio-developer-template",
+      "type": "registry:ui",
+      "title": "Dev Folio Template",
+      "description": "A developer-flavoured one-pager composed from Framekit parts — terminal hero, skills marquee, hover-preview project index, scroll-drawn career timeline, skill meters, social dock, copy-email + résumé and a statement footer.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/career-timeline.json",
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/copy-email-button.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/portfolio-art.json",
+        "https://framekit-ui.vercel.app/r/portfolio-footer.json",
+        "https://framekit-ui.vercel.app/r/project-reveal-list.json",
+        "https://framekit-ui.vercel.app/r/resume-download-button.json",
+        "https://framekit-ui.vercel.app/r/scroll-reveal.json",
+        "https://framekit-ui.vercel.app/r/section-spy-nav.json",
+        "https://framekit-ui.vercel.app/r/skill-meters.json",
+        "https://framekit-ui.vercel.app/r/skills-marquee.json",
+        "https://framekit-ui.vercel.app/r/social-dock.json",
+        "https://framekit-ui.vercel.app/r/terminal-dev-hero.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/portfolio-developer-template.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/portfolio-developer-template"
     }
   ]
 }

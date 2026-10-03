@@ -10,6 +10,9 @@ import { categorySlug, componentDocs, getNavGroups } from '@/docs/registry'
 import { BrandLink, SearchTrigger, ThemeToggleButton, iconBtn } from '@/components/docs/chrome'
 import { LazyMount } from '@/components/docs/lazy-mount'
 import { CopyButton, registryItemUrl } from '@/components/docs/install-block'
+import { AvailabilityBadge } from '@/components/ui/availability-badge'
+import { CopyEmailButton } from '@/components/ui/copy-email-button'
+import { SocialDock } from '@/components/ui/social-dock'
 import { cn } from '@/lib/cn'
 import { PrismTidalField } from '@/components/ui/prism-tidal-field'
 import { ConstellationBreathingGrid } from '@/components/ui/constellation-breathing-grid'
@@ -197,7 +200,7 @@ export function LandingPage() {
 
         <section className="border-y border-zinc-200/80 bg-white/60 py-14 dark:border-zinc-800 dark:bg-zinc-950/50" aria-labelledby="heroes-h">
           <div className="mx-auto max-w-6xl px-4">
-            <p className={eyebrow}>Five categories · five heroes</p>
+            <p className={eyebrow}>Six categories · six heroes</p>
             <h2 id="heroes-h" className="mt-1 text-2xl font-semibold tracking-tight">Best unique motion, by category</h2>
             <LazyMount minHeight={420} className="mt-8">
               <motion.div
@@ -230,6 +233,14 @@ export function LandingPage() {
                     <WatchfulEyeToggle defaultChecked aria-label="Watchful eye" />
                     <MothLanternToggle defaultChecked />
                   </div>
+                </Tile>
+                <Tile to="/docs/category/portfolio" label="Portfolio kit" className="flex min-h-44 flex-col items-center justify-center gap-4 p-6 md:col-span-2 lg:col-span-3">
+                  <p className={cn(eyebrow, 'text-signal-700 dark:text-signal-300')}>Portfolio · new</p>
+                  <div className="flex flex-wrap items-center justify-center gap-5">
+                    <AvailabilityBadge status="open" />
+                    <CopyEmailButton email="hello@yourname.studio" />
+                  </div>
+                  <SocialDock />
                 </Tile>
               </motion.div>
             </LazyMount>

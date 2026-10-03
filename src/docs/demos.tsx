@@ -191,6 +191,39 @@ import { LiquidChargeCapsule } from '@/components/ui/liquid-charge-capsule'
 import { GhostGobblerSkull } from '@/components/ui/ghost-gobbler-skull'
 import { SplitFlapHero } from '@/components/ui/split-flap-hero'
 import { RidgelineHorizonHero } from '@/components/ui/ridgeline-horizon-hero'
+import { KineticNameHero } from '@/components/ui/kinetic-name-hero'
+import { SpotlightRevealHero } from '@/components/ui/spotlight-reveal-hero'
+import { DepthParallaxHero } from '@/components/ui/depth-parallax-hero'
+import { RoleMorphHero } from '@/components/ui/role-morph-hero'
+import { PhotoStripHero } from '@/components/ui/photo-strip-hero'
+import { TerminalDevHero } from '@/components/ui/terminal-dev-hero'
+import { ProjectRevealList } from '@/components/ui/project-reveal-list'
+import { ProjectFilterGallery } from '@/components/ui/project-filter-gallery'
+import { CaseStudyScroll } from '@/components/ui/case-study-scroll'
+import { BeforeAfterSlider } from '@/components/ui/before-after-slider'
+import { CareerTimeline } from '@/components/ui/career-timeline'
+import { SkillsMarquee } from '@/components/ui/skills-marquee'
+import { SkillMeters } from '@/components/ui/skill-meters'
+import { ImpactStats } from '@/components/ui/impact-stats'
+import { TestimonialCarousel } from '@/components/ui/testimonial-carousel'
+import { ClientLogoStrip } from '@/components/ui/client-logo-strip'
+import { ContactFormCard } from '@/components/ui/contact-form-card'
+import { SocialDock } from '@/components/ui/social-dock'
+import { CopyEmailButton } from '@/components/ui/copy-email-button'
+import { AvailabilityBadge } from '@/components/ui/availability-badge'
+import { PortfolioFooter } from '@/components/ui/portfolio-footer'
+import { SectionSpyNav } from '@/components/ui/section-spy-nav'
+import { ProjectLightbox } from '@/components/ui/project-lightbox'
+import { IntroPreloader } from '@/components/ui/intro-preloader'
+import { ReadingProgressToc } from '@/components/ui/reading-progress-toc'
+import { ResumeDownloadButton } from '@/components/ui/resume-download-button'
+import { ServicesCards } from '@/components/ui/services-cards'
+import { ScrollReveal } from '@/components/ui/scroll-reveal'
+import { PortfolioStudioTemplate } from '@/components/ui/portfolio-studio-template'
+import { PortfolioDeveloperTemplate } from '@/components/ui/portfolio-developer-template'
+import { RotateCcw } from 'lucide-react'
+import { handleTablistKeys } from '@/lib/roving'
+import { PortfolioArt } from '@/lib/portfolio-art'
 import { TumblerLockOtp } from '@/components/ui/tumbler-lock-otp'
 import { CrystalStrengthPassword } from '@/components/ui/crystal-strength-password'
 import { OrigamiUnfoldCard } from '@/components/ui/origami-unfold-card'
@@ -938,6 +971,175 @@ function PolarBloomDemo() {
       </div>
     </div>
   )
+}
+
+/* ───────── Portfolio category + new heroes: demos ───────── */
+function PfScrollFrame({ label, height = 520, children }: { label: string; height?: number; children: (ref: React.RefObject<HTMLDivElement | null>) => React.ReactNode }) {
+  const ref = React.useRef<HTMLDivElement>(null)
+  return (
+    <div ref={ref} role="region" aria-label={label} tabIndex={0} style={{ height }} className="w-full max-w-4xl overflow-y-auto overscroll-contain rounded-2xl border border-zinc-200 bg-stone-50 p-4 sm:p-8 dark:border-zinc-800 dark:bg-zinc-950">
+      {children(ref)}
+    </div>
+  )
+}
+
+function PfFlagSwitch({ label, checked, onChange }: { label: string; checked: boolean; onChange: (v: boolean) => void }) {
+  return (
+    <label className="flex min-h-11 items-center gap-3 text-sm font-medium text-zinc-800 dark:text-zinc-200">
+      <Switch checked={checked} onCheckedChange={onChange} aria-label={label} />
+      {label}
+    </label>
+  )
+}
+
+function ContactFormDemo() {
+  const [fail, setFail] = React.useState(false)
+  const failRef = React.useRef(false)
+  failRef.current = fail
+  return (
+    <div className="flex w-full max-w-lg flex-col items-center gap-3">
+      <ContactFormCard headingAs="h2" onSubmit={async () => { await wait(900); if (failRef.current) throw new Error('offline') }} />
+      <PfFlagSwitch label="Simulate failure" checked={fail} onChange={setFail} />
+    </div>
+  )
+}
+
+function AvailabilityDemo() {
+  const [s, setS] = React.useState<'open' | 'limited' | 'booked'>('open')
+  return (
+    <div className="flex flex-col items-center gap-5">
+      <AvailabilityBadge status={s} timeZone="Europe/Lisbon" />
+      <div role="radiogroup" aria-label="Availability status" onKeyDown={handleTablistKeys} className="flex gap-1.5 rounded-full border border-zinc-300 bg-white p-1 dark:border-zinc-700 dark:bg-zinc-900">
+        {(['open', 'limited', 'booked'] as const).map((k) => (
+          <button key={k} type="button" role="radio" aria-checked={s === k} tabIndex={s === k ? 0 : -1} onClick={() => setS(k)} className={`min-h-11 rounded-full px-4 text-sm font-medium capitalize ${s === k ? 'bg-zinc-950 text-white dark:bg-zinc-50 dark:text-zinc-950' : 'text-zinc-700 hover:bg-zinc-100 dark:text-zinc-300 dark:hover:bg-zinc-800'}`}>{k}</button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function CaseStudyDemo() {
+  return <PfScrollFrame label="Case study preview (scrollable)" height={560}>{(ref) => <CaseStudyScroll scrollContainer={ref} titleAs="h2" className="mx-auto" />}</PfScrollFrame>
+}
+function CareerTimelineDemo() {
+  return <PfScrollFrame label="Career timeline preview (scrollable)" height={520}>{(ref) => <CareerTimeline scrollContainer={ref} titleAs="h2" className="mx-auto" />}</PfScrollFrame>
+}
+
+function SectionSpyDemo() {
+  const sections = [
+    { id: 'demo-spy-work', label: 'Work' },
+    { id: 'demo-spy-about', label: 'About' },
+    { id: 'demo-spy-journal', label: 'Journal' },
+    { id: 'demo-spy-contact', label: 'Contact' },
+  ]
+  const body: Record<string, string> = {
+    'demo-spy-work': 'Six case studies across product, web and brand — each with the problem, the process and the numbers.',
+    'demo-spy-about': 'Nine years across design and engineering, currently leading motion language for a product team of forty.',
+    'demo-spy-journal': 'Notes on craft: motion budgets, accessible animation, and why springs beat easing curves.',
+    'demo-spy-contact': 'Booking projects from November. Say hello and tell me about the thing you want to make.',
+  }
+  return (
+    <PfScrollFrame label="Section spy preview (scrollable)" height={480}>
+      {(ref) => (
+        <>
+          <div className="sticky top-0 z-10 -mx-4 -mt-4 mb-4 bg-stone-50/90 px-4 pb-2 pt-4 backdrop-blur sm:-mx-8 sm:-mt-8 sm:px-8 sm:pt-8 dark:bg-zinc-950/90"><SectionSpyNav sections={sections} scrollContainer={ref} /></div>
+          {sections.map((s, i) => (
+            <section key={s.id} id={s.id} aria-labelledby={`${s.id}-h`} className="flex min-h-[340px] scroll-mt-20 flex-col justify-center gap-3 border-b border-zinc-200 py-8 outline-none last:border-0 dark:border-zinc-800">
+              <p className="font-mono text-xs text-zinc-600 dark:text-zinc-400">0{i + 1}</p>
+              <h2 id={`${s.id}-h`} className="font-display text-5xl text-zinc-950 dark:text-zinc-50">{s.label}</h2>
+              <p className="max-w-[46ch] text-zinc-700 dark:text-zinc-300">{body[s.id]}</p>
+            </section>
+          ))}
+        </>
+      )}
+    </PfScrollFrame>
+  )
+}
+
+function ReadingTocDemo() {
+  return <PfScrollFrame label="Blog post preview (scrollable)" height={520}>{(ref) => <ReadingProgressToc scrollContainer={ref} className="mx-auto" />}</PfScrollFrame>
+}
+
+function IntroPreloaderDemo() {
+  const [k, setK] = React.useState(0)
+  return (
+    <div className="flex w-full max-w-3xl flex-col items-center gap-3">
+      <IntroPreloader runKey={k} className="h-[440px]">
+        <div className="flex h-full flex-col justify-between bg-stone-100 p-8 dark:bg-zinc-900">
+          <p className="text-sm font-medium text-zinc-700 dark:text-zinc-300">Nova Reyes — portfolio</p>
+          <h2 className="font-display text-[clamp(56px,11vw,120px)] leading-[0.9] tracking-tight text-zinc-950 dark:text-zinc-50">Design that<br />moves with you.</h2>
+          <div className="flex gap-2">{[3, 11, 19].map((s) => <div key={s} className="h-20 flex-1 overflow-hidden rounded-xl"><PortfolioArt seed={s} /></div>)}</div>
+        </div>
+      </IntroPreloader>
+      <button type="button" onClick={() => setK((x) => x + 1)} className="inline-flex min-h-11 items-center gap-2 rounded-full border border-zinc-300 px-4 text-sm font-medium text-zinc-800 hover:bg-white dark:border-zinc-700 dark:text-zinc-200 dark:hover:bg-zinc-900"><RotateCcw className="h-4 w-4" aria-hidden />Replay intro</button>
+    </div>
+  )
+}
+
+function ScrollRevealDemo() {
+  const effects = ['rise', 'fade', 'blur', 'scale', 'clip', 'slide-left', 'slide-right'] as const
+  return (
+    <PfScrollFrame label="Scroll reveal preview (scrollable)" height={480}>
+      {(ref) => (
+        <div className="mx-auto max-w-xl space-y-24 py-10">
+          <p className="text-center text-sm text-zinc-700 dark:text-zinc-300">Scroll down — each block enters with its own effect.</p>
+          {effects.map((e) => (
+            <ScrollReveal key={e} effect={e} scrollContainer={ref}>
+              <div className="rounded-3xl border border-zinc-200 bg-white p-8 dark:border-zinc-800 dark:bg-zinc-900">
+                <p className="font-mono text-xs text-signal-700 dark:text-signal-300">effect=&quot;{e}&quot;</p>
+                <p className="mt-2 font-display text-4xl text-zinc-950 dark:text-zinc-50">{e === 'rise' ? 'Rise gently' : e === 'fade' ? 'Fade in' : e === 'blur' ? 'Focus pull' : e === 'scale' ? 'Scale up' : e === 'clip' ? 'Unwipe' : e === 'slide-left' ? 'From the left' : 'From the right'}</p>
+              </div>
+            </ScrollReveal>
+          ))}
+          <ScrollReveal stagger={0.1} effect="rise" scrollContainer={ref} className="grid grid-cols-3 gap-3">
+            {[3, 11, 19].map((s) => <div key={s} className="aspect-square overflow-hidden rounded-2xl"><PortfolioArt seed={s} /></div>)}
+          </ScrollReveal>
+          <p className="pb-6 text-center text-sm text-zinc-700 dark:text-zinc-300">stagger={'{0.1}'} reveals direct children one by one ↑</p>
+        </div>
+      )}
+    </PfScrollFrame>
+  )
+}
+
+function ResumeDownloadDemo() {
+  const href = React.useMemo(() => URL.createObjectURL(new Blob(['Nova Reyes — Résumé\nDesign engineer & motion designer\n\nThis is a demo file generated in your browser.\n'], { type: 'text/plain' })), [])
+  React.useEffect(() => () => URL.revokeObjectURL(href), [href])
+  return <ResumeDownloadButton href={href} fileName="nova-reyes-resume.txt" meta="PDF · 184 KB" />
+}
+
+const pfCard = 'flex w-full max-w-4xl flex-col items-center justify-center gap-4'
+
+const portfolioDemos: Record<string, React.ReactNode> = {
+  'project-reveal-list': <ProjectRevealList titleAs="h2" />,
+  'project-filter-gallery': <ProjectFilterGallery titleAs="h2" />,
+  'case-study-scroll': <CaseStudyDemo />,
+  'before-after-slider': <BeforeAfterSlider />,
+  'career-timeline': <CareerTimelineDemo />,
+  'skills-marquee': <SkillsMarquee />,
+  'skill-meters': <SkillMeters />,
+  'impact-stats': <ImpactStats />,
+  'testimonial-carousel': <TestimonialCarousel />,
+  'client-logo-strip': <ClientLogoStrip />,
+  'contact-form-card': <ContactFormDemo />,
+  'social-dock': <div className={pfCard}><SocialDock /></div>,
+  'copy-email-button': <CopyEmailButton />,
+  'availability-badge': <AvailabilityDemo />,
+  'portfolio-footer': <PortfolioFooter className="max-w-3xl" />,
+  'section-spy-nav': <SectionSpyDemo />,
+  'project-lightbox': <ProjectLightbox titleAs="h2" />,
+  'intro-preloader': <IntroPreloaderDemo />,
+  'reading-progress-toc': <ReadingTocDemo />,
+  'resume-download-button': <ResumeDownloadDemo />,
+  'services-cards': <ServicesCards titleAs="h2" />,
+  'scroll-reveal': <ScrollRevealDemo />,
+  'portfolio-studio-template': <PortfolioStudioTemplate />,
+  'portfolio-developer-template': <PortfolioDeveloperTemplate />,
+  'kinetic-name-hero': <KineticNameHero className="max-w-3xl" />,
+  'spotlight-reveal-hero': <SpotlightRevealHero className="max-w-3xl" />,
+  'depth-parallax-hero': <DepthParallaxHero className="max-w-3xl" />,
+  'role-morph-hero': <RoleMorphHero className="max-w-3xl" />,
+  'photo-strip-hero': <PhotoStripHero className="max-w-3xl" />,
+  'terminal-dev-hero': <TerminalDevHero className="max-w-3xl" />,
 }
 
 export const demos: Record<string, React.ReactNode> = {
@@ -1749,4 +1951,5 @@ export const demos: Record<string, React.ReactNode> = {
   'pull-cord-lamp-toggle': <PullCordLampToggle />,
   'seat-scale-pricing': <SeatScaleDemo />,
   'polar-bloom-chart': <PolarBloomDemo />,
+  ...portfolioDemos,
 }
