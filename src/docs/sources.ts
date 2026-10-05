@@ -175,6 +175,7 @@ import swallowDeleteButtonSrc from '../components/ui/swallow-delete-button.tsx?r
 import lensReveal404Src from '../components/ui/lens-reveal-404.tsx?raw'
 import flipCheckoutCardSrc from '../components/ui/flip-checkout-card.tsx?raw'
 import particleMorphLoaderSrc from '../components/ui/particle-morph-loader.tsx?raw'
+import snakeLoaderSrc from '../components/ui/snake-loader.tsx?raw'
 import faceScanPayButtonSrc from '../components/ui/face-scan-pay-button.tsx?raw'
 import orbitDotExportButtonSrc from '../components/ui/orbit-dot-export-button.tsx?raw'
 import shredderDeleteButtonSrc from '../components/ui/shredder-delete-button.tsx?raw'
@@ -436,6 +437,7 @@ export const sources: Record<string, string> = {
   'lens-reveal-404': lensReveal404Src,
   'flip-checkout-card': flipCheckoutCardSrc,
   'particle-morph-loader': particleMorphLoaderSrc,
+  'snake-loader': snakeLoaderSrc,
   'face-scan-pay-button': faceScanPayButtonSrc,
   'orbit-dot-export-button': orbitDotExportButtonSrc,
   'shredder-delete-button': shredderDeleteButtonSrc,

@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "registry:build": "node scripts/build-registry.mjs && shadcn build ./registry.json -o ./public/r",
+    "check:wiring": "node scripts/check-wiring.mjs",
     "prebuild": "npm run registry:build",
     "build": "tsc -b && vite build",
     "preview": "vite preview --host --port 4180",

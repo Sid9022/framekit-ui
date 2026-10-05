@@ -65,6 +65,11 @@ The CLI copies the component, its shared helpers (`lib/cn.ts`, `lib/use-reduced-
 
 **Animated / unique:** Magnetic Button, Spotlight Card, Scramble Text, Magnify Dock, Tilt Card, Aurora Background, Infinite Marquee, Number Ticker, Orbiting Icons, Border Beam, Morphing Text, Spark Button, Cursor Trail, Glass Card, Swipe Cards, Typewriter, Pixel Reveal, Elastic Slider, Breathing Dot, Ink Ripple Grid
 
+## Contributing
+
+New components are welcome. Start with **[GUIDE.md](GUIDE.md)** (setup → template → wiring → test install → PR).
+AI coding agents read [AGENTS.md](AGENTS.md); quality bar in [docs/COMPONENT_STANDARDS.md](docs/COMPONENT_STANDARDS.md).
+
 ## License
 
 MIT © Framekit UI contributors
