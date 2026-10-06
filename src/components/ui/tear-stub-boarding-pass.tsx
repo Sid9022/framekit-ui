@@ -101,7 +101,8 @@ export function TearStubBoardingPass({ pass: passProp, accent = '#be123c', torn:
   const torn = tornProp ?? inner
   const pull = useMotionValue(0)
   const vertical = W < 560
-  const tilt = useTransform(pull, [0, 90], [0, vertical ? -3 : 4])
+  const strain = useMotionValue(0)
+  const tilt = useTransform(strain, [0, 90], [0, vertical ? -3 : 4])
   const stubRotate = useTransform(pull, [0, 90], [0, vertical ? -2 : 3])
 
   React.useLayoutEffect(() => {
@@ -117,18 +118,27 @@ export function TearStubBoardingPass({ pass: passProp, accent = '#be123c', torn:
   const setTorn = (v: boolean) => {
     if (tornProp === undefined) setInner(v)
     onTornChange?.(v)
-    if (!v) pull.set(0)
+    if (!v) {
+      pull.set(0)
+      strain.set(0)
+    }
+    else animate(strain, 0, reduced ? { duration: 0 } : { type: 'spring', stiffness: 300, damping: 18 })
   }
 
   const onPan = (_: PointerEvent, info: PanInfo) => {
     if (torn) return
     const d = Math.max(0, vertical ? info.offset.y : info.offset.x)
-    pull.set(d < 70 ? d * 0.55 : 38 + (d - 70) * 0.9)
+    const v = d < 70 ? d * 0.55 : 38 + (d - 70) * 0.9
+    pull.set(v)
+    strain.set(v)
   }
   const onPanEnd = () => {
     if (torn) return
     if (pull.get() > 60) setTorn(true)
-    else animate(pull, 0, { type: 'spring', stiffness: 500, damping: 22 })
+    else {
+      animate(pull, 0, { type: 'spring', stiffness: 500, damping: 22 })
+      animate(strain, 0, { type: 'spring', stiffness: 500, damping: 22 })
+    }
   }
 
   const notchR = 13
@@ -165,6 +175,9 @@ export function TearStubBoardingPass({ pass: passProp, accent = '#be123c', torn:
       </div>
 
       <motion.div
+        initial={false}
+        animate={{ x: torn && !vertical ? '15%' : 0, y: torn && vertical ? 66 : 0 }}
+        transition={reduced ? { duration: 0 } : { type: 'spring', stiffness: 160, damping: 22, delay: torn ? 0.35 : 0 }}
         className={cn('relative mx-auto flex w-full max-w-[680px] drop-shadow-[0_24px_40px_rgb(60_10_20/0.18)] dark:drop-shadow-[0_24px_40px_rgb(0_0_0/0.5)]', vertical ? 'flex-col' : 'flex-row')}
         style={{ rotate: reduced ? 0 : tilt }}
       >
@@ -214,8 +227,8 @@ export function TearStubBoardingPass({ pass: passProp, accent = '#be123c', torn:
             {torn && (
               <motion.div
                 aria-hidden
-                className="pointer-events-none absolute right-[8%] top-[34%] rounded-xl border-[3px] px-3 py-1.5 text-center font-bold uppercase leading-none tracking-[0.18em]"
-                style={{ color: accent, borderColor: accent, rotate: -9 }}
+                className="pointer-events-none absolute bottom-[12%] right-[6%] rounded-xl border-[3px] border-current px-3 py-1.5 text-center font-bold uppercase leading-none tracking-[0.18em] text-[var(--tsb-acc)] dark:text-[color-mix(in_oklab,var(--tsb-acc)_45%,#fff)]"
+                style={{ ['--tsb-acc' as string]: accent, rotate: -9 }}
                 initial={reduced ? { opacity: 0 } : { opacity: 0, scale: 1.8 }}
                 animate={{ opacity: 0.9, scale: 1 }}
                 exit={{ opacity: 0 }}
