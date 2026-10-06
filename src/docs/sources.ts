@@ -176,6 +176,9 @@ import lensReveal404Src from '../components/ui/lens-reveal-404.tsx?raw'
 import flipCheckoutCardSrc from '../components/ui/flip-checkout-card.tsx?raw'
 import particleMorphLoaderSrc from '../components/ui/particle-morph-loader.tsx?raw'
 import snakeLoaderSrc from '../components/ui/snake-loader.tsx?raw'
+import dealerDeckTestimonialsSrc from '../components/ui/dealer-deck-testimonials.tsx?raw'
+import paperFoldAccordionSrc from '../components/ui/paper-fold-accordion.tsx?raw'
+import inkBleedTextSrc from '../components/ui/ink-bleed-text.tsx?raw'
 import waxSealButtonSrc from '../components/ui/wax-seal-button.tsx?raw'
 import tearStubBoardingPassSrc from '../components/ui/tear-stub-boarding-pass.tsx?raw'
 import editorialSpreadCardSrc from '../components/ui/editorial-spread-card.tsx?raw'
@@ -506,6 +509,9 @@ export const sources: Record<string, string> = {
   'editorial-spread-card': editorialSpreadCardSrc,
   'tear-stub-boarding-pass': tearStubBoardingPassSrc,
   'wax-seal-button': waxSealButtonSrc,
+  'ink-bleed-text': inkBleedTextSrc,
+  'paper-fold-accordion': paperFoldAccordionSrc,
+  'dealer-deck-testimonials': dealerDeckTestimonialsSrc,
   // p2-entries:start
   'year-activity-grid': yearActivityGridSrc,
   'now-playing-widget': nowPlayingWidgetSrc,

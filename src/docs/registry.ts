@@ -220,6 +220,15 @@ export const DOCS: DocEntry[] = [
 
 
   // Text Animations
+  { slug: 'ink-bleed-text', title: 'Ink Bleed Text', description: 'A serif headline that soaks into the page: each word lands as a wet blot of ink that spreads through the paper fibres (an SVG turbulence displacement relaxing to zero), then dries crisp from a soft blur, word by word.', category: 'Text Animations', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Scroll it into view; press Replay to bleed the ink again.', props: [
+    { name: 'text', type: 'string', default: "'Good ideas spread slowly, then all at once.'", description: 'The sentence (kept intact for screen readers).' },
+    { name: 'highlight', type: 'string', default: "'spread slowly'", description: 'Word(s) inside text printed in italic accent ink.' },
+    { name: 'as', type: "'h1' | 'h2' | 'h3' | 'p'", default: "'h2'", description: 'Element to render.' },
+    { name: 'trigger', type: "'inView' | 'mount'", default: "'inView'", description: 'Start when scrolled into view or immediately.' },
+    { name: 'stagger / duration', type: 'number', default: '90 / 1400', description: 'ms between words (30–200) and per-word drying time (600–3000).' },
+    { name: 'accent', type: 'string', default: "'#9f1239'", description: 'Ink colour for the highlight and blots.' },
+    { name: 'showReplay / onComplete', type: 'boolean / () => void', default: 'true', description: 'Replay button; callback when the ink has dried.' },
+  ] },
   { slug: 'tumble-letters', title: 'Tumble Letters', description: 'A headline of physical letters: drop them and they fall, spin, bounce and pile against each other on the floor; hover lifts letters in a wave, any letter can be grabbed and flung, and Reassemble springs them home.', category: 'Text Animations', unique: true, isNew: true, dependencies: ['lucide-react'], gesture: 'Drop the letters, then drag and fling any of them.', props: [
     { name: 'text / highlight', type: 'string', description: 'Headline and the words in accent ink.' },
     { name: 'autoDrop', type: 'number', default: '0', description: 'ms after mount to drop automatically (0 = never).' },
@@ -465,6 +474,12 @@ export const DOCS: DocEntry[] = [
   { slug: 'push-preview-card', title: 'Push Preview Card', description: 'Mobile-style push notification preview with app icon, title, body, time.', category: 'Notifications', unique: true, isNew: true, gesture: 'Watch the push card settle into the phone frame.', dependencies: ['motion'] },
 
   // Widgets
+  { slug: 'paper-fold-accordion', title: 'Paper Fold Accordion', description: 'FAQ rows that open like a folded letter: two creased paper leaves swing open in CSS 3D (the top from its hinge, the bottom a beat later from the crease), shadows lift off the paper as it flattens and the real text settles underneath.', category: 'Widgets', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Click a question to unfold it; ↑ ↓ Home End move between questions.', props: [
+    { name: 'items', type: 'PaperFoldItem[]', default: 'DEFAULT_PAPER_FOLD_ITEMS', description: '{ id, title, content, meta? } — meta shows as a small pill on wider screens.' },
+    { name: 'type', type: "'single' | 'multiple'", default: "'single'", description: 'Keep one panel open, or allow several.' },
+    { name: 'value / defaultValue / onValueChange', type: 'string[]', default: "[first id]", description: 'Controlled / uncontrolled open panels.' },
+    { name: 'headingAs', type: "'h2' | 'h3' | 'h4'", default: "'h3'", description: 'Heading level wrapping each trigger.' },
+  ] },
   { slug: 'tear-stub-boarding-pass', ownBackground: true, backgroundNote: 'Paints soft colour blobs behind the frosted glass so the blur reads: blush (light) / near-black (dark) via dark: variants. Restyle the frame with className.', title: 'Tear-Stub Boarding Pass', description: 'A frosted-glass boarding pass with a perforated stub. Drag the stub away and it resists, tears free with a ragged edge and tumbles out of frame while a "Boarded" stamp thumps onto the pass. Lays out vertically on narrow screens.', category: 'Widgets', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Drag the stub away from the perforation, or press "Tear stub".', props: [
     { name: 'pass', type: 'Partial<BoardingPassData>', default: 'DEFAULT_BOARDING_PASS', description: '{ carrier, cabin, flight, from, to, duration, passenger, date, gate, seat, boarding, group } — merged over the defaults.' },
     { name: 'accent', type: 'string', default: "'#be123c'", description: 'Route plane, logo and the Boarded stamp.' },
@@ -609,6 +624,12 @@ export const DOCS: DocEntry[] = [
   { slug: 'breathing-dot', title: 'Breathing Dot', description: 'Soft pulsating status indicator.', category: 'Core', unique: true },
 
   // Portfolio + new heroes
+  { slug: 'dealer-deck-testimonials', ownBackground: true, backgroundNote: 'Paints its own linen (light) / ink (dark) table with grain via dark: variants; the card backs use accent. Restyle the frame with className.', title: 'Dealer Deck Testimonials', description: 'Testimonials dealt like playing cards: the top card of a face-down deck slides across the table on a spring, flips face-up mid-flight and lands slightly askew on the pile. Take one back or gather the deck.', category: 'Portfolio', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Click the deck or "Deal next"; ← → take back / deal.', props: [
+    { name: 'items', type: 'DealerTestimonial[]', default: 'DEFAULT_DEALER_TESTIMONIALS', description: '{ id, quote, name, role, rating?, src? } — src replaces the monogram avatar.' },
+    { name: 'title / titleAs', type: "string / 'h2' | 'h3'", default: "'Dealt from real projects'", description: 'Heading above the table.' },
+    { name: 'accent', type: 'string', default: "'#8c1230'", description: 'Card-back colour (gold guilloche on top).' },
+    { name: 'dealt / defaultDealt / onDealtChange', type: 'number', default: '1', description: 'Controlled / uncontrolled number of dealt cards.' },
+  ] },
   { slug: 'kinetic-name-hero', ownBackground: true, backgroundNote: 'Paints its own warm-paper (light) / ink (dark) backdrop via light and dark: variants, so it matches the host page. Override the surface with className (e.g. bg-*, rounded-*, min-h-*).', title: 'Kinetic Name Hero', description: 'Your name set huge, every letter on its own spring — letters are pushed away, tilt and swell as the cursor passes, then ease home; a soft light trails the pointer and a badge circles the role.', category: 'Hero', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Move (or drag) across the name — letters scatter and spring back.', props: [
     { name: 'name', type: 'string', default: '\'Nova Reyes\'', description: 'Your name; each word becomes a line.' },
     { name: 'role', type: 'string', default: '\'Design engineer & motion designer\'', description: 'Role line above the name.' },
