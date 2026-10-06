@@ -183,6 +183,10 @@ import { WaxSealButton } from '@/components/ui/wax-seal-button'
 import { InkBleedText } from '@/components/ui/ink-bleed-text'
 import { PaperFoldAccordion } from '@/components/ui/paper-fold-accordion'
 import { DealerDeckTestimonials } from '@/components/ui/dealer-deck-testimonials'
+import { SwingPriceTag } from '@/components/ui/swing-price-tag'
+import { HourglassLoader } from '@/components/ui/hourglass-loader'
+import { SignaturePadField } from '@/components/ui/signature-pad-field'
+import { ReceiptPrintToast, DEFAULT_RECEIPTS } from '@/components/ui/receipt-print-toast'
 // batch-folder:imports-end
 import { FaceScanPayButton } from '@/components/ui/face-scan-pay-button'
 import { OrbitDotExportButton } from '@/components/ui/orbit-dot-export-button'
@@ -1488,6 +1492,20 @@ const portfolio2Demos: Record<string, React.ReactNode> = {
 }
 // p2-demos:end
 
+function HourglassDemo() {
+  const [p, setP] = React.useState(12)
+  React.useEffect(() => {
+    const t = window.setInterval(() => setP((v) => (v >= 100 ? 0 : Math.min(100, v + 7))), 900)
+    return () => window.clearInterval(t)
+  }, [])
+  return (
+    <div className="flex flex-wrap items-end justify-center gap-14">
+      <HourglassLoader />
+      <HourglassLoader progress={p} accent="#c2410c" label={p >= 100 ? 'Backup restored' : 'Restoring your backup…'} />
+    </div>
+  )
+}
+
 const batchFolderDemos: Record<string, React.ReactNode> = {
   'folder-fan-showcase': <FolderFanShowcase className="max-w-4xl" />,
   'swipe-carousel-post': <SwipeCarouselPost />,
@@ -1509,6 +1527,10 @@ const batchFolderDemos: Record<string, React.ReactNode> = {
   ),
   'paper-fold-accordion': <PaperFoldAccordion />,
   'dealer-deck-testimonials': <DealerDeckTestimonials className="max-w-3xl" />,
+  'swing-price-tag': <SwingPriceTag />,
+  'hourglass-loader': <HourglassDemo />,
+  'signature-pad-field': <SignaturePadField />,
+  'receipt-print-toast': <ReceiptPrintToast receipt={DEFAULT_RECEIPTS[0]} />,
   // batch-folder:demos
 }
 

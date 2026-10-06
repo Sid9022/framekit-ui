@@ -256,6 +256,13 @@ export const DOCS: DocEntry[] = [
   { slug: 'list-bloom-shimmer', title: 'List Bloom Shimmer', description: 'Stacked list rows bloom in with staggered shimmer and soft shadows.', category: 'Shimmer', unique: true, isNew: true, gesture: 'Watch rows bloom in stagger, then shimmer.' },
 
   // Loading
+  { slug: 'hourglass-loader', title: 'Hourglass Loader', description: 'A brass-and-glass hourglass: sand drains from the upper bulb through a trickling stream into a growing mound, and in endless mode the glass turns itself over on a spring when the top runs dry. Pass progress for a determinate progressbar.', category: 'Loading', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Watch it pour and flip; the right one tracks a real progress value.', props: [
+    { name: 'progress', type: 'number', description: '0–100 for a determinate progressbar; omit for the endless pour.' },
+    { name: 'label', type: 'string', description: 'Status line under the glass (announced politely).' },
+    { name: 'duration', type: 'number', default: '6', description: 'Seconds per pour in endless mode (2–20).' },
+    { name: 'accent', type: 'string', default: "'#d4a24c'", description: 'Sand colour.' },
+    { name: 'size', type: 'number', default: '168', description: 'Height in px.' },
+  ] },
   { slug: 'orbital-bead-loader', title: 'Orbital Bead Loader', description: 'Beads orbit a core; hover speeds up.', category: 'Loading', unique: true, isNew: true, gesture: 'Hover — orbit accelerates.' },
   { slug: 'ink-drip-loader', title: 'Ink Drip Loader', description: 'Ink drops merge into a looping puddle.', category: 'Loading', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Watch drops merge into the puddle.' },
   { slug: 'morph-glyph-loader', title: 'Morph Glyph Loader', description: 'Glyph morphs through abstract SVG shapes.', category: 'Loading', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Watch the glyph morph between shapes.' },
@@ -330,6 +337,13 @@ export const DOCS: DocEntry[] = [
 
 
   // Toast (signature — distinct from Core toast)
+  { slug: 'receipt-print-toast', title: 'Receipt Print Toast', description: 'Order confirmations that print: a thermal printer slot blinks, then a strip of receipt paper feeds out line by line in little stepped jolts with a torn zig-zag edge. After a few seconds it tears off and drops away; hover or focus holds it.', category: 'Toast', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Press "Place order" to print a receipt; hover to hold it.', props: [
+    { name: 'receipt', type: 'Receipt | null', description: '{ title, subtitle?, lines: { label, qty?, amount }[], total?, footer? } — prints whenever the object changes.' },
+    { name: 'samples', type: 'Receipt[]', default: 'DEFAULT_RECEIPTS', description: 'Orders cycled by the built-in trigger.' },
+    { name: 'triggerLabel / showTrigger', type: 'string / boolean', default: "'Place order' / true", description: 'Built-in trigger button.' },
+    { name: 'duration', type: 'number', default: '6000', description: 'ms before it tears off (0 = until dismissed); paused on hover / focus.' },
+    { name: 'onDismiss', type: '(receipt) => void', description: 'Fires when a receipt tears off or is dismissed.' },
+  ] },
   { slug: 'gravity-stack-toast', title: 'Gravity Stack Toast', description: 'Gravity-bounce stack with provider/hook.', category: 'Toast', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Trigger toasts — they fall into a bouncing stack.' },
   { slug: 'ribbon-unfurl-toast', title: 'Ribbon Unfurl Toast', description: 'Ribbon unfurl enter animation.', category: 'Toast', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Trigger — ribbon unfurls from the side.' },
   { slug: 'sonar-ping-toast', title: 'Sonar Ping Toast', description: 'Expanding sonar rings on appear.', category: 'Toast', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Trigger — sonar rings expand on appear.' },
@@ -474,6 +488,13 @@ export const DOCS: DocEntry[] = [
   { slug: 'push-preview-card', title: 'Push Preview Card', description: 'Mobile-style push notification preview with app icon, title, body, time.', category: 'Notifications', unique: true, isNew: true, gesture: 'Watch the push card settle into the phone frame.', dependencies: ['motion'] },
 
   // Widgets
+  { slug: 'swing-price-tag', title: 'Swing Price Tag', description: 'A luxury swing tag hanging from a brass rail on a waxed cord. Brush past it and it swings like a real, lightly damped pendulum that settles and sleeps; tap it and it twirls over to the back for composition, care symbols and an SKU barcode while a foil sheen catches the light.', category: 'Widgets', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Sweep the pointer across the tag to swing it; click (or Enter) to flip. ← → nudge the swing.', props: [
+    { name: 'brand / monogram / product / variant', type: 'string', description: 'Front-of-tag copy.' },
+    { name: 'price / compareAt / badge', type: 'string', default: "'€248' / '€310' / 'Members −20%'", description: 'Price, struck-through original and the pill at the bottom.' },
+    { name: 'details / sku', type: '[label, value][] / string', description: 'Back-of-tag rows and barcode text.' },
+    { name: 'flipped / defaultFlipped / onFlippedChange', type: 'boolean', default: 'false', description: 'Controlled / uncontrolled side.' },
+    { name: 'swing', type: 'boolean', default: 'true', description: 'Pendulum physics from pointer movement and taps (off under reduced motion).' },
+  ] },
   { slug: 'paper-fold-accordion', title: 'Paper Fold Accordion', description: 'FAQ rows that open like a folded letter: two creased paper leaves swing open in CSS 3D (the top from its hinge, the bottom a beat later from the crease), shadows lift off the paper as it flattens and the real text settles underneath.', category: 'Widgets', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Click a question to unfold it; ↑ ↓ Home End move between questions.', props: [
     { name: 'items', type: 'PaperFoldItem[]', default: 'DEFAULT_PAPER_FOLD_ITEMS', description: '{ id, title, content, meta? } — meta shows as a small pill on wider screens.' },
     { name: 'type', type: "'single' | 'multiple'", default: "'single'", description: 'Keep one panel open, or allow several.' },
@@ -589,6 +610,15 @@ export const DOCS: DocEntry[] = [
 
   // Core
   // Inputs / Forms
+  { slug: 'signature-pad-field', title: 'Signature Pad Field', description: 'An e-signature field: draw with mouse, pen or finger and the ink thins on fast strokes and pools on slow ones; undo stroke by stroke, or switch to the Type tab for a keyboard-friendly script signature. Adopting it stamps a signed time.', category: 'Inputs / Forms', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Draw a signature on the pad (or use the Type tab), then Adopt & sign.', props: [
+    { name: 'label / description', type: 'string', description: 'Field title and the document line under it.' },
+    { name: 'name', type: 'string', default: "'Jordan Ellis'", description: 'Signer name; pre-fills the Type tab.' },
+    { name: 'submitLabel', type: 'string', default: "'Adopt & sign'", description: 'Primary button copy.' },
+    { name: 'onAdopt', type: '(result: SignatureResult) => void', description: '{ method, name, dataUrl, signedAt } — dataUrl is a PNG of the drawn signature.' },
+    { name: 'onClear', type: '() => void', description: 'Fires when the pad is cleared.' },
+    { name: 'ink', type: '{ light: string; dark: string }', default: "{ light: '#1e2a6e', dark: '#c7d2fe' }", description: 'Ink colour per theme.' },
+    { name: 'theme', type: "'auto' | 'light' | 'dark'", default: "'auto'", description: 'Canvas ink follows the nearest .dark / .light ancestor.' },
+  ] },
   { slug: 'tumbler-lock-otp', title: 'Tumbler Lock OTP', description: 'A one-time-code field built from combination-lock drums on real CSS-3D cylinders; each digit whirrs a full turn before landing, a padlock checks the code and springs open — or shakes and spins every drum back on failure.', category: 'Inputs / Forms', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Type or paste 246810 to unlock; anything else fails. Esc clears.', props: [
     { name: 'length', type: 'number', default: '6', description: 'Number of drums.' },
     { name: 'value / defaultValue / onValueChange', type: 'string', description: 'Controlled or uncontrolled digits.' },

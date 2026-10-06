@@ -176,6 +176,10 @@ import lensReveal404Src from '../components/ui/lens-reveal-404.tsx?raw'
 import flipCheckoutCardSrc from '../components/ui/flip-checkout-card.tsx?raw'
 import particleMorphLoaderSrc from '../components/ui/particle-morph-loader.tsx?raw'
 import snakeLoaderSrc from '../components/ui/snake-loader.tsx?raw'
+import receiptPrintToastSrc from '../components/ui/receipt-print-toast.tsx?raw'
+import signaturePadFieldSrc from '../components/ui/signature-pad-field.tsx?raw'
+import hourglassLoaderSrc from '../components/ui/hourglass-loader.tsx?raw'
+import swingPriceTagSrc from '../components/ui/swing-price-tag.tsx?raw'
 import dealerDeckTestimonialsSrc from '../components/ui/dealer-deck-testimonials.tsx?raw'
 import paperFoldAccordionSrc from '../components/ui/paper-fold-accordion.tsx?raw'
 import inkBleedTextSrc from '../components/ui/ink-bleed-text.tsx?raw'
@@ -512,6 +516,10 @@ export const sources: Record<string, string> = {
   'ink-bleed-text': inkBleedTextSrc,
   'paper-fold-accordion': paperFoldAccordionSrc,
   'dealer-deck-testimonials': dealerDeckTestimonialsSrc,
+  'swing-price-tag': swingPriceTagSrc,
+  'hourglass-loader': hourglassLoaderSrc,
+  'signature-pad-field': signaturePadFieldSrc,
+  'receipt-print-toast': receiptPrintToastSrc,
   // p2-entries:start
   'year-activity-grid': yearActivityGridSrc,
   'now-playing-widget': nowPlayingWidgetSrc,
