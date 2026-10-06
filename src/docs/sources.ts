@@ -271,6 +271,21 @@ import miniDesktopOsSrc from '../components/ui/mini-desktop-os.tsx?raw'
 import loginGateIntroSrc from '../components/ui/login-gate-intro.tsx?raw'
 import routeChooserHeroSrc from '../components/ui/route-chooser-hero.tsx?raw'
 import discoverySceneSrc from '../components/ui/discovery-scene.tsx?raw'
+import signalBeamDiagramSrc from '../components/ui/signal-beam-diagram.tsx?raw'
+import featureBentoGridSrc from '../components/ui/feature-bento-grid.tsx?raw'
+import liveFeedStackSrc from '../components/ui/live-feed-stack.tsx?raw'
+import fileTreeExplorerSrc from '../components/ui/file-tree-explorer.tsx?raw'
+import deviceFrameSrc from '../components/ui/device-frame.tsx?raw'
+import avatarStackSrc from '../components/ui/avatar-stack.tsx?raw'
+import neonHaloCardSrc from '../components/ui/neon-halo-card.tsx?raw'
+import horizonGridFieldSrc from '../components/ui/horizon-grid-field.tsx?raw'
+import flickerDotFieldSrc from '../components/ui/flicker-dot-field.tsx?raw'
+import confettiBurstButtonSrc from '../components/ui/confetti-burst-button.tsx?raw'
+import videoLightboxDialogSrc from '../components/ui/video-lightbox-dialog.tsx?raw'
+import wordCycleTextSrc from '../components/ui/word-cycle-text.tsx?raw'
+import highlightMarkerTextSrc from '../components/ui/highlight-marker-text.tsx?raw'
+import velocityMarqueeSrc from '../components/ui/velocity-marquee.tsx?raw'
+import sparkleTextSrc from '../components/ui/sparkle-text.tsx?raw'
 // p2-imports:end
 
 export const sources: Record<string, string> = {
@@ -543,5 +558,20 @@ export const sources: Record<string, string> = {
   'login-gate-intro': loginGateIntroSrc,
   'route-chooser-hero': routeChooserHeroSrc,
   'discovery-scene': discoverySceneSrc,
+  'signal-beam-diagram': signalBeamDiagramSrc,
+  'feature-bento-grid': featureBentoGridSrc,
+  'live-feed-stack': liveFeedStackSrc,
+  'file-tree-explorer': fileTreeExplorerSrc,
+  'device-frame': deviceFrameSrc,
+  'avatar-stack': avatarStackSrc,
+  'neon-halo-card': neonHaloCardSrc,
+  'horizon-grid-field': horizonGridFieldSrc,
+  'flicker-dot-field': flickerDotFieldSrc,
+  'confetti-burst-button': confettiBurstButtonSrc,
+  'video-lightbox-dialog': videoLightboxDialogSrc,
+  'word-cycle-text': wordCycleTextSrc,
+  'highlight-marker-text': highlightMarkerTextSrc,
+  'velocity-marquee': velocityMarqueeSrc,
+  'sparkle-text': sparkleTextSrc,
   // p2-entries:end
 }

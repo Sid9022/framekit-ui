@@ -188,6 +188,22 @@ import { HourglassLoader } from '@/components/ui/hourglass-loader'
 import { SignaturePadField } from '@/components/ui/signature-pad-field'
 import { ReceiptPrintToast, DEFAULT_RECEIPTS } from '@/components/ui/receipt-print-toast'
 // batch-folder:imports-end
+import { SignalBeamDiagram } from '@/components/ui/signal-beam-diagram'
+import { FeatureBentoGrid } from '@/components/ui/feature-bento-grid'
+import { LiveFeedStack } from '@/components/ui/live-feed-stack'
+import { FileTreeExplorer } from '@/components/ui/file-tree-explorer'
+import { DeviceFrame } from '@/components/ui/device-frame'
+import { AvatarStack } from '@/components/ui/avatar-stack'
+import { NeonHaloCard } from '@/components/ui/neon-halo-card'
+import { HorizonGridField } from '@/components/ui/horizon-grid-field'
+import { FlickerDotField } from '@/components/ui/flicker-dot-field'
+import { ConfettiBurstButton } from '@/components/ui/confetti-burst-button'
+import { VideoLightboxDialog } from '@/components/ui/video-lightbox-dialog'
+import { WordCycleText } from '@/components/ui/word-cycle-text'
+import { HighlightMarkerText } from '@/components/ui/highlight-marker-text'
+import { VelocityMarquee } from '@/components/ui/velocity-marquee'
+import { SparkleText } from '@/components/ui/sparkle-text'
+// magic-batch:imports-end
 import { FaceScanPayButton } from '@/components/ui/face-scan-pay-button'
 import { OrbitDotExportButton } from '@/components/ui/orbit-dot-export-button'
 import { ShredderDeleteButton } from '@/components/ui/shredder-delete-button'
@@ -1506,6 +1522,68 @@ function HourglassDemo() {
   )
 }
 
+
+function SignalBeamDemo() {
+  return <SignalBeamDiagram />
+}
+
+function HorizonGridDemo() {
+  return (
+    <HorizonGridField className="max-w-3xl">
+      <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-zinc-700 dark:text-zinc-300">Now in beta</p>
+      <h3 className="mx-auto mt-3 max-w-md text-balance text-4xl font-semibold tracking-[-0.035em] text-zinc-950 sm:text-5xl dark:text-white">The road to launch, already paved</h3>
+      <p className="mx-auto mt-3 max-w-sm text-pretty text-sm text-zinc-700 dark:text-zinc-300">Preview, review and ship from one calm workspace.</p>
+    </HorizonGridField>
+  )
+}
+
+function FlickerDotDemo() {
+  const [shape, setShape] = React.useState<'square' | 'dot'>('square')
+  return (
+    <div className="flex w-full max-w-3xl flex-col items-center gap-3">
+      <FlickerDotField shape={shape} flicker={shape === 'dot' ? 0.25 : 0.5}>
+        <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-signal-700 dark:text-signal-300">Status</p>
+        <h3 className="mt-2 text-4xl font-semibold tracking-[-0.035em] text-zinc-950 sm:text-5xl dark:text-white">All systems normal</h3>
+        <p className="mt-2 text-sm tabular-nums text-zinc-700 dark:text-zinc-300">99.99% uptime · last incident 41 days ago</p>
+      </FlickerDotField>
+      <div role="radiogroup" aria-label="Mark shape" onKeyDown={handleTablistKeys} className="inline-flex rounded-full bg-black/[0.04] p-1 dark:bg-white/[0.06]">
+        {(['square', 'dot'] as const).map((s) => (
+          <button key={s} type="button" role="radio" aria-checked={shape === s} tabIndex={shape === s ? 0 : -1} onClick={() => setShape(s)} className={'min-h-11 rounded-full px-4 text-xs font-medium capitalize transition-colors ' + (shape === s ? 'bg-white text-zinc-950 shadow-sm dark:bg-zinc-800 dark:text-white' : 'text-zinc-700 dark:text-zinc-300')}>
+            {s === 'square' ? 'LED squares' : 'Dot pattern'}
+          </button>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function DeviceFrameDemo() {
+  return (
+    <div className="flex w-full max-w-4xl flex-col items-center gap-8 md:flex-row md:items-end md:justify-center">
+      <DeviceFrame className="md:max-w-xl" />
+      <DeviceFrame variant="phone" className="w-[220px]" />
+    </div>
+  )
+}
+
+const magicBatchDemos: Record<string, React.ReactNode> = {
+  'signal-beam-diagram': <SignalBeamDemo />,
+  'feature-bento-grid': <FeatureBentoGrid />,
+  'live-feed-stack': <LiveFeedStack />,
+  'file-tree-explorer': <FileTreeExplorer />,
+  'device-frame': <DeviceFrameDemo />,
+  'avatar-stack': <div className="pb-40 pt-16"><AvatarStack /></div>,
+  'neon-halo-card': <NeonHaloCard />,
+  'horizon-grid-field': <HorizonGridDemo />,
+  'flicker-dot-field': <FlickerDotDemo />,
+  'confetti-burst-button': <ConfettiBurstButton />,
+  'video-lightbox-dialog': <VideoLightboxDialog />,
+  'word-cycle-text': <WordCycleText />,
+  'highlight-marker-text': <HighlightMarkerText />,
+  'velocity-marquee': <VelocityMarquee className="max-w-4xl" />,
+  'sparkle-text': <p className="text-center text-3xl font-semibold tracking-tight text-zinc-950 sm:text-5xl dark:text-white">Make it <SparkleText className="text-[1em] sm:text-[1em]" /></p>,
+}
+
 const batchFolderDemos: Record<string, React.ReactNode> = {
   'folder-fan-showcase': <FolderFanShowcase className="max-w-4xl" />,
   'swipe-carousel-post': <SwipeCarouselPost />,
@@ -2347,4 +2425,5 @@ export const demos: Record<string, React.ReactNode> = {
   ...portfolioDemos,
   ...portfolio2Demos,
   ...batchFolderDemos,
+  ...magicBatchDemos,
 }
