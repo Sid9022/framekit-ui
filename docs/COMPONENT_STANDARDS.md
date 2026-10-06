@@ -3,6 +3,9 @@
 The Framekit quality bar, distilled from the design skills in `.claude/skills/` and from the best components already in
 the repo. Every rule here appears in existing code. When in doubt, open the reference component and copy its approach.
 
+For the visual finish (spacing rhythm, type scale, radii, hairline borders, glass materials, layered shadows, interaction states, and
+content states), follow [PREMIUM_GUIDELINES.md](PREMIUM_GUIDELINES.md), a synthesis of the Vercel Web Interface Guidelines and Apple HIG.
+
 Contents: [Reference components](#reference-components) · [API](#1-api-conventions) · [Motion](#2-motion) ·
 [Reduced motion](#3-reduced-motion) · [Theming](#4-light--dark) · [Accessibility](#5-accessibility) ·
 [Responsive](#6-responsive--touch) · [Performance](#7-performance) · [Originality](#8-originality--content) ·
@@ -203,6 +206,8 @@ From `premium-ui-motion-craft` §1–2 and `visual-design-critique`:
 - **Type**: `font-display` (Instrument Serif) for editorial headlines with tight tracking, Geist for UI, `tabular-nums` for changing numbers.
 - 8 px spacing rhythm, generous whitespace, and alignment to a few strong edges.
 - **Design every state**: hover, focus-visible, active, disabled, loading, empty, error, and success.
+
+Then run the [premium ship check](PREMIUM_GUIDELINES.md#10-ship-check-premium).
 
 **Squint test before shipping**: is the focal point obvious? Does anything feel floaty, jittery, or mechanically synced?
 Is it at least as rich as the reference components? If not, add depth (layers, lighting, micro-interactions), not more elements.

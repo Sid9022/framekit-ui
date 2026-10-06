@@ -34,6 +34,7 @@ npm run preview        # serve dist/ on :4180
 3. 2–3 existing components in `src/components/ui/` from the **same category** you're adding to (find them by `category:` in `registry.ts`)
 4. `src/lib/cn.ts`, `src/lib/use-reduced-motion.ts`, `src/lib/use-resolved-theme.ts` (plus `toggle.ts`, `roving.ts`, `portfolio-art.tsx` if relevant)
 5. [docs/COMPONENT_STANDARDS.md](docs/COMPONENT_STANDARDS.md): the quality bar, with copyable patterns
+6. [docs/PREMIUM_GUIDELINES.md](docs/PREMIUM_GUIDELINES.md): the visual finish (spacing, type, radii, hairlines, glass, shadows, springs, states), synthesised from the Vercel Web Interface Guidelines and Apple HIG
 
 Deeper context: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) explains how the docs site and registry pipeline fit together.
 
@@ -72,7 +73,7 @@ or `public/r/`. They're generated. Full walkthrough with templates: [GUIDE.md](G
 10. **Ship check**: `npm run check:wiring` passes, `npm run build` passes, and you've test-installed from the built `/r/<slug>.json`
     (see [GUIDE.md §7](GUIDE.md#7-test-the-shadcn-install)).
 
-Quality bar: outstanding UI/UX and motion, not generic. When unsure, match the best recent components, which are listed in
+Quality bar: outstanding UI/UX and motion, not generic. Visual finish follows [docs/PREMIUM_GUIDELINES.md](docs/PREMIUM_GUIDELINES.md). When unsure, match the best recent components, which are listed in
 [docs/COMPONENT_STANDARDS.md](docs/COMPONENT_STANDARDS.md#reference-components). Finish with [docs/CHECKLIST.md](docs/CHECKLIST.md).
 
 ## Design skills
