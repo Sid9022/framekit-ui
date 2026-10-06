@@ -130,20 +130,20 @@ export function EditorialSpreadCard({
         }
       }}
     >
-      <div className="relative mx-auto" style={{ width: W, height: H + 28, perspective: 2200 }}>
+      <div className="relative mx-auto" style={{ width: W, height: (compact ? H * 1.4 : H) + 28, perspective: 2200 }}>
         {/* floor shadow */}
         <motion.div
           aria-hidden
           className="absolute bottom-0 h-6 rounded-[50%] bg-black/25 blur-xl dark:bg-black/70"
           initial={false}
-          animate={{ left: open ? W * 0.04 : P * 0.62, width: open ? W * 0.92 : P * 0.82 }}
+          animate={{ left: open ? W * 0.04 : compact ? P * 0.42 : P * 0.62, width: open ? W * 0.92 : compact ? P * 1.16 : P * 0.82, bottom: open && compact ? H * 0.4 : 0 }}
           transition={spring}
         />
         <motion.div
           className="absolute left-0 top-0"
           style={{ width: W, height: H, transformStyle: 'preserve-3d' }}
           initial={false}
-          animate={{ x: open ? 0 : -P / 2, rotateX: open ? 8 : 4 }}
+          animate={{ x: open ? 0 : -P / 2, rotateX: open ? 8 : 4, scale: open || !compact ? 1 : 1.4, y: open || !compact ? 0 : H * 0.2 }}
           transition={spring}
         >
           {/* right page — the spread */}

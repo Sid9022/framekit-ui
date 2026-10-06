@@ -153,7 +153,7 @@ export function ReceiptPrintToast({
                   </button>
                   <p className="pr-8 text-[13px] font-semibold uppercase tracking-[0.12em]">{current.title}</p>
                   {current.subtitle && <p className="mt-0.5 text-[11px] text-[#5d554b]">{current.subtitle}</p>}
-                  <p aria-hidden className="mt-3 overflow-hidden whitespace-nowrap text-[11px] leading-none text-[#8a8176]">{'- '.repeat(40)}</p>
+                  <p aria-hidden className="mt-3 overflow-hidden whitespace-nowrap text-[11px] leading-none text-[#6f665b]">{'- '.repeat(40)}</p>
                   <ul className="mt-2 space-y-1.5 text-[12px]">
                     {current.lines.map((l) => (
                       <li key={l.label} className="flex items-baseline gap-2">
@@ -165,7 +165,7 @@ export function ReceiptPrintToast({
                   </ul>
                   {current.total && (
                     <>
-                      <p aria-hidden className="mt-2 overflow-hidden whitespace-nowrap text-[11px] leading-none text-[#8a8176]">{'= '.repeat(40)}</p>
+                      <p aria-hidden className="mt-2 overflow-hidden whitespace-nowrap text-[11px] leading-none text-[#6f665b]">{'= '.repeat(40)}</p>
                       <p className="mt-2 flex items-baseline justify-between text-[14px] font-semibold"><span>Total</span><span className="tabular-nums">{current.total}</span></p>
                     </>
                   )}

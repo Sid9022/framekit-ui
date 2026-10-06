@@ -63,7 +63,7 @@ function drawStroke(ctx: CanvasRenderingContext2D, pts: Pt[], color: string, bas
  */
 export function SignaturePadField({
   label = 'Sign to approve',
-  description = 'Vendor agreement · Northwind Paper Co. · 3 pages',
+  description = 'Vendor agreement · Northwind Paper Co.',
   name = 'Jordan Ellis',
   submitLabel = 'Adopt & sign',
   onAdopt,

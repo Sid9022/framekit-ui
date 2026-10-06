@@ -139,8 +139,8 @@ export function TearStubBoardingPass({ pass: passProp, accent = '#be123c', torn:
     ? `radial-gradient(circle at 0 0, transparent ${notchR}px, #000 ${notchR + 0.5}px) left/51% 100% no-repeat, radial-gradient(circle at 100% 0, transparent ${notchR}px, #000 ${notchR + 0.5}px) right/51% 100% no-repeat`
     : `radial-gradient(circle at 0 0, transparent ${notchR}px, #000 ${notchR + 0.5}px) top/100% 51% no-repeat, radial-gradient(circle at 0 100%, transparent ${notchR}px, #000 ${notchR + 0.5}px) bottom/100% 51% no-repeat`
 
-  const glass = 'bg-white/55 ring-1 ring-inset ring-white/70 backdrop-blur-xl backdrop-saturate-150 shadow-[inset_0_1px_0_rgb(255_255_255/0.9)] dark:bg-white/[0.07] dark:ring-white/[0.14] dark:shadow-[inset_0_1px_0_rgb(255_255_255/0.12)]'
-  const label = 'text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-600 dark:text-zinc-400'
+  const glass = 'bg-white/55 ring-1 ring-inset ring-white/70 backdrop-blur-xl backdrop-saturate-150 shadow-[inset_0_1px_0_rgb(255_255_255/0.9)] dark:bg-zinc-950/45 dark:ring-white/[0.14] dark:shadow-[inset_0_1px_0_rgb(255_255_255/0.12)]'
+  const label = 'text-[10px] font-semibold uppercase tracking-[0.16em] text-zinc-600 dark:text-zinc-300'
   const value = 'mt-0.5 text-[15px] font-semibold tabular-nums text-zinc-950 dark:text-white'
 
   const fields: [string, string][] = [
@@ -193,7 +193,7 @@ export function TearStubBoardingPass({ pass: passProp, accent = '#be123c', torn:
                 <path d="M2 28 Q60 -8 118 28" fill="none" stroke="currentColor" strokeWidth="1.2" strokeDasharray="2 4" className="text-zinc-500 dark:text-zinc-500" vectorEffect="non-scaling-stroke" />
               </svg>
               <Plane aria-hidden className="absolute left-1/2 top-[-2px] size-5 -translate-x-1/2 rotate-45" style={{ color: accent }} />
-              <p className="mt-0.5 whitespace-nowrap text-[10px] font-medium text-zinc-600 dark:text-zinc-400">{pass.duration}</p>
+              <p className="mt-0.5 whitespace-nowrap text-[10px] font-medium text-zinc-600 dark:text-zinc-300">{pass.duration}</p>
             </div>
             <div className="text-right">
               <p className="text-[clamp(30px,8cqw,44px)] font-semibold leading-none tracking-[-0.04em]">{pass.to.code}</p>
@@ -252,7 +252,7 @@ export function TearStubBoardingPass({ pass: passProp, accent = '#be123c', torn:
                 <div className="grid size-[84px] shrink-0 place-items-center rounded-xl bg-white p-2 text-zinc-950 shadow-[0_1px_2px_rgb(0_0_0/0.08)] dark:bg-zinc-50">
                   <QrMark seed={`${pass.flight}${pass.seat}${pass.passenger}`} className="size-full" />
                 </div>
-                <p aria-hidden className={cn('text-[9px] font-semibold uppercase tracking-[0.2em] text-zinc-600 dark:text-zinc-400', vertical && 'hidden')}>
+                <p aria-hidden className={cn('text-[9px] font-semibold uppercase tracking-[0.2em] text-zinc-600 dark:text-zinc-300', vertical && 'hidden')}>
                   {'Pull to tear →'}
                 </p>
               </motion.div>

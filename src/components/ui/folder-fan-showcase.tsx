@@ -242,7 +242,7 @@ export function FolderFanShowcase({
   const cw = W * 0.34
   const ch = cw * 1.25
   const fh = W * 0.62
-  const top = W * 0.36
+  const top = W * 0.4
   const anchor = fh * 0.08
 
   const pose = (i: number): Pose => {
@@ -256,8 +256,8 @@ export function FolderFanShowcase({
     }
     if (hasSel && i === sel) return { x: 0, y: -fh * 0.4, rotate: 0, scale: 1.42, zIndex: front === i ? 40 : z, opacity: 1 }
     if (hasSel) return { x: s * W * 0.27, y: -ch * 0.42 + a * a * ch * 0.08, rotate: s * 12, scale: 0.94, zIndex: z, opacity: 0.92 }
-    if (open) return { x: s * W * 0.31, y: -ch * 0.86 + a * a * ch * 0.18, rotate: s * 13, scale: 1, zIndex: z, opacity: 1 }
-    return { x: s * W * 0.22, y: -ch * 0.5 + a * a * ch * 0.08, rotate: s * 8, scale: 1, zIndex: z, opacity: 1 }
+    if (open) return { x: s * W * 0.31, y: -ch * 0.95 + a * a * ch * 0.2, rotate: s * 13, scale: 1, zIndex: z, opacity: 1 }
+    return { x: s * W * 0.22, y: -ch * 0.6 + a * a * ch * 0.1, rotate: s * 8, scale: 1, zIndex: z, opacity: 1 }
   }
 
   const spring = (i: number) => {
@@ -356,8 +356,10 @@ export function FolderFanShowcase({
           boxShadow: 'var(--ffs-pocket-shadow)',
         }}
       >
-        <div className="absolute inset-0 bg-[linear-gradient(115deg,rgb(255_255_255/0.5)_0%,rgb(255_255_255/0)_38%,rgb(255_255_255/0)_70%,rgb(255_255_255/0.18)_100%)] opacity-70 dark:opacity-25" />
-        <div className="absolute inset-x-0 top-0 h-px bg-white/90 dark:bg-white/30" />
+        <div className="absolute inset-0 bg-[linear-gradient(115deg,rgb(255_255_255/0.55)_0%,rgb(255_255_255/0)_34%,rgb(255_255_255/0)_66%,rgb(255_255_255/0.22)_100%)] opacity-80 dark:opacity-30" />
+        <div className="absolute -left-[20%] top-0 h-full w-[38%] -skew-x-[24deg] bg-gradient-to-r from-transparent via-white/25 to-transparent dark:via-white/[0.06]" />
+        <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-white/40 via-white to-white/40 dark:from-white/10 dark:via-white/40 dark:to-white/10" />
+        <div className="absolute inset-x-[5%] top-[14%] h-px bg-[var(--ffs-ink-strong)] opacity-[0.12]" />
         {!mirror && (
           <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3" style={{ padding: `0 ${W * 0.06}px ${W * 0.05}px`, fontFamily: FONT }}>
             <div className="min-w-0">
