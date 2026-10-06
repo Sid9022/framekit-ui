@@ -176,6 +176,8 @@ import lensReveal404Src from '../components/ui/lens-reveal-404.tsx?raw'
 import flipCheckoutCardSrc from '../components/ui/flip-checkout-card.tsx?raw'
 import particleMorphLoaderSrc from '../components/ui/particle-morph-loader.tsx?raw'
 import snakeLoaderSrc from '../components/ui/snake-loader.tsx?raw'
+import swipeCarouselPostSrc from '../components/ui/swipe-carousel-post.tsx?raw'
+import folderFanShowcaseSrc from '../components/ui/folder-fan-showcase.tsx?raw'
 import faceScanPayButtonSrc from '../components/ui/face-scan-pay-button.tsx?raw'
 import orbitDotExportButtonSrc from '../components/ui/orbit-dot-export-button.tsx?raw'
 import shredderDeleteButtonSrc from '../components/ui/shredder-delete-button.tsx?raw'
@@ -496,6 +498,8 @@ export const sources: Record<string, string> = {
   'scroll-reveal': scrollRevealSrc,
   'portfolio-studio-template': portfolioStudioTemplateSrc,
   'portfolio-developer-template': portfolioDeveloperTemplateSrc,
+  'folder-fan-showcase': folderFanShowcaseSrc,
+  'swipe-carousel-post': swipeCarouselPostSrc,
   // p2-entries:start
   'year-activity-grid': yearActivityGridSrc,
   'now-playing-widget': nowPlayingWidgetSrc,

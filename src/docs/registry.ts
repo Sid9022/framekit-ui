@@ -323,6 +323,27 @@ export const DOCS: DocEntry[] = [
   { slug: 'velocity-fade-stack', props: [{ name: 'viewportClassName', type: 'string', description: 'Classes merged onto the scrolling viewport (surface, border, radius, height).' }],  ownBackground: true, backgroundNote: 'A cinematic dark reel that keeps its backdrop on any page. Restyle the scrolling surface with viewportClassName (e.g. a lighter bg-* and border), and the outer box with className.', title: 'Velocity Fade Stack', description: 'Rich cards scale/blur/opacity from distance + inertia velocity; center focus.', category: 'Vertical Scroll', unique: true, isNew: true, gesture: 'Scroll fast then coast — focus blooms as velocity drops.' },
 
   // Cards
+  { slug: 'swipe-carousel-post', title: 'Swipe Carousel Post', description: 'An Instagram-style multi-slide post card: drag or swipe the media and the track snaps on a spring, a segmented bar fills with slide progress, the dot pager shrinks toward the edges and a double-tap drops a heart.', category: 'Cards', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Drag the media sideways (or arrow keys); double-click to like.', props: [
+    { name: 'slides', type: 'SwipePostSlide[]', default: 'DEFAULT_SWIPE_POST_SLIDES', description: '{ id, title, body?, kicker?, src?, alt? } — generated typographic slides unless you pass src.' },
+    { name: 'author / meta / caption / time', type: 'string', description: 'Header and caption copy.' },
+    { name: 'likes / comments', type: 'number', default: '1284 / 86', description: 'Counts shown under the media.' },
+    { name: 'accent', type: 'string', default: "'#d6336c'", description: 'Accent for the generated slides, avatar ring and active dot.' },
+    { name: 'autoPlay / interval', type: 'boolean / number', default: 'true / 4200', description: 'Advance automatically while the progress segment fills; pauses on hover, focus, drag and offscreen, with a pause button.' },
+    { name: 'index / defaultIndex / onIndexChange', type: 'number', default: '0', description: 'Controlled / uncontrolled slide index.' },
+    { name: 'defaultLiked / onLikeChange', type: 'boolean / (liked) => void', default: 'false', description: 'Like state (double-click the media also likes).' },
+    { name: 'defaultSaved / onSaveChange', type: 'boolean / (saved) => void', default: 'false', description: 'Bookmark state.' },
+  ] },
+  { slug: 'folder-fan-showcase', ownBackground: true, backgroundNote: 'Paints its own blush (light) / wine-black (dark) backdrop with grain via dark: variants; the post cards keep their own colours in both themes. Retint everything with accent and restyle the frame with className.', title: 'Folder Fan Showcase', description: 'Social post cards wait inside a frosted-glass folder, peeking over the rim of a blurred front pocket. Hover or focus and they rise and fan out on staggered springs; pick one and it lifts clear of the pocket and is pulled forward, with a soft mirrored reflection on the floor.', category: 'Cards', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Hover the folder to fan the cards; click one to pull it forward. Arrow keys cycle, Esc tucks it back.', props: [
+    { name: 'items', type: 'FolderFanItem[]', default: 'DEFAULT_FOLDER_FAN_ITEMS', description: '{ id, title, body?, kicker?, src?, alt?, accent? } — five generated post layouts rotate (cover, quote, stat, checklist, save); pass src for your own artwork. Use | in body for checklist lines.' },
+    { name: 'accent', type: 'string', default: "'#c8143c'", description: 'Signature colour (any CSS colour) for the folder, highlights and generated cards.' },
+    { name: 'eyebrow / title / highlight / description', type: 'string', description: 'Copy beside the folder; highlight paints part of the title with the accent.' },
+    { name: 'folderLabel / folderMeta / tabLabel', type: 'string', description: 'Text printed on the glass pocket and the folder tab.' },
+    { name: 'index / defaultIndex / onIndexChange', type: 'number | null', default: 'null', description: 'Controlled / uncontrolled pulled-forward card (null = none).' },
+    { name: 'defaultOpen', type: 'boolean', default: 'false', description: 'Start fanned out instead of fanning on hover / focus.' },
+    { name: 'reflection', type: 'boolean', default: 'true', description: 'Mirrored floor reflection under the folder.' },
+    { name: 'ctaLabel / onCta', type: 'string / () => void', default: "'Use this kit'", description: 'Primary button; pass an empty string to hide.' },
+    { name: 'titleAs', type: "'h1' | 'h2' | 'h3'", default: "'h2'", description: 'Heading level of the title.' },
+  ] },
   { slug: 'origami-unfold-card', title: 'Origami Unfold Card', description: 'A trail ticket that unfolds like a paper map: press the cover and two creased panels swing down in sequence on real CSS-3D hinges, catching light as they flatten, while the route draws itself and the last panel runs an async save.', category: 'Cards', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Press the cover (or Enter) to unfold / fold.', props: [
     { name: 'title / subtitle / tag', type: 'string', description: 'Cover copy.' },
     { name: 'src', type: 'string', description: 'Optional cover image; a generated dawn-ridge illustration otherwise.' },

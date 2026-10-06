@@ -174,6 +174,10 @@ import { LensReveal404 } from '@/components/ui/lens-reveal-404'
 import { FlipCheckoutCard } from '@/components/ui/flip-checkout-card'
 import { ParticleMorphLoader, type ParticleShape, type ParticleMorphState } from '@/components/ui/particle-morph-loader'
 import { SnakeLoader, type SnakeLoaderSkin } from '@/components/ui/snake-loader'
+// batch-folder:imports
+import { FolderFanShowcase } from '@/components/ui/folder-fan-showcase'
+import { SwipeCarouselPost } from '@/components/ui/swipe-carousel-post'
+// batch-folder:imports-end
 import { FaceScanPayButton } from '@/components/ui/face-scan-pay-button'
 import { OrbitDotExportButton } from '@/components/ui/orbit-dot-export-button'
 import { ShredderDeleteButton } from '@/components/ui/shredder-delete-button'
@@ -1478,6 +1482,12 @@ const portfolio2Demos: Record<string, React.ReactNode> = {
 }
 // p2-demos:end
 
+const batchFolderDemos: Record<string, React.ReactNode> = {
+  'folder-fan-showcase': <FolderFanShowcase className="max-w-4xl" />,
+  'swipe-carousel-post': <SwipeCarouselPost />,
+  // batch-folder:demos
+}
+
 export const demos: Record<string, React.ReactNode> = {
   button: (
     <div className="flex flex-wrap items-center justify-center gap-3">
@@ -2290,4 +2300,5 @@ export const demos: Record<string, React.ReactNode> = {
   'polar-bloom-chart': <PolarBloomDemo />,
   ...portfolioDemos,
   ...portfolio2Demos,
+  ...batchFolderDemos,
 }
