@@ -11,7 +11,7 @@ export type VideoLightboxDialogProps = {
   /** Poster image for the thumbnail. Falls back to generated art. */
   posterSrc?: string
   title?: string
-  /** Shown on the thumbnail chip, e.g. “2:14”. */
+  /** Shown on the thumbnail chip, e.g. “2:14”. Defaults to the generated preview's length. */
   duration?: string
   /** Caption lines for the generated preview (one every ~2.5 s). */
   captions?: string[]
@@ -54,7 +54,7 @@ export function VideoLightboxDialog({
   videoSrc,
   posterSrc,
   title = 'Ship a release in 90 seconds',
-  duration = '1:32',
+  duration,
   captions = DEFAULT_CAPTIONS,
   onOpenChange,
   className,
@@ -137,6 +137,7 @@ export function VideoLightboxDialog({
         layoutId={reduced ? undefined : layout}
         transition={spring}
         aria-haspopup="dialog"
+        aria-label={`Play video: ${title}`}
         className={cn(
           'group absolute inset-0 block overflow-hidden rounded-[24px] text-left ring-1 ring-black/[0.08]',
           'shadow-[0_1px_2px_rgb(0_0_0/0.06),0_32px_64px_-32px_rgb(24_24_27/0.5)] dark:ring-white/[0.1] dark:shadow-[0_32px_64px_-32px_rgb(0_0_0/0.9)]',
@@ -152,7 +153,7 @@ export function VideoLightboxDialog({
         </span>
         <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-gradient-to-t from-black/60 to-transparent p-4 sm:p-5">
           <span className="text-pretty text-[15px] font-semibold tracking-tight text-white sm:text-lg">{title}</span>
-          <span className="shrink-0 rounded-full bg-black/40 px-2 py-0.5 text-xs font-medium tabular-nums text-white ring-1 ring-white/20 backdrop-blur-md">{duration}</span>
+          <span className="shrink-0 rounded-full bg-black/40 px-2 py-0.5 text-xs font-medium tabular-nums text-white ring-1 ring-white/20 backdrop-blur-md">{duration ?? fmt(total)}</span>
         </span>
         <span className="sr-only">Play video</span>
       </motion.button>

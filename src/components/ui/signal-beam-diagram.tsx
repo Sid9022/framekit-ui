@@ -131,20 +131,20 @@ export function SignalBeamDiagram({
     cn(
       'group flex min-h-11 w-full flex-col items-center gap-2 rounded-2xl p-1.5 text-center outline-none',
       'focus-visible:ring-2 focus-visible:ring-signal-600 dark:focus-visible:ring-signal-300',
-      active ? 'opacity-100' : selected ? 'opacity-55' : 'opacity-100',
-      'transition-opacity duration-200',
     )
-  const tileCls = (active: boolean) =>
+  const tileCls = (active: boolean, dim: boolean) =>
     cn(
       'grid h-12 w-12 place-items-center rounded-[14px] bg-white text-zinc-800 ring-1 ring-black/[0.07] [&_svg]:h-5 [&_svg]:w-5',
       'shadow-[inset_0_1px_0_rgb(255_255_255/0.9),0_1px_2px_rgb(0_0_0/0.06),0_10px_24px_-14px_rgb(24_24_27/0.35)]',
       'transition-[transform,box-shadow,color] duration-200 group-hover:-translate-y-0.5 group-active:scale-95 motion-reduce:transform-none',
       'dark:bg-zinc-900 dark:text-zinc-100 dark:ring-white/[0.09] dark:shadow-[inset_0_1px_0_rgb(255_255_255/0.07),0_10px_24px_-14px_rgb(0_0_0/0.8)]',
-      active && 'text-signal-700 ring-signal-500/60 dark:text-signal-200 dark:ring-signal-300/50',
+      active && 'text-signal-700 ring-2 ring-signal-500/70 dark:text-signal-200 dark:ring-signal-300/60',
+      dim && 'opacity-45',
     )
 
   const renderNode = (n: BeamNode) => {
     const active = selected === n.id
+    const dim = !!selected && selected !== 'hub' && !active
     return (
       <button
         key={n.id}
@@ -157,7 +157,7 @@ export function SignalBeamDiagram({
         onClick={() => select(n.id)}
         className={nodeCls(active)}
       >
-        <span className={tileCls(active)}>{n.icon ?? <Webhook />}</span>
+        <span className={tileCls(active, dim)}>{n.icon ?? <Webhook />}</span>
         <span className="max-w-full truncate text-xs font-medium text-zinc-700 dark:text-zinc-300">{n.label}</span>
       </button>
     )
@@ -183,11 +183,13 @@ export function SignalBeamDiagram({
             ))}
           </defs>
           {paths.map((p) => {
-            const lit = !selected || selected === p.id || selected === 'hub'
+            const selSide = sources.some((n) => n.id === selected) ? 'in' : targets.some((n) => n.id === selected) ? 'out' : null
+            const lit = !selected || selected === 'hub' || selected === p.id || (selSide !== null && selSide !== p.side)
+            const focusRoute = !!selected && lit
             const delay = (p.side === 'in' ? 0 : outDelay) + p.index * (dur / 7)
             return (
               <g key={p.id} style={{ opacity: lit ? 1 : 0.18, transition: 'opacity 220ms ease-out' }}>
-                <path d={p.d} fill="none" className="stroke-zinc-300 dark:stroke-white/[0.12]" strokeWidth={1} />
+                <path d={p.d} fill="none" className={focusRoute ? 'stroke-signal-400 dark:stroke-signal-400/60' : 'stroke-zinc-300 dark:stroke-white/[0.12]'} strokeWidth={focusRoute ? 1.5 : 1} style={{ transition: 'stroke 200ms ease-out' }} />
                 {reduced ? (
                   <path d={p.d} fill="none" stroke={`url(#${gid}-${p.id})`} strokeWidth={1.5} strokeOpacity={0.55} />
                 ) : (

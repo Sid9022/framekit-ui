@@ -182,7 +182,7 @@ export function ConfettiBurstButton({
           'relative inline-flex min-h-12 items-center gap-2.5 overflow-hidden rounded-full px-6 text-[15px] font-medium [touch-action:manipulation]',
           'shadow-[inset_0_1px_0_rgb(255_255_255/0.18),0_1px_2px_rgb(0_0_0/0.12),0_12px_28px_-12px_rgb(100_82_122/0.6)] transition-colors duration-300',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-signal-300 dark:focus-visible:ring-offset-zinc-950',
-          done ? 'bg-emerald-600 text-white dark:bg-emerald-500 dark:text-emerald-950' : 'bg-zinc-950 text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200',
+          done ? 'bg-emerald-700 text-white dark:bg-emerald-400 dark:text-emerald-950' : 'bg-zinc-950 text-white hover:bg-zinc-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-zinc-200',
           className,
         )}
       >

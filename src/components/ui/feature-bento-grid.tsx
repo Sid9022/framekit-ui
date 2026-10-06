@@ -20,7 +20,7 @@ export type BentoItem = {
   /** CTA text revealed on hover / focus (always visible on touch). */
   cta?: string
   /** Grid footprint on ≥ md screens. */
-  span?: 'wide' | 'tall' | 'normal'
+  span?: 'wide' | 'tall' | 'full' | 'normal'
 }
 
 export type FeatureBentoGridProps = {
@@ -37,7 +37,7 @@ export const DEFAULT_BENTO_ITEMS: BentoItem[] = [
   { id: 'edge', title: 'Global by default', description: '38 regions, routed to the closest healthy one.', icon: <Globe2 />, art: 'globe', span: 'tall', cta: 'See regions' },
   { id: 'keys', title: 'Keyboard first', description: 'Every action is one shortcut away. Press ⌘ K anywhere.', icon: <Keyboard />, art: 'keys', cta: 'View shortcuts' },
   { id: 'schedule', title: 'Scheduled releases', description: 'Queue a launch for 9:00 local time in each market.', icon: <CalendarClock />, art: 'calendar', cta: 'Plan a release' },
-  { id: 'secure', title: 'Secure at rest', description: 'Keys rotate every 24 hours; audit logs stream to your SIEM.', icon: <ShieldCheck />, art: 'shield', span: 'wide', cta: 'Read the whitepaper' },
+  { id: 'secure', title: 'Secure at rest', description: 'Keys rotate every 24 hours; audit logs stream to your SIEM.', icon: <ShieldCheck />, art: 'shield', span: 'full', cta: 'Read the whitepaper' },
 ]
 
 function Art({ kind, reduced }: { kind: BentoArt; reduced: boolean }) {
@@ -68,7 +68,8 @@ function Art({ kind, reduced }: { kind: BentoArt; reduced: boolean }) {
       }
     }
     return (
-      <svg viewBox="0 0 120 120" className={cn('mx-auto h-full max-h-56 w-auto', lift, !reduced && 'group-hover:rotate-6')} aria-hidden>
+      <div className="grid h-full place-items-center" aria-hidden>
+      <svg viewBox="0 0 120 120" className={cn('h-auto max-h-56 w-full max-w-56', lift, !reduced && 'group-hover:rotate-6')}>
         <circle cx="60" cy="60" r="52" className="fill-signal-100/70 stroke-black/[0.06] dark:fill-signal-900/30 dark:stroke-white/[0.08]" />
         {dots.map((p, i) => (
           <circle key={i} cx={p.x} cy={p.y} r="1.6" className="fill-signal-700 dark:fill-signal-200" opacity={p.o} />
@@ -76,6 +77,7 @@ function Art({ kind, reduced }: { kind: BentoArt; reduced: boolean }) {
         <circle cx="76" cy="44" r="3.5" className="fill-framekit-500" />
         <circle cx="76" cy="44" r="8" className="fill-framekit-500/20" />
       </svg>
+      </div>
     )
   }
   if (kind === 'keys') {
@@ -168,7 +170,7 @@ export function FeatureBentoGrid({ items = DEFAULT_BENTO_ITEMS, titleAs = 'h3', 
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
-            className={cn(it.span === 'wide' && 'md:col-span-2', it.span === 'tall' && 'md:row-span-2')}
+            className={cn(it.span === 'wide' && 'md:col-span-2', it.span === 'full' && 'md:col-span-3', it.span === 'tall' && 'md:row-span-2')}
           >
             <article
               onPointerMove={onMove}

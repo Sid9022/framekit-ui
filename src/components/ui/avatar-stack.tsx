@@ -135,7 +135,7 @@ export function AvatarStack({ people = DEFAULT_PEOPLE, max = 5, size = 'md', lab
           )
         })}
         {rest.length > 0 && (
-          <li className={cn('relative', OVERLAP[size])} style={{ zIndex: 0 }}>
+          <li className="relative -ml-1.5" style={{ zIndex: 0 }} onPointerEnter={() => setHover(null)}>
             <button
               ref={chipRef}
               type="button"
