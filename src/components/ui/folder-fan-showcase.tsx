@@ -57,7 +57,6 @@ export const DEFAULT_FOLDER_FAN_ITEMS: FolderFanItem[] = [
 ]
 
 const FONT = "Montserrat, 'Avenir Next', 'Segoe UI', ui-sans-serif, system-ui, sans-serif"
-const EASE = [0.16, 1, 0.3, 1] as const
 const mix = (c: string, p: number, w: string) => `color-mix(in oklab, ${c} ${p}%, ${w})`
 
 /** Generated post layout: five templates (cover, quote, stat, checklist, CTA). */

@@ -66,7 +66,7 @@ function SlideArt({ slide, i, n, accent }: { slide: SwipePostSlide; i: number; n
   const light = v === 1
   const ink = light ? '#1f0a12' : '#fff'
   const sub = light ? 'rgba(31,10,18,0.74)' : 'rgba(255,255,255,0.84)'
-  const big = /^[+\-]?\d/.test(slide.title)
+  const big = /^[+-]?\d/.test(slide.title)
   return (
     <div className="relative flex h-full w-full select-none flex-col justify-between overflow-hidden p-[8%]" style={{ background: bg, color: ink }}>
       <svg aria-hidden className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 100 125" preserveAspectRatio="none">

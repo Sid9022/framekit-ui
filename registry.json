@@ -461,6 +461,31 @@
       "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/pulse-rings"
     },
     {
+      "name": "wax-seal-button",
+      "type": "registry:ui",
+      "title": "Wax Seal Button",
+      "description": "A paper-and-ink send button: press it and a drop of wax falls into the slot and spreads into an uneven puddle, a brass stamp thumps down and lifts away leaving an embossed monogram, and the label settles on \"Sealed & sent\".",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/wax-seal-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/wax-seal-button"
+    },
+    {
       "name": "googly-gaze-button",
       "type": "registry:ui",
       "title": "Googly Gaze Button",
@@ -1267,6 +1292,31 @@
       "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/weather-vane-toggle"
     },
     {
+      "name": "ink-bleed-text",
+      "type": "registry:ui",
+      "title": "Ink Bleed Text",
+      "description": "A serif headline that soaks into the page: each word lands as a wet blot of ink that spreads through the paper fibres (an SVG turbulence displacement relaxing to zero), then dries crisp from a soft blur, word by word.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/ink-bleed-text.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "text-animations"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ink-bleed-text"
+    },
+    {
       "name": "tumble-letters",
       "type": "registry:ui",
       "title": "Tumble Letters",
@@ -1600,6 +1650,29 @@
         "shimmer"
       ],
       "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/list-bloom-shimmer"
+    },
+    {
+      "name": "hourglass-loader",
+      "type": "registry:ui",
+      "title": "Hourglass Loader",
+      "description": "A brass-and-glass hourglass: sand drains from the upper bulb through a trickling stream into a growing mound, and in endless mode the glass turns itself over on a spring when the top runs dry. Pass progress for a determinate progressbar.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/hourglass-loader.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "loading"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/hourglass-loader"
     },
     {
       "name": "orbital-bead-loader",
@@ -1958,6 +2031,30 @@
       "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/lens-reveal-404"
     },
     {
+      "name": "receipt-print-toast",
+      "type": "registry:ui",
+      "title": "Receipt Print Toast",
+      "description": "Order confirmations that print: a thermal printer slot blinks, then a strip of receipt paper feeds out line by line in little stepped jolts with a torn zig-zag edge. After a few seconds it tears off and drops away; hover or focus holds it.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/receipt-print-toast.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "toast"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/receipt-print-toast"
+    },
+    {
       "name": "gravity-stack-toast",
       "type": "registry:ui",
       "title": "Gravity Stack Toast",
@@ -2090,6 +2187,80 @@
         "vertical-scroll"
       ],
       "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/velocity-fade-stack"
+    },
+    {
+      "name": "editorial-spread-card",
+      "type": "registry:ui",
+      "title": "Editorial Spread Card",
+      "description": "A magazine cover on real CSS 3D: hover and it lifts off its spine, click and it swings open on a hinge while the issue slides to centre, revealing a two-page spread with a pull quote, deck and drop-cap columns.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/editorial-spread-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/editorial-spread-card"
+    },
+    {
+      "name": "swipe-carousel-post",
+      "type": "registry:ui",
+      "title": "Swipe Carousel Post",
+      "description": "An Instagram-style multi-slide post card: drag or swipe the media and the track snaps on a spring, a segmented bar fills with slide progress, the dot pager shrinks toward the edges and a double-tap drops a heart.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/swipe-carousel-post.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/swipe-carousel-post"
+    },
+    {
+      "name": "folder-fan-showcase",
+      "type": "registry:ui",
+      "title": "Folder Fan Showcase",
+      "description": "Social post cards wait inside a frosted-glass folder, peeking over the rim of a blurred front pocket. Hover or focus and they rise and fan out on staggered springs; pick one and it lifts clear of the pocket and is pulled forward, with a soft mirrored reflection on the floor.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/folder-fan-showcase.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/folder-fan-showcase"
     },
     {
       "name": "origami-unfold-card",
@@ -3361,6 +3532,78 @@
       "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/push-preview-card"
     },
     {
+      "name": "swing-price-tag",
+      "type": "registry:ui",
+      "title": "Swing Price Tag",
+      "description": "A luxury swing tag hanging from a brass rail on a waxed cord. Brush past it and it swings like a real, lightly damped pendulum that settles and sleeps; tap it and it twirls over to the back for composition, care symbols and an SKU barcode while a foil sheen catches the light.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/swing-price-tag.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/swing-price-tag"
+    },
+    {
+      "name": "paper-fold-accordion",
+      "type": "registry:ui",
+      "title": "Paper Fold Accordion",
+      "description": "FAQ rows that open like a folded letter: two creased paper leaves swing open in CSS 3D (the top from its hinge, the bottom a beat later from the crease), shadows lift off the paper as it flattens and the real text settles underneath.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/paper-fold-accordion.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/paper-fold-accordion"
+    },
+    {
+      "name": "tear-stub-boarding-pass",
+      "type": "registry:ui",
+      "title": "Tear-Stub Boarding Pass",
+      "description": "A frosted-glass boarding pass with a perforated stub. Drag the stub away and it resists, tears free with a ragged edge and tumbles out of frame while a \"Boarded\" stamp thumps onto the pass. Lays out vertically on narrow screens.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/tear-stub-boarding-pass.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/tear-stub-boarding-pass"
+    },
+    {
       "name": "seat-scale-pricing",
       "type": "registry:ui",
       "title": "Seat Scale Pricing",
@@ -4133,6 +4376,31 @@
       "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/signal-pebble"
     },
     {
+      "name": "signature-pad-field",
+      "type": "registry:ui",
+      "title": "Signature Pad Field",
+      "description": "An e-signature field: draw with mouse, pen or finger and the ink thins on fast strokes and pools on slow ones; undo stroke by stroke, or switch to the Type tab for a keyboard-friendly script signature. Adopting it stamps a signed time.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/use-resolved-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/signature-pad-field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "inputs-forms"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/signature-pad-field"
+    },
+    {
       "name": "tumbler-lock-otp",
       "type": "registry:ui",
       "title": "Tumbler Lock OTP",
@@ -4527,6 +4795,31 @@
         "core"
       ],
       "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/breathing-dot"
+    },
+    {
+      "name": "dealer-deck-testimonials",
+      "type": "registry:ui",
+      "title": "Dealer Deck Testimonials",
+      "description": "Testimonials dealt like playing cards: the top card of a face-down deck slides across the table on a spring, flips face-up mid-flight and lands slightly askew on the pile. Take one back or gather the deck.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/dealer-deck-testimonials.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/dealer-deck-testimonials"
     },
     {
       "name": "kinetic-name-hero",

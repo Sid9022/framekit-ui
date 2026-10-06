@@ -102,6 +102,7 @@ export function SwingPriceTag({
   const angle = useMotionValue(0)
   const sim = React.useRef({ t: 0, w: 0, raf: 0, last: 0, px: 0, pt: 0 })
   const live = swing && !reduced
+  const stepRef = React.useRef<() => void>(() => {})
 
   const step = React.useCallback(() => {
     const s = sim.current
@@ -119,8 +120,11 @@ export function SwingPriceTag({
       s.raf = 0
       return
     }
-    s.raf = requestAnimationFrame(step)
+    s.raf = requestAnimationFrame(() => stepRef.current())
   }, [angle])
+  React.useEffect(() => {
+    stepRef.current = step
+  }, [step])
 
   const kick = React.useCallback((impulse: number) => {
     if (!live) return

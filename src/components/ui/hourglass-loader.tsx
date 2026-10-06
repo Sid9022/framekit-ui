@@ -39,34 +39,30 @@ export function HourglassLoader({ progress, label, duration = 6, accent = '#d4a2
   const pct = determinate ? Math.min(100, Math.max(0, progress!)) : 0
   const p = useMotionValue(determinate ? pct / 100 : reduced ? 0.45 : 0)
   const turn = useMotionValue(0)
-  const [flowing, setFlowing] = React.useState(false)
+  const [pouring, setPouring] = React.useState(false)
   const dur = Math.min(20, Math.max(2, duration))
 
   // determinate: ease toward the value
   React.useEffect(() => {
     if (!determinate) return
     const c = animate(p, pct / 100, reduced ? { duration: 0 } : { type: 'spring', stiffness: 80, damping: 20 })
-    setFlowing(!reduced && pct > 0 && pct < 100)
     return () => c.stop()
   }, [determinate, pct, reduced, p])
 
   // indeterminate: pour → flip → repeat
   React.useEffect(() => {
-    if (determinate || reduced || !inView) {
-      if (!determinate) setFlowing(false)
-      return
-    }
+    if (determinate || reduced || !inView) return
     let stopped = false
     let ctl: { stop: () => void } | null = null
     const cycle = () => {
       if (stopped) return
-      setFlowing(true)
+      setPouring(true)
       ctl = animate(p, 1, {
         duration: dur * (1 - p.get()),
         ease: 'linear',
         onComplete: () => {
           if (stopped) return
-          setFlowing(false)
+          setPouring(false)
           ctl = animate(turn, 180, {
             type: 'spring',
             stiffness: 120,
@@ -87,6 +83,8 @@ export function HourglassLoader({ progress, label, duration = 6, accent = '#d4a2
       ctl?.stop()
     }
   }, [determinate, reduced, inView, dur, p, turn])
+
+  const flowing = determinate ? !reduced && pct > 0 && pct < 100 : pouring && !reduced && inView
 
   // sand geometry
   const moundH = useTransform(p, (v) => (BOT - NECK - 8) * Math.pow(v, 0.9))
