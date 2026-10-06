@@ -177,6 +177,9 @@ import { SnakeLoader, type SnakeLoaderSkin } from '@/components/ui/snake-loader'
 // batch-folder:imports
 import { FolderFanShowcase } from '@/components/ui/folder-fan-showcase'
 import { SwipeCarouselPost } from '@/components/ui/swipe-carousel-post'
+import { EditorialSpreadCard } from '@/components/ui/editorial-spread-card'
+import { TearStubBoardingPass } from '@/components/ui/tear-stub-boarding-pass'
+import { WaxSealButton } from '@/components/ui/wax-seal-button'
 // batch-folder:imports-end
 import { FaceScanPayButton } from '@/components/ui/face-scan-pay-button'
 import { OrbitDotExportButton } from '@/components/ui/orbit-dot-export-button'
@@ -1485,6 +1488,14 @@ const portfolio2Demos: Record<string, React.ReactNode> = {
 const batchFolderDemos: Record<string, React.ReactNode> = {
   'folder-fan-showcase': <FolderFanShowcase className="max-w-4xl" />,
   'swipe-carousel-post': <SwipeCarouselPost />,
+  'editorial-spread-card': <EditorialSpreadCard />,
+  'tear-stub-boarding-pass': <TearStubBoardingPass />,
+  'wax-seal-button': (
+    <div className="flex flex-col items-center gap-6 sm:flex-row">
+      <WaxSealButton />
+      <WaxSealButton monogram="AR" accent="#1e3a8a" label="Seal the contract" sealedLabel="Contract sealed" />
+    </div>
+  ),
   // batch-folder:demos
 }
 

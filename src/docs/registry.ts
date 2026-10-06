@@ -105,6 +105,14 @@ export const DOCS: DocEntry[] = [
 
 
   // Buttons
+  { slug: 'wax-seal-button', title: 'Wax Seal Button', description: 'A paper-and-ink send button: press it and a drop of wax falls into the slot and spreads into an uneven puddle, a brass stamp thumps down and lifts away leaving an embossed monogram, and the label settles on "Sealed & sent".', category: 'Buttons', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Click (or Enter) to seal; click again to reset.', props: [
+    { name: 'label / busyLabel / sealedLabel / errorLabel', type: 'string', description: 'Copy for each state.' },
+    { name: 'monogram', type: 'string', default: "'M'", description: 'One or two letters pressed into the wax.' },
+    { name: 'accent', type: 'string', default: "'#a3122a'", description: 'Wax colour.' },
+    { name: 'onSeal', type: '() => void | Promise<unknown>', description: 'Runs while the wax pours; a returned promise holds the pour, a rejection shows the error state.' },
+    { name: 'resetAfter', type: 'number', default: '2800', description: 'ms the sealed state is held; 0 keeps it sealed.' },
+    { name: 'disabled', type: 'boolean', default: 'false', description: 'Disables the button.' },
+  ] },
   { slug: 'googly-gaze-button', title: 'Googly Gaze Button', description: 'Eyes track the cursor and smirk on click.', category: 'Buttons', unique: true, isNew: true, gesture: 'Move nearby — eyes follow; click to smirk.' },
   { slug: 'slide-confirm-button', title: 'Slide Confirm Button', description: 'Drag the knob (or press Enter) to confirm.', category: 'Buttons', unique: true, isNew: true, gesture: 'Drag the knob fully across, or press Enter.' },
   { slug: 'shimmer-chrome-button', title: 'Shimmer Chrome Button', description: 'Quiet chrome pill with a traveling shimmer.', category: 'Buttons', unique: true, isNew: true, gesture: 'Watch the highlight sweep; click to press.' },
@@ -323,6 +331,15 @@ export const DOCS: DocEntry[] = [
   { slug: 'velocity-fade-stack', props: [{ name: 'viewportClassName', type: 'string', description: 'Classes merged onto the scrolling viewport (surface, border, radius, height).' }],  ownBackground: true, backgroundNote: 'A cinematic dark reel that keeps its backdrop on any page. Restyle the scrolling surface with viewportClassName (e.g. a lighter bg-* and border), and the outer box with className.', title: 'Velocity Fade Stack', description: 'Rich cards scale/blur/opacity from distance + inertia velocity; center focus.', category: 'Vertical Scroll', unique: true, isNew: true, gesture: 'Scroll fast then coast — focus blooms as velocity drops.' },
 
   // Cards
+  { slug: 'editorial-spread-card', title: 'Editorial Spread Card', description: 'A magazine cover on real CSS 3D: hover and it lifts off its spine, click and it swings open on a hinge while the issue slides to centre, revealing a two-page spread with a pull quote, deck and drop-cap columns.', category: 'Cards', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Hover to lift the cover; click (or Enter) to open the spread, Esc to close.', props: [
+    { name: 'masthead / issue', type: 'string', default: "'Meridian' / 'No. 27 — Autumn'", description: 'Magazine name and issue line.' },
+    { name: 'coverLine / coverNotes', type: 'string / string[]', description: 'Main and secondary cover lines.' },
+    { name: 'headline / deck / byline / body', type: 'string / string[]', description: 'Right-page article; the first paragraph gets a drop cap.' },
+    { name: 'pullQuote / quoteAttribution', type: 'string', description: 'Inside-cover pull quote.' },
+    { name: 'coverSrc / coverAlt', type: 'string', description: 'Your own cover image (replaces the generated art).' },
+    { name: 'accent', type: 'string', default: "'#9f1239'", description: 'Ink for kickers, rules, the drop cap and the generated cover.' },
+    { name: 'open / defaultOpen / onOpenChange', type: 'boolean', default: 'false', description: 'Controlled / uncontrolled open state.' },
+  ] },
   { slug: 'swipe-carousel-post', title: 'Swipe Carousel Post', description: 'An Instagram-style multi-slide post card: drag or swipe the media and the track snaps on a spring, a segmented bar fills with slide progress, the dot pager shrinks toward the edges and a double-tap drops a heart.', category: 'Cards', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Drag the media sideways (or arrow keys); double-click to like.', props: [
     { name: 'slides', type: 'SwipePostSlide[]', default: 'DEFAULT_SWIPE_POST_SLIDES', description: '{ id, title, body?, kicker?, src?, alt? } — generated typographic slides unless you pass src.' },
     { name: 'author / meta / caption / time', type: 'string', description: 'Header and caption copy.' },
@@ -448,6 +465,11 @@ export const DOCS: DocEntry[] = [
   { slug: 'push-preview-card', title: 'Push Preview Card', description: 'Mobile-style push notification preview with app icon, title, body, time.', category: 'Notifications', unique: true, isNew: true, gesture: 'Watch the push card settle into the phone frame.', dependencies: ['motion'] },
 
   // Widgets
+  { slug: 'tear-stub-boarding-pass', ownBackground: true, backgroundNote: 'Paints soft colour blobs behind the frosted glass so the blur reads: blush (light) / near-black (dark) via dark: variants. Restyle the frame with className.', title: 'Tear-Stub Boarding Pass', description: 'A frosted-glass boarding pass with a perforated stub. Drag the stub away and it resists, tears free with a ragged edge and tumbles out of frame while a "Boarded" stamp thumps onto the pass. Lays out vertically on narrow screens.', category: 'Widgets', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Drag the stub away from the perforation, or press "Tear stub".', props: [
+    { name: 'pass', type: 'Partial<BoardingPassData>', default: 'DEFAULT_BOARDING_PASS', description: '{ carrier, cabin, flight, from, to, duration, passenger, date, gate, seat, boarding, group } — merged over the defaults.' },
+    { name: 'accent', type: 'string', default: "'#be123c'", description: 'Route plane, logo and the Boarded stamp.' },
+    { name: 'torn / defaultTorn / onTornChange', type: 'boolean', default: 'false', description: 'Controlled / uncontrolled torn state.' },
+  ] },
   { slug: 'seat-scale-pricing', title: 'Seat Scale Pricing', description: 'One pricing card that morphs through every plan as you drag the team size: avatars pop in seat by seat, the price rolls on odometer reels, the tier badge and accent cross-fade, unlocked features slide in with a glow, and yearly billing bursts a savings chip.', category: 'Widgets', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Drag the team-size slider or pick a plan name; toggle billing.', props: [
     { name: 'tiers', type: '{ id, name, minSeats, perSeat, hue, features }[]', default: 'DEFAULT_PRICING_TIERS', description: 'Plans ordered by minimum seats.' },
     { name: 'seats / defaultSeats / onSeatsChange', type: 'number', default: '8', description: 'Controlled or uncontrolled team size.' },

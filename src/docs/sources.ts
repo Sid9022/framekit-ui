@@ -176,6 +176,9 @@ import lensReveal404Src from '../components/ui/lens-reveal-404.tsx?raw'
 import flipCheckoutCardSrc from '../components/ui/flip-checkout-card.tsx?raw'
 import particleMorphLoaderSrc from '../components/ui/particle-morph-loader.tsx?raw'
 import snakeLoaderSrc from '../components/ui/snake-loader.tsx?raw'
+import waxSealButtonSrc from '../components/ui/wax-seal-button.tsx?raw'
+import tearStubBoardingPassSrc from '../components/ui/tear-stub-boarding-pass.tsx?raw'
+import editorialSpreadCardSrc from '../components/ui/editorial-spread-card.tsx?raw'
 import swipeCarouselPostSrc from '../components/ui/swipe-carousel-post.tsx?raw'
 import folderFanShowcaseSrc from '../components/ui/folder-fan-showcase.tsx?raw'
 import faceScanPayButtonSrc from '../components/ui/face-scan-pay-button.tsx?raw'
@@ -500,6 +503,9 @@ export const sources: Record<string, string> = {
   'portfolio-developer-template': portfolioDeveloperTemplateSrc,
   'folder-fan-showcase': folderFanShowcaseSrc,
   'swipe-carousel-post': swipeCarouselPostSrc,
+  'editorial-spread-card': editorialSpreadCardSrc,
+  'tear-stub-boarding-pass': tearStubBoardingPassSrc,
+  'wax-seal-button': waxSealButtonSrc,
   // p2-entries:start
   'year-activity-grid': yearActivityGridSrc,
   'now-playing-widget': nowPlayingWidgetSrc,
