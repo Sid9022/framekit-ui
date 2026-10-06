@@ -4,7 +4,7 @@ import {
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 import { Switch } from '@/components/ui/switch'
@@ -204,6 +204,8 @@ import { HighlightMarkerText } from '@/components/ui/highlight-marker-text'
 import { VelocityMarquee } from '@/components/ui/velocity-marquee'
 import { SparkleText } from '@/components/ui/sparkle-text'
 // magic-batch:imports-end
+import { ArrowRight as UpArrow, Gauge as UpGauge, Timer as UpTimer, Pause as UpPause, SkipForward as UpSkip, GitBranch as UpBranch, Check as UpCheck } from 'lucide-react'
+// polish-pass:imports-end
 import { FaceScanPayButton } from '@/components/ui/face-scan-pay-button'
 import { OrbitDotExportButton } from '@/components/ui/orbit-dot-export-button'
 import { ShredderDeleteButton } from '@/components/ui/shredder-delete-button'
@@ -331,9 +333,10 @@ function ProgressDemo() {
     return () => clearInterval(id)
   }, [])
   return (
-    <div className="w-full max-w-sm space-y-2">
-      <Progress value={v} />
-      <p className="text-xs text-zinc-500 dark:text-zinc-400">{v}%</p>
+    <div className="w-full max-w-sm space-y-6">
+      <Progress value={v} label="Uploading assets" showValue />
+      <Progress value={100} tone="success" label="Build complete" showValue size="sm" />
+      <Progress value={0} indeterminate tone="neutral" label="Deploying to edge" size="sm" />
     </div>
   )
 }
@@ -1634,14 +1637,28 @@ export const demos: Record<string, React.ReactNode> = {
     </div>
   ),
   card: (
-    <Card className="max-w-sm">
+    <Card className="w-full max-w-sm">
       <CardHeader>
-        <CardTitle>Framekit Card</CardTitle>
-        <CardDescription>Composable surfaces for any layout.</CardDescription>
+        <div className="mb-2 inline-flex h-9 w-9 items-center justify-center rounded-[10px] bg-zinc-950/[0.04] ring-1 ring-zinc-950/[0.06] dark:bg-white/[0.06] dark:ring-white/10">
+          <UpBranch aria-hidden className="h-4 w-4 text-zinc-700 dark:text-zinc-300" />
+        </div>
+        <CardTitle>Preview deployments</CardTitle>
+        <CardDescription>Every push gets its own URL, so reviews happen on the real thing.</CardDescription>
       </CardHeader>
       <CardContent>
-        <p className="text-sm text-zinc-600 dark:text-zinc-400">Drop content inside. Own the markup.</p>
+        <ul className="space-y-2 text-sm text-zinc-700 dark:text-zinc-300">
+          {['Comments on any element', 'Automatic HTTPS', 'Instant rollback'].map((t) => (
+            <li key={t} className="flex items-center gap-2">
+              <UpCheck aria-hidden className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+              {t}
+            </li>
+          ))}
+        </ul>
       </CardContent>
+      <CardFooter className="justify-between border-t border-zinc-950/[0.06] pt-4 dark:border-white/[0.08]">
+        <span className="text-[13px] tabular-nums text-zinc-500 dark:text-zinc-400">12 previews this week</span>
+        <Button size="sm">Open</Button>
+      </CardFooter>
     </Card>
   ),
   input: <Input className="max-w-sm" placeholder="Enter your email…" />,
@@ -1721,11 +1738,26 @@ export const demos: Record<string, React.ReactNode> = {
     </div>
   ),
   progress: <ProgressDemo />,
-  'magnetic-button': <MagneticButton>Pull me closer</MagneticButton>,
+  'magnetic-button': (
+    <div className="flex flex-wrap items-center justify-center gap-4">
+      <MagneticButton>
+        Get started <UpArrow aria-hidden className="h-4 w-4" />
+      </MagneticButton>
+      <MagneticButton variant="glass">View docs</MagneticButton>
+    </div>
+  ),
   'spotlight-card': (
-    <SpotlightCard className="max-w-sm">
-      <h3 className="text-lg font-semibold">Spotlight</h3>
-      <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">Move your cursor — the glow follows.</p>
+    <SpotlightCard className="w-full max-w-sm">
+      <div className="mb-4 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-framekit-500/10 ring-1 ring-framekit-500/20">
+        <UpGauge aria-hidden className="h-5 w-5 text-framekit-600 dark:text-framekit-400" />
+      </div>
+      <h3 className="text-[17px] font-semibold tracking-[-0.012em]">Edge-fast by default</h3>
+      <p className="mt-1.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
+        Pages render close to your visitors, with a median time-to-first-byte under 50&nbsp;ms.
+      </p>
+      <a href="#/docs/spotlight-card" className="mt-4 inline-flex min-h-11 items-center gap-1 rounded-md text-sm font-medium text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal-600 dark:text-white dark:focus-visible:ring-signal-300">
+        Learn more <UpArrow aria-hidden className="h-4 w-4" />
+      </a>
     </SpotlightCard>
   ),
   'scramble-text': (
@@ -1744,10 +1776,13 @@ export const demos: Record<string, React.ReactNode> = {
     />
   ),
   'tilt-card': (
-    <TiltCard className="max-w-xs">
-      <p className="text-sm font-medium text-zinc-500 dark:text-zinc-400">Perspective</p>
-      <h3 className="mt-1 text-xl font-semibold">Tilt Card</h3>
-      <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">Hover to feel the depth.</p>
+    <TiltCard className="w-full max-w-xs">
+      <div className="flex items-center justify-between">
+        <p className="text-[11px] font-semibold tracking-[0.14em] text-zinc-500 uppercase dark:text-zinc-400">Member</p>
+        <span className="h-6 w-9 rounded-md bg-gradient-to-br from-amber-200 to-amber-400 ring-1 ring-amber-500/30" aria-hidden />
+      </div>
+      <h3 className="mt-10 text-xl font-semibold tracking-[-0.02em]">Framekit Pro</h3>
+      <p className="mt-1 font-mono text-[13px] tabular-nums text-zinc-500 dark:text-zinc-400">•••• 2048 · 09/29</p>
     </TiltCard>
   ),
   'aurora-background': (
@@ -1756,22 +1791,45 @@ export const demos: Record<string, React.ReactNode> = {
     </AuroraBackground>
   ),
   'infinite-marquee': (
-    <InfiniteMarquee className="w-full max-w-lg py-2" speed={20}>
-      {['Motion', 'Tailwind', 'React', 'Accessible', 'Copy-paste', 'MIT'].map((t) => (
-        <span
-          key={t}
-          className="rounded-full bg-zinc-900 px-4 py-1.5 text-sm text-white dark:bg-zinc-100 dark:text-zinc-900"
-        >
-          {t}
-        </span>
-      ))}
-    </InfiniteMarquee>
+    <div className="w-full max-w-lg space-y-3">
+      <InfiniteMarquee className="py-1" speed={26} gap={12} label="Highlights">
+        {['Motion', 'Tailwind v4', 'React 19', 'Accessible', 'Copy-paste', 'MIT licensed'].map((t, i) => (
+          <span
+            key={t}
+            className="inline-flex items-center gap-2 rounded-full bg-white px-3.5 py-1.5 text-[13px] font-medium text-zinc-800 ring-1 ring-zinc-950/[0.07] shadow-[0_1px_2px_rgba(0,0,0,0.04)] dark:bg-zinc-900 dark:text-zinc-200 dark:ring-white/10"
+          >
+            <span aria-hidden className={['bg-framekit-500', 'bg-sky-500', 'bg-violet-500', 'bg-emerald-500', 'bg-amber-500', 'bg-rose-500'][i] + ' h-1.5 w-1.5 rounded-full'} />
+            {t}
+          </span>
+        ))}
+      </InfiniteMarquee>
+      <InfiniteMarquee className="py-1" speed={32} gap={12} reverse showControls label="Integrations">
+        {['Dark mode', 'Reduced motion', 'Keyboard first', 'Zero runtime', 'shadcn CLI', 'Type-safe'].map((t) => (
+          <span
+            key={t}
+            className="inline-flex items-center rounded-full bg-zinc-950/[0.04] px-3.5 py-1.5 text-[13px] text-zinc-600 ring-1 ring-zinc-950/[0.05] dark:bg-white/[0.05] dark:text-zinc-300 dark:ring-white/[0.06]"
+          >
+            {t}
+          </span>
+        ))}
+      </InfiniteMarquee>
+    </div>
   ),
   'number-ticker': (
-    <div className="text-center">
-      <NumberTicker value={12840} className="text-5xl font-bold tracking-tight" />
-      <p className="mt-2 text-sm text-zinc-500 dark:text-zinc-400">components shipped</p>
-    </div>
+    <dl className="grid w-full max-w-xl grid-cols-1 divide-y divide-zinc-950/[0.07] rounded-2xl bg-white ring-1 ring-zinc-950/[0.07] shadow-[0_1px_2px_rgba(0,0,0,0.04)] sm:grid-cols-3 sm:divide-x sm:divide-y-0 dark:divide-white/[0.08] dark:bg-zinc-900/60 dark:ring-white/[0.08]">
+      {[
+        { v: 12840, label: 'components shipped', d: 0, p: '', s: '' },
+        { v: 99.98, label: 'uptime, last 90 days', d: 2, p: '', s: '%' },
+        { v: 4.2, label: 'installs per month', d: 1, p: '', s: 'M' },
+      ].map((x, i) => (
+        <div key={x.label} className="px-6 py-5 text-center sm:text-left">
+          <dt className="text-[13px] text-zinc-500 dark:text-zinc-400">{x.label}</dt>
+          <dd className="mt-1 text-4xl font-semibold tracking-[-0.03em] text-zinc-950 dark:text-white">
+            <NumberTicker value={x.v} decimals={x.d} prefix={x.p} suffix={x.s} delay={i * 120} />
+          </dd>
+        </div>
+      ))}
+    </dl>
   ),
   'orbiting-icons': (
     <OrbitingIcons
@@ -1785,35 +1843,61 @@ export const demos: Record<string, React.ReactNode> = {
     />
   ),
   'border-beam': (
-    <BorderBeam className="max-w-sm">
+    <BorderBeam className="w-full max-w-sm">
       <div className="p-6">
-        <h3 className="font-semibold">Border Beam</h3>
-        <p className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">Watch the light travel the edge.</p>
+        <div className="flex items-center gap-2 text-[13px] font-medium text-framekit-700 dark:text-framekit-300">
+          <span className="relative flex h-2 w-2" aria-hidden>
+            <span className="absolute inset-0 rounded-full bg-framekit-500 motion-safe:animate-ping" />
+            <span className="relative h-2 w-2 rounded-full bg-framekit-500" />
+          </span>
+          Live
+        </div>
+        <h3 className="mt-3 text-[17px] font-semibold tracking-[-0.012em]">Launch week, day 3</h3>
+        <p className="mt-1.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">Streaming now — new primitives for motion and layout.</p>
       </div>
     </BorderBeam>
   ),
   'morphing-text': (
-    <div className="text-3xl font-semibold">
+    <p className="text-4xl font-semibold tracking-[-0.03em] text-zinc-950 dark:text-white">
       Build{' '}
-      <MorphingText className="text-framekit-500" phrases={['faster', 'bolder', 'yours', 'animated']} />
-    </div>
+      <MorphingText className="text-framekit-600 dark:text-framekit-400" phrases={['faster', 'bolder', 'yours', 'animated']} />
+    </p>
   ),
   'spark-button': <SparkButton>Click for sparks</SparkButton>,
   'cursor-trail': <CursorTrail className="w-full max-w-lg" />,
   'glass-card': (
-    <div className="rounded-3xl bg-gradient-to-br from-framekit-500 via-fuchsia-500 to-indigo-600 p-10">
-      <GlassCard className="max-w-xs">
-        <h3 className="text-lg font-semibold text-white">Liquid glass</h3>
-        <p className="mt-2 text-sm text-white/80">Frosted surface over vivid color.</p>
+    <div
+      className="relative w-full max-w-lg overflow-hidden rounded-[32px] p-6 sm:p-12"
+      style={{
+        background:
+          'radial-gradient(40% 50% at 20% 25%, #fb923c, transparent 70%), radial-gradient(45% 55% at 85% 20%, #e879f9, transparent 70%), radial-gradient(50% 60% at 70% 95%, #6366f1, transparent 70%), linear-gradient(135deg, #f97316, #c026d3 50%, #3730a3)',
+      }}
+    >
+      <div aria-hidden className="absolute top-8 left-10 h-28 w-28 rounded-full bg-amber-200/80 blur-[2px]" />
+      <GlassCard className="relative mx-auto max-w-xs">
+        <div className="flex items-center gap-2 text-[13px] font-medium text-white/85">
+          <UpTimer aria-hidden className="h-4 w-4" /> Focus
+        </div>
+        <p className="mt-2 text-5xl font-semibold tracking-[-0.03em] tabular-nums text-white">24:59</p>
+        <p className="mt-1 text-sm text-white/80">Deep work · session 2 of 4</p>
+        <div className="mt-5 flex gap-2">
+          <button type="button" aria-label="Pause" className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/20 text-white ring-1 ring-white/30 transition-transform active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
+            <UpPause aria-hidden className="h-4 w-4" />
+          </button>
+          <button type="button" aria-label="Skip" className="inline-flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white ring-1 ring-white/20 transition-transform active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
+            <UpSkip aria-hidden className="h-4 w-4" />
+          </button>
+        </div>
       </GlassCard>
     </div>
   ),
   'swipe-cards': (
     <SwipeCards
       cards={[
-        { id: '1', title: 'Ember', subtitle: 'Warm accent tones', color: '#ea580c' },
-        { id: '2', title: 'Volt', subtitle: 'Electric accents', color: '#7c3aed' },
-        { id: '3', title: 'Ion', subtitle: 'Cool contrast', color: '#2563eb' },
+        { id: '1', title: 'Ember', subtitle: 'Warm accent tones', color: 'linear-gradient(160deg, #fb923c, #c2410c)' },
+        { id: '2', title: 'Volt', subtitle: 'Electric accents', color: 'linear-gradient(160deg, #a78bfa, #6d28d9)' },
+        { id: '3', title: 'Ion', subtitle: 'Cool contrast', color: 'linear-gradient(160deg, #60a5fa, #1d4ed8)' },
+        { id: '4', title: 'Moss', subtitle: 'Grounded neutrals', color: 'linear-gradient(160deg, #6ee7b7, #047857)' },
       ]}
     />
   ),
@@ -1823,7 +1907,14 @@ export const demos: Record<string, React.ReactNode> = {
       phrases={['Framekit UI', 'Own your components', 'Ship with motion']}
     />
   ),
-  'pixel-reveal': <PixelReveal className="w-full max-w-md" />,
+  'pixel-reveal': (
+    <PixelReveal className="w-full max-w-md" pattern="diagonal" showReplay>
+      <div className="flex h-full flex-col justify-end p-5 text-white">
+        <p className="text-[11px] font-semibold tracking-[0.14em] uppercase opacity-85">Collection</p>
+        <p className="text-xl font-semibold tracking-[-0.02em] [text-shadow:0_1px_12px_rgba(0,0,0,0.3)]">Golden hour, generated</p>
+      </div>
+    </PixelReveal>
+  ),
   'elastic-slider': <ElasticSlider defaultValue={55} />,
   'breathing-dot': (
     <div className="flex flex-col gap-3">

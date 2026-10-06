@@ -68,6 +68,9 @@
   @media (pointer: coarse) {
     .fk-touch { min-height: 44px; min-width: 44px; }
   }
+  /* Premium type defaults (see docs/PREMIUM_GUIDELINES.md §2): balanced headings, no orphans in prose. */
+  h1, h2, h3, h4 { text-wrap: balance; }
+  p, li, dd { text-wrap: pretty; }
 }
 
 html { scroll-behavior: smooth; }
@@ -81,6 +84,10 @@ body {
   background: #f7f7f5;
   color: #141414;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html.dark body,

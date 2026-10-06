@@ -43,7 +43,7 @@ export function CategoryPage() {
           <motion.li key={d.slug} variants={item}>
             <Link
               to={`/docs/${d.slug}`}
-              className="group relative flex h-full min-h-[116px] flex-col rounded-2xl border border-zinc-200 bg-white p-4 transition-[border-color,box-shadow,transform] duration-200 ease-out hover:-translate-y-0.5 hover:border-signal-400 hover:shadow-[0_12px_28px_-16px_rgb(100_82_122/0.45)] active:translate-y-0 motion-reduce:transition-none motion-reduce:hover:translate-y-0 dark:border-zinc-800 dark:bg-zinc-900/40 dark:hover:border-signal-500"
+              className="group relative flex h-full min-h-[116px] flex-col rounded-2xl border border-zinc-950/[0.08] bg-white p-4 transition-[border-color,box-shadow,transform] duration-200 ease-out hover:-translate-y-0.5 hover:border-signal-400 hover:shadow-[0_12px_28px_-16px_rgb(100_82_122/0.45)] active:translate-y-0 motion-reduce:transition-none motion-reduce:hover:translate-y-0 dark:border-white/[0.08] dark:bg-zinc-900/40 dark:hover:border-signal-500"
             >
               <span className="flex items-start justify-between gap-3">
                 <span className="text-base font-semibold tracking-tight">{d.title}</span>
@@ -61,7 +61,7 @@ export function CategoryPage() {
         ))}
       </motion.ul>
 
-      <nav aria-label="Other categories" className="mt-14 border-t border-zinc-200 pt-8 dark:border-zinc-800">
+      <nav aria-label="Other categories" className="mt-14 border-t border-zinc-950/[0.08] pt-8 dark:border-white/[0.08]">
         <h2 className="text-sm font-semibold text-zinc-700 dark:text-zinc-300">Other categories</h2>
         <ul className="mt-3 flex flex-wrap gap-2">
           {groups

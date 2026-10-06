@@ -275,7 +275,7 @@ function PropsTable({ props }: { props: NonNullable<ReturnType<typeof getDoc>>['
         role="region"
         aria-label="Props table"
         tabIndex={0}
-        className="framekit-scroll mt-4 hidden overflow-x-auto rounded-2xl border border-zinc-200 md:block dark:border-zinc-800"
+        className="framekit-scroll mt-4 hidden overflow-x-auto rounded-2xl border border-zinc-950/[0.08] md:block dark:border-white/[0.08]"
       >
         <table className="w-full min-w-[560px] text-left text-sm">
           <caption className="sr-only">Component props</caption>
@@ -289,7 +289,7 @@ function PropsTable({ props }: { props: NonNullable<ReturnType<typeof getDoc>>['
           </thead>
           <tbody>
             {props.map((p) => (
-              <tr key={p.name} className="border-t border-zinc-200 align-top transition-colors hover:bg-zinc-50/70 dark:border-zinc-800 dark:hover:bg-zinc-900/40">
+              <tr key={p.name} className="border-t border-zinc-950/[0.08] align-top transition-colors hover:bg-zinc-50/70 dark:border-white/[0.08] dark:hover:bg-zinc-900/40">
                 <th scope="row" className="px-4 py-3 text-left font-mono text-xs font-medium text-signal-700 dark:text-signal-300">{p.name}</th>
                 <td className="px-4 py-3 font-mono text-xs text-zinc-700 dark:text-zinc-300">{p.type}</td>
                 <td className="px-4 py-3 font-mono text-xs text-zinc-700 dark:text-zinc-300">{p.default ?? '—'}</td>
@@ -302,7 +302,7 @@ function PropsTable({ props }: { props: NonNullable<ReturnType<typeof getDoc>>['
       {/* < md: stacked cards — no sideways scrolling on phones */}
       <ul className="mt-4 space-y-3 md:hidden">
         {props.map((p) => (
-          <li key={p.name} className="rounded-2xl border border-zinc-200 p-4 dark:border-zinc-800">
+          <li key={p.name} className="rounded-2xl border border-zinc-950/[0.08] p-4 dark:border-white/[0.08]">
             <p className="break-words font-mono text-sm font-medium text-signal-700 dark:text-signal-300">{p.name}</p>
             <p className="mt-1 break-words font-mono text-xs text-zinc-700 dark:text-zinc-300">{p.type}</p>
             <p className="mt-2 text-sm text-zinc-700 dark:text-zinc-400">{p.description}</p>
@@ -322,9 +322,9 @@ function PrevNext({ slug }: { slug: string }) {
   const { prev, next } = getPrevNext(slug)
   if (!prev && !next) return null
   const card =
-    'group flex min-h-[72px] flex-1 flex-col justify-center rounded-2xl border border-zinc-200 p-4 transition-[border-color,background-color,transform] duration-200 hover:border-signal-400 hover:bg-white active:scale-[0.99] motion-reduce:transition-none dark:border-zinc-800 dark:hover:border-signal-500 dark:hover:bg-zinc-900/60'
+    'group flex min-h-[72px] flex-1 flex-col justify-center rounded-2xl border border-zinc-950/[0.08] p-4 transition-[border-color,background-color,transform] duration-200 hover:border-signal-400 hover:bg-white active:scale-[0.99] motion-reduce:transition-none dark:border-white/[0.08] dark:hover:border-signal-500 dark:hover:bg-zinc-900/60'
   return (
-    <nav aria-label="Previous and next" className="mt-16 flex flex-col gap-3 border-t border-zinc-200 pt-8 sm:flex-row dark:border-zinc-800">
+    <nav aria-label="Previous and next" className="mt-16 flex flex-col gap-3 border-t border-zinc-950/[0.08] pt-8 sm:flex-row dark:border-white/[0.08]">
       {prev ? (
         <Link to={`/docs/${prev.slug}`} rel="prev" className={card}>
           <span className="flex items-center gap-1.5 text-xs text-zinc-600 dark:text-zinc-400">
@@ -393,8 +393,8 @@ export function DocPage() {
         <motion.div variants={reveal} className="mt-8"><Guide slug={slug} /></motion.div>
       ) : (
         <>
-          <motion.section variants={reveal} aria-label="Component preview" className="mt-8 overflow-hidden rounded-2xl border border-zinc-200 bg-white shadow-[0_1px_0_rgb(0_0_0/0.02),0_16px_40px_-24px_rgb(0_0_0/0.25)] dark:border-zinc-800 dark:bg-zinc-900/30 dark:shadow-none">
-            <div className="flex flex-wrap items-center gap-2 border-b border-zinc-200 bg-zinc-50 p-1.5 dark:border-zinc-800 dark:bg-zinc-900/50">
+          <motion.section variants={reveal} aria-label="Component preview" className="mt-8 overflow-hidden rounded-2xl border border-zinc-950/[0.08] bg-white shadow-[0_1px_0_rgb(0_0_0/0.02),0_16px_40px_-24px_rgb(0_0_0/0.25)] dark:border-white/[0.08] dark:bg-zinc-900/30 dark:shadow-none">
+            <div className="flex flex-wrap items-center gap-2 border-b border-zinc-950/[0.08] bg-zinc-50 p-1.5 dark:border-white/[0.08] dark:bg-zinc-900/50">
               <div role="tablist" aria-label="Preview or code" onKeyDown={handleTablistKeys} className="relative flex items-center gap-0.5">
                 {(['preview', 'code'] as const).map((t) => (
                   <button
