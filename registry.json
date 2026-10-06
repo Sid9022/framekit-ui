@@ -618,7 +618,7 @@
       "name": "magnetic-button",
       "type": "registry:ui",
       "title": "Magnetic Button",
-      "description": "Button that magnetically follows the cursor.",
+      "description": "Button that magnetically follows the cursor; the label leans a little further for parallax, with a spring press state. Solid, accent and glass surfaces.",
       "dependencies": [
         "motion"
       ],
@@ -1428,7 +1428,7 @@
       "name": "morphing-text",
       "type": "registry:ui",
       "title": "Morphing Text",
-      "description": "Crossfading phrase morph.",
+      "description": "Overlapping blur-morph between phrases, aligned for inline sentences; pauses on hover.",
       "dependencies": [
         "motion"
       ],
@@ -1471,7 +1471,7 @@
       "name": "number-ticker",
       "type": "registry:ui",
       "title": "Number Ticker",
-      "description": "Animates numbers when scrolled into view.",
+      "description": "Counts to a value when scrolled into view with locale-aware grouping and tabular figures; re-animates from the current value when it changes.",
       "registryDependencies": [
         "https://framekit-ui.vercel.app/r/cn.json",
         "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
@@ -1491,9 +1491,13 @@
       "name": "infinite-marquee",
       "type": "registry:ui",
       "title": "Infinite Marquee",
-      "description": "Seamless looping marquee strip.",
+      "description": "Seamless looping strip with masked edge fades; pauses on hover, focus or with an optional pause button. Wraps statically under reduced motion.",
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
         "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
       ],
       "files": [
@@ -2426,7 +2430,7 @@
       "name": "spotlight-card",
       "type": "registry:ui",
       "title": "Spotlight Card",
-      "description": "Radial glow that tracks your pointer.",
+      "description": "Radial glow and a lit hairline edge that track your pointer (CSS variables, no re-renders); keyboard focus inside lights it too.",
       "registryDependencies": [
         "https://framekit-ui.vercel.app/r/cn.json"
       ],
@@ -2445,7 +2449,7 @@
       "name": "tilt-card",
       "type": "registry:ui",
       "title": "Tilt Card",
-      "description": "3D perspective tilt on hover.",
+      "description": "Spring-damped 3D tilt with real perspective, a soft specular glare and a gentle lift. Mouse only; static under reduced motion.",
       "dependencies": [
         "motion"
       ],
@@ -2468,7 +2472,7 @@
       "name": "glass-card",
       "type": "registry:ui",
       "title": "Glass Card",
-      "description": "Frosted liquid-glass surface.",
+      "description": "Liquid-glass surface with specular rim, inner hairline and layered depth; regular (frosted) or clear variants, and a solid fallback for prefers-reduced-transparency.",
       "registryDependencies": [
         "https://framekit-ui.vercel.app/r/cn.json"
       ],
@@ -2487,12 +2491,15 @@
       "name": "swipe-cards",
       "type": "registry:ui",
       "title": "Swipe Cards",
-      "description": "Stacked deck with drag-to-dismiss.",
+      "description": "Stacked deck: drag, flick, tap or arrow-key cards away with keep/pass stamps; the deck springs forward and every swipe is announced. Fades instead of flying under reduced motion.",
       "dependencies": [
+        "lucide-react",
         "motion"
       ],
       "registryDependencies": [
-        "https://framekit-ui.vercel.app/r/cn.json"
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
       ],
       "files": [
         {
@@ -2509,7 +2516,7 @@
       "name": "border-beam",
       "type": "registry:ui",
       "title": "Border Beam",
-      "description": "Light travelling around a border.",
+      "description": "A comet of light travels a crisp masked hairline border, with an optional soft bloom. Static under reduced motion.",
       "registryDependencies": [
         "https://framekit-ui.vercel.app/r/cn.json",
         "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
@@ -2529,10 +2536,12 @@
       "name": "pixel-reveal",
       "type": "registry:ui",
       "title": "Pixel Reveal",
-      "description": "Cascading pixel-grid image reveal.",
+      "description": "Image or generated art dissolves in through a shrinking pixel grid when scrolled into view — random, diagonal or centre-out — with an optional replay.",
+      "dependencies": [
+        "lucide-react"
+      ],
       "registryDependencies": [
         "https://framekit-ui.vercel.app/r/cn.json",
-        "https://framekit-ui.vercel.app/r/framekit-theme.json",
         "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
       ],
       "files": [
@@ -4491,9 +4500,10 @@
       "name": "card",
       "type": "registry:ui",
       "title": "Card",
-      "description": "Composable surface for content blocks.",
+      "description": "Composable surface with hairline ring and layered shadow; default, raised, glass and outline variants.",
       "registryDependencies": [
-        "https://framekit-ui.vercel.app/r/cn.json"
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json"
       ],
       "files": [
         {
@@ -4760,7 +4770,7 @@
       "name": "progress",
       "type": "registry:ui",
       "title": "Progress",
-      "description": "Determinate progress bar.",
+      "description": "Progress bar with semantic tones, sizes, an optional label with tabular percentage, and an indeterminate mode.",
       "registryDependencies": [
         "https://framekit-ui.vercel.app/r/cn.json",
         "https://framekit-ui.vercel.app/r/framekit-theme.json"
@@ -6118,6 +6128,377 @@
         "portfolio"
       ],
       "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/discovery-scene"
+    },
+    {
+      "name": "signal-beam-diagram",
+      "type": "registry:ui",
+      "title": "Signal Beam Diagram",
+      "description": "An integration map where light travels: sources fire gradient pulses along hairline S-curves into a glass hub, which relays them to destinations. Select a node to isolate its route and read what flows through it.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/signal-beam-diagram.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/signal-beam-diagram"
+    },
+    {
+      "name": "feature-bento-grid",
+      "type": "registry:ui",
+      "title": "Feature Bento Grid",
+      "description": "An asymmetric grid of feature tiles with generated art. Hover or focus a tile: it lifts, a hairline light follows the pointer around its edge, the art drifts up and a call-to-action rises. CTAs stay visible on touch.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/feature-bento-grid.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/feature-bento-grid"
+    },
+    {
+      "name": "live-feed-stack",
+      "type": "registry:ui",
+      "title": "Live Feed Stack",
+      "description": "A notification centre on glass. Alerts drop in at the top on a crisp spring, the list makes room with a layout animation, and older ones fold into a pile you can expand. Times tick; arrivals are announced; the stream can be paused.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/live-feed-stack.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "notifications"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/live-feed-stack"
+    },
+    {
+      "name": "file-tree-explorer",
+      "type": "registry:ui",
+      "title": "File Tree Explorer",
+      "description": "An editor-grade file tree: folders open on a soft height spring, hairline guides show depth, and one highlight glides between selected rows. Full WAI-ARIA tree keyboard support with type-ahead; the selected path is announced.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/file-tree-explorer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "navigation"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/file-tree-explorer"
+    },
+    {
+      "name": "device-frame",
+      "type": "registry:ui",
+      "title": "Device Frame",
+      "description": "Generic, logo-free device chrome for product shots: a browser with a frosted toolbar and centred address field, or a phone with a machined two-tone rim, punch-hole camera, status bar and floating glass tab bar.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/device-frame.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/device-frame"
+    },
+    {
+      "name": "avatar-stack",
+      "type": "registry:ui",
+      "title": "Avatar Stack",
+      "description": "Overlapping avatars that make room: hover or focus one and it lifts while neighbours part on a spring, revealing a frosted name tag with role and presence. The “+N” chip opens a tidy list of everyone else.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/avatar-stack.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "core"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/avatar-stack"
+    },
+    {
+      "name": "neon-halo-card",
+      "type": "registry:ui",
+      "title": "Neon Halo Card",
+      "description": "A card rimmed by a slow sweep of coloured light: a conic gradient travels a hairline edge while a soft bloom breathes behind it, and the pointer pulls a quiet spotlight across the surface. Restrained on light pages.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/neon-halo-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/neon-halo-card"
+    },
+    {
+      "name": "horizon-grid-field",
+      "type": "registry:ui",
+      "title": "Horizon Grid Field",
+      "description": "A quiet perspective floor gliding toward you under a softly lit horizon. Hairline grid lines fade into haze, a low glow sits on the vanishing line and, in dark scopes, still stars hang above. Pure CSS 3D.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/horizon-grid-field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "animated-backgrounds"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/horizon-grid-field"
+    },
+    {
+      "name": "flicker-dot-field",
+      "type": "registry:ui",
+      "title": "Flicker Dot Field",
+      "description": "A calm LED-like matrix: each mark drifts between brightness levels on its own clock so the field shimmers without syncing, and marks near the pointer glow. Set flicker to 0 for a still dot pattern. Canvas 2D.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/use-resolved-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/flicker-dot-field.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "animated-backgrounds"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/flicker-dot-field"
+    },
+    {
+      "name": "confetti-burst-button",
+      "type": "registry:ui",
+      "title": "Confetti Burst Button",
+      "description": "A celebratory primary action: the label rolls to a check while a cone of paper confetti (or your own glyphs) bursts from the button with real drag, gravity and tumble. The canvas exists only while particles do.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/confetti-burst-button.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "buttons"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/confetti-burst-button"
+    },
+    {
+      "name": "video-lightbox-dialog",
+      "type": "registry:ui",
+      "title": "Video Lightbox Dialog",
+      "description": "A cinematic thumbnail with a clear-glass play button that grows into a focused player on a shared-layout spring while the page blurs back. Bring your own video, or use the generated preview with captions.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/video-lightbox-dialog.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "cards"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/video-lightbox-dialog"
+    },
+    {
+      "name": "word-cycle-text",
+      "type": "registry:ui",
+      "title": "Word Cycle Text",
+      "description": "A headline whose key word keeps changing its mind: each word rises letter by letter out of a soft blur inside a tinted capsule that resizes on a spring while the line glides to make room.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/word-cycle-text.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "text-animations"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/word-cycle-text"
+    },
+    {
+      "name": "highlight-marker-text",
+      "type": "registry:ui",
+      "title": "Highlight Marker Text",
+      "description": "Editorial copy annotated by hand: as it scrolls into view a marker sweeps behind one phrase, an underline draws under the next, a pen circle loops another and a strike crosses one out, in sequence. Wraps across lines.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/highlight-marker-text.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "text-animations"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/highlight-marker-text"
+    },
+    {
+      "name": "velocity-marquee",
+      "type": "registry:ui",
+      "title": "Velocity Marquee",
+      "description": "Oversized editorial rails that idle along, then answer your scroll: scroll faster and the rows speed up and lean into the motion; scroll back and they reverse. Solid and outline rows alternate.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/velocity-marquee.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "vertical-scroll"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/velocity-marquee"
+    },
+    {
+      "name": "sparkle-text",
+      "type": "registry:ui",
+      "title": "Sparkle Text",
+      "description": "A word that catches the light: four-point stars bloom and fade around it on staggered clocks while the letters carry a soft ink-to-accent gradient. Sparkles on scroll-in or hover, then rests.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/sparkle-text.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "text-animations"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/sparkle-text"
     }
   ]
 }

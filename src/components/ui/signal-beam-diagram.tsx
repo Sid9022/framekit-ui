@@ -127,7 +127,7 @@ export function SignalBeamDiagram({
   const running = playing && inView && !reduced
   const outDelay = dur * 0.55
 
-  const nodeCls = (active: boolean) =>
+  const nodeCls = () =>
     cn(
       'group flex min-h-11 w-full flex-col items-center gap-2 rounded-2xl p-1.5 text-center outline-none',
       'focus-visible:ring-2 focus-visible:ring-signal-600 dark:focus-visible:ring-signal-300',
@@ -155,7 +155,7 @@ export function SignalBeamDiagram({
         }}
         aria-pressed={active}
         onClick={() => select(n.id)}
-        className={nodeCls(active)}
+        className={nodeCls()}
       >
         <span className={tileCls(active, dim)}>{n.icon ?? <Webhook />}</span>
         <span className="max-w-full truncate text-xs font-medium text-zinc-700 dark:text-zinc-300">{n.label}</span>
