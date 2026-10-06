@@ -104,15 +104,15 @@ export function AvatarStack({ people = DEFAULT_PEOPLE, max = 5, size = 'md', lab
                 onPointerEnter={() => setHover(i)}
                 onFocus={() => setHover(i)}
                 onBlur={() => setHover(null)}
-                aria-label={`${p.name}${p.role ? `, ${p.role}` : ''}${p.online ? ', online' : ''}`}
                 animate={{ y: !reduced && hover === i ? -4 : 0, scale: !reduced && hover === i ? 1.08 : 1 }}
                 whileTap={reduced ? undefined : { scale: 0.96 }}
                 transition={spring}
                 className="relative grid min-h-11 min-w-11 place-items-center rounded-full outline-none focus-visible:[&>span:first-child]:ring-signal-600 dark:focus-visible:[&>span:first-child]:ring-signal-300"
               >
-                <span className="rounded-full ring-[2.5px] ring-white transition-shadow dark:ring-zinc-950">
+                <span aria-hidden className="rounded-full ring-[2.5px] ring-white transition-shadow dark:ring-zinc-950">
                   <Face p={p} size={size} />
                 </span>
+                <span className="sr-only">{`${p.name}${p.role ? `, ${p.role}` : ''}${p.online ? ', online' : ''}`}</span>
                 {p.online && <span aria-hidden className="absolute bottom-1 right-1 h-2.5 w-2.5 rounded-full bg-emerald-500 ring-2 ring-white dark:ring-zinc-950" />}
               </motion.button>
               <AnimatePresence>
@@ -141,13 +141,13 @@ export function AvatarStack({ people = DEFAULT_PEOPLE, max = 5, size = 'md', lab
               type="button"
               aria-expanded={open}
               aria-controls={listId}
-              aria-label={`Show ${rest.length} more collaborators`}
               onClick={() => setOpen((o) => !o)}
               className="grid min-h-11 min-w-11 place-items-center rounded-full outline-none focus-visible:[&>span]:ring-signal-600 dark:focus-visible:[&>span]:ring-signal-300"
             >
               <span className={cn('grid place-items-center rounded-full bg-zinc-100 font-semibold tabular-nums text-zinc-800 ring-2 ring-white transition-colors duration-150 hover:bg-zinc-200 dark:bg-zinc-800 dark:text-zinc-100 dark:ring-zinc-950 dark:hover:bg-zinc-700', SIZES[size])}>
-                +{rest.length}
+                <span aria-hidden>+{rest.length}</span>
               </span>
+              <span className="sr-only">{`Show ${rest.length} more collaborators`}</span>
             </button>
           </li>
         )}

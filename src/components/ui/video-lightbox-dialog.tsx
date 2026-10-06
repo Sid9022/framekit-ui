@@ -137,7 +137,6 @@ export function VideoLightboxDialog({
         layoutId={reduced ? undefined : layout}
         transition={spring}
         aria-haspopup="dialog"
-        aria-label={`Play video: ${title}`}
         className={cn(
           'group absolute inset-0 block overflow-hidden rounded-[24px] text-left ring-1 ring-black/[0.08]',
           'shadow-[0_1px_2px_rgb(0_0_0/0.06),0_32px_64px_-32px_rgb(24_24_27/0.5)] dark:ring-white/[0.1] dark:shadow-[0_32px_64px_-32px_rgb(0_0_0/0.9)]',
