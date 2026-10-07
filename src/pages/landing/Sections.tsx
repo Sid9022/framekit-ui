@@ -19,7 +19,6 @@ import { LatticePulseLoader } from '@/components/ui/lattice-pulse-loader'
 import { MorphGlyphLoader } from '@/components/ui/morph-glyph-loader'
 import { NeonStrokeButton } from '@/components/ui/neon-stroke-button'
 import { ConfettiBurstButton } from '@/components/ui/confetti-burst-button'
-import { RollingNumberStepper } from '@/components/ui/rolling-number-stepper'
 import { GoalProgressCard } from '@/components/ui/goal-progress-card'
 import { surface, Art, DocLink, EASE, HandleBadge, Overline, POP, Reveal, SPRING, SectionHeader, card, focusRing, gutter, h2, muted, pillDark, pillLight, pillLime, section, sectionY, useReduced } from './kit'
 
@@ -46,7 +45,7 @@ function Banner() {
           <div aria-hidden className="absolute inset-0 -z-10 bg-[radial-gradient(70%_60%_at_100%_0%,rgb(255_255_255/0.22),transparent_60%),radial-gradient(60%_50%_at_0%_100%,rgb(10_10_11/0.25),transparent_60%)]" />
           <div className="grid items-center gap-8 lg:grid-cols-[5fr_7fr] lg:gap-12">
             <div className="min-w-0">
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-white/80">Featured · <span className="tabular-nums">{i + 1}/{BANNER.length}</span></p>
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-white">Featured · <span className="tabular-nums">{i + 1}/{BANNER.length}</span></p>
               <p className="sr-only" aria-live="polite">Featured {i + 1} of {BANNER.length}: {b.title}</p>
               <div className="mt-4 min-h-[8.5rem] sm:min-h-[9.5rem]">
                 <AnimatePresence mode="wait" initial={false}>
@@ -110,7 +109,7 @@ const POSTERS = [
   { bg: POP.ink, fg: '#fff', sub: 'text-white/70', dark: 'dark:ring-1 dark:ring-white/[0.1]' },
   { bg: POP.lime, fg: '#0A0A0B', sub: 'text-black/70', dark: '' },
   { bg: '#FFFFFF', fg: '#0A0A0B', sub: 'text-black/60', dark: 'ring-1 ring-black/[0.06]' },
-  { bg: POP.blue, fg: '#fff', sub: 'text-white/80', dark: '' },
+  { bg: POP.blue, fg: '#fff', sub: 'text-white', dark: '' },
   { bg: '#E9E9E6', fg: '#0A0A0B', sub: 'text-black/60', dark: '' },
 ]
 function Statement() {
@@ -150,7 +149,7 @@ function Statement() {
             {rest.map((g) => (
               <li key={g.title}>
                 <Link to={`/docs/category/${categorySlug(g.title)}`} className={cn('inline-flex min-h-9 items-center gap-2 rounded-full bg-white px-3.5 text-[13px] font-medium text-zinc-800 ring-1 ring-black/[0.06] transition-colors duration-150 hover:bg-zinc-50 hover:text-zinc-950 hover:ring-black/[0.12] pointer-coarse:min-h-11 dark:bg-white/[0.05] dark:text-zinc-300 dark:ring-white/[0.08] dark:hover:bg-white/[0.09] dark:hover:text-white', focusRing)}>
-                  {g.title} <span className="tabular-nums text-zinc-500">{g.items.length}</span>
+                  {g.title} <span className="tabular-nums text-zinc-500 dark:text-zinc-400">{g.items.length}</span>
                 </Link>
               </li>
             ))}
@@ -205,7 +204,7 @@ function Tabs() {
                 </span>
                 <span className="min-w-0">
                   <span className="block text-lg font-semibold tracking-[-0.02em]">{d.title}</span>
-                  <span className={cn('mt-1.5 line-clamp-2 block text-sm leading-relaxed', i === 0 ? 'text-white/70 dark:text-zinc-800' : 'text-zinc-600 dark:text-zinc-400')}>{d.description}</span>
+                  <span className={cn('mt-1.5 line-clamp-2 text-sm leading-relaxed', i === 0 ? 'text-white/70 dark:text-zinc-800' : 'text-zinc-600 dark:text-zinc-400')}>{d.description}</span>
                 </span>
               </Link>
             </motion.div>
@@ -232,7 +231,7 @@ function Bento() {
             </div>
             <div className="flex min-w-0 items-center gap-2 rounded-[16px] bg-[#F4F4F2] p-2 pl-4 ring-1 ring-black/[0.04] dark:bg-black dark:ring-white/[0.06]">
               <span className="select-none font-mono text-[13px] text-zinc-400" aria-hidden>$</span>
-              <code className="min-w-0 flex-1 overflow-x-auto whitespace-nowrap font-mono text-[13px] [scrollbar-width:none]" translate="no">{install}</code>
+              <code tabIndex={0} aria-label="Install command" className={cn('min-w-0 flex-1 overflow-x-auto whitespace-nowrap rounded-md font-mono text-[13px] [scrollbar-width:none]', focusRing)} translate="no">{install}</code>
               <CopyButton value={install} meta={{ slug: 'glow-candle-card', kind: 'landing-bento' }} label="Copy install command" className="h-10 w-10 rounded-xl" />
             </div>
           </div>
@@ -270,7 +269,6 @@ const CAROUSEL = [
   { slug: 'ink-drip-loader', title: 'Ink Drip Loader', bg: '#FFFFFF', art: <InkDripLoader />, s: 1 },
   { slug: 'confetti-burst-button', title: 'Confetti Burst Button', bg: POP.lime, art: <ConfettiBurstButton />, s: 1 },
   { slug: 'lattice-pulse-loader', title: 'Lattice Pulse Loader', bg: POP.ink, art: <LatticePulseLoader />, s: 1 },
-  { slug: 'rolling-number-stepper', title: 'Rolling Number Stepper', bg: '#F1F1EF', art: <RollingNumberStepper />, s: 0.9 },
   { slug: 'neon-stroke-button', title: 'Neon Stroke Button', bg: POP.ink, art: <NeonStrokeButton>Launch</NeonStrokeButton>, s: 1 },
   { slug: 'morph-glyph-loader', title: 'Morph Glyph Loader', bg: '#E5ECFF', art: <MorphGlyphLoader />, s: 1 },
   { slug: 'sparkline-kpi-tile', title: 'Sparkline KPI Tile', bg: '#FFFFFF', art: <SparklineKpiTile />, s: 0.75 },

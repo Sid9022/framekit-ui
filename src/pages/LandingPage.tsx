@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { createPortal } from 'react-dom'
 import { Link } from 'react-router-dom'
 import { AnimatePresence, motion } from 'motion/react'
 import { ArrowRight, ArrowUpRight, Menu, Search, X } from 'lucide-react'
@@ -11,9 +12,10 @@ import { cn } from '@/lib/cn'
 import { ActivityRings } from '@/components/ui/activity-rings'
 import { GlowCandleCard } from '@/components/ui/glow-candle-card'
 import { LiquidFillButton } from '@/components/ui/liquid-fill-button'
-import { OrbitalBeadLoader } from '@/components/ui/orbital-bead-loader'
+import { RollingNumberStepper } from '@/components/ui/rolling-number-stepper'
 import { NeonHaloCard } from '@/components/ui/neon-halo-card'
-import { surface, DocLink, EASE, FitArt, HandleBadge, Overline, POP, Reveal, SPRING, card, focusRing, h2, lede, pillDark, pillLight, section, sectionY } from './landing/kit'
+import { GoalProgressCard } from '@/components/ui/goal-progress-card'
+import { surface, EASE, FitArt, HandleBadge, Overline, POP, Reveal, SPRING, card, focusRing, h2, lede, pillDark, pillLight, section, sectionY } from './landing/kit'
 
 const Sections = React.lazy(() => import('./landing/Sections'))
 
@@ -56,7 +58,8 @@ function MobileSheet({ open, onClose, returnTo }: { open: boolean; onClose: () =
     }
   }, [open, onClose, returnTo])
 
-  return (
+  // Portal: the sticky header uses backdrop-filter, which would otherwise become the containing block.
+  return createPortal(
     <AnimatePresence>
       {open && (
         <div className="fixed inset-0 z-50 lg:hidden">
@@ -102,7 +105,8 @@ function MobileSheet({ open, onClose, returnTo }: { open: boolean; onClose: () =
           </motion.div>
         </div>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body,
   )
 }
 
@@ -174,11 +178,11 @@ function WordRise({ text, className, delay = 0 }: { text: string; className?: st
  * Motion only animates the entrance on an inner wrapper.
  */
 const HAND = [
-  { slug: 'neon-halo-card', label: 'Neon Halo', bg: '#F1F1EF', art: <NeonHaloCard />, design: 380, cls: 'hidden md:block w-[150px] [--fx:-250px] [--fy:44px] rotate-[-12deg] lg:w-[184px] lg:[--fx:-360px] xl:w-[220px] xl:[--fx:-440px] xl:[--fy:52px]' },
-  { slug: 'activity-rings', label: 'Activity Rings', bg: '#FFFFFF', art: <ActivityRings />, design: 300, cls: 'w-[34vw] [--fx:-25vw] [--fy:20px] rotate-[-8deg] sm:w-[176px] sm:[--fx:-180px] md:w-[160px] md:[--fx:-134px] md:[--fy:14px] md:rotate-[-6deg] lg:w-[200px] lg:[--fx:-190px] xl:w-[236px] xl:[--fx:-228px] xl:[--fy:18px]' },
-  { slug: 'glow-candle-card', label: 'Glow Candle', bg: POP.ink, art: <GlowCandleCard />, design: 380, cls: 'w-[48vw] [--fx:0px] [--fy:0px] sm:w-[220px] md:w-[190px] lg:w-[232px] xl:w-[272px]' },
-  { slug: 'orbital-bead-loader', label: 'Bead Loader', bg: POP.lime, art: <OrbitalBeadLoader />, design: 200, cls: 'w-[34vw] [--fx:25vw] [--fy:20px] rotate-[8deg] sm:w-[176px] sm:[--fx:180px] md:w-[160px] md:[--fx:134px] md:[--fy:14px] md:rotate-[6deg] lg:w-[200px] lg:[--fx:190px] xl:w-[236px] xl:[--fx:228px] xl:[--fy:18px]' },
-  { slug: 'liquid-fill-button', label: 'Liquid Fill', bg: POP.blue, art: <LiquidFillButton>Get started</LiquidFillButton>, design: 260, cls: 'hidden md:block w-[150px] [--fx:250px] [--fy:44px] rotate-[12deg] lg:w-[184px] lg:[--fx:360px] xl:w-[220px] xl:[--fx:440px] xl:[--fy:52px]' },
+  { slug: 'liquid-fill-button', label: 'Liquid Fill Button', bg: POP.blue, art: <LiquidFillButton>Get started</LiquidFillButton>, design: 'auto' as const, cls: 'hidden md:block w-[150px] [--fx:-250px] [--fy:44px] rotate-[-12deg] lg:w-[184px] lg:[--fx:-360px] xl:w-[220px] xl:[--fx:-440px] xl:[--fy:52px]' },
+  { slug: 'activity-rings', label: 'Activity Rings', bg: '#FFFFFF', art: <ActivityRings />, design: 'auto' as const, cls: 'w-[34vw] [--fx:-25vw] [--fy:20px] rotate-[-8deg] sm:w-[176px] sm:[--fx:-180px] md:w-[160px] md:[--fx:-134px] md:[--fy:14px] md:rotate-[-6deg] lg:w-[200px] lg:[--fx:-190px] xl:w-[236px] xl:[--fx:-228px] xl:[--fy:18px]' },
+  { slug: 'neon-halo-card', label: 'Neon Halo Card', bg: POP.ink, art: <NeonHaloCard />, design: 380, cls: 'w-[48vw] [--fx:0px] [--fy:0px] sm:w-[220px] md:w-[190px] lg:w-[232px] xl:w-[272px]' },
+  { slug: 'rolling-number-stepper', label: 'Rolling Number Stepper', bg: POP.lime, art: <RollingNumberStepper />, design: 'auto' as const, cls: 'w-[34vw] [--fx:25vw] [--fy:20px] rotate-[8deg] sm:w-[176px] sm:[--fx:180px] md:w-[160px] md:[--fx:134px] md:[--fy:14px] md:rotate-[6deg] lg:w-[200px] lg:[--fx:190px] xl:w-[236px] xl:[--fx:228px] xl:[--fy:18px]' },
+  { slug: 'glow-candle-card', label: 'Glow Candle Card', bg: '#F1F1EF', art: <GlowCandleCard />, design: 440, cls: 'hidden md:block w-[150px] [--fx:250px] [--fy:44px] rotate-[12deg] lg:w-[184px] lg:[--fx:360px] xl:w-[220px] xl:[--fx:440px] xl:[--fy:52px]' },
 ]
 
 function Hero({ count, cats }: { count: number; cats: number }) {
@@ -186,12 +190,12 @@ function Hero({ count, cats }: { count: number; cats: number }) {
     <section aria-labelledby="hero-title" className="relative isolate">
       {/* Ambient light: faint lime/blue wash, intentionally different per theme. */}
       <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[820px] bg-[radial-gradient(50%_40%_at_50%_72%,rgb(217_249_92/0.28),transparent_70%),radial-gradient(40%_30%_at_70%_20%,rgb(43_91_255/0.06),transparent_70%)] dark:bg-[radial-gradient(50%_40%_at_50%_72%,rgb(217_249_92/0.10),transparent_70%),radial-gradient(45%_35%_at_50%_0%,rgb(43_91_255/0.18),transparent_70%)]" />
-      <div className={cn(section, 'pb-20 pt-12 text-center sm:pb-28 sm:pt-20 lg:pt-24')}>
+      <div className={cn(section, 'pb-20 pt-12 text-center sm:pb-28 sm:pt-16 lg:pt-20')}>
         <motion.p initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: EASE }} className="inline-flex max-w-full items-center gap-2 rounded-full bg-white py-1 pl-1 pr-3 text-[13px] font-medium text-zinc-700 shadow-[0_1px_2px_rgb(0_0_0/0.04)] ring-1 ring-black/[0.06] dark:bg-white/[0.05] dark:text-zinc-300 dark:ring-white/[0.1]">
           <span className="rounded-full bg-[#D9F95C] px-2 py-0.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-zinc-950">New</span>
           <span className="truncate"><span className="tabular-nums">{count}</span> components · <span className="tabular-nums">{cats}</span> categories</span>
         </motion.p>
-        <h1 id="hero-title" className="mx-auto mt-6 max-w-[14ch] text-balance text-[clamp(2.625rem,1.6rem+6.2vw,7rem)] font-semibold leading-[0.98] tracking-[-0.055em] text-zinc-950 sm:mt-8 dark:text-white">
+        <h1 id="hero-title" className="mx-auto mt-6 max-w-[14ch] text-balance text-[clamp(2.625rem,1.6rem+5.4vw,6.25rem)] font-semibold leading-[0.98] tracking-[-0.055em] text-zinc-950 sm:mt-8 dark:text-white">
           <WordRise text="Interfaces that feel alive." delay={0.08} />
         </h1>
         <motion.p initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: EASE, delay: 0.35 }} className={cn(lede, 'mx-auto mt-6 max-w-[46ch]')}>
@@ -207,7 +211,7 @@ function Hero({ count, cats }: { count: number; cats: number }) {
         </motion.div>
 
         {/* Hand of cards */}
-        <div className="relative mx-auto mt-14 h-[calc(48vw+48px)] max-w-[1100px] sm:mt-20 sm:h-[288px] md:h-[264px] lg:h-[308px] xl:h-[348px]">
+        <div className="relative mx-auto mt-14 h-[calc(48vw+48px)] max-w-[1100px] sm:mt-16 sm:h-[288px] md:h-[264px] lg:h-[308px] xl:h-[348px]">
           {HAND.map((c, i) => {
             const d = Math.abs(i - 2)
             const s = surface(c.bg)
@@ -219,10 +223,10 @@ function Hero({ count, cats }: { count: number; cats: number }) {
                   transition={{ ...SPRING, stiffness: 170, damping: 22, delay: 0.5 + d * 0.08 }}
                   className="relative [@media(hover:hover)]:transition-transform [@media(hover:hover)]:duration-300 [@media(hover:hover)]:hover:-translate-y-2"
                 >
-                  <div className={cn('relative aspect-square overflow-hidden rounded-[24px] shadow-[0_1px_2px_rgb(0_0_0/0.06),0_24px_48px_-24px_rgb(24_24_27/0.4)] ring-1 ring-black/[0.06] sm:rounded-[28px] dark:shadow-[0_24px_48px_-24px_rgb(0_0_0/0.8)] dark:ring-white/[0.1]', s.className)} style={s.style}>
-                    <FitArt design={c.design} fill={i === 2 ? 0.88 : 0.8} className="absolute inset-0">{c.art}</FitArt>
-                    {i === 2 && <DocLink slug={c.slug} label="Open demo" className="absolute bottom-3 left-1/2 -translate-x-1/2" />}
-                  </div>
+                  <Link to={`/docs/${c.slug}`} className={cn('relative block aspect-square overflow-hidden rounded-[24px] shadow-[0_1px_2px_rgb(0_0_0/0.06),0_24px_48px_-24px_rgb(24_24_27/0.4)] ring-1 ring-black/[0.06] sm:rounded-[28px] dark:shadow-[0_24px_48px_-24px_rgb(0_0_0/0.8)] dark:ring-white/[0.1]', focusRing, s.className)} style={s.style}>
+                    <FitArt design={c.design} fill={i === 2 ? 0.86 : 0.8} className="absolute inset-0">{c.art}</FitArt>
+                    <span className="sr-only">Open the {c.label} demo</span>
+                  </Link>
                   {i === 2 && <HandleBadge handle={c.slug} color={POP.lime} text="#0A0A0B" delay={0.9} className="-top-3 left-1/2 -translate-x-1/2" />}
                 </motion.div>
               </div>
@@ -244,7 +248,7 @@ function StackStrip() {
         <Reveal as="div" className="w-full md:w-auto">
           <ul className="grid grid-cols-3 gap-x-6 gap-y-3 text-center sm:flex sm:flex-wrap sm:justify-center sm:gap-x-10 md:justify-end">
             {STACK.map((s) => (
-              <li key={s} className="text-[15px] font-semibold tracking-[-0.02em] text-zinc-500 sm:text-lg dark:text-zinc-500" translate="no">{s}</li>
+              <li key={s} className="text-[15px] font-semibold tracking-[-0.02em] text-zinc-500 sm:text-lg dark:text-zinc-400" translate="no">{s}</li>
             ))}
           </ul>
         </Reveal>
@@ -255,9 +259,9 @@ function StackStrip() {
 
 /* ── Why (collage) ───────────────────────────────────────────────────── */
 const COLLAGE = [
-  { cls: 'left-0 top-0 w-[64%] rotate-[-3deg] z-[1]', bg: POP.ink, slug: 'glow-candle-card', art: <GlowCandleCard />, design: 380, badge: [POP.lime, '#0A0A0B'], bcls: '-bottom-3 left-5' },
-  { cls: 'right-0 top-[10%] w-[50%] rotate-[4deg] z-[2]', bg: '#FFFFFF', slug: 'activity-rings', art: <ActivityRings />, design: 300, badge: [POP.ink, '#fff'], bcls: '-top-3 right-5' },
-  { cls: 'left-[16%] bottom-0 w-[58%] rotate-[1deg] z-[3]', bg: '#F1F1EF', slug: 'neon-halo-card', art: <NeonHaloCard />, design: 380, badge: [POP.blue, '#fff'], bcls: '-bottom-3 right-5' },
+  { cls: 'left-0 top-0 w-[64%] rotate-[-3deg] z-[1]', bg: POP.ink, slug: 'glow-candle-card', art: <GlowCandleCard />, design: 440, badge: [POP.lime, '#0A0A0B'], bcls: '-bottom-3 left-5' },
+  { cls: 'right-0 top-[10%] w-[50%] rotate-[4deg] z-[2]', bg: '#FFFFFF', slug: 'activity-rings', art: <ActivityRings />, design: 'auto', badge: [POP.ink, '#fff'], bcls: '-top-3 right-5' },
+  { cls: 'left-[16%] bottom-0 w-[58%] rotate-[1deg] z-[3]', bg: '#F1F1EF', slug: 'goal-progress-card', art: <GoalProgressCard />, design: 380, badge: [POP.blue, '#fff'], bcls: '-bottom-3 right-5' },
 ] as const
 function Why() {
   return (

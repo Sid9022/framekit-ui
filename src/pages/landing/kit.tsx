@@ -183,7 +183,7 @@ export function useReduced() {
  * Fits a real component inside its frame at any width: renders it at a fixed design width,
  * measures it, then scales it to `fill` of the frame (so artworks stay legible from 360 px to 1920 px).
  */
-export function FitArt({ children, design = 380, fill = 0.86, className }: { children: React.ReactNode; design?: number; fill?: number; className?: string }) {
+export function FitArt({ children, design = 380, fill = 0.86, className }: { children: React.ReactNode; design?: number | 'auto'; fill?: number; className?: string }) {
   const box = React.useRef<HTMLDivElement>(null)
   const inner = React.useRef<HTMLDivElement>(null)
   const [s, setS] = React.useState(0)
@@ -192,10 +192,12 @@ export function FitArt({ children, design = 380, fill = 0.86, className }: { chi
     const i = inner.current
     if (!b || !i) return
     const fit = () => {
-      const nw = i.offsetWidth
-      const nh = i.offsetHeight
+      // Measure the component itself (not scroll overflow from glows/tooltips).
+      const c = (i.firstElementChild as HTMLElement | null) ?? i
+      const nw = c.offsetWidth || i.offsetWidth
+      const nh = c.offsetHeight || i.offsetHeight
       if (!nw || !nh) return
-      setS(Math.min((b.clientWidth * fill) / nw, (b.clientHeight * fill) / nh))
+      setS(Math.min((b.clientWidth * fill) / nw, (b.clientHeight * fill) / nh, 1.2))
     }
     fit()
     const ro = new ResizeObserver(fit)
@@ -208,8 +210,9 @@ export function FitArt({ children, design = 380, fill = 0.86, className }: { chi
       <div
         ref={inner}
         inert
+        aria-hidden
         className="absolute left-1/2 top-1/2 flex items-center justify-center"
-        style={{ width: design, transform: `translate(-50%, -50%) scale(${s})`, opacity: s ? 1 : 0 }}
+        style={{ width: design === 'auto' ? 'max-content' : design, transform: `translate(-50%, -50%) scale(${s})`, opacity: s ? 1 : 0 }}
       >
         {children}
       </div>
