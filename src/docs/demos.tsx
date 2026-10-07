@@ -307,6 +307,20 @@ import { InsetSettingsList } from '@/components/ui/inset-settings-list'
 import { RollingNumberStepper } from '@/components/ui/rolling-number-stepper'
 import { FileDropUploader } from '@/components/ui/file-drop-uploader'
 import { BarChart3, CalendarDays, LayoutGrid } from 'lucide-react'
+import { GlassAppDock } from '@/components/ui/glass-app-dock'
+import { SpotlightCommandPalette } from '@/components/ui/spotlight-command-palette'
+import { ActivityRings } from '@/components/ui/activity-rings'
+import { GlassMegaNavbar } from '@/components/ui/glass-mega-navbar'
+import { PricingPlans } from '@/components/ui/pricing-plans'
+import { FaqAccordion } from '@/components/ui/faq-accordion'
+import { TestimonialWall } from '@/components/ui/testimonial-wall'
+import { FeatureComparisonTable } from '@/components/ui/feature-comparison-table'
+import { CtaGlowBanner } from '@/components/ui/cta-glow-banner'
+import { NewsletterSignup } from '@/components/ui/newsletter-signup'
+import { SiteFooter } from '@/components/ui/site-footer'
+import { CookieConsent } from '@/components/ui/cookie-consent'
+import { AnnouncementBar } from '@/components/ui/announcement-bar'
+import { ChangelogTimeline } from '@/components/ui/changelog-timeline'
 // p2-imports:end
 
 
@@ -1599,6 +1613,36 @@ function SegmentedDemo() {
   )
 }
 
+function NavbarDemo() {
+  const ref = React.useRef<HTMLDivElement>(null)
+  return (
+    <div ref={ref} className="relative h-[460px] w-full overflow-y-auto rounded-[20px] border border-black/[0.06] bg-gradient-to-b from-zinc-50 to-white dark:border-white/[0.08] dark:from-zinc-950 dark:to-zinc-900">
+      <GlassMegaNavbar scrollContainer={ref} />
+      <div className="mx-auto max-w-2xl px-6 pb-[600px] pt-20 text-center">
+        <h3 className="text-balance text-3xl font-semibold tracking-[-0.03em] text-zinc-950 dark:text-white">Scroll this frame</h3>
+        <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">The bar contracts into a floating glass pill. Hover Product or Resources for the mega menu.</p>
+      </div>
+    </div>
+  )
+}
+
+const websiteSectionDemos: Record<string, React.ReactNode> = {
+  'glass-app-dock': <GlassAppDock />,
+  'spotlight-command-palette': <SpotlightCommandPalette />,
+  'activity-rings': <ActivityRings />,
+  'glass-mega-navbar': <NavbarDemo />,
+  'pricing-plans': <PricingPlans />,
+  'faq-accordion': <FaqAccordion />,
+  'testimonial-wall': <TestimonialWall />,
+  'feature-comparison-table': <FeatureComparisonTable />,
+  'cta-glow-banner': <CtaGlowBanner />,
+  'newsletter-signup': <NewsletterSignup />,
+  'site-footer': <SiteFooter />,
+  'cookie-consent': <CookieConsent />,
+  'announcement-bar': <div className="w-full overflow-hidden rounded-[16px]"><AnnouncementBar /></div>,
+  'changelog-timeline': <ChangelogTimeline />,
+}
+
 const productUiDemos: Record<string, React.ReactNode> = {
   'glass-segmented-control': <SegmentedDemo />,
   'dynamic-status-island': <DynamicStatusIsland defaultState="uploading" />,
@@ -2565,4 +2609,5 @@ export const demos: Record<string, React.ReactNode> = {
   ...batchFolderDemos,
   ...magicBatchDemos,
   ...productUiDemos,
+  ...websiteSectionDemos,
 }

@@ -22,6 +22,7 @@ export type DocCategory =
   | 'Search / Inputs'
   | 'Inputs / Forms'
   | 'Product UI'
+  | 'Website Sections'
   | 'Core'
 
 export type DocEntry = {
@@ -1279,6 +1280,82 @@ export const DOCS: DocEntry[] = [
     { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
   ] },
   // magic-batch:end
+  // website-sections:start
+  { slug: 'glass-app-dock', title: 'Glass App Dock', description: 'A macOS-style dock: icons magnify on a spring with a cosine falloff around the pointer, labels float above, launching bounces the icon and lights a running dot. Keyboard focus magnifies too.', category: 'Website Sections', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Sweep across the dock; click to launch; Tab and ← → by keyboard.', props: [
+    { name: 'apps', type: 'DockApp[]', default: 'DEFAULT_DOCK_APPS', description: '{ id, label, icon, tint?, running?, separatorBefore? }' },
+    { name: 'baseSize / maxSize', type: 'number', default: '44 / 76', description: 'Resting and peak icon size in px.' },
+    { name: 'range', type: 'number', default: '150', description: 'Pointer distance over which neighbours magnify.' },
+    { name: 'onLaunch', type: '(id) => void', default: '—', description: 'Fires when an icon is clicked.' },
+  ] },
+  { slug: 'spotlight-command-palette', title: 'Spotlight Command Palette', description: 'A cmdk-style ⌘K launcher: fuzzy grouped results, a highlight that springs between rows, nested pages (Backspace to go back), key-cap hints and full combobox semantics with focus restore.', category: 'Website Sections', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Press ⌘/Ctrl K or click the chip; type, ↑ ↓, Enter; open “Invite teammates” for a nested page.', props: [
+    { name: 'items', type: 'PaletteItem[]', default: 'DEFAULT_PALETTE_ITEMS', description: '{ id, label, group, icon?, shortcut?, keywords?, children? }' },
+    { name: 'open / defaultOpen / onOpenChange', type: 'boolean', default: 'false', description: 'Controlled or uncontrolled visibility.' },
+    { name: 'hotkey', type: 'boolean', default: 'true', description: 'Register the global ⌘K / Ctrl+K shortcut.' },
+    { name: 'onSelect', type: '(item) => void', default: '—', description: 'Fires when a leaf command runs.' },
+  ] },
+  { slug: 'activity-rings', title: 'Activity Rings', description: 'Apple Watch-style concentric progress rings: gradient strokes sweep in on a spring, overshooting 100% laps over itself with a shadowed tip, and the legend numbers roll up.', category: 'Website Sections', unique: true, isNew: true, ownBackground: true, backgroundNote: 'Paints its own ink watch-face disc in both themes (rings read best on black); the legend adapts with dark: variants.', dependencies: ['motion', 'lucide-react'], gesture: 'Watch the rings close; pass new values to animate.', props: [
+    { name: 'rings', type: 'ActivityRing[]', default: 'Move / Exercise / Stand', description: '{ label, value, goal, unit, from, to, track }' },
+    { name: 'size / stroke', type: 'number', default: '200 / 20', description: 'Diameter and stroke width in px.' },
+    { name: 'showLegend', type: 'boolean', default: 'true', description: 'Show the numeric legend.' },
+  ] },
+  { slug: 'glass-mega-navbar', title: 'Glass Mega Navbar', description: 'A full-width bar that contracts into a floating glass pill on scroll. Menus open into one mega panel that slides between sections with a blur, a hover pill glides between triggers, and phones get a disclosure sheet.', category: 'Website Sections', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Scroll the frame to shrink the bar; hover or click Product / Resources; Esc closes.', props: [
+    { name: 'items', type: 'NavItem[]', default: 'DEFAULT_NAV_ITEMS', description: '{ label, href?, links?, feature? }' },
+    { name: 'shrinkAt', type: 'number', default: '24', description: 'Scroll px before the bar becomes a pill.' },
+    { name: 'scrollContainer', type: 'RefObject<HTMLElement>', default: 'window', description: 'Element whose scroll drives the shrink.' },
+    { name: 'brand / ctaLabel', type: 'ReactNode / string', default: '—', description: 'Logo and CTA copy.' },
+  ] },
+  { slug: 'pricing-plans', title: 'Pricing Plans', description: 'Three-tier pricing with a sliding monthly/yearly switch whose numerals roll digit by digit, a highlighted ink plan with a light rim, and a “you save” chip that springs in on yearly.', category: 'Website Sections', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Toggle Monthly / Yearly (or ← →) and watch the prices roll.', props: [
+    { name: 'plans', type: 'Plan[]', default: 'DEFAULT_PLANS', description: '{ id, name, tagline, monthly, yearly, features, cta, highlighted?, badge? } — null price shows “Custom”.' },
+    { name: 'billing / defaultBilling / onBillingChange', type: '\'monthly\' | \'yearly\'', default: '\'yearly\'', description: 'Controlled or uncontrolled period.' },
+    { name: 'currency / yearlyNote', type: 'string', default: '\'$\' / \'Save 20%\'', description: 'Currency symbol and toggle chip.' },
+    { name: 'onSelect', type: '(plan) => void', default: '—', description: 'CTA click.' },
+  ] },
+  { slug: 'faq-accordion', title: 'FAQ Accordion', description: 'A two-column FAQ: rows expand on a height spring, the plus rotates into a cross, the open row lifts onto a soft surface and answers un-blur in. ↑ ↓ Home End move between questions.', category: 'Website Sections', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Click a question or use ↑ ↓ and Enter.', props: [
+    { name: 'items', type: 'FaqItem[]', default: 'DEFAULT_FAQ', description: '{ q, a }' },
+    { name: 'multiple', type: 'boolean', default: 'false', description: 'Allow several rows open.' },
+    { name: 'defaultOpen', type: 'number[]', default: '[0]', description: 'Initially open rows.' },
+    { name: 'title / aside', type: 'string / ReactNode', default: '—', description: 'Heading and side copy.' },
+  ] },
+  { slug: 'testimonial-wall', title: 'Testimonial Wall', description: 'A masonry wall of quote cards whose columns drift in opposite directions at different speeds, faded at the edges, with a pause button; reduced motion shows a static scrollable wall.', category: 'Website Sections', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Watch the columns drift; press pause to stop.', props: [
+    { name: 'items', type: 'Testimonial[]', default: 'DEFAULT_TESTIMONIALS', description: '{ quote, name, role, hue? }' },
+    { name: 'columns', type: '2 | 3', default: '3', description: 'Columns on desktop.' },
+    { name: 'duration', type: 'number', default: '40', description: 'Seconds per loop.' },
+    { name: 'height', type: 'number', default: '560', description: 'Wall height in px.' },
+  ] },
+  { slug: 'feature-comparison-table', title: 'Feature Comparison Table', description: 'A plan comparison table with a sticky header, collapsible groups, a tinted highlighted column, row hover and a one-plan-at-a-time switcher on phones. Real table semantics with screen-reader labels for ticks.', category: 'Website Sections', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Collapse a group; on phones pick a plan above the table.', props: [
+    { name: 'plans', type: 'string[]', default: 'Hobby / Pro / Enterprise', description: 'Column headers.' },
+    { name: 'highlight', type: 'number', default: '1', description: 'Highlighted column.' },
+    { name: 'groups', type: 'CompareGroup[]', default: 'DEFAULT_COMPARE_GROUPS', description: '{ title, rows: { feature, hint?, values } }' },
+  ] },
+  { slug: 'cta-glow-banner', title: 'CTA Glow Banner', description: 'A closing call-to-action on an ink panel: a soft lilac and orange aurora trails the pointer behind a fine dot grid, the block rises in on scroll and the arrow nudges on hover.', category: 'Website Sections', unique: true, isNew: true, ownBackground: true, backgroundNote: 'Paints its own ink surface in both themes as a deliberate closing block; override with className (bg-*, rounded-*).', dependencies: ['motion', 'lucide-react'], gesture: 'Move across the banner; the glow follows.', props: [
+    { name: 'eyebrow / title / description', type: 'string / ReactNode', default: '—', description: 'Copy.' },
+    { name: 'primaryLabel / secondaryLabel', type: 'string', default: '\'Start for free\' / \'Talk to sales\'', description: 'Button labels.' },
+    { name: 'onPrimary / onSecondary', type: '() => void', default: '—', description: 'Click handlers.' },
+  ] },
+  { slug: 'newsletter-signup', title: 'Newsletter Signup', description: 'An inline email capture with inline validation, a button that morphs to a spinner, a shake on error, a polite live region and a success state with undo.', category: 'Website Sections', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Submit an invalid email, then a real one; include “fail” to see the error.', props: [
+    { name: 'onSubscribe', type: '(email) => Promise<void>', default: 'fake 1.2 s', description: 'Resolve for success, reject for error.' },
+    { name: 'title / description / buttonLabel', type: 'string', default: '—', description: 'Copy.' },
+  ] },
+  { slug: 'site-footer', title: 'Site Footer', description: 'A calm SaaS footer: link columns with sliding hairline underlines, a live status pill, socials, a language picker and a giant outlined wordmark that rises from the bottom edge.', category: 'Website Sections', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Hover links; scroll the wordmark into view.', props: [
+    { name: 'brand / tagline', type: 'string', default: 'Northwind', description: 'Wordmark and line.' },
+    { name: 'columns', type: 'FooterColumn[]', default: 'DEFAULT_FOOTER_COLUMNS', description: '{ title, links: { label, href?, badge? } }' },
+    { name: 'status', type: 'string | null', default: '\'All systems normal\'', description: 'Status pill; null hides it.' },
+  ] },
+  { slug: 'cookie-consent', title: 'Cookie Consent', description: 'A floating glass consent card with equal-weight Accept / Reject (no dark patterns) and a Customise drawer of per-category switches that expands in place, plus a chip to reopen settings.', category: 'Website Sections', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Try Customise, flip a switch, Save; reopen with the chip.', props: [
+    { name: 'categories', type: 'ConsentCategory[]', default: 'necessary / analytics / marketing', description: '{ id, label, description, required?, defaultOn? }' },
+    { name: 'open / defaultOpen', type: 'boolean', default: 'true', description: 'Controlled or uncontrolled.' },
+    { name: 'onDecision', type: '(choice) => void', default: '—', description: 'Receives { [id]: boolean }.' },
+    { name: 'showReopen', type: 'boolean', default: 'true', description: 'Show the settings chip after deciding.' },
+  ] },
+  { slug: 'announcement-bar', title: 'Announcement Bar', description: 'A slim ink top bar with a sweeping sheen; messages roll vertically with a blur, dots pick one, hover or focus pauses, and dismissing collapses the height smoothly.', category: 'Website Sections', unique: true, isNew: true, ownBackground: true, backgroundNote: 'Paints its own ink gradient in both themes (an announcement strip); override with className.', dependencies: ['motion', 'lucide-react'], gesture: 'Hover to pause, use the dots, or dismiss with ×.', props: [
+    { name: 'messages', type: 'Announcement[]', default: 'DEFAULT_ANNOUNCEMENTS', description: '{ tag?, text, href?, cta? }' },
+    { name: 'interval', type: 'number', default: '4500', description: 'ms per message.' },
+    { name: 'dismissible / onDismiss', type: 'boolean / () => void', default: 'true', description: 'Show the close button.' },
+  ] },
+  { slug: 'changelog-timeline', title: 'Changelog Timeline', description: 'Release notes on a timeline with sticky dates, popping dots, generated cover art and a filter (All / New / Improved / Fixed) that re-flows each change list on springs.', category: 'Website Sections', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Pick a filter; scroll to reveal entries.', props: [
+    { name: 'entries', type: 'ChangelogEntry[]', default: 'DEFAULT_CHANGELOG', description: '{ version, date, title, summary, changes: { type, text }[], art? }' },
+  ] },
+  // website-sections:end
   // Product UI
   { slug: 'glass-segmented-control', title: 'Glass Segmented Control', description: 'An iOS-style segmented control whose selected thumb is a lifted glass pill that springs between segments with a press squish — native radio semantics, arrow keys and an opaque reduced-transparency fallback.', category: 'Product UI', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Click a segment or focus it and use ← → Home End.', props: [
     { name: 'options', type: 'SegmentOption[]', default: 'DEFAULT_SEGMENTS', description: '{ value, label, icon?, disabled? } per segment.' },
@@ -1415,6 +1492,7 @@ const NAV_ORDER: DocCategory[] = [
   'Search / Inputs',
   'Inputs / Forms',
   'Product UI',
+  'Website Sections',
   'Core',
 ]
 

@@ -1,3 +1,17 @@
+import glassAppDockSrc from '../components/ui/glass-app-dock.tsx?raw'
+import spotlightCommandPaletteSrc from '../components/ui/spotlight-command-palette.tsx?raw'
+import activityRingsSrc from '../components/ui/activity-rings.tsx?raw'
+import glassMegaNavbarSrc from '../components/ui/glass-mega-navbar.tsx?raw'
+import pricingPlansSrc from '../components/ui/pricing-plans.tsx?raw'
+import faqAccordionSrc from '../components/ui/faq-accordion.tsx?raw'
+import testimonialWallSrc from '../components/ui/testimonial-wall.tsx?raw'
+import featureComparisonTableSrc from '../components/ui/feature-comparison-table.tsx?raw'
+import ctaGlowBannerSrc from '../components/ui/cta-glow-banner.tsx?raw'
+import newsletterSignupSrc from '../components/ui/newsletter-signup.tsx?raw'
+import siteFooterSrc from '../components/ui/site-footer.tsx?raw'
+import cookieConsentSrc from '../components/ui/cookie-consent.tsx?raw'
+import announcementBarSrc from '../components/ui/announcement-bar.tsx?raw'
+import changelogTimelineSrc from '../components/ui/changelog-timeline.tsx?raw'
 import particleMeshGallerySrc from '../components/ui/particle-mesh-gallery.tsx?raw'
 import buttonSrc from '../components/ui/button.tsx?raw'
 import badgeSrc from '../components/ui/badge.tsx?raw'
@@ -603,5 +617,19 @@ export const sources: Record<string, string> = {
   'inset-settings-list': insetSettingsListSrc,
   'rolling-number-stepper': rollingNumberStepperSrc,
   'file-drop-uploader': fileDropUploaderSrc,
+  'glass-app-dock': glassAppDockSrc,
+  'spotlight-command-palette': spotlightCommandPaletteSrc,
+  'activity-rings': activityRingsSrc,
+  'glass-mega-navbar': glassMegaNavbarSrc,
+  'pricing-plans': pricingPlansSrc,
+  'faq-accordion': faqAccordionSrc,
+  'testimonial-wall': testimonialWallSrc,
+  'feature-comparison-table': featureComparisonTableSrc,
+  'cta-glow-banner': ctaGlowBannerSrc,
+  'newsletter-signup': newsletterSignupSrc,
+  'site-footer': siteFooterSrc,
+  'cookie-consent': cookieConsentSrc,
+  'announcement-bar': announcementBarSrc,
+  'changelog-timeline': changelogTimelineSrc,
   // p2-entries:end
 }
