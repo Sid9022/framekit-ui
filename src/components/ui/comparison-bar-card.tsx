@@ -51,7 +51,7 @@ export function ComparisonBarCard({ title = 'Revenue', ranges = DEFAULT_RANGES, 
       </div>
       <div className="mt-6 flex h-40 items-end gap-2 sm:gap-3">
         {data.map((d, i) => (
-          <div key={`${range}-${i}`} tabIndex={0} aria-label={`${d.label}: this period ${currency}${d.current * 10}, last period ${currency}${d.previous * 10}`} onPointerEnter={() => setHover(i)} onPointerLeave={() => setHover(null)} onFocus={() => setHover(i)} onBlur={() => setHover(null)} className={cn('relative flex h-full flex-1 flex-col justify-end rounded-lg', focusRing)}>
+          <div key={`${range}-${i}`} role="group" tabIndex={0} aria-label={`${d.label}: this period ${currency}${d.current * 10}, last period ${currency}${d.previous * 10}`} onPointerEnter={() => setHover(i)} onPointerLeave={() => setHover(null)} onFocus={() => setHover(i)} onBlur={() => setHover(null)} className={cn('relative flex h-full flex-1 flex-col justify-end rounded-lg', focusRing)}>
             {hover === i && <span className="absolute -top-1 left-1/2 z-10 -translate-x-1/2 -translate-y-full whitespace-nowrap rounded-md bg-zinc-950 px-2 py-1 text-[11px] font-medium tabular-nums text-white dark:bg-white dark:text-zinc-950" aria-hidden="true">{currency}{d.current * 10} · {currency}{d.previous * 10}</span>}
             <div className="flex h-full items-end justify-center gap-1">
               {(['previous', 'current'] as const).map((k, j) => (

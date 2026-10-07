@@ -75,7 +75,7 @@ export function BudgetAreaCard({ label = 'Budget', total = 30739, change = 317, 
     <div className={cn('relative w-full max-w-[420px] rounded-[40px] bg-zinc-200/70 p-3 dark:bg-zinc-800/60', className)}>
       <div className="relative overflow-hidden rounded-[30px] bg-white p-6 shadow-[0_1px_2px_rgb(0_0_0/0.05),0_24px_48px_-24px_rgb(24_24_60/0.3)] ring-1 ring-black/[0.04] dark:bg-zinc-900 dark:ring-white/[0.08] sm:p-7">
         {showIllustration && (
-          <motion.div className="absolute -right-6 top-4 sm:right-0" initial={reduced ? false : { opacity: 0, y: -10, rotate: -4 }} animate={{ opacity: 1, y: 0, rotate: 0 }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}>
+          <motion.div className="absolute -right-12 top-0 origin-top-right scale-[0.7] sm:right-0 sm:top-4 sm:scale-100" initial={reduced ? false : { opacity: 0, y: -10, rotate: -4 }} animate={{ opacity: 1, y: 0, rotate: 0 }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}>
             <motion.div animate={reduced ? undefined : { y: [0, -5, 0] }} transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}><NoteStack /></motion.div>
           </motion.div>
         )}

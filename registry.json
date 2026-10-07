@@ -104,6 +104,25 @@
       ]
     },
     {
+      "name": "widget-kit",
+      "type": "registry:lib",
+      "title": "widget-kit",
+      "description": "Framekit shared helper (widget-kit).",
+      "dependencies": [
+        "motion"
+      ],
+      "files": [
+        {
+          "path": "src/lib/widget-kit.tsx",
+          "type": "registry:lib",
+          "target": "@lib/widget-kit.tsx"
+        }
+      ],
+      "categories": [
+        "lib"
+      ]
+    },
+    {
       "name": "framekit-theme",
       "type": "registry:theme",
       "title": "Framekit theme tokens",
@@ -7546,6 +7565,322 @@
         "product-ui"
       ],
       "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/file-drop-uploader"
+    },
+    {
+      "name": "glow-candle-card",
+      "type": "registry:ui",
+      "title": "Glow Candle Card",
+      "description": "An ink “Sales Report” card with monospaced rolling numerals, a neon delta and a glowing candlestick chart: candles grow from their midpoints, new ones stream in live and a crosshair shows OHLC on hover or ← →.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/widget-kit.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/glow-candle-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "data-widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glow-candle-card"
+    },
+    {
+      "name": "glow-level-card",
+      "type": "registry:ui",
+      "title": "Glow Level Card",
+      "description": "The ink stat card with segmented neon level meters: segments light left to right with a bloom, levels re-balance live, and hovering or focusing a row reveals its channel and share.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/widget-kit.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/glow-level-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "data-widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glow-level-card"
+    },
+    {
+      "name": "glow-histogram-card",
+      "type": "registry:ui",
+      "title": "Glow Histogram Card",
+      "description": "A neon gradient histogram beside the ink stat card: bars rise on a soft spring with glowing caps that fade into the card, values drift live and hover / ← → lifts a bar with its value.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/widget-kit.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/glow-histogram-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "data-widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glow-histogram-card"
+    },
+    {
+      "name": "budget-area-card",
+      "type": "registry:ui",
+      "title": "Budget Area Card",
+      "description": "A soft white squircle with a big rolling total, a delta pill and floating soft-3D banknotes. An indigo stepped area chart draws itself in with drifting sparkles and an end arrow, and a tooltip bubble springs between points.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/widget-kit.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/budget-area-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "data-widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/budget-area-card"
+    },
+    {
+      "name": "pastel-object-carousel",
+      "type": "registry:ui",
+      "title": "Pastel Object Carousel",
+      "description": "A cover-flow of pastel portrait cards with floating caption panels. A heavily damped spring carries drags; neighbours tuck behind at 85%, and each layered CSS-3D object (coins, calendar, key, lock, card) turns on Y with its card’s position.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/widget-kit.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/pastel-object-carousel.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "data-widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/pastel-object-carousel"
+    },
+    {
+      "name": "sparkline-kpi-tile",
+      "type": "registry:ui",
+      "title": "Sparkline KPI Tile",
+      "description": "A compact metric tile with a live dot, rolling numerals, a delta chip and a smooth sparkline that draws in, streams new points and shows a crosshair value on hover or ← →.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/widget-kit.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/sparkline-kpi-tile.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "data-widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/sparkline-kpi-tile"
+    },
+    {
+      "name": "spend-donut-card",
+      "type": "registry:ui",
+      "title": "Spend Donut Card",
+      "description": "A radial spend breakdown whose rounded arcs sweep in one after another; hovering or focusing a category pops its arc outward and rolls the centre total to that amount.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/widget-kit.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/spend-donut-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "data-widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/spend-donut-card"
+    },
+    {
+      "name": "contribution-heatmap-tile",
+      "type": "registry:ui",
+      "title": "Contribution Heatmap Tile",
+      "description": "A weeks × days activity heatmap: cells pop in on a diagonal wave, the total and streak roll up, and the grid is one roving tab stop where arrows move a ring that announces the day.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/widget-kit.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/contribution-heatmap-tile.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "data-widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/contribution-heatmap-tile"
+    },
+    {
+      "name": "wallet-balance-card",
+      "type": "registry:ui",
+      "title": "Wallet Balance Card",
+      "description": "A fanned stack of payment cards: picking one springs it to the front while the rest tuck behind, the balance rolls to the new amount and an eye toggle blurs the figures.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/widget-kit.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/wallet-balance-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "data-widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/wallet-balance-card"
+    },
+    {
+      "name": "crypto-ticker-row",
+      "type": "registry:ui",
+      "title": "Crypto Ticker Row",
+      "description": "A watchlist with live prices: each tick flashes the price green or red and fades back, mini sparklines morph to the new history and every row is a labelled button.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/widget-kit.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/crypto-ticker-row.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "data-widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/crypto-ticker-row"
+    },
+    {
+      "name": "goal-progress-card",
+      "type": "registry:ui",
+      "title": "Goal Progress Card",
+      "description": "A savings goal with a liquid progress bar: topping up springs the fill forward under a moving sheen, milestone ticks light as they pass and reaching the goal morphs the button into a check.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/widget-kit.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/goal-progress-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "data-widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/goal-progress-card"
+    },
+    {
+      "name": "comparison-bar-card",
+      "type": "registry:ui",
+      "title": "Comparison Bar Card",
+      "description": "This period vs last as paired bars: a segmented control slides a pill between Week, Month and Year while bars re-grow on a spring, and hovering or focusing a pair lifts it with both values.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/widget-kit.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/comparison-bar-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "data-widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/comparison-bar-card"
+    },
+    {
+      "name": "smart-widget-stack",
+      "type": "registry:ui",
+      "title": "Smart Widget Stack",
+      "description": "An iOS-style widget stack: the top widget sits at full size with the next ones peeking above; scroll, swipe vertically, use ↑ ↓ or the side dots to flip through on a damped spring while content re-animates on arrival.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/widget-kit.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/smart-widget-stack.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "data-widgets"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/smart-widget-stack"
     }
   ]
 }

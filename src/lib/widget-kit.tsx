@@ -143,13 +143,13 @@ export function GlowStatShell({ title = 'Sales Report', value, prefix = '$', dec
   return (
     <div
       className={cn(
-        'relative isolate flex w-full max-w-[460px] flex-col gap-4 overflow-hidden rounded-[22px] bg-[#050505] p-5 text-white [color-scheme:dark] sm:flex-row sm:items-center sm:gap-6 sm:p-6',
+        'relative isolate flex w-full max-w-[460px] flex-col gap-4 rounded-[22px] bg-[#050505] p-5 text-white [color-scheme:dark] sm:flex-row sm:items-center sm:gap-6 sm:p-6',
         'shadow-[0_1px_2px_rgb(0_0_0/0.3),0_24px_48px_-24px_rgb(0_0_0/0.6),inset_0_1px_0_rgb(255_255_255/0.07)] ring-1 ring-white/[0.08]',
         chartSide === 'left' && 'sm:flex-row-reverse',
         className,
       )}
     >
-      <div className="pointer-events-none absolute -inset-px -z-10 bg-[radial-gradient(120%_80%_at_100%_0%,rgb(77_255_154/0.07),transparent_60%)]" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-0 -z-10 rounded-[inherit] bg-[radial-gradient(120%_80%_at_100%_0%,rgb(77_255_154/0.07),transparent_60%)]" aria-hidden="true" />
       <div className="min-w-0 shrink-0">
         <p className="text-[15px] font-medium text-white/85">{title}</p>
         <p className="mt-1.5 flex items-baseline gap-2.5">

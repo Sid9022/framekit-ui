@@ -34,7 +34,7 @@ function Row({ a, onSelect }: { a: TickerAsset & { history: number[]; dir: 0 | 1
   const up = a.change >= 0
   return (
     <li>
-      <button type="button" onClick={() => onSelect?.(a)} aria-label={`${a.name} ${a.symbol}, $${fmt(a.price)}, ${up ? 'up' : 'down'} ${Math.abs(a.change).toFixed(2)}%`} className={cn('relative flex min-h-14 w-full items-center gap-3 rounded-2xl px-3 text-left transition-colors duration-150 hover:bg-zinc-100 dark:hover:bg-white/[0.05]', focusRing)}>
+      <button type="button" onClick={() => onSelect?.(a)} className={cn('relative flex min-h-14 w-full items-center gap-3 rounded-2xl px-3 text-left transition-colors duration-150 hover:bg-zinc-100 dark:hover:bg-white/[0.05]', focusRing)}>
         <span className="grid size-9 shrink-0 place-items-center rounded-full text-[11px] font-bold text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.35)]" style={{ background: a.color }} aria-hidden="true">{a.symbol[0]}</span>
         <span className="min-w-0 flex-1">
           <span className="block text-sm font-semibold text-zinc-950 dark:text-white">{a.symbol}</span>
@@ -48,11 +48,10 @@ function Row({ a, onSelect }: { a: TickerAsset & { history: number[]; dir: 0 | 1
             initial={reduced || a.dir === 0 ? false : { backgroundColor: a.dir > 0 ? 'rgba(16,185,129,0.22)' : 'rgba(244,63,94,0.22)' }}
             animate={{ backgroundColor: 'rgba(0,0,0,0)' }}
             transition={{ duration: 0.9 }}
-            aria-hidden="true"
           >
             ${fmt(a.price)}
           </motion.span>
-          <span className={cn('block text-[12px] font-medium tabular-nums', up ? 'text-emerald-700 dark:text-emerald-400' : 'text-rose-700 dark:text-rose-400')} aria-hidden="true">{up ? '+' : '−'}{Math.abs(a.change).toFixed(2)}%</span>
+          <span className={cn('block text-[12px] font-medium tabular-nums', up ? 'text-emerald-700 dark:text-emerald-400' : 'text-rose-700 dark:text-rose-400')}><span className="sr-only">{up ? 'up' : 'down'} </span><span aria-hidden="true">{up ? '+' : '−'}</span>{Math.abs(a.change).toFixed(2)}%</span>
         </span>
       </button>
     </li>

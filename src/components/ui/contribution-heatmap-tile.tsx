@@ -53,7 +53,7 @@ export function ContributionHeatmapTile({ title = 'Focus sessions', values, week
       </div>
       <div className="relative mt-5 overflow-x-auto pb-1">
         <div
-          role="grid"
+          role="group"
           tabIndex={0}
           aria-label={`${title} heatmap, ${W} weeks. Use arrow keys to inspect days.`}
           onKeyDown={onKey}
@@ -66,9 +66,8 @@ export function ContributionHeatmapTile({ title = 'Focus sessions', values, week
             return (
               <motion.div
                 key={`${w}-${d}`}
-                role="gridcell"
+                role="img"
                 aria-label={`Week ${w + 1} ${DAYS[d]}: ${v * 2} ${unit}`}
-                aria-selected={on}
                 onPointerEnter={() => setCur([w, d])}
                 onPointerLeave={() => setCur(null)}
                 initial={reduced ? false : { opacity: 0, scale: 0.4 }}

@@ -71,7 +71,7 @@ export function SpendDonutCard({ title = 'Spending · October', slices = DEFAULT
         <ul className="grid w-full gap-1">
           {slices.map((s, i) => (
             <li key={s.label}>
-              <button type="button" onPointerEnter={() => setActive(i)} onPointerLeave={() => setActive(null)} onFocus={() => setActive(i)} onBlur={() => setActive(null)} aria-label={`${s.label}: ${currency}${s.value}, ${Math.round((s.value / total) * 100)}%`} className={cn('flex min-h-10 w-full items-center gap-3 rounded-xl px-3 text-left text-sm transition-colors duration-150 hover:bg-zinc-100 dark:hover:bg-white/[0.06]', active === i && 'bg-zinc-100 dark:bg-white/[0.06]', focusRing)}>
+              <button type="button" onPointerEnter={() => setActive(i)} onPointerLeave={() => setActive(null)} onFocus={() => setActive(i)} onBlur={() => setActive(null)} className={cn('flex min-h-10 w-full items-center gap-3 rounded-xl px-3 text-left text-sm transition-colors duration-150 hover:bg-zinc-100 dark:hover:bg-white/[0.06]', active === i && 'bg-zinc-100 dark:bg-white/[0.06]', focusRing)}>
                 <span className="size-2.5 rounded-full" style={{ background: s.color }} aria-hidden="true" />
                 <span className="flex-1 text-zinc-800 dark:text-zinc-200">{s.label}</span>
                 <span className="tabular-nums text-zinc-600 dark:text-zinc-400">{Math.round((s.value / total) * 100)}%</span>

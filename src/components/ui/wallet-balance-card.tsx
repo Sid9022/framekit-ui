@@ -44,7 +44,8 @@ export function WalletBalanceCard({ cards = DEFAULT_WALLET, currency = '$', defa
           {hidden ? <EyeOff className="size-5" aria-hidden="true" /> : <Eye className="size-5" aria-hidden="true" />}
         </motion.button>
       </div>
-      <div className="relative mt-6 h-[196px]">
+      <div className="relative mt-4">
+        <div className="invisible mx-auto mt-6 aspect-[1.586] w-[92%]" aria-hidden="true" />
         {cards.map((c, k) => {
           const o = order[k]
           return (
@@ -52,13 +53,12 @@ export function WalletBalanceCard({ cards = DEFAULT_WALLET, currency = '$', defa
               key={c.id}
               type="button"
               onClick={() => setI(k)}
-              aria-label={`${c.name} card ending ${c.last4}`}
               aria-current={o === 0 || undefined}
-              className={cn('absolute inset-x-0 top-0 mx-auto aspect-[1.586] w-[92%] overflow-hidden rounded-[20px] p-4 text-left text-white shadow-[0_2px_6px_rgb(0_0_0/0.15),0_24px_40px_-20px_rgb(0_0_0/0.55)] ring-1 ring-white/10', focusRing)}
+              className={cn('absolute inset-x-0 top-6 mx-auto aspect-[1.586] w-[92%] overflow-hidden rounded-[20px] p-4 text-left text-white shadow-[0_2px_6px_rgb(0_0_0/0.15),0_24px_40px_-20px_rgb(0_0_0/0.55)] ring-1 ring-white/10', focusRing)}
               style={{ background: `linear-gradient(135deg, ${c.from}, ${c.to})`, transformOrigin: 'top center' }}
               initial={false}
-              animate={{ y: o * 14, scale: 1 - o * 0.06, zIndex: cards.length - o, filter: `brightness(${1 - o * 0.15})` }}
-              whileHover={o === 0 || reduced ? undefined : { y: o * 14 - 6 }}
+              animate={{ y: -o * 12, scale: 1 - o * 0.06, zIndex: cards.length - o, filter: `brightness(${1 - o * 0.15})` }}
+              whileHover={o === 0 || reduced ? undefined : { y: -o * 12 - 6 }}
               transition={reduced ? { duration: 0 } : { type: 'spring', stiffness: 380, damping: 34 }}
             >
               <span className="pointer-events-none absolute inset-0 bg-[radial-gradient(80%_60%_at_90%_0%,rgb(255_255_255/0.25),transparent_60%)]" aria-hidden="true" />
