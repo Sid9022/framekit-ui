@@ -70,6 +70,10 @@ The CLI copies the component, its shared helpers (`lib/cn.ts`, `lib/use-reduced-
 New components are welcome. Start with **[GUIDE.md](GUIDE.md)** (setup → template → wiring → test install → PR).
 AI coding agents read [AGENTS.md](AGENTS.md); quality bar in [docs/COMPONENT_STANDARDS.md](docs/COMPONENT_STANDARDS.md).
 
+All five design skill packs are included in `.claude/skills/` and can be read by any coding agent—no private setup required.
+See the [portable agent workflow](GUIDE.md#a-portable-agent-workflow) and the
+[Particle Mesh Gallery integration example](docs/PARTICLE_MESH_GALLERY.md) for canvas assets, gestures, and controlled state.
+
 ## License
 
 MIT © Framekit UI contributors

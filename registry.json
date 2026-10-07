@@ -4832,6 +4832,32 @@
       "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/dealer-deck-testimonials"
     },
     {
+      "name": "particle-mesh-gallery",
+      "type": "registry:ui",
+      "title": "Particle Mesh Gallery",
+      "description": "An image-colored particle sphere unfolds into a portrait on tap and gathers back on double tap, with original landscape art and a quiet project index.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/use-resolved-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/particle-mesh-gallery.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/particle-mesh-gallery"
+    },
+    {
       "name": "kinetic-name-hero",
       "type": "registry:ui",
       "title": "Kinetic Name Hero",
