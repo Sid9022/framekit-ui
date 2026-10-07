@@ -312,6 +312,20 @@ import { SpotlightCommandPalette } from '@/components/ui/spotlight-command-palet
 import { ActivityRings } from '@/components/ui/activity-rings'
 import { GlassMegaNavbar } from '@/components/ui/glass-mega-navbar'
 import { PricingPlans } from '@/components/ui/pricing-plans'
+import { ScrollProductReveal } from '@/components/ui/scroll-product-reveal'
+import { AppStoreExpandCard } from '@/components/ui/app-store-expand-card'
+import { LiquidGlassTabBar } from '@/components/ui/liquid-glass-tab-bar'
+import { GradientMeshHero } from '@/components/ui/gradient-mesh-hero'
+import { MorphButtonModal } from '@/components/ui/morph-button-modal'
+import { KineticStatsBand } from '@/components/ui/kinetic-stats-band'
+import { ParallaxDepthStack } from '@/components/ui/parallax-depth-stack'
+import { SpringStaggerGrid } from '@/components/ui/spring-stagger-grid'
+import { MagneticDotGrid } from '@/components/ui/magnetic-dot-grid'
+import { PageCurtainTransition } from '@/components/ui/page-curtain-transition'
+import { LitProductCard3D } from '@/components/ui/lit-product-card-3d'
+import { TimelineScrubber } from '@/components/ui/timeline-scrubber'
+import { SpringReorderList } from '@/components/ui/spring-reorder-list'
+import { BlurCascadeHeading } from '@/components/ui/blur-cascade-heading'
 import { FaqAccordion } from '@/components/ui/faq-accordion'
 import { TestimonialWall } from '@/components/ui/testimonial-wall'
 import { FeatureComparisonTable } from '@/components/ui/feature-comparison-table'
@@ -1626,6 +1640,23 @@ function NavbarDemo() {
   )
 }
 
+const motionShowcaseDemos: Record<string, React.ReactNode> = {
+  'scroll-product-reveal': <ScrollProductReveal />,
+  'app-store-expand-card': <AppStoreExpandCard />,
+  'liquid-glass-tab-bar': <LiquidGlassTabBar />,
+  'gradient-mesh-hero': <GradientMeshHero />,
+  'morph-button-modal': <MorphButtonModal />,
+  'kinetic-stats-band': <KineticStatsBand />,
+  'parallax-depth-stack': <ParallaxDepthStack />,
+  'spring-stagger-grid': <SpringStaggerGrid />,
+  'magnetic-dot-grid': <MagneticDotGrid />,
+  'page-curtain-transition': <PageCurtainTransition />,
+  'lit-product-card-3d': <LitProductCard3D />,
+  'timeline-scrubber': <div className="flex w-full justify-center"><TimelineScrubber /></div>,
+  'spring-reorder-list': <div className="flex w-full justify-center"><SpringReorderList /></div>,
+  'blur-cascade-heading': <BlurCascadeHeading />,
+}
+
 const websiteSectionDemos: Record<string, React.ReactNode> = {
   'glass-app-dock': <GlassAppDock />,
   'spotlight-command-palette': <SpotlightCommandPalette hotkeyKey="j" />,
@@ -2610,4 +2641,5 @@ export const demos: Record<string, React.ReactNode> = {
   ...magicBatchDemos,
   ...productUiDemos,
   ...websiteSectionDemos,
+  ...motionShowcaseDemos,
 }

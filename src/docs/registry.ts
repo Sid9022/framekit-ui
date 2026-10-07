@@ -23,6 +23,7 @@ export type DocCategory =
   | 'Inputs / Forms'
   | 'Product UI'
   | 'Website Sections'
+  | 'Motion Showcase'
   | 'Core'
 
 export type DocEntry = {
@@ -1356,6 +1357,67 @@ export const DOCS: DocEntry[] = [
   { slug: 'changelog-timeline', title: 'Changelog Timeline', description: 'Release notes on a timeline with sticky dates, popping dots, generated cover art and a filter (All / New / Improved / Fixed) that re-flows each change list on springs.', category: 'Website Sections', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Pick a filter; scroll to reveal entries.', props: [
     { name: 'entries', type: 'ChangelogEntry[]', default: 'DEFAULT_CHANGELOG', description: '{ version, date, title, summary, changes: { type, text }[], art? }' },
   ] },
+  { slug: 'scroll-product-reveal', title: 'Scroll Product Reveal', description: 'An Apple-style pinned product story: scroll scrubs a CSS 3D device through rotation, screen glow and an exploded-layer view while chapter copy cross-fades with a blur. Scrolls inside its own focusable frame.', category: 'Motion Showcase', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Scroll inside the frame (or focus it and use ↓ / Space).', props: [
+    { name: 'chapters', type: 'RevealChapter[]', default: 'DEFAULT_CHAPTERS', description: '{ eyebrow, title, body }' },
+    { name: 'height', type: 'number', default: '560', description: 'Scroll viewport height in px.' },
+  ] },
+  { slug: 'app-store-expand-card', title: 'App Store Expand Card', description: 'Story cards that grow into a full detail sheet with a shared-layout spring: art, headline and surface morph from the card, the body rises in behind. Esc or close collapses it and returns focus.', category: 'Motion Showcase', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Click a card; press Esc to collapse.', props: [
+    { name: 'cards', type: 'StoryCard[]', default: 'DEFAULT_STORY_CARDS', description: '{ id, eyebrow, title, subtitle, body, from, to }' },
+  ] },
+  { slug: 'liquid-glass-tab-bar', title: 'Liquid Glass Tab Bar', description: 'An iOS 26-style floating glass tab bar: a refractive lens slides between tabs and stretches with distance like liquid, icons pop on select, plus a floating accessory button.', category: 'Motion Showcase', unique: true, isNew: true, ownBackground: true, backgroundNote: 'Sits on a colourful wallpaper so the glass has something to refract; pass className to change it.', dependencies: ['motion', 'lucide-react'], gesture: 'Tap tabs or use ← → Home End.', props: [
+    { name: 'tabs', type: 'GlassTab[]', default: 'DEFAULT_GLASS_TABS', description: '{ id, label, icon }' },
+    { name: 'value / defaultValue / onValueChange', type: 'string', default: "'home'", description: 'Controlled or uncontrolled.' },
+    { name: 'showAction', type: 'boolean', default: 'true', description: 'Floating accessory button.' },
+  ] },
+  { slug: 'gradient-mesh-hero', title: 'Gradient Mesh Hero', description: 'A hero over four soft colour fields that drift on slow offset orbits and lean toward the pointer, with fine grain, a glass eyebrow pill and a blur-staggered headline.', category: 'Motion Showcase', unique: true, isNew: true, ownBackground: true, backgroundNote: 'Paints its own white/ink surface behind the mesh; override with className.', dependencies: ['motion', 'lucide-react'], gesture: 'Move the pointer across the hero.', props: [
+    { name: 'eyebrow / title / description', type: 'string / ReactNode', default: '—', description: 'Copy.' },
+    { name: 'primaryLabel / secondaryLabel / onPrimary / onSecondary', type: 'string / () => void', default: '—', description: 'CTAs.' },
+    { name: 'colors', type: '[string, string, string, string]', default: 'indigo / pink / amber / cyan', description: 'Mesh colours.' },
+  ] },
+  { slug: 'morph-button-modal', title: 'Morph Button Modal', description: 'A pill button that physically becomes its dialog: the surface expands on a shared-layout spring, the label blurs into a form, and submit shrinks it back into a success pill. Focus trapped and restored.', category: 'Motion Showcase', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Click Invite, fill the form, Send; Esc closes.', props: [
+    { name: 'label / title', type: 'string', default: "'Invite teammate'", description: 'Button and dialog copy.' },
+    { name: 'onSubmit', type: '({ name, email }) => void', default: '—', description: 'Form submit.' },
+  ] },
+  { slug: 'kinetic-stats-band', title: 'Kinetic Stats Band', description: 'A band of big tabular numbers that count up on an expo curve when scrolled into view, with motion blur on the fast part and sparklines that draw themselves.', category: 'Motion Showcase', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Scroll it into view.', props: [
+    { name: 'stats', type: 'KineticStat[]', default: 'DEFAULT_KINETIC_STATS', description: '{ value, prefix?, suffix?, decimals?, label, spark? }' },
+    { name: 'duration', type: 'number', default: '1.8', description: 'Count duration in seconds.' },
+  ] },
+  { slug: 'parallax-depth-stack', title: 'Parallax Depth Stack', description: 'A fanned card stack on CSS 3D layers: the pointer tilts it and each layer parallaxes by depth with a moving sheen; click or Enter sends the front card to the back on a spring.', category: 'Motion Showcase', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Move over the stack; click to cycle.', props: [
+    { name: 'cards', type: 'DepthCard[]', default: 'DEFAULT_DEPTH_CARDS', description: '{ title, meta, from, to }' },
+  ] },
+  { slug: 'spring-stagger-grid', title: 'Spring Stagger Grid', description: 'A filterable tile grid that enters on a diagonal ripple (delay = row + column), re-flows on layout springs when filtered and exits with a quick scale-down.', category: 'Motion Showcase', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Switch filters and watch the ripple.', props: [
+    { name: 'items', type: 'StaggerItem[]', default: 'DEFAULT_STAGGER_ITEMS', description: '{ id, title, tag, hue }' },
+    { name: 'tags', type: 'string[]', default: "['All', …]", description: 'Filter options.' },
+  ] },
+  { slug: 'magnetic-dot-grid', title: 'Magnetic Dot Grid', description: 'A canvas field of dots that lean toward the pointer on spring physics, swell and tint near it, then settle with a soft wobble; clicks send a ripple. Theme-aware, static on reduced motion.', category: 'Motion Showcase', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Move across the field; click for a ripple.', props: [
+    { name: 'gap / radius / strength', type: 'number', default: '22 / 140 / 0.35', description: 'Dot spacing, influence radius, pull (negative repels).' },
+    { name: 'height', type: 'number', default: '420', description: 'Height in px.' },
+    { name: 'children', type: 'ReactNode', default: 'headline', description: 'Overlay content.' },
+  ] },
+  { slug: 'page-curtain-transition', title: 'Page Curtain Transition', description: 'Route changes play a staggered column curtain: panels sweep up to cover, the next page name flashes on the curtain, then they lift away to reveal it. Reduced motion cross-fades.', category: 'Motion Showcase', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Click Studio or Contact in the nav.', props: [
+    { name: 'pages', type: 'CurtainPage[]', default: 'DEFAULT_CURTAIN_PAGES', description: '{ id, label, title, body, tint }' },
+    { name: 'panels', type: 'number', default: '5', description: 'Curtain columns.' },
+  ] },
+  { slug: 'lit-product-card-3d', title: 'Lit Product Card 3D', description: 'A product card with real lighting: tilt follows the pointer, a specular highlight tracks the light while the cast shadow moves opposite, the product floats on its own Z layer and swatches recolour on a spring.', category: 'Motion Showcase', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Move over the card; pick a colour.', props: [
+    { name: 'name / tagline / price', type: 'string', default: "'Aero Headphones'", description: 'Copy.' },
+    { name: 'colors', type: '{ name, value }[]', default: 'Midnight / Sunset / Sage', description: 'Swatches.' },
+    { name: 'onAdd', type: '(color) => void', default: '—', description: 'Add to bag.' },
+  ] },
+  { slug: 'timeline-scrubber', title: 'Timeline Scrubber', description: 'A media scrubber with a waveform that lights up behind the playhead, a thumb that grows while dragging, chapter markers that snap within 1.5 s, a time bubble and full slider keyboard support.', category: 'Motion Showcase', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Drag the waveform, or focus it and use ← → Space.', props: [
+    { name: 'duration', type: 'number', default: '84', description: 'Length in seconds.' },
+    { name: 'markers', type: 'ScrubMarker[]', default: 'DEFAULT_SCRUB_MARKERS', description: '{ at, label }' },
+    { name: 'onTimeChange', type: '(t) => void', default: '—', description: 'Playhead change.' },
+  ] },
+  { slug: 'spring-reorder-list', title: 'Spring Reorder List', description: 'A priority list reordered by dragging the grip: the lifted row scales and deepens its shadow while siblings part on springs. Keyboard ↑ ↓ on a grip moves rows with live announcements.', category: 'Motion Showcase', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Drag a grip, or focus one and press ↑ / ↓.', props: [
+    { name: 'items', type: 'ReorderItem[]', default: 'DEFAULT_REORDER_ITEMS', description: '{ id, title, meta, color }' },
+    { name: 'onReorder', type: '(items) => void', default: '—', description: 'New order.' },
+  ] },
+  { slug: 'blur-cascade-heading', title: 'Blur Cascade Heading', description: 'A keynote-style display headline that resolves out of focus: words or letters rise through a mask from blur to sharp on springs, and highlight words land last in a gradient.', category: 'Motion Showcase', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Scroll it into view, or press Replay.', props: [
+    { name: 'text / eyebrow', type: 'string', default: '—', description: 'Copy.' },
+    { name: 'highlight', type: 'string[]', default: "['powerful', 'ever.']", description: 'Gradient words.' },
+    { name: 'by / stagger', type: "'word' | 'char' / number", default: "'word' / 0.06", description: 'Split mode and delay.' },
+    { name: 'replay', type: 'boolean', default: 'true', description: 'Show replay button.' },
+  ] },
   // website-sections:end
   // Product UI
   { slug: 'glass-segmented-control', title: 'Glass Segmented Control', description: 'An iOS-style segmented control whose selected thumb is a lifted glass pill that springs between segments with a press squish — native radio semantics, arrow keys and an opaque reduced-transparency fallback.', category: 'Product UI', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Click a segment or focus it and use ← → Home End.', props: [
@@ -1494,6 +1556,7 @@ const NAV_ORDER: DocCategory[] = [
   'Inputs / Forms',
   'Product UI',
   'Website Sections',
+  'Motion Showcase',
   'Core',
 ]
 

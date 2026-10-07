@@ -1,3 +1,17 @@
+import scrollProductRevealSrc from '../components/ui/scroll-product-reveal.tsx?raw'
+import appStoreExpandCardSrc from '../components/ui/app-store-expand-card.tsx?raw'
+import liquidGlassTabBarSrc from '../components/ui/liquid-glass-tab-bar.tsx?raw'
+import gradientMeshHeroSrc from '../components/ui/gradient-mesh-hero.tsx?raw'
+import morphButtonModalSrc from '../components/ui/morph-button-modal.tsx?raw'
+import kineticStatsBandSrc from '../components/ui/kinetic-stats-band.tsx?raw'
+import parallaxDepthStackSrc from '../components/ui/parallax-depth-stack.tsx?raw'
+import springStaggerGridSrc from '../components/ui/spring-stagger-grid.tsx?raw'
+import magneticDotGridSrc from '../components/ui/magnetic-dot-grid.tsx?raw'
+import pageCurtainTransitionSrc from '../components/ui/page-curtain-transition.tsx?raw'
+import litProductCard3dSrc from '../components/ui/lit-product-card-3d.tsx?raw'
+import timelineScrubberSrc from '../components/ui/timeline-scrubber.tsx?raw'
+import springReorderListSrc from '../components/ui/spring-reorder-list.tsx?raw'
+import blurCascadeHeadingSrc from '../components/ui/blur-cascade-heading.tsx?raw'
 import glassAppDockSrc from '../components/ui/glass-app-dock.tsx?raw'
 import spotlightCommandPaletteSrc from '../components/ui/spotlight-command-palette.tsx?raw'
 import activityRingsSrc from '../components/ui/activity-rings.tsx?raw'
@@ -631,5 +645,19 @@ export const sources: Record<string, string> = {
   'cookie-consent': cookieConsentSrc,
   'announcement-bar': announcementBarSrc,
   'changelog-timeline': changelogTimelineSrc,
+  'scroll-product-reveal': scrollProductRevealSrc,
+  'app-store-expand-card': appStoreExpandCardSrc,
+  'liquid-glass-tab-bar': liquidGlassTabBarSrc,
+  'gradient-mesh-hero': gradientMeshHeroSrc,
+  'morph-button-modal': morphButtonModalSrc,
+  'kinetic-stats-band': kineticStatsBandSrc,
+  'parallax-depth-stack': parallaxDepthStackSrc,
+  'spring-stagger-grid': springStaggerGridSrc,
+  'magnetic-dot-grid': magneticDotGridSrc,
+  'page-curtain-transition': pageCurtainTransitionSrc,
+  'lit-product-card-3d': litProductCard3dSrc,
+  'timeline-scrubber': timelineScrubberSrc,
+  'spring-reorder-list': springReorderListSrc,
+  'blur-cascade-heading': blurCascadeHeadingSrc,
   // p2-entries:end
 }
