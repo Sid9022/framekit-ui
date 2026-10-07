@@ -33,6 +33,10 @@ npm install
 npm run dev            # → http://localhost:5173
 ```
 
+For a repeatable checkout with the committed lockfile, use `npm ci` instead of `npm install`.
+Check `node --version` first. Existing working installs do not need to be recreated for every contribution.
+No global CLI or additional design-skill installation is required.
+
 The site uses a HashRouter, so a component lives at `http://localhost:5173/#/docs/<slug>` and a category at
 `/#/docs/category/<category-slug>`.
 
@@ -87,7 +91,7 @@ WhatsApp / Messaging · Notifications · Widgets · Voice Agent · Cursors · Se
 To list a category's components:
 
 ```bash
-grep -n "category: 'Buttons'" src/docs/registry.ts
+rg -n "category: 'Buttons'" src/docs/registry.ts
 ```
 
 ---
@@ -450,3 +454,19 @@ Paste the prompt from [docs/LLM_PROMPT.md](docs/LLM_PROMPT.md) and attach (or pa
 repo files (Codex, Cursor, Copilot, Gemini CLI) pick up [AGENTS.md](AGENTS.md) automatically. Claude Code reads
 [CLAUDE.md](CLAUDE.md) and auto-loads `.claude/skills/`. For other tools, paste the skill files from
 `.claude/skills/*/SKILL.md` as needed (premium-ui-motion-craft first).
+
+### A portable agent workflow
+
+The five design packs are checked into `.claude/skills/`; their Markdown works with any agent that can read files.
+An adjacent `framekit-skills-export/` is an optional shared copy, not a runtime dependency or a required machine-specific path.
+Read `premium-ui-motion-craft` first, then `design-system-foundations` and `interaction-feedback-patterns` when designing;
+use `accessibility-usability-review` and `visual-design-critique` before delivery. The premium pack owns conflicting motion numbers.
+
+1. Read the repo instructions, inspect `git status --short`, and preserve existing work.
+2. Read the registry, helpers, standards, and three siblings. Use `src/index.css` for theme facts rather than inventing tokens.
+3. Describe the interaction states, public props, asset strategy, keyboard controls, and reduced-motion path.
+4. Implement all four wiring points, then run wiring, lint, build, browser checks, and a separate install test.
+5. Report actual results and any unverified checks. Do not commit, push, or publish without a maintainer request.
+
+For a worked canvas integration example, see [Particle Mesh Gallery](docs/PARTICLE_MESH_GALLERY.md): image CORS,
+generated fallbacks, reversible gestures, controlled state, and animation lifecycle considerations.

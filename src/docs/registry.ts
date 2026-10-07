@@ -729,6 +729,18 @@ export const DOCS: DocEntry[] = [
     { name: 'accent', type: 'string', default: "'#8c1230'", description: 'Card-back colour (gold guilloche on top).' },
     { name: 'dealt / defaultDealt / onDealtChange', type: 'number', default: '1', description: 'Controlled / uncontrolled number of dealt cards.' },
   ] },
+  { slug: 'particle-mesh-gallery', title: 'Particle Mesh Gallery', description: 'An image-colored particle sphere unfolds into a portrait on tap and gathers back on double tap, with original landscape art and a quiet project index.', category: 'Portfolio', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Tap to reveal; double tap to reform. Enter/Space toggles, Escape reforms, and left/right arrows browse. Pause stops rotation.', props: [
+    { name: 'items', type: 'ParticleMeshItem[]', default: '3 generated landscapes', description: 'Unique id, title, category?, src?, alt?, seed?. Images are portrait-cropped; use same-origin or CORS-enabled URLs. Failed images use generated art. Empty arrays show an empty state.' },
+    { name: 'value / defaultValue', type: 'string', description: 'Controlled / initial selected item ID. Unknown IDs fall back to the first item.' },
+    { name: 'onValueChange', type: '(id: string) => void', description: 'Requested selection change.' },
+    { name: 'revealed / defaultRevealed', type: 'boolean', default: 'false', description: 'Controlled / initial image state. False shows the sphere.' },
+    { name: 'onRevealedChange', type: '(revealed: boolean) => void', description: 'Requested image/particle state change.' },
+    { name: 'particleCount', type: 'number', default: '4200', description: 'Approximate point count, clamped to 600–6000. Lower this on constrained devices.' },
+    { name: 'autoRotate', type: 'boolean', default: 'true', description: 'Slow ambient rotation with a visible pause button. Suspends offscreen and in hidden tabs.' },
+    { name: 'theme', type: "'auto' | 'light' | 'dark'", default: "'auto'", description: 'Follows the nearest theme scope or forces both canvas and surface colors.' },
+    { name: 'label', type: 'string', default: "'Selected work'", description: 'Visible eyebrow and accessible gallery name.' },
+    { name: 'className', type: 'string', description: 'Root layout overrides.' },
+  ] },
   { slug: 'kinetic-name-hero', ownBackground: true, backgroundNote: 'Paints its own warm-paper (light) / ink (dark) backdrop via light and dark: variants, so it matches the host page. Override the surface with className (e.g. bg-*, rounded-*, min-h-*).', title: 'Kinetic Name Hero', description: 'Your name set huge, every letter on its own spring — letters are pushed away, tilt and swell as the cursor passes, then ease home; a soft light trails the pointer and a badge circles the role.', category: 'Hero', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Move (or drag) across the name — letters scatter and spring back.', props: [
     { name: 'name', type: 'string', default: '\'Nova Reyes\'', description: 'Your name; each word becomes a line.' },
     { name: 'role', type: 'string', default: '\'Design engineer & motion designer\'', description: 'Role line above the name.' },

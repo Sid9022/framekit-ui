@@ -1,3 +1,4 @@
+import particleMeshGallerySrc from '../components/ui/particle-mesh-gallery.tsx?raw'
 import buttonSrc from '../components/ui/button.tsx?raw'
 import badgeSrc from '../components/ui/badge.tsx?raw'
 import cardSrc from '../components/ui/card.tsx?raw'
@@ -289,6 +290,7 @@ import sparkleTextSrc from '../components/ui/sparkle-text.tsx?raw'
 // p2-imports:end
 
 export const sources: Record<string, string> = {
+  'particle-mesh-gallery': particleMeshGallerySrc,
   button: buttonSrc,
   badge: badgeSrc,
   card: cardSrc,

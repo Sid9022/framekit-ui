@@ -268,6 +268,7 @@ import { PullCordLampToggle } from '@/components/ui/pull-cord-lamp-toggle'
 import { SeatScalePricing } from '@/components/ui/seat-scale-pricing'
 import { PolarBloomChart, DEFAULT_POLAR_SERIES } from '@/components/ui/polar-bloom-chart'
 // p2-imports:start
+import { ParticleMeshGallery } from '@/components/ui/particle-mesh-gallery'
 import { YearActivityGrid } from '@/components/ui/year-activity-grid'
 import { NowPlayingWidget } from '@/components/ui/now-playing-widget'
 import { WorldClockGlobe } from '@/components/ui/world-clock-globe'
@@ -1486,6 +1487,7 @@ function LoginGateDemo() {
 }
 
 const portfolio2Demos: Record<string, React.ReactNode> = {
+  'particle-mesh-gallery': <ParticleMeshGallery />,
   'year-activity-grid': <YearActivityGrid />,
   'now-playing-widget': <NowPlayingWidget />,
   'world-clock-globe': <WorldClockGlobe />,
