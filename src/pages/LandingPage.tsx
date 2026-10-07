@@ -138,7 +138,7 @@ function Nav() {
           ))}
         </nav>
         <div className="ml-auto flex items-center gap-1 lg:ml-0">
-          <SearchTrigger className="max-sm:hidden" />
+          <SearchTrigger className="shrink-0 whitespace-nowrap" />
           <ThemeToggleButton />
           <a href={SITE.github} target="_blank" rel="noreferrer" className={cn(iconBtn, 'hidden sm:inline-grid')} aria-label="Framekit UI on GitHub (opens in a new tab)">
             <GithubIcon className="h-[18px] w-[18px]" />
@@ -243,10 +243,10 @@ const STACK = ['React 19', 'TypeScript', 'Tailwind v4', 'Motion', 'shadcn/ui', '
 function StackStrip() {
   return (
     <section aria-labelledby="stack-title" className="border-y border-black/[0.06] dark:border-white/[0.08]">
-      <div className={cn(section, 'flex flex-col items-center gap-5 py-8 md:flex-row md:justify-between md:gap-8')}>
+      <div className={cn(section, 'flex flex-col items-center gap-5 py-8 lg:flex-row lg:justify-between lg:gap-8')}>
         <h2 id="stack-title" className="shrink-0 text-xs font-semibold uppercase tracking-[0.12em] text-zinc-600 dark:text-zinc-400">Built on the stack you trust</h2>
-        <Reveal as="div" className="w-full md:w-auto">
-          <ul className="grid grid-cols-3 gap-x-6 gap-y-3 text-center sm:flex sm:flex-wrap sm:justify-center sm:gap-x-10 md:justify-end">
+        <Reveal as="div" className="w-full lg:w-auto">
+          <ul className="grid grid-cols-3 gap-x-6 gap-y-3 text-center sm:flex sm:flex-wrap sm:justify-center sm:gap-x-10 lg:justify-end">
             {STACK.map((s) => (
               <li key={s} className="text-[15px] font-semibold tracking-[-0.02em] text-zinc-500 sm:text-lg dark:text-zinc-400" translate="no">{s}</li>
             ))}

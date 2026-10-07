@@ -434,7 +434,7 @@ function Marquee() {
   const visible = useInView(ref, { margin: '100px 0px' })
   const row = [...MARQ, ...MARQ]
   return (
-    <section ref={ref} aria-label="Framekit highlights" className="relative overflow-hidden bg-[#D9F95C] py-8 text-zinc-950 sm:py-12">
+    <section ref={ref} aria-label="Framekit highlights" className="relative overflow-hidden bg-[#D9F95C] pb-16 pt-8 text-zinc-950 sm:py-14">
       <div aria-hidden className="flex w-max items-center motion-safe:animate-[fk-marquee_40s_linear_infinite]" style={{ animationPlayState: paused || !visible ? 'paused' : 'running' }}>
         {row.map((t, i) => (
           <span key={i} className="flex items-center whitespace-nowrap text-[clamp(2.5rem,1.5rem+5vw,6.5rem)] font-semibold leading-none tracking-[-0.05em]">
@@ -444,7 +444,7 @@ function Marquee() {
         ))}
       </div>
       <p className="sr-only">{MARQ.join(', ')}</p>
-      <button type="button" onClick={() => setPaused((p) => !p)} aria-pressed={paused} aria-label={paused ? 'Play highlights marquee' : 'Pause highlights marquee'} className={cn('absolute bottom-2 right-[max(0.5rem,env(safe-area-inset-right))] grid h-11 w-11 touch-manipulation place-items-center rounded-full bg-zinc-950/10 text-zinc-950 transition-colors hover:bg-zinc-950/20 motion-reduce:hidden', 'outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-950')}>
+      <button type="button" onClick={() => setPaused((p) => !p)} aria-pressed={paused} aria-label={paused ? 'Play highlights marquee' : 'Pause highlights marquee'} className={cn('absolute bottom-2 right-[max(1rem,env(safe-area-inset-right))] grid h-11 w-11 touch-manipulation place-items-center rounded-full bg-zinc-950/10 text-zinc-950 transition-colors hover:bg-zinc-950/20 motion-reduce:hidden', 'outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-950')}>
         {paused ? <Play className="h-4 w-4" aria-hidden /> : <Pause className="h-4 w-4" aria-hidden />}
       </button>
     </section>
