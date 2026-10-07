@@ -71,6 +71,7 @@ function Switch({ on, onToggle, label, disabled, reduced }: { on: boolean; onTog
  */
 export function InsetSettingsList({ sections = DEFAULT_SETTINGS, onChange, title = 'Settings', className }: InsetSettingsListProps) {
   const reduced = usePrefersReducedMotion()
+  const uid = React.useId()
   const [vals, setVals] = React.useState<Record<string, boolean | string>>(() => {
     const o: Record<string, boolean | string> = {}
     sections.forEach((s) => s.rows.forEach((r) => { if (r.kind === 'toggle') o[r.id] = !!r.defaultOn; if (r.kind === 'choice') o[r.id] = r.defaultValue ?? r.options[0] }))
@@ -104,7 +105,7 @@ export function InsetSettingsList({ sections = DEFAULT_SETTINGS, onChange, title
           <motion.div key="root" className="p-4 pb-6" initial={reduced ? { opacity: 0 } : { x: '-30%', opacity: 0.6 }} animate={{ x: 0, opacity: 1 }} exit={reduced ? { opacity: 0 } : { x: '-30%', opacity: 0 }} transition={spring}>
             <h3 className="px-2 pb-3 pt-2 text-[28px] font-bold tracking-tight text-zinc-950 dark:text-white">{title}</h3>
             {sections.map((s) => {
-              const hid = `${s.id}-h`, fid = `${s.id}-f`
+              const hid = `${uid}-${s.id}-h`, fid = `${uid}-${s.id}-f`
               return (
                 <section key={s.id} aria-labelledby={s.header ? hid : undefined} aria-describedby={s.footer ? fid : undefined} className="mb-6">
                   {s.header && <h4 id={hid} className="px-4 pb-1.5 text-[13px] uppercase tracking-[0.04em] text-zinc-600 dark:text-zinc-400">{s.header}</h4>}
@@ -115,7 +116,7 @@ export function InsetSettingsList({ sections = DEFAULT_SETTINGS, onChange, title
                         <>
                           <Tile r={r} />
                           <span className={cn('flex min-h-11 min-w-0 flex-1 items-center justify-between gap-3 self-stretch py-2 pr-4', sep && 'shadow-[inset_0_-0.5px_0_rgb(0_0_0/0.12)] dark:shadow-[inset_0_-0.5px_0_rgb(255_255_255/0.16)]')}>
-                            <span className={cn('truncate text-[16px] text-zinc-950 dark:text-white sm:text-[15px]', r.kind === 'toggle' && r.disabled && 'text-zinc-500 dark:text-zinc-500')}>{r.label}</span>
+                            <span className={cn('truncate text-[16px] text-zinc-950 dark:text-white sm:text-[15px]', r.kind === 'toggle' && r.disabled && 'text-zinc-500 dark:text-zinc-400')}>{r.label}</span>
                             {r.kind === 'toggle' && <Switch on={vals[r.id] as boolean} onToggle={() => set(r.id, !vals[r.id], r.label)} label={r.label} disabled={r.disabled} reduced={reduced} />}
                             {r.kind === 'choice' && <span className="flex min-w-0 items-center gap-1 text-[15px] text-zinc-600 dark:text-zinc-400"><span className="truncate">{vals[r.id] as string}</span><ChevronRight aria-hidden className="size-4 shrink-0 opacity-70" /></span>}
                             {r.kind === 'info' && <span className="text-[15px] text-zinc-600 dark:text-zinc-400">{r.value}</span>}
@@ -129,7 +130,6 @@ export function InsetSettingsList({ sections = DEFAULT_SETTINGS, onChange, title
                               ref={(el) => { rowRefs.current[r.id] = el }}
                               type="button"
                               onClick={() => { lastRow.current = r.id; setPage(r.id) }}
-                              aria-label={`${r.label}, ${vals[r.id]}`}
                               className="flex w-full items-center gap-3 pl-4 text-left outline-none transition-colors duration-100 hover:bg-zinc-900/[0.03] focus-visible:bg-signal-50 active:bg-zinc-900/[0.08] dark:hover:bg-white/[0.04] dark:focus-visible:bg-signal-300/[0.12] dark:active:bg-white/[0.1]"
                             >
                               {inner}

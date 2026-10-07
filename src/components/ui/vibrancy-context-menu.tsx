@@ -123,7 +123,6 @@ export function VibrancyContextMenu({ items = DEFAULT_CONTEXT_ITEMS, onSelect, c
         role="button"
         aria-haspopup="menu"
         aria-expanded={!!pos}
-        aria-label={`${label}: press Shift+F10 or right-click for actions`}
         onContextMenu={(e) => { e.preventDefault(); openAt(e.clientX, e.clientY) }}
         onKeyDown={(e) => { if ((e.shiftKey && e.key === 'F10') || e.key === 'ContextMenu') { e.preventDefault(); openFromKeyboard() } }}
         onPointerDown={(e) => {
@@ -139,6 +138,7 @@ export function VibrancyContextMenu({ items = DEFAULT_CONTEXT_ITEMS, onSelect, c
           className,
         )}
       >
+        <span className="sr-only">{`${label}: `}</span>
         {children ?? (
           <div className="flex flex-col items-center gap-4 rounded-[20px] border border-dashed border-black/[0.12] bg-white/60 px-6 py-10 text-center dark:border-white/[0.14] dark:bg-white/[0.03]">
             <div aria-hidden className="relative h-20 w-16 rounded-lg bg-gradient-to-b from-sky-100 to-sky-200 shadow-[0_1px_2px_rgb(0_0_0/0.08),0_12px_24px_-12px_rgb(14_116_144/0.5)] ring-1 ring-sky-900/10 dark:from-sky-900 dark:to-sky-950 dark:ring-white/10">

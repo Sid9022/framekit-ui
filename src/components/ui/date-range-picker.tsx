@@ -147,7 +147,7 @@ export function DateRangePicker({ value, defaultValue, onValueChange, today: tod
                   const isToday = same(d, today)
                   return (
                     <div key={d.getTime()} role="gridcell" aria-selected={mid || edge} className="relative h-10 py-0.5">
-                      {mid && !(isFrom && isTo) && (
+                      {mid && !(isFrom && isTo) && !(isTo && !isFrom && d.getDay() === 0) && !(isFrom && !isTo && d.getDay() === 6) && (
                         <span aria-hidden className={cn('absolute inset-y-0.5 bg-signal-100 dark:bg-signal-300/[0.14]', isFrom ? 'left-1/2 right-0' : isTo ? 'left-0 right-1/2' : 'inset-x-0', d.getDay() === 0 && !isFrom && 'rounded-l-full', d.getDay() === 6 && !isTo && 'rounded-r-full')} />
                       )}
                       <button
@@ -162,8 +162,8 @@ export function DateRangePicker({ value, defaultValue, onValueChange, today: tod
                         onFocus={() => setHover(d)}
                         className={cn(
                           'relative z-10 mx-auto grid size-9 place-items-center rounded-full text-sm tabular-nums transition-colors duration-150',
-                          edge ? 'bg-signal-600 font-semibold text-white dark:bg-signal-300 dark:text-zinc-950' : mid ? 'text-signal-800 dark:text-signal-100' : out ? 'text-zinc-500 dark:text-zinc-500' : 'text-zinc-900 hover:bg-zinc-900/[0.06] dark:text-zinc-100 dark:hover:bg-white/[0.08]',
-                          dis && 'cursor-not-allowed text-zinc-400 line-through decoration-zinc-400/60 hover:bg-transparent dark:text-zinc-600',
+                          edge ? 'bg-signal-600 font-semibold text-white dark:bg-signal-300 dark:text-zinc-950' : mid ? 'text-signal-800 dark:text-signal-100' : out ? 'text-zinc-500 hover:bg-zinc-900/[0.06] dark:text-zinc-400 dark:hover:bg-white/[0.08]' : 'text-zinc-900 hover:bg-zinc-900/[0.06] dark:text-zinc-100 dark:hover:bg-white/[0.08]',
+                          dis && 'cursor-not-allowed text-zinc-400 hover:bg-transparent dark:text-zinc-600 dark:hover:bg-transparent',
                           FOCUS,
                         )}
                       >
