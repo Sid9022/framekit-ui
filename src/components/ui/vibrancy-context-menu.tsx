@@ -203,7 +203,7 @@ export function VibrancyContextMenu({ items = DEFAULT_CONTEXT_ITEMS, onSelect, c
                       <motion.span
                         layoutId={`${id}-hl`}
                         aria-hidden
-                        className={cn('absolute inset-0 -z-0 rounded-[8px]', it.destructive ? 'bg-rose-600' : 'bg-signal-600 dark:bg-signal-500')}
+                        className={cn('absolute inset-0 -z-0 rounded-[8px]', it.destructive ? 'bg-rose-600' : 'bg-signal-600')}
                         transition={reduced ? { duration: 0 } : { type: 'spring', stiffness: 520, damping: 40 }}
                       />
                     )}

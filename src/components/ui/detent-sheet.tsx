@@ -57,7 +57,7 @@ function PlaceCard() {
         <span className="tabular-nums">4.8</span> · <span className="tabular-nums">1,204</span> reviews · Open until 22:00
       </div>
       <div className="grid grid-cols-2 gap-2">
-        <button type="button" className="flex min-h-11 items-center justify-center gap-2 rounded-[14px] bg-signal-600 text-sm font-medium text-white outline-none transition-colors duration-150 hover:bg-signal-700 focus-visible:ring-2 focus-visible:ring-signal-600 focus-visible:ring-offset-2 active:scale-[0.98] dark:bg-signal-500 dark:focus-visible:ring-signal-300 dark:focus-visible:ring-offset-zinc-900">
+        <button type="button" className="flex min-h-11 items-center justify-center gap-2 rounded-[14px] bg-signal-600 text-sm font-medium text-white outline-none transition-colors duration-150 hover:bg-signal-700 focus-visible:ring-2 focus-visible:ring-signal-600 focus-visible:ring-offset-2 active:scale-[0.98] dark:focus-visible:ring-signal-300 dark:focus-visible:ring-offset-zinc-900">
           <Navigation aria-hidden className="size-4" /> Directions
         </button>
         <button type="button" className="flex min-h-11 items-center justify-center gap-2 rounded-[14px] bg-zinc-900/[0.05] text-sm font-medium text-zinc-900 outline-none transition-colors duration-150 hover:bg-zinc-900/[0.09] focus-visible:ring-2 focus-visible:ring-signal-600 active:scale-[0.98] dark:bg-white/[0.08] dark:text-white dark:hover:bg-white/[0.12] dark:focus-visible:ring-signal-300">
