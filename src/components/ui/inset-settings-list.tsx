@@ -152,11 +152,11 @@ export function InsetSettingsList({ sections = DEFAULT_SETTINGS, onChange, title
               <ChevronLeft aria-hidden className="size-6" /> {title}
             </button>
             <h3 className="px-2 pb-4 pt-1 text-[28px] font-bold tracking-tight text-zinc-950 dark:text-white">{detail.label}</h3>
-            <ul role="radiogroup" aria-label={detail.label} className="overflow-hidden rounded-[12px] bg-white dark:bg-zinc-900">
+            <div role="radiogroup" aria-label={detail.label} className="overflow-hidden rounded-[12px] bg-white dark:bg-zinc-900">
               {detail.options.map((o, i) => {
                 const sel = vals[detail.id] === o
                 return (
-                  <li key={o}>
+                  <div key={o}>
                     <button
                       type="button"
                       role="radio"
@@ -169,10 +169,10 @@ export function InsetSettingsList({ sections = DEFAULT_SETTINGS, onChange, title
                         <AnimatePresence>{sel && <motion.span initial={reduced ? { opacity: 0 } : { scale: 0.4, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} exit={{ opacity: 0 }} transition={{ type: 'spring', stiffness: 600, damping: 30 }}><Check aria-hidden className="size-5 text-signal-700 dark:text-signal-200" strokeWidth={2.5} /></motion.span>}</AnimatePresence>
                       </span>
                     </button>
-                  </li>
+                  </div>
                 )
               })}
-            </ul>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
