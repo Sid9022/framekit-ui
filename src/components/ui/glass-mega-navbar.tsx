@@ -141,7 +141,7 @@ export function GlassMegaNavbar({ brand, items = DEFAULT_NAV_ITEMS, shrinkAt = 2
         </nav>
         <div className="ml-auto flex items-center gap-1.5">
           <a href="#" className="hidden h-9 items-center rounded-full px-3 text-sm font-medium text-zinc-700 hover:text-zinc-950 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal-500 sm:flex dark:text-zinc-300 dark:hover:text-white">Log in</a>
-          <a href="#" className="flex h-9 items-center rounded-full bg-zinc-900 px-4 text-sm font-medium text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.15)] transition-transform active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal-500 focus-visible:ring-offset-2 dark:bg-white dark:text-zinc-900">{ctaLabel}</a>
+          <a href="#" className="flex h-9 items-center whitespace-nowrap rounded-full bg-zinc-900 px-3.5 text-sm sm:px-4 font-medium text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.15)] transition-transform active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal-500 focus-visible:ring-offset-2 dark:bg-white dark:text-zinc-900">{ctaLabel}</a>
           <button type="button" aria-label={mobile ? 'Close menu' : 'Open menu'} aria-expanded={mobile} aria-controls={`${id}-mobile`} onClick={() => setMobile((m) => !m)}
             className="grid size-10 place-items-center rounded-full text-zinc-800 hover:bg-black/5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal-500 md:hidden dark:text-zinc-200 dark:hover:bg-white/10">
             {mobile ? <X className="size-5" /> : <Menu className="size-5" />}

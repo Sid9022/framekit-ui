@@ -39,6 +39,14 @@ export function GlassAppDock({ apps = DEFAULT_DOCK_APPS, baseSize = 44, maxSize 
   const reduced = usePrefersReducedMotion()
   const [running, setRunning] = React.useState(() => new Set(apps.filter((a) => a.running).map((a) => a.id)))
   const refs = React.useRef<(HTMLButtonElement | null)[]>([])
+  const [narrow, setNarrow] = React.useState(false)
+  React.useEffect(() => {
+    const mq = window.matchMedia('(max-width: 480px)')
+    const u = () => setNarrow(mq.matches); u(); mq.addEventListener('change', u)
+    return () => mq.removeEventListener('change', u)
+  }, [])
+  const b = narrow ? Math.min(baseSize, 34) : baseSize
+  const mx = narrow ? b : maxSize
 
   const launch = (id: string) => {
     setRunning((s) => new Set(s).add(id))
@@ -59,14 +67,13 @@ export function GlassAppDock({ apps = DEFAULT_DOCK_APPS, baseSize = 44, maxSize 
       <motion.ul
         onPointerMove={(e) => !reduced && e.pointerType === 'mouse' && mouseX.set(e.clientX)}
         onPointerLeave={() => mouseX.set(Infinity)}
-        className="flex max-w-full items-end gap-2 overflow-x-auto overflow-y-visible rounded-[22px] border border-black/[0.08] bg-white/60 px-2.5 pb-2 pt-2 shadow-[inset_0_1px_0_rgb(255_255_255/0.6),0_1px_2px_rgb(0_0_0/0.06),0_24px_48px_-24px_rgb(24_24_27/0.35)] backdrop-blur-2xl backdrop-saturate-150 dark:border-white/[0.10] dark:bg-zinc-900/60 dark:shadow-[inset_0_1px_0_rgb(255_255_255/0.08)] [@media(prefers-reduced-transparency:reduce)]:bg-white [@media(prefers-reduced-transparency:reduce)]:dark:bg-zinc-900"
-        style={{ overflowY: 'visible' }}
+        className="flex max-w-full items-end gap-1.5 rounded-[22px] sm:gap-2 border border-black/[0.08] bg-white/60 px-2.5 pb-2 pt-2 shadow-[inset_0_1px_0_rgb(255_255_255/0.6),0_1px_2px_rgb(0_0_0/0.06),0_24px_48px_-24px_rgb(24_24_27/0.35)] backdrop-blur-2xl backdrop-saturate-150 dark:border-white/[0.10] dark:bg-zinc-900/60 dark:shadow-[inset_0_1px_0_rgb(255_255_255/0.08)] [@media(prefers-reduced-transparency:reduce)]:bg-white [@media(prefers-reduced-transparency:reduce)]:dark:bg-zinc-900"
       >
         {apps.map((app, i) => (
           <React.Fragment key={app.id}>
-            {app.separatorBefore && <li aria-hidden className="mx-1 h-10 w-px self-center bg-black/10 dark:bg-white/15" />}
+            {app.separatorBefore && <li aria-hidden className="mx-0.5 h-8 sm:mx-1 sm:h-10 w-px self-center bg-black/10 dark:bg-white/15" />}
             <DockIcon
-              app={app} mouseX={mouseX} base={baseSize} max={maxSize} range={range} reduced={reduced}
+              app={app} mouseX={mouseX} base={b} max={mx} range={range} reduced={reduced}
               running={running.has(app.id)} onLaunch={() => launch(app.id)} onKey={(e) => onKey(e, i)}
               setRef={(el) => { refs.current[i] = el }} focusSet={(x) => mouseX.set(x)}
             />

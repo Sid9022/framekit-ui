@@ -6527,6 +6527,351 @@
       "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/sparkle-text"
     },
     {
+      "name": "glass-app-dock",
+      "type": "registry:ui",
+      "title": "Glass App Dock",
+      "description": "A macOS-style dock: icons magnify on a spring with a cosine falloff around the pointer, labels float above, launching bounces the icon and lights a running dot. Keyboard focus magnifies too.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/glass-app-dock.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "website-sections"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glass-app-dock"
+    },
+    {
+      "name": "spotlight-command-palette",
+      "type": "registry:ui",
+      "title": "Spotlight Command Palette",
+      "description": "A cmdk-style ⌘K launcher: fuzzy grouped results, a highlight that springs between rows, nested pages (Backspace to go back), key-cap hints and full combobox semantics with focus restore.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/spotlight-command-palette.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "website-sections"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/spotlight-command-palette"
+    },
+    {
+      "name": "activity-rings",
+      "type": "registry:ui",
+      "title": "Activity Rings",
+      "description": "Apple Watch-style concentric progress rings: gradient strokes sweep in on a spring, overshooting 100% laps over itself with a shadowed tip, and the legend numbers roll up.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/activity-rings.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "website-sections"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/activity-rings"
+    },
+    {
+      "name": "glass-mega-navbar",
+      "type": "registry:ui",
+      "title": "Glass Mega Navbar",
+      "description": "A full-width bar that contracts into a floating glass pill on scroll. Menus open into one mega panel that slides between sections with a blur, a hover pill glides between triggers, and phones get a disclosure sheet.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/glass-mega-navbar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "website-sections"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glass-mega-navbar"
+    },
+    {
+      "name": "pricing-plans",
+      "type": "registry:ui",
+      "title": "Pricing Plans",
+      "description": "Three-tier pricing with a sliding monthly/yearly switch whose numerals roll digit by digit, a highlighted ink plan with a light rim, and a “you save” chip that springs in on yearly.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/pricing-plans.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "website-sections"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/pricing-plans"
+    },
+    {
+      "name": "faq-accordion",
+      "type": "registry:ui",
+      "title": "FAQ Accordion",
+      "description": "A two-column FAQ: rows expand on a height spring, the plus rotates into a cross, the open row lifts onto a soft surface and answers un-blur in. ↑ ↓ Home End move between questions.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/faq-accordion.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "website-sections"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/faq-accordion"
+    },
+    {
+      "name": "testimonial-wall",
+      "type": "registry:ui",
+      "title": "Testimonial Wall",
+      "description": "A masonry wall of quote cards whose columns drift in opposite directions at different speeds, faded at the edges, with a pause button; reduced motion shows a static scrollable wall.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/testimonial-wall.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "website-sections"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/testimonial-wall"
+    },
+    {
+      "name": "feature-comparison-table",
+      "type": "registry:ui",
+      "title": "Feature Comparison Table",
+      "description": "A plan comparison table with a sticky header, collapsible groups, a tinted highlighted column, row hover and a one-plan-at-a-time switcher on phones. Real table semantics with screen-reader labels for ticks.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/feature-comparison-table.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "website-sections"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/feature-comparison-table"
+    },
+    {
+      "name": "cta-glow-banner",
+      "type": "registry:ui",
+      "title": "CTA Glow Banner",
+      "description": "A closing call-to-action on an ink panel: a soft lilac and orange aurora trails the pointer behind a fine dot grid, the block rises in on scroll and the arrow nudges on hover.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/cta-glow-banner.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "website-sections"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/cta-glow-banner"
+    },
+    {
+      "name": "newsletter-signup",
+      "type": "registry:ui",
+      "title": "Newsletter Signup",
+      "description": "An inline email capture with inline validation, a button that morphs to a spinner, a shake on error, a polite live region and a success state with undo.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/newsletter-signup.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "website-sections"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/newsletter-signup"
+    },
+    {
+      "name": "site-footer",
+      "type": "registry:ui",
+      "title": "Site Footer",
+      "description": "A calm SaaS footer: link columns with sliding hairline underlines, a live status pill, socials, a language picker and a giant outlined wordmark that rises from the bottom edge.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/site-footer.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "website-sections"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/site-footer"
+    },
+    {
+      "name": "cookie-consent",
+      "type": "registry:ui",
+      "title": "Cookie Consent",
+      "description": "A floating glass consent card with equal-weight Accept / Reject (no dark patterns) and a Customise drawer of per-category switches that expands in place, plus a chip to reopen settings.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/cookie-consent.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "website-sections"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/cookie-consent"
+    },
+    {
+      "name": "announcement-bar",
+      "type": "registry:ui",
+      "title": "Announcement Bar",
+      "description": "A slim ink top bar with a sweeping sheen; messages roll vertically with a blur, dots pick one, hover or focus pauses, and dismissing collapses the height smoothly.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/announcement-bar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "website-sections"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/announcement-bar"
+    },
+    {
+      "name": "changelog-timeline",
+      "type": "registry:ui",
+      "title": "Changelog Timeline",
+      "description": "Release notes on a timeline with sticky dates, popping dots, generated cover art and a filter (All / New / Improved / Fixed) that re-flows each change list on springs.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/changelog-timeline.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "website-sections"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/changelog-timeline"
+    },
+    {
       "name": "glass-segmented-control",
       "type": "registry:ui",
       "title": "Glass Segmented Control",

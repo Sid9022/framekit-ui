@@ -1287,10 +1287,11 @@ export const DOCS: DocEntry[] = [
     { name: 'range', type: 'number', default: '150', description: 'Pointer distance over which neighbours magnify.' },
     { name: 'onLaunch', type: '(id) => void', default: '—', description: 'Fires when an icon is clicked.' },
   ] },
-  { slug: 'spotlight-command-palette', title: 'Spotlight Command Palette', description: 'A cmdk-style ⌘K launcher: fuzzy grouped results, a highlight that springs between rows, nested pages (Backspace to go back), key-cap hints and full combobox semantics with focus restore.', category: 'Website Sections', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Press ⌘/Ctrl K or click the chip; type, ↑ ↓, Enter; open “Invite teammates” for a nested page.', props: [
+  { slug: 'spotlight-command-palette', title: 'Spotlight Command Palette', description: 'A cmdk-style ⌘K launcher: fuzzy grouped results, a highlight that springs between rows, nested pages (Backspace to go back), key-cap hints and full combobox semantics with focus restore.', category: 'Website Sections', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Click the chip or press ⌘/Ctrl J here (⌘ K by default in your app); type, ↑ ↓, Enter; open “Invite teammates” for a nested page.', props: [
     { name: 'items', type: 'PaletteItem[]', default: 'DEFAULT_PALETTE_ITEMS', description: '{ id, label, group, icon?, shortcut?, keywords?, children? }' },
     { name: 'open / defaultOpen / onOpenChange', type: 'boolean', default: 'false', description: 'Controlled or uncontrolled visibility.' },
     { name: 'hotkey', type: 'boolean', default: 'true', description: 'Register the global ⌘K / Ctrl+K shortcut.' },
+    { name: 'hotkeyKey', type: 'string', default: "'k'", description: 'Letter paired with ⌘ / Ctrl.' },
     { name: 'onSelect', type: '(item) => void', default: '—', description: 'Fires when a leaf command runs.' },
   ] },
   { slug: 'activity-rings', title: 'Activity Rings', description: 'Apple Watch-style concentric progress rings: gradient strokes sweep in on a spring, overshooting 100% laps over itself with a shadowed tip, and the legend numbers roll up.', category: 'Website Sections', unique: true, isNew: true, ownBackground: true, backgroundNote: 'Paints its own ink watch-face disc in both themes (rings read best on black); the legend adapts with dark: variants.', dependencies: ['motion', 'lucide-react'], gesture: 'Watch the rings close; pass new values to animate.', props: [

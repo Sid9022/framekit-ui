@@ -1628,7 +1628,7 @@ function NavbarDemo() {
 
 const websiteSectionDemos: Record<string, React.ReactNode> = {
   'glass-app-dock': <GlassAppDock />,
-  'spotlight-command-palette': <SpotlightCommandPalette />,
+  'spotlight-command-palette': <SpotlightCommandPalette hotkeyKey="j" />,
   'activity-rings': <ActivityRings />,
   'glass-mega-navbar': <NavbarDemo />,
   'pricing-plans': <PricingPlans />,

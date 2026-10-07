@@ -13,6 +13,8 @@ export type SpotlightCommandPaletteProps = {
   onOpenChange?: (open: boolean) => void
   /** Register the global ⌘K / Ctrl+K hotkey. */
   hotkey?: boolean
+  /** Letter used with ⌘ / Ctrl for the hotkey. */
+  hotkeyKey?: string
   placeholder?: string
   onSelect?: (item: PaletteItem) => void
   /** Show the trigger chip. */
@@ -51,7 +53,7 @@ function score(q: string, text: string) {
  * a highlight that springs between rows, nested pages (Backspace to go back),
  * key-cap hints and full combobox/listbox semantics with focus restore.
  */
-export function SpotlightCommandPalette({ items = DEFAULT_PALETTE_ITEMS, open, defaultOpen = false, onOpenChange, hotkey = true, placeholder = 'Type a command or search…', onSelect, showTrigger = true, className }: SpotlightCommandPaletteProps) {
+export function SpotlightCommandPalette({ items = DEFAULT_PALETTE_ITEMS, open, defaultOpen = false, onOpenChange, hotkey = true, hotkeyKey = 'k', placeholder = 'Type a command or search…', onSelect, showTrigger = true, className }: SpotlightCommandPaletteProps) {
   const reduced = usePrefersReducedMotion()
   const [inner, setInner] = React.useState(defaultOpen)
   const isOpen = open ?? inner
@@ -67,9 +69,9 @@ export function SpotlightCommandPalette({ items = DEFAULT_PALETTE_ITEMS, open, d
 
   React.useEffect(() => {
     if (!hotkey) return
-    const h = (e: KeyboardEvent) => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); setOpen(!isOpen) } }
+    const h = (e: KeyboardEvent) => { if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === hotkeyKey.toLowerCase()) { e.preventDefault(); setOpen(!isOpen) } }
     window.addEventListener('keydown', h); return () => window.removeEventListener('keydown', h)
-  }, [hotkey, isOpen, setOpen])
+  }, [hotkey, hotkeyKey, isOpen, setOpen])
   const wasOpen = React.useRef(isOpen)
   React.useEffect(() => {
     if (wasOpen.current === isOpen) return
@@ -110,7 +112,7 @@ export function SpotlightCommandPalette({ items = DEFAULT_PALETTE_ITEMS, open, d
         <button ref={triggerRef} type="button" onClick={() => setOpen(true)} aria-haspopup="dialog"
           className="flex h-10 w-full max-w-xs items-center gap-2 rounded-[12px] border border-black/[0.08] bg-white px-3 text-sm text-zinc-600 shadow-[0_1px_2px_rgb(0_0_0/0.05)] transition-colors hover:text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal-500 dark:border-white/10 dark:bg-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-100">
           <Search className="size-4" aria-hidden /> <span className="flex-1 text-left">Search…</span>
-          <kbd className="rounded-[6px] border border-black/10 px-1.5 font-mono text-[11px] dark:border-white/15">⌘&nbsp;K</kbd>
+          <kbd className="rounded-[6px] border border-black/10 px-1.5 font-mono text-[11px] dark:border-white/15">⌘&nbsp;{hotkeyKey.toUpperCase()}</kbd>
         </button>
       )}
       {last && <p role="status" className="text-[13px] text-zinc-600 dark:text-zinc-400">Ran “{last}”</p>}
