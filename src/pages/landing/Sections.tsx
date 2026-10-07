@@ -117,7 +117,7 @@ function Statement() {
   const top = sorted.slice(0, 5)
   const rest = sorted.slice(5)
   return (
-    <section aria-labelledby="statement-title" className={cn(sectionY, 'text-center')}>
+    <section aria-labelledby="statement-title" className={cn(sectionY, 'overflow-x-clip text-center [contain:paint]')}>
       <div className={section}>
         <Reveal><Overline className="justify-center">One command per component</Overline></Reveal>
         <h2 id="statement-title" className={cn(h2, 'mx-auto mt-4 max-w-[18ch]')}>
@@ -285,7 +285,7 @@ function Carousel() {
   }
   const arrow = cn('grid h-11 w-11 touch-manipulation place-items-center rounded-full bg-white text-zinc-950 shadow-[0_1px_2px_rgb(0_0_0/0.05)] ring-1 ring-black/[0.08] transition-[background-color,transform] duration-150 hover:bg-zinc-50 active:scale-95 motion-reduce:active:scale-100 dark:bg-white/[0.06] dark:text-white dark:ring-white/[0.12] dark:hover:bg-white/[0.1]', focusRing)
   return (
-    <section aria-labelledby="carousel-title" className={sectionY}>
+    <section aria-labelledby="carousel-title" className={cn(sectionY, "overflow-x-clip [contain:paint]")}>
       <div className={section}>
         <SectionHeader
           id="carousel-title"
@@ -405,7 +405,7 @@ function Steps() {
             <Reveal as="li" key={p.name} delay={i * 0.06} className="min-w-0">
               <div className={cn('relative flex h-full flex-col p-6 sm:p-8', hot ? 'rounded-[24px] bg-zinc-950 text-white shadow-[inset_0_1px_0_rgb(255_255_255/0.1),0_24px_48px_-24px_rgb(0_0_0/0.5)] ring-1 ring-zinc-950 dark:bg-[#18181B] dark:ring-white/[0.12]' : card)}>
                 <div className="flex items-center justify-between">
-                  <span className={cn('font-mono text-xs tabular-nums', hot ? 'text-white/60' : 'text-zinc-500')}>0{i + 1}</span>
+                  <span className={cn('font-mono text-xs tabular-nums', hot ? 'text-white/60' : 'text-zinc-500 dark:text-zinc-400')}>0{i + 1}</span>
                   {hot && <span className="rounded-full bg-[#D9F95C] px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-zinc-950">Recommended</span>}
                 </div>
                 <span className={cn('mt-6 grid h-10 w-10 place-items-center rounded-[14px]', hot ? 'bg-white/10' : 'bg-black/[0.04] dark:bg-white/[0.06]')}><Icon className="h-5 w-5" aria-hidden /></span>
