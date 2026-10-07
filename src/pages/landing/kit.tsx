@@ -163,7 +163,8 @@ const TWIN: Record<string, string> = {
 export function surface(bg: string): { className: string; style?: React.CSSProperties } {
   if (TWIN[bg]) return { className: TWIN[bg] }
   const ink = bg === POP.ink || bg === '#0A0A0A' || bg === '#111827'
-  return { className: ink ? 'dark' : '', style: { background: bg } }
+  // Pop surfaces (lime, blue) keep components in their light variant so text stays legible in dark mode.
+  return { className: ink ? 'dark' : 'light', style: { background: bg } }
 }
 
 /** Pauses ambient loops when reduced motion is requested (JS-driven sequences). */
