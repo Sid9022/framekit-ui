@@ -203,3 +203,6 @@ html.dark {
     linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
 }
+
+/* Landing marquee: translate exactly one copy of the duplicated row. */
+@keyframes fk-marquee { to { transform: translateX(-50%); } }
