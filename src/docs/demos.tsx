@@ -335,6 +335,19 @@ import { SiteFooter } from '@/components/ui/site-footer'
 import { CookieConsent } from '@/components/ui/cookie-consent'
 import { AnnouncementBar } from '@/components/ui/announcement-bar'
 import { ChangelogTimeline } from '@/components/ui/changelog-timeline'
+import { GlowCandleCard } from '@/components/ui/glow-candle-card'
+import { GlowLevelCard } from '@/components/ui/glow-level-card'
+import { GlowHistogramCard } from '@/components/ui/glow-histogram-card'
+import { BudgetAreaCard } from '@/components/ui/budget-area-card'
+import { PastelObjectCarousel } from '@/components/ui/pastel-object-carousel'
+import { SparklineKpiTile } from '@/components/ui/sparkline-kpi-tile'
+import { SpendDonutCard } from '@/components/ui/spend-donut-card'
+import { ContributionHeatmapTile } from '@/components/ui/contribution-heatmap-tile'
+import { WalletBalanceCard } from '@/components/ui/wallet-balance-card'
+import { CryptoTickerRow } from '@/components/ui/crypto-ticker-row'
+import { GoalProgressCard } from '@/components/ui/goal-progress-card'
+import { ComparisonBarCard } from '@/components/ui/comparison-bar-card'
+import { SmartWidgetStack } from '@/components/ui/smart-widget-stack'
 // p2-imports:end
 
 
@@ -1640,6 +1653,22 @@ function NavbarDemo() {
   )
 }
 
+const dataWidgetDemos: Record<string, React.ReactNode> = {
+  'glow-candle-card': <div className="relative flex w-full justify-center overflow-hidden rounded-2xl bg-[linear-gradient(180deg,#c9d3df_0%,#e9dccd_45%,#d9d4cf_100%)] px-4 py-12 dark:bg-[linear-gradient(180deg,#1b2230_0%,#2a2420_55%,#16161a_100%)]"><GlowCandleCard /></div>,
+  'glow-level-card': <div className="relative flex w-full justify-center overflow-hidden rounded-2xl bg-[linear-gradient(180deg,#c9d3df_0%,#e9dccd_45%,#d9d4cf_100%)] px-4 py-12 dark:bg-[linear-gradient(180deg,#1b2230_0%,#2a2420_55%,#16161a_100%)]"><GlowLevelCard /></div>,
+  'glow-histogram-card': <div className="relative flex w-full justify-center overflow-hidden rounded-2xl bg-[linear-gradient(180deg,#c9d3df_0%,#e9dccd_45%,#d9d4cf_100%)] px-4 py-12 dark:bg-[linear-gradient(180deg,#1b2230_0%,#2a2420_55%,#16161a_100%)]"><GlowHistogramCard /></div>,
+  'budget-area-card': <div className="flex w-full justify-center"><BudgetAreaCard /></div>,
+  'pastel-object-carousel': <PastelObjectCarousel />,
+  'sparkline-kpi-tile': <div className="flex w-full justify-center"><SparklineKpiTile /></div>,
+  'spend-donut-card': <div className="flex w-full justify-center"><SpendDonutCard /></div>,
+  'contribution-heatmap-tile': <div className="flex w-full justify-center"><ContributionHeatmapTile /></div>,
+  'wallet-balance-card': <div className="flex w-full justify-center"><WalletBalanceCard /></div>,
+  'crypto-ticker-row': <div className="flex w-full justify-center"><CryptoTickerRow /></div>,
+  'goal-progress-card': <div className="flex w-full justify-center"><GoalProgressCard /></div>,
+  'comparison-bar-card': <div className="flex w-full justify-center"><ComparisonBarCard /></div>,
+  'smart-widget-stack': <div className="flex w-full justify-center"><SmartWidgetStack /></div>,
+}
+
 const motionShowcaseDemos: Record<string, React.ReactNode> = {
   'scroll-product-reveal': <ScrollProductReveal />,
   'app-store-expand-card': <AppStoreExpandCard />,
@@ -2642,4 +2671,5 @@ export const demos: Record<string, React.ReactNode> = {
   ...productUiDemos,
   ...websiteSectionDemos,
   ...motionShowcaseDemos,
+  ...dataWidgetDemos,
 }

@@ -24,6 +24,7 @@ export type DocCategory =
   | 'Product UI'
   | 'Website Sections'
   | 'Motion Showcase'
+  | 'Data Widgets'
   | 'Core'
 
 export type DocEntry = {
@@ -1522,6 +1523,88 @@ export const DOCS: DocEntry[] = [
     { name: 'disabled', type: 'boolean', default: 'false', description: 'Disables the dropzone.' },
     { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
   ] },
+  { slug: 'glow-candle-card', title: 'Glow Candle Card', description: 'An ink “Sales Report” card with monospaced rolling numerals, a neon delta and a glowing candlestick chart: candles grow from their midpoints, new ones stream in live and a crosshair shows OHLC on hover or ← →.', category: 'Data Widgets', unique: true, isNew: true, ownBackground: true, backgroundNote: 'Ink card that stays dark in both themes (neon reads best on black); every text pair meets AA on #050505.', dependencies: ['motion', 'lucide-react'], gesture: 'Hover the chart or focus it and press ← →.', props: [
+    { name: 'candles', type: 'Candle[]', default: 'generated', description: '{ o, h, l, c, label? } — passing data turns off the live stream.' },
+    { name: 'value / delta / subValue', type: 'number / number / string', default: '9134 / 2.5 / “$185,301”', description: 'Headline figures.' },
+    { name: 'liveMs', type: 'number', default: '2600', description: 'Stream interval; 0 disables.' },
+    { name: 'accent', type: 'string', default: '\'#4dff9a\'', description: 'Neon hue.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  { slug: 'glow-level-card', title: 'Glow Level Card', description: 'The ink stat card with segmented neon level meters: segments light left to right with a bloom, levels re-balance live, and hovering or focusing a row reveals its channel and share.', category: 'Data Widgets', unique: true, isNew: true, ownBackground: true, backgroundNote: 'Ink card that stays dark in both themes (neon reads best on black); every text pair meets AA on #050505.', dependencies: ['motion', 'lucide-react'], gesture: 'Hover or Tab through the rows.', props: [
+    { name: 'rows', type: 'LevelRow[]', default: '4 channels', description: '{ label, level }' },
+    { name: 'segments', type: 'number', default: '6', description: 'Segments per row.' },
+    { name: 'liveMs', type: 'number', default: '3200', description: 'Re-balance interval; 0 disables.' },
+    { name: 'accent', type: 'string', default: '\'#7dff6a\'', description: 'Neon hue.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  { slug: 'glow-histogram-card', title: 'Glow Histogram Card', description: 'A neon gradient histogram beside the ink stat card: bars rise on a soft spring with glowing caps that fade into the card, values drift live and hover / ← → lifts a bar with its value.', category: 'Data Widgets', unique: true, isNew: true, ownBackground: true, backgroundNote: 'Ink card that stays dark in both themes (neon reads best on black); every text pair meets AA on #050505.', dependencies: ['motion', 'lucide-react'], gesture: 'Hover the bars or focus and press ← →.', props: [
+    { name: 'bins', type: 'HistogramBin[]', default: '8 days', description: '{ label, value }' },
+    { name: 'liveMs', type: 'number', default: '2800', description: 'Drift interval; 0 disables.' },
+    { name: 'accent', type: 'string', default: '\'#5bff7a\'', description: 'Neon hue.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  { slug: 'budget-area-card', title: 'Budget Area Card', description: 'A soft white squircle with a big rolling total, a delta pill and floating soft-3D banknotes. An indigo stepped area chart draws itself in with drifting sparkles and an end arrow, and a tooltip bubble springs between points.', category: 'Data Widgets', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Hover or drag across the chart, or focus it and press ← →.', props: [
+    { name: 'total / change / currency', type: 'number / number / string', default: '30739 / 317 / \'$\'', description: 'Headline figures.' },
+    { name: 'points', type: 'BudgetPoint[]', default: 'Sun–Sat', description: '{ label, value }' },
+    { name: 'defaultActive', type: 'number', default: '3', description: 'Point highlighted at rest.' },
+    { name: 'showIllustration', type: 'boolean', default: 'true', description: 'Soft-3D banknote stack.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  { slug: 'pastel-object-carousel', title: 'Pastel Object Carousel', description: 'A cover-flow of pastel portrait cards with floating caption panels. A heavily damped spring carries drags; neighbours tuck behind at 85%, and each layered CSS-3D object (coins, calendar, key, lock, card) turns on Y with its card’s position.', category: 'Data Widgets', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Drag the cards, use ← → when focused, or tap the dots.', props: [
+    { name: 'slides', type: 'PastelSlide[]', default: '5 slides', description: '{ id, title, caption, object: \'coins\'|\'calendar\'|\'key\'|\'lock\'|\'card\', from, to }' },
+    { name: 'defaultIndex', type: 'number', default: '1', description: 'Starting slide.' },
+    { name: 'onAdd / onIndexChange', type: '(slide) => void / (i) => void', default: '—', description: 'Plus button and slide callbacks.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  { slug: 'sparkline-kpi-tile', title: 'Sparkline KPI Tile', description: 'A compact metric tile with a live dot, rolling numerals, a delta chip and a smooth sparkline that draws in, streams new points and shows a crosshair value on hover or ← →.', category: 'Data Widgets', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Hover the sparkline, or focus it and press ← →.', props: [
+    { name: 'label / value / delta', type: 'string / number / number', default: 'Active users', description: 'Headline metric.' },
+    { name: 'data', type: 'number[]', default: 'generated', description: '0–100 series; passing data stops the live stream.' },
+    { name: 'liveMs', type: 'number', default: '2400', description: 'Stream interval.' },
+    { name: 'color', type: 'string', default: '\'#7c5cff\'', description: 'Line hue.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  { slug: 'spend-donut-card', title: 'Spend Donut Card', description: 'A radial spend breakdown whose rounded arcs sweep in one after another; hovering or focusing a category pops its arc outward and rolls the centre total to that amount.', category: 'Data Widgets', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Hover the arcs or Tab through the legend.', props: [
+    { name: 'slices', type: 'SpendSlice[]', default: '5 categories', description: '{ label, value, color }' },
+    { name: 'title / currency', type: 'string', default: 'Spending · October / $', description: 'Header and currency.' },
+    { name: 'size', type: 'number', default: '180', description: 'Donut diameter.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  { slug: 'contribution-heatmap-tile', title: 'Contribution Heatmap Tile', description: 'A weeks × days activity heatmap: cells pop in on a diagonal wave, the total and streak roll up, and the grid is one roving tab stop where arrows move a ring that announces the day.', category: 'Data Widgets', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Hover cells, or focus the grid and use the arrow keys.', props: [
+    { name: 'values', type: 'number[][]', default: '16 weeks', description: 'values[week][day], 0–4.' },
+    { name: 'weeks', type: 'number', default: '16', description: 'Generated weeks when no values.' },
+    { name: 'unit / color', type: 'string', default: 'sessions / \'#22c55e\'', description: 'Unit label and scale hue.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  { slug: 'wallet-balance-card', title: 'Wallet Balance Card', description: 'A fanned stack of payment cards: picking one springs it to the front while the rest tuck behind, the balance rolls to the new amount and an eye toggle blurs the figures.', category: 'Data Widgets', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Click a card behind to bring it forward; toggle the eye.', props: [
+    { name: 'cards', type: 'WalletCard[]', default: '3 cards', description: '{ id, name, last4, balance, from, to }' },
+    { name: 'currency / defaultIndex', type: 'string / number', default: '\'$\' / 0', description: 'Currency and starting card.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  { slug: 'crypto-ticker-row', title: 'Crypto Ticker Row', description: 'A watchlist with live prices: each tick flashes the price green or red and fades back, mini sparklines morph to the new history and every row is a labelled button.', category: 'Data Widgets', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Watch the prices tick; click a row.', props: [
+    { name: 'assets', type: 'TickerAsset[]', default: 'BTC / ETH / SOL / ADA', description: '{ symbol, name, price, change, color, history? }' },
+    { name: 'liveMs', type: 'number', default: '1800', description: 'Tick interval; 0 disables.' },
+    { name: 'onSelect', type: '(asset) => void', default: '—', description: 'Row click.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  { slug: 'goal-progress-card', title: 'Goal Progress Card', description: 'A savings goal with a liquid progress bar: topping up springs the fill forward under a moving sheen, milestone ticks light as they pass and reaching the goal morphs the button into a check.', category: 'Data Widgets', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Press “Add $250” until the goal is reached.', props: [
+    { name: 'title / emoji', type: 'string', default: 'Trip to Kyoto / 🗻', description: 'Goal label.' },
+    { name: 'saved / goal / step', type: 'number', default: '2150 / 4000 / 250', description: 'Amounts.' },
+    { name: 'milestones', type: 'number[]', default: '[0.25, 0.5, 0.75]', description: 'Tick positions (0–1).' },
+    { name: 'onChange', type: '(saved) => void', default: '—', description: 'Called on top-up.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  { slug: 'comparison-bar-card', title: 'Comparison Bar Card', description: 'This period vs last as paired bars: a segmented control slides a pill between Week, Month and Year while bars re-grow on a spring, and hovering or focusing a pair lifts it with both values.', category: 'Data Widgets', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Switch the range (← → in the control); hover or Tab the bars.', props: [
+    { name: 'ranges', type: 'Record<string, ComparisonSeries[]>', default: 'Week / Month / Year', description: '{ label, current, previous }' },
+    { name: 'defaultRange', type: 'string', default: '\'Week\'', description: 'Starting range.' },
+    { name: 'title / currency', type: 'string', default: 'Revenue / \'$\'', description: 'Header and currency.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  { slug: 'smart-widget-stack', title: 'Smart Widget Stack', description: 'An iOS-style widget stack: the top widget sits at full size with the next ones peeking above; scroll, swipe vertically, use ↑ ↓ or the side dots to flip through on a damped spring while content re-animates on arrival.', category: 'Data Widgets', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Scroll or swipe on the stack, press ↑ ↓, or click the dots.', props: [
+    { name: 'widgets', type: 'StackWidget[]', default: 'Balance / Steps / Spend / Bill', description: '{ id, label, tint, render }' },
+    { name: 'defaultIndex', type: 'number', default: '0', description: 'Starting widget.' },
+    { name: 'autoMs', type: 'number', default: '0', description: 'Idle auto-rotation; pauses on hover and focus.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
 ]
 
 export const gettingStarted = DOCS.filter((d) => d.category === 'Getting Started')
@@ -1557,6 +1640,7 @@ const NAV_ORDER: DocCategory[] = [
   'Product UI',
   'Website Sections',
   'Motion Showcase',
+  'Data Widgets',
   'Core',
 ]
 

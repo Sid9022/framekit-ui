@@ -1,3 +1,16 @@
+import glowCandleCardSrc from '../components/ui/glow-candle-card.tsx?raw'
+import glowLevelCardSrc from '../components/ui/glow-level-card.tsx?raw'
+import glowHistogramCardSrc from '../components/ui/glow-histogram-card.tsx?raw'
+import budgetAreaCardSrc from '../components/ui/budget-area-card.tsx?raw'
+import pastelObjectCarouselSrc from '../components/ui/pastel-object-carousel.tsx?raw'
+import sparklineKpiTileSrc from '../components/ui/sparkline-kpi-tile.tsx?raw'
+import spendDonutCardSrc from '../components/ui/spend-donut-card.tsx?raw'
+import contributionHeatmapTileSrc from '../components/ui/contribution-heatmap-tile.tsx?raw'
+import walletBalanceCardSrc from '../components/ui/wallet-balance-card.tsx?raw'
+import cryptoTickerRowSrc from '../components/ui/crypto-ticker-row.tsx?raw'
+import goalProgressCardSrc from '../components/ui/goal-progress-card.tsx?raw'
+import comparisonBarCardSrc from '../components/ui/comparison-bar-card.tsx?raw'
+import smartWidgetStackSrc from '../components/ui/smart-widget-stack.tsx?raw'
 import scrollProductRevealSrc from '../components/ui/scroll-product-reveal.tsx?raw'
 import appStoreExpandCardSrc from '../components/ui/app-store-expand-card.tsx?raw'
 import liquidGlassTabBarSrc from '../components/ui/liquid-glass-tab-bar.tsx?raw'
@@ -659,5 +672,18 @@ export const sources: Record<string, string> = {
   'timeline-scrubber': timelineScrubberSrc,
   'spring-reorder-list': springReorderListSrc,
   'blur-cascade-heading': blurCascadeHeadingSrc,
+  'glow-candle-card': glowCandleCardSrc,
+  'glow-level-card': glowLevelCardSrc,
+  'glow-histogram-card': glowHistogramCardSrc,
+  'budget-area-card': budgetAreaCardSrc,
+  'pastel-object-carousel': pastelObjectCarouselSrc,
+  'sparkline-kpi-tile': sparklineKpiTileSrc,
+  'spend-donut-card': spendDonutCardSrc,
+  'contribution-heatmap-tile': contributionHeatmapTileSrc,
+  'wallet-balance-card': walletBalanceCardSrc,
+  'crypto-ticker-row': cryptoTickerRowSrc,
+  'goal-progress-card': goalProgressCardSrc,
+  'comparison-bar-card': comparisonBarCardSrc,
+  'smart-widget-stack': smartWidgetStackSrc,
   // p2-entries:end
 }
