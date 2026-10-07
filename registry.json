@@ -6499,6 +6499,354 @@
         "text-animations"
       ],
       "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/sparkle-text"
+    },
+    {
+      "name": "glass-segmented-control",
+      "type": "registry:ui",
+      "title": "Glass Segmented Control",
+      "description": "An iOS-style segmented control whose selected thumb is a lifted glass pill that springs between segments with a press squish — native radio semantics, arrow keys and an opaque reduced-transparency fallback.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/glass-segmented-control.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "product-ui"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glass-segmented-control"
+    },
+    {
+      "name": "dynamic-status-island",
+      "type": "registry:ui",
+      "title": "Dynamic Status Island",
+      "description": "A black capsule that morphs its silhouette between live activities — recording with a level meter, a focus timer with pause, an upload with a progress hairline, a success tick — size and radius on one crisp spring while content cross-fades with a little blur.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/dynamic-status-island.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "product-ui"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/dynamic-status-island"
+    },
+    {
+      "name": "detent-sheet",
+      "type": "registry:ui",
+      "title": "Detent Sheet",
+      "description": "An Apple-style bottom sheet resting at peek, half and full detents — velocity-aware drag with rubber-banding, the background recedes and dims as it rises, and a grabber that also works with tap and ↑ ↓. Esc closes and focus returns to the trigger.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/detent-sheet.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "product-ui"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/detent-sheet"
+    },
+    {
+      "name": "vibrancy-context-menu",
+      "type": "registry:ui",
+      "title": "Vibrancy Context Menu",
+      "description": "A macOS-grade context menu on regular glass that blooms from the exact pointer position, flips near the edges, glides a highlight capsule between rows, and blinks the chosen item once before dissolving.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/vibrancy-context-menu.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "product-ui"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/vibrancy-context-menu"
+    },
+    {
+      "name": "deploy-timeline",
+      "type": "registry:ui",
+      "title": "Deploy Timeline",
+      "description": "A build pipeline that reads like a calm status page: dots resolve to spinners to ticks, the rail fills as steps complete, elapsed times tick in tabular figures, each row expands into logs, and failures stop the rail in rose with a one-click retry.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/deploy-timeline.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "product-ui"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/deploy-timeline"
+    },
+    {
+      "name": "usage-quota-meter",
+      "type": "registry:ui",
+      "title": "Usage Quota Meter",
+      "description": "A billing-period usage card: hairline tracks fill with stacked segments on the house ease, figures count up in tabular numerals, a limit tick marks 100%, and bars go amber near the limit and rose when exceeded — always with a text label.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/usage-quota-meter.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "product-ui"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/usage-quota-meter"
+    },
+    {
+      "name": "onboarding-stepper",
+      "type": "registry:ui",
+      "title": "Onboarding Stepper",
+      "description": "A three-question setup flow on one continuous surface: a progress capsule stretches into the current step with a shared-layout spring, panels slide in the direction of travel, validation speaks inline, and the finish holds its label with a spinner before landing on a tick.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/onboarding-stepper.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "product-ui"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/onboarding-stepper"
+    },
+    {
+      "name": "sortable-data-table",
+      "type": "registry:ui",
+      "title": "Sortable Data Table",
+      "description": "A dense, quiet deployments table: sortable headers with aria-sort, search and status filter chips, rows that glide to their new order, hairline hover and selected tints, a bulk-action bar that springs up on selection, and designed loading and empty states.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/sortable-data-table.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "product-ui"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/sortable-data-table"
+    },
+    {
+      "name": "date-range-picker",
+      "type": "registry:ui",
+      "title": "Date Range Picker",
+      "description": "A calendar that previews the range as you hover with a continuous tinted band between endpoint pills, month pages that slide in the direction you move, preset chips, full grid keyboard support and a live summary.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/date-range-picker.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "product-ui"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/date-range-picker"
+    },
+    {
+      "name": "feedback-state-panel",
+      "type": "registry:ui",
+      "title": "Feedback State Panel",
+      "description": "One surface for the screens nobody designs — empty, error, offline, permission and success — each with its own glyph and motion character, copy that names the next step, and a primary action with a real loading → success / error loop.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/feedback-state-panel.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "product-ui"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/feedback-state-panel"
+    },
+    {
+      "name": "kbd-shortcut-hint",
+      "type": "registry:ui",
+      "title": "Keyboard Shortcut Hint",
+      "description": "A cheat sheet of tactile keycaps that knows your platform (⌘ ⌥ ⇧ vs Ctrl Alt Shift); hold real keys and matching caps sink and light up, complete a combo and its row confirms. Exports Kbd for inline hints.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/kbd-shortcut-hint.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "product-ui"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/kbd-shortcut-hint"
+    },
+    {
+      "name": "inset-settings-list",
+      "type": "registry:ui",
+      "title": "Inset Settings List",
+      "description": "An iOS-style grouped inset list with tinted icon tiles, hairlines inset to the label edge, switches whose knob stretches on press, and choice rows that push a detail page with a parallax slide and return focus on Back.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/inset-settings-list.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "product-ui"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/inset-settings-list"
+    },
+    {
+      "name": "rolling-number-stepper",
+      "type": "registry:ui",
+      "title": "Rolling Number Stepper",
+      "description": "A quantity field whose changed digits roll in the direction of travel, accelerates on press-and-hold like a hardware stepper, and nudges sideways with a reason at its bounds. A real spinbutton you can type into.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/rolling-number-stepper.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "product-ui"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/rolling-number-stepper"
+    },
+    {
+      "name": "file-drop-uploader",
+      "type": "registry:ui",
+      "title": "File Drop Uploader",
+      "description": "A calm dropzone that lifts and tints on drag-over, then gives each file its own row with a spring progress hairline, a tick that pops on completion, and errors that say what went wrong with one-tap retry.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/file-drop-uploader.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "product-ui"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/file-drop-uploader"
     }
   ]
 }

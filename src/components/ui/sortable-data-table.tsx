@@ -64,7 +64,7 @@ export function SortableDataTable({ rows = DEFAULT_TABLE_ROWS, loading = false, 
   }, [rows, q, filter, sort])
 
   const updateSel = (next: Set<string>) => { setSel(next); onSelectionChange?.([...next]) }
-  const toggle = (id: string) => { const n = new Set(sel); n.has(id) ? n.delete(id) : n.add(id); updateSel(n) }
+  const toggle = (id: string) => { const n = new Set(sel); if (n.has(id)) n.delete(id); else n.add(id); updateSel(n) }
   const allSel = view.length > 0 && view.every((r) => sel.has(r.id))
   const someSel = view.some((r) => sel.has(r.id))
   const headerBox = React.useRef<HTMLInputElement>(null)
