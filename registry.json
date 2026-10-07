@@ -6872,6 +6872,334 @@
       "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/changelog-timeline"
     },
     {
+      "name": "scroll-product-reveal",
+      "type": "registry:ui",
+      "title": "Scroll Product Reveal",
+      "description": "An Apple-style pinned product story: scroll scrubs a CSS 3D device through rotation, screen glow and an exploded-layer view while chapter copy cross-fades with a blur. Scrolls inside its own focusable frame.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/scroll-product-reveal.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "motion-showcase"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/scroll-product-reveal"
+    },
+    {
+      "name": "app-store-expand-card",
+      "type": "registry:ui",
+      "title": "App Store Expand Card",
+      "description": "Story cards that grow into a full detail sheet with a shared-layout spring: art, headline and surface morph from the card, the body rises in behind. Esc or close collapses it and returns focus.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/app-store-expand-card.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "motion-showcase"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/app-store-expand-card"
+    },
+    {
+      "name": "liquid-glass-tab-bar",
+      "type": "registry:ui",
+      "title": "Liquid Glass Tab Bar",
+      "description": "An iOS 26-style floating glass tab bar: a refractive lens slides between tabs and stretches with distance like liquid, icons pop on select, plus a floating accessory button.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/liquid-glass-tab-bar.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "motion-showcase"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/liquid-glass-tab-bar"
+    },
+    {
+      "name": "gradient-mesh-hero",
+      "type": "registry:ui",
+      "title": "Gradient Mesh Hero",
+      "description": "A hero over four soft colour fields that drift on slow offset orbits and lean toward the pointer, with fine grain, a glass eyebrow pill and a blur-staggered headline.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/gradient-mesh-hero.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "motion-showcase"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/gradient-mesh-hero"
+    },
+    {
+      "name": "morph-button-modal",
+      "type": "registry:ui",
+      "title": "Morph Button Modal",
+      "description": "A pill button that physically becomes its dialog: the surface expands on a shared-layout spring, the label blurs into a form, and submit shrinks it back into a success pill. Focus trapped and restored.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/morph-button-modal.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "motion-showcase"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/morph-button-modal"
+    },
+    {
+      "name": "kinetic-stats-band",
+      "type": "registry:ui",
+      "title": "Kinetic Stats Band",
+      "description": "A band of big tabular numbers that count up on an expo curve when scrolled into view, with motion blur on the fast part and sparklines that draw themselves.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/kinetic-stats-band.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "motion-showcase"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/kinetic-stats-band"
+    },
+    {
+      "name": "parallax-depth-stack",
+      "type": "registry:ui",
+      "title": "Parallax Depth Stack",
+      "description": "A fanned card stack on CSS 3D layers: the pointer tilts it and each layer parallaxes by depth with a moving sheen; click or Enter sends the front card to the back on a spring.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/parallax-depth-stack.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "motion-showcase"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/parallax-depth-stack"
+    },
+    {
+      "name": "spring-stagger-grid",
+      "type": "registry:ui",
+      "title": "Spring Stagger Grid",
+      "description": "A filterable tile grid that enters on a diagonal ripple (delay = row + column), re-flows on layout springs when filtered and exits with a quick scale-down.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/spring-stagger-grid.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "motion-showcase"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/spring-stagger-grid"
+    },
+    {
+      "name": "magnetic-dot-grid",
+      "type": "registry:ui",
+      "title": "Magnetic Dot Grid",
+      "description": "A canvas field of dots that lean toward the pointer on spring physics, swell and tint near it, then settle with a soft wobble; clicks send a ripple. Theme-aware, static on reduced motion.",
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/use-resolved-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/magnetic-dot-grid.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "motion-showcase"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/magnetic-dot-grid"
+    },
+    {
+      "name": "page-curtain-transition",
+      "type": "registry:ui",
+      "title": "Page Curtain Transition",
+      "description": "Route changes play a staggered column curtain: panels sweep up to cover, the next page name flashes on the curtain, then they lift away to reveal it. Reduced motion cross-fades.",
+      "dependencies": [
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/page-curtain-transition.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "motion-showcase"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/page-curtain-transition"
+    },
+    {
+      "name": "lit-product-card-3d",
+      "type": "registry:ui",
+      "title": "Lit Product Card 3D",
+      "description": "A product card with real lighting: tilt follows the pointer, a specular highlight tracks the light while the cast shadow moves opposite, the product floats on its own Z layer and swatches recolour on a spring.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/lit-product-card-3d.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "motion-showcase"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/lit-product-card-3d"
+    },
+    {
+      "name": "timeline-scrubber",
+      "type": "registry:ui",
+      "title": "Timeline Scrubber",
+      "description": "A media scrubber with a waveform that lights up behind the playhead, a thumb that grows while dragging, chapter markers that snap within 1.5 s, a time bubble and full slider keyboard support.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/timeline-scrubber.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "motion-showcase"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/timeline-scrubber"
+    },
+    {
+      "name": "spring-reorder-list",
+      "type": "registry:ui",
+      "title": "Spring Reorder List",
+      "description": "A priority list reordered by dragging the grip: the lifted row scales and deepens its shadow while siblings part on springs. Keyboard ↑ ↓ on a grip moves rows with live announcements.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/spring-reorder-list.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "motion-showcase"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/spring-reorder-list"
+    },
+    {
+      "name": "blur-cascade-heading",
+      "type": "registry:ui",
+      "title": "Blur Cascade Heading",
+      "description": "A keynote-style display headline that resolves out of focus: words or letters rise through a mask from blur to sharp on springs, and highlight words land last in a gradient.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/blur-cascade-heading.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "motion-showcase"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/blur-cascade-heading"
+    },
+    {
       "name": "glass-segmented-control",
       "type": "registry:ui",
       "title": "Glass Segmented Control",

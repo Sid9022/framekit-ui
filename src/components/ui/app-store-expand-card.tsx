@@ -36,11 +36,11 @@ export function AppStoreExpandCard({ cards = DEFAULT_STORY_CARDS, className }: A
   return (
     <MotionConfig transition={reduced ? { duration: 0 } : { type: 'spring', stiffness: 320, damping: 32 }}>
       <LayoutGroup>
-        <div className={cn('relative w-full', className)}>
+        <div className={cn('relative min-h-[500px] w-full', className)}>
           <ul className="grid gap-4 sm:grid-cols-3">
             {cards.map((c) => (
               <li key={c.id}>
-                <motion.button ref={(el) => { triggers.current[c.id] = el }} layoutId={`card-${c.id}`} onClick={() => setOpen(c.id)} whileHover={reduced ? undefined : { scale: 1.02 }} whileTap={{ scale: 0.97 }} aria-label={`${c.title} — open story`} className="relative block h-[260px] w-full overflow-hidden rounded-[24px] text-left shadow-[0_1px_2px_rgb(0_0_0/0.08),0_20px_40px_-24px_rgb(0_0_0/0.5)] outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 dark:ring-offset-zinc-950" style={{ visibility: open === c.id ? 'hidden' : 'visible' }}>
+                <motion.button ref={(el) => { triggers.current[c.id] = el }} layoutId={`card-${c.id}`} onClick={() => setOpen(c.id)} whileHover={reduced ? undefined : { scale: 1.02 }} whileTap={{ scale: 0.97 }} className="relative block h-[260px] w-full overflow-hidden rounded-[24px] text-left shadow-[0_1px_2px_rgb(0_0_0/0.08),0_20px_40px_-24px_rgb(0_0_0/0.5)] outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-2 dark:ring-offset-zinc-950" style={{ visibility: open === c.id ? 'hidden' : 'visible' }}>
                   <Art c={c} />
                   <Head c={c} />
                 </motion.button>

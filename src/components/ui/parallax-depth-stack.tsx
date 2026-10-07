@@ -30,7 +30,8 @@ export function ParallaxDepthStack({ cards = DEFAULT_DEPTH_CARDS, className }: P
   return (
     <div onPointerMove={(e) => { const r = e.currentTarget.getBoundingClientRect(); mx.set((e.clientX - r.left) / r.width - 0.5); my.set((e.clientY - r.top) / r.height - 0.5) }} onPointerLeave={() => { mx.set(0); my.set(0) }}
       className={cn('relative grid min-h-[420px] w-full place-items-center [perspective:1100px]', className)}>
-      <motion.button onClick={cycle} aria-label={`${front.title}. Show next card`} style={{ rotateX: rX, rotateY: rY, transformStyle: 'preserve-3d' }} className="relative h-[300px] w-[230px] rounded-[26px] outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-4 dark:ring-offset-zinc-950">
+      <motion.button onClick={cycle} style={{ rotateX: rX, rotateY: rY, transformStyle: 'preserve-3d' }} className="relative h-[300px] w-[230px] rounded-[26px] outline-none focus-visible:ring-2 focus-visible:ring-sky-500 focus-visible:ring-offset-4 dark:ring-offset-zinc-950">
+        <span className="sr-only">Show next card</span>
         {order.map((ci, depth) => <Card key={ci} c={cards[ci]} depth={depth} n={cards.length} sx={sx} sy={sy} reduced={reduced} />)}
       </motion.button>
       <p className="sr-only" aria-live="polite">{front.title}</p>
@@ -43,7 +44,7 @@ function Card({ c, depth, n, sx, sy, reduced }: { c: DepthCard; depth: number; n
   const py = useTransform(sy, (v) => (reduced ? 0 : v * (n - depth) * 10))
   const shineX = useTransform(sx, [-0.5, 0.5], ['0%', '100%'])
   return (
-    <motion.div style={{ x: px, y: py, zIndex: n - depth, background: `linear-gradient(150deg, ${c.from}, ${c.to})` }}
+    <motion.div aria-hidden={depth > 0 || undefined} style={{ x: px, y: py, zIndex: n - depth, background: `linear-gradient(150deg, ${c.from}, ${c.to})` }}
       animate={{ z: -depth * 60, rotateZ: depth * 5, y: depth * -14, scale: 1 - depth * 0.04, opacity: depth > 2 ? 0 : 1 }}
       transition={reduced ? { duration: 0 } : { type: 'spring', stiffness: 260, damping: 26 }}
       className="absolute inset-0 overflow-hidden rounded-[26px] text-left shadow-[0_1px_2px_rgb(0_0_0/0.15),0_30px_60px_-30px_rgb(0_0_0/0.7)] ring-1 ring-white/15">

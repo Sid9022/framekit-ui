@@ -74,7 +74,7 @@ export function TimelineScrubber({ duration = 84, markers = DEFAULT_SCRUB_MARKER
         </motion.div>
       </div>
       <div className="mt-6 flex flex-wrap gap-1.5">
-        {markers.map((m) => <button key={m.at} onClick={() => { setPlaying(false); seek(m.at) }} className={cn('rounded-full px-2.5 py-1 text-xs font-medium outline-none ring-1 transition-colors focus-visible:ring-2 focus-visible:ring-sky-500', chapter?.at === m.at ? 'bg-indigo-50 text-indigo-800 ring-indigo-200 dark:bg-indigo-500/15 dark:text-indigo-200 dark:ring-indigo-400/30' : 'text-zinc-600 ring-black/10 hover:text-zinc-950 dark:text-zinc-400 dark:ring-white/10 dark:hover:text-white')}>{m.label} <span className="tabular-nums opacity-70">{fmt(m.at)}</span></button>)}
+        {markers.map((m) => <button key={m.at} onClick={() => { setPlaying(false); seek(m.at) }} className={cn('rounded-full px-2.5 py-1 text-xs font-medium outline-none ring-1 transition-colors focus-visible:ring-2 focus-visible:ring-sky-500', chapter?.at === m.at ? 'bg-indigo-50 text-indigo-800 ring-indigo-200 dark:bg-indigo-500/15 dark:text-indigo-200 dark:ring-indigo-400/30' : 'text-zinc-600 ring-black/10 hover:text-zinc-950 dark:text-zinc-400 dark:ring-white/10 dark:hover:text-white')}>{m.label} <span className="tabular-nums">{fmt(m.at)}</span></button>)}
       </div>
     </div>
   )

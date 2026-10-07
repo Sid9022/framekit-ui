@@ -46,7 +46,8 @@ function Stat({ s, i, run, duration }: { s: KineticStat; i: number; run: boolean
   const d = pts.map((p, j) => `${j ? 'L' : 'M'}${(j / Math.max(1, pts.length - 1)) * 100},${28 - (p / max) * 24}`).join(' ')
   return (
     <div className={cn('relative p-6 sm:p-8', i % 2 === 1 && 'border-l border-black/[0.06] dark:border-white/[0.08]', i >= 2 && 'border-t border-black/[0.06] lg:border-t-0 dark:border-white/[0.08]', i > 0 && 'lg:border-l')}>
-      <p className="flex items-baseline text-3xl font-semibold tabular-nums tracking-[-0.04em] text-zinc-950 sm:text-5xl dark:text-white" aria-label={`${s.prefix ?? ''}${s.value}${s.suffix ?? ''}`}>
+      <p className="flex items-baseline text-3xl font-semibold tabular-nums tracking-[-0.04em] text-zinc-950 sm:text-5xl dark:text-white">
+        <span className="sr-only">{`${s.prefix ?? ''}${s.value}${s.suffix ?? ''}`}</span>
         <span aria-hidden>{s.prefix}</span><motion.span aria-hidden style={{ filter }}>{text}</motion.span><span aria-hidden className="ml-0.5 text-[0.55em] font-medium text-zinc-500 dark:text-zinc-400">{s.suffix}</span>
       </p>
       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">{s.label}</p>
