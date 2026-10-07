@@ -34,6 +34,20 @@ import pixelSrc from '../components/ui/pixel-reveal.tsx?raw'
 import elasticSrc from '../components/ui/elastic-slider.tsx?raw'
 import breathSrc from '../components/ui/breathing-dot.tsx?raw'
 import inkSrc from '../components/ui/ink-ripple-grid.tsx?raw'
+import glassSegmentedControlSrc from '../components/ui/glass-segmented-control.tsx?raw'
+import dynamicStatusIslandSrc from '../components/ui/dynamic-status-island.tsx?raw'
+import detentSheetSrc from '../components/ui/detent-sheet.tsx?raw'
+import vibrancyContextMenuSrc from '../components/ui/vibrancy-context-menu.tsx?raw'
+import deployTimelineSrc from '../components/ui/deploy-timeline.tsx?raw'
+import usageQuotaMeterSrc from '../components/ui/usage-quota-meter.tsx?raw'
+import onboardingStepperSrc from '../components/ui/onboarding-stepper.tsx?raw'
+import sortableDataTableSrc from '../components/ui/sortable-data-table.tsx?raw'
+import dateRangePickerSrc from '../components/ui/date-range-picker.tsx?raw'
+import feedbackStatePanelSrc from '../components/ui/feedback-state-panel.tsx?raw'
+import kbdShortcutHintSrc from '../components/ui/kbd-shortcut-hint.tsx?raw'
+import insetSettingsListSrc from '../components/ui/inset-settings-list.tsx?raw'
+import rollingNumberStepperSrc from '../components/ui/rolling-number-stepper.tsx?raw'
+import fileDropUploaderSrc from '../components/ui/file-drop-uploader.tsx?raw'
 
 import prismTidalSrc from '../components/ui/prism-tidal-field.tsx?raw'
 import constellationSrc from '../components/ui/constellation-breathing-grid.tsx?raw'
@@ -573,5 +587,19 @@ export const sources: Record<string, string> = {
   'highlight-marker-text': highlightMarkerTextSrc,
   'velocity-marquee': velocityMarqueeSrc,
   'sparkle-text': sparkleTextSrc,
+  'glass-segmented-control': glassSegmentedControlSrc,
+  'dynamic-status-island': dynamicStatusIslandSrc,
+  'detent-sheet': detentSheetSrc,
+  'vibrancy-context-menu': vibrancyContextMenuSrc,
+  'deploy-timeline': deployTimelineSrc,
+  'usage-quota-meter': usageQuotaMeterSrc,
+  'onboarding-stepper': onboardingStepperSrc,
+  'sortable-data-table': sortableDataTableSrc,
+  'date-range-picker': dateRangePickerSrc,
+  'feedback-state-panel': feedbackStatePanelSrc,
+  'kbd-shortcut-hint': kbdShortcutHintSrc,
+  'inset-settings-list': insetSettingsListSrc,
+  'rolling-number-stepper': rollingNumberStepperSrc,
+  'file-drop-uploader': fileDropUploaderSrc,
   // p2-entries:end
 }

@@ -291,6 +291,21 @@ import { MiniDesktopOS } from '@/components/ui/mini-desktop-os'
 import { LoginGateIntro } from '@/components/ui/login-gate-intro'
 import { RouteChooserHero } from '@/components/ui/route-chooser-hero'
 import { DiscoveryScene } from '@/components/ui/discovery-scene'
+import { GlassSegmentedControl } from '@/components/ui/glass-segmented-control'
+import { DynamicStatusIsland } from '@/components/ui/dynamic-status-island'
+import { DetentSheet } from '@/components/ui/detent-sheet'
+import { VibrancyContextMenu } from '@/components/ui/vibrancy-context-menu'
+import { DeployTimeline } from '@/components/ui/deploy-timeline'
+import { UsageQuotaMeter } from '@/components/ui/usage-quota-meter'
+import { OnboardingStepper } from '@/components/ui/onboarding-stepper'
+import { SortableDataTable } from '@/components/ui/sortable-data-table'
+import { DateRangePicker } from '@/components/ui/date-range-picker'
+import { FeedbackStatePanel } from '@/components/ui/feedback-state-panel'
+import { KbdShortcutHint } from '@/components/ui/kbd-shortcut-hint'
+import { InsetSettingsList } from '@/components/ui/inset-settings-list'
+import { RollingNumberStepper } from '@/components/ui/rolling-number-stepper'
+import { FileDropUploader } from '@/components/ui/file-drop-uploader'
+import { BarChart3, CalendarDays, LayoutGrid } from 'lucide-react'
 // p2-imports:end
 
 
@@ -1569,6 +1584,36 @@ function DeviceFrameDemo() {
   )
 }
 
+
+function SegmentedDemo() {
+  const [v, setV] = React.useState('week')
+  const [view, setView] = React.useState('grid')
+  return (
+    <div className="flex w-full max-w-md flex-col items-center gap-6">
+      <GlassSegmentedControl value={v} onValueChange={setV} />
+      <GlassSegmentedControl size="sm" label="View" value={view} onValueChange={setView} options={[{ value: 'grid', label: 'Grid', icon: <LayoutGrid /> }, { value: 'chart', label: 'Chart', icon: <BarChart3 /> }, { value: 'cal', label: 'Calendar', icon: <CalendarDays /> }]} />
+      <p className="text-[13px] text-zinc-600 dark:text-zinc-400">Showing <span className="font-medium text-zinc-900 dark:text-zinc-100">{v}</span> · {view} view</p>
+    </div>
+  )
+}
+
+const productUiDemos: Record<string, React.ReactNode> = {
+  'glass-segmented-control': <SegmentedDemo />,
+  'dynamic-status-island': <DynamicStatusIsland defaultState="uploading" />,
+  'detent-sheet': <DetentSheet />,
+  'vibrancy-context-menu': <VibrancyContextMenu />,
+  'deploy-timeline': <DeployTimeline />,
+  'usage-quota-meter': <UsageQuotaMeter />,
+  'onboarding-stepper': <OnboardingStepper />,
+  'sortable-data-table': <SortableDataTable />,
+  'date-range-picker': <DateRangePicker />,
+  'feedback-state-panel': <FeedbackStatePanel showSwitcher />,
+  'kbd-shortcut-hint': <KbdShortcutHint />,
+  'inset-settings-list': <InsetSettingsList />,
+  'rolling-number-stepper': <RollingNumberStepper />,
+  'file-drop-uploader': <FileDropUploader />,
+}
+
 const magicBatchDemos: Record<string, React.ReactNode> = {
   'signal-beam-diagram': <SignalBeamDemo />,
   'feature-bento-grid': <FeatureBentoGrid />,
@@ -2517,4 +2562,5 @@ export const demos: Record<string, React.ReactNode> = {
   ...portfolio2Demos,
   ...batchFolderDemos,
   ...magicBatchDemos,
+  ...productUiDemos,
 }

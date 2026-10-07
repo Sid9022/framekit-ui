@@ -21,6 +21,7 @@ export type DocCategory =
   | 'Cursors'
   | 'Search / Inputs'
   | 'Inputs / Forms'
+  | 'Product UI'
   | 'Core'
 
 export type DocEntry = {
@@ -1266,6 +1267,109 @@ export const DOCS: DocEntry[] = [
     { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
   ] },
   // magic-batch:end
+  // Product UI
+  { slug: 'glass-segmented-control', title: 'Glass Segmented Control', description: 'An iOS-style segmented control whose selected thumb is a lifted glass pill that springs between segments with a press squish — native radio semantics, arrow keys and an opaque reduced-transparency fallback.', category: 'Product UI', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Click a segment or focus it and use ← → Home End.', props: [
+    { name: 'options', type: 'SegmentOption[]', default: 'DEFAULT_SEGMENTS', description: '{ value, label, icon?, disabled? } per segment.' },
+    { name: 'value / defaultValue / onValueChange', type: 'string', default: 'first option', description: 'Controlled or uncontrolled selection.' },
+    { name: 'label', type: 'string', default: '\'Time range\'', description: 'Accessible name of the radio group.' },
+    { name: 'size', type: '\'sm\' | \'md\'', default: '\'md\'', description: '32 or 40 px tall (44 px on touch).' },
+    { name: 'fullWidth / disabled', type: 'boolean', default: 'false', description: 'Stretch to the container; disable the whole control.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  { slug: 'dynamic-status-island', title: 'Dynamic Status Island', description: 'A black capsule that morphs its silhouette between live activities — recording with a level meter, a focus timer with pause, an upload with a progress hairline, a success tick — size and radius on one crisp spring while content cross-fades with a little blur.', category: 'Product UI', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Pick a state under the island; pause the timer from inside it.', props: [
+    { name: 'state / defaultState / onStateChange', type: '\'idle\' | \'recording\' | \'timer\' | \'uploading\' | \'success\'', default: '\'idle\'', description: 'Controlled or uncontrolled activity.' },
+    { name: 'progress', type: 'number (0–1)', default: 'auto', description: 'Upload progress; auto-advances to success when omitted.' },
+    { name: 'idleLabel / fileName', type: 'string', description: 'Copy for the idle and upload states.' },
+    { name: 'showControls', type: 'boolean', default: 'true', description: 'Render the state picker under the island.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  { slug: 'detent-sheet', title: 'Detent Sheet', description: 'An Apple-style bottom sheet resting at peek, half and full detents — velocity-aware drag with rubber-banding, the background recedes and dims as it rises, and a grabber that also works with tap and ↑ ↓. Esc closes and focus returns to the trigger.', category: 'Product UI', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Drag the grabber, tap it to step up, or focus it and press ↑ ↓; Esc closes.', props: [
+    { name: 'open / defaultOpen / onOpenChange', type: 'boolean', default: 'true', description: 'Controlled or uncontrolled visibility.' },
+    { name: 'detent / defaultDetent / onDetentChange', type: '\'peek\' | \'half\' | \'full\'', default: '\'half\'', description: 'Controlled or uncontrolled detent.' },
+    { name: 'detents', type: 'Record<SheetDetent, number>', default: '{ peek: .28, half: .55, full: .92 }', description: 'Visible fraction of the frame per detent.' },
+    { name: 'title / children', type: 'string / ReactNode', description: 'Sheet heading and body (defaults to a place card).' },
+    { name: 'triggerLabel / frameHeight / backdrop', type: 'string / number / ReactNode', default: '\'Show place\' / 560', description: 'Trigger text, frame height, and content behind the sheet.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the frame.' },
+  ] },
+  { slug: 'vibrancy-context-menu', title: 'Vibrancy Context Menu', description: 'A macOS-grade context menu on regular glass that blooms from the exact pointer position, flips near the edges, glides a highlight capsule between rows, and blinks the chosen item once before dissolving.', category: 'Product UI', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Right-click or long-press the file; or focus it and press Shift+F10, then ↑ ↓, type to jump, Enter.', props: [
+    { name: 'items', type: 'ContextMenuItem[]', default: 'DEFAULT_CONTEXT_ITEMS', description: '{ id, label, icon?, shortcut?, destructive?, disabled?, checked?, onSelect? } or { type: \'separator\' }.' },
+    { name: 'onSelect', type: '(id: string) => void', description: 'Fires after an item is chosen.' },
+    { name: 'children', type: 'ReactNode', default: 'file card', description: 'The area that listens for right-click / long-press.' },
+    { name: 'label', type: 'string', default: '\'File actions\'', description: 'Accessible name of the menu.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the target area.' },
+  ] },
+  { slug: 'deploy-timeline', title: 'Deploy Timeline', description: 'A build pipeline that reads like a calm status page: dots resolve to spinners to ticks, the rail fills as steps complete, elapsed times tick in tabular figures, each row expands into logs, and failures stop the rail in rose with a one-click retry.', category: 'Product UI', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Watch it build; expand a step for logs; Retry build after the failure.', props: [
+    { name: 'steps', type: 'DeployStep[]', default: 'DEFAULT_DEPLOY_STEPS', description: '{ id, label, detail?, logs?, duration? } in order.' },
+    { name: 'autoPlay', type: 'boolean', default: 'true', description: 'Run the simulated pipeline on mount.' },
+    { name: 'failAt', type: 'number', default: '3', description: 'Step that fails on the first run (-1 never fails).' },
+    { name: 'commit / branch', type: 'string', description: 'Header copy.' },
+    { name: 'onComplete', type: '(result: \'ready\' | \'error\') => void', description: 'Fires when the pipeline ends.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the card.' },
+  ] },
+  { slug: 'usage-quota-meter', title: 'Usage Quota Meter', description: 'A billing-period usage card: hairline tracks fill with stacked segments on the house ease, figures count up in tabular numerals, a limit tick marks 100%, and bars go amber near the limit and rose when exceeded — always with a text label.', category: 'Product UI', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Scroll it into view; hover or focus a row for its breakdown.', props: [
+    { name: 'resources', type: 'UsageResource[]', default: 'DEFAULT_USAGE', description: '{ id, label, unit, limit, segments: { label, value }[], decimals? }.' },
+    { name: 'period', type: 'string', default: '\'Oct 1 – Oct 31\'', description: 'Billing period label.' },
+    { name: 'warnAt', type: 'number', default: '0.8', description: 'Fraction at which a bar turns amber.' },
+    { name: 'loading', type: 'boolean', default: 'false', description: 'Skeleton that mirrors the final layout.' },
+    { name: 'onUpgrade / titleAs', type: '() => void / h2–h4', default: '\'h3\'', description: 'Upgrade action and heading level.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the card.' },
+  ] },
+  { slug: 'onboarding-stepper', title: 'Onboarding Stepper', description: 'A three-question setup flow on one continuous surface: a progress capsule stretches into the current step with a shared-layout spring, panels slide in the direction of travel, validation speaks inline, and the finish holds its label with a spinner before landing on a tick.', category: 'Product UI', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Type a workspace name, press Enter, pick a role, add emails (try a typo).', props: [
+    { name: 'defaultValues', type: 'Partial<{ workspace, role, invites }>', description: 'Initial values.' },
+    { name: 'onComplete', type: '(data) => void | Promise<void>', description: 'Submit handler; a rejected promise shows the error state.' },
+    { name: 'step / defaultStep / onStepChange', type: 'number', default: '0', description: 'Controlled or uncontrolled step (0–3).' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the card.' },
+  ] },
+  { slug: 'sortable-data-table', title: 'Sortable Data Table', description: 'A dense, quiet deployments table: sortable headers with aria-sort, search and status filter chips, rows that glide to their new order, hairline hover and selected tints, a bulk-action bar that springs up on selection, and designed loading and empty states.', category: 'Product UI', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Sort a column, filter by status, search “main”, tick a few rows.', props: [
+    { name: 'rows', type: 'TableRow[]', default: 'DEFAULT_TABLE_ROWS', description: '{ id, name, branch, status, duration, author, ago }.' },
+    { name: 'loading', type: 'boolean', default: 'false', description: 'Skeleton rows that mirror the layout.' },
+    { name: 'onSelectionChange', type: '(ids: string[]) => void', description: 'Fires when the selection changes.' },
+    { name: 'caption', type: 'string', default: '\'Recent deployments\'', description: 'Accessible table caption.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the card.' },
+  ] },
+  { slug: 'date-range-picker', title: 'Date Range Picker', description: 'A calendar that previews the range as you hover with a continuous tinted band between endpoint pills, month pages that slide in the direction you move, preset chips, full grid keyboard support and a live summary.', category: 'Product UI', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Click a start and end day, try a preset, or use arrows / PageUp / PageDown.', props: [
+    { name: 'value / defaultValue / onValueChange', type: '{ from: Date | null; to: Date | null }', default: 'last week', description: 'Controlled or uncontrolled range.' },
+    { name: 'today', type: 'Date', default: 'new Date()', description: 'Reference day.' },
+    { name: 'disableFuture / presets', type: 'boolean', default: 'true', description: 'Block future days; show preset chips.' },
+    { name: 'locale', type: 'string', default: 'browser', description: 'BCP 47 locale for labels.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the card.' },
+  ] },
+  { slug: 'feedback-state-panel', title: 'Feedback State Panel', description: 'One surface for the screens nobody designs — empty, error, offline, permission and success — each with its own glyph and motion character, copy that names the next step, and a primary action with a real loading → success / error loop.', category: 'Product UI', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Switch states below; press Try again on the error state.', props: [
+    { name: 'variant / defaultVariant / onVariantChange', type: '\'empty\' | \'error\' | \'offline\' | \'permission\' | \'success\'', default: '\'empty\'', description: 'Controlled or uncontrolled state.' },
+    { name: 'title / description / primaryLabel / secondaryLabel', type: 'string', description: 'Override the copy for the current state.' },
+    { name: 'onPrimary', type: '(variant) => void | Promise<void>', description: 'Primary action; promise drives the loading state.' },
+    { name: 'onSecondary', type: '() => void', description: 'Secondary action.' },
+    { name: 'showSwitcher / titleAs', type: 'boolean / h2–h4', default: 'false / \'h3\'', description: 'Render the state switcher; heading level.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  { slug: 'kbd-shortcut-hint', title: 'Keyboard Shortcut Hint', description: 'A cheat sheet of tactile keycaps that knows your platform (⌘ ⌥ ⇧ vs Ctrl Alt Shift); hold real keys and matching caps sink and light up, complete a combo and its row confirms. Exports Kbd for inline hints.', category: 'Product UI', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Hold ⇧ or ⌘ / Ctrl and watch the caps; press Esc or ⇧ ?.', props: [
+    { name: 'shortcuts', type: 'Shortcut[]', default: 'DEFAULT_SHORTCUTS', description: '{ id, label, keys: [\'mod\', \'k\'], group? } — \'mod\' is ⌘ or Ctrl.' },
+    { name: 'platform', type: '\'auto\' | \'mac\' | \'other\'', default: '\'auto\'', description: 'Glyph set.' },
+    { name: 'listen', type: 'boolean', default: 'true', description: 'Light caps from real key presses.' },
+    { name: 'onTrigger / title', type: '(s) => void / string', default: '\'Keyboard shortcuts\'', description: 'Combo callback; heading (\'\' hides).' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the card.' },
+  ] },
+  { slug: 'inset-settings-list', title: 'Inset Settings List', description: 'An iOS-style grouped inset list with tinted icon tiles, hairlines inset to the label edge, switches whose knob stretches on press, and choice rows that push a detail page with a parallax slide and return focus on Back.', category: 'Product UI', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Flip a switch; open Appearance and pick a value, then go Back.', props: [
+    { name: 'sections', type: 'SettingsSection[]', default: 'DEFAULT_SETTINGS', description: '{ id, header?, footer?, rows } with toggle, choice and info rows.' },
+    { name: 'onChange', type: '(id, value: boolean | string) => void', description: 'Fires on any toggle or choice.' },
+    { name: 'title', type: 'string', default: '\'Settings\'', description: 'Root page title.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the frame.' },
+  ] },
+  { slug: 'rolling-number-stepper', title: 'Rolling Number Stepper', description: 'A quantity field whose changed digits roll in the direction of travel, accelerates on press-and-hold like a hardware stepper, and nudges sideways with a reason at its bounds. A real spinbutton you can type into.', category: 'Product UI', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Press and hold +; use ↑ ↓, PageUp/PageDown, Home/End, or type a number.', props: [
+    { name: 'value / defaultValue / onValueChange', type: 'number', default: '8', description: 'Controlled or uncontrolled value.' },
+    { name: 'min / max / step', type: 'number', default: '1 / 250 / 1', description: 'Bounds and increment.' },
+    { name: 'label / hint / unit', type: 'string', default: '\'Seats\'', description: 'Visible label, helper text and unit.' },
+    { name: 'format', type: '(n) => string', default: 'toLocaleString', description: 'Display formatting.' },
+    { name: 'disabled', type: 'boolean', default: 'false', description: 'Disables the field.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
+  { slug: 'file-drop-uploader', title: 'File Drop Uploader', description: 'A calm dropzone that lifts and tints on drag-over, then gives each file its own row with a spring progress hairline, a tick that pops on completion, and errors that say what went wrong with one-tap retry.', category: 'Product UI', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Drop files or click to browse; remove a row with ×.', props: [
+    { name: 'maxSize / accept', type: 'number / string', default: '25 MB', description: 'Per-file limit and accepted types.' },
+    { name: 'upload', type: '(file, onProgress) => Promise<void>', default: 'simulation', description: 'Real uploader; reject to mark a failure.' },
+    { name: 'defaultItems / onItemsChange', type: 'UploadItem[]', default: 'SAMPLE_UPLOADS', description: 'Seed rows and change callback.' },
+    { name: 'disabled', type: 'boolean', default: 'false', description: 'Disables the dropzone.' },
+    { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
+  ] },
 ]
 
 export const gettingStarted = DOCS.filter((d) => d.category === 'Getting Started')
@@ -1298,6 +1402,7 @@ const NAV_ORDER: DocCategory[] = [
   'Cursors',
   'Search / Inputs',
   'Inputs / Forms',
+  'Product UI',
   'Core',
 ]
 
