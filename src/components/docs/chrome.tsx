@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 import { AnimatePresence, motion } from 'motion/react'
-import { Flame, Moon, Search, Sun } from 'lucide-react'
+import { Moon, Search, Sun } from 'lucide-react'
 import { SITE } from '@/config/site'
 import { useThemeToggle } from '@/components/theme-provider'
 import { useCommandPalette, useShortcutLabel } from '@/components/command-palette'
@@ -11,11 +11,32 @@ import { cn } from '@/lib/cn'
 export const iconBtn =
   'inline-grid h-11 w-11 place-items-center rounded-xl text-zinc-700 transition-[background-color,color,transform] duration-150 ease-out hover:bg-zinc-200/70 hover:text-zinc-950 active:scale-95 motion-reduce:transition-none motion-reduce:active:scale-100 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white'
 
+/**
+ * Framekit "Keyframe" mark — an F whose middle bar is an animation keyframe ◆.
+ * Hand-built on a 256 grid (small-size cut). `currentColor` drives the F; the keyframe takes `accentClassName`.
+ */
+export function FramekitMark({ className, accentClassName }: { className?: string; accentClassName?: string }) {
+  return (
+    <svg viewBox="0 0 256 256" className={className} aria-hidden focusable="false">
+      <g transform="translate(-4 0)">
+        <path fill="currentColor" d="M56 50A10 10 0 0 1 66 40L194 40A10 10 0 0 1 204 50L204 78A10 10 0 0 1 194 88L104 88L104 206A10 10 0 0 1 94 216L66 216A10 10 0 0 1 56 206Z" />
+        <path
+          className={accentClassName}
+          d="M167.05 114.95A7 7 0 0 1 176.95 114.95L213.05 151.05A7 7 0 0 1 213.05 160.95L176.95 197.05A7 7 0 0 1 167.05 197.05L130.95 160.95A7 7 0 0 1 130.95 151.05Z"
+        />
+      </g>
+    </svg>
+  )
+}
+
 export function BrandLink({ className }: { className?: string }) {
   return (
     <Link to="/" aria-label={`${SITE.name} home`} className={cn('group -ml-1 flex items-center gap-2.5 rounded-xl px-1 py-1 font-semibold tracking-tight', className)}>
-      <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-zinc-950 text-signal-300 shadow-[0_1px_2px_rgb(0_0_0/0.2),inset_0_1px_0_rgb(255_255_255/0.12)] transition-transform duration-300 ease-[var(--ease-out-expo)] group-hover:-rotate-6 group-hover:scale-105 motion-reduce:transition-none dark:bg-zinc-100 dark:text-signal-800">
-        <Flame className="h-4 w-4" aria-hidden />
+      <span className="flex h-8 w-8 items-center justify-center rounded-[9px] bg-[#0A0A0A] text-[#F8F8F8] shadow-[0_1px_2px_rgb(0_0_0/0.2),inset_0_1px_0_rgb(255_255_255/0.12)] transition-transform duration-300 ease-[var(--ease-out-expo)] group-hover:scale-105 motion-reduce:transition-none dark:shadow-[0_0_0_1px_rgb(255_255_255/0.12),inset_0_1px_0_rgb(255_255_255/0.08)]">
+        <FramekitMark
+          className="h-[22px] w-[22px]"
+          accentClassName="fill-[#D9F95C] origin-center [transform-box:fill-box] transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:rotate-90 motion-reduce:transition-none motion-reduce:group-hover:rotate-0"
+        />
       </span>
       <span>{SITE.name}</span>
     </Link>
