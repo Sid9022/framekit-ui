@@ -18,6 +18,9 @@ import { GlowHistogramCard } from '@/components/ui/glow-histogram-card'
 import { SpendDonutCard } from '@/components/ui/spend-donut-card'
 import { SmartWidgetStack } from '@/components/ui/smart-widget-stack'
 import { LiquidGlassTabBar } from '@/components/ui/liquid-glass-tab-bar'
+import { ContributionHeatmapTile } from '@/components/ui/contribution-heatmap-tile'
+import { GlowLevelCard } from '@/components/ui/glow-level-card'
+import { WalletBalanceCard } from '@/components/ui/wallet-balance-card'
 import { EASE, FitArt, POP, focusRing, pillLime, surface } from './kit'
 
 /* Showcase entries: a real component, its backdrop, and the line the install pill reads out. */
@@ -31,8 +34,11 @@ const SHOW: { slug: string; label: string; note: string; bg: string; design: num
   { slug: 'lit-product-card-3d', label: 'Lit Product Card 3D', note: 'Highlights and shadows track the tilt.', bg: '#F1F1EF', design: 380, art: <LitProductCard3D />, phone: true },
   { slug: 'glow-histogram-card', label: 'Glow Histogram Card', note: 'Bars rise with glowing caps.', bg: POP.ink, design: 420, art: <GlowHistogramCard /> },
   { slug: 'liquid-glass-tab-bar', label: 'Liquid Glass Tab Bar', note: 'A glass lens slides between tabs.', bg: POP.blue, design: 380, fill: 0.92, art: <LiquidGlassTabBar /> },
+  { slug: 'contribution-heatmap-tile', label: 'Contribution Heatmap', note: 'Activity cells pop in on a wave.', bg: POP.lime, design: 460, art: <ContributionHeatmapTile /> },
   { slug: 'spend-donut-card', label: 'Spend Donut Card', note: 'Segments sweep in, totals roll up.', bg: '#E5ECFF', design: 400, art: <SpendDonutCard /> },
+  { slug: 'glow-level-card', label: 'Glow Level Card', note: 'Neon level bars light up in sequence.', bg: POP.ink, design: 420, art: <GlowLevelCard /> },
   { slug: 'smart-widget-stack', label: 'Smart Widget Stack', note: 'Widgets flip on a damped spring.', bg: '#FFFFFF', design: 'auto', art: <SmartWidgetStack /> },
+  { slug: 'wallet-balance-card', label: 'Wallet Balance Card', note: 'Pick a card; the balance rolls to match.', bg: POP.blue, design: 380, art: <WalletBalanceCard /> },
 ]
 
 /** Router-aware anchor for the tunnel cards (the library component renders `linkAs` with `href`). */
@@ -113,7 +119,7 @@ function InstallPill({ paused }: { paused: boolean }) {
       onPointerLeave={() => setHold(false)}
       onFocus={() => setHold(true)}
       onBlur={(e) => { if (!ref.current?.contains(e.relatedTarget as Node)) setHold(false) }}
-      className="flex w-full max-w-[440px] items-center gap-3 rounded-full sm:w-[400px] lg:w-[440px] bg-[#111] py-2 pl-2 pr-2 text-left shadow-[0_1px_2px_rgb(0_0_0/0.2),0_16px_40px_-16px_rgb(0_0_0/0.45),inset_0_1px_0_rgb(255_255_255/0.08)] dark:bg-[#18181B] dark:shadow-[inset_0_1px_0_rgb(255_255_255/0.08),0_0_0_1px_rgb(255_255_255/0.08)]"
+      className="flex w-full max-w-[488px] items-center gap-3 rounded-full sm:w-[400px] lg:w-[488px] bg-[#111] py-2 pl-2 pr-2 text-left shadow-[0_1px_2px_rgb(0_0_0/0.2),0_16px_40px_-16px_rgb(0_0_0/0.45),inset_0_1px_0_rgb(255_255_255/0.08)] dark:bg-[#18181B] dark:shadow-[inset_0_1px_0_rgb(255_255_255/0.08),0_0_0_1px_rgb(255_255_255/0.08)]"
     >
       <span aria-hidden className="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white/[0.08] text-[#D9F95C]"><Terminal className="h-[18px] w-[18px]" /></span>
       <div className="relative h-10 min-w-0 flex-1 overflow-hidden">
