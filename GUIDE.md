@@ -37,8 +37,9 @@ For a repeatable checkout with the committed lockfile, use `npm ci` instead of `
 Check `node --version` first. Existing working installs do not need to be recreated for every contribution.
 No global CLI or additional design-skill installation is required.
 
-The site uses a HashRouter, so a component lives at `http://localhost:5173/#/docs/<slug>` and a category at
-`/#/docs/category/<category-slug>`.
+The site uses clean URLs (React Router `BrowserRouter`), so a component lives at `http://localhost:5173/docs/<slug>` and a
+category at `/docs/category/<category-slug>`. Old `/#/docs/...` links are rewritten to the clean path on load. Link
+internally with `<Link to="/docs/...">`, never with `#/` hrefs or plain `<a href>` (that reloads the page).
 
 Useful scripts:
 
@@ -47,7 +48,8 @@ Useful scripts:
 | `npm run dev` | Vite dev server with HMR |
 | `npm run check:wiring` | Fails if any component is missing its file, demo, `?raw` source, DOCS entry or NAV_ORDER category. Warns about animation without a reduced-motion path. |
 | `npm run registry:build` | Regenerates `registry.json` from `src/docs/registry.ts`, then `shadcn build` emits `public/r/*.json` |
-| `npm run build` | `prebuild` (registry:build), then `tsc -b && vite build`. **Must pass before a PR.** |
+| `npm run sitemap:build` | Regenerates `public/sitemap.xml` (every docs and category URL) from `src/docs/registry.ts` |
+| `npm run build` | `prebuild` (registry:build + sitemap:build), then `tsc -b && vite build`. **Must pass before a PR.** |
 | `npm run lint` | oxlint (rules-of-hooks is an error) |
 | `npm run preview` | Serves `dist/` on port 4180 |
 
@@ -335,7 +337,7 @@ npm run check:wiring    # must say 0 error(s)
 
 ## 6. Verify in the browser
 
-Open `http://localhost:5173/#/docs/<slug>` and check each of these:
+Open `http://localhost:5173/docs/<slug>` and check each of these:
 
 - **Both themes**: use the sun/moon toggle in the preview toolbar (it's independent of the site theme), then also flip
   the site theme. Text, borders, and focus rings must stay readable (AA).

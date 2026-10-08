@@ -126,7 +126,7 @@ async function main() {
       ...(reg.size ? { registryDependencies: [...reg].sort() } : {}),
       files: [{ path: rel, type: 'registry:ui' }],
       categories: [slugify(d.category)],
-      docs: `Docs & live preview: ${HOMEPAGE}/#/docs/${d.slug}`,
+      docs: `Docs & live preview: ${HOMEPAGE}/docs/${d.slug}`,
     })
   }
   if (missing.length) throw new Error(`DOCS entries without a component file: ${missing.join(', ')}`)

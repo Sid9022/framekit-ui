@@ -20,7 +20,7 @@ npx shadcn@latest add https://framekit-ui.vercel.app/r/<slug>.json
 
 ```bash
 npm install
-npm run dev            # http://localhost:5173 (HashRouter: /#/docs/<slug>)
+npm run dev            # http://localhost:5173 (clean URLs: /docs/<slug>, /docs/category/<category>)
 npm run check:wiring   # every component has a file, demo, ?raw source, DOCS entry, and NAV_ORDER category
 npm run build          # prebuild → registry:build, then tsc -b && vite build. MUST pass.
 npm run lint           # oxlint

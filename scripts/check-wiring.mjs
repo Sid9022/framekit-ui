@@ -78,6 +78,14 @@ for (const f of fs.readdirSync(path.join(ROOT, 'src/components/ui'))) {
   if (f.endsWith('.tsx') && !registered.has(slug)) errors.push(`src/components/ui/${f} has no DOCS entry in src/docs/registry.ts`)
 }
 
+// Clean URLs: internal links must not use legacy hash routes (`#/docs/...`).
+const walk = (dir) => fs.readdirSync(path.join(ROOT, dir), { withFileTypes: true }).flatMap((e) =>
+  e.isDirectory() ? walk(`${dir}/${e.name}`) : /\.(tsx?|mjs)$/.test(e.name) ? [`${dir}/${e.name}`] : [])
+for (const rel of walk('src').filter((f) => f !== 'src/main.tsx')) { // main.tsx holds the legacy redirect
+  if (/['"`(]\/?#\/docs\//.test(read(rel)) || /vercel\.app\/#\//.test(read(rel)))
+    errors.push(`${rel}: uses a legacy hash route (#/docs/…) — link to the clean path /docs/… with <Link to>`)
+}
+
 for (const w of warnings) console.warn(`warn  ${w}`)
 for (const e of errors) console.error(`error ${e}`)
 console.log(`\n${components.length} components checked — ${errors.length} error(s), ${warnings.length} warning(s)`)

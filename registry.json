@@ -198,7 +198,7 @@
       "categories": [
         "hero"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/split-flap-hero"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/split-flap-hero"
     },
     {
       "name": "ridgeline-horizon-hero",
@@ -224,7 +224,7 @@
       "categories": [
         "hero"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ridgeline-horizon-hero"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/ridgeline-horizon-hero"
     },
     {
       "name": "iron-filings-field",
@@ -245,7 +245,7 @@
       "categories": [
         "animated-backgrounds"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/iron-filings-field"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/iron-filings-field"
     },
     {
       "name": "glow-arc-hero",
@@ -269,7 +269,7 @@
       "categories": [
         "animated-backgrounds"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glow-arc-hero"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/glow-arc-hero"
     },
     {
       "name": "prism-tidal-field",
@@ -290,7 +290,7 @@
       "categories": [
         "animated-backgrounds"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/prism-tidal-field"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/prism-tidal-field"
     },
     {
       "name": "constellation-breathing-grid",
@@ -311,7 +311,7 @@
       "categories": [
         "animated-backgrounds"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/constellation-breathing-grid"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/constellation-breathing-grid"
     },
     {
       "name": "paperfold-gradient-plane",
@@ -331,7 +331,7 @@
       "categories": [
         "animated-backgrounds"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/paperfold-gradient-plane"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/paperfold-gradient-plane"
     },
     {
       "name": "aurora-background",
@@ -351,7 +351,7 @@
       "categories": [
         "animated-backgrounds"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/aurora-background"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/aurora-background"
     },
     {
       "name": "ink-ripple-grid",
@@ -372,7 +372,7 @@
       "categories": [
         "animated-backgrounds"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ink-ripple-grid"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/ink-ripple-grid"
     },
     {
       "name": "silk-shear-field",
@@ -393,7 +393,7 @@
       "categories": [
         "animated-backgrounds"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/silk-shear-field"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/silk-shear-field"
     },
     {
       "name": "void-lattice-drift",
@@ -414,7 +414,7 @@
       "categories": [
         "animated-backgrounds"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/void-lattice-drift"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/void-lattice-drift"
     },
     {
       "name": "ember-drift",
@@ -435,7 +435,7 @@
       "categories": [
         "animated-backgrounds"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ember-drift"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/ember-drift"
     },
     {
       "name": "chromatic-mist",
@@ -456,7 +456,7 @@
       "categories": [
         "animated-backgrounds"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/chromatic-mist"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/chromatic-mist"
     },
     {
       "name": "pulse-rings",
@@ -477,7 +477,7 @@
       "categories": [
         "animated-backgrounds"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/pulse-rings"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/pulse-rings"
     },
     {
       "name": "wax-seal-button",
@@ -502,7 +502,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/wax-seal-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/wax-seal-button"
     },
     {
       "name": "googly-gaze-button",
@@ -523,7 +523,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/googly-gaze-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/googly-gaze-button"
     },
     {
       "name": "slide-confirm-button",
@@ -544,7 +544,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/slide-confirm-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/slide-confirm-button"
     },
     {
       "name": "shimmer-chrome-button",
@@ -565,7 +565,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/shimmer-chrome-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/shimmer-chrome-button"
     },
     {
       "name": "orbit-commit",
@@ -590,7 +590,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/orbit-commit"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/orbit-commit"
     },
     {
       "name": "inkline-action",
@@ -611,7 +611,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/inkline-action"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/inkline-action"
     },
     {
       "name": "focus-bloom-button",
@@ -631,7 +631,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/focus-bloom-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/focus-bloom-button"
     },
     {
       "name": "magnetic-button",
@@ -655,7 +655,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/magnetic-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/magnetic-button"
     },
     {
       "name": "spark-button",
@@ -678,7 +678,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/spark-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/spark-button"
     },
     {
       "name": "liquid-fill-button",
@@ -699,7 +699,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/liquid-fill-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/liquid-fill-button"
     },
     {
       "name": "split-reveal-button",
@@ -720,7 +720,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/split-reveal-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/split-reveal-button"
     },
     {
       "name": "gravity-drop-button",
@@ -744,7 +744,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/gravity-drop-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/gravity-drop-button"
     },
     {
       "name": "neon-stroke-button",
@@ -764,7 +764,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/neon-stroke-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/neon-stroke-button"
     },
     {
       "name": "loop-flight-send-button",
@@ -787,7 +787,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/loop-flight-send-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/loop-flight-send-button"
     },
     {
       "name": "dispatch-truck-button",
@@ -811,7 +811,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/dispatch-truck-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/dispatch-truck-button"
     },
     {
       "name": "drop-in-cart-button",
@@ -834,7 +834,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/drop-in-cart-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/drop-in-cart-button"
     },
     {
       "name": "fill-progress-download-button",
@@ -858,7 +858,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/fill-progress-download-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/fill-progress-download-button"
     },
     {
       "name": "swallow-delete-button",
@@ -881,7 +881,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/swallow-delete-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/swallow-delete-button"
     },
     {
       "name": "face-scan-pay-button",
@@ -905,7 +905,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/face-scan-pay-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/face-scan-pay-button"
     },
     {
       "name": "orbit-dot-export-button",
@@ -928,7 +928,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/orbit-dot-export-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/orbit-dot-export-button"
     },
     {
       "name": "shredder-delete-button",
@@ -951,7 +951,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/shredder-delete-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/shredder-delete-button"
     },
     {
       "name": "cloud-launch-publish-button",
@@ -975,7 +975,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/cloud-launch-publish-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/cloud-launch-publish-button"
     },
     {
       "name": "radial-share-menu",
@@ -999,7 +999,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/radial-share-menu"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/radial-share-menu"
     },
     {
       "name": "pull-cord-lamp-toggle",
@@ -1022,7 +1022,7 @@
       "categories": [
         "toggles"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/pull-cord-lamp-toggle"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/pull-cord-lamp-toggle"
     },
     {
       "name": "watchful-eye-toggle",
@@ -1044,7 +1044,7 @@
       "categories": [
         "toggles"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/watchful-eye-toggle"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/watchful-eye-toggle"
     },
     {
       "name": "day-night-capsule",
@@ -1066,7 +1066,7 @@
       "categories": [
         "toggles"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/day-night-capsule"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/day-night-capsule"
     },
     {
       "name": "glass-orb-switch",
@@ -1088,7 +1088,7 @@
       "categories": [
         "toggles"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glass-orb-switch"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/glass-orb-switch"
     },
     {
       "name": "cosmic-sparkle-toggle",
@@ -1110,7 +1110,7 @@
       "categories": [
         "toggles"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/cosmic-sparkle-toggle"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/cosmic-sparkle-toggle"
     },
     {
       "name": "blinker-switch",
@@ -1132,7 +1132,7 @@
       "categories": [
         "toggles"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/blinker-switch"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/blinker-switch"
     },
     {
       "name": "mood-dial-toggle",
@@ -1154,7 +1154,7 @@
       "categories": [
         "toggles"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/mood-dial-toggle"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/mood-dial-toggle"
     },
     {
       "name": "ink-bloom-toggle",
@@ -1176,7 +1176,7 @@
       "categories": [
         "toggles"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ink-bloom-toggle"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/ink-bloom-toggle"
     },
     {
       "name": "pulsebeat-switch",
@@ -1198,7 +1198,7 @@
       "categories": [
         "toggles"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/pulsebeat-switch"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/pulsebeat-switch"
     },
     {
       "name": "frameflip-toggle",
@@ -1220,7 +1220,7 @@
       "categories": [
         "toggles"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/frameflip-toggle"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/frameflip-toggle"
     },
     {
       "name": "moth-lantern-toggle",
@@ -1242,7 +1242,7 @@
       "categories": [
         "toggles"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/moth-lantern-toggle"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/moth-lantern-toggle"
     },
     {
       "name": "petal-circuit-toggle",
@@ -1264,7 +1264,7 @@
       "categories": [
         "toggles"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/petal-circuit-toggle"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/petal-circuit-toggle"
     },
     {
       "name": "tideglass-toggle",
@@ -1286,7 +1286,7 @@
       "categories": [
         "toggles"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/tideglass-toggle"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/tideglass-toggle"
     },
     {
       "name": "weather-vane-toggle",
@@ -1308,7 +1308,7 @@
       "categories": [
         "toggles"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/weather-vane-toggle"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/weather-vane-toggle"
     },
     {
       "name": "ink-bleed-text",
@@ -1333,7 +1333,7 @@
       "categories": [
         "text-animations"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ink-bleed-text"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/ink-bleed-text"
     },
     {
       "name": "tumble-letters",
@@ -1357,7 +1357,7 @@
       "categories": [
         "text-animations"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/tumble-letters"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/tumble-letters"
     },
     {
       "name": "glyph-weather",
@@ -1377,7 +1377,7 @@
       "categories": [
         "text-animations"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glyph-weather"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/glyph-weather"
     },
     {
       "name": "wordloom",
@@ -1401,7 +1401,7 @@
       "categories": [
         "text-animations"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/wordloom"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/wordloom"
     },
     {
       "name": "momentum-caption",
@@ -1421,7 +1421,7 @@
       "categories": [
         "text-animations"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/momentum-caption"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/momentum-caption"
     },
     {
       "name": "scramble-text",
@@ -1441,7 +1441,7 @@
       "categories": [
         "text-animations"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/scramble-text"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/scramble-text"
     },
     {
       "name": "morphing-text",
@@ -1464,7 +1464,7 @@
       "categories": [
         "text-animations"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/morphing-text"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/morphing-text"
     },
     {
       "name": "typewriter",
@@ -1484,7 +1484,7 @@
       "categories": [
         "text-animations"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/typewriter"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/typewriter"
     },
     {
       "name": "number-ticker",
@@ -1504,7 +1504,7 @@
       "categories": [
         "text-animations"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/number-ticker"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/number-ticker"
     },
     {
       "name": "infinite-marquee",
@@ -1528,7 +1528,7 @@
       "categories": [
         "text-animations"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/infinite-marquee"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/infinite-marquee"
     },
     {
       "name": "prism-sweep-shimmer",
@@ -1549,7 +1549,7 @@
       "categories": [
         "shimmer"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/prism-sweep-shimmer"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/prism-sweep-shimmer"
     },
     {
       "name": "mercury-vein-shimmer",
@@ -1569,7 +1569,7 @@
       "categories": [
         "shimmer"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/mercury-vein-shimmer"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/mercury-vein-shimmer"
     },
     {
       "name": "glyph-aurora-shimmer",
@@ -1589,7 +1589,7 @@
       "categories": [
         "shimmer"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glyph-aurora-shimmer"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/glyph-aurora-shimmer"
     },
     {
       "name": "edge-flare-shimmer",
@@ -1609,7 +1609,7 @@
       "categories": [
         "shimmer"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/edge-flare-shimmer"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/edge-flare-shimmer"
     },
     {
       "name": "skeleton-wave-shimmer",
@@ -1630,7 +1630,7 @@
       "categories": [
         "shimmer"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/skeleton-wave-shimmer"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/skeleton-wave-shimmer"
     },
     {
       "name": "card-sheen-loader",
@@ -1651,7 +1651,7 @@
       "categories": [
         "shimmer"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/card-sheen-loader"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/card-sheen-loader"
     },
     {
       "name": "list-bloom-shimmer",
@@ -1672,7 +1672,7 @@
       "categories": [
         "shimmer"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/list-bloom-shimmer"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/list-bloom-shimmer"
     },
     {
       "name": "hourglass-loader",
@@ -1695,7 +1695,7 @@
       "categories": [
         "loading"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/hourglass-loader"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/hourglass-loader"
     },
     {
       "name": "orbital-bead-loader",
@@ -1716,7 +1716,7 @@
       "categories": [
         "loading"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/orbital-bead-loader"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/orbital-bead-loader"
     },
     {
       "name": "ink-drip-loader",
@@ -1740,7 +1740,7 @@
       "categories": [
         "loading"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ink-drip-loader"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/ink-drip-loader"
     },
     {
       "name": "morph-glyph-loader",
@@ -1763,7 +1763,7 @@
       "categories": [
         "loading"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/morph-glyph-loader"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/morph-glyph-loader"
     },
     {
       "name": "liquid-charge-capsule",
@@ -1786,7 +1786,7 @@
       "categories": [
         "loading"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/liquid-charge-capsule"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/liquid-charge-capsule"
     },
     {
       "name": "ghost-gobbler-skull",
@@ -1811,7 +1811,7 @@
       "categories": [
         "loading"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ghost-gobbler-skull"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/ghost-gobbler-skull"
     },
     {
       "name": "particle-morph-loader",
@@ -1836,7 +1836,7 @@
       "categories": [
         "loading"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/particle-morph-loader"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/particle-morph-loader"
     },
     {
       "name": "lattice-pulse-loader",
@@ -1857,7 +1857,7 @@
       "categories": [
         "loading"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/lattice-pulse-loader"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/lattice-pulse-loader"
     },
     {
       "name": "snake-loader",
@@ -1883,7 +1883,7 @@
       "categories": [
         "loading"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/snake-loader"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/snake-loader"
     },
     {
       "name": "constellation-lost-404",
@@ -1907,7 +1907,7 @@
       "categories": [
         "404-animation"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/constellation-lost-404"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/constellation-lost-404"
     },
     {
       "name": "paper-tear-404",
@@ -1931,7 +1931,7 @@
       "categories": [
         "404-animation"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/paper-tear-404"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/paper-tear-404"
     },
     {
       "name": "glitch-portal-404",
@@ -1955,7 +1955,7 @@
       "categories": [
         "404-animation"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glitch-portal-404"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/glitch-portal-404"
     },
     {
       "name": "paper-orbit-404",
@@ -1979,7 +1979,7 @@
       "categories": [
         "404-animation"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/paper-orbit-404"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/paper-orbit-404"
     },
     {
       "name": "mars-tether-404",
@@ -2003,7 +2003,7 @@
       "categories": [
         "404-animation"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/mars-tether-404"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/mars-tether-404"
     },
     {
       "name": "mesh-orb-404",
@@ -2027,7 +2027,7 @@
       "categories": [
         "404-animation"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/mesh-orb-404"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/mesh-orb-404"
     },
     {
       "name": "lens-reveal-404",
@@ -2051,7 +2051,7 @@
       "categories": [
         "404-animation"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/lens-reveal-404"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/lens-reveal-404"
     },
     {
       "name": "receipt-print-toast",
@@ -2075,7 +2075,7 @@
       "categories": [
         "toast"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/receipt-print-toast"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/receipt-print-toast"
     },
     {
       "name": "gravity-stack-toast",
@@ -2099,7 +2099,7 @@
       "categories": [
         "toast"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/gravity-stack-toast"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/gravity-stack-toast"
     },
     {
       "name": "ribbon-unfurl-toast",
@@ -2122,7 +2122,7 @@
       "categories": [
         "toast"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ribbon-unfurl-toast"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/ribbon-unfurl-toast"
     },
     {
       "name": "sonar-ping-toast",
@@ -2146,7 +2146,7 @@
       "categories": [
         "toast"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/sonar-ping-toast"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/sonar-ping-toast"
     },
     {
       "name": "parallax-reel-scroll",
@@ -2167,7 +2167,7 @@
       "categories": [
         "vertical-scroll"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/parallax-reel-scroll"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/parallax-reel-scroll"
     },
     {
       "name": "snap-magnet-scroll",
@@ -2188,7 +2188,7 @@
       "categories": [
         "vertical-scroll"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/snap-magnet-scroll"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/snap-magnet-scroll"
     },
     {
       "name": "velocity-fade-stack",
@@ -2209,7 +2209,7 @@
       "categories": [
         "vertical-scroll"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/velocity-fade-stack"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/velocity-fade-stack"
     },
     {
       "name": "editorial-spread-card",
@@ -2234,7 +2234,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/editorial-spread-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/editorial-spread-card"
     },
     {
       "name": "swipe-carousel-post",
@@ -2259,7 +2259,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/swipe-carousel-post"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/swipe-carousel-post"
     },
     {
       "name": "folder-fan-showcase",
@@ -2283,7 +2283,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/folder-fan-showcase"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/folder-fan-showcase"
     },
     {
       "name": "origami-unfold-card",
@@ -2308,7 +2308,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/origami-unfold-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/origami-unfold-card"
     },
     {
       "name": "lenticular-shift-card",
@@ -2332,7 +2332,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/lenticular-shift-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/lenticular-shift-card"
     },
     {
       "name": "curved-tile-wall",
@@ -2356,7 +2356,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/curved-tile-wall"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/curved-tile-wall"
     },
     {
       "name": "fan-deck-carousel",
@@ -2380,7 +2380,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/fan-deck-carousel"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/fan-deck-carousel"
     },
     {
       "name": "tide-deck",
@@ -2404,7 +2404,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/tide-deck"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/tide-deck"
     },
     {
       "name": "windowpane-story-card",
@@ -2423,7 +2423,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/windowpane-story-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/windowpane-story-card"
     },
     {
       "name": "topographic-stack",
@@ -2443,7 +2443,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/topographic-stack"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/topographic-stack"
     },
     {
       "name": "spotlight-card",
@@ -2462,7 +2462,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/spotlight-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/spotlight-card"
     },
     {
       "name": "tilt-card",
@@ -2485,7 +2485,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/tilt-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/tilt-card"
     },
     {
       "name": "glass-card",
@@ -2504,7 +2504,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glass-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/glass-card"
     },
     {
       "name": "swipe-cards",
@@ -2529,7 +2529,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/swipe-cards"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/swipe-cards"
     },
     {
       "name": "border-beam",
@@ -2549,7 +2549,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/border-beam"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/border-beam"
     },
     {
       "name": "pixel-reveal",
@@ -2572,7 +2572,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/pixel-reveal"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/pixel-reveal"
     },
     {
       "name": "hologram-flip-card",
@@ -2596,7 +2596,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/hologram-flip-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/hologram-flip-card"
     },
     {
       "name": "liquid-morph-card",
@@ -2617,7 +2617,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/liquid-morph-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/liquid-morph-card"
     },
     {
       "name": "gravity-expand-card",
@@ -2641,7 +2641,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/gravity-expand-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/gravity-expand-card"
     },
     {
       "name": "flip-checkout-card",
@@ -2665,7 +2665,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/flip-checkout-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/flip-checkout-card"
     },
     {
       "name": "plucked-string-tabs",
@@ -2688,7 +2688,7 @@
       "categories": [
         "navigation"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/plucked-string-tabs"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/plucked-string-tabs"
     },
     {
       "name": "compass-rail",
@@ -2708,7 +2708,7 @@
       "categories": [
         "navigation"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/compass-rail"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/compass-rail"
     },
     {
       "name": "halo-menu",
@@ -2729,7 +2729,7 @@
       "categories": [
         "navigation"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/halo-menu"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/halo-menu"
     },
     {
       "name": "magnify-dock",
@@ -2753,7 +2753,7 @@
       "categories": [
         "navigation"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/magnify-dock"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/magnify-dock"
     },
     {
       "name": "orbiting-icons",
@@ -2774,7 +2774,7 @@
       "categories": [
         "navigation"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/orbiting-icons"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/orbiting-icons"
     },
     {
       "name": "curtain-drop-nav",
@@ -2795,7 +2795,7 @@
       "categories": [
         "navigation"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/curtain-drop-nav"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/curtain-drop-nav"
     },
     {
       "name": "morph-pill-header",
@@ -2816,7 +2816,7 @@
       "categories": [
         "navigation"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/morph-pill-header"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/morph-pill-header"
     },
     {
       "name": "radial-toolburst",
@@ -2840,7 +2840,7 @@
       "categories": [
         "navigation"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/radial-toolburst"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/radial-toolburst"
     },
     {
       "name": "magnetic-dock-nav",
@@ -2864,7 +2864,7 @@
       "categories": [
         "navigation"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/magnetic-dock-nav"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/magnetic-dock-nav"
     },
     {
       "name": "rail-bloom-sidebar",
@@ -2889,7 +2889,7 @@
       "categories": [
         "sidebars"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/rail-bloom-sidebar"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/rail-bloom-sidebar"
     },
     {
       "name": "section-accordion-sidebar",
@@ -2914,7 +2914,7 @@
       "categories": [
         "sidebars"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/section-accordion-sidebar"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/section-accordion-sidebar"
     },
     {
       "name": "context-drawer-sidebar",
@@ -2939,7 +2939,7 @@
       "categories": [
         "sidebars"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/context-drawer-sidebar"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/context-drawer-sidebar"
     },
     {
       "name": "command-tree-sidebar",
@@ -2964,7 +2964,7 @@
       "categories": [
         "sidebars"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/command-tree-sidebar"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/command-tree-sidebar"
     },
     {
       "name": "glass-workspace-sidebar",
@@ -2989,7 +2989,7 @@
       "categories": [
         "sidebars"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glass-workspace-sidebar"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/glass-workspace-sidebar"
     },
     {
       "name": "timeline-rail-sidebar",
@@ -3013,7 +3013,7 @@
       "categories": [
         "sidebars"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/timeline-rail-sidebar"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/timeline-rail-sidebar"
     },
     {
       "name": "mega-flyout-sidebar",
@@ -3038,7 +3038,7 @@
       "categories": [
         "sidebars"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/mega-flyout-sidebar"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/mega-flyout-sidebar"
     },
     {
       "name": "priority-inbox-sidebar",
@@ -3063,7 +3063,7 @@
       "categories": [
         "sidebars"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/priority-inbox-sidebar"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/priority-inbox-sidebar"
     },
     {
       "name": "orbit-switcher-sidebar",
@@ -3088,7 +3088,7 @@
       "categories": [
         "sidebars"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/orbit-switcher-sidebar"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/orbit-switcher-sidebar"
     },
     {
       "name": "thread-bubble-stack",
@@ -3113,7 +3113,7 @@
       "categories": [
         "whatsapp-messaging"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/thread-bubble-stack"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/thread-bubble-stack"
     },
     {
       "name": "inbox-pulse-list",
@@ -3138,7 +3138,7 @@
       "categories": [
         "whatsapp-messaging"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/inbox-pulse-list"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/inbox-pulse-list"
     },
     {
       "name": "template-message-card",
@@ -3163,7 +3163,7 @@
       "categories": [
         "whatsapp-messaging"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/template-message-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/template-message-card"
     },
     {
       "name": "campaign-composer-strip",
@@ -3188,7 +3188,7 @@
       "categories": [
         "whatsapp-messaging"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/campaign-composer-strip"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/campaign-composer-strip"
     },
     {
       "name": "typing-wave-indicator",
@@ -3212,7 +3212,7 @@
       "categories": [
         "whatsapp-messaging"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/typing-wave-indicator"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/typing-wave-indicator"
     },
     {
       "name": "opt-in-consent-banner",
@@ -3237,7 +3237,7 @@
       "categories": [
         "whatsapp-messaging"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/opt-in-consent-banner"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/opt-in-consent-banner"
     },
     {
       "name": "media-carousel-bubble",
@@ -3262,7 +3262,7 @@
       "categories": [
         "whatsapp-messaging"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/media-carousel-bubble"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/media-carousel-bubble"
     },
     {
       "name": "reaction-chip-bar",
@@ -3287,7 +3287,7 @@
       "categories": [
         "whatsapp-messaging"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/reaction-chip-bar"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/reaction-chip-bar"
     },
     {
       "name": "whatsapp-flow-form",
@@ -3312,7 +3312,7 @@
       "categories": [
         "whatsapp-messaging"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/whatsapp-flow-form"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/whatsapp-flow-form"
     },
     {
       "name": "catalog-product-card",
@@ -3337,7 +3337,7 @@
       "categories": [
         "whatsapp-messaging"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/catalog-product-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/catalog-product-card"
     },
     {
       "name": "session-window-timer",
@@ -3361,7 +3361,7 @@
       "categories": [
         "whatsapp-messaging"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/session-window-timer"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/session-window-timer"
     },
     {
       "name": "agent-handoff-card",
@@ -3386,7 +3386,7 @@
       "categories": [
         "whatsapp-messaging"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/agent-handoff-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/agent-handoff-card"
     },
     {
       "name": "broadcast-status-board",
@@ -3410,7 +3410,7 @@
       "categories": [
         "whatsapp-messaging"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/broadcast-status-board"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/broadcast-status-board"
     },
     {
       "name": "quick-reply-chip-cloud",
@@ -3434,7 +3434,7 @@
       "categories": [
         "whatsapp-messaging"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/quick-reply-chip-cloud"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/quick-reply-chip-cloud"
     },
     {
       "name": "notification-orbit-center",
@@ -3459,7 +3459,7 @@
       "categories": [
         "notifications"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/notification-orbit-center"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/notification-orbit-center"
     },
     {
       "name": "priority-banner-alert",
@@ -3483,7 +3483,7 @@
       "categories": [
         "notifications"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/priority-banner-alert"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/priority-banner-alert"
     },
     {
       "name": "inbox-row-notifier",
@@ -3508,7 +3508,7 @@
       "categories": [
         "notifications"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/inbox-row-notifier"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/inbox-row-notifier"
     },
     {
       "name": "badge-bloom-counter",
@@ -3533,7 +3533,7 @@
       "categories": [
         "notifications"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/badge-bloom-counter"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/badge-bloom-counter"
     },
     {
       "name": "push-preview-card",
@@ -3557,7 +3557,7 @@
       "categories": [
         "notifications"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/push-preview-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/push-preview-card"
     },
     {
       "name": "swing-price-tag",
@@ -3581,7 +3581,7 @@
       "categories": [
         "widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/swing-price-tag"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/swing-price-tag"
     },
     {
       "name": "paper-fold-accordion",
@@ -3605,7 +3605,7 @@
       "categories": [
         "widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/paper-fold-accordion"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/paper-fold-accordion"
     },
     {
       "name": "tear-stub-boarding-pass",
@@ -3629,7 +3629,7 @@
       "categories": [
         "widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/tear-stub-boarding-pass"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/tear-stub-boarding-pass"
     },
     {
       "name": "seat-scale-pricing",
@@ -3653,7 +3653,7 @@
       "categories": [
         "widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/seat-scale-pricing"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/seat-scale-pricing"
     },
     {
       "name": "polar-bloom-chart",
@@ -3676,7 +3676,7 @@
       "categories": [
         "widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/polar-bloom-chart"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/polar-bloom-chart"
     },
     {
       "name": "glow-leaderboard-list",
@@ -3700,7 +3700,7 @@
       "categories": [
         "widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glow-leaderboard-list"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/glow-leaderboard-list"
     },
     {
       "name": "podium-stack-leaderboard",
@@ -3725,7 +3725,7 @@
       "categories": [
         "widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/podium-stack-leaderboard"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/podium-stack-leaderboard"
     },
     {
       "name": "kpi-spark-widget",
@@ -3749,7 +3749,7 @@
       "categories": [
         "widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/kpi-spark-widget"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/kpi-spark-widget"
     },
     {
       "name": "live-meter-dial",
@@ -3772,7 +3772,7 @@
       "categories": [
         "widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/live-meter-dial"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/live-meter-dial"
     },
     {
       "name": "activity-stream-widget",
@@ -3796,7 +3796,7 @@
       "categories": [
         "widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/activity-stream-widget"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/activity-stream-widget"
     },
     {
       "name": "status-heatmap-grid",
@@ -3816,7 +3816,7 @@
       "categories": [
         "widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/status-heatmap-grid"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/status-heatmap-grid"
     },
     {
       "name": "ring-progress-cluster",
@@ -3839,7 +3839,7 @@
       "categories": [
         "widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ring-progress-cluster"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/ring-progress-cluster"
     },
     {
       "name": "glass-bubble-buddy",
@@ -3862,7 +3862,7 @@
       "categories": [
         "voice-agent"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glass-bubble-buddy"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/glass-bubble-buddy"
     },
     {
       "name": "mesh-pill-orb",
@@ -3883,7 +3883,7 @@
       "categories": [
         "voice-agent"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/mesh-pill-orb"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/mesh-pill-orb"
     },
     {
       "name": "star-morph-buddy",
@@ -3906,7 +3906,7 @@
       "categories": [
         "voice-agent"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/star-morph-buddy"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/star-morph-buddy"
     },
     {
       "name": "call-control-bar",
@@ -3931,7 +3931,7 @@
       "categories": [
         "voice-agent"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/call-control-bar"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/call-control-bar"
     },
     {
       "name": "live-transcript-panel",
@@ -3955,7 +3955,7 @@
       "categories": [
         "voice-agent"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/live-transcript-panel"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/live-transcript-panel"
     },
     {
       "name": "agent-state-orb",
@@ -3979,7 +3979,7 @@
       "categories": [
         "voice-agent"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/agent-state-orb"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/agent-state-orb"
     },
     {
       "name": "voice-waveform-lane",
@@ -4003,7 +4003,7 @@
       "categories": [
         "voice-agent"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/voice-waveform-lane"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/voice-waveform-lane"
     },
     {
       "name": "softphone-dial-pad",
@@ -4028,7 +4028,7 @@
       "categories": [
         "voice-agent"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/softphone-dial-pad"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/softphone-dial-pad"
     },
     {
       "name": "queue-ticket-card",
@@ -4053,7 +4053,7 @@
       "categories": [
         "voice-agent"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/queue-ticket-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/queue-ticket-card"
     },
     {
       "name": "prism-mesh-orb",
@@ -4077,7 +4077,7 @@
       "categories": [
         "voice-agent"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/prism-mesh-orb"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/prism-mesh-orb"
     },
     {
       "name": "liquid-metal-orb",
@@ -4100,7 +4100,7 @@
       "categories": [
         "voice-agent"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/liquid-metal-orb"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/liquid-metal-orb"
     },
     {
       "name": "aurora-core-orb",
@@ -4124,7 +4124,7 @@
       "categories": [
         "voice-agent"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/aurora-core-orb"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/aurora-core-orb"
     },
     {
       "name": "particle-halo-orb",
@@ -4145,7 +4145,7 @@
       "categories": [
         "voice-agent"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/particle-halo-orb"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/particle-halo-orb"
     },
     {
       "name": "ribbon-helix-wave",
@@ -4166,7 +4166,7 @@
       "categories": [
         "voice-agent"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ribbon-helix-wave"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/ribbon-helix-wave"
     },
     {
       "name": "radial-sonar-wave",
@@ -4191,7 +4191,7 @@
       "categories": [
         "voice-agent"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/radial-sonar-wave"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/radial-sonar-wave"
     },
     {
       "name": "pill-trail-cursor",
@@ -4212,7 +4212,7 @@
       "categories": [
         "cursors"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/pill-trail-cursor"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/pill-trail-cursor"
     },
     {
       "name": "halftone-bloom-cursor",
@@ -4232,7 +4232,7 @@
       "categories": [
         "cursors"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/halftone-bloom-cursor"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/halftone-bloom-cursor"
     },
     {
       "name": "cursor-trail",
@@ -4253,7 +4253,7 @@
       "categories": [
         "cursors"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/cursor-trail"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/cursor-trail"
     },
     {
       "name": "ribbon-trail-cursor",
@@ -4273,7 +4273,7 @@
       "categories": [
         "cursors"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ribbon-trail-cursor"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/ribbon-trail-cursor"
     },
     {
       "name": "lens-flare-cursor",
@@ -4294,7 +4294,7 @@
       "categories": [
         "cursors"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/lens-flare-cursor"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/lens-flare-cursor"
     },
     {
       "name": "ink-stamp-cursor",
@@ -4314,7 +4314,7 @@
       "categories": [
         "cursors"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/ink-stamp-cursor"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/ink-stamp-cursor"
     },
     {
       "name": "orbit-ring-cursor",
@@ -4335,7 +4335,7 @@
       "categories": [
         "cursors"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/orbit-ring-cursor"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/orbit-ring-cursor"
     },
     {
       "name": "morph-search-capsule",
@@ -4358,7 +4358,7 @@
       "categories": [
         "search-inputs"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/morph-search-capsule"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/morph-search-capsule"
     },
     {
       "name": "elastic-slider",
@@ -4381,7 +4381,7 @@
       "categories": [
         "search-inputs"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/elastic-slider"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/elastic-slider"
     },
     {
       "name": "signal-pebble",
@@ -4401,7 +4401,7 @@
       "categories": [
         "search-inputs"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/signal-pebble"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/signal-pebble"
     },
     {
       "name": "signature-pad-field",
@@ -4426,7 +4426,7 @@
       "categories": [
         "inputs-forms"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/signature-pad-field"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/signature-pad-field"
     },
     {
       "name": "tumbler-lock-otp",
@@ -4449,7 +4449,7 @@
       "categories": [
         "inputs-forms"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/tumbler-lock-otp"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/tumbler-lock-otp"
     },
     {
       "name": "crystal-strength-password",
@@ -4473,7 +4473,7 @@
       "categories": [
         "inputs-forms"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/crystal-strength-password"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/crystal-strength-password"
     },
     {
       "name": "button",
@@ -4493,7 +4493,7 @@
       "categories": [
         "core"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/button"
     },
     {
       "name": "badge",
@@ -4513,7 +4513,7 @@
       "categories": [
         "core"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/badge"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/badge"
     },
     {
       "name": "card",
@@ -4533,7 +4533,7 @@
       "categories": [
         "core"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/card"
     },
     {
       "name": "input",
@@ -4553,7 +4553,7 @@
       "categories": [
         "core"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/input"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/input"
     },
     {
       "name": "textarea",
@@ -4573,7 +4573,7 @@
       "categories": [
         "core"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/textarea"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/textarea"
     },
     {
       "name": "switch",
@@ -4593,7 +4593,7 @@
       "categories": [
         "core"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/switch"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/switch"
     },
     {
       "name": "checkbox",
@@ -4616,7 +4616,7 @@
       "categories": [
         "core"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/checkbox"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/checkbox"
     },
     {
       "name": "tabs",
@@ -4636,7 +4636,7 @@
       "categories": [
         "core"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/tabs"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/tabs"
     },
     {
       "name": "accordion",
@@ -4660,7 +4660,7 @@
       "categories": [
         "core"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/accordion"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/accordion"
     },
     {
       "name": "dialog",
@@ -4684,7 +4684,7 @@
       "categories": [
         "core"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/dialog"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/dialog"
     },
     {
       "name": "tooltip",
@@ -4703,7 +4703,7 @@
       "categories": [
         "core"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/tooltip"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/tooltip"
     },
     {
       "name": "dropdown-menu",
@@ -4722,7 +4722,7 @@
       "categories": [
         "core"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/dropdown-menu"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/dropdown-menu"
     },
     {
       "name": "toast",
@@ -4745,7 +4745,7 @@
       "categories": [
         "core"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/toast"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/toast"
     },
     {
       "name": "avatar",
@@ -4764,7 +4764,7 @@
       "categories": [
         "core"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/avatar"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/avatar"
     },
     {
       "name": "skeleton",
@@ -4783,7 +4783,7 @@
       "categories": [
         "core"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/skeleton"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/skeleton"
     },
     {
       "name": "progress",
@@ -4803,7 +4803,7 @@
       "categories": [
         "core"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/progress"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/progress"
     },
     {
       "name": "breathing-dot",
@@ -4823,7 +4823,7 @@
       "categories": [
         "core"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/breathing-dot"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/breathing-dot"
     },
     {
       "name": "dealer-deck-testimonials",
@@ -4848,7 +4848,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/dealer-deck-testimonials"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/dealer-deck-testimonials"
     },
     {
       "name": "particle-mesh-gallery",
@@ -4874,7 +4874,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/particle-mesh-gallery"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/particle-mesh-gallery"
     },
     {
       "name": "kinetic-name-hero",
@@ -4899,7 +4899,7 @@
       "categories": [
         "hero"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/kinetic-name-hero"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/kinetic-name-hero"
     },
     {
       "name": "spotlight-reveal-hero",
@@ -4924,7 +4924,7 @@
       "categories": [
         "hero"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/spotlight-reveal-hero"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/spotlight-reveal-hero"
     },
     {
       "name": "depth-parallax-hero",
@@ -4949,7 +4949,7 @@
       "categories": [
         "hero"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/depth-parallax-hero"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/depth-parallax-hero"
     },
     {
       "name": "role-morph-hero",
@@ -4974,7 +4974,7 @@
       "categories": [
         "hero"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/role-morph-hero"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/role-morph-hero"
     },
     {
       "name": "photo-strip-hero",
@@ -5000,7 +5000,7 @@
       "categories": [
         "hero"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/photo-strip-hero"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/photo-strip-hero"
     },
     {
       "name": "terminal-dev-hero",
@@ -5025,7 +5025,7 @@
       "categories": [
         "hero"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/terminal-dev-hero"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/terminal-dev-hero"
     },
     {
       "name": "project-reveal-list",
@@ -5051,7 +5051,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/project-reveal-list"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/project-reveal-list"
     },
     {
       "name": "project-filter-gallery",
@@ -5076,7 +5076,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/project-filter-gallery"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/project-filter-gallery"
     },
     {
       "name": "case-study-scroll",
@@ -5101,7 +5101,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/case-study-scroll"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/case-study-scroll"
     },
     {
       "name": "before-after-slider",
@@ -5126,7 +5126,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/before-after-slider"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/before-after-slider"
     },
     {
       "name": "career-timeline",
@@ -5150,7 +5150,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/career-timeline"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/career-timeline"
     },
     {
       "name": "skills-marquee",
@@ -5174,7 +5174,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/skills-marquee"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/skills-marquee"
     },
     {
       "name": "skill-meters",
@@ -5199,7 +5199,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/skill-meters"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/skill-meters"
     },
     {
       "name": "impact-stats",
@@ -5223,7 +5223,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/impact-stats"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/impact-stats"
     },
     {
       "name": "testimonial-carousel",
@@ -5248,7 +5248,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/testimonial-carousel"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/testimonial-carousel"
     },
     {
       "name": "client-logo-strip",
@@ -5272,7 +5272,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/client-logo-strip"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/client-logo-strip"
     },
     {
       "name": "contact-form-card",
@@ -5297,7 +5297,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/contact-form-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/contact-form-card"
     },
     {
       "name": "social-dock",
@@ -5321,7 +5321,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/social-dock"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/social-dock"
     },
     {
       "name": "copy-email-button",
@@ -5346,7 +5346,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/copy-email-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/copy-email-button"
     },
     {
       "name": "availability-badge",
@@ -5369,7 +5369,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/availability-badge"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/availability-badge"
     },
     {
       "name": "portfolio-footer",
@@ -5394,7 +5394,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/portfolio-footer"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/portfolio-footer"
     },
     {
       "name": "section-spy-nav",
@@ -5418,7 +5418,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/section-spy-nav"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/section-spy-nav"
     },
     {
       "name": "project-lightbox",
@@ -5444,7 +5444,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/project-lightbox"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/project-lightbox"
     },
     {
       "name": "intro-preloader",
@@ -5468,7 +5468,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/intro-preloader"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/intro-preloader"
     },
     {
       "name": "reading-progress-toc",
@@ -5492,7 +5492,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/reading-progress-toc"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/reading-progress-toc"
     },
     {
       "name": "resume-download-button",
@@ -5517,7 +5517,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/resume-download-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/resume-download-button"
     },
     {
       "name": "services-cards",
@@ -5542,7 +5542,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/services-cards"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/services-cards"
     },
     {
       "name": "scroll-reveal",
@@ -5564,7 +5564,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/scroll-reveal"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/scroll-reveal"
     },
     {
       "name": "portfolio-studio-template",
@@ -5597,7 +5597,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/portfolio-studio-template"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/portfolio-studio-template"
     },
     {
       "name": "portfolio-developer-template",
@@ -5629,7 +5629,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/portfolio-developer-template"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/portfolio-developer-template"
     },
     {
       "name": "year-activity-grid",
@@ -5651,7 +5651,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/year-activity-grid"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/year-activity-grid"
     },
     {
       "name": "now-playing-widget",
@@ -5677,7 +5677,7 @@
       "categories": [
         "widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/now-playing-widget"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/now-playing-widget"
     },
     {
       "name": "world-clock-globe",
@@ -5700,7 +5700,7 @@
       "categories": [
         "widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/world-clock-globe"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/world-clock-globe"
     },
     {
       "name": "bento-profile-board",
@@ -5726,7 +5726,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/bento-profile-board"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/bento-profile-board"
     },
     {
       "name": "scatter-desk-collage",
@@ -5751,7 +5751,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/scatter-desk-collage"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/scatter-desk-collage"
     },
     {
       "name": "kudos-wall",
@@ -5775,7 +5775,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/kudos-wall"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/kudos-wall"
     },
     {
       "name": "book-spine-shelf",
@@ -5800,7 +5800,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/book-spine-shelf"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/book-spine-shelf"
     },
     {
       "name": "mesh-project-cards",
@@ -5825,7 +5825,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/mesh-project-cards"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/mesh-project-cards"
     },
     {
       "name": "command-menu",
@@ -5850,7 +5850,7 @@
       "categories": [
         "navigation"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/command-menu"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/command-menu"
     },
     {
       "name": "island-section-nav",
@@ -5874,7 +5874,7 @@
       "categories": [
         "navigation"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/island-section-nav"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/island-section-nav"
     },
     {
       "name": "sticky-card-stack",
@@ -5900,7 +5900,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/sticky-card-stack"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/sticky-card-stack"
     },
     {
       "name": "pinned-project-reel",
@@ -5926,7 +5926,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/pinned-project-reel"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/pinned-project-reel"
     },
     {
       "name": "scroll-text-fill",
@@ -5950,7 +5950,7 @@
       "categories": [
         "text-animations"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/scroll-text-fill"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/scroll-text-fill"
     },
     {
       "name": "xray-lens-cursor",
@@ -5973,7 +5973,7 @@
       "categories": [
         "cursors"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/xray-lens-cursor"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/xray-lens-cursor"
     },
     {
       "name": "charm-text",
@@ -5997,7 +5997,7 @@
       "categories": [
         "text-animations"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/charm-text"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/charm-text"
     },
     {
       "name": "big-type-footer",
@@ -6022,7 +6022,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/big-type-footer"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/big-type-footer"
     },
     {
       "name": "grain-gradient-field",
@@ -6045,7 +6045,7 @@
       "categories": [
         "animated-backgrounds"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/grain-gradient-field"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/grain-gradient-field"
     },
     {
       "name": "theme-reveal-toggle",
@@ -6070,7 +6070,7 @@
       "categories": [
         "toggles"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/theme-reveal-toggle"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/theme-reveal-toggle"
     },
     {
       "name": "mini-desktop-os",
@@ -6096,7 +6096,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/mini-desktop-os"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/mini-desktop-os"
     },
     {
       "name": "login-gate-intro",
@@ -6122,7 +6122,7 @@
       "categories": [
         "loading"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/login-gate-intro"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/login-gate-intro"
     },
     {
       "name": "route-chooser-hero",
@@ -6147,7 +6147,7 @@
       "categories": [
         "hero"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/route-chooser-hero"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/route-chooser-hero"
     },
     {
       "name": "discovery-scene",
@@ -6172,7 +6172,7 @@
       "categories": [
         "portfolio"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/discovery-scene"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/discovery-scene"
     },
     {
       "name": "signal-beam-diagram",
@@ -6197,7 +6197,7 @@
       "categories": [
         "widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/signal-beam-diagram"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/signal-beam-diagram"
     },
     {
       "name": "feature-bento-grid",
@@ -6222,7 +6222,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/feature-bento-grid"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/feature-bento-grid"
     },
     {
       "name": "live-feed-stack",
@@ -6247,7 +6247,7 @@
       "categories": [
         "notifications"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/live-feed-stack"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/live-feed-stack"
     },
     {
       "name": "file-tree-explorer",
@@ -6272,7 +6272,7 @@
       "categories": [
         "navigation"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/file-tree-explorer"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/file-tree-explorer"
     },
     {
       "name": "device-frame",
@@ -6297,7 +6297,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/device-frame"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/device-frame"
     },
     {
       "name": "avatar-stack",
@@ -6321,7 +6321,7 @@
       "categories": [
         "core"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/avatar-stack"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/avatar-stack"
     },
     {
       "name": "neon-halo-card",
@@ -6346,7 +6346,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/neon-halo-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/neon-halo-card"
     },
     {
       "name": "horizon-grid-field",
@@ -6371,7 +6371,7 @@
       "categories": [
         "animated-backgrounds"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/horizon-grid-field"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/horizon-grid-field"
     },
     {
       "name": "flicker-dot-field",
@@ -6396,7 +6396,7 @@
       "categories": [
         "animated-backgrounds"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/flicker-dot-field"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/flicker-dot-field"
     },
     {
       "name": "confetti-burst-button",
@@ -6421,7 +6421,7 @@
       "categories": [
         "buttons"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/confetti-burst-button"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/confetti-burst-button"
     },
     {
       "name": "video-lightbox-dialog",
@@ -6446,7 +6446,7 @@
       "categories": [
         "cards"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/video-lightbox-dialog"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/video-lightbox-dialog"
     },
     {
       "name": "word-cycle-text",
@@ -6471,7 +6471,7 @@
       "categories": [
         "text-animations"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/word-cycle-text"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/word-cycle-text"
     },
     {
       "name": "highlight-marker-text",
@@ -6495,7 +6495,7 @@
       "categories": [
         "text-animations"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/highlight-marker-text"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/highlight-marker-text"
     },
     {
       "name": "velocity-marquee",
@@ -6520,7 +6520,7 @@
       "categories": [
         "vertical-scroll"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/velocity-marquee"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/velocity-marquee"
     },
     {
       "name": "sparkle-text",
@@ -6543,7 +6543,7 @@
       "categories": [
         "text-animations"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/sparkle-text"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/sparkle-text"
     },
     {
       "name": "glass-app-dock",
@@ -6568,7 +6568,7 @@
       "categories": [
         "website-sections"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glass-app-dock"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/glass-app-dock"
     },
     {
       "name": "spotlight-command-palette",
@@ -6593,7 +6593,7 @@
       "categories": [
         "website-sections"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/spotlight-command-palette"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/spotlight-command-palette"
     },
     {
       "name": "activity-rings",
@@ -6616,7 +6616,7 @@
       "categories": [
         "website-sections"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/activity-rings"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/activity-rings"
     },
     {
       "name": "glass-mega-navbar",
@@ -6641,7 +6641,7 @@
       "categories": [
         "website-sections"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glass-mega-navbar"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/glass-mega-navbar"
     },
     {
       "name": "pricing-plans",
@@ -6666,7 +6666,7 @@
       "categories": [
         "website-sections"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/pricing-plans"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/pricing-plans"
     },
     {
       "name": "faq-accordion",
@@ -6691,7 +6691,7 @@
       "categories": [
         "website-sections"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/faq-accordion"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/faq-accordion"
     },
     {
       "name": "testimonial-wall",
@@ -6716,7 +6716,7 @@
       "categories": [
         "website-sections"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/testimonial-wall"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/testimonial-wall"
     },
     {
       "name": "feature-comparison-table",
@@ -6741,7 +6741,7 @@
       "categories": [
         "website-sections"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/feature-comparison-table"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/feature-comparison-table"
     },
     {
       "name": "cta-glow-banner",
@@ -6765,7 +6765,7 @@
       "categories": [
         "website-sections"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/cta-glow-banner"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/cta-glow-banner"
     },
     {
       "name": "newsletter-signup",
@@ -6790,7 +6790,7 @@
       "categories": [
         "website-sections"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/newsletter-signup"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/newsletter-signup"
     },
     {
       "name": "site-footer",
@@ -6815,7 +6815,7 @@
       "categories": [
         "website-sections"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/site-footer"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/site-footer"
     },
     {
       "name": "cookie-consent",
@@ -6840,7 +6840,7 @@
       "categories": [
         "website-sections"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/cookie-consent"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/cookie-consent"
     },
     {
       "name": "announcement-bar",
@@ -6864,7 +6864,7 @@
       "categories": [
         "website-sections"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/announcement-bar"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/announcement-bar"
     },
     {
       "name": "changelog-timeline",
@@ -6888,7 +6888,7 @@
       "categories": [
         "website-sections"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/changelog-timeline"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/changelog-timeline"
     },
     {
       "name": "scroll-product-reveal",
@@ -6911,7 +6911,7 @@
       "categories": [
         "motion-showcase"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/scroll-product-reveal"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/scroll-product-reveal"
     },
     {
       "name": "app-store-expand-card",
@@ -6935,7 +6935,7 @@
       "categories": [
         "motion-showcase"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/app-store-expand-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/app-store-expand-card"
     },
     {
       "name": "liquid-glass-tab-bar",
@@ -6959,7 +6959,7 @@
       "categories": [
         "motion-showcase"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/liquid-glass-tab-bar"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/liquid-glass-tab-bar"
     },
     {
       "name": "gradient-mesh-hero",
@@ -6983,7 +6983,7 @@
       "categories": [
         "motion-showcase"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/gradient-mesh-hero"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/gradient-mesh-hero"
     },
     {
       "name": "morph-button-modal",
@@ -7007,7 +7007,7 @@
       "categories": [
         "motion-showcase"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/morph-button-modal"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/morph-button-modal"
     },
     {
       "name": "kinetic-stats-band",
@@ -7030,7 +7030,7 @@
       "categories": [
         "motion-showcase"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/kinetic-stats-band"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/kinetic-stats-band"
     },
     {
       "name": "parallax-depth-stack",
@@ -7053,7 +7053,7 @@
       "categories": [
         "motion-showcase"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/parallax-depth-stack"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/parallax-depth-stack"
     },
     {
       "name": "spring-stagger-grid",
@@ -7076,7 +7076,7 @@
       "categories": [
         "motion-showcase"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/spring-stagger-grid"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/spring-stagger-grid"
     },
     {
       "name": "magnetic-dot-grid",
@@ -7097,7 +7097,7 @@
       "categories": [
         "motion-showcase"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/magnetic-dot-grid"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/magnetic-dot-grid"
     },
     {
       "name": "page-curtain-transition",
@@ -7120,7 +7120,7 @@
       "categories": [
         "motion-showcase"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/page-curtain-transition"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/page-curtain-transition"
     },
     {
       "name": "lit-product-card-3d",
@@ -7144,7 +7144,7 @@
       "categories": [
         "motion-showcase"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/lit-product-card-3d"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/lit-product-card-3d"
     },
     {
       "name": "timeline-scrubber",
@@ -7168,7 +7168,7 @@
       "categories": [
         "motion-showcase"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/timeline-scrubber"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/timeline-scrubber"
     },
     {
       "name": "spring-reorder-list",
@@ -7192,7 +7192,7 @@
       "categories": [
         "motion-showcase"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/spring-reorder-list"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/spring-reorder-list"
     },
     {
       "name": "blur-cascade-heading",
@@ -7216,7 +7216,7 @@
       "categories": [
         "motion-showcase"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/blur-cascade-heading"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/blur-cascade-heading"
     },
     {
       "name": "glass-segmented-control",
@@ -7240,7 +7240,7 @@
       "categories": [
         "product-ui"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glass-segmented-control"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/glass-segmented-control"
     },
     {
       "name": "dynamic-status-island",
@@ -7265,7 +7265,7 @@
       "categories": [
         "product-ui"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/dynamic-status-island"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/dynamic-status-island"
     },
     {
       "name": "detent-sheet",
@@ -7290,7 +7290,7 @@
       "categories": [
         "product-ui"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/detent-sheet"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/detent-sheet"
     },
     {
       "name": "vibrancy-context-menu",
@@ -7315,7 +7315,7 @@
       "categories": [
         "product-ui"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/vibrancy-context-menu"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/vibrancy-context-menu"
     },
     {
       "name": "deploy-timeline",
@@ -7340,7 +7340,7 @@
       "categories": [
         "product-ui"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/deploy-timeline"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/deploy-timeline"
     },
     {
       "name": "usage-quota-meter",
@@ -7365,7 +7365,7 @@
       "categories": [
         "product-ui"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/usage-quota-meter"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/usage-quota-meter"
     },
     {
       "name": "onboarding-stepper",
@@ -7390,7 +7390,7 @@
       "categories": [
         "product-ui"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/onboarding-stepper"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/onboarding-stepper"
     },
     {
       "name": "sortable-data-table",
@@ -7415,7 +7415,7 @@
       "categories": [
         "product-ui"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/sortable-data-table"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/sortable-data-table"
     },
     {
       "name": "date-range-picker",
@@ -7440,7 +7440,7 @@
       "categories": [
         "product-ui"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/date-range-picker"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/date-range-picker"
     },
     {
       "name": "feedback-state-panel",
@@ -7465,7 +7465,7 @@
       "categories": [
         "product-ui"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/feedback-state-panel"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/feedback-state-panel"
     },
     {
       "name": "kbd-shortcut-hint",
@@ -7489,7 +7489,7 @@
       "categories": [
         "product-ui"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/kbd-shortcut-hint"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/kbd-shortcut-hint"
     },
     {
       "name": "inset-settings-list",
@@ -7514,7 +7514,7 @@
       "categories": [
         "product-ui"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/inset-settings-list"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/inset-settings-list"
     },
     {
       "name": "rolling-number-stepper",
@@ -7539,7 +7539,7 @@
       "categories": [
         "product-ui"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/rolling-number-stepper"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/rolling-number-stepper"
     },
     {
       "name": "file-drop-uploader",
@@ -7564,7 +7564,7 @@
       "categories": [
         "product-ui"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/file-drop-uploader"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/file-drop-uploader"
     },
     {
       "name": "glow-candle-card",
@@ -7588,7 +7588,7 @@
       "categories": [
         "data-widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glow-candle-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/glow-candle-card"
     },
     {
       "name": "glow-level-card",
@@ -7612,7 +7612,7 @@
       "categories": [
         "data-widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glow-level-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/glow-level-card"
     },
     {
       "name": "glow-histogram-card",
@@ -7636,7 +7636,7 @@
       "categories": [
         "data-widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/glow-histogram-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/glow-histogram-card"
     },
     {
       "name": "budget-area-card",
@@ -7661,7 +7661,7 @@
       "categories": [
         "data-widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/budget-area-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/budget-area-card"
     },
     {
       "name": "pastel-object-carousel",
@@ -7686,7 +7686,7 @@
       "categories": [
         "data-widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/pastel-object-carousel"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/pastel-object-carousel"
     },
     {
       "name": "sparkline-kpi-tile",
@@ -7710,7 +7710,7 @@
       "categories": [
         "data-widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/sparkline-kpi-tile"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/sparkline-kpi-tile"
     },
     {
       "name": "spend-donut-card",
@@ -7734,7 +7734,7 @@
       "categories": [
         "data-widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/spend-donut-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/spend-donut-card"
     },
     {
       "name": "contribution-heatmap-tile",
@@ -7758,7 +7758,7 @@
       "categories": [
         "data-widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/contribution-heatmap-tile"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/contribution-heatmap-tile"
     },
     {
       "name": "wallet-balance-card",
@@ -7783,7 +7783,7 @@
       "categories": [
         "data-widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/wallet-balance-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/wallet-balance-card"
     },
     {
       "name": "crypto-ticker-row",
@@ -7807,7 +7807,7 @@
       "categories": [
         "data-widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/crypto-ticker-row"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/crypto-ticker-row"
     },
     {
       "name": "goal-progress-card",
@@ -7832,7 +7832,7 @@
       "categories": [
         "data-widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/goal-progress-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/goal-progress-card"
     },
     {
       "name": "comparison-bar-card",
@@ -7856,7 +7856,7 @@
       "categories": [
         "data-widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/comparison-bar-card"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/comparison-bar-card"
     },
     {
       "name": "smart-widget-stack",
@@ -7880,7 +7880,7 @@
       "categories": [
         "data-widgets"
       ],
-      "docs": "Docs & live preview: https://framekit-ui.vercel.app/#/docs/smart-widget-stack"
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/smart-widget-stack"
     }
   ]
 }

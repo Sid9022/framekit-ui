@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import * as React from 'react'
 import {
   Home, Search, Settings, Mail, Music, Terminal, Sparkles, Zap, Heart, Star,
@@ -595,7 +596,7 @@ function RadialShareDemo() {
       <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#9a7b5f]">Field notes · Issue 14</p>
       <h3 className="text-center text-lg font-semibold tracking-tight text-[#2b211a]">Quiet interfaces, loud details</h3>
       <RadialShareMenu
-        url="https://framekit-ui.vercel.app/#/docs/radial-share-menu"
+        url="https://framekit-ui.vercel.app/docs/radial-share-menu"
         onShare={fail ? async () => { await wait(200); throw new Error('nope') } : undefined}
       />
       <FailSwitch on={fail} onChange={setFail} light />
@@ -1906,9 +1907,9 @@ export const demos: Record<string, React.ReactNode> = {
       <p className="mt-1.5 text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
         Pages render close to your visitors, with a median time-to-first-byte under 50&nbsp;ms.
       </p>
-      <a href="#/docs/spotlight-card" className="mt-4 inline-flex min-h-11 items-center gap-1 rounded-md text-sm font-medium text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal-600 dark:text-white dark:focus-visible:ring-signal-300">
+      <Link to="/docs/spotlight-card" className="mt-4 inline-flex min-h-11 items-center gap-1 rounded-md text-sm font-medium text-zinc-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-signal-600 dark:text-white dark:focus-visible:ring-signal-300">
         Learn more <UpArrow aria-hidden className="h-4 w-4" />
-      </a>
+      </Link>
     </SpotlightCard>
   ),
   'scramble-text': (

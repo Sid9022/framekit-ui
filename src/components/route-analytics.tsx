@@ -2,8 +2,8 @@ import { useLocation } from 'react-router-dom'
 import { Analytics } from '@vercel/analytics/react'
 
 /**
- * Vercel Web Analytics for the hash-routed site: reports `/#/docs/<slug>` as
- * path `/docs/<slug>` (route `/docs/[slug]`) so every doc page shows up separately.
+ * Vercel Web Analytics: reports each clean path (`/docs/<slug>`) under the route
+ * `/docs/[slug]` so every doc page shows up separately.
  */
 export function RouteAnalytics() {
   const { pathname } = useLocation()

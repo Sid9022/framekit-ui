@@ -1,4 +1,3 @@
-import * as React from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { motion, type Variants } from 'motion/react'
 import { ArrowUpRight, ChevronRight } from 'lucide-react'
@@ -17,10 +16,6 @@ export function CategoryPage() {
   const title = getCategoryBySlug(category)
   const groups = getNavGroups()
   const group = groups.find((g) => g.title === title)
-
-  React.useEffect(() => {
-    document.title = title ? `${title} — Framekit UI` : 'Not found — Framekit UI'
-  }, [title])
 
   if (!title || !group) return <NotFound slug={category} />
 

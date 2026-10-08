@@ -4,7 +4,7 @@ import assert from 'node:assert/strict'
 import { mkdir } from 'node:fs/promises'
 import { chromium } from 'playwright'
 
-const url = process.env.FRAMEKIT_TEST_URL ?? 'http://127.0.0.1:5173/#/docs/particle-mesh-gallery'
+const url = process.env.FRAMEKIT_TEST_URL ?? 'http://127.0.0.1:5173/docs/particle-mesh-gallery'
 await mkdir('.shots', { recursive: true })
 const browser = await chromium.launch({ channel: 'chrome', headless: true })
 const errors = []

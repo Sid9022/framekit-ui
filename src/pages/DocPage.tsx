@@ -358,10 +358,6 @@ export function DocPage() {
     setReplay(0)
   }, [slug])
 
-  React.useEffect(() => {
-    document.title = doc ? `${doc.title} — Framekit UI` : 'Not found — Framekit UI'
-  }, [doc])
-
   const code = sources[slug]
   const deps = React.useMemo(() => detectDeps(code ?? ''), [code])
 

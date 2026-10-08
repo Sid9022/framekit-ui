@@ -236,9 +236,9 @@ export function DocsLayout() {
     if (g) setOpenMap((m) => (m[g.title] ? m : { ...m, [g.title]: true }))
   }, [activeSlug, activeCategory, groups])
 
+  // Scroll position (top on navigation, restore on Back/Forward) is handled by <ScrollManager />.
   React.useEffect(() => {
     setMobileNav(false)
-    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, [location.pathname])
 
   return (

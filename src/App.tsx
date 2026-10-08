@@ -7,6 +7,7 @@ import { CommandPaletteProvider } from '@/components/command-palette'
 import { DocsLayout } from '@/layouts/DocsLayout'
 import { LandingPage } from '@/pages/LandingPage'
 import { RouteAnalytics } from '@/components/route-analytics'
+import { RouteHead, ScrollManager } from '@/components/route-effects'
 import { PageSkeleton } from '@/components/docs/states'
 
 // The docs pages pull in every demo + raw source string (~2 MB). Load them on demand so the
@@ -45,6 +46,8 @@ export default function App() {
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
             <RouteAnalytics />
+            <RouteHead />
+            <ScrollManager />
           </CommandPaletteProvider>
         </ToastProvider>
       </MotionConfig>

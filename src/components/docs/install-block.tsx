@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import * as React from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { Check, Copy, Terminal } from 'lucide-react'
@@ -336,9 +337,9 @@ export function InstallBlock({
                 </button>
               ))}
             </div>
-            <a href="#/docs/installation" className="underline underline-offset-2 hover:text-zinc-900 dark:hover:text-zinc-100">
+            <Link to="/docs/installation" className="underline underline-offset-2 hover:text-zinc-900 dark:hover:text-zinc-100">
               {form === 'namespace' ? 'Register @framekit in components.json →' : 'Setup & prerequisites →'}
-            </a>
+            </Link>
           </div>
         </div>
       ) : (
@@ -361,7 +362,7 @@ export function InstallBlock({
                   <code className={c}>lib/{h}.ts</code>
                 </React.Fragment>
               ))}{' '}
-              — sources on the <a className="text-signal-700 underline underline-offset-2 hover:text-signal-900 dark:text-signal-300 dark:hover:text-signal-100" href="#/docs/installation">Installation</a> page.
+              — sources on the <Link className="text-signal-700 underline underline-offset-2 hover:text-signal-900 dark:text-signal-300 dark:hover:text-signal-100" to="/docs/installation">Installation</Link> page.
             </li>
           )}
           {deps.theme && (
@@ -369,7 +370,7 @@ export function InstallBlock({
               <span className="mr-2 font-mono text-xs text-zinc-600 dark:text-zinc-400">··</span>
               Uses Framekit tokens (<code className={c}>signal-*</code> / <code className={c}>framekit-*</code>); copy the{' '}
               <code className={c}>@theme</code> block from{' '}
-              <a className="text-signal-700 underline underline-offset-2 hover:text-signal-900 dark:text-signal-300 dark:hover:text-signal-100" href="#/docs/theming">Theming</a>.
+              <Link className="text-signal-700 underline underline-offset-2 hover:text-signal-900 dark:text-signal-300 dark:hover:text-signal-100" to="/docs/theming">Theming</Link>.
             </li>
           )}
           <li>

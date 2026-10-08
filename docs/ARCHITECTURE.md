@@ -59,8 +59,12 @@ Installed layout in a user's project (default shadcn aliases): `components/ui/<s
 
 ## The docs site
 
-- **Entry**: `src/main.tsx` → `HashRouter` → `App.tsx` (ThemeProvider, `MotionConfig reducedMotion="user"`, ToastProvider,
-  CommandPaletteProvider). Routes: `/` (landing), `/docs/:slug`, and `/docs/category/:category`.
+- **Entry**: `src/main.tsx` → `BrowserRouter` → `App.tsx` (ThemeProvider, `MotionConfig reducedMotion="user"`, ToastProvider,
+  CommandPaletteProvider). Routes: `/` (landing), `/docs/:slug`, and `/docs/category/:category` (clean URLs, no `#`).
+  `main.tsx` rewrites legacy `/#/docs/...` links to the clean path with `history.replaceState` before the router mounts.
+- **Route effects** (`components/route-effects.tsx`): `<RouteHead />` sets `document.title`, meta description,
+  `<link rel="canonical">`, `og:url` / `og:title` per route (noindex on not-found); `<ScrollManager />` scrolls to top
+  (or to `#anchor`) on navigation and restores the saved position on Back/Forward. Pages must not set `document.title` themselves.
   `DocPage` and `CategoryPage` are lazy-loaded because they pull in every demo and raw source (about 2.7 MB).
 - **Sidebar** (`layouts/DocsLayout.tsx`) = `getNavGroups()` = `NAV_ORDER` filtered to non-empty categories.
 - **DocPage** (`pages/DocPage.tsx`):
@@ -98,8 +102,10 @@ Installed layout in a user's project (default shadcn aliases): `components/ui/<s
 
 ## Hosting
 
-Vercel static hosting (`vercel.json`): `/r/*` is served as JSON with CORS `*` and a 5-minute edge cache, and everything else
-rewrites to `index.html`. `public/r/` and `dist/` are gitignored and produced at build time. `research/` holds internal
+Vercel static hosting (`vercel.json`): `/r/*` is served as JSON with CORS `*` and a 5-minute edge cache, `/assets/*` is cached
+immutably, real files in `public/` (favicon, og.png, robots.txt, sitemap.xml, …) are served as-is, and every other path
+(SPA fallback, excluding `/r/` and `/assets/`) rewrites to `index.html`. Vite's `base` is `/` so deep links load assets.
+`public/r/`, `public/sitemap.xml` and `dist/` are gitignored and produced at build time (`prebuild`). `research/` holds internal
 inspiration notes (gitignored, not published).
 
 ## Adding a shared helper to `src/lib/`

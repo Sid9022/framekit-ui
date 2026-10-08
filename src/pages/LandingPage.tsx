@@ -314,9 +314,6 @@ function Why() {
 export function LandingPage() {
   const count = componentDocs.length
   const groups = getNavGroups().filter((g) => g.title !== 'Getting Started')
-  React.useEffect(() => {
-    document.title = 'Framekit UI — interfaces that feel alive'
-  }, [])
   return (
     <div className="min-h-screen overflow-x-clip bg-[#F8F8F7] text-zinc-950 antialiased [-webkit-tap-highlight-color:transparent] dark:bg-[#0A0A0B] dark:text-white">
       <a href="#main" className={cn('sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-zinc-950 focus:px-4 focus:py-2 focus:text-white')}>Skip to content</a>
