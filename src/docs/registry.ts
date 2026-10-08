@@ -1144,6 +1144,20 @@ export const DOCS: DocEntry[] = [
     { name: 'onComplete', type: '() => void', description: 'Fires when all sparkles are found.' },
     { name: 'className', type: 'string', description: 'Extra classes merged onto the root.' },
   ] },
+  { slug: 'image-lens', title: 'Image Lens', description: 'A glass loupe that follows the pointer and magnifies the image beneath it: the rim refracts and fringes like real glass, the rest of the frame softly desaturates, and pinch, ctrl+wheel or a click change the zoom. Press and hold on touch to lift the lens above your finger. Optional annotations appear only inside the lens.', category: 'Portfolio', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Hover the image to magnify; click or pinch to zoom further. On touch, press and hold.', props: [
+    { name: 'src / alt', type: 'string', description: 'Image to magnify — a full URL (https://…) or a file in your public/ folder (/images/peak.jpg) — and its description. Shows a shimmer while loading and falls back to the built-in vector scene if the image fails. Without src the original vector dusk scene is drawn.' },
+    { name: 'zoomSrc', type: 'string', description: 'Optional higher-resolution image used only inside the lens, fetched the first time the lens opens (e.g. the same photo at 2× width).' },
+    { name: 'children', type: 'ReactNode', description: 'Magnify any content instead of an image (rendered twice; the lens copy is decorative).' },
+    { name: 'zoom / minZoom / maxZoom', type: 'number', default: '2.5 / 1.5 / 5', description: 'Starting magnification and its range. Click cycles three levels; pinch or ctrl+wheel zooms freely.' },
+    { name: 'size', type: 'number', default: '190', description: 'Lens diameter in px (capped to 60% of the frame width).' },
+    { name: 'shape', type: "'circle' | 'rounded'", default: "'circle'", description: 'Round loupe or a soft squircle.' },
+    { name: 'appearance', type: "'glass' | 'minimal' | 'seamless'", default: "'glass'", description: 'glass: rim, colour fringe, refraction and highlight. minimal: a clean crisp edge with only a faint shadow. seamless: no edge at all — the magnified view feathers into the image.' },
+    { name: 'annotations', type: '{ x, y, label }[]', description: 'Pins (x / y as 0–1 fractions) that only appear inside the lens; also listed for screen readers.' },
+    { name: 'dim', type: 'boolean', default: 'true', description: 'Desaturate and dim everything outside the lens.' },
+    { name: 'aspectRatio', type: 'string', default: "'3 / 2'", description: 'Frame aspect ratio (CSS value).' },
+    { name: 'caption', type: 'ReactNode', description: 'Optional figcaption under the image.' },
+    { name: 'onZoomChange', type: '(zoom: number) => void', description: 'Fires when the magnification changes.' },
+  ] },
   // p2:end
   // magic-batch:start
   { slug: 'signal-beam-diagram', title: 'Signal Beam Diagram', description: 'An integration map where light travels: sources fire gradient pulses along hairline S-curves into a glass hub, which relays them to destinations. Select a node to isolate its route and read what flows through it.', category: 'Widgets', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Click (or Tab + Enter) a node to trace its route; use the pause button to stop the pulses.', props: [

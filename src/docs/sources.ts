@@ -342,6 +342,7 @@ import wordCycleTextSrc from '../components/ui/word-cycle-text.tsx?raw'
 import highlightMarkerTextSrc from '../components/ui/highlight-marker-text.tsx?raw'
 import velocityMarqueeSrc from '../components/ui/velocity-marquee.tsx?raw'
 import sparkleTextSrc from '../components/ui/sparkle-text.tsx?raw'
+import imageLensSrc from '../components/ui/image-lens.tsx?raw'
 // p2-imports:end
 
 export const sources: Record<string, string> = {
@@ -685,5 +686,6 @@ export const sources: Record<string, string> = {
   'goal-progress-card': goalProgressCardSrc,
   'comparison-bar-card': comparisonBarCardSrc,
   'smart-widget-stack': smartWidgetStackSrc,
+  'image-lens': imageLensSrc,
   // p2-entries:end
 }

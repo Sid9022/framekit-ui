@@ -6175,6 +6175,31 @@
       "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/discovery-scene"
     },
     {
+      "name": "image-lens",
+      "type": "registry:ui",
+      "title": "Image Lens",
+      "description": "A glass loupe that follows the pointer and magnifies the image beneath it: the rim refracts and fringes like real glass, the rest of the frame softly desaturates, and pinch, ctrl+wheel or a click change the zoom. Press and hold on touch to lift the lens above your finger. Optional annotations appear only inside the lens.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/image-lens.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "portfolio"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/image-lens"
+    },
+    {
       "name": "signal-beam-diagram",
       "type": "registry:ui",
       "title": "Signal Beam Diagram",
