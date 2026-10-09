@@ -288,6 +288,20 @@ export const DOCS: DocEntry[] = [
   { slug: 'list-bloom-shimmer', title: 'List Bloom Shimmer', description: 'Stacked list rows bloom in with staggered shimmer and soft shadows.', category: 'Shimmer', unique: true, isNew: true, gesture: 'Watch rows bloom in stagger, then shimmer.' },
 
   // Loading
+  { slug: 'cook-loading', title: 'Cook Loading', description: 'An illustrated chef stirs a sizzling wok while your app loads — eight original cooking poses, drifting steam, real progress and ready/error states in one self-contained component.', category: 'Loading', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Watch the chef cook; pause the animation, try Ready/Error, or enable real progress in the demo.', props: [
+    { name: 'progress', type: 'number', description: 'Real 0–100 progress; omit for indeterminate loading. Clamped to range; non-finite values are ignored. Never advances itself.' },
+    { name: 'state', type: "'loading' | 'done' | 'error'", description: 'Host-controlled state. If omitted, progress 100 becomes done; otherwise loading.' },
+    { name: 'label / description', type: 'string', default: "'Cooking things up…' / state-aware description", description: 'Caption and supporting text. Empty description hides the second line.' },
+    { name: 'doneLabel / errorLabel', type: 'string', default: "'Ready to serve.' / 'Something needs another try.'", description: 'Completed and failed captions.' },
+    { name: 'showLabel', type: 'boolean', default: 'true', description: 'Hide visual captions without removing accessible status.' },
+    { name: 'size / speed', type: 'number', default: '280 / 1', description: 'Illustration width (160–480px, never wider than parent) and speed multiplier (0.5–2).' },
+    { name: 'accent', type: 'string', description: 'CSS color for the illustrated backdrop; defaults to theme-aware Framekit orange.' },
+    { name: 'paused / defaultPaused', type: 'boolean', default: 'false', description: 'Controlled / initial animation pause. Progress and loading continue while the illustration is paused.' },
+    { name: 'onPausedChange', type: '(paused: boolean) => void', description: 'Requested pause state change; controlled callers must update paused.' },
+    { name: 'onRetry / retryLabel', type: '() => void / string', default: "undefined / 'Try again'", description: 'Optional error recovery button. The host performs the retry and updates state.' },
+    { name: 'theme', type: "'auto' | 'light' | 'dark'", default: "'auto'", description: 'Follow nearest theme scope or force a theme. Reduced motion shows a still chef without steam.' },
+    { name: 'className', type: 'string', description: 'Root layout and spacing overrides. Set size for illustration width.' },
+  ] },
   { slug: 'hourglass-loader', title: 'Hourglass Loader', description: 'A brass-and-glass hourglass: sand drains from the upper bulb through a trickling stream into a growing mound, and in endless mode the glass turns itself over on a spring when the top runs dry. Pass progress for a determinate progressbar.', category: 'Loading', unique: true, isNew: true, dependencies: ['motion'], gesture: 'Watch it pour and flip; the right one tracks a real progress value.', props: [
     { name: 'progress', type: 'number', description: '0–100 for a determinate progressbar; omit for the endless pour.' },
     { name: 'label', type: 'string', description: 'Status line under the glass (announced politely).' },

@@ -235,6 +235,7 @@ import snakeLoaderSrc from '../components/ui/snake-loader.tsx?raw'
 import receiptPrintToastSrc from '../components/ui/receipt-print-toast.tsx?raw'
 import signaturePadFieldSrc from '../components/ui/signature-pad-field.tsx?raw'
 import hourglassLoaderSrc from '../components/ui/hourglass-loader.tsx?raw'
+import cookLoadingSrc from '../components/ui/cook-loading.tsx?raw'
 import swingPriceTagSrc from '../components/ui/swing-price-tag.tsx?raw'
 import dealerDeckTestimonialsSrc from '../components/ui/dealer-deck-testimonials.tsx?raw'
 import paperFoldAccordionSrc from '../components/ui/paper-fold-accordion.tsx?raw'
@@ -591,6 +592,7 @@ export const sources: Record<string, string> = {
   'dealer-deck-testimonials': dealerDeckTestimonialsSrc,
   'swing-price-tag': swingPriceTagSrc,
   'hourglass-loader': hourglassLoaderSrc,
+  'cook-loading': cookLoadingSrc,
   'signature-pad-field': signaturePadFieldSrc,
   'receipt-print-toast': receiptPrintToastSrc,
   // p2-entries:start

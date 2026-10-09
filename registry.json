@@ -1675,6 +1675,32 @@
       "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/list-bloom-shimmer"
     },
     {
+      "name": "cook-loading",
+      "type": "registry:ui",
+      "title": "Cook Loading",
+      "description": "An illustrated chef stirs a sizzling wok while your app loads — eight original cooking poses, drifting steam, real progress and ready/error states in one self-contained component.",
+      "dependencies": [
+        "lucide-react",
+        "motion"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/framekit-theme.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json",
+        "https://framekit-ui.vercel.app/r/use-resolved-theme.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/cook-loading.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "loading"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/cook-loading"
+    },
+    {
       "name": "hourglass-loader",
       "type": "registry:ui",
       "title": "Hourglass Loader",
