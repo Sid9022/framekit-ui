@@ -1,9 +1,6 @@
 import * as React from 'react'
 import { useLocation, useNavigationType } from 'react-router-dom'
-import { getCategoryBySlug, getDoc } from '@/docs/registry'
-import { SITE } from '@/config/site'
-
-export const SITE_URL = 'https://framekit-ui.vercel.app'
+import { SITE_URL, routeSeo } from '@/docs/seo'
 
 /* ── Scroll restoration ───────────────────────────────────────────────────
  * PUSH / REPLACE → jump to `#anchor` if present, else top.
@@ -120,34 +117,22 @@ function upsertLink(rel: string, href: string) {
   el.href = href
 }
 
-const HOME_TITLE = `${SITE.name} — components that feel alive`
-const HOME_DESC = 'Framekit UI — open-source animated React + Tailwind components you can copy into your project.'
-
-export function routeMeta(pathname: string): { title: string; description: string; path: string; found: boolean } {
-  const parts = pathname.replace(/\/+$/, '').split('/').filter(Boolean)
-  if (parts.length === 0) return { title: HOME_TITLE, description: HOME_DESC, path: '/', found: true }
-  if (parts[0] === 'docs' && parts[1] === 'category' && parts[2]) {
-    const cat = getCategoryBySlug(parts[2])
-    if (cat)
-      return {
-        title: `${cat} — ${SITE.name}`,
-        description: `${cat} components for React + Tailwind: animated, accessible, light and dark, installable with the shadcn CLI.`,
-        path: `/docs/category/${parts[2]}`,
-        found: true,
-      }
-  } else if (parts[0] === 'docs' && parts[1] && parts.length === 2) {
-    const doc = getDoc(parts[1])
-    if (doc) return { title: `${doc.title} — ${SITE.name}`, description: doc.description, path: `/docs/${doc.slug}`, found: true }
-  } else if (parts[0] === 'docs' && parts.length === 1) {
-    return { title: `Introduction — ${SITE.name}`, description: HOME_DESC, path: '/docs/introduction', found: true }
+/** Replace the route's JSON-LD blocks (the prerendered HTML ships the same ones for the first page). */
+function syncJsonLd(blocks: object[]) {
+  document.head.querySelectorAll('script[data-route-ld]').forEach((el) => el.remove())
+  for (const b of blocks) {
+    const el = document.createElement('script')
+    el.type = 'application/ld+json'
+    el.setAttribute('data-route-ld', '')
+    el.textContent = JSON.stringify(b)
+    document.head.appendChild(el)
   }
-  return { title: `Not found — ${SITE.name}`, description: HOME_DESC, path: pathname, found: false }
 }
 
 export function RouteHead() {
   const { pathname } = useLocation()
   React.useEffect(() => {
-    const m = routeMeta(pathname)
+    const m = routeSeo(pathname)
     const url = `${SITE_URL}${m.path === '/' ? '/' : m.path}`
     document.title = m.title
     upsertMeta('name', 'description', m.description)
@@ -157,7 +142,8 @@ export function RouteHead() {
     upsertMeta('name', 'twitter:title', m.title)
     upsertMeta('name', 'twitter:description', m.description)
     upsertLink('canonical', url)
-    upsertMeta('name', 'robots', m.found ? 'index, follow' : 'noindex')
+    upsertMeta('name', 'robots', m.found ? 'index, follow, max-image-preview:large' : 'noindex, follow')
+    syncJsonLd(m.jsonLd)
   }, [pathname])
   return null
 }

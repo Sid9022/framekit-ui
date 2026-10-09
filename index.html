@@ -7,11 +7,11 @@
     <meta name="theme-color" content="#F8F8F8" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0A0A0A" media="(prefers-color-scheme: dark)" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="description" content="Framekit UI — open-source animated React + Tailwind components you can copy into your project." />
-    <title>Framekit UI — components that feel alive</title>
+    <meta name="description" content="Open-source animated React + Tailwind components with premium motion. Light and dark, accessible, and installable with one shadcn CLI command." />
+    <title>Framekit UI: Animated React + Tailwind Component Library</title>
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Framekit UI" />
-    <meta property="og:title" content="Framekit UI — components that feel alive" />
+    <meta property="og:title" content="Framekit UI: Animated React + Tailwind Component Library" />
     <meta property="og:description" content="Open-source, motion-rich React + Tailwind components. Copy the source or install with the shadcn CLI." />
     <meta property="og:url" content="https://framekit-ui.vercel.app/" />
     <link rel="canonical" href="https://framekit-ui.vercel.app/" />
@@ -22,6 +22,8 @@
     <meta name="twitter:image" content="https://framekit-ui.vercel.app/og.png" />
     <meta name="color-scheme" content="light dark" />
     <script>
+      // JS is running: the prerendered SEO shell inside #root stays hidden until React replaces it (see scripts/prerender.mjs).
+      document.documentElement.setAttribute('data-js', '')
       // Apply the stored / OS theme before first paint to avoid a flash of the wrong theme.
       try {
         var t = localStorage.getItem('framekit-theme')

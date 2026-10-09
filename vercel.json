@@ -1,4 +1,6 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "trailingSlash": false,
   "headers": [
     {
       "source": "/r/(.*)",
@@ -12,7 +14,11 @@
     {
       "source": "/assets/(.*)",
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+    },
+    {
+      "source": "/(llms|llms-full).txt",
+      "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }]
     }
   ],
-  "rewrites": [{ "source": "/((?!r/|assets/).*)", "destination": "/index.html" }]
+  "redirects": [{ "source": "/docs", "destination": "/docs/introduction", "permanent": false }]
 }

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { Link } from 'react-router-dom'
 import { AnimatePresence, motion, useInView } from 'motion/react'
-import { ArrowLeft, ArrowRight, ArrowUpRight, Boxes, Check, Code2, Copy, Keyboard, Layers, MoonStar, MousePointer2, Pause, Play, Sparkles, Star, Terminal, Wand2, Zap, Heart } from 'lucide-react'
+import { ArrowLeft, ArrowRight, ArrowUpRight, Boxes, Check, Plus, Code2, Copy, Keyboard, Layers, MoonStar, MousePointer2, Pause, Play, Sparkles, Star, Terminal, Wand2, Zap, Heart } from 'lucide-react'
 import { GithubIcon } from '@/components/icons'
 import { SITE } from '@/config/site'
 import { categorySlug, componentDocs, getNavGroups } from '@/docs/registry'
@@ -9,6 +9,7 @@ import { CopyButton, registryItemUrl } from '@/components/docs/install-block'
 import { LazyMount } from '@/components/docs/lazy-mount'
 import { BrandLink } from '@/components/docs/chrome'
 import { cn } from '@/lib/cn'
+import { LANDING_FAQ, faqAnswerParts } from '@/docs/faq'
 import { GlassAppDock } from '@/components/ui/glass-app-dock'
 import { SpendDonutCard } from '@/components/ui/spend-donut-card'
 import { GlowLeaderboardList } from '@/components/ui/glow-leaderboard-list'
@@ -20,7 +21,7 @@ import { MorphGlyphLoader } from '@/components/ui/morph-glyph-loader'
 import { NeonStrokeButton } from '@/components/ui/neon-stroke-button'
 import { ConfettiBurstButton } from '@/components/ui/confetti-burst-button'
 import { GoalProgressCard } from '@/components/ui/goal-progress-card'
-import { surface, Art, DocLink, EASE, HandleBadge, Overline, POP, Reveal, SPRING, SectionHeader, card, focusRing, gutter, h2, muted, pillDark, pillLight, pillLime, section, sectionY, useReduced } from './kit'
+import { surface, Art, DocLink, EASE, HandleBadge, Overline, POP, Reveal, SPRING, SectionHeader, card, focusRing, gutter, h2, lede, muted, pillDark, pillLight, pillLime, section, sectionY, useReduced } from './kit'
 
 const groups = getNavGroups().filter((g) => g.title !== 'Getting Started')
 const count = componentDocs.length
@@ -426,6 +427,91 @@ function Steps() {
   )
 }
 
+/* ── FAQ ───────────────────────────────────────────────────────────────
+ * Same data as the FAQPage JSON-LD (src/docs/faq.ts → src/docs/seo.ts), so visible copy and schema match.
+ * Answers stay in the DOM when collapsed (grid-rows 0fr → 1fr, inert while closed). */
+function FaqAnswer({ text }: { text: string }) {
+  return (
+    <>
+      {faqAnswerParts(text).map((p, i) =>
+        'href' in p ? (
+          <Link key={i} to={p.href} className={cn('font-medium text-zinc-950 underline decoration-zinc-950/25 underline-offset-[3px] transition-colors hover:decoration-zinc-950 dark:text-white dark:decoration-white/30 dark:hover:decoration-white', focusRing)}>
+            {p.text}
+          </Link>
+        ) : (
+          <React.Fragment key={i}>{p.text}</React.Fragment>
+        ),
+      )}
+    </>
+  )
+}
+
+function Faq() {
+  const [open, setOpen] = React.useState<number | null>(0)
+  return (
+    <section aria-labelledby="faq-title" className={cn(section, sectionY, 'grid gap-10 lg:grid-cols-[5fr_7fr] lg:gap-16')}>
+      <div className="lg:sticky lg:top-28 lg:self-start">
+        <Reveal><Overline>FAQ</Overline></Reveal>
+        <Reveal delay={0.04}><h2 id="faq-title" className={cn(h2, 'mt-4 max-w-[14ch]')}>Questions, answered.</h2></Reveal>
+        <Reveal delay={0.08}>
+          <p className={cn(lede, 'mt-5 max-w-[40ch]')}>
+            The things people ask before they install. Still curious? Start with the{' '}
+            <Link to="/docs/installation" className={cn('font-medium text-zinc-950 underline decoration-zinc-950/25 underline-offset-[3px] hover:decoration-zinc-950 dark:text-white dark:decoration-white/30 dark:hover:decoration-white', focusRing)}>install guide</Link>.
+          </p>
+        </Reveal>
+      </div>
+      <Reveal delay={0.06} className="min-w-0">
+        <ul className={cn(card, 'divide-y divide-black/[0.06] overflow-hidden p-1.5 dark:divide-white/[0.08]')}>
+          {LANDING_FAQ.map((f, i) => {
+            const isOpen = open === i
+            return (
+              <li key={f.q} className="px-1.5">
+                <h3>
+                  <button
+                    type="button"
+                    id={`faq-q-${i}`}
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-a-${i}`}
+                    onClick={() => setOpen(isOpen ? null : i)}
+                    className={cn('group flex min-h-14 w-full touch-manipulation items-center justify-between gap-4 rounded-[18px] px-4 py-4 text-left text-[15px] font-semibold tracking-[-0.01em] text-zinc-950 transition-colors hover:bg-black/[0.03] sm:text-base dark:text-white dark:hover:bg-white/[0.04]', focusRing)}
+                  >
+                    <span className="text-pretty">{f.q}</span>
+                    <span
+                      aria-hidden
+                      className={cn(
+                        'grid h-8 w-8 shrink-0 place-items-center rounded-full ring-1 transition-[transform,background-color,color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none',
+                        isOpen ? 'rotate-45 bg-zinc-950 text-white ring-zinc-950 dark:bg-white dark:text-zinc-950 dark:ring-white' : 'bg-transparent text-zinc-600 ring-black/[0.1] dark:text-zinc-400 dark:ring-white/[0.14]',
+                      )}
+                    >
+                      <Plus className="h-4 w-4" />
+                    </span>
+                  </button>
+                </h3>
+                <div
+                  id={`faq-a-${i}`}
+                  role="region"
+                  aria-labelledby={`faq-q-${i}`}
+                  inert={!isOpen}
+                  className={cn(
+                    'grid transition-[grid-template-rows,opacity] duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)] motion-reduce:transition-none',
+                    isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0',
+                  )}
+                >
+                  <div className="overflow-hidden">
+                    <p className={cn(muted, 'max-w-[62ch] px-4 pb-5 text-[15px] leading-relaxed')}>
+                      <FaqAnswer text={f.a} />
+                    </p>
+                  </div>
+                </div>
+              </li>
+            )
+          })}
+        </ul>
+      </Reveal>
+    </section>
+  )
+}
+
 /* ── Lime marquee (CSS-driven, pausable, off under reduced motion) ──────── */
 const MARQ = ['Feels alive', 'Springs, not keyframes', 'Light + dark', 'Keyboard first', 'Copy & ship', 'Reduced motion']
 function Marquee() {
@@ -518,6 +604,7 @@ export default function Sections() {
       <Carousel />
       <OpenSource />
       <Steps />
+      <Faq />
       <Marquee />
       <FinalCta />
       <Footer />

@@ -57,6 +57,25 @@ Installed layout in a user's project (default shadcn aliases): `components/ui/<s
 `lib/use-reduced-motion.ts`, and so on, plus tokens merged into their CSS. Components therefore must import helpers as
 `@/lib/<name>`, exactly.
 
+## SEO: prerendered HTML, metadata and llms.txt
+
+The site is a client-rendered SPA, so crawlers that don't run JavaScript (GPTBot, PerplexityBot, ClaudeBot…) would see an
+empty `<div id="root">`. The build fixes that without SSR:
+
+- `src/docs/seo.ts` is the single source for every route's title, description, canonical and JSON-LD
+  (`routeSeo(pathname)`), plus `sitemapRoutes()`. It's pure data, imported by `<RouteHead>` in the browser and by the scripts below.
+- `src/docs/faq.ts` holds the landing FAQ. The visible FAQ section and the `FAQPage` schema both read it, so they always match.
+- Prebuild: `scripts/build-sitemap.mjs` → `public/sitemap.xml`; `scripts/build-llms.mjs` → `public/llms.txt` + `public/llms-full.txt`.
+- Build (last step): `scripts/prerender.mjs` writes `dist/<path>/index.html` for every sitemap route: per-route `<head>` tags and
+  JSON-LD, and a static content shell inside `#root` (H1, intro, install command, usage, props table, related links, FAQ).
+  It also writes `dist/404.html` (noindex), which Vercel serves with a real 404 for unknown paths; the SPA still boots on it.
+- The client keeps using `createRoot` (no hydration), which replaces the shell on first commit. With JS on, the shell is
+  `visibility: hidden` (via `html[data-js]`) so users see exactly what they saw before.
+- `vercel.json` has no SPA catch-all any more: real files win, `/docs` redirects to `/docs/introduction`, unknown paths 404.
+  **A new client route needs a prerendered file** (add it to `sitemapRoutes()`), otherwise it will 404 on a hard load.
+- Scripts load the TS modules with `scripts/lib/load-ts.mjs` (TypeScript transpile, no bundler), so keep `seo.ts`,
+  `faq.ts`, `registry.ts` and `config/site.ts` free of DOM/React imports.
+
 ## The docs site
 
 - **Entry**: `src/main.tsx` → `BrowserRouter` → `App.tsx` (ThemeProvider, `MotionConfig reducedMotion="user"`, ToastProvider,
