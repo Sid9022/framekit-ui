@@ -117,11 +117,13 @@ export function docTitle(doc: DocEntry) {
 export function docDescription(doc: DocEntry) {
   const base = doc.description.replace(/\s+/g, ' ').trim().replace(/[.…]?$/, '.')
   if (base.length >= 120) return clip(base, 158)
-  const tail =
-    doc.category === 'Getting Started'
-      ? ' Free, open-source React + Tailwind components with premium motion.'
-      : ' Free, open-source React + Tailwind component. Install with the shadcn CLI.'
-  return clip(base + tail, 158)
+  const lead = doc.category === 'Getting Started' ? ' Free, open-source React + Tailwind components' : ' Free, open-source React + Tailwind component'
+  // Add selling points one by one while the description stays within 158 chars.
+  const extras = [' with premium motion', ', light and dark themes', ', keyboard support', ' and a one-command shadcn install']
+  let out = base + lead
+  for (const e of extras) if ((out + e + '.').length <= 158) out += e
+  out += '.'
+  return out.length <= 158 ? out : clip(base, 158)
 }
 
 export function categoryTitle(cat: DocCategory) {

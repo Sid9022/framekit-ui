@@ -654,7 +654,7 @@ export function getGuide(slug: string) {
 
 export const GUIDES_TITLE = 'Guides'
 export const GUIDES_DESC =
-  'In-depth guides for building premium, accessible animated interfaces with React, Tailwind CSS and Motion: installing with shadcn, spring values and accessible motion.'
+  'Guides to premium, accessible animated UIs with React, Tailwind and Motion: shadcn installs, Apple-style spring values and an accessible motion checklist.'
 
 /** Rough reading time from all visible text. */
 export function readingMinutes(g: Guide) {
