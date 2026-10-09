@@ -25,6 +25,7 @@ import litProductCard3dSrc from '../components/ui/lit-product-card-3d.tsx?raw'
 import timelineScrubberSrc from '../components/ui/timeline-scrubber.tsx?raw'
 import springReorderListSrc from '../components/ui/spring-reorder-list.tsx?raw'
 import blurCascadeHeadingSrc from '../components/ui/blur-cascade-heading.tsx?raw'
+import perspectiveTunnelCarouselSrc from '../components/ui/perspective-tunnel-carousel.tsx?raw'
 import glassAppDockSrc from '../components/ui/glass-app-dock.tsx?raw'
 import spotlightCommandPaletteSrc from '../components/ui/spotlight-command-palette.tsx?raw'
 import activityRingsSrc from '../components/ui/activity-rings.tsx?raw'
@@ -675,6 +676,7 @@ export const sources: Record<string, string> = {
   'timeline-scrubber': timelineScrubberSrc,
   'spring-reorder-list': springReorderListSrc,
   'blur-cascade-heading': blurCascadeHeadingSrc,
+  'perspective-tunnel-carousel': perspectiveTunnelCarouselSrc,
   'glow-candle-card': glowCandleCardSrc,
   'glow-level-card': glowLevelCardSrc,
   'glow-histogram-card': glowHistogramCardSrc,

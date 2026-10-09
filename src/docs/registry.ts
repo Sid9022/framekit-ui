@@ -1447,6 +1447,20 @@ export const DOCS: DocEntry[] = [
     { name: 'by / stagger', type: "'word' | 'char' / number", default: "'word' / 0.06", description: 'Split mode and delay.' },
     { name: 'replay', type: 'boolean', default: 'true', description: 'Show replay button.' },
   ] },
+  { slug: 'perspective-tunnel-carousel', title: 'Perspective Tunnel Carousel', description: 'A row of 3:4 cards riding a corridor in real CSS 3D: tiny and flat on the back wall at the vanishing point, growing huge and angled along the side walls as they leave past the edges. The row drifts on a transform-only rAF clock, pauses on hover, focus and off-screen, scrubs with drag and throws with inertia, centres a card on keyboard focus and becomes a scroll-snap row under reduced motion.', category: 'Motion Showcase', unique: true, isNew: true, ownBackground: true, backgroundNote: 'The demo frame paints an off-white (light) / ink (dark) stage with film grain; the component itself is transparent, so place it on any surface.', dependencies: ['lucide-react'], gesture: 'Hover a card to pause it, drag to scrub, or Tab through the cards — each one glides to the centre.', props: [
+    { name: 'items', type: 'TunnelItem[]', default: 'DEFAULT_TUNNEL_ITEMS', description: '{ id, label?, href?, tint?, tone?, content?, src?, alt? } — content can be any node, e.g. a live component.' },
+    { name: 'children', type: 'ReactNode', description: 'Alternative to items: each child becomes one card.' },
+    { name: 'speed / direction', type: "number / 'left' | 'right'", default: "0.32 / 'left'", description: 'Drift in cards per second and its direction.' },
+    { name: 'centerWidth / edgeWidth', type: 'number', default: 'auto', description: 'Screen width of a flat back-wall card, and the real card width where the walls meet the edge (px).' },
+    { name: 'flatCount / wallAngle / perspective', type: 'number', default: 'auto / 90 / auto', description: 'Cards flat on the back wall, the angle the side walls turn to (90 = straight corridor) and the CSS perspective.' },
+    { name: 'gap', type: 'number', default: '0.08', description: 'Gap between cards as a share of the card width.' },
+    { name: 'paused / defaultPaused / onPausedChange', type: 'boolean / boolean / (p) => void', default: '— / false / —', description: 'Controlled or uncontrolled pause.' },
+    { name: 'pauseOnHover / draggable / controls', type: 'boolean', default: 'true', description: 'Hover pause, drag-to-scrub and the built-in pause button.' },
+    { name: 'clip', type: 'boolean', default: 'true', description: 'Clip to the root box; turn off to let cards bleed into a larger clipped section (hero use).' },
+    { name: 'lazy', type: 'boolean', default: 'true', description: 'Mount card content only once it first drifts into view.' },
+    { name: 'linkAs', type: 'ElementType', default: "'a'", description: 'Element for linked cards (e.g. a router link that accepts href).' },
+    { name: 'label / className', type: 'string', description: 'List name for assistive tech; root classes (give it a height).' },
+  ] },
   // website-sections:end
   // Product UI
   { slug: 'glass-segmented-control', title: 'Glass Segmented Control', description: 'An iOS-style segmented control whose selected thumb is a lifted glass pill that springs between segments with a press squish — native radio semantics, arrow keys and an opaque reduced-transparency fallback.', category: 'Product UI', unique: true, isNew: true, dependencies: ['motion', 'lucide-react'], gesture: 'Click a segment or focus it and use ← → Home End.', props: [

@@ -2,7 +2,7 @@ import * as React from 'react'
 import { createPortal } from 'react-dom'
 import { Link } from 'react-router-dom'
 import { AnimatePresence, motion } from 'motion/react'
-import { ArrowRight, ArrowUpRight, Menu, Search, X } from 'lucide-react'
+import { ArrowUpRight, Menu, Search, X } from 'lucide-react'
 import { GithubIcon } from '@/components/icons'
 import { SITE } from '@/config/site'
 import { componentDocs, getNavGroups, categorySlug } from '@/docs/registry'
@@ -10,12 +10,10 @@ import { BrandLink, SearchTrigger, ThemeToggleButton, iconBtn } from '@/componen
 import { useCommandPalette } from '@/components/command-palette'
 import { cn } from '@/lib/cn'
 import { ActivityRings } from '@/components/ui/activity-rings'
+import { ShowcaseHero } from './landing/ShowcaseHero'
 import { GlowCandleCard } from '@/components/ui/glow-candle-card'
-import { LiquidFillButton } from '@/components/ui/liquid-fill-button'
-import { RollingNumberStepper } from '@/components/ui/rolling-number-stepper'
-import { NeonHaloCard } from '@/components/ui/neon-halo-card'
 import { GoalProgressCard } from '@/components/ui/goal-progress-card'
-import { surface, EASE, FitArt, HandleBadge, Overline, POP, Reveal, SPRING, card, focusRing, h2, lede, pillDark, pillLight, section, sectionY } from './landing/kit'
+import { surface, EASE, FitArt, HandleBadge, Overline, POP, Reveal, card, focusRing, h2, lede, pillDark, pillLight, section, sectionY } from './landing/kit'
 
 const Sections = React.lazy(() => import('./landing/Sections'))
 
@@ -153,91 +151,6 @@ function Nav() {
   )
 }
 
-/** Headline revealed word by word with a soft blur (screen readers get the whole string once). */
-function WordRise({ text, className, delay = 0 }: { text: string; className?: string; delay?: number }) {
-  return (
-    <span className={className}>
-      <span className="sr-only">{text}</span>
-      <span aria-hidden>
-        {text.split(' ').map((w, i, a) => (
-          <React.Fragment key={i}>
-            <motion.span className="inline-block" initial={{ opacity: 0, y: '0.3em', filter: 'blur(8px)' }} animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }} transition={{ duration: 0.8, ease: EASE, delay: delay + i * 0.06 }}>
-              {w}
-            </motion.span>
-            {i < a.length - 1 && ' '}
-          </React.Fragment>
-        ))}
-      </span>
-    </span>
-  )
-}
-
-/*
- * Hero fan — positions live in CSS (translate/rotate properties + custom props), so it re-composes per
- * breakpoint without JS: 3 cards under 768 px (sized in vw so they never crop), 5 from 768 px.
- * Motion only animates the entrance on an inner wrapper.
- */
-const HAND = [
-  { slug: 'liquid-fill-button', label: 'Liquid Fill Button', bg: POP.blue, art: <LiquidFillButton>Get started</LiquidFillButton>, design: 'auto' as const, cls: 'hidden md:block w-[150px] [--fx:-250px] [--fy:44px] rotate-[-12deg] lg:w-[184px] lg:[--fx:-360px] xl:w-[220px] xl:[--fx:-440px] xl:[--fy:52px]' },
-  { slug: 'activity-rings', label: 'Activity Rings', bg: '#FFFFFF', art: <ActivityRings />, design: 'auto' as const, cls: 'w-[34vw] [--fx:-25vw] [--fy:20px] rotate-[-8deg] sm:w-[176px] sm:[--fx:-180px] md:w-[160px] md:[--fx:-134px] md:[--fy:14px] md:rotate-[-6deg] lg:w-[200px] lg:[--fx:-190px] xl:w-[236px] xl:[--fx:-228px] xl:[--fy:18px]' },
-  { slug: 'neon-halo-card', label: 'Neon Halo Card', bg: POP.ink, art: <NeonHaloCard />, design: 380, cls: 'w-[48vw] [--fx:0px] [--fy:0px] sm:w-[220px] md:w-[190px] lg:w-[232px] xl:w-[272px]' },
-  { slug: 'rolling-number-stepper', label: 'Rolling Number Stepper', bg: POP.lime, art: <RollingNumberStepper />, design: 'auto' as const, cls: 'w-[34vw] [--fx:25vw] [--fy:20px] rotate-[8deg] sm:w-[176px] sm:[--fx:180px] md:w-[160px] md:[--fx:134px] md:[--fy:14px] md:rotate-[6deg] lg:w-[200px] lg:[--fx:190px] xl:w-[236px] xl:[--fx:228px] xl:[--fy:18px]' },
-  { slug: 'glow-candle-card', label: 'Glow Candle Card', bg: '#F1F1EF', art: <GlowCandleCard />, design: 440, cls: 'hidden md:block w-[150px] [--fx:250px] [--fy:44px] rotate-[12deg] lg:w-[184px] lg:[--fx:360px] xl:w-[220px] xl:[--fx:440px] xl:[--fy:52px]' },
-]
-
-function Hero({ count, cats }: { count: number; cats: number }) {
-  return (
-    <section aria-labelledby="hero-title" className="relative isolate">
-      {/* Ambient light: faint lime/blue wash, intentionally different per theme. */}
-      <div aria-hidden className="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[820px] bg-[radial-gradient(50%_40%_at_50%_72%,rgb(217_249_92/0.28),transparent_70%),radial-gradient(40%_30%_at_70%_20%,rgb(43_91_255/0.06),transparent_70%)] dark:bg-[radial-gradient(50%_40%_at_50%_72%,rgb(217_249_92/0.10),transparent_70%),radial-gradient(45%_35%_at_50%_0%,rgb(43_91_255/0.18),transparent_70%)]" />
-      <div className={cn(section, 'pb-20 pt-12 text-center sm:pb-28 sm:pt-16 lg:pt-20')}>
-        <motion.p initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: EASE }} className="inline-flex max-w-full items-center gap-2 rounded-full bg-white py-1 pl-1 pr-3 text-[13px] font-medium text-zinc-700 shadow-[0_1px_2px_rgb(0_0_0/0.04)] ring-1 ring-black/[0.06] dark:bg-white/[0.05] dark:text-zinc-300 dark:ring-white/[0.1]">
-          <span className="rounded-full bg-[#D9F95C] px-2 py-0.5 text-[11px] font-semibold uppercase tracking-[0.08em] text-zinc-950">New</span>
-          <span className="truncate"><span className="tabular-nums">{count}</span> components · <span className="tabular-nums">{cats}</span> categories</span>
-        </motion.p>
-        <h1 id="hero-title" className="mx-auto mt-6 max-w-[14ch] text-balance text-[clamp(2.625rem,1.6rem+5.4vw,6.25rem)] font-semibold leading-[0.98] tracking-[-0.055em] text-zinc-950 sm:mt-8 dark:text-white">
-          <WordRise text="Interfaces that feel alive." delay={0.08} />
-        </h1>
-        <motion.p initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: EASE, delay: 0.35 }} className={cn(lede, 'mx-auto mt-6 max-w-[46ch]')}>
-          Premium, motion-rich React components. Copy the source or install with the shadcn CLI — light, dark, keyboard and reduced motion included.
-        </motion.p>
-        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, ease: EASE, delay: 0.45 }} className="mx-auto mt-8 flex max-w-sm flex-col items-stretch justify-center gap-3 min-[420px]:max-w-none min-[420px]:flex-row min-[420px]:items-center">
-          <Link to="/docs/introduction" className={cn(pillDark, 'h-12 px-6 text-[15px]')}>
-            Browse components <ArrowRight className="h-4 w-4" aria-hidden />
-          </Link>
-          <a href={SITE.github} target="_blank" rel="noreferrer" className={cn(pillLight, 'h-12 px-6 text-[15px]')}>
-            <GithubIcon className="h-4 w-4" /> Star on GitHub<span className="sr-only"> (opens in a new tab)</span>
-          </a>
-        </motion.div>
-
-        {/* Hand of cards */}
-        <div className="relative mx-auto mt-14 h-[calc(48vw+48px)] max-w-[1100px] sm:mt-16 sm:h-[288px] md:h-[264px] lg:h-[308px] xl:h-[348px]">
-          {HAND.map((c, i) => {
-            const d = Math.abs(i - 2)
-            const s = surface(c.bg)
-            return (
-              <div key={c.slug} className={cn('absolute left-1/2 top-3', c.cls)} style={{ translate: 'calc(-50% + var(--fx)) var(--fy)', zIndex: 5 - d }}>
-                <motion.div
-                  initial={{ y: 48, opacity: 0, scale: 0.92 }}
-                  animate={{ y: 0, opacity: 1, scale: 1 }}
-                  transition={{ ...SPRING, stiffness: 170, damping: 22, delay: 0.5 + d * 0.08 }}
-                  className="relative [@media(hover:hover)]:transition-transform [@media(hover:hover)]:duration-300 [@media(hover:hover)]:hover:-translate-y-2"
-                >
-                  <Link to={`/docs/${c.slug}`} className={cn('relative block aspect-square overflow-hidden rounded-[24px] shadow-[0_1px_2px_rgb(0_0_0/0.06),0_24px_48px_-24px_rgb(24_24_27/0.4)] ring-1 ring-black/[0.06] sm:rounded-[28px] dark:shadow-[0_24px_48px_-24px_rgb(0_0_0/0.8)] dark:ring-white/[0.1]', focusRing, s.className)} style={s.style}>
-                    <FitArt design={c.design} fill={i === 2 ? 0.86 : 0.8} className="absolute inset-0">{c.art}</FitArt>
-                    <span className="sr-only">Open the {c.label} demo</span>
-                  </Link>
-                  {i === 2 && <HandleBadge handle={c.slug} color={POP.lime} text="#0A0A0B" delay={0.9} className="-top-3 left-1/2 -translate-x-1/2" />}
-                </motion.div>
-              </div>
-            )
-          })}
-        </div>
-      </div>
-    </section>
-  )
-}
-
 /* ── Stack strip ─────────────────────────────────────────────────────── */
 const STACK = ['React 19', 'TypeScript', 'Tailwind v4', 'Motion', 'shadcn/ui', 'Vite']
 function StackStrip() {
@@ -319,7 +232,7 @@ export function LandingPage() {
       <a href="#main" className={cn('sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-zinc-950 focus:px-4 focus:py-2 focus:text-white')}>Skip to content</a>
       <Nav />
       <main id="main">
-        <Hero count={count} cats={groups.length} />
+        <ShowcaseHero count={count} cats={groups.length} />
         <StackStrip />
         <Why />
         <React.Suspense fallback={<div className="h-[100vh]" aria-hidden />}>

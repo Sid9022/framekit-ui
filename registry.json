@@ -7270,6 +7270,29 @@
       "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/blur-cascade-heading"
     },
     {
+      "name": "perspective-tunnel-carousel",
+      "type": "registry:ui",
+      "title": "Perspective Tunnel Carousel",
+      "description": "A row of 3:4 cards riding a corridor in real CSS 3D: tiny and flat on the back wall at the vanishing point, growing huge and angled along the side walls as they leave past the edges. The row drifts on a transform-only rAF clock, pauses on hover, focus and off-screen, scrubs with drag and throws with inertia, centres a card on keyboard focus and becomes a scroll-snap row under reduced motion.",
+      "dependencies": [
+        "lucide-react"
+      ],
+      "registryDependencies": [
+        "https://framekit-ui.vercel.app/r/cn.json",
+        "https://framekit-ui.vercel.app/r/use-reduced-motion.json"
+      ],
+      "files": [
+        {
+          "path": "src/components/ui/perspective-tunnel-carousel.tsx",
+          "type": "registry:ui"
+        }
+      ],
+      "categories": [
+        "motion-showcase"
+      ],
+      "docs": "Docs & live preview: https://framekit-ui.vercel.app/docs/perspective-tunnel-carousel"
+    },
+    {
       "name": "glass-segmented-control",
       "type": "registry:ui",
       "title": "Glass Segmented Control",
