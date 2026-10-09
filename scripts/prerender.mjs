@@ -116,7 +116,7 @@ function guideBlock(b) {
     case 'code':
       return codeBlock(b)
     case 'table':
-      return `<table><caption>${esc(b.caption)}</caption><thead><tr>${b.head.map((h) => `<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${b.rows
+      return `<table><caption>${esc(b.caption)}</caption><thead><tr>${b.head.map((h) => `<th scope="col">${inline(h)}</th>`).join('')}</tr></thead><tbody>${b.rows
         .map((r) => `<tr>${r.map((c, i) => (i === 0 ? `<th scope="row">${inline(c)}</th>` : `<td>${inline(c)}</td>`)).join('')}</tr>`)
         .join('')}</tbody></table>`
     case 'examples': {

@@ -72,8 +72,10 @@ src/
     portfolio-art.tsx           PortfolioArt (generated SVG art), PortfolioProject type, SAMPLE_PROJECTS
   docs/
     registry.ts              ← DocCategory union, DOCS metadata, NAV_ORDER (sidebar order)
-    demos.tsx                ← slug → live preview JSX
-    sources.ts               ← slug → raw source string (Code tab), via Vite ?raw imports
+    demos/<slug>.tsx         ← live preview JSX, one lazy chunk per slug (helpers in demos/_shared/)
+    demos.ts                 ← import.meta.glob loader: loadDemo(slug)
+    sources.ts               ← lazy ?raw glob of components/ui/*.tsx: loadSource(slug) (Code tab, automatic)
+    guides.ts                ← long-form /guides articles (pure data; rendered by pages/GuidePage.tsx + prerender)
   pages/ layouts/ components/docs/   ← the docs site shell (not shipped to users)
   index.css                  ← Tailwind v4 @theme tokens, custom dark variant, preview-stage styles
   config/site.ts             ← product name / links (single rename point)
@@ -285,25 +287,26 @@ Add an entry under the matching `// <Category>` comment inside `DOCS`:
 **New category?** Add it to both the `DocCategory` union at the top **and** `NAV_ORDER` (its position sets the sidebar
 order). `npm run check:wiring` fails if you forget `NAV_ORDER`.
 
-### 5b. `src/docs/demos.tsx`: the live preview
+### 5b. `src/docs/demos/<slug>.tsx`: the live preview
 
-1. Add the import near the other imports. Portfolio-kit items go between `// p2-imports:start` / `:end`.
-2. Add an entry to the `demos` map (Portfolio-kit items go in `portfolio2Demos`):
+Create one file per component. `src/docs/demos.ts` finds it with `import.meta.glob`, so it becomes its own lazy chunk
+and only loads on that docs page:
 
 ```tsx
+// src/docs/demos/like-burst-button.tsx
 import { LikeBurstButton } from '@/components/ui/like-burst-button'
-// …
-export const demos: Record<string, React.ReactNode> = {
-  // …
-  'like-burst-button': <LikeBurstButton />,
-}
+
+const demo = <LikeBurstButton />
+export default demo
 ```
 
-If the demo needs state, scripted playback, or controls, write a small `function XDemo()` above the map
-(see `ParticleMorphLoaderDemo`, `GlassBubbleBuddyDemo`). Scroll-driven components go inside the existing
-`PfScrollFrame` helper so they have a scroll container:
+If the demo needs state, scripted playback, or controls, write a small `function XDemo()` in the same file
+(see `demos/particle-morph-loader.tsx`, `demos/glass-bubble-buddy.tsx`). Shared helpers live in `demos/_shared/`.
+Scroll-driven components go inside `PfScrollFrame` (`demos/_shared/pf-scroll-frame.tsx`) so they have a scroll container:
 
 ```tsx
+import { PfScrollFrame } from './_shared/pf-scroll-frame'
+
 function ScrollTextFillDemo() {
   return (
     <PfScrollFrame label="Scroll text fill preview (scrollable)" height={480}>
@@ -316,16 +319,9 @@ function ScrollTextFillDemo() {
 The preview stage is `min-h-[340px]`, centred, and wraps the demo in a `.light` or `.dark` class from the preview theme toggle.
 Constrain wide demos with `className="max-w-3xl"` and so on.
 
-### 5c. `src/docs/sources.ts`: the Code tab
+### 5c. The Code tab: automatic
 
-```ts
-import likeBurstButtonSrc from '../components/ui/like-burst-button.tsx?raw'
-// …
-export const sources: Record<string, string> = {
-  // …
-  'like-burst-button': likeBurstButtonSrc,
-}
-```
+`src/docs/sources.ts` lazy-globs `src/components/ui/*.tsx` with `?raw`, so the Code tab picks up the new file with no wiring.
 
 ### 5d. Check it
 
@@ -423,7 +419,7 @@ npm run registry:build
 2. `npm run check:wiring && npm run build` (both green).
 3. Commit only what you meant to change:
    - `src/components/ui/<slug>.tsx`
-   - `src/docs/registry.ts`, `src/docs/demos.tsx`, `src/docs/sources.ts`
+   - `src/docs/registry.ts`, `src/docs/demos/<slug>.tsx`
    - the regenerated `registry.json`
 4. Branch name: `feat/<slug>`. Commit style follows history: `feat(<scope>): …`, `fix(<slug>): …`, `chore(registry): …`.
 5. In the PR description, include what it is, the interaction, screenshots in light and dark (and a GIF if motion is the point), and the a11y notes

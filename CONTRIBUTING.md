@@ -27,9 +27,8 @@ npm run build          # must pass before a PR
 
 1. Create `src/components/ui/<slug>.tsx`: self-contained, copy-paste friendly, typed props with defaults.
 2. Register metadata in `src/docs/registry.ts` (`unique: true, isNew: true`, `gesture`, `props`).
-3. Add a demo in `src/docs/demos.tsx`.
-4. Add a `?raw` import in `src/docs/sources.ts`.
-5. Accessible markup, light + dark, `prefers-reduced-motion`, no horizontal scroll at 390 px.
+3. Add a demo module `src/docs/demos/<slug>.tsx` (`export default` a React node). The Code tab source is picked up automatically.
+4. Accessible markup, light + dark, `prefers-reduced-motion`, no horizontal scroll at 390 px.
 
 ## Pull requests
 

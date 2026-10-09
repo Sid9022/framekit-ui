@@ -579,10 +579,10 @@ function Footer() {
           <p className={cn(muted, 'mt-4 max-w-[34ch] text-sm leading-relaxed')}>{SITE.description}</p>
           <a href={SITE.github} target="_blank" rel="noreferrer" className={cn(pillLight, 'mt-6')}><GithubIcon className="h-4 w-4" /> Star on GitHub<span className="sr-only"> (opens in a new tab)</span></a>
         </div>
-        {cols.map((c, i) => (
-          <nav key={c.title} aria-label={c.title} className={cn('min-w-0', i === 3 && 'max-md:col-span-2')}>
+        {cols.map((c) => (
+          <nav key={c.title} aria-label={c.title} className="min-w-0">
             <h2 className="text-xs font-semibold uppercase tracking-[0.12em] text-zinc-950 dark:text-white">{c.title}</h2>
-            <ul className={cn('mt-4 space-y-1', i === 3 && 'max-md:grid max-md:grid-cols-2 max-md:gap-x-6 max-md:space-y-0')}>
+            <ul className="mt-4 space-y-1">
               {c.links.map(([l, to]) => <li key={to}><Link to={to} className={cn('inline-flex min-h-8 items-center rounded-md text-sm text-zinc-600 transition-colors hover:text-zinc-950 pointer-coarse:min-h-11 dark:text-zinc-400 dark:hover:text-white', focusRing)}>{l}</Link></li>)}
             </ul>
           </nav>

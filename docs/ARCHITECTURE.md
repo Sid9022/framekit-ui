@@ -14,9 +14,9 @@ Read this when you need to change anything beyond a single component.
              docs site (Vite SPA)       │                                               │   shadcn registry
   ┌─────────────────────────────────────▼──────────┐                 ┌──────────────────▼──────────────────────┐
   │ DocsLayout (sidebar from getNavGroups)         │                 │ scripts/build-registry.mjs              │
-  │ DocPage  ── demos[slug]   (src/docs/demos.tsx) │                 │  • transpiles registry.ts → DOCS        │
-  │          ── sources[slug] (src/docs/sources.ts │                 │  • reads src/components/ui/<slug>.tsx   │
-  │                            via ?raw imports)   │                 │  • npm deps  ← bare imports             │
+  │ DocPage  ── loadDemo(slug)  (demos/<slug>.tsx) │                 │  • transpiles registry.ts → DOCS        │
+  │          ── loadSource(slug) (sources.ts, lazy │                 │  • reads src/components/ui/<slug>.tsx   │
+  │                            ?raw glob)          │                 │  • npm deps  ← bare imports             │
   │          ── doc.props → PropsTable             │                 │  • @/lib/x   ← registry:lib item        │
   │ CategoryPage, LandingPage, CommandPalette (⌘K) │                 │  • signal-/framekit-/font-display used? │
   └────────────────────────────────────────────────┘                 │      → depends on framekit-theme        │
@@ -29,8 +29,8 @@ Read this when you need to change anything beyond a single component.
                                                           npx shadcn@latest add …/r/<slug>.json
 ```
 
-One component file feeds three consumers: the live preview (`demos.tsx` imports it), the Code tab (`sources.ts` imports
-it as a raw string), and the CLI registry (`build-registry.mjs` reads it from disk). Because they all share one file,
+One component file feeds three consumers: the live preview (`src/docs/demos/<slug>.tsx` imports it), the Code tab (`sources.ts`
+lazy-globs it as a raw string), and the CLI registry (`build-registry.mjs` reads it from disk). Because they all share one file,
 **the file is the product**. Anything the component needs must be inside it or in `src/lib/`.
 
 ## The registry pipeline (`npm run registry:build`)
@@ -66,6 +66,11 @@ empty `<div id="root">`. The build fixes that without SSR:
   (`routeSeo(pathname)`), plus `sitemapRoutes()`. It's pure data, imported by `<RouteHead>` in the browser and by the scripts below.
 - `src/docs/faq.ts` holds the landing FAQ. The visible FAQ section and the `FAQPage` schema both read it, so they always match.
 - Prebuild: `scripts/build-sitemap.mjs` → `public/sitemap.xml`; `scripts/build-llms.mjs` → `public/llms.txt` + `public/llms-full.txt`.
+- Build: `scripts/build-og.mjs` renders a 1200×630 Open Graph PNG for every docs page, category and guide into `dist/og/`
+  (satori → SVG → resvg → PNG, fonts bundled from `@fontsource/*` WOFF files, template in `scripts/og/template.mjs`). It runs on
+  a worker pool and caches by content hash in `node_modules/.cache/framekit-og` (Vercel keeps it between builds): about 11 s
+  cold for ~365 images, under 1 s warm. `seo.ts → ogImagePath()` maps a route to its image; the landing page keeps `/og.png`.
+  The PNGs are build output, not committed. `npm run og:build` re-runs it alone (`OG_ONLY=<substring>` filters).
 - Build (last step): `scripts/prerender.mjs` writes `dist/<path>/index.html` for every sitemap route: per-route `<head>` tags and
   JSON-LD, and a static content shell inside `#root` (H1, intro, install command, usage, props table, related links, FAQ).
   It also writes `dist/404.html` (noindex), which Vercel serves with a real 404 for unknown paths; the SPA still boots on it.
@@ -74,7 +79,20 @@ empty `<div id="root">`. The build fixes that without SSR:
 - `vercel.json` has no SPA catch-all any more: real files win, `/docs` redirects to `/docs/introduction`, unknown paths 404.
   **A new client route needs a prerendered file** (add it to `sitemapRoutes()`), otherwise it will 404 on a hard load.
 - Scripts load the TS modules with `scripts/lib/load-ts.mjs` (TypeScript transpile, no bundler), so keep `seo.ts`,
-  `faq.ts`, `registry.ts` and `config/site.ts` free of DOM/React imports.
+  `faq.ts`, `guides.ts`, `registry.ts` and `config/site.ts` free of DOM/React imports.
+- Guides (`/guides`, `/guides/<slug>`) are long-form articles written as data in `src/docs/guides.ts` (sections that open with a
+  direct answer, then steps/tables/code, then an FAQ). `pages/GuidePage.tsx` renders them, `prerender.mjs` writes the full text
+  into static HTML, `seo.ts` emits TechArticle/HowTo + FAQPage + BreadcrumbList, and `build-llms.mjs` adds them to `llms*.txt`.
+  Navigation uses the tiny `guide-links.ts` so the article text stays out of the main bundle (`check:wiring` keeps the two in sync);
+  `RouteHead` lazy-imports `guides.ts` on `/guides` routes.
+
+## Bundle splitting
+
+- `DocPage` loads each component's demo (`src/docs/demos.ts` → `import.meta.glob('./demos/*.tsx')`) and raw source
+  (`src/docs/sources.ts` → lazy `?raw` glob) on demand, so a docs page downloads only its own chunks. Never import a demo
+  module or a `?raw` source statically; it would pull it into a shared chunk.
+- `vite.config.ts` only pins React + the router into `vendor-react` (stable cache across deploys). Don't add groups for
+  `motion` or Prism: a rolldown group pulls every matching module into one eagerly loaded chunk, which made the landing page heavier.
 
 ## The docs site
 
@@ -133,6 +151,6 @@ Only do this when two or more components genuinely need it. Then:
 
 1. Create `src/lib/<name>.ts(x)` (kebab-case, no imports beyond `react`, `clsx`, `tailwind-merge`, or other `@/lib/*` files).
 2. Add a `libMeta` entry (title and description) in `scripts/build-registry.mjs`.
-3. If the Installation guide page should show it, add it to the "shared helpers" section of `pages/DocPage.tsx` and to `sources.ts`.
+3. If the Installation guide page should show it, add it to the "shared helpers" section of `pages/DocPage.tsx` and to `libSources` in `sources.ts`.
 
 Keep helpers small and stable. Every installed component that imports one pulls it in, and changing a helper's API breaks users' copies.

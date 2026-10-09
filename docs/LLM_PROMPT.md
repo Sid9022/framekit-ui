@@ -27,7 +27,7 @@ Rules for every new component:
    Local imports only from @/lib/* or registered @/components/ui/*.
 2. Typed props with sensible defaults; renders with zero props. Keep existing slugs/exports/props stable; only add optional props.
 3. Wire it fully: entry in src/docs/registry.ts (unique: true, isNew: true, gesture, dependencies, props table),
-   demo in src/docs/demos.tsx, ?raw import + map entry in src/docs/sources.ts. New categories need DocCategory + NAV_ORDER updates.
+   demo module src/docs/demos/<slug>.tsx (export default the JSX; the Code tab source is automatic). New categories need DocCategory + NAV_ORDER updates.
 4. Premium motion: springs, stagger (30–60ms), layout animation, scroll-linked effects. Import from "motion/react".
    Always branch on usePrefersReducedMotion() (don't rely on a global MotionConfig).
 5. Light AND dark must look correct (class-based dark: variants; useResolvedTheme for canvas). WCAG AA contrast.
@@ -42,8 +42,8 @@ Quality bar: outstanding UI/UX and motion, not generic. When unsure, match the r
 COMPONENT_STANDARDS.md.
 
 Before writing code: state the one-sentence mood/metaphor, the slug, the props API, the state machine, and the
-reduced-motion version. Then output the full component file and the exact additions for registry.ts, demos.tsx,
-and sources.ts. Finish by walking through docs/CHECKLIST.md and flagging anything you couldn't verify.
+reduced-motion version. Then output the full component file and the exact additions for registry.ts and the new
+src/docs/demos/<slug>.tsx. Finish by walking through docs/CHECKLIST.md and flagging anything you couldn't verify.
 
 My task for this session: [describe the component or category to add].
 ```
@@ -61,8 +61,8 @@ My task for this session: [describe the component or category to add].
 | `.claude/skills/premium-ui-motion-craft/SKILL.md` | `.claude/skills/visual-design-critique/SKILL.md` (review pass on a screenshot) |
 | | `.claude/skills/design-system-foundations/SKILL.md` (tokens, new categories) |
 
-`src/docs/demos.tsx` (about 2,200 lines) and `src/docs/sources.ts` are large. Instead of attaching them, tell the LLM they're
-plain maps keyed by slug (GUIDE §5b/§5c shows the exact shape).
+Demos live one per file in `src/docs/demos/<slug>.tsx`. Attach one similar demo as an example (GUIDE §5b shows the shape);
+the Code tab source needs no wiring.
 
 ## 3. Compact motion checklist (if you can't attach the skill)
 

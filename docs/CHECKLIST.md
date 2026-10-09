@@ -6,8 +6,7 @@ Copy it into your PR description and tick the boxes.
 ## Wiring
 - [ ] `src/components/ui/<slug>.tsx` exists, kebab-case slug, main export is `PascalCase(slug)`, `type <Name>Props` exported
 - [ ] `src/docs/registry.ts` entry is in the right category, with `unique: true`, `isNew: true`, `gesture`, `dependencies`, and a full `props` table
-- [ ] `src/docs/demos.tsx` has the import and the map entry, and the demo looks finished with realistic content
-- [ ] `src/docs/sources.ts` has the `?raw` import and the map entry
+- [ ] `src/docs/demos/<slug>.tsx` default-exports the demo, and it looks finished with realistic content (the Code tab source is automatic)
 - [ ] New category? It's in both the `DocCategory` union and `NAV_ORDER`
 - [ ] Imports are limited to `react`, `react-dom`, `motion/react`, `lucide-react`, `@/lib/*`, and registered `@/components/ui/*`, with no new npm deps
 - [ ] `npm run check:wiring` reports 0 errors and no new warning for this slug

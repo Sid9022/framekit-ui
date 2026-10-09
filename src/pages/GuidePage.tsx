@@ -14,7 +14,7 @@ const body = 'text-[15px] leading-7 text-zinc-700 dark:text-zinc-300'
 const link =
   'font-medium text-zinc-950 underline decoration-zinc-300 decoration-1 underline-offset-[3px] transition-colors hover:decoration-zinc-950 dark:text-white dark:decoration-zinc-600 dark:hover:decoration-white'
 const focus = 'outline-none focus-visible:ring-2 focus-visible:ring-signal-600 focus-visible:ring-offset-2 ring-offset-white dark:ring-signal-300 dark:ring-offset-zinc-950'
-const inlineCode = 'rounded-md bg-zinc-950/[0.05] px-1.5 py-px font-mono text-[0.86em] text-zinc-900 ring-1 ring-inset ring-zinc-950/[0.06] dark:bg-white/[0.07] dark:text-zinc-100 dark:ring-white/[0.08]'
+const inlineCode = '[box-decoration-break:clone] rounded-md bg-zinc-950/[0.05] px-1.5 py-px font-mono text-[0.86em] text-zinc-900 ring-1 ring-inset ring-zinc-950/[0.06] dark:bg-white/[0.07] dark:text-zinc-100 dark:ring-white/[0.08]'
 
 const reveal: Variants = {
   hidden: { opacity: 0, y: 10 },
@@ -67,8 +67,8 @@ function Table({ b }: { b: Extract<GuideBlock, { type: 'table' }> }) {
       <div role="region" aria-label={b.caption} tabIndex={0} className={cn('framekit-scroll hidden overflow-x-auto rounded-2xl border border-zinc-950/[0.08] bg-white md:block dark:border-white/[0.08] dark:bg-zinc-900/30', focus)}>
         <table className="w-full text-left text-[13.5px]">
           <caption className="border-b border-zinc-950/[0.06] px-4 py-2.5 text-left text-xs font-medium text-zinc-600 dark:border-white/[0.06] dark:text-zinc-400">{b.caption}</caption>
-          <thead className="bg-zinc-50/80 text-[11px] uppercase tracking-[0.08em] text-zinc-600 dark:bg-zinc-900/60 dark:text-zinc-400">
-            <tr>{b.head.map((h) => <th key={h} scope="col" className="whitespace-nowrap px-4 py-2.5 font-semibold">{h}</th>)}</tr>
+          <thead className="bg-zinc-50/80 text-[12px] text-zinc-600 dark:bg-zinc-900/60 dark:text-zinc-400">
+            <tr>{b.head.map((h) => <th key={h} scope="col" className="whitespace-nowrap px-4 py-2.5 font-semibold"><Text>{h}</Text></th>)}</tr>
           </thead>
           <tbody>
             {b.rows.map((r, ri) => (
@@ -95,7 +95,7 @@ function Table({ b }: { b: Extract<GuideBlock, { type: 'table' }> }) {
               <dl className="mt-2 space-y-1.5 text-[13.5px]">
                 {r.slice(1).map((c, ci) => (
                   <div key={ci} className="grid grid-cols-[minmax(0,7.5rem)_minmax(0,1fr)] gap-3">
-                    <dt className="text-zinc-500 dark:text-zinc-400">{b.head[ci + 1]}</dt>
+                    <dt className="text-zinc-500 dark:text-zinc-400"><Text>{b.head[ci + 1]}</Text></dt>
                     <dd className="min-w-0 break-words text-zinc-800 dark:text-zinc-200"><Text>{c}</Text></dd>
                   </div>
                 ))}
@@ -196,18 +196,31 @@ function Block({ b, id }: { b: GuideBlock; id: string }) {
 function useActiveSection(ids: string[]) {
   const [active, setActive] = React.useState(ids[0])
   React.useEffect(() => {
-    const els = ids.map((id) => document.getElementById(id)).filter((el): el is HTMLElement => !!el)
-    const seen = new Map<string, boolean>()
-    const io = new IntersectionObserver(
-      (entries) => {
-        for (const e of entries) seen.set(e.target.id, e.isIntersecting)
-        const first = ids.find((id) => seen.get(id))
-        if (first) setActive(first)
-      },
-      { rootMargin: '-80px 0px -65% 0px' },
-    )
-    els.forEach((el) => io.observe(el))
-    return () => io.disconnect()
+    // Active = the last section whose top has passed a line just under the sticky header.
+    let raf = 0
+    const update = () => {
+      raf = 0
+      const line = 140
+      let current = ids[0]
+      for (const id of ids) {
+        const el = document.getElementById(id)
+        if (el && el.getBoundingClientRect().top <= line) current = id
+      }
+      // At the very bottom the last short sections can never reach the line.
+      if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 4) current = ids[ids.length - 1]
+      setActive(current)
+    }
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update)
+    }
+    update()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      cancelAnimationFrame(raf)
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
   }, [ids])
   return active
 }

@@ -22,7 +22,7 @@ npx shadcn@latest add https://framekit-ui.vercel.app/r/<slug>.json
 npm install
 npm run dev            # http://localhost:5173 (clean URLs: /docs/<slug>, /docs/category/<category>)
 npm run check:wiring   # every component has a file, demo, ?raw source, DOCS entry, and NAV_ORDER category
-npm run build          # prebuild → registry, sitemap, llms.txt; then tsc -b && vite build && prerender (static HTML per route). MUST pass.
+npm run build          # prebuild → registry, sitemap, llms.txt; then tsc -b && vite build && build-og (OG PNG per route) && prerender (static HTML per route). MUST pass.
 npm run lint           # oxlint
 npm run preview        # serve dist/ on :4180
 ```
@@ -38,14 +38,17 @@ npm run preview        # serve dist/ on :4180
 
 Deeper context: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) explains how the docs site and registry pipeline fit together.
 
-## Adding a component: the 4 touch points
+## Adding a component: the 3 touch points
 
 | # | File | What to add |
 |---|------|-------------|
 | 1 | `src/components/ui/<slug>.tsx` | The component. One self-contained file, kebab-case slug, **named export = PascalCase(slug)** |
 | 2 | `src/docs/registry.ts` | A `DOCS` entry under the right category comment: `unique: true, isNew: true`, `gesture`, `dependencies`, `props` |
-| 3 | `src/docs/demos.tsx` | Import + entry in the `demos` map (or `portfolio2Demos` for Portfolio-kit items) keyed by slug |
-| 4 | `src/docs/sources.ts` | `import xSrc from '../components/ui/<slug>.tsx?raw'` + `'<slug>': xSrc` in `sources` |
+| 3 | `src/docs/demos/<slug>.tsx` | The live preview: `const demo: React.ReactNode = <X />; export default demo` (helpers in `demos/_shared/`) |
+
+The Code tab source is automatic: `src/docs/sources.ts` lazy-globs `src/components/ui/*.tsx?raw`, and `src/docs/demos.ts`
+lazy-globs `src/docs/demos/*.tsx`, so each docs page downloads only its own demo + source chunk. Don't import demos or
+`?raw` sources anywhere else (it would pull them back into a shared chunk).
 
 A new category also needs a member in the `DocCategory` union **and** in `NAV_ORDER`. Do **not** hand-edit `registry.json`
 or `public/r/`. They're generated. Full walkthrough with templates: [GUIDE.md](GUIDE.md).
@@ -56,7 +59,7 @@ or `public/r/`. They're generated. Full walkthrough with templates: [GUIDE.md](G
    Anything else makes `scripts/build-registry.mjs` throw.
 2. **Typed props with sensible defaults.** It must render with zero props and realistic demo content. Accept `className` and merge it with `cn()`.
    Never rename existing slugs or exports, and never remove or rename props. Only add **optional** props.
-3. **Fully wired** (the 4 touch points). `npm run check:wiring` must report 0 errors.
+3. **Fully wired** (the 3 touch points). `npm run check:wiring` must report 0 errors.
 4. **Premium motion.** Use springs, staggers (30–60 ms), layout animation, scroll-linked effects. Import from `"motion/react"`, never `framer-motion`.
    **Always** branch on `usePrefersReducedMotion()`: keep final states, drop loops and parallax, cross-fade instead of moving.
    Don't rely on the docs site's global `MotionConfig`. Installed copies don't get it.
