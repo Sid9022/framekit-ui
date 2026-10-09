@@ -30,7 +30,7 @@ npm run preview  # preview production build
 Framekit UI is a [shadcn registry](https://ui.shadcn.com/docs/registry). In a React + Tailwind v4 project with a `components.json` (`npx shadcn@latest init`):
 
 ```bash
-npx shadcn@latest add https://framekit-ui.vercel.app/r/loop-flight-send-button.json
+npx shadcn@latest add https://www.framekitui.live/r/loop-flight-send-button.json
 ```
 
 Or register the namespace once in `components.json`:
@@ -38,7 +38,7 @@ Or register the namespace once in `components.json`:
 ```json
 {
   "registries": {
-    "@framekit": "https://framekit-ui.vercel.app/r/{name}.json"
+    "@framekit": "https://www.framekitui.live/r/{name}.json"
   }
 }
 ```
@@ -47,7 +47,9 @@ Or register the namespace once in `components.json`:
 npx shadcn@latest add @framekit/ghost-gobbler-skull
 ```
 
-The CLI copies the component, its shared helpers (`lib/cn.ts`, `lib/use-reduced-motion.ts`, …), npm deps and theme tokens. Index: https://framekit-ui.vercel.app/r/registry.json
+The CLI copies the component, its shared helpers (`lib/cn.ts`, `lib/use-reduced-motion.ts`, …), npm deps and theme tokens. Index: https://www.framekitui.live/r/registry.json
+
+Commands and `components.json` entries that still point at the old `https://framekit-ui.vercel.app/r/…` URLs keep working.
 
 ### Manually
 

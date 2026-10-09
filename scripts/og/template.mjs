@@ -41,7 +41,7 @@ function titleSize(title) {
 /**
  * @param {{ theme: 'ink' | 'paper', kicker: string, title: string, description: string, command?: string, footer: string, badge?: string }} card
  */
-export function card({ theme, kicker, title, description, command, footer, badge }) {
+export function card({ theme, kicker, title, description, command, footer, badge, host }) {
   const ink = theme === 'ink'
   const fg = ink ? PAPER : INK
   const muted = ink ? '#A1A1AA' : '#52525B'
@@ -104,7 +104,7 @@ export function card({ theme, kicker, title, description, command, footer, badge
       'div',
       { display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: command ? 20 : 0, fontSize: 20, color: muted },
       h('div', { display: 'flex' }, footer),
-      h('div', { display: 'flex', alignItems: 'center', gap: 10 }, h('div', { display: 'flex', width: 8, height: 8, borderRadius: 999, backgroundColor: LIME, border: ink ? 'none' : `1px solid ${INK}` }), 'framekit-ui.vercel.app'),
+      h('div', { display: 'flex', alignItems: 'center', gap: 10 }, h('div', { display: 'flex', width: 8, height: 8, borderRadius: 999, backgroundColor: LIME, border: ink ? 'none' : `1px solid ${INK}` }), host),
     ),
   )
 
@@ -129,6 +129,48 @@ export function card({ theme, kicker, title, description, command, footer, badge
       brand,
       body,
       bottom,
+    ),
+  )
+}
+
+/**
+ * Landing-page card (/og.png): logo + wordmark, the hero headline, the install pill and the site host.
+ * @param {{ headline: string, host: string, pill: string }} spec
+ */
+export function homeCard({ headline, host, pill }) {
+  const lines = headline.split(/(?<=\.)\s+/)
+  return h(
+    'div',
+    {
+      width: 1200,
+      height: 630,
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      backgroundColor: PAPER,
+      backgroundImage:
+        'radial-gradient(ellipse 520px 300px at 50% 92%, rgba(217,249,92,0.55), rgba(217,249,92,0) 100%), linear-gradient(rgba(10,10,10,0.045) 1px, transparent 1px), linear-gradient(90deg, rgba(10,10,10,0.045) 1px, transparent 1px)',
+      backgroundSize: '1200px 630px, 48px 48px, 48px 48px',
+      fontFamily: 'Geist',
+      color: INK,
+    },
+    h(
+      'div',
+      { display: 'flex', alignItems: 'center', gap: 26 },
+      img(LOGO, { width: 96, height: 96 }),
+      h('div', { display: 'flex', fontSize: 64, fontWeight: 600, letterSpacing: -2 }, 'Framekit'),
+    ),
+    h(
+      'div',
+      { display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: 34, fontFamily: 'Instrument Serif', fontSize: 104, lineHeight: 1.0, letterSpacing: -2 },
+      ...lines.map((l) => h('div', { display: 'flex' }, l)),
+    ),
+    h(
+      'div',
+      { display: 'flex', alignItems: 'center', gap: 18, marginTop: 44 },
+      h('div', { display: 'flex', backgroundColor: INK, color: PAPER, borderRadius: 999, padding: '10px 22px', fontFamily: 'Geist Mono', fontSize: 22 }, pill),
+      h('div', { display: 'flex', fontSize: 24, color: '#52525B' }, host),
     ),
   )
 }

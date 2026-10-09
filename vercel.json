@@ -20,5 +20,13 @@
       "headers": [{ "key": "Content-Type", "value": "text/plain; charset=utf-8" }]
     }
   ],
-  "redirects": [{ "source": "/docs", "destination": "/docs/introduction", "permanent": false }]
+  "redirects": [
+    {
+      "source": "/:path((?!r/|google37abea9f3ed18f22\\.html|BingSiteAuth\\.xml).*)",
+      "has": [{ "type": "host", "value": "framekit-ui.vercel.app" }],
+      "destination": "https://www.framekitui.live/:path",
+      "permanent": true
+    },
+    { "source": "/docs", "destination": "/docs/introduction", "permanent": false }
+  ]
 }

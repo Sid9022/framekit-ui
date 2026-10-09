@@ -6,8 +6,9 @@ import { track } from '@vercel/analytics'
 import { cn } from '@/lib/cn'
 import { handleTablistKeys } from '@/lib/roving'
 import { usePrefersReducedMotion } from '@/lib/use-reduced-motion'
+import { REGISTRY_BASE } from '@/docs/site-url'
 
-export const REGISTRY_URL = 'https://framekit-ui.vercel.app/r'
+export const REGISTRY_URL = REGISTRY_BASE
 export const registryItemUrl = (name: string) => `${REGISTRY_URL}/${name}.json`
 
 /* ── package manager preference (persisted + shared across blocks) ───────── */

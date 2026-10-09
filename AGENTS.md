@@ -9,10 +9,12 @@ Humans: start at [GUIDE.md](GUIDE.md).
 [shadcn registry](https://ui.shadcn.com/docs/registry) item. People install it with:
 
 ```bash
-npx shadcn@latest add https://framekit-ui.vercel.app/r/<slug>.json
+npx shadcn@latest add https://www.framekitui.live/r/<slug>.json
 ```
 
-- Repo: https://github.com/Sid9022/framekit-ui · Live docs: https://framekit-ui.vercel.app
+- Repo: https://github.com/Sid9022/framekit-ui · Live docs: https://www.framekitui.live
+- The site URL lives only in `src/docs/site-url.ts` (scripts read it via `scripts/lib/site-url.mjs`). Never hard-code the domain.
+  The old host `framekit-ui.vercel.app` 308-redirects to it (vercel.json), except `/r/*` and the Google/Bing verification files.
 - Stack: React 19, TypeScript, Vite 8, Tailwind CSS v4, `motion` (import from `"motion/react"`), `lucide-react`
 - The local folder is sometimes named `forge-ui`. The brand is **Framekit**. The product name lives only in `src/config/site.ts`.
 

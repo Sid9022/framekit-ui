@@ -8,7 +8,7 @@ component and an embedded eight-pose WebP, so installs do not depend on this sit
 After this change is published:
 
 ```sh
-npx shadcn@latest add https://framekit-ui.vercel.app/r/cook-loading.json
+npx shadcn@latest add https://www.framekitui.live/r/cook-loading.json
 ```
 
 Before publishing, test the built local URL as described in [GUIDE §7](../GUIDE.md#7-test-the-shadcn-install).

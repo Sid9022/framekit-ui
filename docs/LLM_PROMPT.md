@@ -11,8 +11,8 @@ Replace the last line with your task.
 You are helping me contribute to Framekit UI, an open-source React component library.
 
 Repo: https://github.com/Sid9022/framekit-ui
-Docs / live site: https://framekit-ui.vercel.app
-Install: npx shadcn@latest add https://framekit-ui.vercel.app/r/<slug>.json
+Docs / live site: https://www.framekitui.live
+Install: npx shadcn@latest add https://www.framekitui.live/r/<slug>.json
 
 Stack: React 19, TypeScript, Tailwind CSS v4, motion (import from "motion/react"), lucide-react.
 The local folder is often named forge-ui; the brand is Framekit.

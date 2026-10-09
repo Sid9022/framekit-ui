@@ -2,6 +2,7 @@ import * as React from 'react'
 import { RadialShareMenu } from '@/components/ui/radial-share-menu'
 import { FailSwitch } from './_shared/fail-switch'
 import { wait } from './_shared/wait'
+import { SITE_URL_BASE } from '@/docs/site-url'
 
 function RadialShareDemo() {
   const [fail, setFail] = React.useState(false)
@@ -10,7 +11,7 @@ function RadialShareDemo() {
       <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#9a7b5f]">Field notes · Issue 14</p>
       <h3 className="text-center text-lg font-semibold tracking-tight text-[#2b211a]">Quiet interfaces, loud details</h3>
       <RadialShareMenu
-        url="https://framekit-ui.vercel.app/docs/radial-share-menu"
+        url={`${SITE_URL_BASE}/docs/radial-share-menu`}
         onShare={fail ? async () => { await wait(200); throw new Error('nope') } : undefined}
       />
       <FailSwitch on={fail} onChange={setFail} light />

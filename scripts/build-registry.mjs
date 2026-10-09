@@ -15,7 +15,7 @@ import { pathToFileURL, fileURLToPath } from 'node:url'
 import ts from 'typescript'
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..')
-const HOMEPAGE = 'https://framekit-ui.vercel.app'
+import { SITE_URL as HOMEPAGE } from './lib/site-url.mjs'
 // REGISTRY_BASE_URL lets you test against a local server before deploying.
 const BASE = (process.env.REGISTRY_BASE_URL || HOMEPAGE).replace(/\/$/, '')
 const R = (name) => `${BASE}/r/${name}.json`

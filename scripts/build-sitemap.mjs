@@ -10,7 +10,7 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { ROOT, loadTs } from './lib/load-ts.mjs'
 
-const SITE_URL = (process.env.SITE_URL || 'https://framekit-ui.vercel.app').replace(/\/$/, '')
+import { SITE_URL } from './lib/site-url.mjs'
 const esc = (s) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 
 const { sitemapRoutes } = await loadTs('src/docs/seo.ts')
@@ -25,4 +25,9 @@ ${routes
 </urlset>
 `
 fs.writeFileSync(path.join(ROOT, 'public/sitemap.xml'), xml)
+// Keep robots.txt's Sitemap line on the canonical host.
+const robotsPath = path.join(ROOT, 'public/robots.txt')
+const robots = fs.readFileSync(robotsPath, 'utf8')
+const robotsNext = robots.replace(/^Sitemap:.*$/m, `Sitemap: ${SITE_URL}/sitemap.xml`)
+if (robotsNext !== robots) fs.writeFileSync(robotsPath, robotsNext)
 console.log(`sitemap.xml: ${routes.length} URLs (${routes.filter((r) => r.path.startsWith('/docs/category/')).length} categories)`)

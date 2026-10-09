@@ -2,7 +2,7 @@
 /**
  * Build step (after vite build): a branded 1200×630 Open Graph PNG for every docs page, category page and guide
  * → dist/og/{docs,category,guides}/<slug>.png (+ dist/og/guides.png). seo.ts → ogImagePath() points og:image /
- * twitter:image at them; the landing page keeps the hand-made public/og.png.
+ * twitter:image at them; the landing page card (og.png, from seo.HOME_HEADLINE) is generated too and mirrored to public/og.png.
  *
  * Pure Node (satori → SVG, @resvg/resvg-js → PNG) with bundled @fontsource fonts, so it runs on Vercel's build
  * image without Chromium. Each card is cached by a content hash (template + fonts + text) in
@@ -18,6 +18,7 @@ import path from 'node:path'
 import crypto from 'node:crypto'
 import { Worker } from 'node:worker_threads'
 import { ROOT, loadTs } from './lib/load-ts.mjs'
+import { SITE_HOST } from './lib/site-url.mjs'
 
 const t0 = performance.now()
 const seo = await loadTs('src/docs/seo.ts')
@@ -82,6 +83,12 @@ specs.push({
   card: { theme: 'paper', kicker: 'Guides', title: 'Guides for premium, accessible motion', description: seo.clip(guides.GUIDES_DESC, 130), footer: `${guides.GUIDES.length} in-depth guides`, badge: 'Guides' },
 })
 
+// Landing card (/og.png): hero headline + canonical host. Also copied to public/og.png (dev server) below.
+specs.push({ out: 'og.png', card: { home: true, headline: seo.HOME_HEADLINE, pill: 'npx shadcn add @framekit/…' } })
+
+// Domain shown in the card footer (part of the card spec, so a domain change busts the cache).
+for (const s of specs) s.card.host = SITE_HOST
+
 /* ── cache key: template + renderer + fonts + text ───────────────────── */
 const OG_DIR = path.join(ROOT, 'scripts/og')
 const fontFiles = (await import('./og/fonts.mjs')).FONT_FILES
@@ -130,6 +137,9 @@ for (const s of only ? specs.filter((x) => x.out.includes(only)) : specs) {
   fs.copyFileSync(s.cache, dest)
   bytes += fs.statSync(dest).size
 }
+// Keep the committed public/og.png in sync with the generated landing card.
+const home = specs.find((s) => s.out === 'og.png')
+if (home?.cache && fs.existsSync(home.cache)) fs.copyFileSync(home.cache, path.join(ROOT, 'public/og.png'))
 const total = only ? specs.filter((x) => x.out.includes(only)).length : specs.length
 console.log(
   `og: ${total} images (${todo.length} rendered, ${hits} cached) → dist/og (${(bytes / 1024 / 1024).toFixed(1)} MB) in ${((performance.now() - t0) / 1000).toFixed(1)}s`,

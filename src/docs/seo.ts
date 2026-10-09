@@ -9,6 +9,7 @@
  */
 import { DOCS, categorySlug, getCategoryBySlug, getDoc, getNavGroups, type DocCategory, type DocEntry } from './registry'
 import { SITE } from '../config/site'
+import { SITE_URL_BASE } from './site-url'
 import { LANDING_FAQ, faqAnswerText } from './faq'
 import { GUIDE_LINKS } from './guide-links'
 import type * as GuidesModule from './guides'
@@ -20,7 +21,7 @@ type Guide = GuidesModule.Guide
  */
 export type GuideSource = Pick<typeof GuidesModule, 'GUIDES' | 'GUIDES_DESC' | 'GUIDES_TITLE' | 'getGuide' | 'inlineText'>
 
-export const SITE_URL = 'https://framekit-ui.vercel.app'
+export const SITE_URL = SITE_URL_BASE
 export const OG_IMAGE = `${SITE_URL}/og.png`
 export const REPO_URL = SITE.github
 export const LICENSE_URL = 'https://opensource.org/licenses/MIT'

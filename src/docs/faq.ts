@@ -5,6 +5,8 @@
  * Answers use a tiny inline link syntax: [Label](/docs/slug). `faqAnswerText()` strips it for schema text.
  * Keep answers honest and short; link only to real pages.
  */
+import { SITE_URL_BASE } from './site-url'
+
 export type FaqItem = { q: string; a: string }
 
 export const LANDING_FAQ: FaqItem[] = [
@@ -14,7 +16,7 @@ export const LANDING_FAQ: FaqItem[] = [
   },
   {
     q: 'How do I add a macOS-style dock or command palette to my Next.js site?',
-    a: 'Run the shadcn CLI in your Next.js project (Tailwind v4 with a components.json): npx shadcn@latest add https://framekit-ui.vercel.app/r/glass-app-dock.json for the [Glass App Dock](/docs/glass-app-dock), or …/r/spotlight-command-palette.json for the [Spotlight Command Palette](/docs/spotlight-command-palette). The file lands in components/ui. In the App Router, the components use hooks, so add "use client" at the top of the file or render them from a Client Component.',
+    a: `Run the shadcn CLI in your Next.js project (Tailwind v4 with a components.json): npx shadcn@latest add ${SITE_URL_BASE}/r/glass-app-dock.json for the [Glass App Dock](/docs/glass-app-dock), or …/r/spotlight-command-palette.json for the [Spotlight Command Palette](/docs/spotlight-command-palette). The file lands in components/ui. In the App Router, the components use hooks, so add "use client" at the top of the file or render them from a Client Component.`,
   },
   {
     q: 'Is there a Magic UI or Aceternity alternative that works with shadcn?',

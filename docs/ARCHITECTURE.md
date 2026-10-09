@@ -24,7 +24,7 @@ Read this when you need to change anything beyond a single component.
             src/components/ui/<slug>.tsx  ◄──── single source ───────┤ shadcn build → public/r/<slug>.json     │
                                                                      └──────────────────┬──────────────────────┘
                                                                                         │ vercel (static)
-                                                          https://framekit-ui.vercel.app/r/<slug>.json
+                                                          https://www.framekitui.live/r/<slug>.json
                                                                                         │
                                                           npx shadcn@latest add …/r/<slug>.json
 ```
@@ -50,7 +50,7 @@ lazy-globs it as a raw string), and the CLI registry (`build-registry.mjs` reads
    and the `.framekit-scroll` scrollbar CSS.
 5. Writes `registry.json`. Then `shadcn build ./registry.json -o ./public/r` inlines the file contents into one JSON per item.
 
-`REGISTRY_BASE_URL` overrides the host used in `registryDependencies` (default `https://framekit-ui.vercel.app`). Use it
+`REGISTRY_BASE_URL` overrides the host used in `registryDependencies` (default: `SITE_URL_BASE` in `src/docs/site-url.ts`, i.e. `https://www.framekitui.live`). Use it
 for local install tests, then rebuild without it before committing (see [GUIDE §7](../GUIDE.md#7-test-the-shadcn-install)).
 
 Installed layout in a user's project (default shadcn aliases): `components/ui/<slug>.tsx`, `lib/cn.ts`,
@@ -69,7 +69,7 @@ empty `<div id="root">`. The build fixes that without SSR:
 - Build: `scripts/build-og.mjs` renders a 1200×630 Open Graph PNG for every docs page, category and guide into `dist/og/`
   (satori → SVG → resvg → PNG, fonts bundled from `@fontsource/*` WOFF files, template in `scripts/og/template.mjs`). It runs on
   a worker pool and caches by content hash in `node_modules/.cache/framekit-og` (Vercel keeps it between builds): about 11 s
-  cold for ~365 images, under 1 s warm. `seo.ts → ogImagePath()` maps a route to its image; the landing page keeps `/og.png`.
+  cold for ~365 images, under 1 s warm. `seo.ts → ogImagePath()` maps a route to its image; the landing page uses `/og.png`, generated from `HOME_HEADLINE` and mirrored to `public/og.png`.
   The PNGs are build output, not committed. `npm run og:build` re-runs it alone (`OG_ONLY=<substring>` filters).
 - Build (last step): `scripts/prerender.mjs` writes `dist/<path>/index.html` for every sitemap route: per-route `<head>` tags and
   JSON-LD, and a static content shell inside `#root` (H1, intro, install command, usage, props table, related links, FAQ).
