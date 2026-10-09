@@ -1,6 +1,6 @@
 import * as React from 'react'
 import { useLocation, useNavigationType } from 'react-router-dom'
-import { SITE_URL, routeSeo } from '@/docs/seo'
+import { SITE_URL, routeSeo, type RouteSeo } from '@/docs/seo'
 
 /* ── Scroll restoration ───────────────────────────────────────────────────
  * PUSH / REPLACE → jump to `#anchor` if present, else top.
@@ -97,7 +97,7 @@ export function ScrollManager() {
   return null
 }
 
-/* ── Per-route <head>: title, description, canonical, og:url / og:title ── */
+/* ── Per-route <head>: title, description, canonical, og:url / og:title / og:image ── */
 function upsertMeta(attr: 'name' | 'property', key: string, content: string) {
   let el = document.head.querySelector<HTMLMetaElement>(`meta[${attr}="${key}"]`)
   if (!el) {
@@ -129,21 +129,34 @@ function syncJsonLd(blocks: object[]) {
   }
 }
 
+function applyRouteSeo(m: RouteSeo) {
+  const url = `${SITE_URL}${m.path === '/' ? '/' : m.path}`
+  document.title = m.title
+  upsertMeta('name', 'description', m.description)
+  upsertMeta('property', 'og:title', m.title)
+  upsertMeta('property', 'og:description', m.description)
+  upsertMeta('property', 'og:url', url)
+  upsertMeta('name', 'twitter:title', m.title)
+  upsertMeta('name', 'twitter:description', m.description)
+  upsertMeta('property', 'og:type', m.ogType)
+  upsertMeta('property', 'og:image', m.image)
+  upsertMeta('property', 'og:image:alt', m.title)
+  upsertMeta('name', 'twitter:image', m.image)
+  upsertLink('canonical', url)
+  upsertMeta('name', 'robots', m.found ? 'index, follow, max-image-preview:large' : 'noindex, follow')
+  syncJsonLd(m.jsonLd)
+}
+
 export function RouteHead() {
   const { pathname } = useLocation()
   React.useEffect(() => {
-    const m = routeSeo(pathname)
-    const url = `${SITE_URL}${m.path === '/' ? '/' : m.path}`
-    document.title = m.title
-    upsertMeta('name', 'description', m.description)
-    upsertMeta('property', 'og:title', m.title)
-    upsertMeta('property', 'og:description', m.description)
-    upsertMeta('property', 'og:url', url)
-    upsertMeta('name', 'twitter:title', m.title)
-    upsertMeta('name', 'twitter:description', m.description)
-    upsertLink('canonical', url)
-    upsertMeta('name', 'robots', m.found ? 'index, follow, max-image-preview:large' : 'noindex, follow')
-    syncJsonLd(m.jsonLd)
+    // Guide metadata lives in the (large) guides module; load it only on /guides routes.
+    if (!/^\/guides(\/|$)/.test(pathname)) return applyRouteSeo(routeSeo(pathname))
+    let live = true
+    import('@/docs/guides').then((guides) => live && applyRouteSeo(routeSeo(pathname, guides)))
+    return () => {
+      live = false
+    }
   }, [pathname])
   return null
 }

@@ -10,6 +10,15 @@
 import { DOCS, categorySlug, getCategoryBySlug, getDoc, getNavGroups, type DocCategory, type DocEntry } from './registry'
 import { SITE } from '../config/site'
 import { LANDING_FAQ, faqAnswerText } from './faq'
+import { GUIDE_LINKS } from './guide-links'
+import type * as GuidesModule from './guides'
+type Guide = GuidesModule.Guide
+/**
+ * The guide text is large, so seo.ts never imports ./guides at runtime (it would land in the main bundle via
+ * RouteHead). Callers that need guide metadata pass the module in: RouteHead lazy-imports it on /guides routes and
+ * the build scripts pass their loaded copy.
+ */
+export type GuideSource = Pick<typeof GuidesModule, 'GUIDES' | 'GUIDES_DESC' | 'GUIDES_TITLE' | 'getGuide' | 'inlineText'>
 
 export const SITE_URL = 'https://framekit-ui.vercel.app'
 export const OG_IMAGE = `${SITE_URL}/og.png`
@@ -20,6 +29,21 @@ export const HOME_TITLE = `${SITE.name}: Animated React + Tailwind Component Lib
 export const HOME_HEADLINE = 'One library. Every interface, alive.'
 export const HOME_DESC =
   'Open-source animated React + Tailwind components with premium motion. Light and dark, accessible, and installable with one shadcn CLI command.'
+
+/**
+ * Per-route 1200×630 Open Graph image, generated at build time by scripts/build-og.mjs into dist/og/.
+ * The landing page keeps the hand-made /og.png.
+ */
+export function ogImagePath(pathname: string) {
+  const p = pathname.replace(/\/+$/, '') || '/'
+  if (p === '/') return '/og.png'
+  const parts = p.split('/').filter(Boolean)
+  if (parts[0] === 'docs' && parts[1] === 'category' && parts[2]) return `/og/category/${parts[2]}.png`
+  if (parts[0] === 'docs' && parts[1]) return `/og/docs/${parts[1]}.png`
+  if (parts[0] === 'guides' && parts[1]) return `/og/guides/${parts[1]}.png`
+  if (parts[0] === 'guides') return '/og/guides.png'
+  return '/og.png'
+}
 
 export const installCommand = (slug: string) => `npx shadcn@latest add ${SITE_URL}/r/${slug}.json`
 
@@ -112,6 +136,8 @@ export function categoryDescription(cat: DocCategory, count: number) {
 /** Every indexable path, in sitemap order (landing → category → its docs). */
 export function sitemapRoutes(): { path: string; priority: string; changefreq: string }[] {
   const urls = [{ path: '/', priority: '1.0', changefreq: 'weekly' }]
+  urls.push({ path: '/guides', priority: '0.8', changefreq: 'monthly' })
+  for (const g of GUIDE_LINKS) urls.push({ path: `/guides/${g.slug}`, priority: '0.9', changefreq: 'monthly' })
   for (const g of getNavGroups()) {
     if (g.title !== 'Getting Started') urls.push({ path: `/docs/category/${categorySlug(g.title)}`, priority: '0.7', changefreq: 'weekly' })
     for (const d of g.items) urls.push({ path: `/docs/${d.slug}`, priority: g.title === 'Getting Started' ? '0.9' : '0.8', changefreq: 'monthly' })
@@ -190,11 +216,99 @@ export type RouteSeo = {
   path: string
   found: boolean
   jsonLd: Ld[]
+  /** Absolute og:image / twitter:image URL. */
+  image: string
+  /** og:type */
+  ogType: 'website' | 'article'
 }
 
-export function routeSeo(pathname: string): RouteSeo {
+function guideLd(g: Guide, { GUIDES_TITLE, inlineText }: GuideSource): Ld[] {
+  const path = `/guides/${g.slug}`
+  const image = abs(ogImagePath(path))
+  const ld: Ld[] = [
+    breadcrumb([{ name: SITE.name, path: '/' }, { name: GUIDES_TITLE, path: '/guides' }, { name: g.navTitle, path }]),
+    {
+      '@context': 'https://schema.org',
+      '@type': 'TechArticle',
+      '@id': `${abs(path)}#article`,
+      headline: g.title,
+      description: g.description,
+      abstract: inlineText(g.summary),
+      url: abs(path),
+      mainEntityOfPage: abs(path),
+      image: { '@type': 'ImageObject', url: image, width: 1200, height: 630 },
+      datePublished: g.datePublished,
+      dateModified: g.dateModified,
+      inLanguage: 'en',
+      proficiencyLevel: 'Beginner',
+      author: { '@id': ORG_ID },
+      publisher: { '@id': ORG_ID },
+      isPartOf: { '@id': WEBSITE_ID },
+      articleSection: g.sections.map((x) => x.title),
+      about: g.related.map((slug) => {
+        const d = getDoc(slug)
+        return { '@type': 'SoftwareSourceCode', name: d?.title ?? slug, url: abs(`/docs/${slug}`) }
+      }),
+    },
+    {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: g.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: inlineText(f.a) } })),
+    },
+  ]
+  if (g.howTo)
+    ld.push({
+      '@context': 'https://schema.org',
+      '@type': 'HowTo',
+      name: g.howTo.name,
+      description: g.description,
+      totalTime: g.howTo.totalTime,
+      image,
+      tool: [{ '@type': 'HowToTool', name: 'shadcn CLI' }],
+      step: g.howTo.steps.map((st, i) => ({ '@type': 'HowToStep', position: i + 1, name: st.name, text: st.text, url: `${abs(path)}#install-by-url` })),
+    })
+  return ld
+}
+
+export function routeSeo(pathname: string, guides?: GuideSource): RouteSeo {
   const parts = pathname.replace(/\/+$/, '').split('/').filter(Boolean)
-  if (parts.length === 0) return { title: HOME_TITLE, description: HOME_DESC, path: '/', found: true, jsonLd: homeLd() }
+  const media = (path: string, ogType: 'website' | 'article' = 'website') => ({ image: abs(ogImagePath(path)), ogType })
+  if (parts.length === 0) return { title: HOME_TITLE, description: HOME_DESC, path: '/', found: true, jsonLd: homeLd(), ...media('/') }
+
+  if (parts[0] === 'guides' && parts.length === 1 && guides) {
+    const { GUIDES, GUIDES_DESC, GUIDES_TITLE } = guides
+    const path = '/guides'
+    return {
+      title: `${GUIDES_TITLE}: React Motion, shadcn & Accessibility | ${SITE.name}`,
+      description: GUIDES_DESC,
+      path,
+      found: true,
+      ...media(path),
+      jsonLd: [
+        breadcrumb([{ name: SITE.name, path: '/' }, { name: GUIDES_TITLE, path }]),
+        {
+          '@context': 'https://schema.org',
+          '@type': 'CollectionPage',
+          name: `${SITE.name} ${GUIDES_TITLE}`,
+          description: GUIDES_DESC,
+          url: abs(path),
+          isPartOf: { '@id': WEBSITE_ID },
+          mainEntity: {
+            '@type': 'ItemList',
+            numberOfItems: GUIDES.length,
+            itemListElement: GUIDES.map((g, i) => ({ '@type': 'ListItem', position: i + 1, name: g.title, url: abs(`/guides/${g.slug}`) })),
+          },
+        },
+      ],
+    }
+  }
+  if (parts[0] === 'guides' && parts.length === 2 && guides) {
+    const g = guides.getGuide(parts[1])
+    if (g) {
+      const path = `/guides/${g.slug}`
+      return { title: `${g.seoTitle} | ${SITE.name}`, description: clip(g.description, 160), path, found: true, jsonLd: guideLd(g, guides), ...media(path, 'article') }
+    }
+  }
 
   if (parts[0] === 'docs' && parts[1] === 'category' && parts[2] && parts.length === 3) {
     const cat = getCategoryBySlug(parts[2])
@@ -206,6 +320,7 @@ export function routeSeo(pathname: string): RouteSeo {
         description: categoryDescription(cat, items.length),
         path,
         found: true,
+        ...media(path),
         jsonLd: [
           breadcrumb([{ name: SITE.name, path: '/' }, { name: 'Docs', path: '/docs/introduction' }, { name: cat, path }]),
           {
@@ -249,14 +364,15 @@ export function routeSeo(pathname: string): RouteSeo {
           license: LICENSE_URL,
           isAccessibleForFree: true,
           keywords: [CATEGORY_SEO[doc.category].noun, 'shadcn registry', 'Tailwind CSS', 'Motion'].join(', '),
+          image: abs(ogImagePath(path)),
           author: { '@id': ORG_ID },
           isPartOf: { '@id': WEBSITE_ID },
         })
-      return { title: docTitle(doc), description: docDescription(doc), path, found: true, jsonLd: ld }
+      return { title: docTitle(doc), description: docDescription(doc), path, found: true, jsonLd: ld, ...media(path) }
     }
   } else if (parts[0] === 'docs' && parts.length === 1) {
     const intro = getDoc('introduction')!
-    return { title: docTitle(intro), description: docDescription(intro), path: '/docs/introduction', found: true, jsonLd: [] }
+    return { title: docTitle(intro), description: docDescription(intro), path: '/docs/introduction', found: true, jsonLd: [], ...media('/docs/introduction') }
   }
-  return { title: `Page not found | ${SITE.name}`, description: HOME_DESC, path: pathname, found: false, jsonLd: [] }
+  return { title: `Page not found | ${SITE.name}`, description: HOME_DESC, path: pathname, found: false, jsonLd: [], ...media('/') }
 }

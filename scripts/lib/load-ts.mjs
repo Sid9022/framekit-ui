@@ -31,7 +31,8 @@ export async function loadTs(entryRel) {
     let code = ts.transpileModule(fs.readFileSync(abs, 'utf8'), {
       compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 },
     }).outputText
-    code = code.replace(/(from\s+|import\s*\(\s*)(['"])([^'"]+)\2/g, (m, pre, q, spec) => {
+    // Only real top-level import/export statements (not `from '…'` inside string literals such as code samples).
+    code = code.replace(/^((?:import|export)\b[^'"\n]*?\s)(['"])([^'"]+)\2/gm, (m, pre, q, spec) => {
       const dep = resolveSpec(abs, spec)
       if (!dep) return m
       visit(dep)

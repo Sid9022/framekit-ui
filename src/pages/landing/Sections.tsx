@@ -10,6 +10,7 @@ import { LazyMount } from '@/components/docs/lazy-mount'
 import { BrandLink } from '@/components/docs/chrome'
 import { cn } from '@/lib/cn'
 import { LANDING_FAQ, faqAnswerParts } from '@/docs/faq'
+import { GUIDE_LINKS } from '@/docs/guide-links'
 import { GlassAppDock } from '@/components/ui/glass-app-dock'
 import { SpendDonutCard } from '@/components/ui/spend-donut-card'
 import { GlowLeaderboardList } from '@/components/ui/glow-leaderboard-list'
@@ -566,21 +567,22 @@ function FinalCta() {
 function Footer() {
   const cols = [
     { title: 'Product', links: [['Introduction', '/docs/introduction'], ['Installation', '/docs/installation'], ['Motion Showcase', `/docs/category/${categorySlug('Motion Showcase')}`], ['Data Widgets', `/docs/category/${categorySlug('Data Widgets')}`]] },
+    { title: 'Guides', links: [...GUIDE_LINKS.map((g) => [g.navTitle, `/guides/${g.slug}`]), ['All guides', '/guides']] },
     { title: 'Categories', links: groups.slice(0, 5).map((g) => [g.title, `/docs/category/${categorySlug(g.title)}`]) },
     { title: 'More shelves', links: groups.slice(5, 10).map((g) => [g.title, `/docs/category/${categorySlug(g.title)}`]) },
   ]
   return (
     <footer className="border-t border-black/[0.06] pb-[env(safe-area-inset-bottom)] dark:border-white/[0.08]">
-      <div className={cn(section, 'grid grid-cols-2 gap-x-6 gap-y-10 py-16 md:grid-cols-[1.6fr_1fr_1fr_1fr] md:gap-10')}>
-        <div className="col-span-2 md:col-span-1">
+      <div className={cn(section, 'grid grid-cols-2 gap-x-6 gap-y-10 py-16 md:grid-cols-4 md:gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]')}>
+        <div className="col-span-2 md:col-span-4 lg:col-span-1">
           <BrandLink />
           <p className={cn(muted, 'mt-4 max-w-[34ch] text-sm leading-relaxed')}>{SITE.description}</p>
           <a href={SITE.github} target="_blank" rel="noreferrer" className={cn(pillLight, 'mt-6')}><GithubIcon className="h-4 w-4" /> Star on GitHub<span className="sr-only"> (opens in a new tab)</span></a>
         </div>
         {cols.map((c, i) => (
-          <nav key={c.title} aria-label={c.title} className={cn('min-w-0', i === 2 && 'max-md:col-span-2')}>
+          <nav key={c.title} aria-label={c.title} className={cn('min-w-0', i === 3 && 'max-md:col-span-2')}>
             <h2 className="text-xs font-semibold uppercase tracking-[0.12em] text-zinc-950 dark:text-white">{c.title}</h2>
-            <ul className={cn('mt-4 space-y-1', i === 2 && 'max-md:grid max-md:grid-cols-2 max-md:gap-x-6 max-md:space-y-0')}>
+            <ul className={cn('mt-4 space-y-1', i === 3 && 'max-md:grid max-md:grid-cols-2 max-md:gap-x-6 max-md:space-y-0')}>
               {c.links.map(([l, to]) => <li key={to}><Link to={to} className={cn('inline-flex min-h-8 items-center rounded-md text-sm text-zinc-600 transition-colors hover:text-zinc-950 pointer-coarse:min-h-11 dark:text-zinc-400 dark:hover:text-white', focusRing)}>{l}</Link></li>)}
             </ul>
           </nav>

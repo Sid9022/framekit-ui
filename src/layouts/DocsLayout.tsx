@@ -1,15 +1,67 @@
 import * as React from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'motion/react'
-import { ChevronRight, Menu, Search, X } from 'lucide-react'
+import { BookOpen, ChevronRight, Menu, Search, X } from 'lucide-react'
 import { GithubIcon } from '@/components/icons'
 import { SITE } from '@/config/site'
 import { categorySlug, getNavGroups } from '@/docs/registry'
+import { GUIDE_LINKS } from '@/docs/guide-links'
 import { BrandLink, SearchTrigger, ThemeToggleButton, iconBtn } from '@/components/docs/chrome'
 import { useCommandPalette } from '@/components/command-palette'
 import { cn } from '@/lib/cn'
 
 type Groups = ReturnType<typeof getNavGroups>
+
+/** Always-open "Guides" group under Getting Started: long-form articles at /guides/<slug>. */
+function GuidesNav({ id, onNavigate }: { id: string; onNavigate?: () => void }) {
+  const item = ({ isActive }: { isActive: boolean }) =>
+    cn(
+      'fk-touch relative ml-3 flex min-h-8 items-center gap-2 rounded-lg px-2.5 py-1 text-[13px] transition-[background-color,color,transform] duration-150 active:scale-[0.98] motion-reduce:transition-none motion-reduce:active:scale-100',
+      isActive
+        ? 'bg-signal-100 font-semibold text-zinc-950 dark:bg-signal-900/50 dark:text-white'
+        : 'text-zinc-700 hover:bg-zinc-100 hover:text-zinc-950 dark:text-zinc-400 dark:hover:bg-zinc-900 dark:hover:text-white',
+    )
+  return (
+    <div className="border-b border-zinc-200/70 py-1 dark:border-zinc-800/70">
+      <NavLink
+        to="/guides"
+        end
+        onClick={onNavigate}
+        className={({ isActive }) =>
+          cn(
+            'fk-touch flex min-h-9 w-full items-center gap-1.5 rounded-lg px-2 py-1.5 text-left text-[13px] font-semibold tracking-tight transition-colors hover:bg-zinc-100 dark:hover:bg-zinc-900',
+            isActive ? 'text-zinc-950 dark:text-white' : 'text-zinc-700 dark:text-zinc-300',
+          )
+        }
+      >
+        <BookOpen aria-hidden className="h-3.5 w-3.5 shrink-0 text-zinc-500" />
+        <span className="flex-1">Guides</span>
+        <span className="rounded-full bg-[#D9F95C] px-1.5 py-px text-[10px] font-semibold text-zinc-950">NEW</span>
+      </NavLink>
+      <ul>
+        {GUIDE_LINKS.map((g) => (
+          <li key={g.slug}>
+            <NavLink to={`/guides/${g.slug}`} onClick={onNavigate} className={item}>
+              {({ isActive }) => (
+                <>
+                  {isActive && (
+                    <motion.span
+                      layoutId={`${id}-active-bar`}
+                      aria-hidden
+                      transition={{ type: 'spring', stiffness: 420, damping: 34 }}
+                      className="absolute -left-3 top-1.5 bottom-1.5 w-[3px] rounded-full bg-signal-600 dark:bg-signal-300"
+                    />
+                  )}
+                  <span className="truncate">{g.navTitle}</span>
+                </>
+              )}
+            </NavLink>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
 
 function SidebarNav({
   groups,
@@ -47,12 +99,13 @@ function SidebarNav({
           {allOpen ? 'Collapse all' : 'Expand all'}
         </button>
       </div>
-      {groups.map((group) => {
+      {groups.map((group, gi) => {
         const open = !!openMap[group.title]
         const panelId = `${id}-${categorySlug(group.title)}`
         const containsActive = group.items.some((i) => i.slug === activeSlug)
         return (
-          <div key={group.title} className="border-b border-zinc-200/70 py-1 last:border-0 dark:border-zinc-800/70">
+          <React.Fragment key={group.title}>
+          <div className="border-b border-zinc-200/70 py-1 last:border-0 dark:border-zinc-800/70">
             <button
               type="button"
               aria-expanded={open}
@@ -130,6 +183,8 @@ function SidebarNav({
               </ul>
             </div>
           </div>
+          {gi === 0 && <GuidesNav id={id} onNavigate={onNavigate} />}
+          </React.Fragment>
         )
       })}
     </nav>
@@ -267,6 +322,9 @@ export function DocsLayout() {
             </Link>
             <Link to="/docs/installation" className="rounded-lg px-3 py-2 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-200/70 hover:text-zinc-950 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white">
               Install
+            </Link>
+            <Link to="/guides" className="rounded-lg px-3 py-2 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-200/70 hover:text-zinc-950 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white">
+              Guides
             </Link>
           </nav>
           <div className="ml-auto flex items-center gap-1">

@@ -22,6 +22,7 @@ const NAV = [
   { label: 'Motion', to: `/docs/category/${categorySlug('Motion Showcase')}` },
   { label: 'Widgets', to: `/docs/category/${categorySlug('Data Widgets')}` },
   { label: 'Install', to: '/docs/installation' },
+  { label: 'Guides', to: '/guides' },
 ]
 
 /* ── Mobile sheet: modal dialog with focus trap, Esc, scroll lock and focus return ── */

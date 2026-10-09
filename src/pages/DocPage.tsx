@@ -5,8 +5,8 @@ import { ArrowLeft, ArrowRight, ChevronRight, Hand, RotateCcw } from 'lucide-rea
 import { categorySlug, getDoc, getPrevNext } from '@/docs/registry'
 import { NotFound, PreviewBoundary, PreviewSkeleton } from '@/components/docs/states'
 import { handleTablistKeys } from '@/lib/roving'
-import { demos } from '@/docs/demos'
-import { sources } from '@/docs/sources'
+import { loadDemo } from '@/docs/demos'
+import { libSources, loadSource } from '@/docs/sources'
 import { CodeBlock } from '@/components/code-block'
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
@@ -162,7 +162,7 @@ function Guide({ slug }: { slug: string }) {
             </li>
             <li>
               <p className={step}>Add the <code className={c}>cn</code> helper → <code className={c}>lib/cn.ts</code></p>
-              <CodeBlock language="tsx" code={sources.cn} trackMeta={{ slug: 'cn', kind: 'lib' }} />
+              <CodeBlock language="tsx" code={libSources.cn} trackMeta={{ slug: 'cn', kind: 'lib' }} />
             </li>
             <li>
               <p className={step}>Add the shared hooks (only if a component imports them)</p>
@@ -170,9 +170,9 @@ function Guide({ slug }: { slug: string }) {
                 Animated components import <code className={c}>@/lib/use-reduced-motion</code>; canvas scenes that switch palettes also import{' '}
                 <code className={c}>@/lib/use-resolved-theme</code>; the Toggles use <code className={c}>@/lib/toggle</code>.
               </p>
-              <CodeBlock language="tsx" code={sources['use-reduced-motion']} trackMeta={{ slug: 'use-reduced-motion', kind: 'lib' }} />
-              <div className="mt-3"><CodeBlock language="tsx" code={sources['use-resolved-theme']} trackMeta={{ slug: 'use-resolved-theme', kind: 'lib' }} /></div>
-              <div className="mt-3"><CodeBlock language="tsx" code={sources.toggle} trackMeta={{ slug: 'toggle', kind: 'lib' }} /></div>
+              <CodeBlock language="tsx" code={libSources['use-reduced-motion']} trackMeta={{ slug: 'use-reduced-motion', kind: 'lib' }} />
+              <div className="mt-3"><CodeBlock language="tsx" code={libSources['use-resolved-theme']} trackMeta={{ slug: 'use-resolved-theme', kind: 'lib' }} /></div>
+              <div className="mt-3"><CodeBlock language="tsx" code={libSources.toggle} trackMeta={{ slug: 'toggle', kind: 'lib' }} /></div>
             </li>
             <li>
               <p className={step}>Enable class-based dark mode and the Framekit tokens</p>
@@ -221,6 +221,24 @@ function Guide({ slug }: { slug: string }) {
     )
   }
   return null
+}
+
+type Async<T> = { status: 'loading' | 'done'; value: T | undefined }
+
+/** Load a per-slug chunk (demo or raw source). Keyed by slug so a stale result never shows on another page. */
+function useAsync<T>(slug: string, load: (slug: string) => Promise<T | undefined>): Async<T> {
+  const [state, setState] = React.useState<{ slug: string; value: T | undefined; done: boolean }>({ slug, value: undefined, done: false })
+  React.useEffect(() => {
+    let alive = true
+    load(slug).then(
+      (value) => alive && setState({ slug, value, done: true }),
+      () => alive && setState({ slug, value: undefined, done: true }),
+    )
+    return () => {
+      alive = false
+    }
+  }, [slug, load])
+  return state.slug === slug && state.done ? { status: 'done', value: state.value } : { status: 'loading', value: undefined }
 }
 
 /** Main component export: PascalCase(slug) when exported, else the first exported PascalCase function/const. */
@@ -358,13 +376,14 @@ export function DocPage() {
     setReplay(0)
   }, [slug])
 
-  const code = sources[slug]
-  const deps = React.useMemo(() => detectDeps(code ?? ''), [code])
+  // Each page loads only its own demo + source chunk (see src/docs/demos.ts / sources.ts).
+  const code = useAsync(slug, loadSource)
+  const demoState = useAsync(slug, loadDemo)
+  const deps = React.useMemo(() => detectDeps(code.value ?? ''), [code.value])
 
   if (!doc) return <NotFound slug={slug} />
 
   const isGuide = doc.category === 'Getting Started'
-  const demo = demos[slug]
 
   return (
     <motion.article key={slug} className="mx-auto max-w-4xl" variants={stagger} initial="hidden" animate="show">
@@ -452,7 +471,11 @@ export function DocPage() {
                   <div className="flex w-full min-w-0 flex-1 items-center justify-center">
                     <PreviewBoundary resetKey={`${slug}-${replay}`}>
                       <React.Suspense fallback={<PreviewSkeleton />}>
-                        <React.Fragment key={replay}>{demo ?? <p className="text-sm text-zinc-600">No live preview for this entry.</p>}</React.Fragment>
+                        {demoState.status === 'loading' ? (
+                          <PreviewSkeleton />
+                        ) : (
+                          <React.Fragment key={replay}>{demoState.value ?? <p className="text-sm text-zinc-600">No live preview for this entry.</p>}</React.Fragment>
+                        )}
                       </React.Suspense>
                     </PreviewBoundary>
                   </div>
@@ -464,7 +487,7 @@ export function DocPage() {
                   )}
                 </div>
               ) : (
-                <CodeBlock code={code || '// Source unavailable'} label={`${doc.title} source`} trackMeta={{ slug, kind: 'source' }} className="rounded-none border-0" />
+                <CodeBlock code={code.status === 'loading' ? '// Loading source…' : code.value || '// Source unavailable'} label={`${doc.title} source`} trackMeta={{ slug, kind: 'source' }} className="rounded-none border-0" />
               )}
             </div>
           </motion.section>
@@ -493,7 +516,7 @@ export function DocPage() {
               className="mt-3"
               language="tsx"
               label="Import statement"
-              code={`import { ${exportName(code, slug)} } from '@/components/ui/${slug}'`}
+              code={`import { ${exportName(code.value, slug)} } from '@/components/ui/${slug}'`}
               trackMeta={{ slug, kind: 'import' }}
             />
           </motion.section>

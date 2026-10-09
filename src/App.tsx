@@ -10,9 +10,10 @@ import { RouteAnalytics } from '@/components/route-analytics'
 import { RouteHead, ScrollManager } from '@/components/route-effects'
 import { PageSkeleton } from '@/components/docs/states'
 
-// The docs pages pull in every demo + raw source string (~2 MB). Load them on demand so the
-// landing page and shell stay light.
+// Docs pages load lazily; each one then fetches only its own demo + source chunk (src/docs/demos.ts, sources.ts).
 const DocPage = React.lazy(() => import('@/pages/DocPage').then((m) => ({ default: m.DocPage })))
+const GuidePage = React.lazy(() => import('@/pages/GuidePage').then((m) => ({ default: m.GuidePage })))
+const GuidesIndexPage = React.lazy(() => import('@/pages/GuidePage').then((m) => ({ default: m.GuidesIndexPage })))
 const CategoryPage = React.lazy(() => import('@/pages/CategoryPage').then((m) => ({ default: m.CategoryPage })))
 
 export default function App() {
@@ -39,6 +40,25 @@ export default function App() {
                   element={
                     <React.Suspense fallback={<PageSkeleton />}>
                       <DocPage />
+                    </React.Suspense>
+                  }
+                />
+              </Route>
+              {/* Long-form guides share the docs shell (sidebar + header). Each guide is prerendered: see seo.ts → sitemapRoutes(). */}
+              <Route path="/guides" element={<DocsLayout />}>
+                <Route
+                  index
+                  element={
+                    <React.Suspense fallback={<PageSkeleton />}>
+                      <GuidesIndexPage />
+                    </React.Suspense>
+                  }
+                />
+                <Route
+                  path=":slug"
+                  element={
+                    <React.Suspense fallback={<PageSkeleton />}>
+                      <GuidePage />
                     </React.Suspense>
                   }
                 />

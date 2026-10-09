@@ -26,6 +26,7 @@ const seo = await loadTs('src/docs/seo.ts')
 const { DOCS, getDoc, getNavGroups, categorySlug, getCategoryBySlug, getPrevNext, componentDocs } = await loadTs('src/docs/registry.ts')
 const { SITE } = await loadTs('src/config/site.ts')
 const { LANDING_FAQ, faqAnswerParts } = await loadTs('src/docs/faq.ts')
+const guides = await loadTs('src/docs/guides.ts')
 
 const U = seo.SITE_URL
 const groups = getNavGroups()
@@ -59,9 +60,9 @@ function crumbs(items) {
 }
 
 const header = `<header class="seo-header"><nav aria-label="Site">${a('/', SITE.name, ' class="seo-brand"')}<ul>
-<li>${a('/docs/introduction', 'Docs')}</li><li>${a('/docs/installation', 'Install')}</li><li>${a(catHref('Motion Showcase'), 'Motion')}</li><li>${a(catHref('Data Widgets'), 'Widgets')}</li><li>${a(SITE.github, 'GitHub')}</li></ul></nav></header>`
+<li>${a('/docs/introduction', 'Docs')}</li><li>${a('/docs/installation', 'Install')}</li><li>${a('/guides', 'Guides')}</li><li>${a(catHref('Motion Showcase'), 'Motion')}</li><li>${a(catHref('Data Widgets'), 'Widgets')}</li><li>${a(SITE.github, 'GitHub')}</li></ul></nav></header>`
 
-const footer = `<footer class="seo-footer"><nav aria-label="Component categories"><h2>Component categories</h2><ul>${cats
+const footer = `<footer class="seo-footer"><nav aria-label="Guides"><h2>Guides</h2><ul>${guides.GUIDES.map((g) => `<li>${a(`/guides/${g.slug}`, g.navTitle)}</li>`).join('')}</ul></nav><nav aria-label="Component categories"><h2>Component categories</h2><ul>${cats
   .map((g) => `<li>${a(catHref(g.title), `${g.title} (${g.items.length})`)}</li>`)
   .join('')}</ul></nav><p>${esc(SITE.name)} is open source under the ${esc(SITE.license)} licence · ${a(SITE.github, 'Source on GitHub')} · ${a('/llms.txt', 'llms.txt')} · ${a('/sitemap.xml', 'Sitemap')}</p></footer>`
 
@@ -87,10 +88,62 @@ const GUIDES = {
 <li><p><strong>Prerequisites.</strong> A React project on Tailwind CSS v4 (Vite, Next.js, React Router…) with a <code>components.json</code> and an <code>@/*</code> path alias. If you don't have one yet, run:</p>${code('npx shadcn@latest init')}</li>
 <li><p><strong>Add a component.</strong> Every component page has its exact command. For example:</p>${code(seo.installCommand('loop-flight-send-button'))}<p>The CLI writes <code>components/ui/loop-flight-send-button.tsx</code>, adds the helpers it imports (<code>lib/cn.ts</code>, <code>lib/use-reduced-motion.ts</code>…), installs npm dependencies such as <code>motion</code> and <code>lucide-react</code>, and merges the Framekit colour tokens into your CSS when a component uses them.</p></li>
 <li><p><strong>Register the <code>@framekit</code> namespace (optional)</strong> in <code>components.json</code>, then install by name:</p>${code(`{\n  "registries": {\n    "@framekit": "${U}/r/{name}.json"\n  }\n}`)}${code('npx shadcn@latest add @framekit/ghost-gobbler-skull @framekit/magnetic-button')}<p>The full index lives at ${a('/r/registry.json', '/r/registry.json')}.</p></li></ol>
+<p>Step-by-step version with requirements, Next.js notes and troubleshooting: ${a('/guides/install-animated-react-components-shadcn', 'How to install animated React components with the shadcn CLI')}.</p>
 <h2>Option B: manual copy-paste</h2><ol><li>Install peer dependencies: ${code('npm install motion clsx tailwind-merge lucide-react')}</li><li>Add the <code>cn</code> helper to <code>lib/cn.ts</code> and the shared hooks a component imports.</li><li>Enable class-based dark mode and the Framekit tokens in your global CSS (see ${a('/docs/theming', 'Theming')}).</li><li>Open any component page, switch to the Code tab, and paste into <code>components/ui/</code>.</li></ol>`,
   theming: () => `<p>Every component is drop-in on both light and dark pages. Colours come from Tailwind <code>dark:</code> variants, and the variant is <strong>class-based</strong>: a <code>dark</code> class on any ancestor switches components inside it to their dark look, and no class means light. Wrap a section in <code>class="light"</code> to force light inside a dark page.</p>
 ${code('@import "tailwindcss";\n\n/* dark: follows the nearest .dark / .light ancestor */\n@custom-variant dark (&:where(.dark, .dark *):not(:where(.light, .light *):not(:where(.light .dark, .light .dark *))));')}
 <p>Canvas-drawn scenes read the same rule through <code>useResolvedTheme</code> and accept <code>theme="auto" | "light" | "dark"</code>. Brand tokens live under <code>signal-*</code> (lilac) and <code>framekit-*</code> (orange), plus a <code>font-display</code> serif; the shadcn CLI adds them via the <code>framekit-theme</code> registry item.</p>`,
+}
+
+/* ── long-form guides (/guides/<slug>): the FULL article, from src/docs/guides.ts ── */
+const inline = (t) =>
+  guides
+    .inlineParts(t)
+    .map((p) => (p.kind === 'code' ? `<code>${esc(p.text)}</code>` : p.kind === 'strong' ? `<strong>${esc(p.text)}</strong>` : p.kind === 'link' ? a(p.href, p.text) : esc(p.text)))
+    .join('')
+const codeBlock = (c) => `${c.label ? `<p class="seo-code-label">${esc(c.label)}</p>` : ''}<pre><code class="language-${esc(c.lang)}">${esc(c.code)}</code></pre>`
+
+function guideBlock(b) {
+  switch (b.type) {
+    case 'p':
+      return `<p>${inline(b.text)}</p>`
+    case 'note':
+      return `<p class="seo-note"><strong>${b.tone === 'warn' ? 'Note' : 'Tip'}:</strong> ${inline(b.text)}</p>`
+    case 'list':
+      return `<${b.ordered ? 'ol' : 'ul'}>${b.items.map((i) => `<li>${inline(i)}</li>`).join('')}</${b.ordered ? 'ol' : 'ul'}>`
+    case 'steps':
+      return `<ol>${b.items.map((st) => `<li><p><strong>${esc(st.title)}.</strong> ${inline(st.text)}</p>${st.code ? codeBlock(st.code) : ''}</li>`).join('')}</ol>`
+    case 'code':
+      return codeBlock(b)
+    case 'table':
+      return `<table><caption>${esc(b.caption)}</caption><thead><tr>${b.head.map((h) => `<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${b.rows
+        .map((r) => `<tr>${r.map((c, i) => (i === 0 ? `<th scope="row">${inline(c)}</th>` : `<td>${inline(c)}</td>`)).join('')}</tr>`)
+        .join('')}</tbody></table>`
+    case 'examples': {
+      const docs = b.slugs.map((x) => getDoc(x)).filter(Boolean)
+      return `<p>${esc(b.title ?? 'Framekit examples')}: ${docs.map((d) => a(`/docs/${d.slug}`, d.title)).join(', ')}.</p>`
+    }
+  }
+  return ''
+}
+
+function guideBody(g) {
+  const others = guides.GUIDES.filter((x) => x.slug !== g.slug)
+  const toc = `<nav aria-label="On this page"><h2>On this page</h2><ol>${g.sections.map((x) => `<li>${a(`#${x.id}`, x.title)}</li>`).join('')}<li>${a('#faq', 'FAQ')}</li></ol></nav>`
+  return `<article>${crumbs([{ name: SITE.name, path: '/' }, { name: guides.GUIDES_TITLE, path: '/guides' }, { name: g.navTitle }])}
+<p>${esc(g.eyebrow)} · ${guides.readingMinutes(g)} min read · Updated <time datetime="${g.dateModified}">${g.dateModified}</time></p>
+<h1>${esc(g.title)}</h1><p class="seo-lede"><strong>Short answer:</strong> ${inline(g.summary)}</p>${toc}
+${g.sections
+  .map((x) => `<section id="${esc(x.id)}" aria-labelledby="${esc(x.id)}-h"><h2 id="${esc(x.id)}-h">${esc(x.title)}</h2><p><strong>${inline(x.answer)}</strong></p>${x.blocks.map(guideBlock).join('')}</section>`)
+  .join('\n')}
+<section id="faq" aria-labelledby="faq-h"><h2 id="faq-h">FAQ</h2>${g.faq.map((f) => `<div><h3>${esc(f.q)}</h3><p>${inline(f.a)}</p></div>`).join('')}</section>
+<section aria-labelledby="rel-h"><h2 id="rel-h">Components used in this guide</h2>${docList(g.related.map((x) => getDoc(x)).filter(Boolean))}</section>
+<nav aria-label="More guides"><h2>More guides</h2><ul>${others.map((o) => `<li>${a(`/guides/${o.slug}`, o.title)}<p>${esc(o.description)}</p></li>`).join('')}</ul></nav></article>`
+}
+
+function guidesIndexBody() {
+  return `<article>${crumbs([{ name: SITE.name, path: '/' }, { name: guides.GUIDES_TITLE }])}<h1>${esc(guides.GUIDES_TITLE)}</h1><p class="seo-lede">${esc(guides.GUIDES_DESC)}</p>
+<ul class="seo-cards">${guides.GUIDES.map((g) => `<li>${a(`/guides/${g.slug}`, g.title)}<p>${esc(g.description)}</p><p>${inline(g.summary)}</p></li>`).join('')}</ul></article>`
 }
 
 /* ── page bodies ─────────────────────────────────────────────────────── */
@@ -148,11 +201,11 @@ const base = template
   .replace(/\s*<title>[\s\S]*?<\/title>/, '')
   .replace(/\s*<meta\s+name="description"[^>]*>/g, '')
   .replace(/\s*<meta\s+name="robots"[^>]*>/g, '')
-  .replace(/\s*<meta\s+property="og:(title|description|url|type)"[^>]*>/g, '')
-  .replace(/\s*<meta\s+name="twitter:(title|description)"[^>]*>/g, '')
+  .replace(/\s*<meta\s+property="og:(title|description|url|type|image)"[^>]*>/g, '')
+  .replace(/\s*<meta\s+name="twitter:(title|description|image)"[^>]*>/g, '')
   .replace(/\s*<link\s+rel="canonical"[^>]*>/g, '')
 
-const SHELL_CSS = `<style id="seo-shell-css">#seo-shell{max-width:56rem;margin:0 auto;padding:1.5rem;font:16px/1.6 Geist,ui-sans-serif,system-ui,sans-serif;color:#18181b}html.dark #seo-shell{color:#e4e4e7}#seo-shell a{color:inherit;text-decoration:underline;text-underline-offset:2px}#seo-shell p{margin:.5rem 0}#seo-shell h2{font-size:1.375rem;font-weight:600;margin:2.25rem 0 .5rem}#seo-shell h3{font-size:1.05rem;font-weight:600;margin:1.25rem 0 .25rem}#seo-shell ul{list-style:disc}#seo-shell ol{list-style:decimal}#seo-shell li{margin:.25rem 0}#seo-shell caption{text-align:left;font-size:.8rem;opacity:.7}#seo-shell .seo-brand{font-weight:700;text-decoration:none}#seo-shell .seo-footer{margin-top:3rem;font-size:.875rem}#seo-shell h1{font-size:2.25rem;line-height:1.1;margin:1rem 0 .5rem}#seo-shell pre{overflow-x:auto;padding:.75rem 1rem;border-radius:.75rem;background:rgb(127 127 127/.12);font-size:.85rem}#seo-shell table{width:100%;border-collapse:collapse;font-size:.875rem}#seo-shell th,#seo-shell td{text-align:left;vertical-align:top;padding:.4rem .5rem;border-top:1px solid rgb(127 127 127/.25)}#seo-shell ul,#seo-shell ol{padding-left:1.25rem}#seo-shell .seo-crumbs{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;padding:0;font-size:.875rem}#seo-shell .seo-crumbs li+li:before{content:"›";margin-right:.5rem}#seo-shell .seo-header ul,#seo-shell .seo-footer ul,#seo-shell .seo-crumbs{list-style:none}#seo-shell .seo-header ul,#seo-shell .seo-footer ul{display:flex;flex-wrap:wrap;gap:.25rem 1rem;list-style:none;padding:0}html[data-js] #seo-shell{visibility:hidden;animation:fk-seo-show 0s 8s forwards}@keyframes fk-seo-show{to{visibility:visible}}</style>`
+const SHELL_CSS = `<style id="seo-shell-css">#seo-shell{max-width:56rem;margin:0 auto;padding:1.5rem;font:16px/1.6 Geist,ui-sans-serif,system-ui,sans-serif;color:#18181b}html.dark #seo-shell{color:#e4e4e7}#seo-shell a{color:inherit;text-decoration:underline;text-underline-offset:2px}#seo-shell p{margin:.5rem 0}#seo-shell h2{font-size:1.375rem;font-weight:600;margin:2.25rem 0 .5rem}#seo-shell h3{font-size:1.05rem;font-weight:600;margin:1.25rem 0 .25rem}#seo-shell ul{list-style:disc}#seo-shell ol{list-style:decimal}#seo-shell li{margin:.25rem 0}#seo-shell caption{text-align:left;font-size:.8rem;opacity:.7}#seo-shell .seo-brand{font-weight:700;text-decoration:none}#seo-shell .seo-footer{margin-top:3rem;font-size:.875rem}#seo-shell h1{font-size:2.25rem;line-height:1.1;margin:1rem 0 .5rem}#seo-shell pre{overflow-x:auto;padding:.75rem 1rem;border-radius:.75rem;background:rgb(127 127 127/.12);font-size:.85rem}#seo-shell table{width:100%;border-collapse:collapse;font-size:.875rem}#seo-shell th,#seo-shell td{text-align:left;vertical-align:top;padding:.4rem .5rem;border-top:1px solid rgb(127 127 127/.25)}#seo-shell ul,#seo-shell ol{padding-left:1.25rem}#seo-shell .seo-crumbs{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;padding:0;font-size:.875rem}#seo-shell .seo-crumbs li+li:before{content:"›";margin-right:.5rem}#seo-shell .seo-header ul,#seo-shell .seo-footer ul,#seo-shell .seo-crumbs{list-style:none}#seo-shell .seo-header ul,#seo-shell .seo-footer ul{display:flex;flex-wrap:wrap;gap:.25rem 1rem;list-style:none;padding:0}#seo-shell .seo-note{padding:.5rem .75rem;border-left:3px solid #D9F95C}#seo-shell .seo-code-label{font-size:.8rem;opacity:.7;margin-bottom:-.25rem}html[data-js] #seo-shell{visibility:hidden;animation:fk-seo-show 0s 8s forwards}@keyframes fk-seo-show{to{visibility:visible}}</style>`
 
 function render(meta, body, { noindex = false } = {}) {
   const url = meta.found ? `${U}${meta.path === '/' ? '/' : meta.path}` : `${U}/`
@@ -161,7 +214,10 @@ function render(meta, body, { noindex = false } = {}) {
     `<meta name="description" content="${esc(meta.description)}" />`,
     `<meta name="robots" content="${noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'}" />`,
     meta.found ? `<link rel="canonical" href="${esc(url)}" />` : '',
-    `<meta property="og:type" content="website" />`,
+    `<meta property="og:type" content="${meta.ogType}" />`,
+    `<meta property="og:image" content="${esc(meta.image)}" />`,
+    `<meta property="og:image:alt" content="${esc(meta.title)}" />`,
+    `<meta name="twitter:image" content="${esc(meta.image)}" />`,
     `<meta property="og:url" content="${esc(url)}" />`,
     `<meta property="og:title" content="${esc(meta.title)}" />`,
     `<meta property="og:description" content="${esc(meta.description)}" />`,
@@ -188,11 +244,12 @@ function write(rel, html) {
 const routes = seo.sitemapRoutes()
 let bytes = 0
 for (const { path: p } of routes) {
-  const meta = seo.routeSeo(p)
+  const meta = seo.routeSeo(p, guides)
   if (!meta.found) throw new Error(`prerender: route ${p} has no SEO metadata`)
   const parts = p.split('/').filter(Boolean)
   let body
   if (parts.length === 0) body = homeBody()
+  else if (parts[0] === 'guides') body = parts[1] ? guideBody(guides.getGuide(parts[1])) : guidesIndexBody()
   else if (parts[1] === 'category') body = categoryBody(getCategoryBySlug(parts[2]))
   else body = docBody(getDoc(parts[1]))
   const html = render(meta, body)
@@ -202,7 +259,7 @@ for (const { path: p } of routes) {
 
 // 404: Vercel serves dist/404.html with a real 404 status for any path with no file. The SPA still boots on it,
 // so client-side "not found" UI (unknown /docs/<slug>) keeps working.
-const nf = seo.routeSeo('/__not-found__')
+const nf = seo.routeSeo('/__not-found__', guides)
 write(
   '404.html',
   render(
