@@ -27,6 +27,7 @@ const { DOCS, getDoc, getNavGroups, categorySlug, getCategoryBySlug, getPrevNext
 const { SITE } = await loadTs('src/config/site.ts')
 const { LANDING_FAQ, faqAnswerParts } = await loadTs('src/docs/faq.ts')
 const guides = await loadTs('src/docs/guides.ts')
+const privacy = await loadTs('src/docs/privacy.ts')
 
 const U = seo.SITE_URL
 const groups = getNavGroups()
@@ -64,7 +65,7 @@ const header = `<header class="seo-header"><nav aria-label="Site">${a('/', SITE.
 
 const footer = `<footer class="seo-footer"><nav aria-label="Guides"><h2>Guides</h2><ul>${guides.GUIDES.map((g) => `<li>${a(`/guides/${g.slug}`, g.navTitle)}</li>`).join('')}</ul></nav><nav aria-label="Component categories"><h2>Component categories</h2><ul>${cats
   .map((g) => `<li>${a(catHref(g.title), `${g.title} (${g.items.length})`)}</li>`)
-  .join('')}</ul></nav><p>${esc(SITE.name)} is open source under the ${esc(SITE.license)} licence · ${a(SITE.github, 'Source on GitHub')} · ${a('/llms.txt', 'llms.txt')} · ${a('/sitemap.xml', 'Sitemap')}</p></footer>`
+  .join('')}</ul></nav><p>Built by ${a(SITE.creator.linkedin, SITE.creator.name)} · ${a(SITE.creator.linkedin, 'LinkedIn')} · ${a(SITE.creator.x, 'X')} · ${a(SITE.github, 'GitHub')}</p><p>${esc(SITE.name)} is open source under the ${esc(SITE.license)} licence · ${a(SITE.licenseUrl, 'License (MIT)')} · ${a('/privacy', 'Privacy')} · ${a('/llms.txt', 'llms.txt')} · ${a('/sitemap.xml', 'Sitemap')}</p></footer>`
 
 function propsTable(props) {
   if (!props?.length) return ''
@@ -195,6 +196,16 @@ function homeBody() {
 <section aria-labelledby="faq-title"><h2 id="faq-title">Frequently asked questions</h2>${faq}</section></article>`
 }
 
+/* ── /privacy ─────────────────────────────────────────────────────────── */
+function privacyInline(t) {
+  return privacy.privacyInline(t).map((p) => (p.kind === 'link' ? a(p.href, p.text) : p.kind === 'code' ? `<code>${esc(p.text)}</code>` : p.kind === 'strong' ? `<strong>${esc(p.text)}</strong>` : esc(p.text))).join('')
+}
+function privacyBody() {
+  return `<article>${crumbs([{ name: SITE.name, path: '/' }, { name: 'Privacy' }])}<h1>${esc(privacy.PRIVACY_TITLE)}</h1>
+<p>Last updated <time datetime="${privacy.PRIVACY_UPDATED}">${privacy.PRIVACY_UPDATED}</time></p><p class="seo-lede">${esc(privacy.PRIVACY_SUMMARY)}</p>
+${privacy.PRIVACY_SECTIONS.map((x) => `<section id="${x.id}"><h2>${esc(x.title)}</h2>${(x.paras ?? []).map((p) => `<p>${privacyInline(p)}</p>`).join('')}${x.items ? `<ul>${x.items.map((i) => `<li>${privacyInline(i)}</li>`).join('')}</ul>` : ''}</section>`).join('')}</article>`
+}
+
 /* ── head + document ─────────────────────────────────────────────────── */
 // Drop the template's route-specific tags; we re-emit them per page.
 const base = template
@@ -249,6 +260,7 @@ for (const { path: p } of routes) {
   const parts = p.split('/').filter(Boolean)
   let body
   if (parts.length === 0) body = homeBody()
+  else if (parts[0] === 'privacy') body = privacyBody()
   else if (parts[0] === 'guides') body = parts[1] ? guideBody(guides.getGuide(parts[1])) : guidesIndexBody()
   else if (parts[1] === 'category') body = categoryBody(getCategoryBySlug(parts[2]))
   else body = docBody(getDoc(parts[1]))

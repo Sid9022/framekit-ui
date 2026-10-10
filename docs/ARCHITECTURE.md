@@ -86,6 +86,13 @@ empty `<div id="root">`. The build fixes that without SSR:
   Navigation uses the tiny `guide-links.ts` so the article text stays out of the main bundle (`check:wiring` keeps the two in sync);
   `RouteHead` lazy-imports `guides.ts` on `/guides` routes.
 
+- `/privacy` is written as data in `src/docs/privacy.ts` (rendered by `pages/PrivacyPage.tsx`, prerendered by `prerender.mjs`,
+  meta in `seo.ts`). If you add analytics, cookies, storage keys or third-party requests, update it and `PRIVACY_UPDATED`.
+- Creator credit: `SITE.creator` in `src/config/site.ts` feeds `components/docs/creator-credit.tsx` (landing + docs footers)
+  and the `Person` JSON-LD (`seo.ts → personLd()`, linked as Organization `founder` / WebSite `creator` on `/`).
+- Icons: `public/site.webmanifest` + `favicon.ico`, `favicon-16/32.png`, `icon-192/512.png`, `icon-maskable-512.png` are committed;
+  regenerate them from the Keyframe mark with `node scripts/build-icons.mjs`.
+
 ## Bundle splitting
 
 - `DocPage` loads each component's demo (`src/docs/demos.ts` → `import.meta.glob('./demos/*.tsx')`) and raw source

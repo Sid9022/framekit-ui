@@ -8,6 +8,7 @@ import { categorySlug, componentDocs, getNavGroups } from '@/docs/registry'
 import { CopyButton, registryItemUrl } from '@/components/docs/install-block'
 import { LazyMount } from '@/components/docs/lazy-mount'
 import { BrandLink } from '@/components/docs/chrome'
+import { CreatorCredit, LegalLinks, SocialLinks } from '@/components/docs/creator-credit'
 import { cn } from '@/lib/cn'
 import { LANDING_FAQ, faqAnswerParts } from '@/docs/faq'
 import { GUIDE_LINKS } from '@/docs/guide-links'
@@ -575,9 +576,9 @@ function Footer() {
     <footer className="border-t border-black/[0.06] pb-[env(safe-area-inset-bottom)] dark:border-white/[0.08]">
       <div className={cn(section, 'grid grid-cols-2 gap-x-6 gap-y-10 py-16 md:grid-cols-4 md:gap-10 lg:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]')}>
         <div className="col-span-2 md:col-span-4 lg:col-span-1">
-          <BrandLink />
+          <BrandLink className="min-h-11" />
           <p className={cn(muted, 'mt-4 max-w-[34ch] text-sm leading-relaxed')}>{SITE.description}</p>
-          <a href={SITE.github} target="_blank" rel="noreferrer" className={cn(pillLight, 'mt-6')}><GithubIcon className="h-4 w-4" /> Star on GitHub<span className="sr-only"> (opens in a new tab)</span></a>
+          <a href={SITE.github} target="_blank" rel="noopener noreferrer" className={cn(pillLight, 'mt-6')}><GithubIcon className="h-4 w-4" /> Star on GitHub<span className="sr-only"> (opens in a new tab)</span></a>
         </div>
         {cols.map((c) => (
           <nav key={c.title} aria-label={c.title} className="min-w-0">
@@ -588,9 +589,12 @@ function Footer() {
           </nav>
         ))}
       </div>
-      <div className={cn(section, 'flex flex-col gap-2 border-t border-black/[0.06] py-6 text-xs text-zinc-600 sm:flex-row sm:items-center sm:justify-between dark:border-white/[0.08] dark:text-zinc-400')}>
-        <p>© {new Date().getFullYear()} {SITE.name} · {SITE.license} · <span className="tabular-nums">v{SITE.version}</span></p>
-        <p>Made with springs, not keyframes.</p>
+      <div className={cn(section, 'flex flex-col gap-4 border-t border-black/[0.06] py-6 sm:flex-row sm:items-center sm:justify-between sm:gap-6 dark:border-white/[0.08]')}>
+        <div className="min-w-0 space-y-1">
+          <CreatorCredit />
+          <LegalLinks />
+        </div>
+        <SocialLinks className="-ml-2.5 sm:ml-0 sm:-mr-2" />
       </div>
     </footer>
   )

@@ -8,6 +8,7 @@ import { categorySlug, getNavGroups } from '@/docs/registry'
 import { GUIDE_LINKS } from '@/docs/guide-links'
 import { BrandLink, SearchTrigger, ThemeToggleButton, iconBtn } from '@/components/docs/chrome'
 import { useCommandPalette } from '@/components/command-palette'
+import { CreatorCredit, LegalLinks, SocialLinks } from '@/components/docs/creator-credit'
 import { cn } from '@/lib/cn'
 
 type Groups = ReturnType<typeof getNavGroups>
@@ -273,6 +274,19 @@ function MobileDrawer({ open, onClose, children }: { open: boolean; onClose: () 
   )
 }
 
+/** Docs / guides footer: creator credit, legal links and socials (shared with the landing footer). */
+function DocsFooter() {
+  return (
+    <footer className="mx-auto mt-24 flex max-w-6xl flex-col gap-3 border-t border-zinc-200 pt-6 sm:flex-row sm:items-center sm:justify-between sm:gap-6 dark:border-zinc-800">
+      <div className="min-w-0 space-y-1">
+        <CreatorCredit />
+        <LegalLinks />
+      </div>
+      <SocialLinks className="-ml-2.5 sm:ml-0 sm:-mr-2" />
+    </footer>
+  )
+}
+
 export function DocsLayout() {
   const [mobileNav, setMobileNav] = React.useState(false)
   const location = useLocation()
@@ -341,7 +355,7 @@ export function DocsLayout() {
         <aside aria-label="Sidebar" className="sticky top-14 hidden h-[calc(100vh-3.5rem)] w-64 shrink-0 border-r border-zinc-200 lg:block dark:border-zinc-800">
           <SidebarNav id="side" groups={groups} openMap={openMap} setOpenMap={setOpenMap} activeSlug={activeSlug} />
         </aside>
-        <main id="main" ref={mainRef} tabIndex={-1} className="min-w-0 flex-1 px-4 pb-24 pt-8 outline-none sm:px-8 lg:px-12">
+        <main id="main" ref={mainRef} tabIndex={-1} className="min-w-0 flex-1 px-4 pb-10 pt-8 outline-none sm:px-8 lg:px-12">
           <motion.div
             key={location.pathname}
             initial={{ opacity: 0 }}
@@ -350,6 +364,7 @@ export function DocsLayout() {
           >
             <Outlet />
           </motion.div>
+          <DocsFooter />
         </main>
       </div>
 

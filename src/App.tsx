@@ -14,6 +14,7 @@ import { PageSkeleton } from '@/components/docs/states'
 const DocPage = React.lazy(() => import('@/pages/DocPage').then((m) => ({ default: m.DocPage })))
 const GuidePage = React.lazy(() => import('@/pages/GuidePage').then((m) => ({ default: m.GuidePage })))
 const GuidesIndexPage = React.lazy(() => import('@/pages/GuidePage').then((m) => ({ default: m.GuidesIndexPage })))
+const PrivacyPage = React.lazy(() => import('@/pages/PrivacyPage').then((m) => ({ default: m.PrivacyPage })))
 const CategoryPage = React.lazy(() => import('@/pages/CategoryPage').then((m) => ({ default: m.CategoryPage })))
 
 export default function App() {
@@ -59,6 +60,17 @@ export default function App() {
                   element={
                     <React.Suspense fallback={<PageSkeleton />}>
                       <GuidePage />
+                    </React.Suspense>
+                  }
+                />
+              </Route>
+              {/* Privacy policy, in the docs shell. Prerendered: see seo.ts → sitemapRoutes(). */}
+              <Route path="/privacy" element={<DocsLayout />}>
+                <Route
+                  index
+                  element={
+                    <React.Suspense fallback={<PageSkeleton />}>
+                      <PrivacyPage />
                     </React.Suspense>
                   }
                 />

@@ -12,6 +12,7 @@ import { SITE } from '../config/site'
 import { SITE_URL_BASE } from './site-url'
 import { LANDING_FAQ, faqAnswerText } from './faq'
 import { GUIDE_LINKS } from './guide-links'
+import { PRIVACY_DESC, PRIVACY_SECTIONS, PRIVACY_TITLE, PRIVACY_UPDATED } from './privacy'
 import type * as GuidesModule from './guides'
 type Guide = GuidesModule.Guide
 /**
@@ -140,6 +141,7 @@ export function categoryDescription(cat: DocCategory, count: number) {
 export function sitemapRoutes(): { path: string; priority: string; changefreq: string }[] {
   const urls = [{ path: '/', priority: '1.0', changefreq: 'weekly' }]
   urls.push({ path: '/guides', priority: '0.8', changefreq: 'monthly' })
+  urls.push({ path: '/privacy', priority: '0.3', changefreq: 'yearly' })
   for (const g of GUIDE_LINKS) urls.push({ path: `/guides/${g.slug}`, priority: '0.9', changefreq: 'monthly' })
   for (const g of getNavGroups()) {
     if (g.title !== 'Getting Started') urls.push({ path: `/docs/category/${categorySlug(g.title)}`, priority: '0.7', changefreq: 'weekly' })
@@ -170,6 +172,19 @@ type Ld = Record<string, unknown>
 const abs = (p: string) => `${SITE_URL}${p === '/' ? '/' : p}`
 const ORG_ID = `${SITE_URL}/#organization`
 const WEBSITE_ID = `${SITE_URL}/#website`
+const PERSON_ID = `${SITE_URL}/#creator`
+
+/** The creator (Person) — linked as Organization founder and WebSite creator on the home page. */
+export function personLd(): Ld {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': PERSON_ID,
+    name: SITE.creator.name,
+    url: SITE.creator.linkedin,
+    sameAs: [SITE.creator.linkedin, SITE.creator.x, REPO_URL],
+  }
+}
 
 function breadcrumb(items: { name: string; path: string }[]): Ld {
   return {
@@ -187,9 +202,11 @@ function homeLd(): Ld[] {
       '@id': ORG_ID,
       name: SITE.name,
       url: `${SITE_URL}/`,
-      logo: `${SITE_URL}/apple-touch-icon.png`,
+      logo: `${SITE_URL}/icon-512.png`,
       sameAs: [REPO_URL],
+      founder: { '@id': PERSON_ID },
     },
+    personLd(),
     {
       '@context': 'https://schema.org',
       '@type': 'WebSite',
@@ -199,6 +216,7 @@ function homeLd(): Ld[] {
       description: HOME_DESC,
       inLanguage: 'en',
       publisher: { '@id': ORG_ID },
+      creator: { '@id': PERSON_ID },
     },
     {
       '@context': 'https://schema.org',
@@ -277,6 +295,33 @@ export function routeSeo(pathname: string, guides?: GuideSource): RouteSeo {
   const parts = pathname.replace(/\/+$/, '').split('/').filter(Boolean)
   const media = (path: string, ogType: 'website' | 'article' = 'website') => ({ image: abs(ogImagePath(path)), ogType })
   if (parts.length === 0) return { title: HOME_TITLE, description: HOME_DESC, path: '/', found: true, jsonLd: homeLd(), ...media('/') }
+
+  if (parts[0] === 'privacy' && parts.length === 1) {
+    const path = '/privacy'
+    return {
+      title: `${PRIVACY_TITLE}: cookieless analytics, no ads | ${SITE.name}`,
+      description: PRIVACY_DESC,
+      path,
+      found: true,
+      ...media(path),
+      jsonLd: [
+        breadcrumb([{ name: SITE.name, path: '/' }, { name: 'Privacy', path }]),
+        {
+          '@context': 'https://schema.org',
+          '@type': 'WebPage',
+          '@id': `${abs(path)}#webpage`,
+          name: `${SITE.name} ${PRIVACY_TITLE.toLowerCase()}`,
+          description: PRIVACY_DESC,
+          url: abs(path),
+          dateModified: PRIVACY_UPDATED,
+          inLanguage: 'en',
+          isPartOf: { '@id': WEBSITE_ID },
+          publisher: { '@id': ORG_ID },
+          hasPart: PRIVACY_SECTIONS.map((x) => ({ '@type': 'WebPageElement', name: x.title, url: `${abs(path)}#${x.id}` })),
+        },
+      ],
+    }
+  }
 
   if (parts[0] === 'guides' && parts.length === 1 && guides) {
     const { GUIDES, GUIDES_DESC, GUIDES_TITLE } = guides
