@@ -7,14 +7,15 @@
     "dev": "vite",
     "registry:build": "node scripts/build-registry.mjs && shadcn build ./registry.json -o ./public/r",
     "check:wiring": "node scripts/check-wiring.mjs",
-    "prebuild": "npm run registry:build && npm run sitemap:build && npm run llms:build",
+    "prebuild": "npm run registry:build && npm run sitemap:build && npm run llms:build && npm run gh-stars:build",
     "build": "tsc -b && vite build && node scripts/build-og.mjs && node scripts/prerender.mjs",
     "preview": "vite preview --host --port 4180",
     "lint": "oxlint",
     "sitemap:build": "node scripts/build-sitemap.mjs",
     "llms:build": "node scripts/build-llms.mjs",
     "prerender": "node scripts/prerender.mjs",
-    "og:build": "node scripts/build-og.mjs"
+    "og:build": "node scripts/build-og.mjs",
+    "gh-stars:build": "node scripts/build-gh-stars.mjs"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",
@@ -45,6 +46,6 @@
     "typescript": "~6.0.2",
     "vite": "^8.3.0"
   },
-  "description": "Framekit UI \u2014 open-source animated React + Tailwind component library (copy-paste)",
+  "description": "Framekit UI — open-source animated React + Tailwind component library (copy-paste)",
   "license": "MIT"
 }

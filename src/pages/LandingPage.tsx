@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import { AnimatePresence, motion } from 'motion/react'
 import { ArrowUpRight, Menu, Search, X } from 'lucide-react'
 import { GithubIcon } from '@/components/icons'
+import { GithubStarsChip, GithubStarsPill } from '@/components/github-stars'
+import { starsLabel, useGithubStars } from '@/hooks/use-github-stars'
 import { SITE } from '@/config/site'
 import { componentDocs, getNavGroups, categorySlug } from '@/docs/registry'
 import { BrandLink, SearchTrigger, ThemeToggleButton, iconBtn } from '@/components/docs/chrome'
@@ -29,6 +31,7 @@ const NAV = [
 function MobileSheet({ open, onClose, returnTo }: { open: boolean; onClose: () => void; returnTo: React.RefObject<HTMLButtonElement | null> }) {
   const panel = React.useRef<HTMLDivElement>(null)
   const { setOpen: openSearch } = useCommandPalette()
+  const stars = useGithubStars()
   React.useEffect(() => {
     if (!open) return
     const prev = document.body.style.overflow
@@ -97,8 +100,10 @@ function MobileSheet({ open, onClose, returnTo }: { open: boolean; onClose: () =
               <button type="button" onClick={() => { onClose(); openSearch(true) }} className={cn(pillLight, 'w-full')}>
                 <Search className="h-4 w-4" aria-hidden /> Search
               </button>
-              <a href={SITE.github} target="_blank" rel="noreferrer" className={cn(pillDark, 'w-full')}>
-                <GithubIcon className="h-4 w-4" /> GitHub<span className="sr-only"> (opens in a new tab)</span>
+              <a href={SITE.github} target="_blank" rel="noopener noreferrer" className={cn(pillDark, 'w-full')}>
+                <GithubIcon className="h-4 w-4" /> Star
+                <GithubStarsChip className="rounded-full bg-white/15 px-2 py-0.5 text-[12px] dark:bg-zinc-950/10" />
+                <span className="sr-only"> {starsLabel(stars).replace(/^Star /, '')}</span>
               </a>
             </div>
           </motion.div>
@@ -139,9 +144,7 @@ function Nav() {
         <div className="ml-auto flex items-center gap-1 lg:ml-0">
           <SearchTrigger className="shrink-0 whitespace-nowrap" />
           <ThemeToggleButton />
-          <a href={SITE.github} target="_blank" rel="noreferrer" className={cn(iconBtn, 'hidden sm:inline-grid')} aria-label="Framekit UI on GitHub (opens in a new tab)">
-            <GithubIcon className="h-[18px] w-[18px]" />
-          </a>
+          <GithubStarsPill tone="landing" className="ml-1 hidden sm:inline-flex" />
           <button ref={trigger} type="button" className={cn(iconBtn, 'lg:hidden')} aria-expanded={open} aria-controls="landing-menu" aria-haspopup="dialog" aria-label="Open menu" onClick={() => setOpen(true)}>
             <Menu className="h-5 w-5" aria-hidden />
           </button>

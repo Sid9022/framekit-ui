@@ -2,7 +2,8 @@
  * /privacy: the privacy policy, written as data so the page (pages/PrivacyPage.tsx), the prerendered HTML
  * (scripts/prerender.mjs) and the meta description (seo.ts) share one source. Pure data: no DOM / React imports.
  * Every claim is checked against the code: storage keys in hooks/use-theme.ts, components/docs/preview-theme-toggle.tsx,
- * components/docs/install-block.tsx, components/command-palette.tsx and components/route-effects.tsx; analytics in
+ * components/docs/install-block.tsx, components/command-palette.tsx, components/route-effects.tsx and
+ * hooks/use-github-stars.ts (also the api.github.com request); analytics in
  * components/route-analytics.tsx (+ track('copy') in the code / install blocks); fonts in index.html; the Unsplash
  * image in docs/demos/image-lens.tsx. Inline markup is the same as guides.ts: `code`, **bold**, [label](href).
  */
@@ -35,7 +36,7 @@ export const PRIVACY_SECTIONS: PrivacySection[] = [
   {
     id: 'cookies',
     title: 'Cookies and storage',
-    paras: ['No cookies. These keys keep your settings between visits and never leave your device.'],
+    paras: ['No cookies. These keys stay in your browser and never leave your device. The first four keep your settings between visits.'],
     table: {
       caption: 'Keys stored in your browser',
       head: ['Key', 'Stores'],
@@ -45,6 +46,7 @@ export const PRIVACY_SECTIONS: PrivacySection[] = [
         ['framekit-package-manager', 'npm, pnpm, yarn or bun in commands'],
         ['framekit-recent-searches', 'Your recent ⌘K searches'],
         ['framekit-scroll', 'Scroll positions for Back. Session storage, cleared when the tab closes'],
+        ['framekit-gh-stars', 'The GitHub star count on the Star buttons, refreshed at most once an hour'],
       ],
     },
   },
@@ -52,7 +54,7 @@ export const PRIVACY_SECTIONS: PrivacySection[] = [
     id: 'third-parties',
     title: 'Third parties',
     paras: [
-      'Vercel hosts the site and keeps standard request logs (IP address, user agent) to serve and protect it. Fonts come from Google Fonts and one demo image from Unsplash, so your browser contacts them too.',
+      'Vercel hosts the site and keeps standard request logs (IP address, user agent) to serve and protect it. Fonts come from Google Fonts and one demo image from Unsplash, so your browser contacts them too. To show the star count, your browser asks api.github.com for the repo’s public details, at most once an hour.',
       `Links to [GitHub](${SITE.github}), [LinkedIn](${SITE.creator.linkedin}) and [X](${SITE.creator.x}) have their own policies. The shadcn CLI only downloads JSON from this site.`,
     ],
   },

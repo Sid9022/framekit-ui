@@ -21,6 +21,7 @@ import { LiquidGlassTabBar } from '@/components/ui/liquid-glass-tab-bar'
 import { ContributionHeatmapTile } from '@/components/ui/contribution-heatmap-tile'
 import { GlowLevelCard } from '@/components/ui/glow-level-card'
 import { WalletBalanceCard } from '@/components/ui/wallet-balance-card'
+import { GithubStarsLink } from '@/components/github-stars'
 import { EASE, FitArt, POP, focusRing, pillLime, surface } from './kit'
 
 /* Showcase entries: a real component, its backdrop, and the line the install pill reads out. */
@@ -243,6 +244,10 @@ export function ShowcaseHero({ count, cats }: { count: number; cats: number }) {
               </button>
             )}
           </div>
+        </motion.div>
+
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.7, ease: EASE, delay: 0.7 }} className="relative z-10 mt-3">
+          <GithubStarsLink focusClassName={focusRing} />
         </motion.div>
       </div>
 

@@ -2,8 +2,7 @@ import * as React from 'react'
 import { Link, NavLink, Outlet, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'motion/react'
 import { BookOpen, ChevronRight, Menu, Search, X } from 'lucide-react'
-import { GithubIcon } from '@/components/icons'
-import { SITE } from '@/config/site'
+import { GithubStarsPill } from '@/components/github-stars'
 import { categorySlug, getNavGroups } from '@/docs/registry'
 import { GUIDE_LINKS } from '@/docs/guide-links'
 import { BrandLink, SearchTrigger, ThemeToggleButton, iconBtn } from '@/components/docs/chrome'
@@ -344,9 +343,7 @@ export function DocsLayout() {
           <div className="ml-auto flex items-center gap-1">
             <SearchTrigger />
             <ThemeToggleButton />
-            <a href={SITE.github} target="_blank" rel="noreferrer" className={iconBtn} aria-label="Framekit UI on GitHub (opens in a new tab)">
-              <GithubIcon className="h-[18px] w-[18px]" />
-            </a>
+            <GithubStarsPill tone="docs" className="sm:ml-1" />
           </div>
         </div>
       </header>
