@@ -3,66 +3,63 @@
  * (scripts/prerender.mjs) and the meta description (seo.ts) share one source. Pure data: no DOM / React imports.
  * Every claim is checked against the code: storage keys in hooks/use-theme.ts, components/docs/preview-theme-toggle.tsx,
  * components/docs/install-block.tsx, components/command-palette.tsx and components/route-effects.tsx; analytics in
- * components/route-analytics.tsx (+ track('copy') in the code / install blocks); fonts in index.html.
- * Inline markup is the same as guides.ts: `code`, **bold**, [label](href).
+ * components/route-analytics.tsx (+ track('copy') in the code / install blocks); fonts in index.html; the Unsplash
+ * image in docs/demos/image-lens.tsx. Inline markup is the same as guides.ts: `code`, **bold**, [label](href).
  */
 import { SITE } from '../config/site'
 
 export const PRIVACY_UPDATED = '2026-10-10'
 export const PRIVACY_TITLE = 'Privacy policy'
 export const PRIVACY_DESC =
-  'How Framekit UI handles your data: cookieless, anonymous Vercel Web Analytics, no ads, no personal data, and only local settings saved in your browser.'
-export const PRIVACY_SUMMARY = `${SITE.name} collects no personal data. There are no accounts, no forms, no ads and no tracking cookies. We count anonymous, aggregated page views with Vercel Web Analytics, and the site remembers a few display settings in your own browser.`
+  'Framekit UI collects no personal data. Page views are counted with cookieless Vercel Web Analytics, and a few display settings stay in your browser.'
+export const PRIVACY_SUMMARY = `${SITE.name} has no accounts, forms, ads or cookies. We count anonymous page views, and your browser remembers a few display settings. That’s all.`
 
-export type PrivacySection = { id: string; title: string; paras?: string[]; items?: string[] }
+export type PrivacySection = {
+  id: string
+  title: string
+  paras?: string[]
+  items?: string[]
+  /** Two-column table: [key, what it stores]. */
+  table?: { caption: string; head: [string, string]; rows: [string, string][] }
+}
 
 export const PRIVACY_SECTIONS: PrivacySection[] = [
   {
     id: 'analytics',
-    title: 'What we measure',
+    title: 'Analytics',
     paras: [
-      'We use **Vercel Web Analytics** to see which pages are popular. It is cookieless and records anonymous, aggregated data: the page path, the referring site, and the approximate country, browser, operating system and device type. It does not identify you, build a profile, or follow you across other websites.',
-      'We also count an anonymous event when someone copies an install command or code snippet (which component, and which package manager). That tells us which components are useful. Nothing in it identifies you.',
+      'We use Vercel Web Analytics to see which pages get read. It’s cookieless and aggregated: the page, the referrer, and your approximate country, browser, OS and device. It can’t identify you or follow you elsewhere.',
+      'We also count copies of install commands and snippets, by component and package manager. None of it is sold or shared.',
     ],
   },
   {
     id: 'cookies',
-    title: 'Cookies and local storage',
-    paras: [
-      'The site sets **no cookies**, so there is no cookie banner. To remember your preferences, it saves a few small values in your browser’s storage. They never leave your device, and clearing your site data removes them:',
-    ],
-    items: [
-      '`framekit-theme`: light or dark site theme.',
-      '`framekit-preview-theme`: the light/dark toggle on component previews.',
-      '`framekit-package-manager`: npm, pnpm, yarn or bun in install commands.',
-      '`framekit-recent-searches`: your recent ⌘K searches.',
-      '`framekit-scroll` (session storage, cleared when the tab closes): scroll positions for the Back button.',
-    ],
-  },
-  {
-    id: 'what-we-dont-do',
-    title: 'What we don’t do',
-    items: [
-      'No accounts, sign-ups, newsletters or contact forms, so we never ask for your name or email.',
-      'No advertising, ad networks or retargeting pixels.',
-      'We don’t sell, rent or share data with anyone.',
-    ],
+    title: 'Cookies and storage',
+    paras: ['No cookies. These keys keep your settings between visits and never leave your device.'],
+    table: {
+      caption: 'Keys stored in your browser',
+      head: ['Key', 'Stores'],
+      rows: [
+        ['framekit-theme', 'Light or dark site theme'],
+        ['framekit-preview-theme', 'Light or dark for component previews'],
+        ['framekit-package-manager', 'npm, pnpm, yarn or bun in commands'],
+        ['framekit-recent-searches', 'Your recent ⌘K searches'],
+        ['framekit-scroll', 'Scroll positions for Back. Session storage, cleared when the tab closes'],
+      ],
+    },
   },
   {
     id: 'third-parties',
-    title: 'Hosting and third parties',
+    title: 'Third parties',
     paras: [
-      'The site is hosted on **Vercel**, which processes standard request logs (such as IP address and user agent) to deliver and protect the site. Fonts load from **Google Fonts**, and one demo image comes from **Unsplash**, so your browser contacts their servers when those load.',
-      `Links to [GitHub](${SITE.github}), [LinkedIn](${SITE.creator.linkedin}) and [X](${SITE.creator.x}) open third-party sites with their own privacy policies. Installing a component with the shadcn CLI downloads a JSON file from this site; nothing else is sent.`,
+      'Vercel hosts the site and keeps standard request logs (IP address, user agent) to serve and protect it. Fonts come from Google Fonts and one demo image from Unsplash, so your browser contacts them too.',
+      `Links to [GitHub](${SITE.github}), [LinkedIn](${SITE.creator.linkedin}) and [X](${SITE.creator.x}) have their own policies. The shadcn CLI only downloads JSON from this site.`,
     ],
   },
   {
     id: 'contact',
-    title: 'Changes and contact',
-    paras: [
-      'If this policy changes, we’ll update it here and change the date at the top.',
-      `Questions? Message ${SITE.creator.name} on [X](${SITE.creator.x}) or [LinkedIn](${SITE.creator.linkedin}).`,
-    ],
+    title: 'Changes and questions',
+    paras: [`If this page changes, so does the date at the top. Questions go to ${SITE.creator.name} on [X](${SITE.creator.x}) or [LinkedIn](${SITE.creator.linkedin}).`],
   },
 ]
 

@@ -85,6 +85,9 @@ empty `<div id="root">`. The build fixes that without SSR:
   into static HTML, `seo.ts` emits TechArticle/HowTo + FAQPage + BreadcrumbList, and `build-llms.mjs` adds them to `llms*.txt`.
   Navigation uses the tiny `guide-links.ts` so the article text stays out of the main bundle (`check:wiring` keeps the two in sync);
   `RouteHead` lazy-imports `guides.ts` on `/guides` routes.
+  Guides and `/privacy` reuse the docs page anatomy from `components/docs/prose.tsx` + `prose-styles.ts` (breadcrumb, H1/lede
+  classes, `DocTable` with the props-table look, the dashed note) plus the docs `CodeBlock` / `CommandTabs`. Write them in the
+  docs voice: noun headings, the answer in the first plain paragraph, each fact once, no "Short answer" labels or em dashes.
 
 - `/privacy` is written as data in `src/docs/privacy.ts` (rendered by `pages/PrivacyPage.tsx`, prerendered by `prerender.mjs`,
   meta in `seo.ts`). If you add analytics, cookies, storage keys or third-party requests, update it and `PRIVACY_UPDATED`.

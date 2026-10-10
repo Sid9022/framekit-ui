@@ -83,13 +83,16 @@ function mdBlock(b) {
     case 'p':
       return mdInline(b.text)
     case 'note':
-      return `> **${b.tone === 'warn' ? 'Note' : 'Tip'}:** ${mdInline(b.text)}`
+      return `> **${b.tone === 'warn' ? 'Heads-up' : 'Note'}:** ${mdInline(b.text)}`
     case 'list':
       return b.items.map((i, n) => `${b.ordered ? `${n + 1}.` : '-'} ${mdInline(i)}`).join('\n')
     case 'steps':
       return b.items.map((st, n) => `${n + 1}. **${st.title}.** ${mdInline(st.text)}${st.code ? `\n\n   \`\`\`${st.code.lang}\n${st.code.code.split('\n').map((l) => `   ${l}`).join('\n')}\n   \`\`\`` : ''}`).join('\n')
     case 'code':
       return `${b.label ? `${b.label}:\n\n` : ''}\`\`\`${b.lang}\n${b.code}\n\`\`\``
+    case 'command':
+    case 'install':
+      return `\`\`\`bash\n${guides.commandText(b)}\n\`\`\``
     case 'table':
       return `${b.caption}\n\n| ${b.head.join(' | ')} |\n| ${b.head.map(() => '---').join(' | ')} |\n${b.rows.map((r) => `| ${r.map(mdCell).join(' | ')} |`).join('\n')}`
     case 'examples':

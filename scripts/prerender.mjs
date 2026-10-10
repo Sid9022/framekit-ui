@@ -109,13 +109,16 @@ function guideBlock(b) {
     case 'p':
       return `<p>${inline(b.text)}</p>`
     case 'note':
-      return `<p class="seo-note"><strong>${b.tone === 'warn' ? 'Note' : 'Tip'}:</strong> ${inline(b.text)}</p>`
+      return `<p class="seo-note"><strong>${b.tone === 'warn' ? 'Heads-up' : 'Note'}:</strong> ${inline(b.text)}</p>`
     case 'list':
       return `<${b.ordered ? 'ol' : 'ul'}>${b.items.map((i) => `<li>${inline(i)}</li>`).join('')}</${b.ordered ? 'ol' : 'ul'}>`
     case 'steps':
       return `<ol>${b.items.map((st) => `<li><p><strong>${esc(st.title)}.</strong> ${inline(st.text)}</p>${st.code ? codeBlock(st.code) : ''}</li>`).join('')}</ol>`
     case 'code':
       return codeBlock(b)
+    case 'command':
+    case 'install':
+      return `<pre><code class="language-bash">${esc(guides.commandText(b))}</code></pre>`
     case 'table':
       return `<table><caption>${esc(b.caption)}</caption><thead><tr>${b.head.map((h) => `<th scope="col">${inline(h)}</th>`).join('')}</tr></thead><tbody>${b.rows
         .map((r) => `<tr>${r.map((c, i) => (i === 0 ? `<th scope="row">${inline(c)}</th>` : `<td>${inline(c)}</td>`)).join('')}</tr>`)
@@ -130,21 +133,22 @@ function guideBlock(b) {
 
 function guideBody(g) {
   const others = guides.GUIDES.filter((x) => x.slug !== g.slug)
-  const toc = `<nav aria-label="On this page"><h2>On this page</h2><ol>${g.sections.map((x) => `<li>${a(`#${x.id}`, x.title)}</li>`).join('')}<li>${a('#faq', 'FAQ')}</li></ol></nav>`
-  return `<article>${crumbs([{ name: SITE.name, path: '/' }, { name: guides.GUIDES_TITLE, path: '/guides' }, { name: g.navTitle }])}
-<p>${esc(g.eyebrow)} · ${guides.readingMinutes(g)} min read · Updated <time datetime="${g.dateModified}">${g.dateModified}</time></p>
-<h1>${esc(g.title)}</h1><p class="seo-lede"><strong>Short answer:</strong> ${inline(g.summary)}</p>${toc}
+  const toc = `<nav aria-label="On this page"><ul>${g.sections.map((x) => `<li>${a(`#${x.id}`, x.title)}</li>`).join('')}<li>${a('#faq', 'FAQ')}</li></ul></nav>`
+  return `<article>${crumbs([{ name: SITE.name, path: '/' }, { name: 'Docs', path: '/docs/introduction' }, { name: guides.GUIDES_TITLE, path: '/guides' }, { name: g.navTitle }])}
+<h1>${esc(g.title)}</h1><p class="seo-lede">${inline(g.summary)}</p>
+<p>Updated <time datetime="${g.dateModified}">${g.dateModified}</time> · ${guides.readingMinutes(g)} min read</p>${toc}
 ${g.sections
-  .map((x) => `<section id="${esc(x.id)}" aria-labelledby="${esc(x.id)}-h"><h2 id="${esc(x.id)}-h">${esc(x.title)}</h2><p><strong>${inline(x.answer)}</strong></p>${x.blocks.map(guideBlock).join('')}</section>`)
+  .map((x) => `<section id="${esc(x.id)}" aria-labelledby="${esc(x.id)}-h"><h2 id="${esc(x.id)}-h">${esc(x.title)}</h2><p>${inline(x.answer)}</p>${x.blocks.map(guideBlock).join('')}</section>`)
   .join('\n')}
 <section id="faq" aria-labelledby="faq-h"><h2 id="faq-h">FAQ</h2>${g.faq.map((f) => `<div><h3>${esc(f.q)}</h3><p>${inline(f.a)}</p></div>`).join('')}</section>
-<section aria-labelledby="rel-h"><h2 id="rel-h">Components used in this guide</h2>${docList(g.related.map((x) => getDoc(x)).filter(Boolean))}</section>
-<nav aria-label="More guides"><h2>More guides</h2><ul>${others.map((o) => `<li>${a(`/guides/${o.slug}`, o.title)}<p>${esc(o.description)}</p></li>`).join('')}</ul></nav></article>`
+<section aria-labelledby="rel-h"><h2 id="rel-h">Components in this guide</h2>${docList(g.related.map((x) => getDoc(x)).filter(Boolean))}</section>
+<nav aria-label="More guides"><ul>${others.map((o) => `<li>${a(`/guides/${o.slug}`, o.navTitle)}</li>`).join('')}</ul></nav></article>`
 }
 
 function guidesIndexBody() {
-  return `<article>${crumbs([{ name: SITE.name, path: '/' }, { name: guides.GUIDES_TITLE }])}<h1>${esc(guides.GUIDES_TITLE)}</h1><p class="seo-lede">${esc(guides.GUIDES_DESC)}</p>
-<ul class="seo-cards">${guides.GUIDES.map((g) => `<li>${a(`/guides/${g.slug}`, g.title)}<p>${esc(g.description)}</p><p>${inline(g.summary)}</p></li>`).join('')}</ul></article>`
+  return `<article>${crumbs([{ name: SITE.name, path: '/' }, { name: 'Docs', path: '/docs/introduction' }, { name: guides.GUIDES_TITLE }])}<h1>${esc(guides.GUIDES_TITLE)}</h1><p class="seo-lede">${esc(guides.GUIDES_DESC)}</p>
+<ul class="seo-cards">${guides.GUIDES.map((g) => `<li>${a(`/guides/${g.slug}`, g.title)}<p>${esc(g.description)}</p></li>`).join('')}</ul>
+<nav aria-label="Getting started"><h2>Getting started</h2><ul><li>${a('/docs/introduction', 'Introduction')}</li><li>${a('/docs/installation', 'Installation')}</li><li>${a('/docs/theming', 'Theming')}</li></ul></nav></article>`
 }
 
 /* ── page bodies ─────────────────────────────────────────────────────── */
@@ -203,7 +207,7 @@ function privacyInline(t) {
 function privacyBody() {
   return `<article>${crumbs([{ name: SITE.name, path: '/' }, { name: 'Privacy' }])}<h1>${esc(privacy.PRIVACY_TITLE)}</h1>
 <p>Last updated <time datetime="${privacy.PRIVACY_UPDATED}">${privacy.PRIVACY_UPDATED}</time></p><p class="seo-lede">${esc(privacy.PRIVACY_SUMMARY)}</p>
-${privacy.PRIVACY_SECTIONS.map((x) => `<section id="${x.id}"><h2>${esc(x.title)}</h2>${(x.paras ?? []).map((p) => `<p>${privacyInline(p)}</p>`).join('')}${x.items ? `<ul>${x.items.map((i) => `<li>${privacyInline(i)}</li>`).join('')}</ul>` : ''}</section>`).join('')}</article>`
+${privacy.PRIVACY_SECTIONS.map((x) => `<section id="${x.id}"><h2>${esc(x.title)}</h2>${(x.paras ?? []).map((p) => `<p>${privacyInline(p)}</p>`).join('')}${x.items ? `<ul>${x.items.map((i) => `<li>${privacyInline(i)}</li>`).join('')}</ul>` : ''}${x.table ? `<table><caption>${esc(x.table.caption)}</caption><thead><tr>${x.table.head.map((h) => `<th scope="col">${esc(h)}</th>`).join('')}</tr></thead><tbody>${x.table.rows.map(([k, v]) => `<tr><th scope="row"><code>${esc(k)}</code></th><td>${esc(v)}</td></tr>`).join('')}</tbody></table>` : ''}</section>`).join('')}</article>`
 }
 
 /* ── head + document ─────────────────────────────────────────────────── */
@@ -216,7 +220,7 @@ const base = template
   .replace(/\s*<meta\s+name="twitter:(title|description|image)"[^>]*>/g, '')
   .replace(/\s*<link\s+rel="canonical"[^>]*>/g, '')
 
-const SHELL_CSS = `<style id="seo-shell-css">#seo-shell{max-width:56rem;margin:0 auto;padding:1.5rem;font:16px/1.6 Geist,ui-sans-serif,system-ui,sans-serif;color:#18181b}html.dark #seo-shell{color:#e4e4e7}#seo-shell a{color:inherit;text-decoration:underline;text-underline-offset:2px}#seo-shell p{margin:.5rem 0}#seo-shell h2{font-size:1.375rem;font-weight:600;margin:2.25rem 0 .5rem}#seo-shell h3{font-size:1.05rem;font-weight:600;margin:1.25rem 0 .25rem}#seo-shell ul{list-style:disc}#seo-shell ol{list-style:decimal}#seo-shell li{margin:.25rem 0}#seo-shell caption{text-align:left;font-size:.8rem;opacity:.7}#seo-shell .seo-brand{font-weight:700;text-decoration:none}#seo-shell .seo-footer{margin-top:3rem;font-size:.875rem}#seo-shell h1{font-size:2.25rem;line-height:1.1;margin:1rem 0 .5rem}#seo-shell pre{overflow-x:auto;padding:.75rem 1rem;border-radius:.75rem;background:rgb(127 127 127/.12);font-size:.85rem}#seo-shell table{width:100%;border-collapse:collapse;font-size:.875rem}#seo-shell th,#seo-shell td{text-align:left;vertical-align:top;padding:.4rem .5rem;border-top:1px solid rgb(127 127 127/.25)}#seo-shell ul,#seo-shell ol{padding-left:1.25rem}#seo-shell .seo-crumbs{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;padding:0;font-size:.875rem}#seo-shell .seo-crumbs li+li:before{content:"›";margin-right:.5rem}#seo-shell .seo-header ul,#seo-shell .seo-footer ul,#seo-shell .seo-crumbs{list-style:none}#seo-shell .seo-header ul,#seo-shell .seo-footer ul{display:flex;flex-wrap:wrap;gap:.25rem 1rem;list-style:none;padding:0}#seo-shell .seo-note{padding:.5rem .75rem;border-left:3px solid #D9F95C}#seo-shell .seo-code-label{font-size:.8rem;opacity:.7;margin-bottom:-.25rem}html[data-js] #seo-shell{visibility:hidden;animation:fk-seo-show 0s 8s forwards}@keyframes fk-seo-show{to{visibility:visible}}</style>`
+const SHELL_CSS = `<style id="seo-shell-css">#seo-shell{max-width:56rem;margin:0 auto;padding:1.5rem;font:16px/1.6 Geist,ui-sans-serif,system-ui,sans-serif;color:#18181b}html.dark #seo-shell{color:#e4e4e7}#seo-shell a{color:inherit;text-decoration:underline;text-underline-offset:2px}#seo-shell p{margin:.5rem 0}#seo-shell h2{font-size:1.375rem;font-weight:600;margin:2.25rem 0 .5rem}#seo-shell h3{font-size:1.05rem;font-weight:600;margin:1.25rem 0 .25rem}#seo-shell ul{list-style:disc}#seo-shell ol{list-style:decimal}#seo-shell li{margin:.25rem 0}#seo-shell caption{text-align:left;font-size:.8rem;opacity:.7}#seo-shell .seo-brand{font-weight:700;text-decoration:none}#seo-shell .seo-footer{margin-top:3rem;font-size:.875rem}#seo-shell h1{font-size:2.25rem;line-height:1.1;margin:1rem 0 .5rem}#seo-shell pre{overflow-x:auto;padding:.75rem 1rem;border-radius:.75rem;background:rgb(127 127 127/.12);font-size:.85rem}#seo-shell table{width:100%;border-collapse:collapse;font-size:.875rem}#seo-shell th,#seo-shell td{text-align:left;vertical-align:top;padding:.4rem .5rem;border-top:1px solid rgb(127 127 127/.25)}#seo-shell ul,#seo-shell ol{padding-left:1.25rem}#seo-shell .seo-crumbs{display:flex;flex-wrap:wrap;gap:.5rem;list-style:none;padding:0;font-size:.875rem}#seo-shell .seo-crumbs li+li:before{content:"›";margin-right:.5rem}#seo-shell .seo-header ul,#seo-shell .seo-footer ul,#seo-shell .seo-crumbs{list-style:none}#seo-shell .seo-header ul,#seo-shell .seo-footer ul{display:flex;flex-wrap:wrap;gap:.25rem 1rem;list-style:none;padding:0}#seo-shell .seo-note{padding:.5rem .75rem;border-left:3px solid #7d6899}#seo-shell .seo-code-label{font-size:.8rem;opacity:.7;margin-bottom:-.25rem}html[data-js] #seo-shell{visibility:hidden;animation:fk-seo-show 0s 8s forwards}@keyframes fk-seo-show{to{visibility:visible}}</style>`
 
 function render(meta, body, { noindex = false } = {}) {
   const url = meta.found ? `${U}${meta.path === '/' ? '/' : meta.path}` : `${U}/`

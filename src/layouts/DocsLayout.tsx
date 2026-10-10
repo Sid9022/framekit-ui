@@ -37,7 +37,7 @@ function GuidesNav({ id, onNavigate }: { id: string; onNavigate?: () => void }) 
       >
         <BookOpen aria-hidden className="h-3.5 w-3.5 shrink-0 text-zinc-500" />
         <span className="flex-1">Guides</span>
-        <span className="rounded-full bg-[#D9F95C] px-1.5 py-px text-[10px] font-semibold text-zinc-950">NEW</span>
+        <span className="rounded bg-signal-200 px-1.5 py-px text-[10px] font-semibold text-signal-900 dark:bg-signal-800 dark:text-signal-100">NEW</span>
       </NavLink>
       <ul>
         {GUIDE_LINKS.map((g) => (

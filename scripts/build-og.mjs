@@ -80,7 +80,7 @@ for (const g of guides.GUIDES) {
 }
 specs.push({
   out: 'og/guides.png',
-  card: { theme: 'paper', kicker: 'Guides', title: 'Guides for premium, accessible motion', description: seo.clip(guides.GUIDES_DESC, 130), footer: `${guides.GUIDES.length} in-depth guides`, badge: 'Guides' },
+  card: { theme: 'paper', kicker: 'Docs · Guides', title: 'Guides', description: seo.clip(guides.GUIDES_DESC, 130), footer: `${guides.GUIDES.length} guides · React, Tailwind and Motion`, badge: 'Guides' },
 })
 
 // Landing card (/og.png): hero headline + canonical host. Also copied to public/og.png (dev server) below.

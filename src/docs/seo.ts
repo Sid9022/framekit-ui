@@ -247,7 +247,7 @@ function guideLd(g: Guide, { GUIDES_TITLE, inlineText }: GuideSource): Ld[] {
   const path = `/guides/${g.slug}`
   const image = abs(ogImagePath(path))
   const ld: Ld[] = [
-    breadcrumb([{ name: SITE.name, path: '/' }, { name: GUIDES_TITLE, path: '/guides' }, { name: g.navTitle, path }]),
+    breadcrumb([{ name: SITE.name, path: '/' }, { name: 'Docs', path: '/docs/introduction' }, { name: GUIDES_TITLE, path: '/guides' }, { name: g.navTitle, path }]),
     {
       '@context': 'https://schema.org',
       '@type': 'TechArticle',
@@ -333,7 +333,7 @@ export function routeSeo(pathname: string, guides?: GuideSource): RouteSeo {
       found: true,
       ...media(path),
       jsonLd: [
-        breadcrumb([{ name: SITE.name, path: '/' }, { name: GUIDES_TITLE, path }]),
+        breadcrumb([{ name: SITE.name, path: '/' }, { name: 'Docs', path: '/docs/introduction' }, { name: GUIDES_TITLE, path }]),
         {
           '@context': 'https://schema.org',
           '@type': 'CollectionPage',
