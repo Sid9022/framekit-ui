@@ -261,13 +261,9 @@ function MobileDrawer({ open, onClose, children }: { open: boolean; onClose: () 
           >
             <div className="flex items-center justify-between border-b border-zinc-200 px-3 py-2 dark:border-zinc-800">
               <BrandLink />
-              <div className="flex items-center gap-1">
-                {/* Below sm the header's theme toggle lives here, which leaves room for the star pill. */}
-                <ThemeToggleButton className="sm:hidden" />
-                <button ref={closeRef} type="button" onClick={onClose} className={iconBtn} aria-label="Close navigation">
-                  <X className="h-5 w-5" aria-hidden />
-                </button>
-              </div>
+              <button ref={closeRef} type="button" onClick={onClose} className={iconBtn} aria-label="Close navigation">
+                <X className="h-5 w-5" aria-hidden />
+              </button>
             </div>
             <div className="min-h-0 flex-1">{children}</div>
           </motion.div>
@@ -345,9 +341,11 @@ export function DocsLayout() {
             </Link>
           </nav>
           <div className="ml-auto flex items-center gap-1">
+            {/* Mobile bar (mark only): star · search · theme, like the landing bar. From sm up the pill sits last. */}
+            <GithubStarsPill tone="docs" className="sm:hidden" />
             <SearchTrigger />
-            <ThemeToggleButton className="max-sm:hidden" />
-            <GithubStarsPill tone="docs" className="sm:ml-1" />
+            <ThemeToggleButton className="shrink-0" />
+            <GithubStarsPill tone="docs" className="ml-1 hidden sm:inline-flex" />
           </div>
         </div>
       </header>

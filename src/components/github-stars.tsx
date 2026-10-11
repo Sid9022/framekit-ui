@@ -49,7 +49,7 @@ const TONE = {
 /**
  * Header pill: GitHub glyph · star · count (or "Star" while the repo has no stars yet).
  * Below `sm` it's the compact mobile-bar variant: a 34px hairline pill inside a 44px-tall hit area, glyph + star + count,
- * or glyph + "Star" at zero. Both mobile bars move the theme toggle into their menu below `sm` to make room for it.
+ * or glyph + "Star" at zero. Below `sm` both bars show only the logo mark, which leaves room for the pill, search, theme and menu.
  */
 export function GithubStarsPill({ tone, className }: { tone: keyof typeof TONE; className?: string }) {
   const stars = useGithubStars()

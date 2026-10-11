@@ -80,13 +80,9 @@ function MobileSheet({ open, onClose, returnTo }: { open: boolean; onClose: () =
           >
             <div className="flex h-14 items-center justify-between pl-4 pr-1">
               <span className="text-xs font-semibold uppercase tracking-[0.12em] text-zinc-600 dark:text-zinc-400">Menu</span>
-              <div className="flex items-center gap-1">
-                {/* Below sm the bar's theme toggle lives here, which leaves room for the star pill up top. */}
-                <ThemeToggleButton className={cn(focusRing, 'sm:hidden')} />
-                <button type="button" onClick={onClose} className={cn(iconBtn, focusRing)} aria-label="Close menu" data-autofocus>
-                  <X className="h-5 w-5" aria-hidden />
-                </button>
-              </div>
+              <button type="button" onClick={onClose} className={cn(iconBtn, focusRing)} aria-label="Close menu" data-autofocus>
+                <X className="h-5 w-5" aria-hidden />
+              </button>
             </div>
             <nav aria-label="Mobile">
               <ul>
@@ -146,10 +142,10 @@ function Nav() {
           ))}
         </nav>
         <div className="ml-auto flex items-center gap-1 lg:ml-0">
-          {/* Mobile bar: the star pill leads the icon row, like magicui.design. From sm up it sits after the theme toggle. */}
+          {/* Mobile bar (mark only): star · search · theme · menu, like magicui.design. From sm up the pill sits after the theme toggle. */}
           <GithubStarsPill tone="landing" className="sm:hidden" />
           <SearchTrigger className="shrink-0 whitespace-nowrap" />
-          <ThemeToggleButton className="max-sm:hidden" />
+          <ThemeToggleButton className="shrink-0" />
           <GithubStarsPill tone="landing" className="ml-1 hidden sm:inline-flex" />
           <button ref={trigger} type="button" className={cn(iconBtn, 'shrink-0 lg:hidden')} aria-expanded={open} aria-controls="landing-menu" aria-haspopup="dialog" aria-label="Open menu" onClick={() => setOpen(true)}>
             <Menu className="h-5 w-5" aria-hidden />

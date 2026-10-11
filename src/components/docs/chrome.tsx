@@ -29,7 +29,7 @@ export function FramekitMark({ className, accentClassName }: { className?: strin
   )
 }
 
-/** `compact`: below 375px the wordmark collapses to the mark (the link keeps its accessible name), so the mobile bars fit at 360px. */
+/** `compact`: on phones (below `sm`) the wordmark hides and only the mark shows, like magicui.design's mobile bar. The link keeps its accessible name and a 44px target. */
 export function BrandLink({ className, compact }: { className?: string; compact?: boolean }) {
   return (
     <Link to="/" aria-label={`${SITE.name} home`} className={cn('group -ml-1 flex items-center gap-2.5 rounded-xl px-1 py-1 font-semibold tracking-tight', compact && 'min-h-11 min-w-11 justify-center', className)}>
@@ -39,7 +39,7 @@ export function BrandLink({ className, compact }: { className?: string; compact?
           accentClassName="fill-[#D9F95C] origin-center [transform-box:fill-box] transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:rotate-90 motion-reduce:transition-none motion-reduce:group-hover:rotate-0"
         />
       </span>
-      <span className={cn(compact && 'max-[374px]:hidden')}>{SITE.name}</span>
+      <span className={cn(compact && 'max-sm:hidden')}>{SITE.name}</span>
     </Link>
   )
 }
