@@ -32,22 +32,24 @@ function StarCount({ n, className }: { n: number; className?: string }) {
 
 const newTab = { target: '_blank', rel: 'noopener noreferrer' } as const
 
+/** Visual pill colours. They sit on the inner span and react to the outer link's hover/focus (group). */
 const TONE = {
   /** Docs header: zinc hairline, lilac focus ring (the docs accent). */
   docs: cn(
-    'border-zinc-200 bg-white/70 text-zinc-700 hover:border-zinc-300 hover:bg-white hover:text-zinc-950 dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-zinc-900 dark:hover:text-white',
-    'outline-none focus-visible:ring-2 focus-visible:ring-signal-600 focus-visible:ring-offset-2 focus-visible:ring-offset-white dark:focus-visible:ring-signal-300 dark:focus-visible:ring-offset-zinc-950',
+    'border-zinc-200 bg-white/70 text-zinc-700 group-hover:border-zinc-300 group-hover:bg-white group-hover:text-zinc-950 dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-zinc-300 dark:group-hover:border-zinc-700 dark:group-hover:bg-zinc-900 dark:group-hover:text-white',
+    'group-focus-visible:ring-2 group-focus-visible:ring-signal-600 group-focus-visible:ring-offset-2 group-focus-visible:ring-offset-white dark:group-focus-visible:ring-signal-300 dark:group-focus-visible:ring-offset-zinc-950',
   ),
   /** Landing nav: the landing pill hairlines and its blue focus outline. */
   landing: cn(
-    'border-black/[0.08] bg-white/60 text-zinc-700 hover:border-black/[0.14] hover:bg-white hover:text-zinc-950 dark:border-white/[0.10] dark:bg-white/[0.04] dark:text-zinc-300 dark:hover:border-white/[0.16] dark:hover:bg-white/[0.08] dark:hover:text-white',
-    'outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2B5BFF] dark:focus-visible:outline-[#8FA8FF]',
+    'border-black/[0.08] bg-white/60 text-zinc-700 group-hover:border-black/[0.14] group-hover:bg-white group-hover:text-zinc-950 dark:border-white/[0.10] dark:bg-white/[0.04] dark:text-zinc-300 dark:group-hover:border-white/[0.16] dark:group-hover:bg-white/[0.08] dark:group-hover:text-white',
+    'group-focus-visible:outline-2 group-focus-visible:outline-offset-2 group-focus-visible:outline-[#2B5BFF] dark:group-focus-visible:outline-[#8FA8FF]',
   ),
 } as const
 
 /**
- * Compact header pill: GitHub glyph · star · count. Below `sm` it collapses to the glyph plus the count
- * (or the glyph alone when there's no count) so it keeps the old icon button's 44px footprint.
+ * Header pill: GitHub glyph · star · count (or "Star" while the repo has no stars yet).
+ * Below `sm` it's the compact mobile-bar variant: a 34px hairline pill inside a 44px-tall hit area, glyph + star + count,
+ * or glyph + "Star" at zero. Both mobile bars move the theme toggle into their menu below `sm` to make room for it.
  */
 export function GithubStarsPill({ tone, className }: { tone: keyof typeof TONE; className?: string }) {
   const stars = useGithubStars()
@@ -57,21 +59,37 @@ export function GithubStarsPill({ tone, className }: { tone: keyof typeof TONE; 
       href={SITE.github}
       {...newTab}
       title={`Star ${SITE.name} on GitHub`}
+      data-gh-stars-pill=""
       className={cn(
-        'group inline-flex h-11 shrink-0 touch-manipulation items-center justify-center gap-1.5 rounded-full border text-[13px] font-medium transition-[background-color,border-color,color,transform] duration-150 ease-out active:scale-[0.97] motion-reduce:transition-none motion-reduce:active:scale-100',
-        'sm:h-9 sm:px-3 pointer-coarse:h-11',
-        has ? 'px-3' : 'w-11 sm:w-auto',
-        TONE[tone],
+        'group inline-flex h-11 min-w-11 shrink-0 touch-manipulation items-center justify-center rounded-full outline-none sm:h-9 pointer-coarse:h-11',
         className,
       )}
     >
-      <GithubIcon className="h-4 w-4 shrink-0" />
-      <span aria-hidden className="hidden h-3.5 w-px bg-current opacity-20 sm:block" />
-      <Star aria-hidden className="hidden h-3.5 w-3.5 shrink-0 transition-colors duration-150 group-hover:fill-amber-400 group-hover:text-amber-500 sm:block dark:group-hover:fill-amber-300 dark:group-hover:text-amber-300" />
-      {/* Accessible name: "Star Framekit UI on GitHub, 1.2k stars (opens in a new tab)". No aria-label, so it always contains the visible text. */}
-      <span className="sr-only">Star {SITE.name} on GitHub{has ? ', ' : ' '}</span>
-      {has ? <StarCount n={stars} className="min-w-[1ch]" /> : <span aria-hidden className="hidden sm:inline">Star</span>}
-      <span className="sr-only">{has ? (stars === 1 ? ' star ' : ' stars ') : ''}(opens in a new tab)</span>
+      <span
+        className={cn(
+          'inline-flex h-[34px] min-w-[34px] items-center justify-center gap-1.5 rounded-full border px-2.5 text-[13px] font-medium whitespace-nowrap transition-[background-color,border-color,color,transform] duration-150 ease-out group-active:scale-[0.97] motion-reduce:transition-none motion-reduce:group-active:scale-100 sm:h-9 sm:px-3',
+          has && 'max-sm:gap-1',
+          TONE[tone],
+        )}
+      >
+        <GithubIcon className="h-4 w-4 shrink-0" />
+        <span aria-hidden className="hidden h-3.5 w-px bg-current opacity-20 sm:block" />
+        <Star
+          aria-hidden
+          className={cn(
+            'h-3.5 w-3.5 shrink-0 transition-colors duration-150 group-hover:fill-amber-400 group-hover:text-amber-500 dark:group-hover:fill-amber-300 dark:group-hover:text-amber-300',
+            has ? 'max-sm:ml-0.5 max-sm:h-3 max-sm:w-3' : 'hidden sm:block',
+          )}
+        />
+        {/* Accessible name: "Star Framekit UI on GitHub, 1.2k stars (opens in a new tab)". No aria-label, so it always contains the visible text. */}
+        <span className="sr-only">Star {SITE.name} on GitHub{has ? ', ' : ' '}</span>
+        {has ? (
+          <StarCount n={stars} className="min-w-[1ch]" />
+        ) : (
+          <span aria-hidden>Star</span>
+        )}
+        <span className="sr-only">{has ? (stars === 1 ? ' star ' : ' stars ') : ''}(opens in a new tab)</span>
+      </span>
     </a>
   )
 }

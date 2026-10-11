@@ -29,16 +29,17 @@ export function FramekitMark({ className, accentClassName }: { className?: strin
   )
 }
 
-export function BrandLink({ className }: { className?: string }) {
+/** `compact`: below 375px the wordmark collapses to the mark (the link keeps its accessible name), so the mobile bars fit at 360px. */
+export function BrandLink({ className, compact }: { className?: string; compact?: boolean }) {
   return (
-    <Link to="/" aria-label={`${SITE.name} home`} className={cn('group -ml-1 flex items-center gap-2.5 rounded-xl px-1 py-1 font-semibold tracking-tight', className)}>
+    <Link to="/" aria-label={`${SITE.name} home`} className={cn('group -ml-1 flex items-center gap-2.5 rounded-xl px-1 py-1 font-semibold tracking-tight', compact && 'min-h-11 min-w-11 justify-center', className)}>
       <span className="flex h-8 w-8 items-center justify-center rounded-[9px] bg-[#0A0A0A] text-[#F8F8F8] shadow-[0_1px_2px_rgb(0_0_0/0.2),inset_0_1px_0_rgb(255_255_255/0.12)] transition-transform duration-300 ease-[var(--ease-out-expo)] group-hover:scale-105 motion-reduce:transition-none dark:shadow-[0_0_0_1px_rgb(255_255_255/0.12),inset_0_1px_0_rgb(255_255_255/0.08)]">
         <FramekitMark
           className="h-[22px] w-[22px]"
           accentClassName="fill-[#D9F95C] origin-center [transform-box:fill-box] transition-transform duration-500 ease-[var(--ease-out-expo)] group-hover:rotate-90 motion-reduce:transition-none motion-reduce:group-hover:rotate-0"
         />
       </span>
-      <span>{SITE.name}</span>
+      <span className={cn(compact && 'max-[374px]:hidden')}>{SITE.name}</span>
     </Link>
   )
 }

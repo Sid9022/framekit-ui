@@ -261,9 +261,13 @@ function MobileDrawer({ open, onClose, children }: { open: boolean; onClose: () 
           >
             <div className="flex items-center justify-between border-b border-zinc-200 px-3 py-2 dark:border-zinc-800">
               <BrandLink />
-              <button ref={closeRef} type="button" onClick={onClose} className={iconBtn} aria-label="Close navigation">
-                <X className="h-5 w-5" aria-hidden />
-              </button>
+              <div className="flex items-center gap-1">
+                {/* Below sm the header's theme toggle lives here, which leaves room for the star pill. */}
+                <ThemeToggleButton className="sm:hidden" />
+                <button ref={closeRef} type="button" onClick={onClose} className={iconBtn} aria-label="Close navigation">
+                  <X className="h-5 w-5" aria-hidden />
+                </button>
+              </div>
             </div>
             <div className="min-h-0 flex-1">{children}</div>
           </motion.div>
@@ -325,10 +329,10 @@ export function DocsLayout() {
 
       <header className="sticky top-0 z-40 border-b border-zinc-200/80 bg-white/80 backdrop-blur-xl dark:border-zinc-800 dark:bg-zinc-950/80">
         <div className="mx-auto flex h-14 max-w-[1440px] items-center gap-2 px-3 sm:px-4">
-          <button type="button" className={cn(iconBtn, 'lg:hidden')} onClick={() => setMobileNav(true)} aria-label="Open navigation" aria-haspopup="dialog" aria-expanded={mobileNav}>
+          <button type="button" className={cn(iconBtn, 'shrink-0 lg:hidden')} onClick={() => setMobileNav(true)} aria-label="Open navigation" aria-haspopup="dialog" aria-expanded={mobileNav}>
             <Menu className="h-5 w-5" aria-hidden />
           </button>
-          <BrandLink />
+          <BrandLink compact className="shrink-0" />
           <nav aria-label="Primary" className="ml-4 hidden items-center gap-1 md:flex">
             <Link to="/docs/introduction" className="rounded-lg px-3 py-2 text-sm font-medium text-zinc-700 transition-colors hover:bg-zinc-200/70 hover:text-zinc-950 dark:text-zinc-300 dark:hover:bg-zinc-800 dark:hover:text-white">
               Docs
@@ -342,7 +346,7 @@ export function DocsLayout() {
           </nav>
           <div className="ml-auto flex items-center gap-1">
             <SearchTrigger />
-            <ThemeToggleButton />
+            <ThemeToggleButton className="max-sm:hidden" />
             <GithubStarsPill tone="docs" className="sm:ml-1" />
           </div>
         </div>
