@@ -12,7 +12,7 @@ import { LatticePulseLoader } from '@/components/ui/lattice-pulse-loader'
 import { MorphGlyphLoader } from '@/components/ui/morph-glyph-loader'
 import { NeonStrokeButton } from '@/components/ui/neon-stroke-button'
 import { ConfettiBurstButton } from '@/components/ui/confetti-burst-button'
-import { EASE, FitArt, POP, focusRing, lede, pillDark, section, surface } from './kit'
+import { FitArt, POP, focusRing, labelTone, lede, pillDark, section, surface } from './kit'
 import { SHOW } from './ShowcaseHero'
 import { Faq, FinalCta, Footer } from './Sections'
 import { gsap, MOTION_OK, ScrollTrigger, toPoint, useGSAP } from './motion'
@@ -42,9 +42,9 @@ const eyebrow = 'text-[13px] font-medium text-zinc-500 dark:text-zinc-400'
 function Preview({ item, className, label = true, fill }: { item: Item; className?: string; label?: boolean; fill?: number }) {
   const s = surface(item.bg)
   return (
-    <div className={cn('flex flex-col rounded-[22px] p-1.5 shadow-[0_1px_2px_rgb(0_0_0/0.05),0_20px_44px_-24px_rgb(0_0_0/0.35)] ring-1 ring-black/[0.06] dark:ring-white/10', s.className, className)} style={s.style}>
-      <FitArt design={item.design} fill={fill ?? item.fill ?? 0.88} className="min-h-0 flex-1 rounded-[17px]">{item.art}</FitArt>
-      {label && <span className="px-2 pb-1 pt-2 text-[12px] font-medium text-zinc-500 dark:text-zinc-400">{item.label}</span>}
+    <div className={cn('flex flex-col rounded-[24px] p-1.5 shadow-[inset_0_1px_0_rgb(255_255_255/0.55),0_1px_2px_rgb(0_0_0/0.05),0_10px_24px_-14px_rgb(0_0_0/0.16),0_28px_56px_-32px_rgb(0_0_0/0.38)] ring-1 ring-black/[0.06] dark:shadow-[inset_0_1px_0_rgb(255_255_255/0.08),0_28px_56px_-28px_rgb(0_0_0/0.8)] dark:ring-white/10', s.className, className)} style={s.style}>
+      <FitArt design={item.design} fill={fill ?? item.fill ?? 0.88} className="min-h-0 flex-1 rounded-[19px]">{item.art}</FitArt>
+      {label && <span className={cn('px-2 pb-1 pt-2 text-[12px] font-medium tracking-[-0.01em]', labelTone(item.bg))}>{item.label}</span>}
     </div>
   )
 }
@@ -54,7 +54,7 @@ function Feature() {
   const root = React.useRef<HTMLElement>(null)
   useGSAP(() => {
     gsap.matchMedia().add(MOTION_OK, () => {
-      const t = { trigger: '[data-fbox]', start: 'top 95%', end: 'top 25%', scrub: 0.6 }
+      const t = { trigger: '[data-fbox]', start: 'top 95%', end: 'top 30%', scrub: 1 }
       gsap.fromTo('[data-fbox]', { y: 160 }, { y: 0, ease: 'none', scrollTrigger: t })
       gsap.fromTo('[data-fimg]', { scale: 1.3 }, { scale: 1, ease: 'none', scrollTrigger: t })
       gsap.from('[data-fchip]', { y: 40, opacity: 0, scale: 0.9, duration: 0.8, ease: 'back.out(2)', stagger: 0.12, scrollTrigger: { trigger: '[data-fbox]', start: 'top 55%' } })
@@ -93,7 +93,7 @@ function TechMarquee() {
       <p className="sr-only">{TECH.join(', ')}</p>
       <div aria-hidden className="overflow-hidden [mask-image:linear-gradient(90deg,transparent,#000_12%,#000_88%,transparent)]">
         <div className="flex w-max animate-[fk-marquee_38s_linear_infinite] gap-14 pr-14 motion-reduce:animate-none">
-          {row.map((t, i) => <span key={i} className="whitespace-nowrap text-[clamp(1.25rem,1rem+1vw,2rem)] font-semibold tracking-[-0.04em] text-zinc-400 dark:text-zinc-600">{t}</span>)}
+          {row.map((t, i) => <span key={i} className="whitespace-nowrap text-[clamp(1.25rem,1rem+1vw,2rem)] font-semibold tracking-[-0.04em] text-zinc-500 dark:text-zinc-400">{t}</span>)}
         </div>
       </div>
     </section>
@@ -105,11 +105,18 @@ const CASCADE = ['glow-histogram-card', 'wallet-balance-card', 'spend-donut-card
 function Cascade() {
   const root = React.useRef<HTMLElement>(null)
   useGSAP(() => {
-    gsap.matchMedia().add(MOTION_OK, () => {
+    const mm = gsap.matchMedia()
+    mm.add(`${MOTION_OK} and (max-width: 639px)`, () => {
+      gsap.utils.toArray<HTMLElement>('[data-ccard]').forEach((el, i) => {
+        gsap.from(el, { y: 60, rotation: i % 2 ? 4 : -4, opacity: 0, duration: 0.9, ease: 'power4.out', delay: (i % 2) * 0.08, scrollTrigger: { trigger: el, start: 'top 92%' } })
+      })
+      gsap.fromTo('[data-ccard]:nth-child(3)', { rotationY: -180 }, { rotationY: 0, ease: 'power3.out', scrollTrigger: { trigger: '[data-ccard]:nth-child(3)', start: 'top 85%', end: 'top 45%', scrub: 1 } })
+    })
+    mm.add(`${MOTION_OK} and (min-width: 640px)`, () => {
       const box = root.current!.querySelector<HTMLElement>('[data-cgrid]')!
       const cards = gsap.utils.toArray<HTMLElement>('[data-ccard]')
       const step = () => Math.min(innerWidth * 0.07, 90)
-      const tl = gsap.timeline({ scrollTrigger: { trigger: root.current, start: 'top top', end: () => `+=${innerHeight * 1.4}`, pin: true, scrub: 0.8, invalidateOnRefresh: true } })
+      const tl = gsap.timeline({ scrollTrigger: { trigger: root.current, start: 'top top', end: () => `+=${innerHeight * 1.2}`, pin: true, anticipatePin: 1, scrub: 1, invalidateOnRefresh: true } })
       tl.fromTo(cards,
         { x: (i, el) => toPoint(el, box, (i - 2.5) * step(), (i - 2.5) * step() * 0.55).x, y: (i, el) => toPoint(el, box, (i - 2.5) * step(), (i - 2.5) * step() * 0.55).y, rotation: (i) => -8 + i * 3, scale: 0.86 },
         { x: 0, y: 0, rotation: 0, scale: 1, ease: 'power3.inOut', stagger: 0.04, duration: 1 })
@@ -118,13 +125,13 @@ function Cascade() {
     })
   }, { scope: root })
   return (
-    <section ref={root} aria-labelledby="casc-title" className="flex min-h-[100svh] flex-col justify-center py-16">
+    <section ref={root} aria-labelledby="casc-title" className="flex flex-col justify-center py-24 sm:min-h-[100svh] sm:py-16">
       <div className={cn(section, 'flex flex-col items-center')}>
         <div data-ccopy className="mb-10 text-center">
           <p className={eyebrow}>Widgets</p>
           <h2 id="casc-title" className={cn(h2, 'mt-3')}>Deal them out. They line up.</h2>
         </div>
-        <div data-cgrid className="relative grid w-full max-w-[min(1000px,calc((100svh-260px)*1.2))] grid-cols-2 max-sm:max-w-[min(340px,calc((100svh-260px)*0.53))] gap-3 [perspective:1400px] sm:grid-cols-3 sm:gap-5">
+        <div data-cgrid className="relative grid w-full max-w-[min(1000px,calc((100svh-260px)*1.2))] grid-cols-2 max-sm:max-w-none gap-3 [perspective:1400px] sm:grid-cols-3 sm:gap-5">
           {CASCADE.map((s) => <div key={s} data-ccard className="aspect-[4/5] will-change-transform [transform-style:preserve-3d]"><Preview item={by(s)} className="h-full" /></div>)}
         </div>
       </div>
@@ -159,7 +166,7 @@ function TabSwap() {
         <div role="tablist" aria-label="Component sets" onKeyDown={onKey} className="flex max-w-full gap-1 overflow-x-auto rounded-full bg-black/[0.04] p-1 dark:bg-white/[0.06]">
           {TABS.map((t, i) => (
             <button key={t.id} id={`tab-${t.id}`} role="tab" aria-selected={tab === i} aria-controls="tab-panel" tabIndex={tab === i ? 0 : -1} onClick={() => go(i)}
-              className={cn('relative min-h-10 whitespace-nowrap rounded-full px-4 text-sm font-medium transition-colors', tab === i ? 'text-zinc-950 dark:text-white' : 'text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200', focusRing)}>
+              className={cn('relative min-h-10 whitespace-nowrap rounded-full px-4 text-sm font-medium transition-colors', tab === i ? 'text-zinc-950 dark:text-white' : 'text-zinc-600 hover:text-zinc-900 dark:text-zinc-400 dark:hover:text-zinc-200', focusRing)}>
               {tab === i && <motion.span layoutId="tab-pill" className="absolute inset-0 rounded-full bg-white shadow-sm dark:bg-white/10" transition={{ type: 'spring', stiffness: 420, damping: 34 }} />}
               <span className="relative">{t.label}</span>
             </button>
@@ -176,8 +183,8 @@ function TabSwap() {
                   custom={dir}
                   variants={{ in: (d: number) => ({ x: `${d * 60}%`, opacity: 0, rotate: d * 4 }), on: { x: 0, opacity: 1, rotate: 0 }, out: (d: number) => ({ x: `${-d * 60}%`, opacity: 0, rotate: -d * 4 }) }}
                   initial="in" animate="on" exit="out"
-                  transition={{ duration: 0.7, ease: EASE, delay: i * 0.06 }}>
-                  <Link to={`/docs/${s}`} className={cn('block aspect-[5/4] rounded-[22px] transition-transform duration-300 [@media(hover:hover)]:hover:-translate-y-1', focusRing)} aria-label={it.label}>
+                  transition={{ type: 'spring', stiffness: 260, damping: 30, mass: 0.9, delay: i * 0.05 }}>
+                  <Link to={`/docs/${s}`} className={cn('block aspect-[5/4] rounded-[22px] transition-transform duration-300 ease-[cubic-bezier(.16,1,.3,1)] active:scale-[0.98] [@media(hover:hover)]:hover:-translate-y-1.5 motion-reduce:transition-none', focusRing)} aria-label={it.label}>
                     <Preview item={it} className="h-full" />
                   </Link>
                 </motion.li>
@@ -211,7 +218,7 @@ function DepthField() {
     gsap.matchMedia().add(MOTION_OK, () => {
       gsap.utils.toArray<HTMLElement>('[data-speed]').forEach((el) => {
         const sp = Number(el.dataset.speed)
-        gsap.fromTo(el, { y: 160 * sp }, { y: -160 * sp, ease: 'none', scrollTrigger: { trigger: root.current, start: 'top bottom', end: 'bottom top', scrub: true } })
+        gsap.fromTo(el, { y: 160 * sp }, { y: -160 * sp, ease: 'none', scrollTrigger: { trigger: root.current, start: 'top bottom', end: 'bottom top', scrub: 1.2 } })
       })
     })
   }, { scope: root })
@@ -239,7 +246,7 @@ function Bento() {
     <section aria-labelledby="bento-title" className={cn(section, 'py-24 sm:py-32')}>
       <p className={eyebrow}>The small print, made big</p>
       <h2 id="bento-title" className={cn(h2, 'mt-3 max-w-[16ch]')}>Details you'd otherwise skip.</h2>
-      <div className="mt-12 grid gap-4 md:grid-cols-6 md:grid-rows-[300px_300px]">
+      <div className="mt-12 grid gap-4 md:grid-cols-6 md:grid-rows-[minmax(300px,auto)_minmax(300px,auto)]">
         <div className={cn(cell, 'group min-h-[320px] md:col-span-4')}>
           <h3 className="text-xl font-semibold tracking-[-0.03em]">Light and dark, both designed</h3>
           <p className="mt-2 max-w-[36ch] text-zinc-600 dark:text-zinc-400">Not an inverted afterthought. Each theme gets its own shadows and contrast.</p>
@@ -291,7 +298,7 @@ function DockBurst() {
       const box = root.current!.querySelector<HTMLElement>('[data-dgrid]')!
       const tiles = gsap.utils.toArray<HTMLElement>('[data-dtile]')
       const gap = () => (innerWidth < 640 ? 38 : 64)
-      const tl = gsap.timeline({ scrollTrigger: { trigger: root.current, start: 'top top', end: () => `+=${innerHeight * 2}`, pin: true, scrub: 0.8, invalidateOnRefresh: true } })
+      const tl = gsap.timeline({ scrollTrigger: { trigger: root.current, start: 'top top', end: () => `+=${innerHeight * 1.6}`, pin: true, anticipatePin: 1, scrub: 1, invalidateOnRefresh: true } })
       tl.fromTo(tiles,
         { x: (i, el) => toPoint(el, box, (i - 4) * gap(), 0).x, y: (i, el) => toPoint(el, box, 0, 0).y, scale: () => (innerWidth < 640 ? 0.3 : 0.4), borderRadius: 40 },
         { x: 0, y: 0, scale: 1, borderRadius: 24, ease: 'power3.inOut', stagger: { each: 0.03, from: 'center' }, duration: 1 })

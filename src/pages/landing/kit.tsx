@@ -220,3 +220,9 @@ export function FitArt({ children, design = 380, fill = 0.86, className }: { chi
     </div>
   )
 }
+
+/** Caption colour that stays legible on any card surface (blue and ink stay dark in both themes). */
+export function labelTone(bg: string) {
+  if (bg === POP.blue) return 'text-white'
+  return bg === POP.ink || bg === '#0A0A0A' ? 'text-white/70' : 'text-black/60 dark:text-white/60'
+}

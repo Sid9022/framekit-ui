@@ -64,8 +64,8 @@ export function SparklineKpiTile({ label = 'Active users', value = 12480, prefix
       <div {...bind} role="group" aria-label={`${label} trend, ${series.length} points. Use left and right arrows to inspect.`} className={cn('relative mt-4 rounded-lg', focusRing)}>
         <svg viewBox={`0 0 ${W} ${H}`} className="block h-16 w-full overflow-visible" preserveAspectRatio="none" aria-hidden="true">
           <defs><linearGradient id={`${id}-f`} x1="0" y1="0" x2="0" y2="1"><stop offset="0" stopColor={color} stopOpacity="0.28" /><stop offset="1" stopColor={color} stopOpacity="0" /></linearGradient></defs>
-          <motion.path d={`${line} L ${W} ${H} L 0 ${H} Z`} fill={`url(#${id}-f)`} initial={reduced ? false : { opacity: 0 }} animate={{ opacity: 1, d: `${line} L ${W} ${H} L 0 ${H} Z` }} transition={{ duration: 0.6 }} />
-          <motion.path d={line} fill="none" stroke={color} strokeWidth={2} strokeLinecap="round" vectorEffect="non-scaling-stroke" initial={reduced ? false : { pathLength: 0 }} animate={{ pathLength: 1, d: line }} transition={{ pathLength: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }, d: { duration: 0.5 } }} />
+          <motion.path d={`${line} L ${W} ${H} L 0 ${H} Z`} fill={`url(#${id}-f)`} initial={reduced ? false : { opacity: 0, d: `${line} L ${W} ${H} L 0 ${H} Z` }} animate={{ opacity: 1, d: `${line} L ${W} ${H} L 0 ${H} Z` }} transition={{ duration: 0.6 }} />
+          <motion.path d={line} fill="none" stroke={color} strokeWidth={2} strokeLinecap="round" vectorEffect="non-scaling-stroke" initial={reduced ? false : { pathLength: 0, d: line }} animate={{ pathLength: 1, d: line }} transition={{ pathLength: { duration: 1.2, ease: [0.16, 1, 0.3, 1] }, d: { duration: 0.5 } }} />
           {active !== null && <line x1={pts[active][0]} x2={pts[active][0]} y1={0} y2={H} stroke="currentColor" className="text-zinc-400 dark:text-zinc-600" strokeDasharray="2 3" vectorEffect="non-scaling-stroke" />}
         </svg>
         <AnimatePresence>
