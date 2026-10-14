@@ -25,7 +25,7 @@ import { GithubStarsLink } from '@/components/github-stars'
 import { EASE, FitArt, POP, focusRing, pillLime, surface } from './kit'
 
 /* Showcase entries: a real component, its backdrop, and the line the install pill reads out. */
-const SHOW: { slug: string; label: string; note: string; bg: string; design: number | 'auto'; fill?: number; art: React.ReactNode; phone?: boolean }[] = [
+export const SHOW: { slug: string; label: string; note: string; bg: string; design: number | 'auto'; fill?: number; art: React.ReactNode; phone?: boolean }[] = [
   { slug: 'neon-halo-card', label: 'Neon Halo Card', note: 'Light that sweeps around the edge.', bg: POP.ink, design: 380, art: <NeonHaloCard />, phone: true },
   { slug: 'activity-rings', label: 'Activity Rings', note: 'Rings that close on a spring.', bg: '#FFFFFF', design: 'auto', art: <ActivityRings />, phone: true },
   { slug: 'glow-candle-card', label: 'Glow Candle Card', note: 'Neon candlesticks that stream live.', bg: '#F1F1EF', design: 440, art: <GlowCandleCard />, phone: true },
@@ -88,7 +88,7 @@ function Rise({ words, delay = 0 }: { words: { t: string; i?: boolean }[]; delay
 }
 
 /* ── Install pill: icon · two lines that swap every 2.8 s · copy ─────────── */
-function InstallPill({ paused }: { paused: boolean }) {
+export function InstallPill({ paused }: { paused: boolean }) {
   const [i, setI] = React.useState(0)
   const [hold, setHold] = React.useState(false)
   const [copied, setCopied] = React.useState(false)

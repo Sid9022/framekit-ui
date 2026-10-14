@@ -7,17 +7,14 @@ import { GithubIcon } from '@/components/icons'
 import { GithubStarsChip, GithubStarsPill } from '@/components/github-stars'
 import { starsLabel, useGithubStars } from '@/hooks/use-github-stars'
 import { SITE } from '@/config/site'
-import { componentDocs, getNavGroups, categorySlug } from '@/docs/registry'
+import { componentDocs, categorySlug } from '@/docs/registry'
 import { BrandLink, SearchTrigger, ThemeToggleButton, iconBtn } from '@/components/docs/chrome'
 import { useCommandPalette } from '@/components/command-palette'
 import { cn } from '@/lib/cn'
-import { ActivityRings } from '@/components/ui/activity-rings'
-import { ShowcaseHero } from './landing/ShowcaseHero'
-import { GlowCandleCard } from '@/components/ui/glow-candle-card'
-import { GoalProgressCard } from '@/components/ui/goal-progress-card'
-import { surface, EASE, FitArt, HandleBadge, Overline, POP, Reveal, card, focusRing, h2, lede, pillDark, pillLight, section, sectionY } from './landing/kit'
+import { KineticHero } from './landing/KineticHero'
+import { EASE, card, focusRing, pillDark, pillLight, section } from './landing/kit'
 
-const Sections = React.lazy(() => import('./landing/Sections'))
+const Kinetic = React.lazy(() => import('./landing/Kinetic'))
 
 const NAV = [
   { label: 'Components', to: '/docs/introduction' },
@@ -157,92 +154,16 @@ function Nav() {
   )
 }
 
-/* ── Stack strip ─────────────────────────────────────────────────────── */
-const STACK = ['React 19', 'TypeScript', 'Tailwind v4', 'Motion', 'shadcn/ui', 'Vite']
-function StackStrip() {
-  return (
-    <section aria-labelledby="stack-title" className="border-y border-black/[0.06] dark:border-white/[0.08]">
-      <div className={cn(section, 'flex flex-col items-center gap-5 py-8 lg:flex-row lg:justify-between lg:gap-8')}>
-        <h2 id="stack-title" className="shrink-0 text-xs font-semibold uppercase tracking-[0.12em] text-zinc-600 dark:text-zinc-400">Built on the stack you trust</h2>
-        <Reveal as="div" className="w-full lg:w-auto">
-          <ul className="grid grid-cols-3 gap-x-6 gap-y-3 text-center sm:flex sm:flex-wrap sm:justify-center sm:gap-x-10 lg:justify-end">
-            {STACK.map((s) => (
-              <li key={s} className="text-[15px] font-semibold tracking-[-0.02em] text-zinc-500 sm:text-lg dark:text-zinc-400" translate="no">{s}</li>
-            ))}
-          </ul>
-        </Reveal>
-      </div>
-    </section>
-  )
-}
-
-/* ── Why (collage) ───────────────────────────────────────────────────── */
-const COLLAGE = [
-  { cls: 'left-0 top-0 w-[64%] rotate-[-3deg] z-[1]', bg: POP.ink, slug: 'glow-candle-card', art: <GlowCandleCard />, design: 440, badge: [POP.lime, '#0A0A0B'], bcls: '-bottom-3 left-5' },
-  { cls: 'right-0 top-[10%] w-[50%] rotate-[4deg] z-[2]', bg: '#FFFFFF', slug: 'activity-rings', art: <ActivityRings />, design: 'auto', badge: [POP.ink, '#fff'], bcls: '-top-3 right-5' },
-  { cls: 'left-[16%] bottom-0 w-[58%] rotate-[1deg] z-[3]', bg: '#F1F1EF', slug: 'goal-progress-card', art: <GoalProgressCard />, design: 380, badge: [POP.blue, '#fff'], bcls: '-bottom-3 right-5' },
-] as const
-function Why() {
-  return (
-    <section aria-labelledby="why-title" className={cn(section, sectionY, 'grid items-center gap-14 lg:grid-cols-[5fr_7fr] lg:gap-16')}>
-      <div className="min-w-0">
-        <Reveal><Overline>Why Framekit</Overline></Reveal>
-        <Reveal delay={0.04}>
-          <h2 id="why-title" className={cn(h2, 'mt-4')}>
-            Motion with a <span className="text-[#2B5BFF] dark:text-[#8FA8FF]">reason</span>, never decoration.
-          </h2>
-        </Reveal>
-        <Reveal delay={0.08}>
-          <p className={cn(lede, 'mt-6 max-w-[46ch]')}>
-            Every spring, blur and stagger answers a gesture. Components ship with typed props, sensible defaults and a reduced-motion path, so they feel finished on day one.
-          </p>
-        </Reveal>
-        <Reveal delay={0.12}>
-          <dl className="mt-8 grid max-w-md grid-cols-3 gap-4 border-t border-black/[0.06] pt-6 dark:border-white/[0.08]">
-            {[['AA', 'contrast, both themes'], ['44px', 'touch targets'], ['0', 'runtime deps']].map(([n, l]) => (
-              <div key={l}>
-                <dt className="sr-only">{l}</dt>
-                <dd className="text-2xl font-semibold tabular-nums tracking-[-0.03em] text-zinc-950 dark:text-white">{n}</dd>
-                <dd className="mt-1 text-xs leading-snug text-zinc-600 dark:text-zinc-400">{l}</dd>
-              </div>
-            ))}
-          </dl>
-        </Reveal>
-        <Reveal delay={0.16} className="mt-8 flex flex-wrap gap-3">
-          <Link to="/docs/category/motion-showcase" className={pillDark}>See the motion</Link>
-          <Link to="/docs/installation" className={pillLight}>How install works</Link>
-        </Reveal>
-      </div>
-      <div className="relative mx-auto aspect-[1/1.02] w-full max-w-[560px] sm:aspect-[1.15/1] lg:max-w-none">
-        {COLLAGE.map((c, i) => {
-          const s = surface(c.bg)
-          return (
-            <Reveal key={c.slug} delay={i * 0.08} y={24} scale={0.96} className={cn('absolute', c.cls)}>
-              <div className={cn('relative aspect-[4/3.3] overflow-hidden rounded-[24px] shadow-[0_1px_2px_rgb(0_0_0/0.06),0_24px_48px_-24px_rgb(24_24_27/0.35)] ring-1 ring-black/[0.06] sm:rounded-[28px] dark:shadow-[0_24px_48px_-24px_rgb(0_0_0/0.8)] dark:ring-white/[0.1]', s.className)} style={s.style}>
-                <FitArt design={c.design} fill={0.84} className="absolute inset-0">{c.art}</FitArt>
-              </div>
-              <HandleBadge handle={c.slug} color={c.badge[0]} text={c.badge[1]} delay={0.3 + i * 0.08} className={cn(c.bcls, 'max-sm:hidden')} />
-            </Reveal>
-          )
-        })}
-      </div>
-    </section>
-  )
-}
-
 export function LandingPage() {
   const count = componentDocs.length
-  const groups = getNavGroups().filter((g) => g.title !== 'Getting Started')
   return (
     <div className="min-h-screen overflow-x-clip bg-[#F8F8F7] text-zinc-950 antialiased [-webkit-tap-highlight-color:transparent] dark:bg-[#0A0A0B] dark:text-white">
       <a href="#main" className={cn('sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-zinc-950 focus:px-4 focus:py-2 focus:text-white')}>Skip to content</a>
       <Nav />
       <main id="main">
-        <ShowcaseHero count={count} cats={groups.length} />
-        <StackStrip />
-        <Why />
+        <KineticHero count={count} />
         <React.Suspense fallback={<div className="h-[100vh]" aria-hidden />}>
-          <Sections />
+          <Kinetic />
         </React.Suspense>
       </main>
     </div>

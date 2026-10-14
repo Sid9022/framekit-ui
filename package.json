@@ -18,8 +18,10 @@
     "gh-stars:build": "node scripts/build-gh-stars.mjs"
   },
   "dependencies": {
+    "@gsap/react": "^2.1.2",
     "@vercel/analytics": "^2.0.1",
     "clsx": "^2.1.1",
+    "gsap": "^3.15.0",
     "lucide-react": "^1.47.0",
     "motion": "^13.4.2",
     "prism-react-renderer": "^2.4.1",

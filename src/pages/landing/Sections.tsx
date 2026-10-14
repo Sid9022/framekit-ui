@@ -448,7 +448,7 @@ function FaqAnswer({ text }: { text: string }) {
   )
 }
 
-function Faq() {
+export function Faq() {
   const [open, setOpen] = React.useState<number | null>(0)
   return (
     <section aria-labelledby="faq-title" className={cn(section, sectionY, 'grid gap-10 lg:grid-cols-[5fr_7fr] lg:gap-16')}>
@@ -540,7 +540,7 @@ function Marquee() {
 }
 
 /* ── Final CTA ────────────────────────────────────────────────────────── */
-function FinalCta() {
+export function FinalCta() {
   return (
     <section aria-labelledby="cta-title" className={cn(section, sectionY)}>
       <Reveal y={24} scale={0.98}>
@@ -565,7 +565,7 @@ function FinalCta() {
 }
 
 /* ── Footer ───────────────────────────────────────────────────────────── */
-function Footer() {
+export function Footer() {
   const cols = [
     { title: 'Product', links: [['Introduction', '/docs/introduction'], ['Installation', '/docs/installation'], ['Motion Showcase', `/docs/category/${categorySlug('Motion Showcase')}`], ['Data Widgets', `/docs/category/${categorySlug('Data Widgets')}`]] },
     { title: 'Guides', links: [...GUIDE_LINKS.map((g) => [g.navTitle, `/guides/${g.slug}`]), ['All guides', '/guides']] },

@@ -206,3 +206,5 @@ html.dark {
 
 /* Landing marquee: translate exactly one copy of the duplicated row. */
 @keyframes fk-marquee { to { transform: translateX(-50%); } }
+
+@keyframes fk-flip { to { transform: rotateY(360deg); } }
