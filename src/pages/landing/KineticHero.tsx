@@ -30,9 +30,9 @@ const SCATTER_M = [
 ]
 const scatter = () => (innerWidth < 640 ? SCATTER_M : SCATTER)
 const TAGS = [
-  { t: 'Springs, not keyframes', cls: 'left-[6%] top-[46%] sm:left-[14%]', c: 'bg-[#D9F95C] text-zinc-950' },
-  { t: 'Light + dark', cls: 'right-[5%] top-[40%] sm:right-[15%]', c: 'bg-white text-zinc-950 ring-1 ring-black/10' },
-  { t: 'Keyboard first', cls: 'left-[10%] bottom-[20%] sm:left-[18%] max-sm:hidden', c: 'bg-zinc-950 text-white dark:bg-white dark:text-zinc-950' },
+  { t: 'Springs, not keyframes', cls: 'left-[6%] top-[34%] sm:left-[14%]', c: 'bg-[#D9F95C] text-zinc-950' },
+  { t: 'Light + dark', cls: 'right-[5%] top-[30%] sm:right-[15%]', c: 'bg-white text-zinc-950 ring-1 ring-black/10' },
+  { t: 'Keyboard first', cls: 'left-[8%] bottom-[6%] sm:left-[12%] max-sm:hidden', c: 'bg-zinc-950 text-white dark:bg-white dark:text-zinc-950' },
   { t: 'shadcn add', cls: 'right-[8%] bottom-[16%] sm:right-[22%]', c: 'bg-[#2B5BFF] text-white' },
 ]
 
@@ -44,7 +44,7 @@ export function KineticHero({ count }: { count: number }) {
     const tags = gsap.utils.toArray<HTMLElement>('[data-htag]')
     const w = () => cards[0].offsetWidth
     const fanX = (i: number) => (i - 2.5) * w() * (innerWidth < 640 ? 0.36 : 0.5)
-    const fanY = (i: number) => Math.abs(i - 2.5) ** 2 * 6
+    const fanY = (i: number) => Math.abs(i - 2.5) ** 2 * 4
     const mm = gsap.matchMedia()
 
     mm.add(MOTION_OK, () => {
@@ -58,7 +58,7 @@ export function KineticHero({ count }: { count: number }) {
       tags.forEach((t, i) => gsap.to(t, { y: i % 2 ? 7 : -7, duration: 2.6 + i * 0.3, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 2 }))
 
       // Pin; once the intro settles, scrub fan → stack → scatter while the copy swaps.
-      const pin = { trigger: root.current, start: 'top top', end: () => `+=${innerHeight * (innerWidth < 640 ? 1.3 : 1.6)}`, pin: true, anticipatePin: 1 }
+      const pin = { trigger: root.current, start: 'top 64px', end: () => `+=${innerHeight * (innerWidth < 640 ? 1.3 : 1.6)}`, pin: true, anticipatePin: 1 }
       let scroll: gsap.core.Timeline | undefined
       const st = gsap.timeline({ scrollTrigger: { ...pin, scrub: 1, invalidateOnRefresh: true } })
       st.to({}, { duration: 1 }) // placeholder so the pin length exists from the first frame
@@ -82,19 +82,19 @@ export function KineticHero({ count }: { count: number }) {
   }, { scope: root })
 
   return (
-    <section ref={root} aria-labelledby="hero-title" className="relative h-[100svh] min-h-[640px] overflow-hidden">
-      <div data-hcopy className="relative z-20 mx-auto flex max-w-[1100px] flex-col items-center px-6 pt-[clamp(2.5rem,8vh,6rem)] text-center">
+    <section ref={root} aria-labelledby="hero-title" className="relative flex h-[calc(100svh-4rem)] min-h-[520px] flex-col overflow-hidden">
+      <div data-hcopy className="relative z-20 mx-auto flex max-w-[1100px] flex-col items-center px-6 pt-[clamp(0.75rem,3.5svh,4.5rem)] text-center">
         <p className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-[13px] font-medium text-zinc-700 shadow-[0_1px_2px_rgb(0_0_0/0.06)] ring-1 ring-black/[0.06] dark:bg-white/[0.06] dark:text-zinc-300 dark:ring-white/10">
           <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-[#2B5BFF]" />
           <span className="tabular-nums">{count}</span> components · free and open source
         </p>
-        <h1 id="hero-title" className="mt-6 max-w-[13ch] text-balance text-[clamp(2.6rem,1.4rem+5.2vw,6.75rem)] font-semibold leading-[0.95] tracking-[-0.06em] text-zinc-950 dark:text-white">
+        <h1 id="hero-title" className="mt-[clamp(0.75rem,2.2svh,1.5rem)] max-w-[13ch] text-balance text-[clamp(2.4rem,min(1.4rem+5.2vw,10.5svh),6.75rem)] font-semibold leading-[0.95] tracking-[-0.06em] text-zinc-950 dark:text-white">
           One library. Every interface, alive.
         </h1>
-        <p className="mt-6 max-w-[46ch] text-pretty text-[clamp(1rem,0.95rem+0.25vw,1.15rem)] leading-relaxed text-zinc-600 dark:text-zinc-400">
+        <p className="mt-[clamp(0.75rem,2.2svh,1.5rem)] max-w-[46ch] text-pretty text-[clamp(0.95rem,min(0.9rem+0.25vw,2.4svh),1.15rem)] leading-relaxed text-zinc-600 dark:text-zinc-400">
           React components that move like they mean it. Copy one command, the source lands in your repo, and it's yours to bend.
         </p>
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-[clamp(1rem,3svh,2rem)] flex flex-wrap items-center justify-center gap-3">
           <Link to="/docs/introduction" className={pillDark}>Browse components <ArrowRight className="h-4 w-4" aria-hidden /></Link>
           <Link to="/docs/installation" className={cn(pillLight, 'max-sm:hidden')}>Install guide</Link>
         </div>
@@ -105,7 +105,7 @@ export function KineticHero({ count }: { count: number }) {
         <div className="pointer-events-auto mt-6 flex w-full max-w-[488px] justify-center"><InstallPill paused={false} /></div>
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 top-[50%] z-10 [perspective:1600px]">
+      <div className="pointer-events-none relative z-10 mt-[clamp(0.75rem,3svh,2.5rem)] min-h-[180px] flex-1 [container-type:size] [perspective:1600px]">
         {CARDS.map((c, i) => {
           const s = surface(c.bg)
           return (
@@ -115,7 +115,7 @@ export function KineticHero({ count }: { count: number }) {
               data-hcard
               tabIndex={-1}
               aria-hidden
-              className={cn('pointer-events-auto absolute bottom-[12%] left-1/2 -ml-[calc(var(--cw)/2)] group block w-[var(--cw)] will-change-transform [--cw:clamp(118px,13.5vw,212px)]', focusRing)}
+              className={cn('pointer-events-auto absolute bottom-[max(1.25rem,calc((100cqh-var(--cw)*1.32)/2-1.5rem))] left-1/2 -ml-[calc(var(--cw)/2)] group block w-[var(--cw)] will-change-transform [--cw:min(clamp(112px,max(13.5vw,16svh),232px),calc((100cqh-4.5rem)/1.32))] max-sm:[--cw:min(max(112px,18svh),calc((100cqh-3.5rem)/1.32))]', focusRing)}
               style={{ zIndex: i < 3 ? i + 1 : 6 - i + 3 }}
             >
               <span className={cn('block rounded-[24px] p-1.5 shadow-[inset_0_1px_0_rgb(255_255_255/0.55),0_1px_2px_rgb(0_0_0/0.06),0_12px_24px_-12px_rgb(0_0_0/0.18),0_32px_64px_-28px_rgb(0_0_0/0.4)] ring-1 ring-black/[0.06] transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] dark:shadow-[inset_0_1px_0_rgb(255_255_255/0.08),0_32px_64px_-28px_rgb(0_0_0/0.8)] dark:ring-white/10 [@media(hover:hover)]:group-hover:-translate-y-3 [@media(hover:hover)]:group-hover:scale-[1.03] motion-reduce:transition-none', s.className)} style={s.style}>
