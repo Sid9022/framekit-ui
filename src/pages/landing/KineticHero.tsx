@@ -2,38 +2,32 @@ import * as React from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { cn } from '@/lib/cn'
-import { FitArt, focusRing, labelTone, pillDark, pillLight, surface } from './kit'
-import { InstallPill, SHOW } from './ShowcaseHero'
+import { FitArt, focusRing, pillDark, pillLight, surface } from './kit'
+import { SHOW } from './ShowcaseHero'
 import { gsap, MOTION_OK, REDUCED, useGSAP } from './motion'
 
-const PICKS = ['glow-candle-card', 'activity-rings', 'goal-progress-card', 'neon-halo-card', 'dynamic-status-island', 'contribution-heatmap-tile']
-const CARDS = PICKS.map((s) => SHOW.find((x) => x.slug === s)!)
+type Card = (typeof SHOW)[number]
+const pick = (slug: string, bg?: string): Card => { const c = SHOW.find((x) => x.slug === slug)!; return bg ? { ...c, bg } : c }
+/* Five vivid squares, left to right. The centre card is the hero. */
+const CARDS = [
+  pick('wallet-balance-card'),
+  pick('goal-progress-card'),
+  pick('neon-halo-card'),
+  pick('dynamic-status-island', '#FFB547'),
+  pick('contribution-heatmap-tile'),
+]
 
-/* Fan: ±15°, hinged at the bottom centre. Scatter: where each card lands once the copy changes (vw / vh). */
-const FAN_ROT = [-15, -9, -3, 3, 9, 15]
-const SCATTER = [
-  { x: -36, y: -50, r: -10 },
-  { x: 34, y: -54, r: 8 },
-  { x: -40, y: -8, r: 6 },
-  { x: 38, y: -12, r: -7 },
-  { x: -22, y: 18, r: -4 },
-  { x: 24, y: 16, r: 11 },
+/* One straight line: centres share y = 0, origin is the card centre (no arch). Step is 0.625 × card width (≈7.5vw at 12vw). */
+const SPREAD = [
+  { k: -2, r: -13, s: 0.8, z: 1 },
+  { k: -1, r: -7, s: 0.9, z: 2 },
+  { k: 0, r: 0, s: 1, z: 3 },
+  { k: 1, r: 7, s: 0.9, z: 2 },
+  { k: 2, r: 13, s: 0.8, z: 1 },
 ]
-/* Phones: keep the middle band clear for the second line; three cards above it, three below. */
-const SCATTER_M = [
-  { x: -33, y: -50, r: -9 },
-  { x: 33, y: -52, r: 8 },
-  { x: -36, y: 3, r: 7 },
-  { x: 36, y: 1, r: -8 },
-  { x: 0, y: 8, r: -3 },
-  { x: 2, y: -56, r: 4 },
-]
-const scatter = () => (innerWidth < 640 ? SCATTER_M : SCATTER)
 const TAGS = [
-  { t: 'Springs, not keyframes', cls: 'left-[6%] top-[34%] sm:left-[14%]', c: 'bg-[#D9F95C] text-zinc-950' },
-  { t: 'Light + dark', cls: 'right-[5%] top-[30%] sm:right-[15%]', c: 'bg-white text-zinc-950 ring-1 ring-black/10' },
-  { t: 'Keyboard first', cls: 'left-[8%] bottom-[6%] sm:left-[12%] max-sm:hidden', c: 'bg-zinc-950 text-white dark:bg-white dark:text-zinc-950' },
-  { t: 'shadcn add', cls: 'right-[8%] bottom-[16%] sm:right-[22%]', c: 'bg-[#2B5BFF] text-white' },
+  { t: 'Springs, not keyframes', pos: 'left-[calc(50%-var(--cw)*0.625-var(--cw)*0.42)] -translate-x-full max-sm:left-[calc(50%-var(--cw)*0.06)]', c: 'bg-[#D9F95C] text-zinc-950' },
+  { t: 'Light + dark', pos: 'left-[calc(50%+var(--cw)*0.625+var(--cw)*0.42)] max-sm:left-[calc(50%+var(--cw)*0.06)]', c: 'bg-zinc-950 text-white dark:bg-white dark:text-zinc-950' },
 ]
 
 export function KineticHero({ count }: { count: number }) {
@@ -41,48 +35,42 @@ export function KineticHero({ count }: { count: number }) {
 
   useGSAP(() => {
     const cards = gsap.utils.toArray<HTMLElement>('[data-hcard]')
-    const tags = gsap.utils.toArray<HTMLElement>('[data-htag]')
-    const w = () => cards[0].offsetWidth
-    const fanX = (i: number) => (i - 2.5) * w() * (innerWidth < 640 ? 0.36 : 0.5)
-    const fanY = (i: number) => Math.abs(i - 2.5) ** 2 * 4
+    const center = cards[2]
+    const others = cards.filter((_, i) => i !== 2)
+    const spreadOf = (el: HTMLElement) => SPREAD[cards.indexOf(el)]
+    const step = () => center.offsetWidth * 0.625
+    const final = (els: HTMLElement[]) => ({ x: (i: number) => spreadOf(els[i]).k * step(), y: 0, rotation: (i: number) => spreadOf(els[i]).r, scale: (i: number) => spreadOf(els[i]).s })
     const mm = gsap.matchMedia()
+    gsap.set(cards, { transformOrigin: '50% 50%' })
 
     mm.add(MOTION_OK, () => {
-      gsap.set(cards, { transformOrigin: '50% 100%' })
-      const intro = gsap.timeline({ delay: 0.15 })
-      intro
-        .from('[data-hcopy] > *', { y: 28, opacity: 0, duration: 0.9, ease: 'power4.out', stagger: 0.07 })
-        .from(cards, { y: 180, opacity: 0, rotation: 0, duration: 0.8, ease: 'power3.out', stagger: 0.04 }, 0.1)
-        .to(cards, { x: (i) => fanX(i), y: (i) => fanY(i), rotation: (i) => FAN_ROT[i], duration: 1.1, ease: 'elastic.out(1, 0.75)', stagger: { each: 0.05, from: 'center' } }, 0.7)
-        .from(tags, { scale: 0, opacity: 0, duration: 0.7, ease: 'back.out(3)', stagger: 0.09 }, 1.15)
-      tags.forEach((t, i) => gsap.to(t, { y: i % 2 ? 7 : -7, duration: 2.6 + i * 0.3, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 2 }))
-
-      // Pin; once the intro settles, scrub fan → stack → scatter while the copy swaps.
-      const pin = { trigger: root.current, start: 'top 64px', end: () => `+=${innerHeight * (innerWidth < 640 ? 1.3 : 1.6)}`, pin: true, anticipatePin: 1 }
-      let scroll: gsap.core.Timeline | undefined
-      const st = gsap.timeline({ scrollTrigger: { ...pin, scrub: 1, invalidateOnRefresh: true } })
-      st.to({}, { duration: 1 }) // placeholder so the pin length exists from the first frame
-      intro.eventCallback('onComplete', () => {
-        scroll = gsap.timeline()
-        scroll
-          .fromTo(cards, { x: (i) => fanX(i), y: (i) => fanY(i), rotation: (i) => FAN_ROT[i] }, { x: 0, y: (i) => -i * 3, rotation: (i) => (i % 2 ? 2 : -2), ease: 'power3.inOut', duration: 0.3, stagger: 0.01, immediateRender: false })
-          .to(tags, { scale: 0.4, opacity: 0, duration: 0.15, ease: 'power3.in', stagger: 0.02 }, 0.05)
-          .to('[data-hcopy]', { y: -60, opacity: 0, duration: 0.2, ease: 'power3.in' }, 0.22)
-          .to(cards, { x: (i) => (scatter()[i].x * innerWidth) / 100, y: (i) => (scatter()[i].y * innerHeight) / 100, rotation: (i) => scatter()[i].r, scale: () => (innerWidth < 640 ? 0.74 : 0.9), ease: 'power4.out', duration: 0.45, stagger: { each: 0.025, from: 'center' } }, 0.42)
-          .fromTo('[data-hcopy2] > *', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 0.3, ease: 'power4.out', stagger: 0.05 }, 0.55)
-        st.clear().add(scroll, 0)
-        st.scrollTrigger?.refresh()
-      })
-      return () => { scroll?.kill() }
+      const tl = gsap.timeline({ delay: 0.1 })
+      tl.from('[data-hcopy] > *', { y: 24, opacity: 0, duration: 0.9, ease: 'power4.out', stagger: 0.07 })
+        // 1 · the centre card drops in on a spring
+        .fromTo(center, { y: -140, scale: 0.7, rotation: -6, opacity: 0 }, { y: 0, scale: 1, rotation: 0, opacity: 1, duration: 0.9, ease: 'elastic.out(1, 0.72)' }, 0.3)
+        // 2 · the rest wait behind it, then slide out along the line
+        .set(others, { x: 0, y: 0, rotation: 0, scale: 0.86, opacity: 0 }, 0)
+        .to(others, { opacity: 1, duration: 0.2 }, 0.75)
+        .to(others, { ...final(others), duration: 0.95, ease: 'back.out(1.15)', stagger: { each: 0.04, from: 'center' } }, 0.75)
+        .from('[data-htag]', { scale: 0, opacity: 0, y: 12, duration: 0.6, ease: 'back.out(3)', stagger: 0.1 }, 1.35)
+      gsap.utils.toArray<HTMLElement>('[data-htag]').forEach((t, i) => gsap.to(t, { y: i ? 6 : -6, duration: 2.8 + i * 0.4, ease: 'sine.inOut', yoyo: true, repeat: -1, delay: 2.2 }))
+      // Scrolls away normally; the row just drifts up a touch slower than the page for depth.
+      gsap.to('[data-hrow]', { yPercent: -12, ease: 'none', scrollTrigger: { trigger: root.current, start: 'top 64px', end: 'bottom top', scrub: 1 } })
+      const onResize = () => { if (!tl.isActive()) gsap.set(others, final(others)) }
+      window.addEventListener('resize', onResize)
+      return () => window.removeEventListener('resize', onResize)
     })
 
     mm.add(REDUCED, () => {
-      gsap.set(cards, { transformOrigin: '50% 100%', x: (i) => fanX(i), y: (i) => fanY(i), rotation: (i) => FAN_ROT[i] })
+      gsap.set(cards, final(cards))
+      const onResize = () => gsap.set(cards, final(cards))
+      window.addEventListener('resize', onResize)
+      return () => window.removeEventListener('resize', onResize)
     })
   }, { scope: root })
 
   return (
-    <section ref={root} aria-labelledby="hero-title" className="relative flex h-[calc(100svh-4rem)] min-h-[520px] flex-col overflow-hidden">
+    <section ref={root} aria-labelledby="hero-title" className="relative flex h-[calc(100svh-4rem)] min-h-[500px] flex-col overflow-hidden">
       <div data-hcopy className="relative z-20 mx-auto flex max-w-[1100px] flex-col items-center px-6 pt-[clamp(0.75rem,3.5svh,4.5rem)] text-center">
         <p className="inline-flex items-center gap-2 rounded-full bg-white px-3 py-1.5 text-[13px] font-medium text-zinc-700 shadow-[0_1px_2px_rgb(0_0_0/0.06)] ring-1 ring-black/[0.06] dark:bg-white/[0.06] dark:text-zinc-300 dark:ring-white/10">
           <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-[#2B5BFF]" />
@@ -100,34 +88,35 @@ export function KineticHero({ count }: { count: number }) {
         </div>
       </div>
 
-      <div data-hcopy2 className="pointer-events-none absolute inset-x-0 top-[38%] z-20 mx-auto flex max-w-[760px] flex-col items-center px-6 text-center opacity-100 [&>*]:opacity-0">
-        <p className="text-balance text-[clamp(2rem,1.2rem+3.6vw,4.75rem)] font-semibold leading-[0.98] tracking-[-0.055em] text-zinc-950 dark:text-white">Pick one. Paste it. Watch it move.</p>
-        <div className="pointer-events-auto mt-6 flex w-full max-w-[488px] justify-center"><InstallPill paused={false} /></div>
-      </div>
-
-      <div className="pointer-events-none relative z-10 mt-[clamp(0.75rem,3svh,2.5rem)] min-h-[180px] flex-1 [container-type:size] [perspective:1600px]">
-        {CARDS.map((c, i) => {
-          const s = surface(c.bg)
-          return (
-            <Link
-              key={c.slug}
-              to={`/docs/${c.slug}`}
-              data-hcard
-              tabIndex={-1}
-              aria-hidden
-              className={cn('pointer-events-auto absolute bottom-[max(1.25rem,calc((100cqh-var(--cw)*1.32)/2-1.5rem))] left-1/2 -ml-[calc(var(--cw)/2)] group block w-[var(--cw)] will-change-transform [--cw:min(clamp(112px,max(13.5vw,16svh),232px),calc((100cqh-4.5rem)/1.32))] max-sm:[--cw:min(max(112px,18svh),calc((100cqh-3.5rem)/1.32))]', focusRing)}
-              style={{ zIndex: i < 3 ? i + 1 : 6 - i + 3 }}
-            >
-              <span className={cn('block rounded-[24px] p-1.5 shadow-[inset_0_1px_0_rgb(255_255_255/0.55),0_1px_2px_rgb(0_0_0/0.06),0_12px_24px_-12px_rgb(0_0_0/0.18),0_32px_64px_-28px_rgb(0_0_0/0.4)] ring-1 ring-black/[0.06] transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] dark:shadow-[inset_0_1px_0_rgb(255_255_255/0.08),0_32px_64px_-28px_rgb(0_0_0/0.8)] dark:ring-white/10 [@media(hover:hover)]:group-hover:-translate-y-3 [@media(hover:hover)]:group-hover:scale-[1.03] motion-reduce:transition-none', s.className)} style={s.style}>
-                <FitArt design={c.design} fill={0.94} className="aspect-[4/5] rounded-[19px]">{c.art}</FitArt>
-                <span className={cn('block px-1.5 pb-0.5 pt-1.5 text-[11px] font-medium tracking-[-0.01em] sm:text-[12px]', labelTone(c.bg))}>{c.label}</span>
+      {/* Card row: sized by the space left under the CTAs (cqh), so it never rides up into the copy. */}
+      <div className="pointer-events-none relative z-10 mt-[clamp(0.5rem,3svh,2.5rem)] min-h-[170px] flex-1 [container-type:size]">
+        <div data-hrow className="absolute inset-0 [--cw:min(clamp(124px,12vw,272px),calc(100cqh-3.75rem))] max-sm:[--cw:min(36vw,calc(100cqh-3.75rem))]">
+          <div className="absolute inset-x-0 top-[calc(2.25rem+var(--cw)/2+(100cqh-var(--cw)-3.75rem)*0.3)]">
+            {CARDS.map((c, i) => {
+              const s = surface(c.bg)
+              return (
+                <Link
+                  key={c.slug}
+                  to={`/docs/${c.slug}`}
+                  data-hcard
+                  tabIndex={-1}
+                  aria-hidden
+                  className={cn('group pointer-events-auto absolute left-1/2 top-0 -ml-[calc(var(--cw)/2)] -mt-[calc(var(--cw)/2)] block aspect-square w-[var(--cw)] will-change-transform', focusRing)}
+                  style={{ zIndex: SPREAD[i].z }}
+                >
+                  <span className={cn('block h-full rounded-[clamp(18px,1.9vw,30px)] p-[clamp(5px,0.5vw,8px)] shadow-[inset_0_1px_0_rgb(255_255_255/0.45),0_1px_2px_rgb(0_0_0/0.06),0_14px_28px_-14px_rgb(0_0_0/0.22),0_40px_70px_-34px_rgb(0_0_0/0.45)] ring-1 ring-black/[0.06] transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] dark:shadow-[inset_0_1px_0_rgb(255_255_255/0.1),0_40px_70px_-30px_rgb(0_0_0/0.85)] dark:ring-white/10 [@media(hover:hover)]:group-hover:-translate-y-2.5 motion-reduce:transition-none', s.className)} style={s.style}>
+                    <FitArt design={c.design} fill={0.9} className="h-full rounded-[clamp(14px,1.5vw,23px)]">{c.art}</FitArt>
+                  </span>
+                </Link>
+              )
+            })}
+            {TAGS.map((t) => (
+              <span key={t.t} data-htag aria-hidden className={cn('absolute top-[calc(var(--cw)*-0.5-0.5rem)] max-sm:top-[calc(var(--cw)*-0.5-1.6rem)] z-20 whitespace-nowrap rounded-full px-3 py-1.5 text-[12px] font-semibold tracking-[-0.01em] shadow-[0_8px_24px_-8px_rgb(0_0_0/0.3)] sm:px-3.5 sm:py-2 sm:text-[13.5px]', t.pos, t.c)}>
+                {t.t}
               </span>
-            </Link>
-          )
-        })}
-        {TAGS.map((t) => (
-          <span key={t.t} data-htag aria-hidden className={cn('absolute z-20 rounded-full px-3.5 py-2 text-[12.5px] font-semibold tracking-[-0.01em] shadow-[0_8px_24px_-8px_rgb(0_0_0/0.3)] sm:text-[13.5px]', t.cls, t.c)}>{t.t}</span>
-        ))}
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )
