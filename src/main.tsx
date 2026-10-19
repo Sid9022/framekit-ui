@@ -17,3 +17,10 @@ createRoot(document.getElementById('root')!).render(
     </BrowserRouter>
   </StrictMode>,
 )
+
+// A tab left open across a deploy can ask for a lazy chunk that no longer exists: reload once to pick up the new build.
+window.addEventListener('vite:preloadError', () => {
+  if (sessionStorage.getItem('fk-reloaded')) return
+  sessionStorage.setItem('fk-reloaded', '1')
+  window.location.reload()
+})
