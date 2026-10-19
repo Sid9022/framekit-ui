@@ -8,26 +8,33 @@ import { gsap, MOTION_OK, REDUCED, useGSAP } from './motion'
 
 type Card = (typeof SHOW)[number]
 const pick = (slug: string, bg?: string): Card => { const c = SHOW.find((x) => x.slug === slug)!; return bg ? { ...c, bg } : c }
-/* Five vivid squares, left to right. The centre card is the hero. */
+/* Seven vivid squares, left to right. The centre card is the hero. */
 const CARDS = [
+  pick('spend-donut-card', '#FF9EBB'),
   pick('wallet-balance-card'),
   pick('goal-progress-card'),
   pick('neon-halo-card'),
   pick('dynamic-status-island', '#FFB547'),
   pick('contribution-heatmap-tile'),
+  pick('liquid-glass-tab-bar'),
 ]
 
-/* One straight line: centres share y = 0, origin is the card centre (no arch). Step is 0.625 × card width (≈7.5vw at 12vw). */
+/* One straight line: every centre at y = 0, origin at the card centre. Gentle tilt; outer cards sit behind.
+ * Step is 0.64 × card width, so at 13.5vw the row spans ≈ 63vw. */
+const STEP = 0.64
 const SPREAD = [
-  { k: -2, r: -13, s: 0.8, z: 1 },
-  { k: -1, r: -7, s: 0.9, z: 2 },
-  { k: 0, r: 0, s: 1, z: 3 },
-  { k: 1, r: 7, s: 0.9, z: 2 },
-  { k: 2, r: 13, s: 0.8, z: 1 },
+  { k: -3, r: -9, s: 0.82, z: 1 },
+  { k: -2, r: -6, s: 0.88, z: 2 },
+  { k: -1, r: -3, s: 0.94, z: 3 },
+  { k: 0, r: 0, s: 1, z: 4 },
+  { k: 1, r: 3, s: 0.94, z: 3 },
+  { k: 2, r: 6, s: 0.88, z: 2 },
+  { k: 3, r: 9, s: 0.82, z: 1 },
 ]
+/* Speech-bubble tags: above-left of card 2 and above-right of card 6 (phones pull them in). */
 const TAGS = [
-  { t: 'Springs, not keyframes', pos: 'left-[calc(50%-var(--cw)*0.625-var(--cw)*0.42)] -translate-x-full max-sm:left-[calc(50%-var(--cw)*0.06)]', c: 'bg-[#D9F95C] text-zinc-950' },
-  { t: 'Light + dark', pos: 'left-[calc(50%+var(--cw)*0.625+var(--cw)*0.42)] max-sm:left-[calc(50%+var(--cw)*0.06)]', c: 'bg-zinc-950 text-white dark:bg-white dark:text-zinc-950' },
+  { t: 'Springs, not keyframes', pos: 'left-[calc(50%-var(--cw)*1.3)] max-sm:left-[calc(50%-var(--cw)*0.62)] top-[calc(var(--cw)*-0.44-1.5rem)]', tail: 'left-1/2', c: 'bg-[#2B5BFF] text-white', tc: 'bg-[#2B5BFF]' },
+  { t: 'Light + dark', pos: 'left-[calc(50%+var(--cw)*1.62)] max-sm:left-[calc(50%+var(--cw)*0.62)] top-[calc(var(--cw)*-0.41-1.25rem)]', tail: 'left-1/2', c: 'bg-[#D9F95C] text-zinc-950', tc: 'bg-[#D9F95C]' },
 ]
 
 export function KineticHero({ count }: { count: number }) {
@@ -35,10 +42,10 @@ export function KineticHero({ count }: { count: number }) {
 
   useGSAP(() => {
     const cards = gsap.utils.toArray<HTMLElement>('[data-hcard]')
-    const center = cards[2]
-    const others = cards.filter((_, i) => i !== 2)
+    const center = cards[3]
+    const others = cards.filter((_, i) => i !== 3)
     const spreadOf = (el: HTMLElement) => SPREAD[cards.indexOf(el)]
-    const step = () => center.offsetWidth * 0.625
+    const step = () => center.offsetWidth * STEP
     const final = (els: HTMLElement[]) => ({ x: (i: number) => spreadOf(els[i]).k * step(), y: 0, rotation: (i: number) => spreadOf(els[i]).r, scale: (i: number) => spreadOf(els[i]).s })
     const mm = gsap.matchMedia()
     gsap.set(cards, { transformOrigin: '50% 50%' })
@@ -90,8 +97,8 @@ export function KineticHero({ count }: { count: number }) {
 
       {/* Card row: sized by the space left under the CTAs (cqh), so it never rides up into the copy. */}
       <div className="pointer-events-none relative z-10 mt-[clamp(0.5rem,3svh,2.5rem)] min-h-[170px] flex-1 [container-type:size]">
-        <div data-hrow className="absolute inset-0 [--cw:min(clamp(124px,12vw,272px),calc(100cqh-3.75rem))] max-sm:[--cw:min(36vw,calc(100cqh-3.75rem))]">
-          <div className="absolute inset-x-0 top-[calc(2.25rem+var(--cw)/2+(100cqh-var(--cw)-3.75rem)*0.3)]">
+        <div data-hrow className="absolute inset-0 [--cw:min(clamp(124px,13.5vw,300px),calc(100cqh-4rem))] max-sm:[--cw:min(35vw,calc(100cqh-4rem))]">
+          <div className="absolute inset-x-0 top-[calc(2.5rem+var(--cw)/2+(100cqh-var(--cw)-4rem)*0.3)]">
             {CARDS.map((c, i) => {
               const s = surface(c.bg)
               return (
@@ -111,8 +118,11 @@ export function KineticHero({ count }: { count: number }) {
               )
             })}
             {TAGS.map((t) => (
-              <span key={t.t} data-htag aria-hidden className={cn('absolute top-[calc(var(--cw)*-0.5-0.5rem)] max-sm:top-[calc(var(--cw)*-0.5-1.6rem)] z-20 whitespace-nowrap rounded-full px-3 py-1.5 text-[12px] font-semibold tracking-[-0.01em] shadow-[0_8px_24px_-8px_rgb(0_0_0/0.3)] sm:px-3.5 sm:py-2 sm:text-[13.5px]', t.pos, t.c)}>
-                {t.t}
+              <span key={t.t} data-htag aria-hidden className={cn('absolute z-20 -translate-x-1/2', t.pos)}>
+                <span className={cn('relative block whitespace-nowrap rounded-full px-3 py-1.5 text-[12px] font-semibold tracking-[-0.01em] shadow-[0_8px_24px_-10px_rgb(0_0_0/0.35)] sm:px-3.5 sm:py-2 sm:text-[13.5px]', t.c)}>
+                  {t.t}
+                  <span className={cn('absolute -bottom-1 h-2.5 w-2.5 -translate-x-1/2 rotate-45 rounded-[2px]', t.tail, t.tc)} />
+                </span>
               </span>
             ))}
           </div>
