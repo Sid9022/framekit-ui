@@ -43,14 +43,18 @@ const SCATTER = [
 ]
 /* Phones: three above the line, four below it. */
 const SCATTER_M = [
-  { x: 0.16, y: 0.14, r: -9 },
-  { x: 0.12, y: 0.87, r: 7 },
-  { x: 0.38, y: 0.9, r: -5 },
+  { x: 0.2, y: 0.12, r: -7 },
+  { x: 0.14, y: 0.88, r: 6 },
+  { x: 0.38, y: 0.9, r: -4 },
   { x: 0.5, y: 0.1, r: 3 },
-  { x: 0.62, y: 0.88, r: 6 },
-  { x: 0.88, y: 0.86, r: -8 },
-  { x: 0.84, y: 0.15, r: 8 },
+  { x: 0.62, y: 0.89, r: 5 },
+  { x: 0.86, y: 0.87, r: -6 },
+  { x: 0.8, y: 0.13, r: 7 },
 ]
+/** Side padding the row and the scatter keep from the screen edge. */
+const EDGE = 14
+/** Axis-aligned half-size of a square of side `w` rotated by `deg`. */
+const halfBox = (w: number, deg: number) => (w * (Math.abs(Math.cos((deg * Math.PI) / 180)) + Math.abs(Math.sin((deg * Math.PI) / 180)))) / 2
 /** Layout position (ignores transforms) of an element's centre inside an ancestor. */
 function centreIn(el: HTMLElement, box: HTMLElement) {
   let x = el.offsetWidth / 2
@@ -62,8 +66,8 @@ function centreIn(el: HTMLElement, box: HTMLElement) {
 
 /* Speech-bubble tags: above-left of card 2 and above-right of card 6 (phones pull them in). */
 const TAGS = [
-  { t: 'Springs, not keyframes', pos: 'left-[calc(50%-var(--cw)*1.3)] max-sm:left-[calc(50%-var(--cw)*0.62)] top-[calc(var(--cw)*-0.44-1.5rem)]', tail: 'left-1/2', c: 'bg-[#2B5BFF] text-white', tc: 'bg-[#2B5BFF]' },
-  { t: 'Light + dark', pos: 'left-[calc(50%+var(--cw)*1.62)] max-sm:left-[calc(50%+var(--cw)*0.62)] top-[calc(var(--cw)*-0.41-1.25rem)]', tail: 'left-1/2', c: 'bg-[#D9F95C] text-zinc-950', tc: 'bg-[#D9F95C]' },
+  { t: 'Springs, not keyframes', pos: 'left-[calc(50%-var(--cw)*1.3)] max-sm:left-[calc(50%-var(--cw)*0.92)] top-[calc(var(--cw)*-0.44-1.5rem)]', tail: 'left-1/2', c: 'bg-[#2B5BFF] text-white', tc: 'bg-[#2B5BFF]' },
+  { t: 'Light + dark', pos: 'left-[calc(50%+var(--cw)*1.62)] max-sm:left-[calc(50%+var(--cw)*0.92)] top-[calc(var(--cw)*-0.41-1.25rem)]', tail: 'left-1/2', c: 'bg-[#D9F95C] text-zinc-950', tc: 'bg-[#D9F95C]' },
 ]
 
 export function KineticHero({ count }: { count: number }) {
@@ -74,7 +78,12 @@ export function KineticHero({ count }: { count: number }) {
     const center = cards[3]
     const others = cards.filter((_, i) => i !== 3)
     const spreadOf = (el: HTMLElement) => SPREAD[cards.indexOf(el)]
-    const step = () => center.offsetWidth * STEP
+    // Spread step: 0.64 × card width, tightened when needed so the outer cards (scaled, tilted) stay EDGE px inside the viewport.
+    const step = () => {
+      const w = center.offsetWidth
+      const outer = halfBox(w * SPREAD[0].s, SPREAD[0].r)
+      return Math.max(0, Math.min(w * STEP, (innerWidth / 2 - EDGE - outer) / 3))
+    }
     const final = (els: HTMLElement[]) => ({ x: (i: number) => spreadOf(els[i]).k * step(), y: 0, rotation: (i: number) => spreadOf(els[i]).r, scale: (i: number) => spreadOf(els[i]).s })
     const mm = gsap.matchMedia()
     gsap.set(cards, { transformOrigin: '50% 50%' })
@@ -95,10 +104,17 @@ export function KineticHero({ count }: { count: number }) {
 
       // 3 · Scroll: pinned and scrubbed. Row gathers into a stack → headline lifts out → cards scatter around the second line.
       const phone = () => innerWidth < 640
+      const scatterScale = () => (phone() ? 0.86 : 0.78)
       const target = (i: number) => {
         const t = (phone() ? SCATTER_M : SCATTER)[i]
         const c = centreIn(cards[i], box)
-        return { x: t.x * box.offsetWidth - c.x, y: t.y * box.offsetHeight - c.y, r: t.r }
+        // Keep every scattered card fully inside the frame (EDGE px on the sides, inside the hero box top/bottom).
+        const h = halfBox(cards[i].offsetWidth * scatterScale(), t.r)
+        const W = box.offsetWidth
+        const H = box.offsetHeight
+        const px = gsap.utils.clamp(EDGE + h, W - EDGE - h, t.x * W)
+        const py = gsap.utils.clamp(8 + h, H - 8 - h, t.y * H)
+        return { x: px - c.x, y: py - c.y, r: t.r }
       }
       const st = gsap.timeline({
         scrollTrigger: { trigger: box, start: 'top 64px', end: () => `+=${innerHeight * (phone() ? 1.3 : 1.5)}`, pin: true, anticipatePin: 1, scrub: 1.2, invalidateOnRefresh: true },
@@ -114,7 +130,7 @@ export function KineticHero({ count }: { count: number }) {
             { x: (i) => (i - 3) * 2, y: (i) => -Math.abs(i - 3) * 3, rotation: (i) => (i % 2 ? 3 : -3) * (i === 3 ? 0 : 1), scale: 0.92, ease: 'power3.inOut', duration: 0.32, stagger: { each: 0.012, from: 'edges' } }, 0)
           .to(tags, { scale: 0.5, opacity: 0, duration: 0.14, ease: 'power3.in', stagger: 0.02 }, 0.04)
           .to('[data-hcopy]', { y: -70, opacity: 0, duration: 0.22, ease: 'power3.in' }, 0.2)
-          .to(cards, { x: (i) => target(i).x, y: (i) => target(i).y, rotation: (i) => target(i).r, scale: () => (phone() ? 0.62 : 0.78), ease: 'power4.out', duration: 0.48, stagger: { each: 0.02, from: 'center' } }, 0.42)
+          .to(cards, { x: (i) => target(i).x, y: (i) => target(i).y, rotation: (i) => target(i).r, scale: scatterScale, ease: 'power4.out', duration: 0.48, stagger: { each: 0.02, from: 'center' } }, 0.42)
           .to('[data-hcopy2]', { autoAlpha: 1, duration: 0.05 }, 0.52)
           .to('[data-hcopy2] > *', { y: 0, opacity: 1, duration: 0.3, ease: 'power4.out', stagger: 0.05 }, 0.54)
         st.clear().add(scroll, 0)
@@ -161,7 +177,7 @@ export function KineticHero({ count }: { count: number }) {
 
       {/* Card row: sized by the space left under the CTAs (cqh), so it never rides up into the copy. */}
       <div className="pointer-events-none relative z-10 mt-[clamp(0.5rem,3svh,2.5rem)] min-h-[170px] flex-1 [container-type:size]">
-        <div data-hrow className="absolute inset-0 [--cw:min(clamp(124px,13.5vw,300px),calc(100cqh-4rem))] max-sm:[--cw:min(35vw,calc(100cqh-4rem))]">
+        <div data-hrow className="absolute inset-0 [--cw:min(clamp(124px,13.5vw,300px),calc(100cqh-4rem))] max-lg:[--cw:min(17vw,calc(100cqh-4rem))] max-sm:[--cw:min(26vw,calc(100cqh-4rem))]">
           <div className="absolute inset-x-0 top-[calc(2.5rem+var(--cw)/2+(100cqh-var(--cw)-4rem)*0.3)]">
             {CARDS.map((c, i) => {
               const s = surface(c.bg)
@@ -175,8 +191,8 @@ export function KineticHero({ count }: { count: number }) {
                   className={cn('group pointer-events-auto absolute left-1/2 top-0 -ml-[calc(var(--cw)/2)] -mt-[calc(var(--cw)/2)] block aspect-square w-[var(--cw)] will-change-transform', focusRing)}
                   style={{ zIndex: SPREAD[i].z }}
                 >
-                  <span className={cn('block h-full rounded-[clamp(18px,1.9vw,30px)] p-[clamp(5px,0.5vw,8px)] shadow-[inset_0_1px_0_rgb(255_255_255/0.45),0_1px_2px_rgb(0_0_0/0.06),0_14px_28px_-14px_rgb(0_0_0/0.22),0_40px_70px_-34px_rgb(0_0_0/0.45)] ring-1 ring-black/[0.06] transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] dark:shadow-[inset_0_1px_0_rgb(255_255_255/0.1),0_40px_70px_-30px_rgb(0_0_0/0.85)] dark:ring-white/10 [@media(hover:hover)]:group-hover:-translate-y-2.5 motion-reduce:transition-none', s.className)} style={s.style}>
-                    <FitArt design={c.design} fill={0.9} className="h-full rounded-[clamp(14px,1.5vw,23px)]">{c.art}</FitArt>
+                  <span className={cn('block h-full rounded-[clamp(14px,calc(var(--cw)*0.12),30px)] p-[clamp(4px,calc(var(--cw)*0.035),8px)] shadow-[inset_0_1px_0_rgb(255_255_255/0.45),0_1px_2px_rgb(0_0_0/0.06),0_14px_28px_-14px_rgb(0_0_0/0.22),0_40px_70px_-34px_rgb(0_0_0/0.45)] ring-1 ring-black/[0.06] transition-transform duration-500 ease-[cubic-bezier(.16,1,.3,1)] dark:shadow-[inset_0_1px_0_rgb(255_255_255/0.1),0_40px_70px_-30px_rgb(0_0_0/0.85)] dark:ring-white/10 [@media(hover:hover)]:group-hover:-translate-y-2.5 motion-reduce:transition-none', s.className)} style={s.style}>
+                    <FitArt design={c.design} fill={0.9} className="h-full rounded-[clamp(10px,calc(var(--cw)*0.095),23px)]">{c.art}</FitArt>
                   </span>
                 </Link>
               )
