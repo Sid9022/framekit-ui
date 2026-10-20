@@ -8,12 +8,12 @@ import { gsap, MOTION_OK, useGSAP } from './motion'
 
 type Card = { slug: string; label: string; bg: string; design: number | 'auto'; art: React.ReactNode; dark?: boolean }
 const noop = () => {}
-/* Seven live standouts, left to right. The skull holds the middle. */
+/* Seven live standouts, left to right. The skull leads the row and sits on top, so it stays fully visible on phones. */
 export const HERO_CARDS: Card[] = [
+  { slug: 'ghost-gobbler-skull', label: 'Ghost Gobbler Skull', bg: '#0E0D12', dark: true, design: 'auto', art: <GhostGobblerSkull mode="indeterminate" size={150} spread={1.6} showLabel={false} interactive={false} label="Ghost Gobbler Skull" /> },
   { slug: 'particle-morph-loader', label: 'Particle Morph Loader', bg: '#16131F', dark: true, design: 'auto', art: <ParticleMorphLoader size={200} showLabel={false} points={260} /> },
   { slug: 'cosmic-sparkle-toggle', label: 'Cosmic Sparkle Toggle', bg: '#CDBDFF', design: 'auto', art: <CosmicSparkleToggle checked onCheckedChange={noop} aria-label="Cosmic sparkle" /> },
   { slug: 'liquid-metal-orb', label: 'Liquid Metal Orb', bg: '#E9E6DF', design: 'auto', art: <LiquidMetalOrb /> },
-  { slug: 'ghost-gobbler-skull', label: 'Ghost Gobbler Skull', bg: '#0E0D12', dark: true, design: 'auto', art: <GhostGobblerSkull mode="indeterminate" size={150} spread={1.6} showLabel={false} interactive={false} label="Ghost Gobbler Skull" /> },
   { slug: 'moth-lantern-toggle', label: 'Moth Lantern Toggle', bg: '#FFC56B', design: 'auto', art: <MothLanternToggle checked onCheckedChange={noop} aria-label="Moth lantern" /> },
   { slug: 'aurora-core-orb', label: 'Aurora Core Orb', bg: '#0B1418', dark: true, design: 'auto', art: <AuroraCoreOrb /> },
   { slug: 'star-morph-buddy', label: 'Star Morph Buddy', bg: '#2B5BFF', dark: true, design: 'auto', art: <StarMorphBuddy interactive={false} /> },
@@ -76,7 +76,7 @@ export function PaperHero({ count }: { count: number }) {
                 tabIndex={-1}
                 aria-hidden
                 className="group pointer-events-auto absolute left-0 top-0 block aspect-square w-[var(--cw)] will-change-transform"
-                style={{ zIndex: i + 1, marginLeft: `calc(var(--cw) * (${i - 3} * var(--st) - 0.5))`, marginTop: `calc(var(--cw) * ${LAY[i].y - 0.5})`, transform: `rotate(${LAY[i].r}deg)` }}
+                style={{ zIndex: i === 0 ? 10 : i + 1, marginLeft: `calc(var(--cw) * (${i - 3} * var(--st) - 0.5))`, marginTop: `calc(var(--cw) * ${LAY[i].y - 0.5})`, transform: `rotate(${LAY[i].r}deg)` }}
               >
                 <span className={cn('block h-full rounded-[clamp(10px,calc(var(--cw)*0.08),20px)] p-[clamp(3px,calc(var(--cw)*0.03),7px)] shadow-[0_1px_2px_rgb(23_20_15/0.08),0_12px_28px_-12px_rgb(23_20_15/0.35)] ring-1 ring-black/[0.06] transition-transform overflow-hidden duration-500 ease-[cubic-bezier(.16,1,.3,1)] dark:shadow-[0_18px_40px_-16px_rgb(0_0_0/0.9)] dark:ring-white/10 [@media(hover:hover)]:group-hover:-translate-y-3 [@media(hover:hover)]:group-hover:scale-[1.04] motion-reduce:transition-none', c.dark ? 'dark' : 'light')} style={{ background: c.bg }}>
                   <FitArt design={c.design} fill={0.86} className="h-full rounded-[clamp(8px,calc(var(--cw)*0.06),15px)]"><React.Suspense fallback={<span className="block h-10 w-10" />}>{c.art}</React.Suspense></FitArt>
@@ -84,8 +84,8 @@ export function PaperHero({ count }: { count: number }) {
               </Link>
             )
           })}
-          <span data-ptag aria-hidden className="absolute z-20 -translate-x-1/2 whitespace-nowrap rounded-full bg-[#2B5BFF] px-2.5 py-1 font-mono text-[11px] font-medium text-white shadow-lg sm:text-[12.5px]" style={{ left: 'calc(var(--cw) * var(--st) * 0.35)', top: 'calc(var(--cw) * -0.66)' }}>@eats-ghosts</span>
-          <span data-ptag aria-hidden className="absolute z-20 -translate-x-1/2 whitespace-nowrap rounded-full bg-[#D9F95C] px-2.5 py-1 font-mono text-[11px] font-medium text-zinc-950 shadow-lg sm:text-[12.5px]" style={{ left: 'calc(var(--cw) * var(--st) * -2.1)', top: 'calc(var(--cw) * -0.7)' }}>@flip-me</span>
+          <span data-ptag aria-hidden className="absolute z-20 -translate-x-1/2 whitespace-nowrap rounded-full bg-[#2B5BFF] px-2.5 py-1 font-mono text-[11px] font-medium text-white shadow-lg sm:text-[12.5px]" style={{ left: 'calc(var(--cw) * var(--st) * -3)', top: 'calc(var(--cw) * -0.66)' }}>@eats-ghosts</span>
+          <span data-ptag aria-hidden className="absolute z-20 -translate-x-1/2 whitespace-nowrap rounded-full bg-[#D9F95C] px-2.5 py-1 font-mono text-[11px] font-medium text-zinc-950 shadow-lg sm:text-[12.5px]" style={{ left: 'calc(var(--cw) * var(--st) * 1.6)', top: 'calc(var(--cw) * -0.7)' }}>@flip-me</span>
         </div>
       </div>
 
