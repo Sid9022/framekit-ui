@@ -11,10 +11,10 @@ import { componentDocs, categorySlug } from '@/docs/registry'
 import { BrandLink, SearchTrigger, ThemeToggleButton, iconBtn } from '@/components/docs/chrome'
 import { useCommandPalette } from '@/components/command-palette'
 import { cn } from '@/lib/cn'
-import { PaperHero } from './landing/PaperHero'
+import { SpecimenHero } from './landing/SpecimenHero'
 import { EASE, card, focusRing, pillDark, pillLight, section } from './landing/kit'
 
-const Paper = React.lazy(() => import('./landing/Paper'))
+const Lab = React.lazy(() => import('./landing/Lab'))
 
 const NAV = [
   { label: 'Components', to: '/docs/introduction' },
@@ -161,9 +161,9 @@ export function LandingPage() {
       <a href="#main" className={cn('sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-zinc-950 focus:px-4 focus:py-2 focus:text-white')}>Skip to content</a>
       <Nav />
       <main id="main">
-        <PaperHero count={count} />
+        <SpecimenHero count={count} />
         <React.Suspense fallback={<div className="h-[100vh]" aria-hidden />}>
-          <Paper />
+          <Lab />
         </React.Suspense>
       </main>
     </div>
