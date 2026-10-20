@@ -11,10 +11,10 @@ import { componentDocs, categorySlug } from '@/docs/registry'
 import { BrandLink, SearchTrigger, ThemeToggleButton, iconBtn } from '@/components/docs/chrome'
 import { useCommandPalette } from '@/components/command-palette'
 import { cn } from '@/lib/cn'
-import { KineticHero } from './landing/KineticHero'
+import { PaperHero } from './landing/PaperHero'
 import { EASE, card, focusRing, pillDark, pillLight, section } from './landing/kit'
 
-const Kinetic = React.lazy(() => import('./landing/Kinetic'))
+const Paper = React.lazy(() => import('./landing/Paper'))
 
 const NAV = [
   { label: 'Components', to: '/docs/introduction' },
@@ -126,7 +126,7 @@ function Nav() {
     <header
       className={cn(
         'sticky top-0 z-40 border-b pt-[env(safe-area-inset-top)] transition-[background-color,border-color,backdrop-filter] duration-300',
-        scrolled ? 'border-black/[0.06] bg-[#F8F8F7]/80 backdrop-blur-xl backdrop-saturate-150 dark:border-white/[0.08] dark:bg-[#0A0A0B]/75' : 'border-transparent',
+        scrolled ? 'border-black/[0.06] bg-[var(--pp)]/80 backdrop-blur-xl backdrop-saturate-150 dark:border-white/[0.08]' : 'border-transparent',
       )}
     >
       <div className={cn(section, 'flex h-16 items-center gap-3')}>
@@ -157,13 +157,13 @@ function Nav() {
 export function LandingPage() {
   const count = componentDocs.length
   return (
-    <div className="min-h-screen overflow-x-clip bg-[#F8F8F7] text-zinc-950 antialiased [-webkit-tap-highlight-color:transparent] dark:bg-[#0A0A0B] dark:text-white">
+    <div className="paper min-h-screen overflow-x-clip bg-[var(--pp)] text-[var(--pi)] antialiased [-webkit-tap-highlight-color:transparent]">
       <a href="#main" className={cn('sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-zinc-950 focus:px-4 focus:py-2 focus:text-white')}>Skip to content</a>
       <Nav />
       <main id="main">
-        <KineticHero count={count} />
+        <PaperHero count={count} />
         <React.Suspense fallback={<div className="h-[100vh]" aria-hidden />}>
-          <Kinetic />
+          <Paper />
         </React.Suspense>
       </main>
     </div>

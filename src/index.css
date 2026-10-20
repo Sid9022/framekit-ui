@@ -208,3 +208,23 @@ html.dark {
 @keyframes fk-marquee { to { transform: translateX(-50%); } }
 
 @keyframes fk-flip { to { transform: rotateY(360deg); } }
+
+/* Landing v5 "paper" palette: warm paper + ink in light, warm charcoal in dark. */
+.paper {
+  --pp: #f4f1ea;
+  --pc: #fbfaf6;
+  --pi: #17140f;
+  --pm: #6b645a;
+  --pl: #e2dccf;
+  --pls: #c9c1b0;
+}
+.dark .paper,
+.paper.dark {
+  --pp: #12110f;
+  --pc: #1b1a17;
+  --pi: #f4f1ea;
+  --pm: #a59e92;
+  --pl: #2b2925;
+  --pls: #3d3a34;
+}
+@keyframes fk-paper-marquee { to { transform: translateX(-50%); } }
